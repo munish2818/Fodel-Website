@@ -24,7 +24,7 @@
       "image": "url_to_image",
       "description": "High-quality wireless calling device for waiters.",
       "brand": {
-        "@type": "Brand",
+        "@type": "Fodel",
         "name": "Fodel India"
       }
     }
@@ -35,7 +35,6 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
         }
         .container {
             width: 90%;
@@ -48,11 +47,13 @@
         }
         .header h1 {
             margin: 0;
-            font-size: 1.5rem;
+            font-size: 17px;
         }
         .logo {
-            display: block;
-            margin: 0 auto 10px;
+            position: static;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 5px;
         }
         .banner img {
             width: 100%;
@@ -62,95 +63,99 @@
             text-align: justify;
             background-color: #f8f8f8;
             padding: 20px;
-            margin: 20px 0;
         }
         .product {
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
         }
         .product-item {
-            flex: 1 1 calc(33.333% - 20px);
+            flex: 0 0 100%;
             max-width: 350px;
+            margin: 20px;
             border: 1px solid #ccc;
             padding: 20px;
             text-align: center;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 3s;
+            position: relative;
+            overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .product-item img {
-            max-width: 100%;
+            width: 100%;
             height: auto;
-            margin-bottom: 15px;
             transition: transform 0.3s ease;
         }
         .product-item:hover {
             transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .product-item:hover img {
             transform: scale(1.1);
         }
-        .bullet-points {
-            text-align: left;
-            margin: 10px 0;
-            padding-left: 20px;
-        }
-        .reviews {
-            margin-top: 10px;
-            font-size: 0.9rem;
-        }
-        .reviews a {
-            color: #007BFF;
-            text-decoration: none;
-        }
-        .reviews a:hover {
-            text-decoration: underline;
-        }
         .footer {
             text-align: center;
-            padding: 20px 0;
+            padding: 10px 0;
             background: #f1f1f1;
             margin-top: 20px;
+            position: relative;
+        }
+        .footer-phone {
+            display: inline-block;
+            margin-top: 10px;
         }
         .footer-phone img {
-            width: 20px;
+            width: 70px;
+            height: auto;
             vertical-align: middle;
-            margin-right: 5px;
         }
-        .go-to-top {
-            color: #FF1919;
-            text-decoration: none;
-            margin-top: 10px;
-            display: inline-block;
+        .whatsapp-icon, .instagram-icon {
+            position: fixed;
+            bottom: 20px;
+            z-index: 1000;
+            border-radius: 50%;
         }
-        .clients-carousel, .image-carousel {
-            display: flex;
-            gap: 10px;
-            overflow-x: auto;
-            padding: 10px 0;
-            justify-content: center;
+        .whatsapp-icon {
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg');
+            background-size: cover;
         }
-        .clients-carousel img, .image-carousel img {
-            height: 100px;
+        .instagram-icon {
+            right: 90px;
+            width: 60px;
+            height: 60px;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png');
+            background-size: cover;
+        }
+        .footer-phone {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            font-size: 16px;
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 5px 10px;
             border-radius: 5px;
         }
-        .video-gallery iframe {
-            width: 100%;
-            max-width: 400px;
-            margin: 10px;
-        }
         @media (max-width: 768px) {
-            .product-item {
-                flex: 1 1 calc(50% - 20px);
+            .header {
+                padding: 10px 0;
             }
-        }
-        @media (max-width: 480px) {
-            .product-item {
-                flex: 1 1 100%;
+            .logo {
+                position: absolute;
+                left: 0;
+                transform: none;
+                margin: -9px auto;
+            }
+            .whatsapp-icon, .instagram-icon {
+                width: 50px;
+                height: 50px;
+            }
+            .footer-phone {
+                font-size: 14px;
+                padding: 3px 8px;
             }
         }
     </style>
@@ -160,7 +165,7 @@
         <header class="header">
             <img src="logo.png" alt="Company Logo" class="logo">
             <h1>Waiter Call Bell System By Fodel India</h1>
-            <p>Improve your restaurant service: No More Waiting, No more hand waving, Faster table turnover</p>
+            <p>Improve your restaurant service, No More Waiting, No more hand waving, Faster table turnover</p>
         </header>
 
         <div class="banner">
@@ -169,55 +174,17 @@
 
         <section class="description">
             <h2>Enhance Your Restaurant Service</h2>
-            <p>After your customer gets seated, they simply press the call bell button on their table. The table number will appear on the server's device, allowing them to attend to the customer promptly, improving service efficiency.</p>
-        </section>
-
-        <section class="product">
-            <div class="product-item">
-                <img src="22.png" alt="Product 1">
-                <h2>Waiter Wireless Call Bell System</h2>
-                <ul class="bullet-points">
-                    <li>High Quality Material</li>
-                    <li>Durable & Long Lasting</li>
-                    <li>No Wiring, No Internet Required</li>
-                    <li>Increase in Sales</li>
-                    <li>6-Month Warranty</li>
-                </ul>
-                <p>Price: Rs 1499 (Exclusive of GST)</p>
-                <div class="reviews">
-                    <p>★★★★★ 174 Reviews</p>
-                    <a href="#">Read all reviews</a>
-                </div>
-            </div>
-            <div class="product-item">
-                <img src="1.png" alt="Product 2">
-                <h2>Receiver For Server</h2>
-                <ul class="bullet-points">
-                    <li>Supports 999 call senders</li>
-                    <li>Rechargeable</li>
-                    <li>Vibrates & Buzzes</li>
-                    <li>No Wi-Fi Required</li>
-                    <li>6-Month Warranty</li>
-                </ul>
-                <p>Price: Rs 3999 (Exclusive of GST)</p>
-                <div class="reviews">
-                    <p>★★★★★ 174 Reviews</p>
-                    <a href="#">Read all reviews</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="clients-carousel">
-            <img src="gt.png" alt="Client Logo 1">
-            <img src="ru.png" alt="Client Logo 2">
-            <img src="za.png" alt="Client Logo 3">
+            <p>How does the system work? After your customer gets seated, all they need to do is press the call bell button on their table. When the customer presses the call bell button on their table, their table number will appear on the waiter / captain / server's watch LED screen with ringing. Waiters / servers / captains then head over to the table to take the customer's order promptly and quickly.</p>
         </section>
 
         <footer class="footer">
-            <a href="#" class="go-to-top">Back to top</a>
-            <p class="footer-phone">
-                <img src="phone-icon.png" alt="Phone"> +91 9086399392
-            </p>
+            <p class="footer-phone">Call us: +91 9086399392</p>
+            <div class="whatsapp-icon">
+                <a href="https://wa.me/9086399392" target="_blank"></a>
+            </div>
+            <div class="instagram-icon">
+                <a href="https://www.instagram.com/fodel_india/" target="_blank"></a>
+            </div>
         </footer>
     </div>
 </body>
