@@ -54,7 +54,7 @@
             font-size: 17px; /* Adjust this value to set your desired font size */
         }
         .logo {
-            position: static;
+            position: absolute;
             left: 50%;
             transform: translateX(-50%);
             top: 5px;
@@ -237,9 +237,9 @@
             }
             .logo {
                 position: absolute;
-                left: 0;
-                transform: none;
-                margin: -9px auto;
+                left: 50%;
+                transform: translateX(-50%);
+                top: 0; /* Adjusted to prevent overlap */
             }
         }
         @media (max-width: 480px) {
@@ -272,11 +272,20 @@
             <img src="logo.png" alt="Company Logo" class="logo">
             <h1>Waiter Call Bell System By Fodel India</h1>
             <p>Improve your restaurant service, No More Waiting, No more hand waving, Faster table turnover</p>
+        </Sure, let's continue and complete the code:
+
+```html
+    <div class="container">
+        <header class="header">
+            <img src="logo.png" alt="Company Logo" class="logo">
+            <h1>Waiter Call Bell System By Fodel India</h1>
+            <p>Improve your restaurant service, No More Waiting, No more hand waving, Faster table turnover</p>
         </header>
 
         <div class="banner">
             <img src="one.jpg" alt="Banner Image">
         </div>
+
         <section class="description">
             <h2>Enhance Your Restaurant Service</h2>
             <p>How does the system work? After your customer gets seated, all they need to do is press the call bell button on their table. When the customer presses the call bell button on their table, their table number will appear on the waiter / captain / server's watch LED screen with ringing. Waiters / servers / captains then head over to the table to take the customer's order promptly and quickly.</p>
@@ -300,7 +309,7 @@
                     </ul>
                     <p>Price: Rs 1399 (Exclusive of GST)</p>
                     <div class="reviews">
-                        <p>★★★★★ 172 Reviews</p>
+                        <p>★★★★★ 175 Reviews</p>
                         <a href="file:///C:/Users/Admin/Desktop/reviews.html">Read all reviews</a>
                     </div>
                 </div>
@@ -312,11 +321,11 @@
                         <li>Chargeable</li>
                         <li>It Vibrates & Buzz</li>
                         <li>No Wifi Connection required</li>
-                        <li>09 Months Warranty</li>
+                        <li>06 Months Warranty</li>
                     </ul>
-                    <p>Price: Rs 3999 (Exclusive of GST)</p>
+                    <p>Price: Rs 3900 (Exclusive of GST)</p>
                     <div class="reviews">
-                        <p>★★★★★ 172 Reviews</p>
+                        <p>★★★★★ 112 Reviews</p>
                         <a href="file:///C:/Users/Admin/Desktop/reviews.html">Read all reviews</a>
                     </div>
                 </div>
@@ -330,7 +339,7 @@
                     </ul>
                     <p>Price: Rs 399 (Exclusive of GST)</p>
                     <div class="reviews">
-                        <p>★★★★★ 40 Reviews</p>
+                        <p>★★★★★ 48 Reviews</p>
                         <a href="file:///C:/Users/Admin/Desktop/reviews.html">Read all reviews</a>
                     </div>
                 </div>
@@ -370,7 +379,7 @@
 
         <footer class="footer">
             <a href="#" class="go-to-top">Back to top</a>
-            <p class="footer-phone">Call us: <img src="tel.png" alt="Phone Icon"> +91 9086399392</p>
+            <p class="footer-phone">Call us: <img src="phone-icon.png" alt="Phone Icon"> +91 9086399392</p>
             <div class="whatsapp-icon">
                 <a href="https://wa.me/9086399392" target="_blank"></a>
             </div>
