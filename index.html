@@ -36,6 +36,10 @@
             margin: 0;
             padding: 0;
         }
+        .product h2 {
+            font-size: 1.0em; /* Adjust this value to decrease/increase the font size as needed */
+            text-align: start;
+        }
         .container {
             width: 90%;
             margin: 0 auto;
@@ -47,13 +51,16 @@
         }
         .header h1 {
             margin: 0;
-            font-size: 17px;
+            font-size: 17px; /* Adjust this value to set your desired font size */
         }
         .logo {
             position: static;
             left: 50%;
             transform: translateX(-50%);
             top: 5px;
+        }
+        .banner {
+            text-align: center;
         }
         .banner img {
             width: 100%;
@@ -93,6 +100,30 @@
         .product-item:hover img {
             transform: scale(1.1);
         }
+        .bullet-points {
+            text-align: left;
+            padding-left: 20px;
+        }
+        .reviews {
+            margin-top: 10px;
+            font-size: 1em;
+            color: #333;
+        }
+        .reviews p {
+            margin: 0;
+            font-weight: bold;
+        }
+        .reviews a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .reviews a:hover {
+            text-decoration: underline;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
         .footer {
             text-align: center;
             padding: 10px 0;
@@ -100,46 +131,98 @@
             margin-top: 20px;
             position: relative;
         }
-        .footer-phone {
-            display: inline-block;
+        .footer .go-to-top {
+            display: block;
             margin-top: 10px;
+            text-decoration: none;
+            color: #FF1919;
         }
-        .footer-phone img {
-            width: 70px;
-            height: auto;
-            vertical-align: middle;
+
+        .clients-carousel {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+        .clients-carousel img {
+            margin: 100px; /* Reduce margin between carousel text and images */
+            height: 100px;
+        }
+        .image-carousel {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+        .image-carousel img {
+            margin: 90px; /* Reduce margin between images */
+            height: 150px;
+        }
+        .image-carousel {
+            margin-top: 10px; /* Reduce margin between carousel text and images */
+        }
+        .video-gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .video-gallery iframe {
+            width: 100%;
+            max-width: 400px;
+            margin: 10px;
         }
         .whatsapp-icon, .instagram-icon {
             position: fixed;
             bottom: 20px;
+            background-size: cover;
             z-index: 1000;
-            border-radius: 50%;
         }
+        .footer-phone {
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .footer-phone img {
+            width: 70px; /* Adjust size as needed */
+            height: auto;
+            vertical-align: middle;
+        }
+
         .whatsapp-icon {
             right: 20px;
             width: 60px;
             height: 60px;
             background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg');
-            background-size: cover;
         }
         .instagram-icon {
             right: 90px;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png');
-            background-size: cover;
         }
-        .footer-phone {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            font-size: 16px;
-            background: #fff;
-            border: 1px solid #ccc;
-            padding: 5px 10px;
-            border-radius: 5px;
+        .whatsapp-icon a, .instagram-icon a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .whatsapp-icon a {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg');
+        }
+        .instagram-icon a {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png');
+        }
+        @media (min-width: 1024px) {
+            .product {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .product-item {
+                flex: 0 0 30%;
+            }
         }
         @media (max-width: 768px) {
+            .product-item {
+                max-width: 90%;
+            }
             .header {
                 padding: 10px 0;
             }
@@ -149,23 +232,37 @@
                 transform: none;
                 margin: -9px auto;
             }
-            .whatsapp-icon, .instagram-icon {
-                width: 50px;
-                height: 50px;
+        }
+        @media (max-width: 480px) {
+            .product-item {
+                margin: 10px 0;
             }
-            .footer-phone {
-                font-size: 14px;
-                padding: 3px 8px;
-            }
+        }
+        .section-header {
+            text-align: center;
+            padding: 20px 0;
+        }
+        .announcement {
+            text-align: center;
+            background: #ffecb3;
+            padding: 1px;
+            margin-top: 20px;
+            animation: bounceIn 2s;
+        }
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: translateY(-100px); }
+            60% { opacity: 1; transform: translateY(30px); }
+            100% { transform: translateY(0); }
         }
     </style>
 </head>
 <body>
+
     <div class="container">
         <header class="header">
             <img src="logo.png" alt="Company Logo" class="logo">
             <h1>Waiter Call Bell System By Fodel India</h1>
-            <p>Improve your restaurant service, No More Waiting, No more hand waving, Faster table turnover</p>
+            <p>Improve your restaurant service,No More Waiting, No more hand waving, Faster table turnover</p>
         </header>
 
         <div class="banner">
@@ -177,8 +274,95 @@
             <p>How does the system work? After your customer gets seated, all they need to do is press the call bell button on their table. When the customer presses the call bell button on their table, their table number will appear on the waiter / captain / server's watch LED screen with ringing. Waiters / servers / captains then head over to the table to take the customer's order promptly and quickly.</p>
         </section>
 
+        <main>
+            <section class="section-header">
+                <h2>Our Products</h2>
+            </section>
+
+            <section class="product">
+                <div class="product-item">
+                    <img src="22.png" alt="Product 1">
+                    <h2>Waiter Wireless Call Bell System For Restaurant, Cafe, Bar & Lounge</h2>
+                    <ul class="bullet-points">
+                        <li>High Quality Material</li>
+                        <li>Durable & Long Lasting</li>
+                        <li>No Wiring, No Internet Required</li>
+                        <li>Increase in sales</li>
+                        <li>06 Month Warranty</li>
+                    </ul>
+                    <p>Price: Rs 1499 (Exclusive of GST)</p>
+                    <div class="reviews">
+                        <p>★★★★★ 174 Reviews</p>
+                        <a href="file:///C:/Users/Admin/Desktop/reviews.html">Read all reviews</a>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="1.png" alt="Product 2">
+                    <h2>Reciever For Captain/Server/ Waiter</h2>
+                    <ul class="bullet-points">
+                        <li>1 Watch receiver supports 999 pcs call sender max</li>
+                        <li>Chargeable</li>
+                        <li>It Vibrates & Buzz</li>
+                        <li>No Wifi Connection require</li>
+                        <li>06 Months Warranty</li>
+                    </ul>
+                    <p>Price: Rs 3999 (Exclusive of GST)</p>
+                    <div class="reviews">
+                        <p>★★★★★ 174 Reviews</p>
+                        <a href="file:///C:/Users/Admin/Desktop/reviews.html">Read all reviews</a>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="56.png" alt="Product 3">
+                    <h2>Marketing Frame (optional)</h2>
+                    <ul class="bullet-points">
+                        <li>Promotions and Offers:</li>
+                        <li>Interactive Menus</li>
+                        <li>Signature items</li>
+                    </ul>
+                    <p>Price: Rs 399 (Exclusive of GST)</p>
+                    <div class="reviews">
+                        <p>★★★★★ 122 Reviews</p>
+                        <a href="file:///C:/Users/Admin/Desktop/reviews.html">Read all reviews</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-header">
+                <h2>Image Carousel</h2>
+            </section>
+
+            <section class="image-carousel">
+                <img src="img1.jpg" alt="Carousel Image 1">
+                <img src="img2.jpg" alt="Carousel Image 2">
+                <img src="img3.jpg" alt="Carousel Image 3">
+                <img src="img4.jpg" alt="Carousel Image 4">
+            </section>
+
+            <section class="section-header">
+                <h2>Video Gallery</h2>
+            </section>
+
+            <section class="video-gallery">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </section>
+
+            <section class="section-header">
+                <h2>Our Clients</h2>
+            </section>
+
+            <section class="clients-carousel">
+                <img src="gt.png" alt="Client Logo 1">
+                <img src="ru.png" alt="Client Logo 2">
+                <img src="za.png" alt="Client Logo 3">
+                <img src="all.png" alt="Client Logo 4">
+            </section>
+        </main>
+
         <footer class="footer">
-            <p class="footer-phone">Call us: +91 9086399392</p>
+            <a href="#" class="go-to-top">Back to top</a>
+            <p class="footer-phone">Call us: <img src="phone-icon.png" alt="Phone Icon"> +91 9086399392</p>
             <div class="whatsapp-icon">
                 <a href="https://wa.me/9086399392" target="_blank"></a>
             </div>
@@ -187,5 +371,12 @@
             </div>
         </footer>
     </div>
+
+    <script>
+        document.querySelector('.go-to-top').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
 </body>
 </html>
