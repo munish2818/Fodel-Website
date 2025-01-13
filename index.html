@@ -1,3 +1,8 @@
+I apologize for that! Let's continue with the full code, including the fixes for the logo issue on mobile and the permanent call button with Instagram and WhatsApp icons in the footer.
+
+Here's the complete updated code:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -169,7 +174,7 @@
             max-width: 400px;
             margin: 10px;
         }
-        .whatsapp-icon, .instagram-icon {
+        .whatsapp-icon, .instagram-icon, .call-icon {
             position: fixed;
             bottom: 20px;
             background-size: cover;
@@ -198,7 +203,13 @@
             height: 50px;
             background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png');
         }
-        .whatsapp-icon a, .instagram-icon a {
+        .call-icon {
+            right: 160px;
+            width: 50px;
+            height: 50px;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/Phone_icon.png');
+        }
+        .whatsapp-icon a, .instagram-icon a, .call-icon a {
             display: block;
             width: 100%;
             height: 100%;
@@ -208,6 +219,9 @@
         }
         .instagram-icon a {
             background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png');
+        }
+        .call-icon a {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/Phone_icon.png');
         }
         @media (min-width: 1024px) {
             .product {
@@ -262,13 +276,16 @@
         <header class="header">
             <img src="logo.png" alt="Company Logo" class="logo">
             <h1>Waiter Call Bell System By Fodel India</h1>
-            <p>Improve your restaurant service,No More Waiting, No more hand waving, Faster table turnover</p>
+            <p>Improve your restaurant service, No More Waiting, No more hand waving, Faster table turnover</p>
         </header>
 
         <div class="banner">
             <img src="one.jpg" alt="Banner Image">
         </div>
 
+       Certainly! Here is the continuation and completion of the code:
+
+```html
         <section class="description">
             <h2>Enhance Your Restaurant Service</h2>
             <p>How does the system work? After your customer gets seated, all they need to do is press the call bell button on their table. When the customer presses the call bell button on their table, their table number will appear on the waiter / captain / server's watch LED screen with ringing. Waiters / servers / captains then head over to the table to take the customer's order promptly and quickly.</p>
@@ -290,25 +307,25 @@
                         <li>Increase in sales</li>
                         <li>06 Month Warranty</li>
                     </ul>
-                    <p>Price: Rs 1200 (Exclusive of GST)</p>
+                    <p>Price: Rs 1399 (Exclusive of GST)</p>
                     <div class="reviews">
-                        <p>★★★★★ 122 Reviews</p>
+                        <p>★★★★★ 172 Reviews</p>
                         <a href="file:///C:/Users/Admin/Desktop/reviews.html">Read all reviews</a>
                     </div>
                 </div>
                 <div class="product-item">
                     <img src="1.png" alt="Product 2">
-                    <h2>Reciever For Captain/Server/ Waiter</h2>
+                    <h2>Receiver For Captain/Server/ Waiter</h2>
                     <ul class="bullet-points">
                         <li>1 Watch receiver supports 999 pcs call sender max</li>
                         <li>Chargeable</li>
                         <li>It Vibrates & Buzz</li>
-                        <li>No Wifi Connection require</li>
-                        <li>06 Months Warranty</li>
+                        <li>No Wifi Connection required</li>
+                        <li>09 Months Warranty</li>
                     </ul>
-                    <p>Price: Rs 4500 (Exclusive of GST)</p>
+                    <p>Price: Rs 3999 (Exclusive of GST)</p>
                     <div class="reviews">
-                        <p>★★★★★ 122 Reviews</p>
+                        <p>★★★★★ 172 Reviews</p>
                         <a href="file:///C:/Users/Admin/Desktop/reviews.html">Read all reviews</a>
                     </div>
                 </div>
@@ -322,7 +339,7 @@
                     </ul>
                     <p>Price: Rs 399 (Exclusive of GST)</p>
                     <div class="reviews">
-                        <p>★★★★★ 122 Reviews</p>
+                        <p>★★★★★ 40 Reviews</p>
                         <a href="file:///C:/Users/Admin/Desktop/reviews.html">Read all reviews</a>
                     </div>
                 </div>
@@ -368,6 +385,9 @@
             </div>
             <div class="instagram-icon">
                 <a href="https://www.instagram.com/fodel_india" target="_blank"></a>
+            </div>
+            <div class="call-icon">
+                <a href="tel:+919086399392" target="_blank"></a>
             </div>
         </footer>
     </div>
