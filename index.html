@@ -54,10 +54,10 @@
             font-size: 17px; /* Adjust this value to set your desired font size */
         }
         .logo {
-            position: absolute;
+            position: static;
             left: 50%;
             transform: translateX(-50%);
-            top: 0;
+            top: 5px;
         }
         .banner {
             text-align: center;
@@ -169,7 +169,7 @@
             max-width: 400px;
             margin: 10px;
         }
-        .whatsapp-icon, .instagram-icon, .call-icon {
+        .whatsapp-icon, .instagram-icon {
             position: fixed;
             bottom: 20px;
             background-size: cover;
@@ -198,13 +198,7 @@
             height: 50px;
             background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png');
         }
-        .call-icon {
-            right: 160px;
-            width: 50px;
-            height: 50px;
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/Phone_icon.png');
-        }
-        .whatsapp-icon a, .instagram-icon a, .call-icon a {
+        .whatsapp-icon a, .instagram-icon a {
             display: block;
             width: 100%;
             height: 100%;
@@ -214,9 +208,6 @@
         }
         .instagram-icon a {
             background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png');
-        }
-        .call-icon a {
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/Phone_icon.png');
         }
         @media (min-width: 1024px) {
             .product {
@@ -237,9 +228,9 @@
             }
             .logo {
                 position: absolute;
-                left: 50%;
-                transform: translateX(-50%);
-                top: 0; /* Adjusted to prevent overlap */
+                left: 0;
+                transform: none;
+                margin: -9px auto;
             }
         }
         @media (max-width: 480px) {
@@ -271,14 +262,9 @@
         <header class="header">
             <img src="logo.png" alt="Company Logo" class="logo">
             <h1>Waiter Call Bell System By Fodel India</h1>
-            <p>Improve your restaurant service, No More Waiting, No more hand waving, Faster table turnover</p>
+            <p>Improve your restaurant service,No More Waiting, No more hand waving, Faster table turnover</p>
         </header>
 
-        <div class="banner">
-            <img src="one.jpg" alt
-                Certainly! Here is the continuation and completion of the code:
-
-```html
         <div class="banner">
             <img src="one.jpg" alt="Banner Image">
         </div>
@@ -312,12 +298,12 @@
                 </div>
                 <div class="product-item">
                     <img src="1.png" alt="Product 2">
-                    <h2>Receiver For Captain/Server/ Waiter</h2>
+                    <h2>Reciever For Captain/Server/ Waiter</h2>
                     <ul class="bullet-points">
                         <li>1 Watch receiver supports 999 pcs call sender max</li>
                         <li>Chargeable</li>
                         <li>It Vibrates & Buzz</li>
-                        <li>No Wifi Connection required</li>
+                        <li>No Wifi Connection require</li>
                         <li>06 Months Warranty</li>
                     </ul>
                     <p>Price: Rs 4500 (Exclusive of GST)</p>
@@ -376,14 +362,12 @@
 
         <footer class="footer">
             <a href="#" class="go-to-top">Back to top</a>
+            <p class="footer-phone">Call us: <img src="phone-icon.png" alt="Phone Icon"> +91 9086399392</p>
             <div class="whatsapp-icon">
                 <a href="https://wa.me/9086399392" target="_blank"></a>
             </div>
             <div class="instagram-icon">
                 <a href="https://www.instagram.com/fodel_india" target="_blank"></a>
-            </div>
-            <div class="call-icon">
-                <a href="tel:+919086399392" target="_blank"></a>
             </div>
         </footer>
     </div>
