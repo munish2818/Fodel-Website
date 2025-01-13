@@ -209,6 +209,14 @@
         .instagram-icon a {
             background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png');
         }
+        .amazon-icon {
+            margin-top: 10px;
+        }
+        .amazon-icon img {
+            width: 50px; /* Adjust size as needed */
+            height: auto;
+            vertical-align: middle;
+        }
         @media (min-width: 1024px) {
             .product {
                 flex-direction: row;
@@ -227,6 +235,9 @@
                 padding: 10px 0;
             }
             .logo {
+                position: absolute;
+                left: 0;
+                .logo {
                 position: absolute;
                 left: 0;
                 transform: none;
@@ -262,7 +273,7 @@
         <header class="header">
             <img src="logo.png" alt="Company Logo" class="logo">
             <h1>Waiter Call Bell System By Fodel India</h1>
-            <p>Improve your restaurant service,No More Waiting, No more hand waving, Faster table turnover</p>
+            <p>Improve your restaurant service, No More Waiting, No more hand waving, Faster table turnover</p>
         </header>
 
         <div class="banner">
@@ -275,9 +286,6 @@
         </section>
 
         <main>
-            Sure, I'll continue from where we left off and include the necessary elements to create multiple product pages with different titles that are indexed by Google but not visible on the front end.
-
-```html
             <section class="section-header">
                 <h2>Our Products</h2>
             </section>
@@ -376,6 +384,12 @@
             </div>
             <div class="instagram-icon">
                 <a href="https://www.instagram.com/fodel_india" target="_blank"></a>
+            </div>
+            <div class="amazon-icon">
+                <a href="https://www.amazon.in/l/27943762031?ie=UTF8&marketplaceID=A21TJRUUN4KGV&me=A2KC1UVN0QZE0G" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Icon" style="width: 50px; height: auto;">
+                </a>
+                <p>We are available on Amazon</p>
             </div>
         </footer>
     </div>
