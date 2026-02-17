@@ -4,200 +4,257 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Wireless Waiter Calling System India | Restaurant Call Bell | Fodel</title>
+<title>Wireless Waiter Calling System India | Fodel</title>
 
-<meta name="description" content="Fodel India provides wireless waiter calling systems for restaurants, cafes and hotels. No wiring, no internet required. Improve service speed and increase table turnover.">
+<meta name="description" content="Fodel India provides wireless waiter calling systems, watch receivers and call bell buttons for restaurants, cafes and service businesses.">
 
-<meta name="robots" content="index, follow">
-<meta name="author" content="Fodel India">
 <link rel="canonical" href="https://www.fodel.in/">
-
-<meta property="og:title" content="Wireless Waiter Calling System India | Fodel">
-<meta property="og:description" content="Wireless restaurant call bell systems for faster service. No wiring required.">
-<meta property="og:url" content="https://www.fodel.in/">
-<meta property="og:type" content="website">
-
-<!-- Organization Schema -->
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "Organization",
- "name": "Fodel India",
- "url": "https://www.fodel.in",
- "logo": "https://www.fodel.in/logo.png",
- "contactPoint": {
-   "@type": "ContactPoint",
-   "telephone": "+919086399392",
-   "contactType": "customer service",
-   "areaServed": "IN"
- }
-}
-</script>
-
-<!-- Product Schema -->
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "Product",
- "name": "Wireless Waiter Calling System",
- "image": "https://www.fodel.in/22.png",
- "description": "Wireless waiter call bell system for restaurants, cafes and hotels. No wiring or internet required.",
- "brand": {
-   "@type": "Brand",
-   "name": "Fodel India"
- },
- "offers": {
-   "@type": "Offer",
-   "url": "https://www.fodel.in/",
-   "priceCurrency": "INR",
-   "price": "1699",
-   "availability": "https://schema.org/InStock"
- }
-}
-</script>
-
-<!-- FAQ Schema -->
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "FAQPage",
- "mainEntity": [{
-   "@type": "Question",
-   "name": "How does a waiter calling system work?",
-   "acceptedAnswer": {
-     "@type": "Answer",
-     "text": "Customers press the call button on the table and the table number appears on the waiter's receiver device."
-   }
- },{
-   "@type": "Question",
-   "name": "Does it require internet or wiring?",
-   "acceptedAnswer": {
-     "@type": "Answer",
-     "text": "No. Fodel wireless calling systems work without internet or wiring."
-   }
- }]
-}
-</script>
+<meta name="robots" content="index, follow">
 
 <style>
-body {font-family: Arial, sans-serif;margin:0;padding:0;}
-.container {width:90%;margin:0 auto;}
-.header {text-align:center;padding:20px 0;}
-.banner img {width:100%;height:auto;}
-.description {background:#f8f8f8;padding:20px;}
-.product {display:flex;flex-wrap:wrap;justify-content:center;}
-.product-item {max-width:350px;margin:20px;border:1px solid #ccc;padding:20px;text-align:center;}
-.product-item img {width:100%;height:auto;}
-.footer {text-align:center;padding:15px;background:#f1f1f1;margin-top:20px;}
-.section-header {text-align:center;padding:20px 0;}
-</style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:'Segoe UI',sans-serif;
+background:#0f172a;
+color:#fff;
+overflow-x:hidden;
+}
 
+a{text-decoration:none;color:inherit}
+
+.navbar{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 8%;
+background:rgba(15,23,42,0.7);
+backdrop-filter:blur(10px);
+z-index:1000;
+}
+
+.navbar a{
+margin-left:20px;
+font-size:14px;
+opacity:0.8;
+}
+
+.navbar a:hover{opacity:1}
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+background:linear-gradient(135deg,#1e3a8a,#9333ea);
+padding:20px;
+}
+
+.hero h1{
+font-size:3rem;
+margin-bottom:20px;
+animation:fadeDown 1s ease forwards;
+}
+
+.hero p{
+font-size:1.2rem;
+margin-bottom:30px;
+opacity:0.9;
+}
+
+.button{
+display:inline-block;
+padding:12px 30px;
+background:#fff;
+color:#000;
+border-radius:30px;
+font-weight:bold;
+transition:0.3s;
+}
+
+.button:hover{
+transform:scale(1.05);
+}
+
+.section{
+padding:100px 8%;
+opacity:0;
+transform:translateY(60px);
+transition:1s ease;
+}
+
+.section.visible{
+opacity:1;
+transform:translateY(0);
+}
+
+.section h2{
+text-align:center;
+margin-bottom:50px;
+font-size:2rem;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.card{
+background:rgba(255,255,255,0.08);
+padding:25px;
+border-radius:20px;
+backdrop-filter:blur(12px);
+transition:0.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+background:rgba(255,255,255,0.15);
+}
+
+.card img{
+width:100%;
+border-radius:12px;
+margin-bottom:15px;
+}
+
+.card h3{
+margin-bottom:10px;
+}
+
+.card p{
+font-size:14px;
+opacity:0.8;
+margin-bottom:15px;
+}
+
+.footer{
+text-align:center;
+padding:40px 20px;
+background:#0b1220;
+}
+
+.footer a{
+display:block;
+margin:5px 0;
+opacity:0.8;
+}
+
+.footer a:hover{opacity:1}
+
+@keyframes fadeDown{
+from{opacity:0;transform:translateY(-40px)}
+to{opacity:1;transform:translateY(0)}
+}
+
+@media(max-width:768px){
+.hero h1{font-size:2rem}
+}
+</style>
 </head>
+
 <body>
 
-<div class="container">
-
-<header class="header">
-<img src="logo.png" alt="Fodel India Logo">
-<h1>Wireless Waiter Calling System & Restaurant Call Bell in India</h1>
-<p>Improve your restaurant service. Faster table turnover. No wiring required.</p>
-</header>
-
-<div class="banner">
-<img src="one.jpg" alt="Wireless Waiter Calling System">
+<div class="navbar">
+<div><strong>Fodel India</strong></div>
+<div>
+<a href="#products">Products</a>
+<a href="/reviews.html">Reviews</a>
+<a href="tel:+919086399392">Call</a>
+</div>
 </div>
 
-<section class="description">
-<h2>How Our Restaurant Call Bell System Works</h2>
-<p>Customers press the call button placed on the table. The table number appears instantly on the waiter’s receiver watch with vibration alert. Staff responds quickly, improving service speed and customer satisfaction.</p>
-</section>
-<section>
-<h2>Explore Our Solutions</h2>
-<ul>
-  <li><a href="/wireless-waiter-calling-system-india.html">
-  Best Wireless Waiter Calling System in India
-  </a></li>
-
-  <li><a href="/reviews.html">
-  Customer Reviews
-  </a></li>
-</ul>
+<section class="hero">
+<h1>Wireless Waiter Calling System</h1>
+<p>Modern communication solution for restaurants, cafés & service businesses.</p>
+<a href="#products" class="button">Explore Products</a>
 </section>
 
-<main>
-
-<section class="section-header">
+<section class="section" id="products">
 <h2>Our Products</h2>
-</section>
 
-<section class="product">
+<div class="products">
 
-<div class="product-item">
+<div class="card">
 <img src="22.png" alt="Wireless Call Bell Button">
-<h2>Wireless Call Bell Button</h2>
-<ul>
-<li>No Wiring Required</li>
-<li>Long Battery Life</li>
-<li>Durable Design</li>
-<li>6 Months Warranty</li>
-</ul>
-<p>Price: ₹1699 + GST</p>
-<a href="/reviews.html">Read Reviews</a>
+<h3>Wireless Call Bell Button</h3>
+<p>150m range • Splash proof • Expandable system</p>
+<a href="/wireless-call-bell-button-india.html" class="button">View Details</a>
 </div>
 
-<div class="product-item">
-<img src="1.png" alt="Waiter Receiver Watch">
-<h2>Waiter Receiver Watch</h2>
-<ul>
-<li>Supports 999 Call Buttons</li>
-<li>Rechargeable</li>
-<li>Vibration + Sound Alert</li>
-<li>6 Months Warranty</li>
-</ul>
-<p>Price: ₹5800 + GST</p>
-<a href="/reviews.html">Read Reviews</a>
+<div class="card">
+<img src="1.png" alt="Watch Receiver">
+<h3>Watch Receiver</h3>
+<p>Rechargeable • Digital display • Wireless system</p>
+<a href="/watch-receiver-wireless-restaurant.html" class="button">View Details</a>
 </div>
 
-<div class="product-item">
-<img src="56.png" alt="Marketing Display Frame">
-<h2>Marketing Display Frame</h2>
-<ul>
-<li>Promotions & Offers</li>
-<li>Interactive Menu Display</li>
-<li>Brand Promotion</li>
-</ul>
-<p>Price: ₹499 + GST</p>
-<a href="/reviews.html">Read Reviews</a>
+<div class="card">
+<img src="56.png" alt="Acrylic Display Frame">
+<h3>Acrylic Display Frame</h3>
+<p>Menu • QR Code • Information Stand</p>
+<a href="/acrylic-display-frame-qr-menu-stand.html" class="button">View Details</a>
 </div>
 
- <div style="text-align:center; margin:20px 0;">
-  <a href="https://www.amazon.in/l/27943762031?ie=UTF8&marketplaceID=A21TJRUUN4KGV&me=A2KC1UVN0QZE0G"
-     target="_blank"
-     rel="nofollow sponsored"
-     style="display:inline-block; padding:10px 20px; background:#ff9900; color:#000; text-decoration:none; border-radius:4px; font-weight:bold;">
-     Visit Our Amazon Store
-  </a>
 </div>
-<p>Our wireless waiter calling system is also available on Amazon India.</p>
-
-<p><a href="/wireless-waiter-calling-system-india.html">
-Learn more about our Wireless Waiter Calling System in India
-</a></p>
 
 </section>
 
-</main>
+<section class="section">
+<h2>Why Choose Fodel?</h2>
+<div class="products">
+
+<div class="card">
+<h3>No Internet Required</h3>
+<p>Simple wireless operation without Wi-Fi or wiring.</p>
+</div>
+
+<div class="card">
+<h3>Expandable System</h3>
+<p>Supports multiple buttons and receivers.</p>
+</div>
+
+<div class="card">
+<h3>Commercial Grade</h3>
+<p>Designed for daily professional use.</p>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<h2>Available On Amazon</h2>
+<div style="text-align:center">
+<a href="https://www.amazon.in/l/27943762031?ie=UTF8&marketplaceID=A21TJRUUN4KGV&me=A2KC1UVN0QZE0G"
+target="_blank"
+rel="nofollow sponsored"
+class="button">Visit Our Amazon Store</a>
+</div>
+</section>
 
 <footer class="footer">
-<p>Call Us: <a href="tel:+919086399392">+91 9086399392</a></p>
-<p><a href="https://wa.me/9086399392" target="_blank">WhatsApp Us</a></p>
-<p><a href="https://www.instagram.com/fodel_india" target="_blank">Instagram</a></p>
+<p>Contact Fodel India</p>
+<a href="tel:+919086399392">+91 9086399392</a>
+<a href="https://wa.me/9086399392" target="_blank">WhatsApp</a>
+<a href="https://www.instagram.com/fodel_india" target="_blank">Instagram</a>
 </footer>
 
-</div>
+<script>
+const sections=document.querySelectorAll('.section');
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add('visible');
+}
+});
+});
+sections.forEach(section=>observer.observe(section));
+</script>
 
 </body>
 </html>
-
-
-
