@@ -42,5 +42,11 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  
+<url>
+  <loc>https://www.fodel.in/best-service-solution-for-restaurants-india.html</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
 
 </urlset>
