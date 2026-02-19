@@ -62,27 +62,97 @@ transition:0.3s;
 .navbar a:hover{opacity:1}
 
 .hero{
-height:80vh;
+min-height:100vh;
 display:flex;
-flex-direction:column;
-justify-content:center;
 align-items:center;
-text-align:center;
+justify-content:space-between;
+padding:0 8%;
 background:linear-gradient(135deg,#1e3a8a,#9333ea);
-padding:20px;
-margin-top:60px;
+position:relative;
+overflow:hidden;
+}
+
+.hero-content{
+max-width:500px;
+z-index:2;
 }
 
 .hero h1{
 font-size:3rem;
 margin-bottom:20px;
-animation:fadeDown 1s ease forwards;
+font-weight:700;
 }
 
 .hero p{
-font-size:1.2rem;
+font-size:1.1rem;
 margin-bottom:30px;
 opacity:0.9;
+}
+
+.hero-visual{
+position:relative;
+width:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.floating{
+position:absolute;
+width:260px;
+animation:float 6s ease-in-out infinite;
+}
+
+.button-img{
+left:10%;
+top:10%;
+z-index:3;
+}
+
+.watch-img{
+right:10%;
+bottom:5%;
+width:280px;
+animation-delay:2s;
+}
+
+.signal{
+position:absolute;
+width:120px;
+height:120px;
+border-radius:50%;
+border:2px solid rgba(255,255,255,0.6);
+animation:pulse 2s infinite;
+z-index:1;
+}
+
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-20px)}
+100%{transform:translateY(0)}
+}
+
+@keyframes pulse{
+0%{transform:scale(0.5);opacity:0.7}
+70%{transform:scale(2);opacity:0}
+100%{opacity:0}
+}
+
+@media(max-width:900px){
+.hero{
+flex-direction:column;
+text-align:center;
+padding-top:120px;
+}
+
+.hero-visual{
+width:100%;
+height:400px;
+}
+
+.floating{
+width:200px;
+}
 }
 
 .button{
@@ -191,9 +261,23 @@ to{opacity:1;transform:translateY(0)}
 </div>
 
 <section class="hero">
+
+<div class="hero-content">
 <h1>Wireless Waiter Calling System</h1>
-<p>Modern communication solution for restaurants, cafés & service businesses.</p>
+<p>Smart communication for restaurants, cafés & service businesses.</p>
 <a href="#products" class="button">Explore Products</a>
+</div>
+
+<div class="hero-visual">
+
+<img src="1.png" class="floating button-img" alt="Wireless Call Bell">
+
+<img src="10.png" class="floating watch-img" alt="Watch Receiver">
+
+<div class="signal"></div>
+
+</div>
+
 </section>
 
 <section class="section" id="products">
@@ -369,6 +453,7 @@ sections.forEach(section => observer.observe(section));
 
 </body>
 </html>
+
 
 
 
