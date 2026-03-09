@@ -11,27 +11,39 @@
 
 <style>
 
-body{
-font-family:'Poppins',sans-serif;
+*{
 margin:0;
-background:linear-gradient(135deg,#1e3a8a,#9333ea);
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
+padding:0;
+box-sizing:border-box;
 }
 
+body{
+font-family:'Poppins',sans-serif;
+height:100vh;
+background:linear-gradient(135deg,#1e3a8a,#9333ea);
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+overflow:hidden;
+}
+
+/* main container */
+
 .container{
+width:100%;
+max-width:1200px;
+padding:40px;
 text-align:center;
-max-width:900px;
-padding:20px;
 }
 
 h1{
-font-size:40px;
-margin-bottom:50px;
+font-size:42px;
+margin-bottom:60px;
+font-weight:600;
 }
+
+/* split layout */
 
 .options{
 display:grid;
@@ -39,47 +51,75 @@ grid-template-columns:1fr 1fr;
 gap:40px;
 }
 
+/* cards */
+
 .card{
-background:rgba(255,255,255,0.1);
-padding:40px;
+padding:50px;
 border-radius:20px;
-backdrop-filter:blur(10px);
-transition:0.3s;
 cursor:pointer;
+transition:0.4s;
+text-align:center;
+backdrop-filter:blur(10px);
+}
+
+/* systems card */
+
+.systems{
+background:linear-gradient(135deg,#2563eb,#1e40af);
+}
+
+/* travel card */
+
+.travel{
+background:linear-gradient(135deg,#9333ea,#7c3aed);
 }
 
 .card:hover{
-transform:translateY(-8px);
-background:rgba(255,255,255,0.2);
+transform:translateY(-12px) scale(1.03);
+box-shadow:0 20px 40px rgba(0,0,0,0.3);
 }
 
 .card h2{
-font-size:26px;
+font-size:28px;
+margin-top:20px;
 margin-bottom:10px;
 }
 
 .card p{
 opacity:0.9;
+font-size:15px;
 }
+
+/* icon */
+
+.icon{
+font-size:50px;
+}
+
+/* links */
 
 a{
 text-decoration:none;
 color:white;
 }
 
-@media(max-width:700px){
+/* mobile */
+
+@media(max-width:768px){
 
 .options{
 grid-template-columns:1fr;
 }
 
 h1{
-font-size:30px;
+font-size:32px;
+margin-bottom:40px;
 }
 
 }
 
 </style>
+
 </head>
 
 <body>
@@ -91,23 +131,36 @@ font-size:30px;
 <div class="options">
 
 <a href="systems.html">
-<div class="card">
+
+<div class="card systems">
+
+<div class="icon">📟</div>
 
 <h2>Fodel Systems</h2>
 
-<p>Wireless Waiter Calling Systems for Restaurants, Cafes & Lounges</p>
+<p>
+Wireless waiter calling systems for restaurants, cafés and lounges.
+</p>
 
 </div>
+
 </a>
 
+
 <a href="travel.html">
-<div class="card">
+
+<div class="card travel">
+
+<div class="icon">✈️</div>
 
 <h2>Fodel Travels</h2>
 
-<p>Hotel Bookings • Group Travel • Destination Weddings • MICE</p>
+<p>
+Hotel bookings, destination weddings, group travel and corporate MICE services.
+</p>
 
 </div>
+
 </a>
 
 </div>
@@ -115,4 +168,5 @@ font-size:30px;
 </div>
 
 </body>
+
 </html>
