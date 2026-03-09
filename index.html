@@ -1,324 +1,310 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fodel India — Gateway</title>
-  <meta name="description" content="Fodel India — Future Oriented Digital Enterprises & Logistics. Choose between Fodel Systems and Fodel Travels." />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    /* ==============================
-       THEME TOKENS (edit these)
-       ============================== */
-    :root {
-      --radius: 16px;
-      --radius-lg: 22px;
+<title>Fodel India</title>
 
-      /* Buttons */
-      --sys: #2563eb;
-      --sys-hover: #1d4ed8;
-      --travel: #059669;
-      --travel-hover: #047857;
+<meta name="description" content="Fodel India — Future Oriented Digital Enterprises & Logistics. Choose between Fodel Systems and Fodel Travels.">
 
-      /* Surfaces (glass) */
-      --surface: rgba(255,255,255,0.10);
-      --surface-strong: rgba(255,255,255,0.18);
-      --surface-border: rgba(255,255,255,0.25);
-      --text: #f8fafc;
-      --muted: rgba(248,250,252,0.75);
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    /* Theme 1: Tech (blue) + Travel (teal) + Warm amber accent */
-    body.theme-tech-travel {
-      --bg-1: #0b1220;   /* deep navy */
-      --bg-2: #1d4ed8;   /* blue */
-      --bg-3: #0ea5a4;   /* teal/cyan */
-      --glow: #22d3ee;   /* cyan glow */
-      --accent: #f59e0b; /* warm amber hospitality */
-    }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    /* Theme 2: Sunrise (sophisticated warm–cool blend) */
-    body.theme-sunrise {
-      --bg-1: #0f172a;   /* slate */
-      --bg-2: #312e81;   /* indigo */
-      --bg-3: #f59e0b;   /* amber */
-      --glow: #fbbf24;   /* golden glow */
-      --accent: #fde68a; /* light amber */
-    }
+<style>
 
-    /* Theme 3: Slate+Electric (cool professional) */
-    body.theme-slate {
-      --bg-1: #0f172a;   /* slate-900 */
-      --bg-2: #334155;   /* slate-700 */
-      --bg-3: #0ea5e9;   /* sky/cyan */
-      --glow: #a78bfa;   /* violet glow */
-      --accent: #22d3ee; /* cyan accent */
-    }
+/* RESET */
 
-    /* ==============================
-       Base / Reset
-       ============================== */
-    *, *::before, *::after { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-      color: var(--text);
-      min-height: 100svh;
-      display: grid;
-      place-items: center;
-      overflow-x: hidden;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-    /* ==============================
-       Decorative Background
-       ============================== */
-    .bg {
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      background:
-        radial-gradient(1200px 900px at 15% 10%, color-mix(in lab, var(--bg-2), transparent 60%), transparent 65%),
-        radial-gradient(1000px 800px at 85% 85%, color-mix(in lab, var(--bg-3), transparent 65%), transparent 70%),
-        linear-gradient(160deg, var(--bg-1) 0%, color-mix(in lab, var(--bg-1), var(--bg-2) 35%) 60%, color-mix(in lab, var(--bg-1), var(--bg-3) 45%) 100%);
-    }
-    /* Accent glow blob */
-    .bg::after {
-      content: "";
-      position: absolute;
-      inset: -15%;
-      background:
-        radial-gradient(500px 300px at 65% 30%, color-mix(in lab, var(--accent), transparent 82%), transparent 75%),
-        radial-gradient(400px 280px at 30% 75%, color-mix(in lab, var(--glow), transparent 80%), transparent 75%);
-      filter: blur(80px) saturate(120%);
-      animation: float 18s ease-in-out infinite alternate;
-      opacity: 0.6;
-    }
-    @keyframes float {
-      0%   { transform: translate3d(0, 0, 0) scale(1); }
-      100% { transform: translate3d(2%, -2%, 0) scale(1.05); }
-    }
+body{
+font-family:'Poppins',sans-serif;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+color:#fff;
+overflow:hidden;
+}
 
-    /* Subtle noise overlay for texture */
-    .noise {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      opacity: 0.06;
-      background-image: url('data:image/svg+xml;utf8,\
-      <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">\
-        <filter id="n" x="0" y="0">\
-          <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/>\
-          <feColorMatrix type="saturate" values="0"/>\
-        </filter>\
-        <rect width="100%" height="100%" filter="url(#n)" opacity="0.55"/>\
-      </svg>');
-      mix-blend-mode: overlay;
-    }
+/* BACKGROUND */
 
-    /* Fallback if color-mix isn't supported */
-    @supports not (background: color-mix(in lab, #000, #fff)) {
-      .bg {
-        background:
-          radial-gradient(1200px 900px at 15% 10%, var(--bg-2), transparent 70%),
-          radial-gradient(1000px 800px at 85% 85%, var(--bg-3), transparent 75%),
-          linear-gradient(160deg, var(--bg-1) 0%, var(--bg-2) 60%, var(--bg-3) 100%);
-      }
-    }
+.bg{
+position:fixed;
+inset:0;
+z-index:-2;
 
-    /* ==============================
-       Layout
-       ============================== */
-    .wrapper {
-      width: min(1060px, 94vw);
-      margin: 32px auto;
-    }
-    header.header {
-      text-align: center;
-      margin-bottom: 22px;
-    }
-    .brand {
-      font-size: clamp(28px, 4vw, 44px);
-      font-weight: 700;
-      letter-spacing: 0.2px;
-    }
-    .tagline {
-      font-size: clamp(14px, 1.6vw, 16px);
-      color: var(--muted);
-      margin-top: 6px;
-    }
-    .choose {
-      margin-top: 18px;
-      font-weight: 500;
-      color: var(--muted);
-      letter-spacing: 0.2px;
-    }
+background:
+radial-gradient(circle at 20% 20%, rgba(59,130,246,0.25), transparent 40%),
+radial-gradient(circle at 80% 70%, rgba(20,184,166,0.25), transparent 40%),
+linear-gradient(160deg,#0f172a 0%,#1e293b 60%,#0f172a 100%);
+}
 
-    .grid {
-      display: grid;
-      gap: 22px;
-      margin-top: 26px;
-      grid-template-columns: 1fr;
-    }
-    @media (min-width: 720px) {
-      .grid { grid-template-columns: repeat(2, 1fr); }
-    }
+/* GLOW */
 
-    /* ==============================
-       Card + Button
-       ============================== */
-    .card {
-      position: relative;
-      padding: 22px;
-      border-radius: var(--radius-lg);
-      background: var(--surface);
-      border: 1px solid var(--surface-border);
-      box-shadow:
-        0 10px 30px rgba(0,0,0,0.35),
-        inset 0 1px 0 rgba(255,255,255,0.06);
-      backdrop-filter: blur(10px) saturate(120%);
-      -webkit-backdrop-filter: blur(10px) saturate(120%);
-      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease;
-    }
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow:
-        0 18px 40px rgba(0,0,0,0.45),
-        inset 0 1px 0 rgba(255,255,255,0.08);
-      background: var(--surface-strong);
-      border-color: rgba(255,255,255,0.35);
-    }
+.bg::after{
+content:"";
+position:absolute;
+width:600px;
+height:600px;
+background:radial-gradient(circle, rgba(255,255,255,0.08), transparent 70%);
+top:-150px;
+right:-150px;
+filter:blur(80px);
+animation:floatGlow 18s ease-in-out infinite alternate;
+}
 
-    .card h3 {
-      font-size: clamp(18px, 2vw, 22px);
-      margin: 2px 0 6px 0;
-      font-weight: 600;
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-    .service-text {
-      font-size: 14px;
-      color: var(--muted);
-      margin: 0 0 16px 0;
-    }
+@keyframes floatGlow{
+0%{transform:translateY(0)}
+100%{transform:translateY(40px)}
+}
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px 16px;
-      border-radius: 12px;
-      font-size: 16px;
-      font-weight: 600;
-      text-decoration: none;
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.15);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-      transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease;
-      will-change: transform;
-    }
-    .btn .arrow {
-      transition: transform .2s ease;
-    }
-    .btn:hover .arrow {
-      transform: translateX(4px);
-    }
+/* MAIN WRAPPER */
 
-    .btn-sys { background: linear-gradient(180deg, var(--sys), color-mix(in lab, var(--sys), #000 24%)); }
-    .btn-sys:hover { background: linear-gradient(180deg, var(--sys-hover), color-mix(in lab, var(--sys-hover), #000 24%)); transform: translateY(-2px); }
+.wrapper{
+width:min(1000px,92%);
+text-align:center;
+}
 
-    .btn-travel { background: linear-gradient(180deg, var(--travel), color-mix(in lab, var(--travel), #000 20%)); }
-    .btn-travel:hover { background: linear-gradient(180deg, var(--travel-hover), color-mix(in lab, var(--travel-hover), #000 20%)); transform: translateY(-2px); }
+/* HEADER */
 
-    /* ==============================
-       Footer
-       ============================== */
-    footer.footer {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      margin-top: 28px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      text-decoration: none;
-      color: var(--text);
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.18);
-      transition: transform .2s ease, background .2s ease, border-color .2s ease;
-    }
-    .chip:hover { transform: translateY(-2px); background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.28); }
-    .copy { width: 100%; text-align: center; margin-top: 6px; font-size: 12px; opacity: 0.75; }
+.brand{
+font-size:42px;
+font-weight:700;
+letter-spacing:-0.5px;
+}
 
-    /* ==============================
-       Accessibility / Motion
-       ============================== */
-    :focus-visible {
-      outline: 3px solid #ffffffaa;
-      outline-offset: 2px;
-      border-radius: 10px;
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .bg::after, .btn .arrow, .card { animation: none !important; transition: none !important; }
-    }
-  </style>
+.tagline{
+margin-top:8px;
+font-size:15px;
+opacity:0.8;
+}
+
+.choose{
+margin-top:25px;
+font-size:16px;
+opacity:0.9;
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+gap:25px;
+margin-top:40px;
+grid-template-columns:1fr;
+}
+
+@media(min-width:720px){
+
+.grid{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+/* CARDS */
+
+.card{
+padding:28px;
+border-radius:18px;
+background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.15);
+
+backdrop-filter:blur(10px);
+
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+background:rgba(255,255,255,0.12);
+}
+
+/* CARD TITLE */
+
+.card h3{
+font-size:22px;
+margin-bottom:8px;
+}
+
+.service-text{
+font-size:14px;
+opacity:0.8;
+margin-bottom:18px;
+}
+
+/* BUTTONS */
+
+.btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+
+padding:14px 22px;
+
+border-radius:10px;
+
+font-weight:600;
+
+text-decoration:none;
+
+color:#fff;
+
+transition:0.25s;
+}
+
+/* SYSTEMS */
+
+.btn-sys{
+background:#2563eb;
+}
+
+.btn-sys:hover{
+background:#1d4ed8;
+transform:translateY(-2px);
+}
+
+/* TRAVEL */
+
+.btn-travel{
+background:#059669;
+}
+
+.btn-travel:hover{
+background:#047857;
+transform:translateY(-2px);
+}
+
+/* FOOTER */
+
+.footer{
+margin-top:45px;
+display:flex;
+justify-content:center;
+gap:12px;
+flex-wrap:wrap;
+}
+
+/* CONTACT CHIPS */
+
+.chip{
+
+padding:8px 14px;
+
+border-radius:999px;
+
+background:rgba(255,255,255,0.1);
+
+border:1px solid rgba(255,255,255,0.18);
+
+text-decoration:none;
+
+color:#fff;
+
+font-size:14px;
+
+transition:0.25s;
+}
+
+.chip:hover{
+background:rgba(255,255,255,0.15);
+transform:translateY(-2px);
+}
+
+/* COPYRIGHT */
+
+.copy{
+margin-top:10px;
+font-size:12px;
+opacity:0.7;
+}
+
+</style>
+
 </head>
 
-<!-- Change the class below to: theme-tech-travel | theme-sunrise | theme-slate -->
-<body class="theme-tech-travel">
-  <div class="bg" aria-hidden="true"></div>
-  <div class="noise" aria-hidden="true"></div>
+<body>
 
-  <main class="wrapper" role="main">
-    <header class="header">
-      <h1 class="brand">Fodel India</h1>
-      <p class="tagline">Future Oriented Digital Enterprises &amp; Logistics</p>
-      <p class="choose">Choose your division</p>
-    </header>
+<div class="bg"></div>
 
-    <section class="grid" aria-label="Divisions">
-      <article class="card">
-        <h3>📟 Fodel Systems</h3>
-        <p class="service-text">Restaurant technology &amp; wireless calling systems</p>
-        <a href="systems.html" class="btn btn-sys" aria-label="Go to Fodel Systems">
-          Explore Systems <span class="arrow">→</span>
-        </a>
-      </article>
+<main class="wrapper">
 
-      <article class="card">
-        <h3>✈️ Fodel Travels</h3>
-        <p class="service-text">Hotel bookings, group travel &amp; MICE services</p>
-        <a href="travel.html" class="btn btn-travel" aria-label="Go to Fodel Travels">
-          Explore Travels <span class="arrow">→</span>
-        </a>
-      </article>
-    </section>
+<header>
 
-    <footer class="footer">
-      <a class="chip" href="mailto:support@fodel.in" aria-label="Email support at fodel dot in">📧 support@fodel.in</a>
-      <a class="chip" href="tel:+919086399392" aria-label="Call Fodel India">📞 +91 9086399392</a>
-      <a class="chip" href="https://wa.me/9086399392" target="_blank" rel="noopener" aria-label="Open WhatsApp chat with Fodel India">💬 WhatsApp</a>
-      <div class="copy">© 2015–2026 Fodel India</div>
-    </footer>
-  </main>
+<h1 class="brand">Fodel India</h1>
+
+<p class="tagline">
+Future Oriented Digital Enterprises & Logistics
+</p>
+
+<p class="choose">
+Choose your division
+</p>
+
+</header>
+
+<section class="grid">
+
+<div class="card">
+
+<h3>📟 Fodel Systems</h3>
+
+<p class="service-text">
+Restaurant technology & wireless calling systems
+</p>
+
+<a href="systems.html" class="btn btn-sys">
+Explore Systems →
+</a>
+
+</div>
+
+
+<div class="card">
+
+<h3>✈️ Fodel Travels</h3>
+
+<p class="service-text">
+Hotel bookings, group travel & MICE services
+</p>
+
+<a href="travel.html" class="btn btn-travel">
+Explore Travels →
+</a>
+
+</div>
+
+</section>
+
+<footer class="footer">
+
+<a href="mailto:support@fodel.in" class="chip">
+📧 support@fodel.in
+</a>
+
+<a href="tel:+919086399392" class="chip">
+📞 +91 9086399392
+</a>
+
+<a href="https://wa.me/9086399392" target="_blank" class="chip">
+💬 WhatsApp
+</a>
+
+</footer>
+
+<div class="copy">
+© 2015–2026 Fodel India
+</div>
+
+</main>
+
 </body>
 </html>
