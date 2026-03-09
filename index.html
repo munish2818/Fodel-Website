@@ -7,7 +7,7 @@
 
 <title>Fodel India</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -22,6 +22,7 @@ font-family:'Poppins',sans-serif;
 background:#facc15;
 color:#111827;
 display:flex;
+flex-direction:column;
 justify-content:center;
 align-items:center;
 height:100vh;
@@ -29,59 +30,103 @@ text-align:center;
 padding:20px;
 }
 
+/* Container */
+
 .container{
-max-width:600px;
+max-width:700px;
 width:100%;
 }
 
-h1{
-font-size:36px;
+/* Brand */
+
+.logo{
+font-size:40px;
+font-weight:600;
+margin-bottom:8px;
+}
+
+.tagline{
+font-size:14px;
+opacity:0.8;
 margin-bottom:10px;
 }
 
-.subtitle{
-font-size:14px;
-margin-bottom:50px;
-opacity:0.8;
+.trust{
+font-size:13px;
+opacity:0.7;
+margin-bottom:40px;
 }
+
+/* Divider text */
+
+.choose{
+font-weight:500;
+margin-bottom:25px;
+}
+
+/* Buttons */
 
 .buttons{
 display:flex;
-flex-direction:column;
 gap:20px;
+flex-direction:column;
 }
 
 .btn{
-padding:18px;
+padding:20px;
+border-radius:12px;
 font-size:18px;
-border-radius:10px;
 font-weight:600;
 text-decoration:none;
-display:block;
 transition:0.25s;
+display:block;
 }
 
-/* Systems Button */
+/* Systems */
 
 .systems{
 background:#2563eb;
 color:white;
+box-shadow:0 6px 15px rgba(0,0,0,0.15);
 }
 
 .systems:hover{
 background:#1d4ed8;
+transform:translateY(-2px);
 }
 
-/* Travel Button */
+/* Travel */
 
 .travel{
 background:#0f766e;
 color:white;
+box-shadow:0 6px 15px rgba(0,0,0,0.15);
 }
 
 .travel:hover{
 background:#115e59;
+transform:translateY(-2px);
 }
+
+/* Descriptions */
+
+.desc{
+font-size:14px;
+font-weight:400;
+margin-top:6px;
+opacity:0.9;
+}
+
+/* Footer */
+
+.footer{
+position:absolute;
+bottom:15px;
+font-size:12px;
+opacity:0.6;
+}
+
+/* Desktop */
 
 @media(min-width:700px){
 
@@ -103,24 +148,42 @@ flex:1;
 
 <div class="container">
 
-<h1>Fodel India</h1>
+<div class="logo">Fodel India</div>
 
-<div class="subtitle">
+<div class="tagline">
 Future Oriented Digital Enterprises & Logistics
+</div>
+
+<div class="trust">
+Serving Restaurants & Hospitality Businesses Since 2015
+</div>
+
+<div class="choose">
+Choose Your Service
 </div>
 
 <div class="buttons">
 
 <a href="systems.html" class="btn systems">
-Fodel Systems
+📟 Fodel Systems
+<div class="desc">
+Wireless waiter calling systems for restaurants, cafés and lounges
+</div>
 </a>
 
 <a href="travel.html" class="btn travel">
-Fodel Travels
+✈️ Fodel Travels
+<div class="desc">
+Hotel bookings, destination weddings, group travel & MICE services
+</div>
 </a>
 
 </div>
 
+</div>
+
+<div class="footer">
+© 2015–2026 Fodel India • support@fodel.in
 </div>
 
 </body>
