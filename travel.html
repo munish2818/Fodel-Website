@@ -7,7 +7,7 @@
 
 <title>Fodel Travels | Hotel Booking Katra Vaishno Devi | Jammu Kashmir Travel</title>
 
-<meta name="description" content="Fodel Travels offers hotel booking in Katra Vaishno Devi, Jammu hotel booking, Srinagar hotel booking, banquet halls, destination weddings and Kashmir tour packages.">
+<meta name="description" content="Fodel Travels offers hotel booking in Katra Vaishno Devi,Patnitop, Jammu hotel booking, Srinagar hotel booking, banquet events, destination weddings and Kashmir tour packages.">
 
 <meta name="keywords" content="
 hotel booking katra vaishno devi,
@@ -29,6 +29,7 @@ vaishno devi travel booking,
 helicopter booking katra,
 patnitop package,
 patnitop hotel booking,
+resort property in katra
 vaishno devi package
 ">
 
@@ -246,14 +247,6 @@ input:focus, select:focus, textarea:focus{
 .toast.show{ display:block; animation:slideUp .25s ease-out both; }
 
 /* ===========================
-   SEO TEXT
-=========================== */
-.seo-section{
-  max-width:900px; margin:auto; line-height:1.7;
-  font-size:15px; color:#374151;
-}
-
-/* ===========================
    FOOTER
 =========================== */
 .footer{
@@ -316,47 +309,20 @@ input:focus, select:focus, textarea:focus{
 
     <!-- Group Booking -->
     <div class="card">
-      <h3><span class="icon" aria-hidden="true">👥</span>Group Booking</h3>
+      <h3>
+        <span class="icon" aria-hidden="true">
+          <!-- New Group SVG icon -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white" aria-hidden="true" role="img">
+            <path d="M16 11a3 3 0 1 0-3-3 3 3 0 0 0 3 3ZM7 12a3 3 0 1 0-3-3 3 3 0 0 0 3 3Z"/>
+            <path d="M15 14c-2.7 0-8 1.35-8 4v2h12v-2c0-2.65-5.3-4-8-4Z"/>
+            <path d="M7 15c-2.21 0-5 1.11-5 3v2h6v-2c0-1.23.56-2.14 1.42-2.84A9.5 9.5 0 0 0 7 15Z"/>
+          </svg>
+        </span>
+        Group Booking
+      </h3>
       <p>Large hotel bookings for pilgrim groups and corporate travel.</p>
       <button class="btn" data-open="modal-group" aria-haspopup="dialog">Group Booking →</button>
     </div>
-  </div>
-</section>
-
-<!-- ===========================
-     SEO TRAVEL CONTENT
-=========================== -->
-<section class="section">
-  <h2>Hotel Booking &amp; Travel Services in Katra, Jammu &amp; Kashmir</h2>
-  <div class="separator"></div>
-
-  <div class="seo-section">
-    <p>
-      Fodel Travels provides hotel booking in Katra Vaishno Devi,
-      Jammu city hotel booking and Srinagar Kashmir hotel booking
-      for pilgrims, tourists and corporate travellers.
-    </p>
-    <br>
-    <p>
-      We assist with <strong>katra hotel group booking</strong>,
-      <strong>banquet halls in katra</strong>,
-      <strong>banquet halls in jammu city</strong>,
-      <strong>destination weddings in katra and jammu</strong>,
-      <strong>corporate events in jammu</strong>,
-      <strong>MICE events and exhibitions in Jammu city</strong>.
-    </p>
-    <br>
-    <p>
-      Our travel services include:
-      <br><br>
-      • Kashmir room booking and Srinagar hotel booking<br>
-      • Vaishno Devi travel booking<br>
-      • Helicopter booking Katra for Vaishno Devi darshan<br>
-      • Jammu hotel booking for business and pilgrim travel<br>
-      • Patnitop hotel booking and Patnitop travel packages<br>
-      • Kashmir tour packages and Jammu Kashmir holiday packages<br>
-      • Destination wedding hotel bookings in Katra and Jammu<br>
-    </p>
   </div>
 </section>
 
@@ -372,7 +338,7 @@ input:focus, select:focus, textarea:focus{
 =========================== -->
 <!-- Hotel Booking Modal -->
 <div id="modal-hotel" class="overlay" role="dialog" aria-modal="true" aria-labelledby="hotel-title">
-  <div class="modal">
+  <div class="modal" tabindex="-1">
     <div class="modal-header">
       <div class="modal-title" id="hotel-title">Hotel Room Requirement</div>
       <button class="modal-close" data-close aria-label="Close">✕</button>
@@ -454,7 +420,7 @@ input:focus, select:focus, textarea:focus{
 
 <!-- Banquet / Event Modal -->
 <div id="modal-banquet" class="overlay" role="dialog" aria-modal="true" aria-labelledby="banquet-title">
-  <div class="modal">
+  <div class="modal" tabindex="-1">
     <div class="modal-header">
       <div class="modal-title" id="banquet-title">Banquet / Event Inquiry</div>
       <button class="modal-close" data-close aria-label="Close">✕</button>
@@ -525,7 +491,7 @@ input:focus, select:focus, textarea:focus{
 
 <!-- Group Booking Modal -->
 <div id="modal-group" class="overlay" role="dialog" aria-modal="true" aria-labelledby="group-title">
-  <div class="modal">
+  <div class="modal" tabindex="-1">
     <div class="modal-header">
       <div class="modal-title" id="group-title">Group Booking Request</div>
       <button class="modal-close" data-close aria-label="Close">✕</button>
@@ -580,47 +546,48 @@ input:focus, select:focus, textarea:focus{
 <div class="toast" id="toast">✅ Request submitted. We’ll contact you shortly.</div>
 
 <script>
-  /* ========= Email Delivery Configuration =========
-     Option A (recommended): Formspree
-       1) Create a form at https://formspree.io
-       2) Set recipient to fodelindia@gmail.com
-       3) Copy endpoint like: https://formspree.io/f/abcdwxyz
-       4) Paste into FORMSPREE_ENDPOINT below.
-
-     Option B: Mailto fallback (built-in)
-       - If Formspree endpoint is empty or fails, user’s email app opens
-         with pre-filled body (goes to fodelindia@gmail.com).
+  /* Email Delivery:
+     - Formspree (recommended): set endpoint below to receive emails at fodelindia@gmail.com
+     - Mailto fallback: kicks in if endpoint is empty or fails
   */
   const FORMSPREE_ENDPOINT = ""; // e.g., "https://formspree.io/f/abcdwxyz"
 
-  // Utility
   const todayISO = () => new Date().toISOString().split('T')[0];
 
   // Modal open/close + lock body scroll
   const overlays = document.querySelectorAll('.overlay');
+
   document.addEventListener('click', (e) => {
     const openId = e.target.getAttribute('data-open');
     if (openId){
       document.body.classList.add('modal-open');
       const ov = document.getElementById(openId);
       ov.classList.add('active');
-      // focus first field
-      const firstInput = ov.querySelector('input, select, textarea');
-      setTimeout(() => firstInput && firstInput.focus(), 50);
+
+      // 🔒 Do NOT auto-focus any input to prevent mobile keyboard opening
+      const modal = ov.querySelector('.modal');
+      const body = ov.querySelector('.modal-body');
+      if (body) body.scrollTop = 0;
+      if (modal) modal.focus({ preventScroll: true }); // focus container (not input)
     }
+
     if (e.target.hasAttribute('data-close')){
       e.target.closest('.overlay').classList.remove('active');
       if (![...document.querySelectorAll('.overlay')].some(o => o.classList.contains('active'))){
         document.body.classList.remove('modal-open');
       }
     }
-    if (e.target.classList.contains('overlay')){ // click backdrop to close
+
+    // Click backdrop to close
+    if (e.target.classList.contains('overlay')){
       e.target.classList.remove('active');
       if (![...document.querySelectorAll('.overlay')].some(o => o.classList.contains('active'))){
         document.body.classList.remove('modal-open');
       }
     }
   });
+
+  // ESC to close
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape'){
       overlays.forEach(o => o.classList.remove('active'));
@@ -670,10 +637,10 @@ input:focus, select:focus, textarea:focus{
     setTimeout(() => toast.classList.remove('show'), 2600);
   }
 
-  // Serialize -> object
+  // Serialize
   function serialize(form){ return Object.fromEntries(new FormData(form).entries()); }
 
-  // Submit handler with Formspree + mailto fallback
+  // Submit with Formspree + mailto fallback
   async function wireForm(formId, subject){
     const form = document.getElementById(formId);
     if (!form) return;
@@ -688,7 +655,6 @@ input:focus, select:focus, textarea:focus{
       data._page = location.href;
       data._form = formId;
 
-      // Try Formspree
       let sent = false;
       if (FORMSPREE_ENDPOINT && FORMSPREE_ENDPOINT.includes("/f/")){
         try{
@@ -701,7 +667,6 @@ input:focus, select:focus, textarea:focus{
         }catch(err){ sent = false; }
       }
 
-      // Fallback: mailto to fodelindia@gmail.com
       if (!sent){
         const to = "fodelindia@gmail.com";
         const body = Object.entries(data).map(([k,v]) => `${k}: ${v}`).join("%0A");
@@ -709,7 +674,6 @@ input:focus, select:focus, textarea:focus{
         window.location.href = mailto;
       }
 
-      // Reset & close
       form.reset();
       const overlay = form.closest('.overlay');
       if (overlay) overlay.classList.remove('active');
