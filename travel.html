@@ -1,104 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fodel Travels | Hotel Bookings, Banquet & Group Travel</title>
+<meta name="description" content="Fodel Travels offers hotel bookings, banquets & events, and group travel. Share your requirement and we’ll get back with best options and rates.">
 
-<title>Fodel Travels | Hotel Bookings & Group Travel</title>
-
-<meta name="description" content="Fodel Travels offers hotel bookings, destination weddings, group travel and corporate MICE arrangements in Katra Vaishno Devi, Jammu and Kashmir.">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+  /* ===========================
+     THEME
+  ============================ */
+  :root{
+    --bg-base:#f9e64a;       /* brand base */
+    --accent:#397e51;        /* brand accent (travel) */
+    --text:#111827;          /* gray-900 */
+    --muted:#374151;         /* gray-700 */
 
-body{
-font-family:'Poppins',sans-serif;
-margin:0;
-background:#0f172a;
-color:white;
-}
+    --card:rgba(255,255,255,0.9);
+    --border:rgba(17,24,39,0.15);
 
-.banner{
-height:60vh;
-background:url('travel-banner.jpg') center/cover no-repeat;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-}
+    --btn:#0f766e;           /* CTA buttons (travel green) */
+    --btn-hover:#115e59;
 
-.banner h1{
-background:rgba(0,0,0,0.5);
-padding:20px;
-border-radius:8px;
-}
+    --radius:18px;
+    --shadow:0 14px 30px rgba(17,24,39,0.18);
+    --shadow-lg:0 24px 60px rgba(17,24,39,0.25);
+  }
 
-.section{
-padding:60px 8%;
-text-align:center;
-}
+  /* ===========================
+     BASE
+  ============================ */
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{
+    font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    color:var(--text);
+    background:var(--bg-base);
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  a{ color:inherit; }
 
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
-margin-top:40px;
-}
+  :focus-visible{
+    outline:3px solid rgba(17,24,39,0.75);
+    outline-offset:3px;
+    border-radius:10px;
+  }
 
-.card{
-background:#1e293b;
-padding:30px;
-border-radius:10px;
-}
+  /* ===========================
+     HEADER / BANNER
+  ============================ */
+  .banner{
+    position:relative;
+    min-height:58vh;
+    display:grid;
+    place-items:center;
+    text-align:center;
+    color:#0b1220;
+    /* layer: image (optional) + gradient overlay */
+    background:
+      linear-gradient(180deg, rgba(249,230,74,0.3), rgba(249,230,74,0.6)),
+      radial-gradient(1200px 800px at 80% 10%, rgba(57,126,81,0.18), transparent 60%),
+      radial-gradient(900px 700px at 15% 85%, rgba(57,126,81,0.14), transparent 65%),
+      url('travel-banner.jpg') center/cover no-repeat,
+      linear-gradient(180deg, #f9e64a 0%, #f7df33 100%);
+  }
+  /* If you don’t have an image yet, comment out the url() line above — gradients will still look good. */
 
-button{
-padding:12px 25px;
-border:none;
-border-radius:6px;
-background:white;
-color:black;
-cursor:pointer;
-}
+  .banner-inner{
+    width:min(1100px,92%);
+    margin:auto;
+    padding:24px;
+  }
 
-</style>
+  .topbar{
+    position:absolute;
+    inset:20px 20px auto 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:700;
+    font-size:20px;
+    color:#0b1220;
+  }
+  .brand-badge{
+    width:36px; height:36px; border-radius:50%;
+    display:grid; place-items:center;
+    background:var(--accent);
+    color:#fff;
+    box-shadow:0 8px 18px rgba(0,0,0,0.18);
+  }
+  .reviews-btn{
+    padding:10px 14px;
+    border-radius:999px;
+    text-decoration:none;
+    background:#0b1220;
+    color:#fff;
+    font-weight:600;
+    border:1px solid rgba(255,255,255,0.2);
+    box-shadow:0 8px 24px rgba(0,0,0,0.22);
+    transition:transform .2s,background .2s;
+  }
+  .reviews-btn:hover{ transform:translateY(-2px); background:#111827; }
 
-</head>
+  .hero{
+    display:grid;
+    gap:12px;
+    justify-items:center;
+    padding:60px 0 40px;
+    color:#0b1220;
+  }
+  .hero h1{
+    font-size:clamp(28px,5vw,46px);
+    font-weight:700;
+  }
+  .hero p{
+    font-size:clamp(14px,2vw,16px);
+    color:#1f2937;
+    max-width:850px;
+  }
 
-<body>
+  /* ===========================
+     SERVICES SECTION
+  ============================ */
+  .section{
+    width:min(1100px,92%);
+    margin:32px auto 64px;
+    text-align:center;
+  }
+  .section h2{
+    font-size:clamp(22px,3.6vw,28px);
+    margin-bottom:8px;
+  }
+  .section .sub{
+    color:var(--muted);
+    font-size:14px;
+  }
+  .separator{
+    width:90px; height:3px; margin:16px auto 8px;
+    background:linear-gradient(90deg,var(--accent),transparent);
+    border-radius:6px;
+  }
 
-<div class="banner">
-<h1>Fodel Travels</h1>
-</div>
+  .cards{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:26px;
+    margin-top:28px;
+  }
+  @media (min-width:760px){
+    .cards{ grid-template-columns:repeat(3,1fr); }
+  }
+  .card{
+    text-align:left;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px 22px 24px;
+    box-shadow:var(--shadow);
+    transition:transform .25s, box-shadow .25s, background .25s;
+    animation:fadeUp .6s both;
+  }
+  .card:nth-child(2){ animation-delay:.07s; }
+  .card:nth-child(3){ animation-delay:.12s; }
+  .card:hover{
+    transform:translateY(-6px);
+    box-shadow:var(--shadow-lg);
+    background:#fff;
+  }
+  .card h3{
+    display:flex; align-items:center; gap:12px;
+    font-size:18px; margin-bottom:8px;
+  }
+  .icon{
+    width:38px; height:38px; border-radius:50%;
+    display:grid; place-items:center;
+    background:var(--accent); color:#fff;
+    flex:0 0 auto;
+    box-shadow:0 8px 18px rgba(0,0,0,0.15);
+  }
+  .card p{ color:var(--muted); font-size:14px; margin:0 0 14px; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 16px;
+    border-radius:12px;
+    background:var(--btn); color:#fff; text-decoration:none;
+    font-weight:600;
+    box-shadow:0 8px 22px rgba(17,24,39,0.22);
+    transition:transform .2s, background .2s;
+  }
+  .btn:hover{ background:var(--btn-hover); transform:translateY(-2px); }
 
-<section class="section">
+  /* ===========================
+     MODAL / DIALOG
+  ============================ */
+  .overlay{
+    position:fixed; inset:0; z-index:50;
+    background:rgba(0,0,0,0.45);
+    display:none;
+    align-items:center; justify-content:center;
+    padding:18px;
+  }
+  .overlay.active{ display:flex; }
 
-<h2>Travel Services</h2>
+  .modal{
+    width:min(680px,100%);
+    border-radius:16px;
+    background:#ffffff;
+    color:#0f172a;
+    border:1px solid rgba(17,24,39,0.14);
+    box-shadow:0 30px 80px rgba(0,0,0,0.35);
+    overflow:hidden;
+    animation:pop .18s ease-out both;
+  }
+  .modal-header{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:12px; padding:16px 18px;
+    background:linear-gradient(90deg, var(--accent), #3f8f5b);
+    color:#fff;
+  }
+  .modal-title{ font-weight:600; }
+  .modal-close{
+    background:transparent; border:none; color:#fff; cursor:pointer;
+    font-size:20px; line-height:1; padding:6px 10px; border-radius:8px;
+  }
+  .modal-close:hover{ background:rgba(255,255,255,0.18); }
+  .modal-body{ padding:18px; }
 
-<div class="cards">
+  .grid-2{
+    display:grid; grid-template-columns:1fr; gap:14px;
+  }
+  @media (min-width:640px){ .grid-2{ grid-template-columns:1fr 1fr; } }
 
-<div class="card">
-<h3>Hotel Booking</h3>
-<p>Hotel bookings in Katra Vaishno Devi, Jammu and Srinagar.</p>
-<button>Room Requirement</button>
-</div>
+  label{
+    display:block; font-weight:600; font-size:13px; margin-bottom:6px; color:#0f172a;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="date"],
+  input[type="number"],
+  select,
+  textarea{
+    width:100%;
+    padding:12px 12px;
+    border-radius:10px;
+    border:1px solid rgba(15,23,42,0.18);
+    background:#fff;
+    font-family:inherit; font-size:14px; color:#0f172a;
+    outline:none;
+    transition:border-color .15s, box-shadow .15s;
+  }
+  textarea{ min-height:90px; resize:vertical; }
+  input:focus, select:focus, textarea:focus{
+    border-color:#2563eb;
+    box-shadow:0 0 0 3px rgba(37,99,235,0.15);
+  }
+  .field-hint{ font-size:12px; color:#475569; margin-top:6px; }
 
-<div class="card">
-<h3>Banquet Events</h3>
-<p>Wedding venues, banquets and conferences.</p>
-<button>Banquet Inquiry</button>
-</div>
-
-<div class="card">
-<h3>Group Travel</h3>
-<p>Group bookings for weddings, pilgrimages and corporate travel.</p>
-<button>Group Booking</button>
-</div>
-
-</div>
-
-</section>
-
-</body>
-</html>
+  .row{ margin-bottom:12px; }
