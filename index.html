@@ -19,141 +19,107 @@ box-sizing:border-box;
 
 body{
 font-family:'Poppins',sans-serif;
-background:#020617;
-color:white;
-}
-
-/* Brand Header */
-
-.brand{
-position:fixed;
-top:30px;
-width:100%;
-text-align:center;
-z-index:10;
-}
-
-.brand h1{
-font-size:34px;
-font-weight:600;
-}
-
-.brand p{
-font-size:13px;
-opacity:0.7;
-}
-
-/* Layout */
-
-.split-container{
+background:#facc15;
+color:#111827;
 display:flex;
-height:100vh;
-}
-
-/* Sections */
-
-.panel{
-flex:1;
-display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
+height:100vh;
 text-align:center;
-padding:40px;
-transition:0.4s;
-cursor:pointer;
+padding:20px;
 }
 
-/* Systems Side */
-
-.systems{
-background:linear-gradient(135deg,#1e3a8a,#0f172a);
+.container{
+max-width:600px;
+width:100%;
 }
 
-.systems:hover{
-background:linear-gradient(135deg,#2563eb,#020617);
-}
-
-/* Travel Side */
-
-.travel{
-background:linear-gradient(135deg,#0f766e,#020617);
-}
-
-.travel:hover{
-background:linear-gradient(135deg,#14b8a6,#020617);
-}
-
-/* Content */
-
-.panel-content h2{
-font-size:34px;
+h1{
+font-size:36px;
 margin-bottom:10px;
 }
 
-.panel-content p{
-opacity:0.85;
-font-size:15px;
-max-width:320px;
+.subtitle{
+font-size:14px;
+margin-bottom:50px;
+opacity:0.8;
 }
 
-/* Mobile */
-
-@media(max-width:800px){
-
-.split-container{
+.buttons{
+display:flex;
 flex-direction:column;
+gap:20px;
 }
 
-.brand{
-top:20px;
+.btn{
+padding:18px;
+font-size:18px;
+border-radius:10px;
+font-weight:600;
+text-decoration:none;
+display:block;
+transition:0.25s;
 }
 
-.panel-content h2{
-font-size:26px;
+/* Systems Button */
+
+.systems{
+background:#2563eb;
+color:white;
+}
+
+.systems:hover{
+background:#1d4ed8;
+}
+
+/* Travel Button */
+
+.travel{
+background:#0f766e;
+color:white;
+}
+
+.travel:hover{
+background:#115e59;
+}
+
+@media(min-width:700px){
+
+.buttons{
+flex-direction:row;
+}
+
+.btn{
+flex:1;
 }
 
 }
 
 </style>
+
 </head>
 
 <body>
 
-<div class="brand">
+<div class="container">
+
 <h1>Fodel India</h1>
-<p>Future Oriented Digital Enterprises & Logistics</p>
+
+<div class="subtitle">
+Future Oriented Digital Enterprises & Logistics
 </div>
 
-<div class="split-container">
+<div class="buttons">
 
-<a href="systems.html" class="panel systems">
-
-<div class="panel-content">
-
-<h2>Fodel Systems</h2>
-
-<p>
-Wireless waiter calling systems designed for restaurants, cafés and lounges.
-</p>
-
-</div>
-
+<a href="systems.html" class="btn systems">
+Fodel Systems
 </a>
 
-
-<a href="travel.html" class="panel travel">
-
-<div class="panel-content">
-
-<h2>Fodel Travels</h2>
-
-<p>
-Hotel bookings, group travel, destination weddings and MICE services.
-</p>
+<a href="travel.html" class="btn travel">
+Fodel Travels
+</a>
 
 </div>
-
-</a>
 
 </div>
 
