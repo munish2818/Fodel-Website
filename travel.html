@@ -267,3 +267,442 @@
   .field-hint{ font-size:12px; color:#475569; margin-top:6px; }
 
   .row{ margin-bottom:12px; }
+  .row-inline{ display:flex; align-items:end; gap:10px; }
+  .readonly{
+    background:#f1f5f9;
+  }
+
+  .actions{
+    display:flex; gap:10px; justify-content:flex-end; margin-top:14px;
+  }
+  .btn-ghost{
+    padding:10px 14px; border-radius:10px; font-weight:600;
+    background:#f1f5f9; color:#0f172a; text-decoration:none; border:none; cursor:pointer;
+  }
+  .btn-primary{
+    padding:12px 16px; border-radius:10px; font-weight:700; letter-spacing:.2px;
+    background:var(--btn); color:#fff; border:none; cursor:pointer;
+    box-shadow:0 10px 24px rgba(0,0,0,0.22);
+    transition:transform .15s, background .15s;
+  }
+  .btn-primary:hover{ background:var(--btn-hover); transform:translateY(-1px); }
+
+  /* Toast */
+  .toast{
+    position:fixed; bottom:18px; right:18px; z-index:60;
+    background:#0f766e; color:#fff; padding:12px 14px; border-radius:10px;
+    box-shadow:0 12px 24px rgba(0,0,0,0.2);
+    display:none;
+  }
+  .toast.show{ display:block; animation:slideUp .25s ease-out both; }
+
+  /* Animations */
+  @keyframes fadeUp{ from{opacity:0; transform:translateY(18px);} to{opacity:1; transform:translateY(0);} }
+  @keyframes pop{ from{ transform:scale(.98); opacity:.7; } to{ transform:scale(1); opacity:1; } }
+  @keyframes slideUp{ from{ opacity:0; transform:translateY(10px); } to{ opacity:1; transform:translateY(0); } }
+</style>
+</head>
+
+<body>
+  <!-- Banner -->
+  <header class="banner">
+    <div class="topbar" aria-label="Site header">
+      <div class="brand">
+        <span class="brand-badge" aria-hidden="true">
+          <!-- Airplane icon -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+            <path d="M2.5 19.5l8.2-4.1 3.9 3.9c.4.4 1 .4 1.4 0l1-1c.4-.4.4-1 0-1.4l-3.9-3.9 4.1-8.2c.2-.5 0-1.1-.5-1.3-.3-.1-.7-.1-1 .1L9.8 7.6 6.2 7c-.3 0-.7.1-.9.3L4 8.6c-.2.2-.3.6-.3.9l.6 3.6-4.1 6.4c-.2.3-.1.7.2.9.2.3.6.4 1 .3z"/>
+          </svg>
+        </span>
+        Fodel Travels
+      </div>
+
+      <a class="reviews-btn" href="reviews.html" title="Read & share reviews">⭐ Reviews</a>
+    </div>
+
+    <div class="banner-inner">
+      <div class="hero">
+        <h1>Hotel Bookings, Banquets & Group Travel</h1>
+        <p>Tell us your requirement and we’ll share curated options with best available rates across Katra, Jammu, Srinagar and beyond.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Services -->
+  <section class="section" aria-labelledby="services-title">
+    <h2 id="services-title">Travel Services</h2>
+    <div class="separator" aria-hidden="true"></div>
+    <p class="sub">Choose a service and submit your request in under a minute.</p>
+
+    <div class="cards">
+      <!-- Hotel Booking -->
+      <article class="card">
+        <h3>
+          <span class="icon" aria-hidden="true">
+            <!-- Hotel / Bed icon -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+              <path d="M4 7h10a4 4 0 0 1 4 4v4h2v2h-2v-2H4v2H2v-8a2 2 0 0 1 2-2zm2 2a2 2 0 1 0 0 4h6a2 2 0 1 0 0-4H6z"/>
+            </svg>
+          </span>
+          Hotel Booking
+        </h3>
+        <p>Hotels across Katra Vaishno Devi, Jammu, Srinagar and more.</p>
+        <button class="btn" data-open="modal-hotel" aria-haspopup="dialog">Room Requirement →</button>
+      </article>
+
+      <!-- Banquet / Event -->
+      <article class="card">
+        <h3>
+          <span class="icon" aria-hidden="true">
+            <!-- Event / Hall icon -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+              <path d="M3 6h18v12H3z"/><path d="M7 18h2v3H7zM15 18h2v3h-2zM3 9h18v2H3z" />
+            </svg>
+          </span>
+          Banquet & Event
+        </h3>
+        <p>Weddings, banquets, conferences & social events.</p>
+        <button class="btn" data-open="modal-banquet" aria-haspopup="dialog">Banquet Inquiry →</button>
+      </article>
+
+      <!-- Group Travel -->
+      <article class="card">
+        <h3>
+          <span class="icon" aria-hidden="true">
+            <!-- Group / Users icon -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+              <path d="M16 11a3 3 0 1 0-3-3 3 3 0 0 0 3 3ZM7 12a3 3 0 1 0-3-3 3 3 0 0 0 3 3Zm9 1c-2.7 0-8 1.35-8 4v2h12v-2c0-2.65-5.3-4-8-4Zm-9 1c-2.21 0-5 1.11-5 3v2h6v-2c0-1.23.56-2.14 1.42-2.84A9.5 9.5 0 0 0 7 14Z"/>
+            </svg>
+          </span>
+          Group Booking
+        </h3>
+        <p>Groups for weddings, pilgrimages & corporate travel.</p>
+        <button class="btn" data-open="modal-group" aria-haspopup="dialog">Group Booking →</button>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===========================
+       MODALS
+  ============================ -->
+  <!-- Hotel Booking Modal -->
+  <div id="modal-hotel" class="overlay" role="dialog" aria-modal="true" aria-labelledby="hotel-title">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title" id="hotel-title">Hotel Room Requirement</div>
+        <button class="modal-close" data-close aria-label="Close">✕</button>
+      </div>
+      <form class="modal-body" id="form-hotel">
+        <div class="row">
+          <label for="hotel-name">Hotel name you’re planning to stay (or short name)</label>
+          <input id="hotel-name" name="hotelName" type="text" placeholder="e.g., Marriott Katra or Near Shrine Board" required>
+        </div>
+
+        <div class="grid-2">
+          <div class="row">
+            <label for="checkin">Check‑in date</label>
+            <input id="checkin" name="checkin" type="date" required>
+          </div>
+          <div class="row">
+            <label for="checkout">Check‑out date</label>
+            <input id="checkout" name="checkout" type="date" required>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="row">
+            <label for="nights">No. of nights</label>
+            <input id="nights" name="nights" type="number" min="1" class="readonly" readonly>
+          </div>
+          <div class="row">
+            <label for="rooms">No. of rooms</label>
+            <input id="rooms" name="rooms" type="number" min="1" placeholder="e.g., 2" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <label for="category">Room category preference (optional)</label>
+          <input id="category" name="category" type="text" placeholder="e.g., Deluxe, Suite, Mountain View">
+        </div>
+
+        <div class="grid-2">
+          <div class="row">
+            <label for="meal">Meal plan</label>
+            <select id="meal" name="meal" required>
+              <option value="">Select</option>
+              <option>EP (Room Only)</option>
+              <option>CP (Room + Breakfast)</option>
+              <option>MAP (Breakfast + One Meal)</option>
+              <option>APAI (All Meals)</option>
+            </select>
+          </div>
+          <div class="row">
+            <label for="adults">No. of adults</label>
+            <input id="adults" name="adults" type="number" min="1" placeholder="e.g., 2" required>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="row">
+            <label for="mobile">Mobile</label>
+            <input id="mobile" name="mobile" type="tel" inputmode="tel" pattern="[0-9+\-\s]{8,15}" placeholder="+91 9XXXXXXXXX" required>
+            <div class="field-hint">Digits only; include country code if outside India.</div>
+          </div>
+          <div class="row">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="name@example.com" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <label for="notes">Additional notes (optional)</label>
+          <textarea id="notes" name="notes" placeholder="Any special requests, bed type, late arrival, etc."></textarea>
+        </div>
+
+        <div class="actions">
+          <button class="btn-ghost" type="button" data-close>Cancel</button>
+          <button class="btn-primary" type="submit">Submit Request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Banquet / Event Modal -->
+  <div id="modal-banquet" class="overlay" role="dialog" aria-modal="true" aria-labelledby="banquet-title">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title" id="banquet-title">Banquet / Event Inquiry</div>
+        <button class="modal-close" data-close aria-label="Close">✕</button>
+      </div>
+      <form class="modal-body" id="form-banquet">
+        <div class="grid-2">
+          <div class="row">
+            <label for="event-date">Event date</label>
+            <input id="event-date" name="eventDate" type="date" required>
+          </div>
+          <div class="row">
+            <label for="min-guarantee">Minimum guarantee (adults)</label>
+            <input id="min-guarantee" name="minGuarantee" type="number" min="10" placeholder="e.g., 100" required>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="row">
+            <label for="venue">Preferred hotel / venue (optional)</label>
+            <input id="venue" name="venue" type="text" placeholder="e.g., Banquet name / Hotel">
+          </div>
+          <div class="row">
+            <label for="banquet-meal">Meal plan</label>
+            <select id="banquet-meal" name="meal" required>
+              <option value="">Select</option>
+              <option>Hi-Tea</option>
+              <option>Lunch (Veg/Non-Veg)</option>
+              <option>Dinner (Veg/Non-Veg)</option>
+              <option>Buffet (CP/MAP/APAI)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="row">
+            <label for="event-start">Event start time (optional)</label>
+            <input id="event-start" name="eventStart" type="text" placeholder="e.g., 11:00 AM">
+          </div>
+          <div class="row">
+            <label for="event-end">Event end time (optional)</label>
+            <input id="event-end" name="eventEnd" type="text" placeholder="e.g., 03:00 PM">
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="row">
+            <label for="banquet-mobile">Mobile</label>
+            <input id="banquet-mobile" name="mobile" type="tel" inputmode="tel" pattern="[0-9+\-\s]{8,15}" placeholder="+91 9XXXXXXXXX" required>
+          </div>
+          <div class="row">
+            <label for="banquet-email">Email</label>
+            <input id="banquet-email" name="email" type="email" placeholder="name@example.com" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <label for="banquet-notes">Additional notes (optional)</label>
+          <textarea id="banquet-notes" name="notes" placeholder="Decoration, stage, AV, seating style, etc."></textarea>
+        </div>
+
+        <div class="actions">
+          <button class="btn-ghost" type="button" data-close>Cancel</button>
+          <button class="btn-primary" type="submit">Submit Request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Group Booking Modal -->
+  <div id="modal-group" class="overlay" role="dialog" aria-modal="true" aria-labelledby="group-title">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title" id="group-title">Group Booking Request</div>
+        <button class="modal-close" data-close aria-label="Close">✕</button>
+      </div>
+      <form class="modal-body" id="form-group">
+        <div class="row">
+          <label for="group-name">Group / Company name</label>
+          <input id="group-name" name="groupName" type="text" placeholder="e.g., ABC Pilgrims Group" required>
+        </div>
+
+        <div class="grid-2">
+          <div class="row">
+            <label for="group-checkin">Check‑in date</label>
+            <input id="group-checkin" name="checkin" type="date" required>
+          </div>
+          <div class="row">
+            <label for="group-checkout">Check‑out date</label>
+            <input id="group-checkout" name="checkout" type="date" required>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="row">
+            <label for="group-rooms">No. of rooms</label>
+            <input id="group-rooms" name="rooms" type="number" min="1" placeholder="e.g., 15" required>
+          </div>
+          <div class="row">
+            <label for="group-email">Email</label>
+            <input id="group-email" name="email" type="email" placeholder="name@example.com" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <label for="group-mobile">Mobile (optional)</label>
+          <input id="group-mobile" name="mobile" type="tel" inputmode="tel" pattern="[0-9+\-\s]{8,15}" placeholder="+91 9XXXXXXXXX">
+        </div>
+
+        <div class="row">
+          <label for="group-notes">Additional notes (optional)</label>
+          <textarea id="group-notes" name="notes" placeholder="Destinations, transport, meal plan, budget, etc."></textarea>
+        </div>
+
+        <div class="actions">
+          <button class="btn-ghost" type="button" data-close>Cancel</button>
+          <button class="btn-primary" type="submit">Submit Request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">✅ Request submitted. We’ll contact you shortly.</div>
+
+  <script>
+    // ===== Utilities
+    const todayISO = () => new Date().toISOString().split('T')[0];
+
+    // ===== Modal open/close handlers
+    const overlays = document.querySelectorAll('.overlay');
+    document.addEventListener('click', (e) => {
+      const openId = e.target.getAttribute('data-open');
+      if (openId){
+        const ov = document.getElementById(openId);
+        ov.classList.add('active');
+        // focus first field
+        const firstInput = ov.querySelector('input, select, textarea');
+        setTimeout(() => firstInput && firstInput.focus(), 50);
+      }
+      if (e.target.hasAttribute('data-close')){
+        e.target.closest('.overlay').classList.remove('active');
+      }
+      // click outside modal to close
+      if (e.target.classList.contains('overlay')){
+        e.target.classList.remove('active');
+      }
+    });
+
+    // ESC to close
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape'){
+        overlays.forEach(o => o.classList.remove('active'));
+      }
+    });
+
+    // ===== Date constraints and nights calc for Hotel
+    const checkin = document.getElementById('checkin');
+    const checkout = document.getElementById('checkout');
+    const nights = document.getElementById('nights');
+
+    if (checkin && checkout){
+      const setMins = () => {
+        const t = todayISO();
+        checkin.min = t;
+        checkout.min = checkin.value ? checkin.value : t;
+      };
+      setMins();
+
+      const calcNights = () => {
+        if (checkin.value && checkout.value){
+          const ci = new Date(checkin.value);
+          const co = new Date(checkout.value);
+          const diff = (co - ci) / (1000*60*60*24);
+          nights.value = diff > 0 ? diff : '';
+        } else {
+          nights.value = '';
+        }
+      };
+
+      checkin.addEventListener('change', () => {
+        checkout.min = checkin.value || todayISO();
+        if (checkout.value && checkout.value <= checkin.value) checkout.value = '';
+        calcNights();
+      });
+      checkout.addEventListener('change', calcNights);
+    }
+
+    // ===== Date constraints for Group
+    const gIn = document.getElementById('group-checkin');
+    const gOut = document.getElementById('group-checkout');
+    if (gIn && gOut){
+      const t = todayISO();
+      gIn.min = t; gOut.min = t;
+      gIn.addEventListener('change', () => {
+        gOut.min = gIn.value || t;
+        if (gOut.value && gOut.value <= gIn.value) gOut.value = '';
+      });
+    }
+
+    // ===== Simple submit handlers (no backend yet)
+    const toast = document.getElementById('toast');
+    function showToast(msg){
+      if (msg) toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2600);
+    }
+
+    function handleSubmit(formId){
+      const form = document.getElementById(formId);
+      if (!form) return;
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Basic validity check
+        if (!form.checkValidity()){
+          // Let browser show native validation tooltips
+          form.reportValidity();
+          return;
+        }
+        // Collect data
+        const data = Object.fromEntries(new FormData(form).entries());
+        console.log(`[${formId}]`, data); // Dev: replace with network request later
+
+        // UX: clear & close
+        form.reset();
+        const overlay = form.closest('.overlay');
+        if (overlay) overlay.classList.remove('active');
+        showToast('✅ Request submitted. We’ll contact you shortly.');
+      });
+    }
+
+    handleSubmit('form-hotel');
+    handleSubmit('form-banquet');
+    handleSubmit('form-group');
+  </script>
+</body>
+</html>
