@@ -19,31 +19,40 @@ box-sizing:border-box;
 
 body{
 font-family:'Poppins',sans-serif;
-height:100vh;
-background:linear-gradient(135deg,#1e3a8a,#9333ea);
-display:flex;
-justify-content:center;
-align-items:center;
+background:linear-gradient(145deg,#020617,#0f172a);
 color:white;
-overflow:hidden;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
 }
-
-/* main container */
 
 .container{
 width:100%;
-max-width:1200px;
+max-width:1100px;
 padding:40px;
 text-align:center;
 }
 
-h1{
-font-size:42px;
-margin-bottom:60px;
-font-weight:600;
+/* Header */
+
+.brand{
+margin-bottom:70px;
 }
 
-/* split layout */
+.brand h1{
+font-size:42px;
+font-weight:600;
+letter-spacing:-1px;
+}
+
+.brand p{
+opacity:0.7;
+margin-top:10px;
+font-size:14px;
+}
+
+/* Grid */
 
 .options{
 display:grid;
@@ -51,59 +60,68 @@ grid-template-columns:1fr 1fr;
 gap:40px;
 }
 
-/* cards */
+/* Cards */
 
 .card{
-padding:50px;
-border-radius:20px;
+padding:60px 40px;
+border-radius:16px;
+background:#111827;
+border:1px solid rgba(255,255,255,0.08);
+transition:0.35s;
 cursor:pointer;
-transition:0.4s;
-text-align:center;
-backdrop-filter:blur(10px);
-}
-
-/* systems card */
-
-.systems{
-background:linear-gradient(135deg,#2563eb,#1e40af);
-}
-
-/* travel card */
-
-.travel{
-background:linear-gradient(135deg,#9333ea,#7c3aed);
 }
 
 .card:hover{
-transform:translateY(-12px) scale(1.03);
-box-shadow:0 20px 40px rgba(0,0,0,0.3);
+transform:translateY(-10px);
+box-shadow:0 20px 40px rgba(0,0,0,0.5);
 }
 
+/* Systems Theme */
+
+.systems{
+border-left:6px solid #2563eb;
+}
+
+.systems:hover{
+background:#0b2447;
+}
+
+/* Travel Theme */
+
+.travel{
+border-left:6px solid #14b8a6;
+}
+
+.travel:hover{
+background:#083344;
+}
+
+/* Icons */
+
+.icon{
+font-size:48px;
+margin-bottom:20px;
+}
+
+/* Text */
+
 .card h2{
-font-size:28px;
-margin-top:20px;
+font-size:26px;
 margin-bottom:10px;
 }
 
 .card p{
-opacity:0.9;
 font-size:15px;
+opacity:0.8;
+line-height:1.6;
 }
-
-/* icon */
-
-.icon{
-font-size:50px;
-}
-
-/* links */
 
 a{
 text-decoration:none;
 color:white;
 }
 
-/* mobile */
+/* Mobile */
 
 @media(max-width:768px){
 
@@ -111,9 +129,8 @@ color:white;
 grid-template-columns:1fr;
 }
 
-h1{
-font-size:32px;
-margin-bottom:40px;
+.brand h1{
+font-size:30px;
 }
 
 }
@@ -126,7 +143,13 @@ margin-bottom:40px;
 
 <div class="container">
 
-<h1>Welcome to Fodel India</h1>
+<div class="brand">
+
+<h1>Fodel India</h1>
+
+<p>Future Oriented Digital Enterprises & Logistics</p>
+
+</div>
 
 <div class="options">
 
@@ -168,5 +191,4 @@ Hotel bookings, destination weddings, group travel and corporate MICE services.
 </div>
 
 </body>
-
 </html>
