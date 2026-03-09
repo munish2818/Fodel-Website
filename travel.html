@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <title>Fodel Travels | Hotel Bookings, Banquet & Group Travel</title>
-<meta name="description" content="Fodel Travels offers hotel bookings, banquets & events, and group travel. Share your requirement and we’ll get back with best options and rates.">
+<meta name="description" content="Fodel Travels offers hotel bookings, banquets & group travel. Submit your requirement and we’ll respond with options and best rates.">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
 <style>
   /* ===========================
@@ -15,14 +15,14 @@
   ============================ */
   :root{
     --bg-base:#f9e64a;       /* brand base */
-    --accent:#397e51;        /* brand accent (travel) */
+    --accent:#397e51;        /* brand accent */
     --text:#111827;          /* gray-900 */
     --muted:#374151;         /* gray-700 */
 
     --card:rgba(255,255,255,0.9);
     --border:rgba(17,24,39,0.15);
 
-    --btn:#0f766e;           /* CTA buttons (travel green) */
+    --btn:#0f766e;           /* CTA */
     --btn-hover:#115e59;
 
     --radius:18px;
@@ -42,6 +42,7 @@
     text-rendering:optimizeLegibility;
   }
   a{ color:inherit; }
+  body.modal-open{ overflow:hidden; } /* prevent background scroll when modal open */
 
   :focus-visible{
     outline:3px solid rgba(17,24,39,0.75);
@@ -59,16 +60,16 @@
     place-items:center;
     text-align:center;
     color:#0b1220;
-    /* layer: image (optional) + gradient overlay */
     background:
+      /* overlay gradients */
       linear-gradient(180deg, rgba(249,230,74,0.3), rgba(249,230,74,0.6)),
       radial-gradient(1200px 800px at 80% 10%, rgba(57,126,81,0.18), transparent 60%),
       radial-gradient(900px 700px at 15% 85%, rgba(57,126,81,0.14), transparent 65%),
+      /* banner image (optional) */
       url('travel-banner.jpg') center/cover no-repeat,
+      /* base */
       linear-gradient(180deg, #f9e64a 0%, #f7df33 100%);
   }
-  /* If you don’t have an image yet, comment out the url() line above — gradients will still look good. */
-
   .banner-inner{
     width:min(1100px,92%);
     margin:auto;
@@ -84,66 +85,36 @@
     gap:12px;
   }
   .brand{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    font-weight:700;
-    font-size:20px;
-    color:#0b1220;
+    display:flex; align-items:center; gap:12px;
+    font-weight:700; font-size:20px; color:#0b1220;
   }
   .brand-badge{
     width:36px; height:36px; border-radius:50%;
     display:grid; place-items:center;
-    background:var(--accent);
-    color:#fff;
+    background:var(--accent); color:#fff;
     box-shadow:0 8px 18px rgba(0,0,0,0.18);
   }
   .reviews-btn{
     padding:10px 14px;
     border-radius:999px;
     text-decoration:none;
-    background:#0b1220;
-    color:#fff;
-    font-weight:600;
+    background:#0b1220; color:#fff; font-weight:600;
     border:1px solid rgba(255,255,255,0.2);
     box-shadow:0 8px 24px rgba(0,0,0,0.22);
     transition:transform .2s,background .2s;
   }
   .reviews-btn:hover{ transform:translateY(-2px); background:#111827; }
 
-  .hero{
-    display:grid;
-    gap:12px;
-    justify-items:center;
-    padding:60px 0 40px;
-    color:#0b1220;
-  }
-  .hero h1{
-    font-size:clamp(28px,5vw,46px);
-    font-weight:700;
-  }
-  .hero p{
-    font-size:clamp(14px,2vw,16px);
-    color:#1f2937;
-    max-width:850px;
-  }
+  .hero{ display:grid; gap:12px; justify-items:center; padding:60px 0 40px; color:#0b1220; }
+  .hero h1{ font-size:clamp(28px,5vw,46px); font-weight:700; }
+  .hero p{ font-size:clamp(14px,2vw,16px); color:#1f2937; max-width:850px; }
 
   /* ===========================
      SERVICES SECTION
   ============================ */
-  .section{
-    width:min(1100px,92%);
-    margin:32px auto 64px;
-    text-align:center;
-  }
-  .section h2{
-    font-size:clamp(22px,3.6vw,28px);
-    margin-bottom:8px;
-  }
-  .section .sub{
-    color:var(--muted);
-    font-size:14px;
-  }
+  .section{ width:min(1100px,92%); margin:32px auto 64px; text-align:center; }
+  .section h2{ font-size:clamp(22px,3.6vw,28px); margin-bottom:8px; }
+  .section .sub{ color:var(--muted); font-size:14px; }
   .separator{
     width:90px; height:3px; margin:16px auto 8px;
     background:linear-gradient(90deg,var(--accent),transparent);
@@ -151,14 +122,9 @@
   }
 
   .cards{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:26px;
-    margin-top:28px;
+    display:grid; grid-template-columns:1fr; gap:26px; margin-top:28px;
   }
-  @media (min-width:760px){
-    .cards{ grid-template-columns:repeat(3,1fr); }
-  }
+  @media (min-width:760px){ .cards{ grid-template-columns:repeat(3,1fr); } }
   .card{
     text-align:left;
     background:var(--card);
@@ -171,29 +137,18 @@
   }
   .card:nth-child(2){ animation-delay:.07s; }
   .card:nth-child(3){ animation-delay:.12s; }
-  .card:hover{
-    transform:translateY(-6px);
-    box-shadow:var(--shadow-lg);
-    background:#fff;
-  }
-  .card h3{
-    display:flex; align-items:center; gap:12px;
-    font-size:18px; margin-bottom:8px;
-  }
+  .card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-lg); background:#fff; }
+  .card h3{ display:flex; align-items:center; gap:12px; font-size:18px; margin-bottom:8px; }
   .icon{
     width:38px; height:38px; border-radius:50%;
-    display:grid; place-items:center;
-    background:var(--accent); color:#fff;
-    flex:0 0 auto;
+    display:grid; place-items:center; background:var(--accent); color:#fff;
     box-shadow:0 8px 18px rgba(0,0,0,0.15);
   }
   .card p{ color:var(--muted); font-size:14px; margin:0 0 14px; }
   .btn{
     display:inline-flex; align-items:center; gap:8px;
-    padding:12px 16px;
-    border-radius:12px;
-    background:var(--btn); color:#fff; text-decoration:none;
-    font-weight:600;
+    padding:12px 16px; border-radius:12px;
+    background:var(--btn); color:#fff; text-decoration:none; font-weight:600;
     box-shadow:0 8px 22px rgba(17,24,39,0.22);
     transition:transform .2s, background .2s;
   }
@@ -213,19 +168,21 @@
 
   .modal{
     width:min(680px,100%);
+    max-height:90svh;
     border-radius:16px;
-    background:#ffffff;
-    color:#0f172a;
+    background:#ffffff; color:#0f172a;
     border:1px solid rgba(17,24,39,0.14);
     box-shadow:0 30px 80px rgba(0,0,0,0.35);
-    overflow:hidden;
+    overflow:hidden;             /* header sticky + body scroll */
+    display:flex; flex-direction:column;
     animation:pop .18s ease-out both;
   }
   .modal-header{
     display:flex; align-items:center; justify-content:space-between;
-    gap:12px; padding:16px 18px;
+    gap:12px; padding:14px 16px;
     background:linear-gradient(90deg, var(--accent), #3f8f5b);
     color:#fff;
+    position:sticky; top:0; z-index:1; /* stays visible when scrolling */
   }
   .modal-title{ font-weight:600; }
   .modal-close{
@@ -233,51 +190,46 @@
     font-size:20px; line-height:1; padding:6px 10px; border-radius:8px;
   }
   .modal-close:hover{ background:rgba(255,255,255,0.18); }
-  .modal-body{ padding:18px; }
-
-  .grid-2{
-    display:grid; grid-template-columns:1fr; gap:14px;
+  .modal-body{
+    padding:16px;
+    overflow:auto;               /* scroll content if long */
+    -webkit-overflow-scrolling:touch;
   }
+
+  /* Full-screen modal on small screens */
+  @media (max-width:640px){
+    .overlay{ align-items:stretch; }
+    .modal{
+      width:100%;
+      height:100svh;             /* mobile viewport height */
+      max-height:none;
+      border-radius:0;
+    }
+  }
+
+  .grid-2{ display:grid; grid-template-columns:1fr; gap:14px; }
   @media (min-width:640px){ .grid-2{ grid-template-columns:1fr 1fr; } }
 
-  label{
-    display:block; font-weight:600; font-size:13px; margin-bottom:6px; color:#0f172a;
-  }
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
-  input[type="date"],
-  input[type="number"],
-  select,
-  textarea{
-    width:100%;
-    padding:12px 12px;
-    border-radius:10px;
-    border:1px solid rgba(15,23,42,0.18);
-    background:#fff;
-    font-family:inherit; font-size:14px; color:#0f172a;
-    outline:none;
+  label{ display:block; font-weight:600; font-size:13px; margin-bottom:6px; color:#0f172a; }
+  input[type="text"], input[type="email"], input[type="tel"],
+  input[type="date"], input[type="number"], select, textarea{
+    width:100%; padding:12px 12px; border-radius:10px;
+    border:1px solid rgba(15,23,42,0.18); background:#fff;
+    font:inherit; font-size:14px; color:#0f172a; outline:none;
     transition:border-color .15s, box-shadow .15s;
   }
   textarea{ min-height:90px; resize:vertical; }
   input:focus, select:focus, textarea:focus{
-    border-color:#2563eb;
-    box-shadow:0 0 0 3px rgba(37,99,235,0.15);
+    border-color:#2563eb; box-shadow:0 0 0 3px rgba(37,99,235,0.15);
   }
   .field-hint{ font-size:12px; color:#475569; margin-top:6px; }
-
   .row{ margin-bottom:12px; }
-  .row-inline{ display:flex; align-items:end; gap:10px; }
-  .readonly{
-    background:#f1f5f9;
-  }
+  .readonly{ background:#f1f5f9; }
 
-  .actions{
-    display:flex; gap:10px; justify-content:flex-end; margin-top:14px;
-  }
+  .actions{ display:flex; gap:10px; justify-content:flex-end; margin-top:14px; }
   .btn-ghost{
     padding:10px 14px; border-radius:10px; font-weight:600;
-    background:#f1f5f9; color:#0f172a; text-decoration:none; border:none; cursor:pointer;
+    background:#f1f5f9; color:#0f172a; border:none; cursor:pointer;
   }
   .btn-primary{
     padding:12px 16px; border-radius:10px; font-weight:700; letter-spacing:.2px;
@@ -296,10 +248,23 @@
   }
   .toast.show{ display:block; animation:slideUp .25s ease-out both; }
 
+  /* Footer */
+  .footer{
+    display:flex; gap:12px; flex-wrap:wrap; justify-content:center;
+    margin:0 auto 26px; width:min(1100px,92%);
+  }
+  .chip{
+    padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.92);
+    border:1px solid var(--border); text-decoration:none; color:var(--text);
+    font-size:14px; transition:transform .25s, background .25s, border-color .25s;
+  }
+  .chip:hover{ transform:translateY(-2px); background:#fff; border-color:rgba(17,24,39,0.25); }
+  .copy{ text-align:center; width:100%; margin-top:6px; font-size:12px; opacity:0.78; }
+
   /* Animations */
   @keyframes fadeUp{ from{opacity:0; transform:translateY(18px);} to{opacity:1; transform:translateY(0);} }
   @keyframes pop{ from{ transform:scale(.98); opacity:.7; } to{ transform:scale(1); opacity:1; } }
-  @keyframes slideUp{ from{ opacity:0; transform:translateY(10px); } to{ opacity:1; transform:translateY(0); } }
+  @keyframes slideUp{ from{ opacity:0; transform:translateY(10px);} to{ opacity:1; transform:translateY(0);} }
 </style>
 </head>
 
@@ -317,7 +282,7 @@
         Fodel Travels
       </div>
 
-      <a class="reviews-btn" href="reviews.html" title="Read & share reviews">⭐ Reviews</a>
+      <a class="reviews-btn" href="reviews-travels.html">⭐ Reviews</a>
     </div>
 
     <div class="banner-inner">
@@ -365,7 +330,7 @@
         <button class="btn" data-open="modal-banquet" aria-haspopup="dialog">Banquet Inquiry →</button>
       </article>
 
-      <!-- Group Travel -->
+      <!-- Group Booking -->
       <article class="card">
         <h3>
           <span class="icon" aria-hidden="true">
@@ -594,15 +559,30 @@
   <!-- Toast -->
   <div class="toast" id="toast">✅ Request submitted. We’ll contact you shortly.</div>
 
+  <!-- Footer -->
+  <footer class="footer" aria-label="Contact">
+    <a href="mailto:sales@fodeltravels.in" class="chip">📧 sales@fodeltravels.in</a>
+    <a href="tel:+919797459260" class="chip">📞 +91 9797459260</a>
+    <div class="copy">© 2015–2026 Fodel India — Fodel Travels</div>
+  </footer>
+
   <script>
-    // ===== Utilities
+    /* ========= Config: Replace with your Formspree endpoint =========
+       1) Go to https://formspree.io
+       2) Create a form and set the recipient to fodelindia@gmail.com
+       3) Replace the endpoint below (keep same for all forms or create 3)
+    */
+    const FORMSPREE_ENDPOINT = "https://formspree.io/f/XXXXYYYY"; // TODO: replace
+
+    // Utility
     const todayISO = () => new Date().toISOString().split('T')[0];
 
-    // ===== Modal open/close handlers
+    // Modal open/close + lock body scroll
     const overlays = document.querySelectorAll('.overlay');
     document.addEventListener('click', (e) => {
       const openId = e.target.getAttribute('data-open');
       if (openId){
+        document.body.classList.add('modal-open');
         const ov = document.getElementById(openId);
         ov.classList.add('active');
         // focus first field
@@ -611,98 +591,36 @@
       }
       if (e.target.hasAttribute('data-close')){
         e.target.closest('.overlay').classList.remove('active');
+        if (![...document.querySelectorAll('.overlay')].some(o => o.classList.contains('active'))){
+          document.body.classList.remove('modal-open');
+        }
       }
-      // click outside modal to close
+      // click backdrop to close
       if (e.target.classList.contains('overlay')){
         e.target.classList.remove('active');
+        if (![...document.querySelectorAll('.overlay')].some(o => o.classList.contains('active'))){
+          document.body.classList.remove('modal-open');
+        }
       }
     });
-
-    // ESC to close
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape'){
         overlays.forEach(o => o.classList.remove('active'));
+        document.body.classList.remove('modal-open');
       }
     });
 
-    // ===== Date constraints and nights calc for Hotel
+    // Hotel: date constraints + nights calc
     const checkin = document.getElementById('checkin');
     const checkout = document.getElementById('checkout');
     const nights = document.getElementById('nights');
-
     if (checkin && checkout){
-      const setMins = () => {
-        const t = todayISO();
-        checkin.min = t;
-        checkout.min = checkin.value ? checkin.value : t;
-      };
-      setMins();
-
+      const t = todayISO();
+      checkin.min = t; checkout.min = t;
       const calcNights = () => {
         if (checkin.value && checkout.value){
-          const ci = new Date(checkin.value);
-          const co = new Date(checkout.value);
+          const ci = new Date(checkin.value), co = new Date(checkout.value);
           const diff = (co - ci) / (1000*60*60*24);
           nights.value = diff > 0 ? diff : '';
-        } else {
-          nights.value = '';
-        }
+        } else nights.value = '';
       };
-
-      checkin.addEventListener('change', () => {
-        checkout.min = checkin.value || todayISO();
-        if (checkout.value && checkout.value <= checkin.value) checkout.value = '';
-        calcNights();
-      });
-      checkout.addEventListener('change', calcNights);
-    }
-
-    // ===== Date constraints for Group
-    const gIn = document.getElementById('group-checkin');
-    const gOut = document.getElementById('group-checkout');
-    if (gIn && gOut){
-      const t = todayISO();
-      gIn.min = t; gOut.min = t;
-      gIn.addEventListener('change', () => {
-        gOut.min = gIn.value || t;
-        if (gOut.value && gOut.value <= gIn.value) gOut.value = '';
-      });
-    }
-
-    // ===== Simple submit handlers (no backend yet)
-    const toast = document.getElementById('toast');
-    function showToast(msg){
-      if (msg) toast.textContent = msg;
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 2600);
-    }
-
-    function handleSubmit(formId){
-      const form = document.getElementById(formId);
-      if (!form) return;
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // Basic validity check
-        if (!form.checkValidity()){
-          // Let browser show native validation tooltips
-          form.reportValidity();
-          return;
-        }
-        // Collect data
-        const data = Object.fromEntries(new FormData(form).entries());
-        console.log(`[${formId}]`, data); // Dev: replace with network request later
-
-        // UX: clear & close
-        form.reset();
-        const overlay = form.closest('.overlay');
-        if (overlay) overlay.classList.remove('active');
-        showToast('✅ Request submitted. We’ll contact you shortly.');
-      });
-    }
-
-    handleSubmit('form-hotel');
-    handleSubmit('form-banquet');
-    handleSubmit('form-group');
-  </script>
-</body>
-</html>
