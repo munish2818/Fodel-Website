@@ -7,7 +7,7 @@
 
 <title>Fodel India</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
@@ -19,150 +19,121 @@ box-sizing:border-box;
 
 body{
 font-family:'Poppins',sans-serif;
-background:linear-gradient(145deg,#020617,#0f172a);
+background:#020617;
 color:white;
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
 }
 
-.container{
-width:100%;
-max-width:1100px;
-padding:40px;
-text-align:center;
-}
-
-/* Header */
+/* Brand Header */
 
 .brand{
-margin-bottom:70px;
+position:fixed;
+top:30px;
+width:100%;
+text-align:center;
+z-index:10;
 }
 
 .brand h1{
-font-size:42px;
+font-size:34px;
 font-weight:600;
-letter-spacing:-1px;
 }
 
 .brand p{
+font-size:13px;
 opacity:0.7;
-margin-top:10px;
-font-size:14px;
 }
 
-/* Grid */
+/* Layout */
 
-.options{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:40px;
+.split-container{
+display:flex;
+height:100vh;
 }
 
-/* Cards */
+/* Sections */
 
-.card{
-padding:60px 40px;
-border-radius:16px;
-background:#111827;
-border:1px solid rgba(255,255,255,0.08);
-transition:0.35s;
+.panel{
+flex:1;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:40px;
+transition:0.4s;
 cursor:pointer;
 }
 
-.card:hover{
-transform:translateY(-10px);
-box-shadow:0 20px 40px rgba(0,0,0,0.5);
-}
-
-/* Systems Theme */
+/* Systems Side */
 
 .systems{
-border-left:6px solid #2563eb;
+background:linear-gradient(135deg,#1e3a8a,#0f172a);
 }
 
 .systems:hover{
-background:#0b2447;
+background:linear-gradient(135deg,#2563eb,#020617);
 }
 
-/* Travel Theme */
+/* Travel Side */
 
 .travel{
-border-left:6px solid #14b8a6;
+background:linear-gradient(135deg,#0f766e,#020617);
 }
 
 .travel:hover{
-background:#083344;
+background:linear-gradient(135deg,#14b8a6,#020617);
 }
 
-/* Icons */
+/* Content */
 
-.icon{
-font-size:48px;
-margin-bottom:20px;
-}
-
-/* Text */
-
-.card h2{
-font-size:26px;
+.panel-content h2{
+font-size:34px;
 margin-bottom:10px;
 }
 
-.card p{
+.panel-content p{
+opacity:0.85;
 font-size:15px;
-opacity:0.8;
-line-height:1.6;
-}
-
-a{
-text-decoration:none;
-color:white;
+max-width:320px;
 }
 
 /* Mobile */
 
-@media(max-width:768px){
+@media(max-width:800px){
 
-.options{
-grid-template-columns:1fr;
+.split-container{
+flex-direction:column;
 }
 
-.brand h1{
-font-size:30px;
+.brand{
+top:20px;
+}
+
+.panel-content h2{
+font-size:26px;
 }
 
 }
 
 </style>
-
 </head>
 
 <body>
 
-<div class="container">
-
 <div class="brand">
-
 <h1>Fodel India</h1>
-
 <p>Future Oriented Digital Enterprises & Logistics</p>
-
 </div>
 
-<div class="options">
+<div class="split-container">
 
-<a href="systems.html">
+<a href="systems.html" class="panel systems">
 
-<div class="card systems">
-
-<div class="icon">📟</div>
+<div class="panel-content">
 
 <h2>Fodel Systems</h2>
 
 <p>
-Wireless waiter calling systems for restaurants, cafés and lounges.
+Wireless waiter calling systems designed for restaurants, cafés and lounges.
 </p>
 
 </div>
@@ -170,23 +141,19 @@ Wireless waiter calling systems for restaurants, cafés and lounges.
 </a>
 
 
-<a href="travel.html">
+<a href="travel.html" class="panel travel">
 
-<div class="card travel">
-
-<div class="icon">✈️</div>
+<div class="panel-content">
 
 <h2>Fodel Travels</h2>
 
 <p>
-Hotel bookings, destination weddings, group travel and corporate MICE services.
+Hotel bookings, group travel, destination weddings and MICE services.
 </p>
 
 </div>
 
 </a>
-
-</div>
 
 </div>
 
