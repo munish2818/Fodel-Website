@@ -1,330 +1,370 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fodel India — Gateway</title>
-  <meta name="description" content="Fodel India — Future Oriented Digital Enterprises & Logistics. Choose between Fodel Systems and Fodel Travels." />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <style>
-    /* ==============================
-       THEME TOKENS
-       ============================== */
-    :root{
-      --bg-base: #f9e64a;   /* Your requested main background */
-      --accent:  #397e51;   /* Default accent (green) — balanced with yellow */
-      --text:    #111827;   /* Gray 900 */
-      --muted:   #374151;   /* Gray 700 */
-      --card:    #ffffff;   /* Card surface */
-      --card-alpha: rgba(255,255,255,0.72);
-      --border:  rgba(17,24,39,0.14);
+<title>Fodel India — Gateway</title>
 
-      --sys: #2563eb;         /* Systems button */
-      --sys-hover: #1d4ed8;
-      --travel: #0f766e;      /* Travel button */
-      --travel-hover: #115e59;
+<meta name="description" content="Fodel India — Future Oriented Digital Enterprises & Logistics. Choose between Fodel Systems and Fodel Travels.">
 
-      --radius: 16px;
-      --radius-lg: 20px;
-      --shadow: 0 12px 28px rgba(17, 24, 39, 0.20);
-      --shadow-lg: 0 20px 40px rgba(17, 24, 39, 0.22);
-    }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    /* Switch to RED accent by adding class="accent-red" on <body> */
-    body.accent-red {
-      --accent: #e11924; /* Your alternate accent */
-    }
+<style>
 
-    /* ==============================
-       BASE
-       ============================== */
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-      color: var(--text);
-      min-height: 100svh;
-      display: grid;
-      place-items: center;
-      overflow-x: hidden;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-    }
+/* ===========================
+   THEME
+=========================== */
 
-    /* ==============================
-       BACKGROUND (Yellow base + accent gradient)
-       ============================== */
-    .bg {
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      background:
-        /* Soft accent blobs */
-        radial-gradient(1100px 800px at 85% 20%, rgba(57,126,81,0.18), transparent 60%),
-        radial-gradient(900px 700px at 18% 82%, rgba(57,126,81,0.12), transparent 65%),
-        /* Base yellow wash */
-        linear-gradient(180deg, var(--bg-base) 0%, var(--bg-base) 100%);
-    }
-    /* When red accent is chosen */
-    body.accent-red .bg {
-      background:
-        radial-gradient(1100px 800px at 85% 20%, rgba(225,25,36,0.16), transparent 60%),
-        radial-gradient(900px 700px at 18% 82%, rgba(225,25,36,0.10), transparent 65%),
-        linear-gradient(180deg, var(--bg-base) 0%, var(--bg-base) 100%);
-    }
+:root{
+--bg-base:#f9e64a;
+--accent:#397e51;
 
-    /* Subtle texture for premium feel */
-    .noise {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      opacity: 0.06;
-      pointer-events: none;
-      background-image: url('data:image/svg+xml;utf8,\
-      <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">\
-        <filter id="n" x="0" y="0">\
-          <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/>\
-          <feColorMatrix type="saturate" values="0"/>\
-        </filter>\
-        <rect width="100%" height="100%" filter="url(#n)" opacity="0.5"/>\
-      </svg>');
-      mix-blend-mode: multiply;
-    }
+--text:#111827;
+--muted:#374151;
 
-    /* ==============================
-       LAYOUT
-       ============================== */
-    .wrapper {
-      width: min(1060px, 94vw);
-      margin: 28px auto;
-    }
-    header.header {
-      text-align: center;
-      margin-bottom: 18px;
-    }
-    .brand {
-      font-size: clamp(28px, 4vw, 44px);
-      font-weight: 700;
-      letter-spacing: 0.2px;
-    }
-    .tagline {
-      font-size: clamp(14px, 1.6vw, 16px);
-      color: var(--muted);
-      margin-top: 6px;
-    }
-    .choose {
-      margin-top: 14px;
-      font-weight: 500;
-      color: var(--muted);
-      letter-spacing: 0.2px;
-    }
+--card:rgba(255,255,255,0.78);
+--border:rgba(17,24,39,0.15);
 
-    .grid {
-      display: grid;
-      gap: 22px;
-      margin-top: 26px;
-      grid-template-columns: 1fr;
-    }
-    @media (min-width: 720px) {
-      .grid { grid-template-columns: repeat(2, 1fr); }
-    }
+--sys:#2563eb;
+--sys-hover:#1d4ed8;
 
-    /* ==============================
-       CARDS
-       ============================== */
-    .card {
-      position: relative;
-      padding: 22px;
-      border-radius: var(--radius-lg);
-      background: var(--card-alpha);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(8px) saturate(120%);
-      -webkit-backdrop-filter: blur(8px) saturate(120%);
-      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease;
-    }
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-      background: rgba(255,255,255,0.80);
-      border-color: rgba(17,24,39,0.22);
-    }
+--travel:#0f766e;
+--travel-hover:#115e59;
 
-    .card h3 {
-      font-size: clamp(18px, 2vw, 22px);
-      margin: 0 0 6px 0;
-      font-weight: 600;
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      color: var(--text);
-    }
-    .service-text {
-      font-size: 14px;
-      color: var(--muted);
-      margin: 0 0 16px 0;
-    }
+--radius:18px;
+--shadow:0 14px 30px rgba(17,24,39,0.20);
+--shadow-hover:0 25px 55px rgba(17,24,39,0.25);
+}
 
-    /* Icon circle */
-    .icon-badge {
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(145deg, var(--accent), color-mix(in srgb, var(--accent), #000 12%));
-      color: #fff;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.18);
-      flex: 0 0 auto;
-    }
-    /* Fallback for browsers without color-mix */
-    @supports not (background: color-mix(in srgb, #000, #fff)) {
-      .icon-badge {
-        background: var(--accent);
-      }
-    }
+/* ===========================
+   BASE
+=========================== */
 
-    /* ==============================
-       BUTTONS
-       ============================== */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px 16px;
-      border-radius: 12px;
-      font-size: 16px;
-      font-weight: 600;
-      text-decoration: none;
-      color: #fff;
-      border: 1px solid rgba(17,24,39,0.10);
-      box-shadow: 0 6px 18px rgba(17,24,39,0.18);
-      transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease;
-      will-change: transform;
-    }
-    .btn .arrow { transition: transform .2s ease; }
-    .btn:hover .arrow { transform: translateX(4px); }
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
 
-    .btn-sys { background: linear-gradient(180deg, var(--sys), color-mix(in srgb, var(--sys), #000 20%)); }
-    .btn-sys:hover { background: linear-gradient(180deg, var(--sys-hover), color-mix(in srgb, var(--sys-hover), #000 22%)); transform: translateY(-2px); }
+body{
+font-family:"Poppins",sans-serif;
+min-height:100vh;
+display:grid;
+place-items:center;
+color:var(--text);
+background:var(--bg-base);
+overflow-x:hidden;
+}
 
-    .btn-travel { background: linear-gradient(180deg, var(--travel), color-mix(in srgb, var(--travel), #000 18%)); }
-    .btn-travel:hover { background: linear-gradient(180deg, var(--travel-hover), color-mix(in srgb, var(--travel-hover), #000 20%)); transform: translateY(-2px); }
+/* ===========================
+   BACKGROUND
+=========================== */
 
-    @supports not (background: color-mix(in srgb, #000, #fff)) {
-      .btn-sys, .btn-travel {
-        filter: saturate(105%);
-      }
-    }
+.bg{
+position:fixed;
+inset:0;
+z-index:-2;
 
-    /* ==============================
-       FOOTER
-       ============================== */
-    footer.footer {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      margin-top: 28px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      text-decoration: none;
-      color: var(--text);
-      background: rgba(255,255,255,0.75);
-      border: 1px solid var(--border);
-      transition: transform .2s ease, background .2s ease, border-color .2s ease;
-    }
-    .chip:hover { transform: translateY(-2px); background: rgba(255,255,255,0.9); border-color: rgba(17,24,39,0.22); }
-    .copy { width: 100%; text-align: center; margin-top: 6px; font-size: 12px; opacity: 0.8; }
+background:
+radial-gradient(900px 700px at 90% 10%, rgba(57,126,81,0.15), transparent 60%),
+radial-gradient(700px 600px at 10% 85%, rgba(57,126,81,0.12), transparent 60%),
+linear-gradient(180deg,#f9e64a 0%,#f7df33 100%);
+}
 
-    /* ==============================
-       ACCESSIBILITY / MOTION
-       ============================== */
-    :focus-visible {
-      outline: 3px solid rgba(17,24,39,0.8);
-      outline-offset: 3px;
-      border-radius: 10px;
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .btn .arrow, .card { transition: none !important; }
-    }
-  </style>
+/* subtle grain */
+
+.noise{
+position:fixed;
+inset:0;
+z-index:-1;
+opacity:0.05;
+pointer-events:none;
+background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.4"/></svg>');
+}
+
+/* ===========================
+   LAYOUT
+=========================== */
+
+.wrapper{
+width:min(1060px,92%);
+margin:30px auto;
+}
+
+header{
+text-align:center;
+}
+
+.brand{
+font-size:42px;
+font-weight:700;
+}
+
+.tagline{
+font-size:15px;
+margin-top:6px;
+color:var(--muted);
+}
+
+/* divider */
+
+.separator{
+width:80px;
+height:3px;
+margin:16px auto;
+background:linear-gradient(90deg,var(--accent),transparent);
+border-radius:6px;
+}
+
+.choose{
+font-size:16px;
+color:var(--muted);
+}
+
+/* ===========================
+   GRID
+=========================== */
+
+.grid{
+display:grid;
+gap:26px;
+margin-top:30px;
+grid-template-columns:1fr;
+}
+
+@media(min-width:720px){
+.grid{
+grid-template-columns:1fr 1fr;
+}
+}
+
+/* ===========================
+   CARDS
+=========================== */
+
+.card{
+padding:28px;
+border-radius:var(--radius);
+background:var(--card);
+border:1px solid var(--border);
+box-shadow:var(--shadow);
+transition:0.3s;
+animation:fadeUp .6s ease both;
+}
+
+.card:nth-child(2){
+animation-delay:.1s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+box-shadow:var(--shadow-hover);
+}
+
+.card h3{
+font-size:22px;
+margin-bottom:10px;
+display:flex;
+gap:12px;
+align-items:center;
+}
+
+.service-text{
+font-size:14px;
+color:var(--muted);
+margin-bottom:18px;
+}
+
+/* ===========================
+   ICON BADGE
+=========================== */
+
+.icon{
+width:40px;
+height:40px;
+border-radius:50%;
+display:grid;
+place-items:center;
+background:var(--accent);
+color:#fff;
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+.btn{
+display:inline-flex;
+align-items:center;
+gap:10px;
+padding:14px 18px;
+border-radius:12px;
+font-weight:600;
+color:#fff;
+text-decoration:none;
+box-shadow:0 8px 22px rgba(17,24,39,0.22);
+transition:.25s;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+}
+
+.btn-sys{
+background:var(--sys);
+}
+
+.btn-sys:hover{
+background:var(--sys-hover);
+}
+
+.btn-travel{
+background:var(--travel);
+}
+
+.btn-travel:hover{
+background:var(--travel-hover);
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+.footer{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+justify-content:center;
+margin-top:30px;
+}
+
+.chip{
+padding:8px 14px;
+border-radius:999px;
+background:rgba(255,255,255,0.9);
+border:1px solid var(--border);
+text-decoration:none;
+color:var(--text);
+font-size:14px;
+transition:.25s;
+}
+
+.chip:hover{
+transform:translateY(-2px);
+background:#fff;
+}
+
+.copy{
+text-align:center;
+width:100%;
+margin-top:6px;
+font-size:12px;
+opacity:0.75;
+}
+
+/* ===========================
+   ANIMATION
+=========================== */
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+</style>
 </head>
 
-<!-- Use "#e11924" here if you prefer the red accent with the yellow base -->
 <body>
-  <div class="bg" aria-hidden="true"></div>
-  <div class="noise" aria-hidden="true"></div>
 
-  <main class="wrapper" role="main">
-    <header class="header">
-      <h1 class="brand">Fodel India</h1>
-      <p class="tagline">Future Oriented Digital Enterprises &amp; Logistics</p>
-      <p class="choose">Choose your division</p>
-    </header>
+<div class="bg"></div>
+<div class="noise"></div>
 
-    <section class="grid" aria-label="Divisions">
-      <!-- ================= Systems Card ================= -->
-      <article class="card">
-        <h3>
-          <span class="icon-badge" aria-hidden="true">
-            <!-- Chip / Tech SVG Icon -->
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M9 9h6v6H9z"/>
-              <path d="M7 3h2v3H7V3zm4 0h2v3h-2V3zm4 0h2v3h-2V3zM7 18h2v3H7v-3zm4 0h2v3h-2v-3zm4 0h2v3h-2v-3zM3 7h3v2H3V7zm0 4h3v2H3v-2zm0 4h3v2H3v-2zm15-8h3v2h-3V7zm0 4h3v2h-3v-2zm0 4h3v2h-3v-2z"/>
-              <rect x="6" y="6" width="12" height="12" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="1.6"/>
-            </svg>
-          </span>
-          Fodel Systems
-        </h3>
-        <p class="service-text">Restaurant technology &amp; wireless calling systems</p>
-        <a href="systems.html" class="btn btn-sys" aria-label="Go to Fodel Systems">
-          Explore Systems <span class="arrow">→</span>
-        </a>
-      </article>
+<main class="wrapper">
 
-      <!-- ================= Travels Card ================= -->
-      <article class="card">
-        <h3>
-          <span class="icon-badge" aria-hidden="true">
-            <!-- Airplane SVG Icon -->
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M2.5 19.5l8.2-4.1 3.9 3.9c.4.4 1 .4 1.4 0l1-1c.4-.4.4-1 0-1.4l-3.9-3.9 4.1-8.2c.2-.5 0-1.1-.5-1.3-.3-.1-.7-.1-1 .1L9.8 7.6 6.2 7c-.3 0-.7.1-.9.3L4 8.6c-.2.2-.3.6-.3.9l.6 3.6-4.1 6.4c-.2.3-.1.7.2.9.2.3.6.4 1 .3z"/>
-            </svg>
-          </span>
-          Fodel Travels
-        </h3>
-        <p class="service-text">Hotel bookings, group travel &amp; MICE services</p>
-        <a href="travel.html" class="btn btn-travel" aria-label="Go to Fodel Travels">
-          Explore Travels <span class="arrow">→</span>
-        </a>
-      </article>
-    </section>
+<header>
 
-    <footer class="footer">
-      <a class="chip" href="mailto:support@fodel.in" aria-label="Email support at support@fodel.in">
-        📧 support@fodel.in
-      </a>
-      <a class="chip" href="tel:+919086399392" aria-label="Call +91 9086399392">
-        📞 +91 9086399392
-      </a>
-      <a class="chip" href="https://wa.me/9086399392" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-        💬 WhatsApp
-      </a>
-      <div class="copy">© 2015–2026 Fodel India</div>
-    </footer>
-  </main>
+<h1 class="brand">Fodel India</h1>
+
+<p class="tagline">Future Oriented Digital Enterprises & Logistics</p>
+
+<div class="separator"></div>
+
+<p class="choose">Choose your division</p>
+
+</header>
+
+<section class="grid">
+
+<article class="card">
+
+<h3>
+
+<span class="icon">📟</span>
+
+Fodel Systems
+
+</h3>
+
+<p class="service-text">
+Restaurant technology & wireless calling systems
+</p>
+
+<a href="systems.html" class="btn btn-sys">
+Explore Systems →
+</a>
+
+</article>
+
+<article class="card">
+
+<h3>
+
+<span class="icon">✈️</span>
+
+Fodel Travels
+
+</h3>
+
+<p class="service-text">
+Hotel bookings, group travel & MICE services
+</p>
+
+<a href="travel.html" class="btn btn-travel">
+Explore Travels →
+</a>
+
+</article>
+
+</section>
+
+<footer class="footer">
+
+<a href="mailto:support@fodel.in" class="chip">
+📧 support@fodel.in
+</a>
+
+<a href="tel:+919086399392" class="chip">
+📞 +91 9086399392
+</a>
+
+<a href="https://wa.me/9086399392" target="_blank" class="chip">
+💬 WhatsApp
+</a>
+
+<div class="copy">
+© 2015–2026 Fodel India
+</div>
+
+</footer>
+
+</main>
+
 </body>
 </html>
-
