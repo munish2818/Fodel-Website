@@ -1,41 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Wireless Waiter Calling System | Restaurant Service Paging System India | Fodel</title>
 
-<meta name="description" content="Fodel India provides wireless waiter calling systems and restaurant service paging systems. Improve service speed, reduce waiting time and enhance customer experience.">>
+<meta name="description" content="Fodel India provides wireless waiter calling systems and restaurant service paging systems. We also assist with hotel bookings, group travel and corporate MICE arrangements in Katra Vaishno Devi, Jammu and Srinagar.">
 
 <link rel="canonical" href="https://www.fodel.in/">
 <meta name="robots" content="index, follow">
 
-<!-- Premium Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
-font-family:'Poppins', sans-serif;
+font-family:'Poppins',sans-serif;
 background:#0f172a;
 color:#fff;
 overflow-x:hidden;
 }
 
-/* Improve Heading Strength */
 h1,h2,h3{
 font-weight:600;
 letter-spacing:-0.5px;
 }
 
-/* Improve Paragraph Readability */
 p{
 line-height:1.6;
 font-weight:300;
 }
-
 
 a{text-decoration:none;color:inherit}
 
@@ -76,7 +74,6 @@ margin-top:60px;
 .hero h1{
 font-size:3rem;
 margin-bottom:20px;
-animation:fadeDown 1s ease forwards;
 }
 
 .hero p{
@@ -95,9 +92,7 @@ font-weight:bold;
 transition:0.3s;
 }
 
-.button:hover{
-transform:scale(1.05);
-}
+.button:hover{transform:scale(1.05)}
 
 .section{
 padding:80px 8%;
@@ -142,24 +137,14 @@ border-radius:12px;
 margin-bottom:15px;
 }
 
-.card h3{margin-bottom:10px}
-.card p{font-size:14px;opacity:0.8;margin-bottom:15px}
-
 footer{
 background:#0b1220;
-color:#fff;
 padding:70px 8%;
 margin-top:80px;
-}
-  
-footer a:hover {
-opacity: 0.7;
-transform: translateX(3px);
 }
 
 footer a{
 color:#fff;
-text-decoration:none;
 transition:0.3s;
 }
 
@@ -168,14 +153,39 @@ opacity:0.7;
 transform:translateX(3px);
 }
 
-@keyframes fadeDown{
-from{opacity:0;transform:translateY(-40px)}
-to{opacity:1;transform:translateY(0)}
+.travel-popup{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+justify-content:center;
+align-items:center;
+z-index:2000;
+}
+
+.travel-popup form{
+background:#111827;
+padding:30px;
+border-radius:10px;
+width:90%;
+max-width:500px;
+}
+
+.travel-popup input{
+width:100%;
+padding:10px;
+margin-bottom:10px;
+border:none;
+border-radius:6px;
 }
 
 @media(max-width:768px){
 .hero h1{font-size:2rem}
 }
+
 </style>
 </head>
 
@@ -185,19 +195,21 @@ to{opacity:1;transform:translateY(0)}
 <div><strong>Fodel India</strong></div>
 <div>
 <a href="#products">Products</a>
+<a href="#travel">Fodel Travels</a>
 <a href="/reviews.html">Reviews</a>
 <a href="tel:+919086399392">Call</a>
 </div>
 </div>
 
 <section class="hero">
-<h1>Wireless Waiter Calling System in India for Restaurants,Cafes & Lounge</h1>
-<p>Modern communication solution for restaurants, cafés & service businesses.</p>
+<h1>Wireless Waiter Calling System for Restaurants, Cafes & Lounges</h1>
+<p>Improve service speed and reduce customer waiting time with Fodel wireless restaurant paging systems.</p>
 <a href="#products" class="button">Explore Products</a>
 </section>
 
 <section class="section" id="products">
-<h2>Our Products</h2>
+
+<h2>Fodel Systems</h2>
 
 <div class="products">
 
@@ -223,57 +235,78 @@ to{opacity:1;transform:translateY(0)}
 </div>
 
 </div>
+
 </section>
 
-<section class="section">
+<section class="section" id="travel">
 
-<h2>Why Choose Fodel?</h2>
+<h2>Fodel Travels</h2>
+
+<p style="text-align:center;max-width:900px;margin:auto;margin-bottom:50px;">
+Hotel bookings, destination weddings, group travel and corporate MICE arrangements. 
+Currently assisting travelers with hotel bookings in Katra (Vaishno Devi), Jammu and Srinagar.
+</p>
 
 <div class="products">
 
 <div class="card">
-<h3>No Internet Required</h3>
-<p>Simple wireless operation without Wi-Fi or wiring.</p>
+<h3>Room Booking</h3>
+<p>Hotels near Vaishno Devi including ITC Welcome, Holiday Inn Katra, Fortune Park, Lemon Tree, Ananta Hotels.</p>
+<button class="button" onclick="openForm()">Room Requirement</button>
 </div>
 
 <div class="card">
-<h3>Expandable System</h3>
-<p>Supports multiple buttons and receivers.</p>
+<h3>Banquet Events</h3>
+<p>Wedding events and corporate conferences in Katra, Jammu and Srinagar hotels.</p>
+<button class="button" onclick="openForm()">Banquet Event</button>
 </div>
 
 <div class="card">
-<h3>Commercial Grade</h3>
-<p>Designed for daily professional use.</p>
+<h3>Group Travel</h3>
+<p>Group bookings for pilgrimage, weddings and corporate MICE travel.</p>
+<button class="button" onclick="openForm()">Group Booking</button>
 </div>
 
 </div>
-<p style="text-align:center;margin-top:40px;font-size:16px;">
-Want to reduce customer waiting time and improve restaurant service efficiency?
-<a href="/best-service-solution-for-restaurants-india.html" style="color:#60a5fa;">
-Learn how our wireless calling system helps.
-</a>
+
+</section>
+
+<section class="section">
+
+<h2>Hotels We Work With</h2>
+
+<p style="text-align:center;max-width:900px;margin:auto;font-size:15px;opacity:0.9;">
+
+<strong>Katra Hotels:</strong> ITC Welcome Hotel Katra, Holiday Inn Katra, Lemon Tree Hotel Katra, Fortune Park Katra, Ananta Hotels Katra, Rama Trident Katra, Zone Connect by The Park Katra.
+
+<br><br>
+
+<strong>Jammu Hotels:</strong> Vivanta Jammu, Lords Inn Jammu, Lemon Tree Hotel Jammu, Zone by The Park Jammu, Fortune Inn Riviera.
+
+<br><br>
+
+<strong>Srinagar Hotels:</strong> The Lalit Grand Palace Srinagar, Vivanta Dal View Srinagar, Radisson Srinagar, Lemon Tree Srinagar.
+
 </p>
 
 </section>
 
 <section class="section">
-<h2 style="text-align:center;margin-bottom:40px;">Available On Leading Marketplaces</h2>
+
+<h2>Available On Leading Marketplaces</h2>
 
 <div style="display:flex;justify-content:center;gap:60px;flex-wrap:wrap;align-items:center;">
 
-<a href="https://www.amazon.in/l/27943762031?ie=UTF8&marketplaceID=A21TJRUUN4KGV&me=A2KC1UVN0QZE0G"
-target="_blank"
-rel="nofollow sponsored">
-<img src="amazon-logo.jpg" alt="Available on Amazon" style="height:60px;">
+<a href="https://www.amazon.in/l/27943762031?ie=UTF8&marketplaceID=A21TJRUUN4KGV&me=A2KC1UVN0QZE0G" target="_blank" rel="nofollow sponsored">
+<img src="amazon-logo.jpg" style="height:60px;">
 </a>
 
-<a href="https://www.indiamart.com/fodel-india/"
-target="_blank"
-rel="nofollow sponsored">
-<img src="indiamart-logo.jpg" alt="Available on IndiaMART" style="height:60px;">
+<a href="https://www.indiamart.com/fodel-india/" target="_blank" rel="nofollow sponsored">
+<img src="indiamart-logo.jpg" style="height:60px;">
 </a>
 
 </div>
+
 </section>
 
 <footer>
@@ -281,73 +314,18 @@ rel="nofollow sponsored">
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:50px;">
 
 <div>
-<h3 style="margin-bottom:15px;">Fodel India</h3>
-<p style="opacity:0.8;font-size:14px;line-height:1.6;">
-Wireless waiter calling systems trusted by restaurants and service businesses across India.
+<h3>Fodel India</h3>
+<p style="opacity:0.8;font-size:14px;">
+Wireless restaurant calling systems and travel service solutions.
 </p>
 </div>
 
 <div>
-<h3 style="margin-bottom:15px;">Ordering Information</h3>
-<p style="opacity:0.8;font-size:14px;line-height:1.6;">
-As we have stopped accepting orders through our website store from 2026 onwards, you may place your orders offline with us to avail the best B2B rates. Our products also continue to remain available on various marketplace stores.
-</p>
-<a href="https://www.amazon.in/l/27943762031?ie=UTF8&marketplaceID=A21TJRUUN4KGV&me=A2KC1UVN0QZE0G"
-target="_blank"
-rel="nofollow sponsored"
-style="display:inline-block;margin-top:15px;padding:10px 22px;background:#ff9900;color:#000;border-radius:6px;font-weight:bold;">
-Visit Amazon Store
-</a>
-</div>
-
-<!-- Support -->
-<div>
-<h3 style="margin-bottom:20px;">Support</h3>
-
-<p style="font-size:14px;opacity:0.9;margin-bottom:15px;">
-<a href="tel:+919086399392"
-style="color:#fff;text-decoration:none;display:flex;align-items:center;gap:10px;transition:0.3s;">
-<svg width="18" height="18" fill="white" viewBox="0 0 24 24">
-<path d="M6.6 10.8c1.8 3.6 4.6 6.4 8.2 8.2l2.7-2.7c.3-.3.8-.4 1.2-.3 1 .3 2 .5 3.1.5.7 0 1.2.5 1.2 1.2v4.3c0 .7-.5 1.2-1.2 1.2C10.4 23 1 13.6 1 2.2 1 1.5 1.5 1 2.2 1h4.3c.7 0 1.2.5 1.2 1.2 0 1.1.2 2.1.5 3.1.1.4 0 .9-.3 1.2l-2.7 2.7z"/>
-</svg>
-+91 9086399392
-</a>
-</p>
-
-<p style="font-size:14px;opacity:0.9;margin-bottom:15px;">
-<a href="mailto:support@fodel.in"
-style="color:#fff;text-decoration:none;display:flex;align-items:center;gap:10px;transition:0.3s;">
-<svg width="18" height="18" fill="white" viewBox="0 0 24 24">
-<path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5L4 8V6l8 5 8-5v2z"/>
-</svg>
-support@fodel.in
-</a>
-</p>
-
-<p style="font-size:14px;opacity:0.9;margin-bottom:15px;">
-<a href="https://wa.me/9086399392"
-target="_blank"
-rel="noopener"
-style="color:#fff;text-decoration:none;display:flex;align-items:center;gap:10px;transition:0.3s;">
-<svg width="18" height="18" fill="white" viewBox="0 0 24 24">
-<path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.2s-.8 1-1 1.2c-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-1-1.6-2.2-1.8-2.5-.2-.3 0-.5.1-.7.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.2-.7-1.7-1-2.3-.3-.6-.6-.5-.7-.5h-.6c-.2 0-.5.1-.7.4s-1 1-1 2.4 1 2.8 1.2 3c.1.2 2 3 4.9 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.8-.7 2.1-1.4.2-.6.2-1.2.1-1.4-.1-.2-.3-.3-.6-.5zM12 2C6.5 2 2 6.4 2 12c0 1.8.5 3.6 1.4 5.1L2 22l5-1.3C8.4 21.5 10.2 22 12 22c5.5 0 10-4.4 10-10S17.5 2 12 2z"/>
-</svg>
-WhatsApp Support
-</a>
-</p>
-
-<p style="font-size:14px;opacity:0.9;">
-<a href="https://www.instagram.com/fodel_india"
-target="_blank"
-rel="noopener"
-style="color:#fff;text-decoration:none;display:flex;align-items:center;gap:10px;transition:0.3s;">
-<svg width="18" height="18" fill="white" viewBox="0 0 24 24">
-<path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm5 5.5A4.5 4.5 0 1112 16a4.5 4.5 0 010-9zm6-1.3a1.1 1.1 0 110 2.2 1.1 1.1 0 010-2.2z"/>
-</svg>
-Instagram
-</a>
-</p>
-
+<h3>Support</h3>
+<p><a href="tel:+919086399392">+91 9086399392</a></p>
+<p><a href="mailto:support@fodel.in">support@fodel.in</a></p>
+<p><a href="https://wa.me/9086399392" target="_blank">WhatsApp</a></p>
+<p><a href="https://www.instagram.com/fodel_india" target="_blank">Instagram</a></p>
 </div>
 
 </div>
@@ -360,32 +338,55 @@ Instagram
 
 </footer>
 
+<div class="travel-popup" id="travelForm">
+
+<form>
+
+<h3 style="margin-bottom:20px;">Travel Inquiry</h3>
+
+<input type="text" placeholder="Preferred Hotel">
+
+<input type="text" placeholder="Location">
+
+<input type="date">
+
+<input type="number" placeholder="Total Rooms">
+
+<input type="email" placeholder="Email">
+
+<input type="tel" placeholder="Mobile Number">
+
+<button class="button" style="width:100%;">Submit Inquiry</button>
+
+<button type="button" onclick="closeForm()" style="margin-top:10px;width:100%;">Close</button>
+
+</form>
+
+</div>
 
 <script>
-const sections = document.querySelectorAll('.section');
 
-const observer = new IntersectionObserver(entries => {
-entries.forEach(entry => {
+function openForm(){
+document.getElementById("travelForm").style.display="flex";
+}
+
+function closeForm(){
+document.getElementById("travelForm").style.display="none";
+}
+
+const sections=document.querySelectorAll('.section');
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
 if(entry.isIntersecting){
 entry.target.classList.add('visible');
 }
 });
 },{threshold:0.1});
 
-sections.forEach(section => observer.observe(section));
+sections.forEach(section=>observer.observe(section));
+
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
