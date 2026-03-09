@@ -5,9 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Fodel India | Systems & Travel Services</title>
-
-<meta name="description" content="Fodel India offers wireless restaurant calling systems and travel services including hotel bookings, group travel and MICE arrangements.">
+<title>Fodel India</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -16,22 +14,23 @@
 body{
 font-family:'Poppins',sans-serif;
 margin:0;
-background:#0f172a;
-color:white;
-display:flex;
-justify-content:center;
-align-items:center;
+background:linear-gradient(135deg,#1e3a8a,#9333ea);
 height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
 }
 
 .container{
 text-align:center;
 max-width:900px;
+padding:20px;
 }
 
 h1{
-margin-bottom:40px;
-font-size:36px;
+font-size:40px;
+margin-bottom:50px;
 }
 
 .options{
@@ -41,34 +40,46 @@ gap:40px;
 }
 
 .card{
-background:#1e293b;
+background:rgba(255,255,255,0.1);
 padding:40px;
-border-radius:12px;
+border-radius:20px;
+backdrop-filter:blur(10px);
 transition:0.3s;
 cursor:pointer;
 }
 
 .card:hover{
 transform:translateY(-8px);
-background:#334155;
+background:rgba(255,255,255,0.2);
 }
 
 .card h2{
+font-size:26px;
 margin-bottom:10px;
 }
 
 .card p{
-opacity:0.8;
+opacity:0.9;
+}
+
+a{
+text-decoration:none;
+color:white;
 }
 
 @media(max-width:700px){
+
 .options{
 grid-template-columns:1fr;
 }
+
+h1{
+font-size:30px;
+}
+
 }
 
 </style>
-
 </head>
 
 <body>
@@ -81,15 +92,21 @@ grid-template-columns:1fr;
 
 <a href="systems.html">
 <div class="card">
+
 <h2>Fodel Systems</h2>
+
 <p>Wireless Waiter Calling Systems for Restaurants, Cafes & Lounges</p>
+
 </div>
 </a>
 
 <a href="travel.html">
 <div class="card">
+
 <h2>Fodel Travels</h2>
+
 <p>Hotel Bookings • Group Travel • Destination Weddings • MICE</p>
+
 </div>
 </a>
 
