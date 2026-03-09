@@ -1,127 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Fodel India</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+    body{
+        font-family:'Inter', sans-serif;
+        background:#ffffff;
+        color:#1f2937;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        min-height:100vh;
+        padding:20px;
+    }
 
-body{
-font-family:'Poppins',sans-serif;
-background:#facc15;
-color:#111827;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-text-align:center;
-padding:20px;
-}
+    .wrap{
+        max-width:650px;
+        width:100%;
+        background:#f9fafb;
+        padding:40px 35px;
+        border-radius:20px;
+        box-shadow:0 10px 25px rgba(0,0,0,0.07);
+        text-align:center;
+        border:1px solid #e5e7eb;
+    }
 
-.container{
-max-width:600px;
-width:100%;
-}
+    h1{
+        font-size:34px;
+        font-weight:700;
+        margin-bottom:10px;
+        color:#111827;
+    }
 
-h1{
-font-size:36px;
-margin-bottom:10px;
-}
+    .tagline{
+        font-size:15px;
+        margin-bottom:40px;
+        opacity:0.7;
+    }
 
-.subtitle{
-font-size:14px;
-margin-bottom:50px;
-opacity:0.8;
-}
+    .button-box{
+        display:flex;
+        flex-direction:column;
+        gap:15px;
+        margin-top:20px;
+    }
 
-.buttons{
-display:flex;
-flex-direction:column;
-gap:20px;
-}
+    .btn{
+        padding:16px;
+        font-size:17px;
+        font-weight:600;
+        text-decoration:none;
+        border-radius:10px;
+        transition:0.25s;
+        display:block;
+    }
 
-.btn{
-padding:18px;
-font-size:18px;
-border-radius:10px;
-font-weight:600;
-text-decoration:none;
-display:block;
-transition:0.25s;
-}
+    .btn-sys{
+        background:#2563eb;
+        color:#fff;
+    }
+    .btn-sys:hover{
+        background:#1e3fa8;
+    }
 
-/* Systems Button */
+    .btn-travel{
+        background:#059669;
+        color:#fff;
+    }
+    .btn-travel:hover{
+        background:#047857;
+    }
 
-.systems{
-background:#2563eb;
-color:white;
-}
-
-.systems:hover{
-background:#1d4ed8;
-}
-
-/* Travel Button */
-
-.travel{
-background:#0f766e;
-color:white;
-}
-
-.travel:hover{
-background:#115e59;
-}
-
-@media(min-width:700px){
-
-.buttons{
-flex-direction:row;
-}
-
-.btn{
-flex:1;
-}
-
-}
-
+    @media (min-width:700px){
+        .button-box{
+            flex-direction:row;
+        }
+        .btn{
+            flex:1;
+        }
+    }
 </style>
-
 </head>
 
 <body>
+<div class="wrap">
+    <h1>Fodel India</h1>
+    <p class="tagline">Future Oriented Digital Enterprises & Logistics</p>
 
-<div class="container">
-
-<h1>Fodel India</h1>
-
-<div class="subtitle">
-Future Oriented Digital Enterprises & Logistics
+    <div class="button-box">
+        <a href="systems.html" class="btn btn-sys">Fodel Systems</a>
+        <a href="travel.html" class="btn btn-travel">Fodel Travels</a>
+    </div>
 </div>
-
-<div class="buttons">
-
-<a href="systems.html" class="btn systems">
-Fodel Systems
-</a>
-
-<a href="travel.html" class="btn travel">
-Fodel Travels
-</a>
-
-</div>
-
-</div>
-
 </body>
 </html>
