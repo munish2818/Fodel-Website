@@ -624,3 +624,91 @@
           nights.value = diff > 0 ? diff : '';
         } else nights.value = '';
       };
+      checkin.addEventListener('change', () => {
+        checkout.min = checkin.value || t;
+        if (checkout.value && checkout.value <= checkin.value) checkout.value = '';
+        calcNights();
+      });
+      checkout.addEventListener('change', calcNights);
+    }
+
+    // Group: date constraints
+    const gIn = document.getElementById('group-checkin');
+    const gOut = document.getElementById('group-checkout');
+    if (gIn && gOut){
+      const t = todayISO();
+      gIn.min = t; gOut.min = t;
+      gIn.addEventListener('change', () => {
+        gOut.min = gIn.value || t;
+        if (gOut.value && gOut.value <= gIn.value) gOut.value = '';
+      });
+    }
+
+    // Toast
+    const toast = document.getElementById('toast');
+    function showToast(msg){
+      if (msg) toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2600);
+    }
+
+    // Serialize -> object
+    function serialize(form){
+      return Object.fromEntries(new FormData(form).entries());
+    }
+
+    // Try Formspree, fallback to mailto
+    async function submitForm(formId, subject){
+      const form = document.getElementById(formId);
+      if (!form) return;
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!form.checkValidity()){
+          form.reportValidity();
+          return;
+        }
+
+        const data = serialize(form);
+        // Attach meta (page + form)
+        data._page = location.href;
+        data._form = formId;
+
+        // Attempt Formspree POST if endpoint set
+        let sent = false;
+        if (FORMSPREE_ENDPOINT && FORMSPREE_ENDPOINT.includes("formspree.io/f/")){
+          try{
+            const resp = await fetch(FORMSPREE_ENDPOINT, {
+              method: "POST",
+              headers: { "Accept":"application/json" },
+              body: new FormData(form)
+            });
+            sent = resp.ok;
+          }catch(err){ sent = false; }
+        }
+
+        if (!sent){
+          // Fallback: mailto prefilled (opens user email app)
+          const to = "fodelindia@gmail.com";
+          const bodyLines = Object.entries(data)
+            .map(([k,v]) => `${k}: ${v}`)
+            .join("%0A");
+          const mailto = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${bodyLines}`;
+          window.location.href = mailto;
+        }
+
+        // UX: reset & close
+        form.reset();
+        const overlay = form.closest('.overlay');
+        if (overlay) overlay.classList.remove('active');
+        document.body.classList.remove('modal-open');
+        showToast('✅ Request submitted. We’ll contact you shortly.');
+      });
+    }
+
+    submitForm('form-hotel',  'Fodel Travels — Hotel Room Requirement');
+    submitForm('form-banquet','Fodel Travels — Banquet/Event Inquiry');
+    submitForm('form-group',  'Fodel Travels — Group Booking Request');
+  </script>
+</body>
+</html>
