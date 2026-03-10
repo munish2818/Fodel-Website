@@ -1,1 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ===========================
+       META / SEO
+  ============================ -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <title>Fodel Travels | Hotel Booking Katra Vaishno Devi | Jammu Kashmir Travel</title>
+  <meta name="description" content="Fodel Travels offers hotel booking in Katra Vaishno Devi, Patnitop, Jammu hotel booking, Srinagar hotel booking, banquet events, destination weddings and Kashmir tour packages.">
+  <meta name="robots" content="index,follow" />
+  <!-- <link rel="canonical" href="https://www.fodel.in/travel.html" /> -->
+
+  <meta name="keywords" content="
+  hotel booking katra vaishno devi,
+  katra hotel group booking,
+  banquet halls katra,
+  banquet halls jammu city,
+  destination wedding katra,
+  destination wedding jammu,
+  corporate events katra,
+  corporate events jammu,
+  mice event jammu,
+  exhibition venues jammu,
+  jammu hotel booking,
+  srinagar group hotel booking,
+  kashmir room booking,
+  kashmir package,
+  jammu and kashmir package,
+  vaishno devi travel booking,
+  helicopter booking katra,
+  patnitop package,
+  patnitop hotel booking,
+  resort property in katra,
+  vaishno devi package
+  ">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* ===========================
+       THEME
+    ============================ */
+    :root{
+      --page-bg:#f8fafc;       /* clean neutral */
+      --accent:#397e51;        /* brand green */
+      --brand-yellow:#f9e64a;
+
+      --text:#111827;
+      --muted:#374151;
+
+      --card:rgba(255,255,255,0.98);
+      --border:rgba(17,24,39,0.12);
+
+      /* Travel CTAs (solid green by default) */
+      --btn:#0f766e;
+      --btn-hover:#0f766e;
+
+      --radius:18px;
+      --shadow:0 14px 30px rgba(17,24,39,0.18);
+      --shadow-lg:0 24px 60px rgba(17,24,39,0.25);
+    }
+
+    /* ===========================
+       BASE
+    ============================ */
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    html, body{ overflow-x:hidden; }   /* prevent right-edge white gutter */
+    body{
+      font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:var(--page-bg);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+
+    /* No underline globally */
+    a{ color:inherit; text-decoration:none; }
+
+    body.modal-open{ overflow:hidden; }
+
+    :focus-visible{
+      outline:3px solid rgba(17,24,39,0.75);
+      outline-offset:3px;
+      border-radius:10px;
+    }
+
+    /* ===========================
+       BANNER (teal/green with yellow glow)
+    ============================ */
+    .banner{
+      position:relative;
+      min-height:58vh;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      color:#0b1220;
+      background:
+        radial-gradient(1000px 700px at 85% 15%, rgba(249,230,74,0.25), transparent 60%),
+        radial-gradient(900px 600px at 15% 85%, rgba(249,230,74,0.18), transparent 65%),
+        linear-gradient(160deg, #0f766e 0%, #0b5f58 55%, #0a4f4a 100%),
+        url('travel-banner.jpg') center/cover no-repeat;
+      background-blend-mode: overlay, overlay, normal, multiply;
+    }
+    .banner-inner{ width:min(1100px,92%); margin:auto; padding:24px; }
+
+    /* ===========================
+       TOPBAR (fixed overflow + mobile UX)
+    ============================ */
+    .topbar{
+      position:absolute;
+      left:0; right:0;
+      top:20px;                /* instead of inset */
+      padding:0 16px;          /* internal side padding -> no overflow */
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      color:#fff;
+      box-sizing:border-box;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:700; font-size:20px;
+      white-space:nowrap;       /* keep single-line brand */
+      min-width:0;
+    }
+    .brand-badge{
+      width:34px; height:34px; border-radius:50%;
+      display:grid; place-items:center;
+      background:#ffffff1a; color:#fff;
+      border:1px solid #ffffff40;
+      flex-shrink:0;
+    }
+
+    .topbar a{ text-decoration:none; color:inherit; }
+
+    .nav{
+      display:flex; align-items:center; gap:8px;
+      flex-wrap:nowrap; max-width:100%;
+    }
+
+    /* Unified compact pills */
+    .pill-btn{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:6px 10px; font-size:14px; font-weight:600;
+      border-radius:10px; white-space:nowrap;
+      border:0; /* remove white border */
+      color:#fff;
+      box-shadow:0 4px 12px rgba(0,0,0,0.18);
+      transition:transform .2s, background .2s;
+    }
+    .pill-btn:hover{ transform:translateY(-2px); }
+    .reviews-btn{ background:#0b1220; }
+    .reviews-btn:hover{ background:#111827; }
+    .home-btn{ background:#2d6a51; }
+
+    /* Mobile topbar */
+    @media (max-width:640px){
+      .topbar{
+        top:14px; padding:0 14px;
+        display:grid; grid-template-columns:1fr auto;
+        align-items:center; gap:10px;
+      }
+      .brand{ font-size:17px; gap:8px; }
+      .brand-badge{ width:30px; height:30px; }
+      .nav{ gap:6px; justify-self:end; }
+      .pill-btn{
+        padding:5px 9px; font-size:13px; border-radius:8px;
+        box-shadow:0 3px 8px rgba(0,0,0,0.18);
+      }
+    }
+    /* Ultra-narrow phones */
+    @media (max-width:380px){
+      .topbar{ grid-template-columns:1fr; row-gap:6px; }
+      .nav{ justify-self:start; }
+    }
+
+    /* ===========================
+       HERO
+    ============================ */
+    .hero{
+      display:grid; gap:14px; justify-items:center; padding:64px 0 44px;
+      color:#f1faf8;
+    }
+    .hero h1{ font-size:clamp(28px,5vw,46px); font-weight:700; }
+    .hero p{ font-size:16px; max-width:850px; color:#e6fffb; }
+
+    /* ===========================
+       SERVICES
+    ============================ */
+    .section{ width:min(1100px,92%); margin:32px auto 64px; text-align:center; }
+    .section h2{ font-size:26px; margin-bottom:8px; }
+    .separator{ width:90px; height:3px; margin:16px auto; background:linear-gradient(90deg,var(--brand-yellow),transparent); border-radius:6px; }
+    .cards{ display:grid; grid-template-columns:1fr; gap:26px; margin-top:28px; }
+    @media(min-width:760px){ .cards{ grid-template-columns:repeat(3,1fr) } }
+    .card{
+      text-align:left; background:var(--card); border:1px solid var(--border);
+      border-radius:16px; padding:22px; box-shadow:var(--shadow);
+      transition:.25s;
+    }
+    .card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-lg); background:#fff; }
+    .card h3{ display:flex; align-items:center; gap:10px; font-size:18px; margin-bottom:8px; }
+
+    .icon{
+      width:38px; height:38px; border-radius:50%;
+      display:grid; place-items:center;
+      background:var(--accent); color:#fff;
+    }
+    .icon svg{ width:20px; height:20px; display:block; }
+
+    .card p{ color:var(--muted); font-size:14px; margin-bottom:14px; }
+
+    /* ===========================
+       BUTTONS (body buttons)
+    ============================ */
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:12px 16px; border-radius:12px;
+      background:var(--btn); color:#fff;
+      border:1px solid transparent; text-decoration:none;
+      font-weight:600; font-size:18px; letter-spacing:0.2px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.14);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .btn:hover{ transform:translateY(-2px); box-shadow:0 12px 26px rgba(0,0,0,0.18); }
+    .btn:active{ transform:translateY(0); box-shadow:0 8px 20px rgba(0,0,0,0.14); }
+
+    /* ===========================
+       MODALS
+    ============================ */
+    .overlay{
+      position:fixed; inset:0; z-index:50;
+      background:rgba(0,0,0,0.45);
+      display:none; align-items:center; justify-content:center; padding:18px;
+    }
+    .overlay.active{ display:flex; }
+
+    .modal{
+      width:min(680px,100%); max-height:90svh;
+      border-radius:16px; background:#ffffff; color:#0f172a;
+      border:1px solid rgba(17,24,39,0.14);
+      box-shadow:0 30px 80px rgba(0,0,0,0.35);
+      overflow:hidden; display:flex; flex-direction:column;
+      animation:pop .18s ease-out both;
+    }
+    .modal-header{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:14px 16px; color:#fff;
+      background:linear-gradient(90deg, var(--accent), #3f8f5b);
+      position:sticky; top:0; z-index:1;
+    }
+    .modal-title{ font-weight:600; }
+    .modal-close{
+      background:transparent; border:none; color:#fff; cursor:pointer;
+      font-size:20px; line-height:1; padding:6px 10px; border-radius:8px;
+    }
+    .modal-close:hover{ background:rgba(255,255,255,0.18); }
+    .modal-body{ padding:16px; overflow:auto; -webkit-overflow-scrolling:touch; }
+    @media (max-width:640px){
+      .overlay{ align-items:stretch; }
+      .modal{ width:100%; height:100svh; max-height:none; border-radius:0; }
+    }
+
+    .grid-2{ display:grid; grid-template-columns:1fr; gap:14px; }
+    @media (min-width:640px){ .grid-2{ grid-template-columns:1fr 1fr; } }
+    label{ display:block; font-weight:600; font-size:13px; margin-bottom:6px; color:#0f172a; }
+    input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"], select, textarea{
+      width:100%; padding:12px 12px; border-radius:10px; border:1px solid rgba(15,23,42,0.18);
+      background:#fff; font:inherit; font-size:14px; color:#0f172a; outline:none;
+      transition:border-color .15s, box-shadow .15s;
+    }
+    textarea{ min-height:90px; resize:vertical; }
+    input:focus, select:focus, textarea:focus{ border-color:#2563eb; box-shadow:0 0 0 3px rgba(37,99,235,0.15); }
+    .field-hint{ font-size:12px; color:#475569; margin-top:6px; }
+    .row{ margin-bottom:12px; }
+    .readonly{ background:#f1f5f9; }
+
+    .actions{ display:flex; gap:10px; justify-content:flex-end; margin-top:14px; }
+    .btn-ghost{
+      padding:10px 14px; border-radius:10px; font-weight:600;
+      background:#f1f5f9; color:#0f172a; border:none; cursor:pointer;
+    }
+    .btn-primary{
+      padding:12px 16px; border-radius:10px; font-weight:700; letter-spacing:.2px;
+      background:var(--btn); color:#fff; border:none; cursor:pointer;
+      box-shadow:0 10px 24px rgba(0,0,0,0.22);
+      transition: transform .15s ease;
+    }
+    .btn-primary:hover{ transform:translateY(-1px); }
+
+    /* Toast */
+    .toast{
+      position:fixed; bottom:18px; right:18px; z-index:60;
+      background:#0f766e; color:#fff; padding:12px 14px; border-radius:10px;
+      box-shadow:0 12px 24px rgba(0,0,0,0.2); display:none;
+    }
+    .toast.show{ display:block; animation:slideUp .25s ease-out both; }
+
+    /* ===========================
+       FOOTER
+    ============================ */
+    .footer{
+      display:flex; gap:12px; flex-wrap:wrap; justify-content:center;
+      margin:0 auto 26px; width:min(1100px,92%);
+    }
+    .chip{
+      padding:8px 14px; border-radius:999px; background:#fff;
+      border:1px solid var(--border); text-decoration:none; font-size:14px; color:var(--text);
+      transition:.2s; box-shadow:0 6px 14px rgba(0,0,0,0.08);
+    }
+    .chip:hover{ transform:translateY(-2px); }
+    .copy{ text-align:center; width:100%; margin-top:6px; font-size:12px; opacity:.78; }
+
+    /* ===========================
+       FLOATING WHATSAPP
+    ============================ */
+    .fw-whatsapp { position: fixed; right: 16px; bottom: 16px; z-index: 70; }
+    .fw-btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      width:56px; height:56px; border-radius:50%;
+      background:#25D366; color:#fff;
+      box-shadow:0 12px 24px rgba(0,0,0,0.22);
+      border:1px solid rgba(255,255,255,0.35);
+      text-decoration:none; transition: transform .18s, box-shadow .18s, background .18s;
+    }
+    .fw-btn:hover{ transform:translateY(-2px); box-shadow:0 16px 32px rgba(0,0,0,0.26); background:#20c65a; }
+    .fw-btn svg{ display:block; }
+    .fw-pulse{
+      position:absolute; inset:-8px; border-radius:999px;
+      background:rgba(37,211,102,0.18); filter:blur(8px); opacity:.8;
+      animation: fwPulse 2.2s ease-in-out infinite; z-index:-1;
+    }
+    @keyframes fwPulse{ 0%{transform:scale(.9);opacity:.55;} 50%{transform:scale(1.05);opacity:.85;} 100%{transform:scale(.9);opacity:.55;} }
+
+    /* Animations */
+    @keyframes pop{ from{ transform:scale(.98); opacity:.7; } to{ transform:scale(1); opacity:1; } }
+    @keyframes slideUp{ from{ opacity:0; transform:translateY(10px);} to{ opacity:1; transform:translateY(0);} }
+  </style>
+</head>
+
+<body>
+
+  <!-- BANNER -->
+  <header class="banner">
+    <div class="topbar">
+      <!-- Brand (clickable) -->
+      <a class="brand" href="index.html" aria-label="Fodel Travels — Home">
+        <div class="brand-badge" aria-hidden="true">🏨</div>
+        <span>Fodel Travels</span>
+      </a>
+
+      <!-- Right-side compact buttons -->
+      <nav class="nav" aria-label="Primary">
+        <a class="pill-btn reviews-btn" href="reviews-travels.html">⭐ Reviews</a>
+        <a class="pill-btn home-btn" href="index.html">← Home</a>
+      </nav>
+    </div>
+
+    <div class="banner-inner">
+      <div class="hero">
+        <h1>Hotel Booking, Banquets &amp; Group Travel</h1>
+        <p>Tell us your requirement and we’ll share curated hotel options
+          across Katra Vaishno Devi, Jammu and Srinagar Kashmir.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- SERVICES -->
+  <section class="section" aria-labelledby="services-title">
+    <h2 id="services-title">Travel Services</h2>
+    <div class="separator" aria-hidden="true"></div>
+
+    <div class="cards">
+      <!-- Hotel Booking -->
+      <div class="card">
+        <h3>
+          <span class="icon" aria-hidden="true">
+            <!-- Hotel / bed icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                 viewBox="0 0 24 24" fill="white" aria-hidden="true" role="img" focusable="false">
+              <path d="M4 7h12a4 4 0 0 1 4 4v5h-2v-3H4v3H2v-6a3 3 0 0 1 2-3zm2 2a2 2 0 1 0 0 4h6a2 2 0 1 0 0-4H6z"/>
+            </svg>
+          </span>
+          Hotel Booking
+        </h3>
+        <p>Hotels in Katra Vaishno Devi, Jammu city &amp; Srinagar Kashmir.</p>
+        <button class="btn" data-open="modal-hotel" aria-haspopup="dialog" aria-label="Open hotel room requirement form">
+          Room Requirement →
+        </button>
+      </div>
+
+      <!-- Banquet / Events -->
+      <div class="card">
+        <h3>
+          <span class="icon" aria-hidden="true">
+            <!-- Event hall / stage icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                 viewBox="0 0 24 24" fill="white" aria-hidden="true" role="img" focusable="false">
+              <path d="M3 6h18v12H3z"/>
+              <path d="M3 9h18v2H3zM7 18h2v3H7zM15 18h2v3h-2z"/>
+            </svg>
+          </span>
+          Banquet &amp; Events
+        </h3>
+        <p>Destination weddings, banquets and corporate events.</p>
+        <button class="btn" data-open="modal-banquet" aria-haspopup="dialog" aria-label="Open banquet and event inquiry form">
+          Banquet Inquiry →
+        </button>
+      </div>
+
+      <!-- Group Booking -->
+      <div class="card">
+        <h3>
+          <span class="icon" aria-hidden="true">
+            <!-- Group / users icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                 viewBox="0 0 24 24" fill="white" aria-hidden="true" role="img" focusable="false">
+              <path d="M16 11a3 3 0 1 0-3-3 3 3 0 0 0 3 3ZM7 12a3 3 0 1 0-3-3 3 3 0 0 0 3 3Z"/>
+              <path d="M15 14c-2.7 0-8 1.35-8 4v2h12v-2c0-2.65-5.3-4-8-4Z"/>
+              <path d="M7 15c-2.21 0-5 1.11-5 3v2h6v-2c0-1.23.56-2.14 1.42-2.84A9.5 9.5 0 0 0 7 15Z"/>
+            </svg>
+          </span>
+          Group Booking
+        </h3>
+        <p>Large hotel bookings for pilgrim groups and corporate travel.</p>
+        <button class="btn" data-open="modal-group" aria-haspopup="dialog" aria-label="Open group booking request form">
+          Group Booking →
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" aria-label="Contact">
+    <a href="mailto:sales@fodeltravels.in" class="chip">📧 sales@fodeltravels.in</a>
+    <a href="tel:+919797459260" class="chip">📞 +91 9797459260</a>
+    <div class="copy">© 2015–2026 Fodel India — Fodel Travels</div>
+  </footer>
+
+  <!-- ===========================
+       MODALS
+  ============================ -->
+  <!-- Hotel Booking Modal -->
+  <div id="modal-hotel" class="overlay" role="dialog" aria-modal="true" aria-labelledby="hotel-title">
+    <div class="modal" tabindex="-1">
+      <div class="modal-header">
+        <div class="modal-title" id="hotel-title">Hotel Room Requirement</div>
+        <button class="modal-close" data-close aria-label="Close">✕</button>
+      </div>
+      <form class="modal-body" id="form-hotel">
+        <div class="row">
+          <label for="hotel-name">Hotel name you’re planning to stay (or short name)</label>
+          <input id="hotel-name" name="hotelName" type="text" placeholder="e.g., Marriott Katra or Near Shrine Board" required>
+        </div>
+
+        <div class="grid-2">
+          <div class="row">
+            <label for="checkin">Check‑in date</label>
+            <input id="checkin" name="checkin" type="date" required>
+          </div>
+          <div class="row">
+            <label for="checkout">Check‑out date</label>
+            <input id="checkout" name="checkout" type="date" required>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="row">
+            <label for="nights">No. of nights</label>
+            <input id="nights" name="nights" type="number" min="1" class="readonly" readonly>
+          </div>
+          <div class="row">
+            <label for="rooms">No. of rooms</label>
+            <input id="rooms" name="rooms" type="number" min="1" placeholder="e.g., 2" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <label for="category">Room category preference (optional)</label>
+          <input id="category" name="category" type="text" placeholder="e.g., Deluxe, Suite, Mountain View">
+        </div>
+
+        <div class="grid-2">
+          <div class="row">
+            <label for="meal">Meal plan</label>
+            <select id="meal" name="meal" required>
+              <option value="">Select</option>
+              <option>EP (Room Only)</option>
+              <option>CP (Room + Breakfast)</option>
+              <option>MAP (Breakfast + One Meal)</option>
+              <option>APAI (All Meals)</option>
+            </select>
+          </div>
+          <div class="row">
+            <label for="adults">No. of adults</label>
+            <input id="adults" name="adults" type="number" min="1" placeholder="e.g., 2" required>
+          </div>
+          <!-- NEW: Extra bed under Adults -->
+          <div class="row">
+            <label for="extra-bed">Extra bed (optional)</label>
+            <input id="extra-bed" name="extraBed" type="number" min="0" placeholder="e.g., 1">
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="row">
+            <label for="mobile">Mobile</label>
+            <input id="mobile" name="mobile" type="tel" inputmode="tel" pattern="[0-9+\-\s]{8,15}" placeholder="+91 9XXXXXXXXX" required>
+            <div class="field-hint">Digits only; include country code if outside India.</div>
+          </div>
+          <div class="row">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="name@example.com" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <label for="notes">Additional notes (optional)</label>
+          <textarea id="notes" name="notes" placeholder="Any special requests, bed type, late arrival, etc."></textarea>
+        </div>
+
+        <div class="actions">
+          <button class="btn-ghost" type="button" data-close>Cancel</button>
+          <button class="btn-primary" type="submit">Submit Request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Banquet / Event Modal -->
+  <div id="modal-banquet" class="overlay" role="dialog" aria-modal="true" aria-labelledby="banquet-title">
+    <div class="modal" tabindex="-1">
+      <div class="modal-header">
+        <div class="modal-title" id="banquet-title">Banquet / Event Inquiry</div>
+        <button class="modal-close" data-close aria-label="Close">✕</button>
+      </div>
+      <form class="modal-body" id="form-banquet">
+        <div class="grid-2">
+          <div class="row">
+            <label for="event-date">Event date</label>
+            <input id="event-date" name="eventDate" type="date" required>
+          </div>
+          <div class="row">
+            <label for="min-guarantee">Minimum guarantee (adults)</label>
+            <input id="min-guarantee" name="minGuarantee" type="number" min="10" placeholder="e.g., 100" required>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="row">
+            <label for="venue">Preferred hotel / venue (optional)</label>
+            <input id="venue" name="venue" type="text" placeholder="e.g., Banquet name / Hotel">
+          </div>
+          <div class="row">
+            <label for="banquet-session">Session</label>
+            <select id="banquet-session" name="session" required>
+              <option value="">Select</option>
+              <option>Breakfast</option>
+              <option>Lunch</option>
+              <option>Hi-Tea</option>
+              <option>Dinner</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="row">
+            <label for="event-start">Event start time (optional)</label>
+            <input id="event-start" name="eventStart" type="text" placeholder="e.g., 11:00 AM">
+          </div>
+          <div class="row">
+            <label for="event-end">Event end time (optional)</label>
+            <input id="event-end" name="eventEnd" type="text" placeholder="e.g., 03:00 PM">
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="row">
+            <label for="banquet-mobile">Mobile</label>
+            <input id="banquet-mobile" name="mobile" type="tel" inputmode="tel" pattern="[0-9+\-\s]{8,15}" placeholder="+91 9XXXXXXXXX" required>
+          </div>
+          <div class="row">
+            <label for="banquet-email">Email</label>
+            <input id="banquet-email" name="email" type="email" placeholder="name@example.com" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <label for="banquet-notes">Additional notes (optional)</label>
+          <textarea id="banquet-notes" name="notes" placeholder="Decoration, stage, AV, seating style, etc."></textarea>
+        </div>
+
+        <div class="actions">
+          <button class="btn-ghost" type="button" data-close>Cancel</button>
+          <button class="btn-primary" type="submit">Submit Request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Group Booking Modal -->
+  <div id="modal-group" class="overlay" role="dialog" aria-modal="true" aria-labelledby="group-title">
+    <div class="modal" tabindex="-1">
+      <div class="modal-header">
+        <div class="modal-title" id="group-title">Group Booking Request</div>
+        <button class="modal-close" data-close aria-label="Close">✕</button>
+      </div>
+      <form class="modal-body" id="form-group">
+        <div class="row">
+          <label for="group-name">Group / Company name</label>
+          <input id="group-name" name="groupName" type="text" placeholder="e.g., ABC Pilgrims Group" required>
+        </div>
+
+        <div class="grid-2">
+          <div class="row">
+            <label for="group-checkin">Check‑in date</label>
+            <input id="group-checkin" name="checkin" type="date" required>
+          </div>
+          <div class="row">
+            <label for="group-checkout">Check‑out date</label>
+            <input id="group-checkout" name="checkout" type="date" required>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="row">
+            <label for="group-rooms">No. of rooms</label>
+            <input id="group-rooms" name="rooms" type="number" min="1" placeholder="e.g., 15" required>
+          </div>
+          <div class="row">
+            <label for="group-email">Email</label>
+            <input id="group-email" name="email" type="email" placeholder="name@example.com" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <label for="group-mobile">Mobile (optional)</label>
+          <input id="group-mobile" name="mobile" type="tel" inputmode="tel" pattern="[0-9+\-\s]{8,15}" placeholder="+91 9XXXXXXXXX">
+        </div>
+
+        <div class="row">
+          <label for="group-notes">Additional notes (optional)</label>
+          <textarea id="group-notes" name="notes" placeholder="Destinations, transport, meal plan, budget, etc."></textarea>
+        </div>
+
+        <div class="actions">
+          <button class="btn-ghost" type="button" data-close>Cancel</button>
+          <button class="btn-primary" type="submit">Submit Request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">✅ Request submitted. We’ll contact you shortly.</div>
+
+  <!-- Floating WhatsApp -->
+  <div class="fw-whatsapp">
+    <a class="fw-btn" href="https://wa.me/919797459260?text=Hi%20Fodel%20Travels%2C%20I%20need%20help%20with%20a%20booking." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+      <span class="fw-pulse" aria-hidden="true"></span>
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+        <path d="M12.04 2a9.8 9.8 0 0 0-8.45 14.7L2 22l5.43-1.53A9.8 9.8 0 1 0 12.04 2zm5.74 14.18c-.24.67-1.4 1.29-1.94 1.33-.52.04-1.18.06-1.91-.12a8 8 0 0 1-4.57-2.61c-1.31-1.44-2.25-3.16-2.35-4.52-.04-.57.17-1.32.72-1.83.21-.2.46-.3.73-.3.12 0 .24 0 .35.02.26.02.41.03.6.47.23.55.79 1.89.86 2.03.07.14.12.3.02.48-.09.19-.14.31-.28.48-.14.17-.29.38-.41.51-.14.14-.29.3-.13.58.15.29.68 1.12 1.46 1.82 1 .88 1.84 1.16 2.16 1.29.33.12.52.11.71-.06.19-.17.82-.77 1.04-1.03.22-.25.44-.21.72-.12.29.1 1.83.86 2.15 1.01.32.14.53.22.61.35.08.13.08.76-.16 1.42z"/>
+      </svg>
+    </a>
+  </div>
+
+  <script>
+    /* Email Delivery:
+       - Formspree (recommended): set endpoint below to receive emails at fodelindia@gmail.com
+       - Mailto fallback: kicks in if endpoint is empty or fails
+    */
+    const FORMSPREE_ENDPOINT = ""; // e.g., "https://formspree.io/f/abcdwxyz"
+
+    const todayISO = () => new Date().toISOString().split('T')[0];
+
+    // Modal open/close + lock body scroll
+    const overlays = document.querySelectorAll('.overlay');
+
+    document.addEventListener('click', (e) => {
+      // opener
+      const opener = e.target.closest('[data-open]');
+      if (opener){
+        const openId = opener.getAttribute('data-open');
+        const ov = document.getElementById(openId);
+        if (ov){
+          document.body.classList.add('modal-open');
+          ov.classList.add('active');
+          const modal = ov.querySelector('.modal');
+          const body = ov.querySelector('.modal-body');
+          if (body) body.scrollTop = 0;
+          if (modal){ modal.setAttribute('tabindex','-1'); modal.focus({ preventScroll: true }); }
+        }
+        return;
+      }
+
+      // closer
+      const closer = e.target.closest('[data-close]');
+      if (closer){
+        const ov = closer.closest('.overlay');
+        if (ov) ov.classList.remove('active');
+        if (![...document.querySelectorAll('.overlay')].some(o => o.classList.contains('active'))){
+          document.body.classList.remove('modal-open');
+        }
+        return;
+      }
+
+      // backdrop to close
+      if (e.target.classList.contains('overlay')){
+        e.target.classList.remove('active');
+        if (![...document.querySelectorAll('.overlay')].some(o => o.classList.contains('active'))){
+          document.body.classList.remove('modal-open');
+        }
+      }
+    });
+
+    // ESC to close
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape'){
+        overlays.forEach(o => o.classList.remove('active'));
+        document.body.classList.remove('modal-open');
+      }
+    });
+
+    // Hotel: date constraints + nights calc
+    const checkin = document.getElementById('checkin');
+    const checkout = document.getElementById('checkout');
+    const nights = document.getElementById('nights');
+    if (checkin && checkout){
+      const t = todayISO();
+      checkin.min = t; checkout.min = t;
+      const calcNights = () => {
+        if (checkin.value && checkout.value){
+          const ci = new Date(checkin.value), co = new Date(checkout.value);
+          const diff = (co - ci) / (1000*60*60*24);
+          nights.value = diff > 0 ? diff : '';
+        } else { nights.value = ''; }
+      };
+      checkin.addEventListener('change', () => {
+        checkout.min = checkin.value || t;
+        if (checkout.value && checkout.value <= checkin.value) checkout.value = '';
+        calcNights();
+      });
+      checkout.addEventListener('change', calcNights);
+    }
+
+    // Group: date constraints
+    const gIn = document.getElementById('group-checkin');
+    const gOut = document.getElementById('group-checkout');
+    if (gIn && gOut){
+      const t = todayISO();
+      gIn.min = t; gOut.min = t;
+      gIn.addEventListener('change', () => {
+        gOut.min = gIn.value || t;
+        if (gOut.value && gOut.value <= gIn.value) gOut.value = '';
+      });
+    }
+
+    // Toast
+    const toast = document.getElementById('toast');
+    function showToast(msg){
+      if (msg) toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2600);
+    }
+
+    // Serialize
+    function serialize(form){ return Object.fromEntries(new FormData(form).entries()); }
+
+    // Submit with Formspree + mailto fallback
+    async function wireForm(formId, subject){
+      const form = document.getElementById(formId);
+      if (!form) return;
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!form.checkValidity()){
+          form.reportValidity();
+          return;
+        }
+        const data = serialize(form);
+        data._page = location.href;
+        data._form = formId;
+
+        let sent = false;
+        if (FORMSPREE_ENDPOINT && FORMSPREE_ENDPOINT.includes("/f/")){
+          try{
+            const resp = await fetch(FORMSPREE_ENDPOINT, {
+              method:"POST",
+              headers:{ "Accept":"application/json" },
+              body:new FormData(form)
+            });
+            sent = resp.ok;
+          }catch(err){ sent = false; }
+        }
+
+        if (!sent){
+          const to = "fodelindia@gmail.com";
+          const body = Object.entries(data).map(([k,v]) => `${k}: ${v}`).join("%0A");
+          const mailto = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${body}`;
+          window.location.href = mailto;
+        }
+
+        form.reset();
+        const overlay = form.closest('.overlay');
+        if (overlay) overlay.classList.remove('active');
+        document.body.classList.remove('modal-open');
+        showToast('✅ Request submitted. We’ll contact you shortly.');
+      });
+    }
+
+    wireForm('form-hotel',  'Fodel Travels — Hotel Room Requirement');
+    wireForm('form-banquet','Fodel Travels — Banquet/Event Inquiry');
+    wireForm('form-group',  'Fodel Travels — Group Booking Request');
+  </script>
+</body>
+</html>
