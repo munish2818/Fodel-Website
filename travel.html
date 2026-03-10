@@ -111,6 +111,18 @@
       display:flex; justify-content:space-between; align-items:center; gap:12px;
       color:#fff;
     }
+    .topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  width:100%;
+}
+
+.top-actions{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
     .brand{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:20px; }
     .brand-badge{
       width:36px; height:36px; border-radius:50%;
@@ -314,14 +326,25 @@
         Fodel Travels
 <div class="topbar">
 
-  <a class="home-btn" href="/index.html" aria-label="Back to home">⟵ Home</a>
-
   <div class="brand">
     <div class="brand-badge" aria-hidden="true">✈</div>
     Fodel Travels
   </div>
 
   <a class="reviews-btn" href="reviews-travels.html">⭐ Reviews</a>
+  <div class="topbar">
+
+  <div class="brand">
+    <div class="brand-badge" aria-hidden="true">✈</div>
+    Fodel Travels
+  </div>
+
+  <div class="top-actions">
+    <a class="reviews-btn" href="reviews-travels.html">⭐ Reviews</a>
+    <a class="home-btn" href="/index.html" aria-label="Back to home">⟵ Home</a>
+  </div>
+
+</div>
 
 </div>
 
