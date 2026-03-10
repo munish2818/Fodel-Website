@@ -904,4 +904,120 @@
 
       const payload = {
         tripType: type,
-        vehicle: vLabel,
+               vehicle: vLabel,
+        cars: nCars,
+        passengers: pax.value || "",
+        addons: addons.filter(a => a.checked).map(a => a.value).join(", "),
+        notes: byId("notes").value || "",
+        name: byId("name").value || "",
+        mobile: byId("mobile").value || "",
+        email: byId("email").value || "",
+        preferredContact: byId("pref-contact").value || ""
+      };
+
+      if (type === "oneway" || type === "round") {
+        payload.pickup = pickupOtherToggle.checked ? pickupOther.value : selPickup.value;
+        payload.drop = dropOtherToggle.checked ? dropOther.value : selDrop.value;
+        payload.date = date.value;
+        payload.time = time.value;
+        payload.returnDate = rdate.value || "";
+        payload.returnTime = rtime.value || "";
+        payload.flight = byId("flight").value || "";
+        payload.train = byId("train").value || "";
+        payload.meet = byId("meet").value || "";
+      }
+
+      if (type === "local") {
+        payload.localCity = byId("local-city").value;
+        payload.localPackage = byId("local-package").value;
+        payload.localDate = byId("local-date").value;
+      }
+
+      if (type === "multi") {
+        const legs = [...legsBox.querySelectorAll(".leg")].map(el => ({
+          from: el.querySelector(".leg-from").value,
+          to: el.querySelector(".leg-to").value,
+          date: el.querySelector(".leg-date").value,
+          time: el.querySelector(".leg-time").value
+        }));
+        payload.legs = legs;
+      }
+
+      return payload;
+    }
+
+    function buildTextMessage(data){
+      let txt = `New Transport Request\n\n`;
+      txt += `Name: ${data.name}\n`;
+      txt += `Mobile: ${data.mobile}\n`;
+      if(data.email) txt += `Email: ${data.email}\n`;
+      txt += `Trip Type: ${data.tripType}\n`;
+      txt += `Vehicle: ${data.vehicle} (${data.cars} car)\n`;
+      if(data.passengers) txt += `Passengers: ${data.passengers}\n`;
+
+      if(data.pickup) txt += `Pickup: ${data.pickup}\n`;
+      if(data.drop) txt += `Drop: ${data.drop}\n`;
+
+      if(data.date) txt += `Date: ${data.date}\n`;
+      if(data.time) txt += `Time: ${data.time}\n`;
+
+      if(data.returnDate) txt += `Return Date: ${data.returnDate}\n`;
+      if(data.returnTime) txt += `Return Time: ${data.returnTime}\n`;
+
+      if(data.localCity) txt += `Local City: ${data.localCity}\n`;
+      if(data.localPackage) txt += `Package: ${data.localPackage}\n`;
+
+      if(data.legs){
+        txt += `\nMulti City Route:\n`;
+        data.legs.forEach((l,i)=>{
+          txt += `${i+1}. ${l.from} → ${l.to} (${l.date} ${l.time})\n`;
+        });
+      }
+
+      if(data.addons) txt += `Addons: ${data.addons}\n`;
+      if(data.notes) txt += `Notes: ${data.notes}\n`;
+
+      return txt;
+    }
+
+    async function submitRequest(){
+      const data = serializeRequest();
+
+      if(!data.name || !data.mobile){
+        alert("Please fill name and mobile");
+        return;
+      }
+
+      const message = buildTextMessage(data);
+
+      try{
+        if(FORMSPREE_ENDPOINT){
+          await fetch(FORMSPREE_ENDPOINT,{
+            method:"POST",
+            headers:{ "Content-Type":"application/json" },
+            body: JSON.stringify({
+              message: message
+            })
+          });
+        }
+
+        const wa = `https://wa.me/919797459260?text=${encodeURIComponent(message)}`;
+        window.open(wa,"_blank");
+
+        showToast("Request Sent");
+
+      }catch(err){
+        console.error(err);
+
+        const mail = `mailto:sales@fodeltravels.in?subject=Transport Request&body=${encodeURIComponent(message)}`;
+        window.location.href = mail;
+      }
+    }
+
+    submitBtn.addEventListener("click", submitRequest);
+
+    refreshEstimate();
+  </script>
+
+</body>
+</html>
