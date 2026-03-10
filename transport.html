@@ -12,6 +12,9 @@
   <meta name="robots" content="index,follow" />
   <meta name="theme-color" content="#e11924" />
   <link rel="canonical" href="https://www.fodel.in/transport.html" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Fodel Transport — Taxi, Transfers & Multi-city Tours" />
@@ -19,6 +22,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.fodel.in/transport.html" />
   <meta property="og:image" content="https://www.fodel.in/og-transport.jpg" />
+  <meta property="og:site_name" content="Fodel Transport" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -26,7 +30,7 @@
   <meta name="twitter:description" content="Book cabs for Jammu, Katra, Patnitop, Srinagar, Gulmarg, Pahalgam & more." />
   <meta name="twitter:image" content="https://www.fodel.in/og-transport.jpg" />
 
-  <!-- Hidden SEO keywords block (kept minimal & non-spammy) -->
+  <!-- Hidden SEO keywords (minimal) -->
   <meta name="keywords" content="jammu taxi, katra taxi, patnitop taxi, srinagar taxi, gulmarg cab, pahalgam cab, vaishno devi taxi, jammu airport transfer, jammu railway taxi, multi city tour jammu, katra to patnitop cab, srinagar to jammu taxi" />
 
   <!-- Structured Data -->
@@ -43,7 +47,9 @@
       "url":"https://www.fodel.in"
     },
     "telephone":"+91-9797459260",
-    "sameAs":["https://wa.me/919797459260"]
+    "sameAs":["https://wa.me/919797459260"],
+    "priceRange":"₹₹",
+    "currenciesAccepted":"INR"
   }
   </script>
 
@@ -55,21 +61,24 @@
   <!-- DNS prefetch for WhatsApp click-through -->
   <link rel="dns-prefetch" href="//wa.me"/>
 
+  <!-- Preload banner image (optional; keep if file exists) -->
+  <link rel="preload" as="image" href="transport-banner.jpg" imagesrcset="transport-banner.jpg" />
+
   <style>
     /* ===========================
        THEME
-       (Transport gets RED accent)
+       (Transport is RED accent)
     ============================ */
     :root{
       --page-bg:#f8fafc;
 
       --yellow:#f9e64a;         /* Fodel brand yellow */
-      --green:#397e51;          /* Fodel brand green */
+      --green:#397e51;          /* Fodel legacy green (unused in UI here) */
 
-      /* Banner (kept teal/green family for continuity with Fodel visuals) */
-      --banner-deep:#0a4f4a;
-      --banner-mid:#0b5f58;
-      --banner-top:#0f766e;
+      /* Banner (RED family now; removed teal/green) */
+      --banner-deep:#770c12;
+      --banner-mid:#a31018;
+      --banner-top:#c8141d;
 
       /* TRANSPORT ACCENT (RED) */
       --accent:#e11924;
@@ -108,15 +117,20 @@
       transition:outline-color .2s ease;
     }
 
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+    }
+
     /* ===========================
        BANNER
     ============================ */
     .banner{
       position:relative; min-height:56vh;
-      display:grid; place-items:center; text-align:center; color:#ecfeff;
+      display:grid; place-items:center; text-align:center; color:#ffeef0;
       background:
-        radial-gradient(900px 600px at 85% 15%, rgba(249,230,74,0.25), transparent 60%),
-        radial-gradient(900px 600px at 15% 85%, rgba(249,230,74,0.18), transparent 65%),
+        radial-gradient(900px 600px at 85% 15%, rgba(249,230,74,0.20), transparent 60%),
+        radial-gradient(900px 600px at 15% 85%, rgba(249,230,74,0.12), transparent 65%),
         linear-gradient(160deg, var(--banner-top) 0%, var(--banner-mid) 55%, var(--banner-deep) 100%),
         url('transport-banner.jpg') center/cover no-repeat;
       background-blend-mode: overlay, overlay, normal, multiply;
@@ -171,9 +185,9 @@
       .nav{ justify-self:start; }
     }
 
-    .hero{ display:grid; gap:14px; justify-items:center; padding:64px 0 44px; color:#e8fffb; }
+    .hero{ display:grid; gap:14px; justify-items:center; padding:64px 0 44px; color:#ffe8ea; }
     .hero h1{ font-size:clamp(28px,5vw,46px); font-weight:700; text-shadow:0 3px 14px rgba(0,0,0,.25); }
-    .hero p{ font-size:16px; max-width:820px; color:#dff9f4; }
+    .hero p{ font-size:16px; max-width:820px; color:#ffe8ea; opacity:.92; }
 
     /* ===========================
        SECTIONS / CARDS / FORMS
@@ -276,14 +290,14 @@
     .toast{ position:fixed; bottom:18px; right:18px; z-index:90; background:var(--accent); color:#fff; padding:12px 14px; border-radius:10px; box-shadow:0 12px 24px rgba(0,0,0,0.2); display:none; }
     .toast.show{ display:block; animation:slideUp .25s ease-out both; }
 
-    /* Floating WhatsApp */
+    /* Floating WhatsApp (UI button is red as requested) */
     .fw-whatsapp{
       position: fixed; right: 16px; bottom: 16px; z-index: 60;
       display:flex; align-items:center; gap:10px;
     }
     .fw-whatsapp .fab{
       width:56px; height:56px; border-radius:50%; display:grid; place-items:center;
-      background:#25D366; color:#fff; font-size:22px; box-shadow:0 10px 22px rgba(0,0,0,.22);
+      background:var(--accent); color:#fff; font-size:22px; box-shadow:0 10px 22px rgba(0,0,0,.22);
       transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
       will-change:transform;
     }
@@ -312,15 +326,15 @@
   </div>
 
   <!-- ========== BANNER ========== -->
-  <header class="banner">
+  <header class="banner" role="banner">
     <div class="topbar">
       <a class="brand" href="index.html" aria-label="Fodel — Home">
         <div class="brand-badge" aria-hidden="true">🚘</div>
         <span>Fodel Transport</span>
       </a>
       <nav class="nav" aria-label="Primary">
-        <a class="pill-btn reviews-btn" href="reviews-travels.html">⭐ Reviews</a>
-        <a class="pill-btn home-btn" href="index.html">← Home</a>
+        <a class="pill-btn reviews-btn" href="reviews-travels.html" aria-label="Read customer reviews">⭐ Reviews</a>
+        <a class="pill-btn home-btn" href="index.html" aria-label="Back to Home">← Home</a>
       </nav>
     </div>
 
@@ -333,9 +347,9 @@
   </header>
 
   <!-- ========== BOOKING FORM ========== -->
-  <section class="section">
+  <section class="section" aria-labelledby="transport-title">
     <div class="card">
-      <h2>Transport Requirement</h2>
+      <h2 id="transport-title">Transport Requirement</h2>
       <p class="muted">Tell us your route and vehicle needs. We’ll confirm availability and share the best price.</p>
 
       <!-- Trip type -->
@@ -351,18 +365,18 @@
         <div class="grid-2">
           <div class="row">
             <label for="pickup">Pickup location</label>
-            <select id="pickup"></select>
+            <select id="pickup" autocomplete="address-level2"></select>
             <div class="inline" style="margin-top:8px">
               <label class="chip"><input type="checkbox" id="pickup-other-toggle"> Other pickup</label>
-              <input id="pickup-other" type="text" placeholder="Type custom pickup location" style="display:none;">
+              <input id="pickup-other" type="text" placeholder="Type custom pickup location" style="display:none;" inputmode="text" autocomplete="off">
             </div>
           </div>
           <div class="row">
             <label for="drop">Drop location</label>
-            <select id="drop"></select>
+            <select id="drop" autocomplete="address-level2"></select>
             <div class="inline" style="margin-top:8px">
               <label class="chip"><input type="checkbox" id="drop-other-toggle"> Other drop</label>
-              <input id="drop-other" type="text" placeholder="Type custom drop location" style="display:none;">
+              <input id="drop-other" type="text" placeholder="Type custom drop location" style="display:none;" inputmode="text" autocomplete="off">
             </div>
           </div>
         </div>
@@ -394,11 +408,11 @@
           <div class="grid-2">
             <div class="row">
               <label for="flight">Flight no. (if airport)</label>
-              <input id="flight" type="text" placeholder="e.g., UK 123">
+              <input id="flight" type="text" placeholder="e.g., UK 123" inputmode="text" autocomplete="off">
             </div>
             <div class="row">
               <label for="train">Train no./name (if railway)</label>
-              <input id="train" type="text" placeholder="e.g., 12426 Jammu Rajdhani">
+              <input id="train" type="text" placeholder="e.g., 12426 Jammu Rajdhani" inputmode="text" autocomplete="off">
             </div>
           </div>
           <div class="row">
@@ -449,21 +463,21 @@
       <div class="grid-2" style="margin-top:8px;">
         <div class="row">
           <label for="vehicle">Vehicle type</label>
-          <select id="vehicle"></select>
+          <select id="vehicle" required></select>
         </div>
         <div class="row">
           <label for="cars">How many cars</label>
-          <input id="cars" type="number" min="1" value="1">
+          <input id="cars" type="number" min="1" value="1" inputmode="numeric">
         </div>
       </div>
       <div class="grid-2">
         <div class="row">
           <label for="pax">No. of passengers (approx.)</label>
-          <input id="pax" type="number" min="1" placeholder="e.g., 4">
+          <input id="pax" type="number" min="1" placeholder="e.g., 4" inputmode="numeric">
         </div>
         <div class="row">
           <label for="addons">Add‑ons</label>
-          <div class="inline">
+          <div class="inline" id="addons">
             <label class="chip"><input type="checkbox" value="childseat" class="addon"> Child seat</label>
             <label class="chip"><input type="checkbox" value="roofcarrier" class="addon"> Roof carrier</label>
             <label class="chip"><input type="checkbox" value="englishdriver" class="addon"> Driver (English)</label>
@@ -474,30 +488,30 @@
       <!-- NOTES -->
       <div class="row">
         <label for="notes">Additional notes (optional)</label>
-        <textarea id="notes" placeholder="Any stops, hotel details, delays, accessibility needs, etc."></textarea>
+        <textarea id="notes" placeholder="Any stops, hotel details, delays, accessibility needs, etc." inputmode="text" autocomplete="off"></textarea>
       </div>
 
       <!-- ESTIMATE -->
-      <div class="estimate" id="estimate">
+      <div class="estimate" id="estimate" aria-live="polite">
         <div><strong>Estimate:</strong> <span id="est-text">Add locations to see estimate</span></div>
-        <button type="button" class="btn" id="refresh-est">Refresh</button>
+        <button type="button" class="btn" id="refresh-est" aria-label="Refresh estimate">Refresh</button>
       </div>
 
       <!-- CONTACT & SUBMIT -->
       <div class="grid-2" style="margin-top:12px;">
         <div class="row">
           <label for="name">Your name</label>
-          <input id="name" type="text" placeholder="Full name" required>
+          <input id="name" type="text" placeholder="Full name" required autocomplete="name">
         </div>
         <div class="row">
           <label for="mobile">Mobile</label>
-          <input id="mobile" type="tel" inputmode="tel" pattern="[0-9+\-\s]{8,15}" placeholder="+91 9XXXXXXXXX" required>
+          <input id="mobile" type="tel" inputmode="tel" pattern="[0-9+\-\s]{8,15}" placeholder="+91 9XXXXXXXXX" required autocomplete="tel">
         </div>
       </div>
       <div class="grid-2">
         <div class="row">
           <label for="email">Email (optional)</label>
-          <input id="email" type="email" placeholder="name@example.com">
+          <input id="email" type="email" placeholder="name@example.com" autocomplete="email">
         </div>
         <div class="row">
           <label for="pref-contact">Prefer contact on</label>
@@ -532,7 +546,7 @@
     <div class="modal">
       <div class="modal-header">
         <div class="modal-title" id="admin-title">Fodel Transport — Admin Console</div>
-        <button class="modal-close" data-close>✕</button>
+        <button class="modal-close" data-close aria-label="Close admin console">✕</button>
       </div>
       <div class="modal-body">
         <div class="card" style="margin-bottom:12px;">
@@ -560,21 +574,21 @@
           <div class="grid-2">
             <div class="row">
               <label>Sedan (Dzire/Amaze)</label>
-              <input id="p-sedan" type="number" min="0" placeholder="₹ e.g., 1900">
+              <input id="p-sedan" type="number" min="0" placeholder="₹ e.g., 1900" inputmode="numeric">
             </div>
             <div class="row">
               <label>SUV (Ertiga)</label>
-              <input id="p-suv" type="number" min="0" placeholder="₹">
+              <input id="p-suv" type="number" min="0" placeholder="₹" inputmode="numeric">
             </div>
           </div>
           <div class="grid-2">
             <div class="row">
               <label>Innova / Crysta</label>
-              <input id="p-innova" type="number" min="0" placeholder="₹">
+              <input id="p-innova" type="number" min="0" placeholder="₹" inputmode="numeric">
             </div>
             <div class="row">
               <label>Tempo Traveller 12 / 17</label>
-              <input id="p-tt" type="number" min="0" placeholder="₹">
+              <input id="p-tt" type="number" min="0" placeholder="₹" inputmode="numeric">
             </div>
           </div>
           <div class="actions">
@@ -588,7 +602,7 @@
           <h3 style="margin-bottom:6px;">Backup / Restore</h3>
           <div class="inline">
             <button class="btn" id="export-json">Export JSON</button>
-            <input type="file" id="import-file" accept="application/json">
+            <input type="file" id="import-file" accept="application/json" aria-label="Import JSON file">
             <button class="btn-ghost" id="import-json">Import</button>
           </div>
           <p class="note">Data is saved in your browser’s localStorage. Use export to keep a backup or to migrate.</p>
@@ -598,12 +612,13 @@
   </div>
 
   <!-- Toast -->
-  <div class="toast" id="toast">Saved</div>
+  <div class="toast" id="toast" role="status" aria-live="polite">Saved</div>
 
   <!-- Floating WhatsApp -->
   <div class="fw-whatsapp" aria-label="WhatsApp quick contact">
-    <a class="tag" target="_blank" rel="noopener" href="https://wa.me/919797459260?text=Hi%20Fodel%20Transport%2C%20I%20need%20a%20cab%20quote.">WhatsApp Us</a>
-    <a class="fab" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" href="https://wa.me/919797459260?text=Hi%20Fodel%20Transport%2C%20I%20need%20a%20cab%20quote.">🟢</a>
+    <a class="tag" target="_blank" rel="noopener noreferrer" href="https://wa.me/919797459260?text=Hi%20Fodel%20Transport%2C%20I%20need%20a%20cab%20quote.">WhatsApp Us</a>
+    <!-- UI color is red; still links to WhatsApp -->
+    <a class="fab" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" href="https://wa.me/919797459260?text=Hi%20Fodel%20Transport%2C%20I%20need%20a%20cab%20quote.">💬</a>
   </div>
 
   <script>
@@ -654,7 +669,8 @@
     const byId = (id) => document.getElementById(id);
     const todayISO = () => new Date().toISOString().split('T')[0];
     const showToast = (msg) => {
-      const t = byId('toast'); t.textContent = msg || t.textContent; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'), 2200);
+      const t = byId('toast'); if(!t) return;
+      t.textContent = msg || t.textContent; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'), 2200);
     };
 
     loadStore();
@@ -710,9 +726,11 @@
 
     // Populate selects from STORE
     function fillLocations(sel){
+      if(!sel) return;
       sel.innerHTML = '<option value="">Select</option>' + STORE.locations.map(l => `<option>${l}</option>`).join('');
     }
     function fillVehicles(){
+      if(!vehicle) return;
       vehicle.innerHTML = '<option value="">Select</option>' + STORE.vehicles.map(v => `<option value="${v.id}">${v.label}</option>`).join('');
     }
     function fillAllLocations(){
@@ -741,15 +759,18 @@
       blockLocal.style.display = (type === 'local') ? '' : 'none';
       blockMulti.style.display = (type === 'multi') ? '' : 'none';
       refreshEstimate();
+      updateFTVisibility();
     }
     tripRadios.forEach(r => r.addEventListener('change', updateTripBlocks));
     updateTripBlocks();
 
     // Other pickup/drop toggles
     function toggleOther(tgl, input, select){
+      if(!tgl || !input || !select) return;
       input.style.display = tgl.checked ? '' : 'none';
       select.disabled = tgl.checked;
       refreshEstimate();
+      updateFTVisibility();
     }
     pickupOtherToggle.addEventListener('change', () => toggleOther(pickupOtherToggle, pickupOther, selPickup));
     dropOtherToggle.addEventListener('change', () => toggleOther(dropOtherToggle, dropOther, selDrop));
@@ -763,7 +784,7 @@
       const showFT = isAirportOrRail(p) || isAirportOrRail(d) || isRailway(p) || isRailway(d);
       blockFT.style.display = showFT ? '' : 'none';
     }
-    [selPickup, selDrop, pickupOther, dropOther, pickupOtherToggle, dropOtherToggle].forEach(el => el.addEventListener('input', updateFTVisibility));
+    [selPickup, selDrop, pickupOther, dropOther, pickupOtherToggle, dropOtherToggle].forEach(el => el && el.addEventListener('input', updateFTVisibility));
     updateFTVisibility();
 
     // Multi-city legs
@@ -792,9 +813,9 @@
           </div>
         </div>
         <div class="leg-actions">
-          <button type="button" class="btn-ghost btn-leg-up">↑</button>
-          <button type="button" class="btn-ghost btn-leg-down">↓</button>
-          <button type="button" class="btn-ghost btn-leg-del">Delete</button>
+          <button type="button" class="btn-ghost btn-leg-up" aria-label="Move leg up">↑</button>
+          <button type="button" class="btn-ghost btn-leg-down" aria-label="Move leg down">↓</button>
+          <button type="button" class="btn-ghost btn-leg-del" aria-label="Delete leg">Delete</button>
         </div>
       `;
       legsBox.appendChild(div);
@@ -807,7 +828,7 @@
       div.querySelector('.btn-leg-up').addEventListener('click', () => { if (div.previousElementSibling) legsBox.insertBefore(div, div.previousElementSibling); refreshEstimate(); });
       div.querySelector('.btn-leg-down').addEventListener('click', () => { if (div.nextElementSibling) legsBox.insertBefore(div.nextElementSibling, div); refreshEstimate(); });
       div.querySelector('.btn-leg-del').addEventListener('click', () => { div.remove(); refreshEstimate(); });
-            [lf, lt, ...div.querySelectorAll('.leg-date, .leg-time')]
+      [lf, lt, ...div.querySelectorAll('.leg-date, .leg-time')]
         .forEach(el => el.addEventListener('input', refreshEstimate));
 
       return div;
@@ -849,10 +870,8 @@
     }
 
     function refreshEstimate() {
-
       const vId = vehicle.value;
       const nCars = Math.max(1, parseInt(cars.value || "1", 10));
-
       const type = tripRadios.find(r => r.checked)?.value || "oneway";
 
       if (!vId) {
@@ -863,7 +882,6 @@
       let legs = [];
 
       if (type === "oneway" || type === "round") {
-
         const p = pickupOtherToggle.checked ? pickupOther.value : selPickup.value;
         const d = dropOtherToggle.checked ? dropOther.value : selDrop.value;
 
@@ -873,27 +891,21 @@
         }
 
         legs.push([p, d]);
-
         if (type === "round") {
           legs.push([d, p]);
         }
 
       } else if (type === "multi") {
-
         const legEls = [...legsBox.querySelectorAll(".leg")];
-
         if (!legEls.length) {
           estText.textContent = "Add trip legs";
           return;
         }
-
         legs = legEls.map(el => [
           el.querySelector(".leg-from").value,
           el.querySelector(".leg-to").value
         ]);
-
       } else {
-
         estText.textContent = "Local package — ask for quote";
         return;
       }
@@ -902,26 +914,16 @@
       let missing = 0;
 
       legs.forEach(([a, b]) => {
-
         const price = getRoutePrice(vId, a, b);
-
         if (price) sum += price;
         else missing++;
-
       });
 
       if (missing) {
-
-        estText.textContent =
-          `${legs.length - missing}/${legs.length} legs priced — remaining ask for quote`;
-
+        estText.textContent = `${legs.length - missing}/${legs.length} legs priced — remaining ask for quote`;
       } else {
-
         const total = sum * nCars;
-
-        estText.textContent =
-          `₹ ${total.toLocaleString("en-IN")} estimate`;
-
+        estText.textContent = `₹ ${total.toLocaleString("en-IN")} estimate`;
       }
     }
 
@@ -930,7 +932,7 @@
     [
       selPickup, selDrop, vehicle, cars,
       date, time, rdate, rtime
-    ].forEach(el => el.addEventListener("input", refreshEstimate));
+    ].forEach(el => el && el.addEventListener("input", refreshEstimate));
 
     /* ===========================
        ADMIN CONSOLE
@@ -941,76 +943,121 @@
     });
 
     adminOv.addEventListener("click", e => {
-
       if (e.target === adminOv || e.target.hasAttribute("data-close")) {
         adminOv.classList.remove("active");
       }
-
     });
 
     function renderLocs() {
-
       locList.innerHTML = "";
-
       STORE.locations.forEach((l, idx) => {
-
         const btn = document.createElement("button");
-
         btn.className = "chip";
         btn.type = "button";
-
         btn.textContent = l + " ✕";
-
         btn.onclick = () => {
-
           STORE.locations.splice(idx, 1);
-
           saveStore();
           fillAllLocations();
           renderLocs();
-
           showToast("Location removed");
-
         };
-
         locList.appendChild(btn);
-
       });
     }
-
     renderLocs();
 
     locAdd.addEventListener("click", () => {
-
       const v = locNew.value.trim();
-
       if (!v) return;
-
       if (!STORE.locations.includes(v)) {
         STORE.locations.push(v);
       }
-
       locNew.value = "";
-
       saveStore();
       fillAllLocations();
       renderLocs();
-
       showToast("Location added");
-
     });
 
     locReset.addEventListener("click", () => {
-
       STORE.locations = [...DEFAULTS.locations];
-
       saveStore();
-
       fillAllLocations();
       renderLocs();
-
       showToast("Locations reset");
+    });
 
+    // Prices
+    function fillPriceSelectors(){
+      fillLocations(priceFrom);
+      fillLocations(priceTo);
+    }
+    fillPriceSelectors();
+
+    priceSave.addEventListener("click", () => {
+      const from = priceFrom.value; const to = priceTo.value;
+      const sedan = parseInt(pSedan.value || "0", 10) || 0;
+      const suv = parseInt(pSuv.value || "0", 10) || 0;
+      const innova = parseInt(pInnova.value || "0", 10) || 0;
+      const tt = parseInt(pTT.value || "0", 10) || 0;
+      if(!from || !to) { alert("Select From and To locations"); return; }
+
+      const key = priceKey(from, to);
+      STORE.priceTable.sedan[key] = sedan;
+      STORE.priceTable.suv[key] = suv;
+      STORE.priceTable.innova[key] = innova;
+      STORE.priceTable.tt[key] = tt;
+
+      saveStore();
+      showToast("Route price saved");
+      refreshEstimate();
+    });
+
+    priceClear.addEventListener("click", () => {
+      const from = priceFrom.value; const to = priceTo.value;
+      if(!from || !to) { alert("Select From and To locations"); return; }
+      const key = priceKey(from, to);
+      delete STORE.priceTable.sedan[key];
+      delete STORE.priceTable.suv[key];
+      delete STORE.priceTable.innova[key];
+      delete STORE.priceTable.tt[key];
+      saveStore();
+      showToast("Route price cleared");
+      refreshEstimate();
+    });
+
+    // Export / Import
+    exportJSON.addEventListener("click", () => {
+      const data = JSON.stringify(STORE, null, 2);
+      const blob = new Blob([data], {type:"application/json"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url; a.download = `fodel-transport-${Date.now()}.json`;
+      document.body.appendChild(a); a.click();
+      a.remove(); URL.revokeObjectURL(url);
+      showToast("Exported");
+    });
+
+    importJSON.addEventListener("click", async () => {
+      const file = importFile.files?.[0];
+      if(!file) { alert("Choose a JSON file to import."); return; }
+      try{
+        const text = await file.text();
+        const obj = JSON.parse(text);
+        if(!obj || !obj.locations || !obj.vehicles || !obj.priceTable){
+          alert("Invalid JSON format."); return;
+        }
+        STORE = obj;
+        saveStore();
+        fillVehicles();
+        fillAllLocations();
+        renderLocs();
+        showToast("Imported");
+        refreshEstimate();
+      }catch(e){
+        alert("Failed to import JSON.");
+      }
     });
 
     /* ===========================
@@ -1018,9 +1065,8 @@
     ============================ */
 
     submitBtn.addEventListener("click", () => {
-
-      const name = byId("name").value;
-      const mobile = byId("mobile").value;
+      const name = byId("name").value.trim();
+      const mobile = byId("mobile").value.trim();
 
       if (!name || !mobile) {
         alert("Please fill name and mobile");
@@ -1040,24 +1086,29 @@
       const msg = `Transport Request
 Name: ${name}
 Mobile: ${mobile}
-Pickup: ${pickup}
-Drop: ${drop}
-Date: ${date.value}
-Vehicle: ${vehicle.value}
-Passengers: ${pax.value}
-Notes: ${byId("notes").value}`;
+Pickup: ${pickup || "-"}
+Drop: ${drop || "-"}
+Date: ${date.value || "-"} ${time.value ? ("@" + time.value) : ""}
+Vehicle: ${vehicle.value || "-"}
+Passengers: ${pax.value || "-"}
+Add-ons: ${[...addons].filter(a=>a.checked).map(a=>a.value).join(", ") || "-"}
+Notes: ${byId("notes").value || "-"}`;
 
       const url =
         "https://wa.me/919797459260?text=" +
         encodeURIComponent(msg);
 
-      window.open(url, "_blank");
-
+      window.open(url, "_blank", "noopener,noreferrer");
     });
 
     refreshEstimate();
-
   </script>
+
+  <noscript>
+    <div style="margin:16px auto; width:min(900px,92%); padding:12px; background:#fff3cd; border:1px solid #ffeeba; border-radius:10px; color:#856404;">
+      JavaScript is required for estimates and submission. Please enable JavaScript to use Fodel Transport.
+    </div>
+  </noscript>
 
 </body>
 </html>
