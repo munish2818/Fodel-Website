@@ -10,11 +10,9 @@
   <title>Fodel Travels | Hotel Booking Katra Vaishno Devi | Jammu Kashmir Travel</title>
   <meta name="description" content="Fodel Travels offers hotel booking in Katra Vaishno Devi, Patnitop, Jammu hotel booking, Srinagar hotel booking, banquet events, destination weddings and Kashmir tour packages.">
   <meta name="robots" content="index,follow" />
-
-  <!-- Optional canonical (uncomment and ensure absolute URL) -->
+  <!-- Optional canonical -->
   <!-- <link rel="canonical" href="https://www.fodel.in/travel.html" /> -->
 
-  <!-- Keywords -->
   <meta name="keywords" content="
   hotel booking katra vaishno devi,
   katra hotel group booking,
@@ -39,10 +37,10 @@
   vaishno devi package
   ">
 
-  <!-- Fonts performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 
   <style>
     /* ===========================
@@ -101,30 +99,19 @@
       color:#0b1220;
 
       background:
-        /* soft yellow glow accents */
         radial-gradient(1000px 700px at 85% 15%, rgba(249,230,74,0.25), transparent 60%),
         radial-gradient(900px 600px at 15% 85%, rgba(249,230,74,0.18), transparent 65%),
-        /* travel green gradient */
         linear-gradient(160deg, #0f766e 0%, #0b5f58 55%, #0a4f4a 100%),
-        /* optional background image (kept for future) */
         url('travel-banner.jpg') center/cover no-repeat;
       background-blend-mode: overlay, overlay, normal, multiply;
     }
-    .banner-inner{
-      width:min(1100px,92%);
-      margin:auto;
-      padding:24px;
-    }
+    .banner-inner{ width:min(1100px,92%); margin:auto; padding:24px; }
     .topbar{
-      position:absolute;
-      inset:20px 20px auto 20px;
+      position:absolute; inset:20px 20px auto 20px;
       display:flex; justify-content:space-between; align-items:center; gap:12px;
       color:#fff;
     }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      font-weight:700; font-size:20px;
-    }
+    .brand{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:20px; }
     .brand-badge{
       width:36px; height:36px; border-radius:50%;
       display:grid; place-items:center;
@@ -144,31 +131,16 @@
       display:grid; gap:14px; justify-items:center; padding:64px 0 44px;
       color:#f1faf8;
     }
-    .hero h1{
-      font-size:clamp(28px,5vw,46px); font-weight:700;
-    }
-    .hero p{
-      font-size:16px; max-width:850px; color:#e6fffb;
-    }
+    .hero h1{ font-size:clamp(28px,5vw,46px); font-weight:700; }
+    .hero p{ font-size:16px; max-width:850px; color:#e6fffb; }
 
     /* ===========================
        SERVICES
     ============================ */
-    .section{
-      width:min(1100px,92%);
-      margin:32px auto 64px;
-      text-align:center;
-    }
-    .section h2{
-      font-size:26px; margin-bottom:8px;
-    }
-    .separator{
-      width:90px; height:3px; margin:16px auto;
-      background:linear-gradient(90deg,var(--brand-yellow),transparent); border-radius:6px;
-    }
-    .cards{
-      display:grid; grid-template-columns:1fr; gap:26px; margin-top:28px;
-    }
+    .section{ width:min(1100px,92%); margin:32px auto 64px; text-align:center; }
+    .section h2{ font-size:26px; margin-bottom:8px; }
+    .separator{ width:90px; height:3px; margin:16px auto; background:linear-gradient(90deg,var(--brand-yellow),transparent); border-radius:6px; }
+    .cards{ display:grid; grid-template-columns:1fr; gap:26px; margin-top:28px; }
     @media(min-width:760px){ .cards{ grid-template-columns:repeat(3,1fr) } }
     .card{
       text-align:left; background:var(--card); border:1px solid var(--border);
@@ -176,13 +148,8 @@
       transition:.25s;
     }
     .card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-lg); background:#fff; }
-    .card h3{
-      display:flex; align-items:center; gap:10px; font-size:18px; margin-bottom:8px;
-    }
-    .icon{
-      width:38px; height:38px; border-radius:50%; display:grid; place-items:center;
-      background:var(--accent); color:#fff;
-    }
+    .card h3{ display:flex; align-items:center; gap:10px; font-size:18px; margin-bottom:8px; }
+    .icon{ width:38px; height:38px; border-radius:50%; display:grid; place-items:center; background:var(--accent); color:#fff; }
     .card p{ color:var(--muted); font-size:14px; margin-bottom:14px; }
 
     /* ===========================
@@ -200,7 +167,7 @@
       font-size:18px;
       letter-spacing:0.2px;
       box-shadow:0 8px 20px rgba(0,0,0,0.14);
-      transition: transform .18s ease, box-shadow .18s ease; /* no color change */
+      transition: transform .18s ease, box-shadow .18s ease;
     }
     .btn:hover{ transform:translateY(-2px); box-shadow:0 12px 26px rgba(0,0,0,0.18); }
     .btn:active{ transform:translateY(0); box-shadow:0 8px 20px rgba(0,0,0,0.14); }
@@ -250,9 +217,7 @@
       transition:border-color .15s, box-shadow .15s;
     }
     textarea{ min-height:90px; resize:vertical; }
-    input:focus, select:focus, textarea:focus{
-      border-color:#2563eb; box-shadow:0 0 0 3px rgba(37,99,235,0.15);
-    }
+    input:focus, select:focus, textarea:focus{ border-color:#2563eb; box-shadow:0 0 0 3px rgba(37,99,235,0.15); }
     .field-hint{ font-size:12px; color:#475569; margin-top:6px; }
     .row{ margin-bottom:12px; }
     .readonly{ background:#f1f5f9; }
@@ -288,8 +253,7 @@
     .chip{
       padding:8px 14px; border-radius:999px; background:#fff;
       border:1px solid var(--border); text-decoration:none; font-size:14px; color:var(--text);
-      transition:.2s;
-      box-shadow:0 6px 14px rgba(0,0,0,0.08);
+      transition:.2s; box-shadow:0 6px 14px rgba(0,0,0,0.08);
     }
     .chip:hover{ transform:translateY(-2px); }
     .copy{ text-align:center; width:100%; margin-top:6px; font-size:12px; opacity:.78; }
@@ -625,11 +589,10 @@
   <!-- Toast -->
   <div class="toast" id="toast">✅ Request submitted. We’ll contact you shortly.</div>
 
-  <!-- Floating WhatsApp -->
+  <!-- Floating WhatsApp (correct anchor) -->
   <div class="fw-whatsapp">
-    <a class="fw-btn" href="https://wa.me/919797459260?text=Hi%20Fodel%20Travels%2C%20I%20need%20help%20with%20a%20booking." target="_blank" aria-label="Chat on WhatsApp">
+    <a class="fw-btn" href="https://wa.me/919797459260?text=Hi%20Fodel%20Travels%2C%20I%20need%20help%20with%20a%20booking." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
       <span class="fw-pulse" aria-hidden="true"></span>
-      <!-- WhatsApp SVG -->
       <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
         <path d="M12.04 2a9.8 9.8 0 0 0-8.45 14.7L2 22l5.43-1.53A9.8 9.8 0 1 0 12.04 2zm5.74 14.18c-.24.67-1.4 1.29-1.94 1.33-.52.04-1.18.06-1.91-.12a8 8 0 0 1-4.57-2.61c-1.31-1.44-2.25-3.16-2.35-4.52-.04-.57.17-1.32.72-1.83.21-.2.46-.3.73-.3.12 0 .24 0 .35.02.26.02.41.03.6.47.23.55.79 1.89.86 2.03.07.14.12.3.02.48-.09.19-.14.31-.28.48-.14.17-.29.38-.41.51-.14.14-.29.3-.13.58.15.29.68 1.12 1.46 1.82 1 .88 1.84 1.16 2.16 1.29.33.12.52.11.71-.06.19-.17.82-.77 1.04-1.03.22-.25.44-.21.72-.12.29.1 1.83.86 2.15 1.01.32.14.53.22.61.35.08.13.08.76-.16 1.42z"/>
       </svg>
@@ -649,27 +612,34 @@
     const overlays = document.querySelectorAll('.overlay');
 
     document.addEventListener('click', (e) => {
-      const openId = e.target.getAttribute('data-open');
-      if (openId){
-        document.body.classList.add('modal-open');
+      // ✅ robust opener: works even if inner element is clicked
+      const opener = e.target.closest('[data-open]');
+      if (opener){
+        const openId = opener.getAttribute('data-open');
         const ov = document.getElementById(openId);
-        ov.classList.add('active');
-
-        // Do NOT auto-focus any input to prevent mobile keyboard opening
-        const modal = ov.querySelector('.modal');
-        const body = ov.querySelector('.modal-body');
-        if (body) body.scrollTop = 0;
-        if (modal) modal.setAttribute('tabindex','-1'), modal.focus({ preventScroll: true });
+        if (ov){
+          document.body.classList.add('modal-open');
+          ov.classList.add('active');
+          const modal = ov.querySelector('.modal');
+          const body = ov.querySelector('.modal-body');
+          if (body) body.scrollTop = 0;
+          if (modal){ modal.setAttribute('tabindex','-1'); modal.focus({ preventScroll: true }); }
+        }
+        return; // stop here to avoid backdrop logic catching the same click
       }
 
-      if (e.target.hasAttribute('data-close')){
-        e.target.closest('.overlay').classList.remove('active');
+      // ✅ robust closer
+      const closer = e.target.closest('[data-close]');
+      if (closer){
+        const ov = closer.closest('.overlay');
+        if (ov) ov.classList.remove('active');
         if (![...document.querySelectorAll('.overlay')].some(o => o.classList.contains('active'))){
           document.body.classList.remove('modal-open');
         }
+        return;
       }
 
-      // Click backdrop to close
+      // Click on backdrop to close
       if (e.target.classList.contains('overlay')){
         e.target.classList.remove('active');
         if (![...document.querySelectorAll('.overlay')].some(o => o.classList.contains('active'))){
@@ -759,7 +729,14 @@
         }
 
         if (!sent){
-          const toy = form.closest('.overlay');
+          const to = "fodelindia@gmail.com";
+          const body = Object.entries(data).map(([k,v]) => `${k}: ${v}`).join("%0A");
+          const mailto = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${body}`;
+          window.location.href = mailto;
+        }
+
+        form.reset();
+        const overlay = form.closest('.overlay');
         if (overlay) overlay.classList.remove('active');
         document.body.classList.remove('modal-open');
         showToast('✅ Request submitted. We’ll contact you shortly.');
