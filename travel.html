@@ -10,7 +10,6 @@
   <title>Fodel Travels | Hotel Booking Katra Vaishno Devi | Jammu Kashmir Travel</title>
   <meta name="description" content="Fodel Travels offers hotel booking in Katra Vaishno Devi, Patnitop, Jammu hotel booking, Srinagar hotel booking, banquet events, destination weddings and Kashmir tour packages.">
   <meta name="robots" content="index,follow" />
-  <!-- Optional canonical -->
   <!-- <link rel="canonical" href="https://www.fodel.in/travel.html" /> -->
 
   <meta name="keywords" content="
@@ -59,7 +58,7 @@
 
       /* Travel CTAs (solid green by default) */
       --btn:#0f766e;
-      --btn-hover:#0f766e;     /* same as default (no color change) */
+      --btn-hover:#0f766e;
 
       --radius:18px;
       --shadow:0 14px 30px rgba(17,24,39,0.18);
@@ -70,6 +69,7 @@
        BASE
     ============================ */
     *{ box-sizing:border-box; margin:0; padding:0; }
+    html, body{ overflow-x:hidden; }   /* prevent right-edge white gutter */
     body{
       font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
       color:var(--text);
@@ -78,12 +78,8 @@
       text-rendering:optimizeLegibility;
     }
 
-    /* Remove underline everywhere by default */
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
-    a:link, a:visited, a:hover, a:active{ text-decoration:none; }
+    /* No underline globally */
+    a{ color:inherit; text-decoration:none; }
 
     body.modal-open{ overflow:hidden; }
 
@@ -103,7 +99,6 @@
       place-items:center;
       text-align:center;
       color:#0b1220;
-
       background:
         radial-gradient(1000px 700px at 85% 15%, rgba(249,230,74,0.25), transparent 60%),
         radial-gradient(900px 600px at 15% 85%, rgba(249,230,74,0.18), transparent 65%),
@@ -113,126 +108,83 @@
     }
     .banner-inner{ width:min(1100px,92%); margin:auto; padding:24px; }
 
-/* TOPBAR BASE */
-.topbar{
-  position:absolute;
-  inset:20px 20px auto 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:14px;
-  color:#fff;
-  width:100%;
-}
+    /* ===========================
+       TOPBAR (fixed overflow + mobile UX)
+    ============================ */
+    .topbar{
+      position:absolute;
+      left:0; right:0;
+      top:20px;                /* instead of inset */
+      padding:0 16px;          /* internal side padding -> no overflow */
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      color:#fff;
+      box-sizing:border-box;
+    }
 
-/* BRAND */
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight:700;
-  font-size:20px;
-  white-space:nowrap;         /* Prevent line-break on mobile */
-}
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:700; font-size:20px;
+      white-space:nowrap;       /* keep single-line brand */
+      min-width:0;
+    }
+    .brand-badge{
+      width:34px; height:34px; border-radius:50%;
+      display:grid; place-items:center;
+      background:#ffffff1a; color:#fff;
+      border:1px solid #ffffff40;
+      flex-shrink:0;
+    }
 
-.brand-badge{
-  width:34px;
-  height:34px;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  background:#ffffff1a;
-  color:#fff;
-  border:1px solid #ffffff40;
-  flex-shrink:0;              /* Prevent shrinking */
-}
+    .topbar a{ text-decoration:none; color:inherit; }
 
-/* REMOVE UNDERLINES EVERYWHERE INSIDE TOPBAR */
-.topbar a{
-  text-decoration:none;
-  color:inherit;
-}
+    .nav{
+      display:flex; align-items:center; gap:8px;
+      flex-wrap:nowrap; max-width:100%;
+    }
 
-/* RIGHT SIDE NAV CLUSTER */
-.nav{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  flex-wrap:nowrap;
-}
+    /* Unified compact pills */
+    .pill-btn{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:6px 10px; font-size:14px; font-weight:600;
+      border-radius:10px; white-space:nowrap;
+      border:0; /* remove white border */
+      color:#fff;
+      box-shadow:0 4px 12px rgba(0,0,0,0.18);
+      transition:transform .2s, background .2s;
+    }
+    .pill-btn:hover{ transform:translateY(-2px); }
+    .reviews-btn{ background:#0b1220; }
+    .reviews-btn:hover{ background:#111827; }
+    .home-btn{ background:#2d6a51; }
 
-/* UNIFIED SMALL BUTTON (PILL) */
-.pill-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  padding:6px 10px;
-  font-size:14px;
-  font-weight:600;
-  border-radius:10px;
-  white-space:nowrap;
-  border:1px solid #ffffff33;
-  color:#fff;
-  box-shadow:0 4px 12px rgba(0,0,0,0.18);
-  transition:transform .2s, background .2s;
-}
-.pill-btn:hover{
-  transform:translateY(-2px);
-}
+    /* Mobile topbar */
+    @media (max-width:640px){
+      .topbar{
+        top:14px; padding:0 14px;
+        display:grid; grid-template-columns:1fr auto;
+        align-items:center; gap:10px;
+      }
+      .brand{ font-size:17px; gap:8px; }
+      .brand-badge{ width:30px; height:30px; }
+      .nav{ gap:6px; justify-self:end; }
+      .pill-btn{
+        padding:5px 9px; font-size:13px; border-radius:8px;
+        box-shadow:0 3px 8px rgba(0,0,0,0.18);
+      }
+    }
+    /* Ultra-narrow phones */
+    @media (max-width:380px){
+      .topbar{ grid-template-columns:1fr; row-gap:6px; }
+      .nav{ justify-self:start; }
+    }
 
-/* SPECIFIC COLORS */
-.reviews-btn{
-  background:#0b1220;
-}
-.home-btn{
-  background:#2d6a51;   /* Subtle green */
-}
-
-/* MOBILE FIXES */
-@media(max-width:640px){
-
-  .topbar{
-    inset:14px 14px auto 14px;
-    display:grid;
-    grid-template-columns:1fr auto;
-    align-items:center;
-    gap:10px;
-  }
-
-  .brand{
-    font-size:17px;
-    gap:8px;
-  }
-
-  .brand-badge{
-    width:30px;
-    height:30px;
-  }
-
-  .nav{
-    gap:6px;
-    justify-self:end;
-  }
-
-  .pill-btn{
-    padding:5px 9px;
-    font-size:13px;
-    border-radius:8px;
-    box-shadow:0 3px 8px rgba(0,0,0,0.18);
-  }
-}
-
-/* ULTRA SMALL DEVICES (375px and below) */
-@media(max-width:380px){
-  .topbar{
-    grid-template-columns:1fr;
-    row-gap:6px;
-  }
-  .nav{
-    justify-self:start;
-  }
-}
-
+    /* ===========================
+       HERO
+    ============================ */
     .hero{
       display:grid; gap:14px; justify-items:center; padding:64px 0 44px;
       color:#f1faf8;
@@ -260,28 +212,20 @@
       width:38px; height:38px; border-radius:50%;
       display:grid; place-items:center;
       background:var(--accent); color:#fff;
-      /* Keep embedded SVGs crisp and centered */
     }
-    .icon svg{
-      width:20px; height:20px; display:block;
-    }
+    .icon svg{ width:20px; height:20px; display:block; }
 
     .card p{ color:var(--muted); font-size:14px; margin-bottom:14px; }
 
     /* ===========================
-       BUTTONS (solid green; no color change)
+       BUTTONS (body buttons)
     ============================ */
     .btn{
       display:inline-flex; align-items:center; gap:8px;
-      padding:12px 16px;
-      border-radius:12px;
-      background:var(--btn);
-      color:#fff;
-      border:1px solid transparent;
-      text-decoration:none;
-      font-weight:600;
-      font-size:18px;
-      letter-spacing:0.2px;
+      padding:12px 16px; border-radius:12px;
+      background:var(--btn); color:#fff;
+      border:1px solid transparent; text-decoration:none;
+      font-weight:600; font-size:18px; letter-spacing:0.2px;
       box-shadow:0 8px 20px rgba(0,0,0,0.14);
       transition: transform .18s ease, box-shadow .18s ease;
     }
@@ -394,7 +338,6 @@
       animation: fwPulse 2.2s ease-in-out infinite; z-index:-1;
     }
     @keyframes fwPulse{ 0%{transform:scale(.9);opacity:.55;} 50%{transform:scale(1.05);opacity:.85;} 100%{transform:scale(.9);opacity:.55;} }
-    @media (prefers-reduced-motion: reduce){ .fw-pulse{ animation:none; } }
 
     /* Animations */
     @keyframes pop{ from{ transform:scale(.98); opacity:.7; } to{ transform:scale(1); opacity:1; } }
@@ -406,20 +349,19 @@
 
   <!-- BANNER -->
   <header class="banner">
-   
-<div class="topbar">
-  <!-- Make brand clickable (home) and keep it single-line -->
-  <a class="brand" href="index.html" aria-label="Fodel Travels — Home">
-    <div class="brand-badge" aria-hidden="true">🏨</div>
-    <span>Fodel Travels</span>
-  </a>
+    <div class="topbar">
+      <!-- Brand (clickable) -->
+      <a class="brand" href="index.html" aria-label="Fodel Travels — Home">
+        <div class="brand-badge" aria-hidden="true">🏨</div>
+        <span>Fodel Travels</span>
+      </a>
 
-  <!-- Right-side compact buttons -->
-  <nav class="nav" aria-label="Primary">
-    <a class="pill-btn reviews-btn" href="reviews-travels.html">⭐ Reviews</a>
-    <a class="pill-btn home-btn" href="index.html">← Home</a>
-  </nav>
-</div>
+      <!-- Right-side compact buttons -->
+      <nav class="nav" aria-label="Primary">
+        <a class="pill-btn reviews-btn" href="reviews-travels.html">⭐ Reviews</a>
+        <a class="pill-btn home-btn" href="index.html">← Home</a>
+      </nav>
+    </div>
 
     <div class="banner-inner">
       <div class="hero">
@@ -440,7 +382,7 @@
       <div class="card">
         <h3>
           <span class="icon" aria-hidden="true">
-            <!-- Hotel / bed icon (fixed: added xmlns + consistent size) -->
+            <!-- Hotel / bed icon -->
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                  viewBox="0 0 24 24" fill="white" aria-hidden="true" role="img" focusable="false">
               <path d="M4 7h12a4 4 0 0 1 4 4v5h-2v-3H4v3H2v-6a3 3 0 0 1 2-3zm2 2a2 2 0 1 0 0 4h6a2 2 0 1 0 0-4H6z"/>
@@ -458,7 +400,7 @@
       <div class="card">
         <h3>
           <span class="icon" aria-hidden="true">
-            <!-- Event hall / stage icon (fixed xmlns) -->
+            <!-- Event hall / stage icon -->
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                  viewBox="0 0 24 24" fill="white" aria-hidden="true" role="img" focusable="false">
               <path d="M3 6h18v12H3z"/>
@@ -477,7 +419,7 @@
       <div class="card">
         <h3>
           <span class="icon" aria-hidden="true">
-            <!-- Group / users icon (fixed xmlns) -->
+            <!-- Group / users icon -->
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                  viewBox="0 0 24 24" fill="white" aria-hidden="true" role="img" focusable="false">
               <path d="M16 11a3 3 0 1 0-3-3 3 3 0 0 0 3 3ZM7 12a3 3 0 1 0-3-3 3 3 0 0 0 3 3Z"/>
@@ -560,8 +502,7 @@
             <label for="adults">No. of adults</label>
             <input id="adults" name="adults" type="number" min="1" placeholder="e.g., 2" required>
           </div>
-
-          <!-- NEW: Extra bed field (as discussed) -->
+          <!-- NEW: Extra bed under Adults -->
           <div class="row">
             <label for="extra-bed">Extra bed (optional)</label>
             <input id="extra-bed" name="extraBed" type="number" min="0" placeholder="e.g., 1">
@@ -618,7 +559,6 @@
             <input id="venue" name="venue" type="text" placeholder="e.g., Banquet name / Hotel">
           </div>
           <div class="row">
-            <!-- CHANGED: Meal plan -> Session with 4 options -->
             <label for="banquet-session">Session</label>
             <select id="banquet-session" name="session" required>
               <option value="">Select</option>
@@ -721,7 +661,7 @@
   <!-- Toast -->
   <div class="toast" id="toast">✅ Request submitted. We’ll contact you shortly.</div>
 
-  <!-- Floating WhatsApp (correct anchor) -->
+  <!-- Floating WhatsApp -->
   <div class="fw-whatsapp">
     <a class="fw-btn" href="https://wa.me/919797459260?text=Hi%20Fodel%20Travels%2C%20I%20need%20help%20with%20a%20booking." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
       <span class="fw-pulse" aria-hidden="true"></span>
@@ -744,7 +684,7 @@
     const overlays = document.querySelectorAll('.overlay');
 
     document.addEventListener('click', (e) => {
-      // ✅ robust opener: works even if inner element is clicked
+      // opener
       const opener = e.target.closest('[data-open]');
       if (opener){
         const openId = opener.getAttribute('data-open');
@@ -757,10 +697,10 @@
           if (body) body.scrollTop = 0;
           if (modal){ modal.setAttribute('tabindex','-1'); modal.focus({ preventScroll: true }); }
         }
-        return; // stop here to avoid backdrop logic catching the same click
+        return;
       }
 
-      // ✅ robust closer
+      // closer
       const closer = e.target.closest('[data-close]');
       if (closer){
         const ov = closer.closest('.overlay');
@@ -771,7 +711,7 @@
         return;
       }
 
-      // Click on backdrop to close
+      // backdrop to close
       if (e.target.classList.contains('overlay')){
         e.target.classList.remove('active');
         if (![...document.querySelectorAll('.overlay')].some(o => o.classList.contains('active'))){
