@@ -9,13 +9,12 @@
 
   <title>Fodel Travels | Hotel Booking Katra Vaishno Devi | Jammu Kashmir Travel</title>
   <meta name="description" content="Fodel Travels offers hotel booking in Katra Vaishno Devi, Patnitop, Jammu hotel booking, Srinagar hotel booking, banquet events, destination weddings and Kashmir tour packages.">
+  <meta name="robots" content="index,follow" />
 
   <!-- Optional canonical (uncomment and ensure absolute URL) -->
   <!-- <link rel="canonical" href="https://www.fodel.in/travel.html" /> -->
 
-  <meta name="robots" content="index,follow" />
-
-  <!-- Keywords (punctuation tidied) -->
+  <!-- Keywords -->
   <meta name="keywords" content="
   hotel booking katra vaishno devi,
   katra hotel group booking,
@@ -41,25 +40,29 @@
   ">
 
   <!-- Fonts performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     /* ===========================
        THEME
     ============================ */
     :root{
-      --bg-base:#f9e64a;
-      --accent:#397e51;
+      /* Different from yellow gateway */
+      --page-bg:#f8fafc; /* clean neutral */
+      --accent:#397e51; /* brand green */
+      --brand-yellow:#f9e64a;
+
       --text:#111827;
       --muted:#374151;
 
-      --card:rgba(255,255,255,0.9);
-      --border:rgba(17,24,39,0.15);
+      --card:rgba(255,255,255,0.98);
+      --border:rgba(17,24,39,0.12);
 
+      /* Travel CTAs (solid green by default) */
       --btn:#0f766e;
-      --btn-hover:#115e59;
+      --btn-hover:#0f766e;  /* same as default (no color change) */
 
       --radius:18px;
       --shadow:0 14px 30px rgba(17,24,39,0.18);
@@ -73,12 +76,12 @@
     body{
       font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
       color:var(--text);
-      background:var(--bg-base);
+      background:var(--page-bg);
       -webkit-font-smoothing:antialiased;
       text-rendering:optimizeLegibility;
     }
     a{ color:inherit; }
-    body.modal-open{ overflow:hidden; } /* lock background scroll when modal is open */
+    body.modal-open{ overflow:hidden; }
 
     :focus-visible{
       outline:3px solid rgba(17,24,39,0.75);
@@ -87,7 +90,7 @@
     }
 
     /* ===========================
-       BANNER
+       BANNER (teal/green with yellow glow)
     ============================ */
     .banner{
       position:relative;
@@ -95,13 +98,17 @@
       display:grid;
       place-items:center;
       text-align:center;
+      color:#0b1220;
 
       background:
-        linear-gradient(180deg, rgba(249,230,74,0.3), rgba(249,230,74,0.45)),
-        radial-gradient(1200px 800px at 80% 10%, rgba(57,126,81,0.18), transparent 60%),
-        radial-gradient(900px 700px at 15% 85%, rgba(57,126,81,0.14), transparent 65%),
-        url('travel-banner.jpg') center/cover no-repeat,
-        linear-gradient(180deg,#f9e64a 0%,#f7df33 100%);
+        /* soft yellow glow accents */
+        radial-gradient(1000px 700px at 85% 15%, rgba(249,230,74,0.25), transparent 60%),
+        radial-gradient(900px 600px at 15% 85%, rgba(249,230,74,0.18), transparent 65%),
+        /* travel green gradient */
+        linear-gradient(160deg, #0f766e 0%, #0b5f58 55%, #0a4f4a 100%),
+        /* optional background image (kept for future) */
+        url('travel-banner.jpg') center/cover no-repeat;
+      background-blend-mode: overlay, overlay, normal, multiply;
     }
     .banner-inner{
       width:min(1100px,92%);
@@ -111,10 +118,8 @@
     .topbar{
       position:absolute;
       inset:20px 20px auto 20px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
+      display:flex; justify-content:space-between; align-items:center; gap:12px;
+      color:#fff;
     }
     .brand{
       display:flex; align-items:center; gap:10px;
@@ -123,23 +128,27 @@
     .brand-badge{
       width:36px; height:36px; border-radius:50%;
       display:grid; place-items:center;
-      background:var(--accent); color:#fff;
+      background:#ffffff1a; color:#fff;
+      border:1px solid #ffffff40;
     }
     .reviews-btn{
-      padding:10px 14px;
-      border-radius:999px;
+      padding:10px 14px; border-radius:999px;
       background:#0b1220; color:#fff; text-decoration:none; font-weight:600;
+      border:1px solid #ffffff33;
+      box-shadow:0 8px 24px rgba(0,0,0,0.22);
+      transition:transform .2s, background .2s;
     }
     .reviews-btn:hover{ transform:translateY(-2px); background:#111827; }
 
     .hero{
-      display:grid; gap:12px; justify-items:center; padding:60px 0 40px;
+      display:grid; gap:14px; justify-items:center; padding:64px 0 44px;
+      color:#f1faf8;
     }
     .hero h1{
       font-size:clamp(28px,5vw,46px); font-weight:700;
     }
     .hero p{
-      font-size:16px; max-width:850px;
+      font-size:16px; max-width:850px; color:#e6fffb;
     }
 
     /* ===========================
@@ -155,7 +164,7 @@
     }
     .separator{
       width:90px; height:3px; margin:16px auto;
-      background:linear-gradient(90deg,var(--accent),transparent); border-radius:6px;
+      background:linear-gradient(90deg,var(--brand-yellow),transparent); border-radius:6px;
     }
     .cards{
       display:grid; grid-template-columns:1fr; gap:26px; margin-top:28px;
@@ -175,23 +184,26 @@
       background:var(--accent); color:#fff;
     }
     .card p{ color:var(--muted); font-size:14px; margin-bottom:14px; }
+
+    /* ===========================
+       BUTTONS (solid green; no color change)
+    ============================ */
     .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
+      display:inline-flex; align-items:center; gap:8px;
       padding:12px 16px;
       border-radius:12px;
       background:var(--btn);
       color:#fff;
+      border:1px solid transparent;
       text-decoration:none;
-
-      /* match the style of card title */
       font-weight:600;
       font-size:18px;
       letter-spacing:0.2px;
-      transition:transform .2s;
+      box-shadow:0 8px 20px rgba(0,0,0,0.14);
+      transition: transform .18s ease, box-shadow .18s ease; /* no color change */
     }
-    .btn:hover{ background:var(--btn-hover); transform:translateY(-2px); }
+    .btn:hover{ transform:translateY(-2px); box-shadow:0 12px 26px rgba(0,0,0,0.18); }
+    .btn:active{ transform:translateY(0); box-shadow:0 8px 20px rgba(0,0,0,0.14); }
 
     /* ===========================
        MODALS
@@ -215,7 +227,7 @@
       display:flex; align-items:center; justify-content:space-between; gap:12px;
       padding:14px 16px; color:#fff;
       background:linear-gradient(90deg, var(--accent), #3f8f5b);
-      position:sticky; top:0; z-index:1; /* sticky on mobile */
+      position:sticky; top:0; z-index:1;
     }
     .modal-title{ font-weight:600; }
     .modal-close{
@@ -223,9 +235,7 @@
       font-size:20px; line-height:1; padding:6px 10px; border-radius:8px;
     }
     .modal-close:hover{ background:rgba(255,255,255,0.18); }
-    .modal-body{
-      padding:16px; overflow:auto; -webkit-overflow-scrolling:touch;
-    }
+    .modal-body{ padding:16px; overflow:auto; -webkit-overflow-scrolling:touch; }
     @media (max-width:640px){
       .overlay{ align-items:stretch; }
       .modal{ width:100%; height:100svh; max-height:none; border-radius:0; }
@@ -256,9 +266,9 @@
       padding:12px 16px; border-radius:10px; font-weight:700; letter-spacing:.2px;
       background:var(--btn); color:#fff; border:none; cursor:pointer;
       box-shadow:0 10px 24px rgba(0,0,0,0.22);
-      transition:transform .15s, background .15s;
+      transition: transform .15s ease;
     }
-    .btn-primary:hover{ background:var(--btn-hover); transform:translateY(-1px); }
+    .btn-primary:hover{ transform:translateY(-1px); }
 
     /* Toast */
     .toast{
@@ -277,57 +287,34 @@
     }
     .chip{
       padding:8px 14px; border-radius:999px; background:#fff;
-      border:1px solid var(--border); text-decoration:none; font-size:14px;
+      border:1px solid var(--border); text-decoration:none; font-size:14px; color:var(--text);
+      transition:.2s;
+      box-shadow:0 6px 14px rgba(0,0,0,0.08);
     }
+    .chip:hover{ transform:translateY(-2px); }
     .copy{ text-align:center; width:100%; margin-top:6px; font-size:12px; opacity:.78; }
 
     /* ===========================
        FLOATING WHATSAPP
     ============================ */
-    .fw-whatsapp {
-      position: fixed;
-      right: 16px;
-      bottom: 16px;
-      z-index: 70;
+    .fw-whatsapp { position: fixed; right: 16px; bottom: 16px; z-index: 70; }
+    .fw-btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      width:56px; height:56px; border-radius:50%;
+      background:#25D366; color:#fff;
+      box-shadow:0 12px 24px rgba(0,0,0,0.22);
+      border:1px solid rgba(255,255,255,0.35);
+      text-decoration:none; transition: transform .18s, box-shadow .18s, background .18s;
     }
-    .fw-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: #25D366;               /* WhatsApp green */
-      color: #fff;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.22);
-      border: 1px solid rgba(255,255,255,0.35);
-      text-decoration: none;
-      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    .fw-btn:hover{ transform:translateY(-2px); box-shadow:0 16px 32px rgba(0,0,0,0.26); background:#20c65a; }
+    .fw-btn svg{ display:block; }
+    .fw-pulse{
+      position:absolute; inset:-8px; border-radius:999px;
+      background:rgba(37,211,102,0.18); filter:blur(8px); opacity:.8;
+      animation: fwPulse 2.2s ease-in-out infinite; z-index:-1;
     }
-    .fw-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 16px 32px rgba(0,0,0,0.26);
-      background: #20c65a;
-    }
-    .fw-btn svg { display:block; }
-    .fw-pulse {
-      position: absolute;
-      inset: -8px;
-      border-radius: 999px;
-      background: rgba(37,211,102,0.18);
-      filter: blur(8px);
-      opacity: .8;
-      animation: fwPulse 2.2s ease-in-out infinite;
-      z-index: -1;
-    }
-    @keyframes fwPulse {
-      0%   { transform: scale(0.9); opacity: .55; }
-      50%  { transform: scale(1.05); opacity: .85; }
-      100% { transform: scale(0.9); opacity: .55; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .fw-pulse { animation: none; }
-    }
+    @keyframes fwPulse{ 0%{transform:scale(.9);opacity:.55;} 50%{transform:scale(1.05);opacity:.85;} 100%{transform:scale(.9);opacity:.55;} }
+    @media (prefers-reduced-motion: reduce){ .fw-pulse{ animation:none; } }
 
     /* Animations */
     @keyframes pop{ from{ transform:scale(.98); opacity:.7; } to{ transform:scale(1); opacity:1; } }
@@ -350,10 +337,8 @@
     <div class="banner-inner">
       <div class="hero">
         <h1>Hotel Booking, Banquets &amp; Group Travel</h1>
-        <p>
-          Tell us your requirement and we’ll share curated hotel options
-          across Katra Vaishno Devi, Jammu and Srinagar Kashmir.
-        </p>
+        <p>Tell us your requirement and we’ll share curated hotel options
+          across Katra Vaishno Devi, Jammu and Srinagar Kashmir.</p>
       </div>
     </div>
   </header>
@@ -376,8 +361,9 @@
           Hotel Booking
         </h3>
         <p>Hotels in Katra Vaishno Devi, Jammu city &amp; Srinagar Kashmir.</p>
-        <button class="btn" data-open="modal-hotel" aria-haspopup="dialog"
-                aria-label="Open hotel room requirement form">Room Requirement →</button>
+        <button class="btn" data-open="modal-hotel" aria-haspopup="dialog" aria-label="Open hotel room requirement form">
+          Room Requirement →
+        </button>
       </div>
 
       <!-- Banquet / Events -->
@@ -393,8 +379,9 @@
           Banquet &amp; Events
         </h3>
         <p>Destination weddings, banquets and corporate events.</p>
-        <button class="btn" data-open="modal-banquet" aria-haspopup="dialog"
-                aria-label="Open banquet and event inquiry form">Banquet Inquiry →</button>
+        <button class="btn" data-open="modal-banquet" aria-haspopup="dialog" aria-label="Open banquet and event inquiry form">
+          Banquet Inquiry →
+        </button>
       </div>
 
       <!-- Group Booking -->
@@ -411,8 +398,9 @@
           Group Booking
         </h3>
         <p>Large hotel bookings for pilgrim groups and corporate travel.</p>
-        <button class="btn" data-open="modal-group" aria-haspopup="dialog"
-                aria-label="Open group booking request form">Group Booking →</button>
+        <button class="btn" data-open="modal-group" aria-haspopup="dialog" aria-label="Open group booking request form">
+          Group Booking →
+        </button>
       </div>
     </div>
   </section>
@@ -534,13 +522,14 @@
             <input id="venue" name="venue" type="text" placeholder="e.g., Banquet name / Hotel">
           </div>
           <div class="row">
-            <label for="banquet-meal">Meal plan</label>
-            <select id="banquet-meal" name="meal" required>
+            <!-- CHANGED: Meal plan -> Session with 4 options -->
+            <label for="banquet-session">Session</label>
+            <select id="banquet-session" name="session" required>
               <option value="">Select</option>
+              <option>Breakfast</option>
+              <option>Lunch</option>
               <option>Hi-Tea</option>
-              <option>Lunch (Veg/Non-Veg)</option>
-              <option>Dinner (Veg/Non-Veg)</option>
-              <option>Buffet (CP/MAP/APAI)</option>
+              <option>Dinner</option>
             </select>
           </div>
         </div>
@@ -638,8 +627,7 @@
 
   <!-- Floating WhatsApp -->
   <div class="fw-whatsapp">
-    <a class="fw-btn" href="https://wa.me/919797459260?text=Hi%20Fodel%20Travels%2C%20I%20need%20help%20with%20a%20booking."
-       target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <a class="fw-btn" href="https://wa.me/919797459260?text=Hi%20Fodel%20Travels%2C%20I%20need%20help%20with%20a%20booking." target="_blank" aria-label="Chat on WhatsApp">
       <span class="fw-pulse" aria-hidden="true"></span>
       <!-- WhatsApp SVG -->
       <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
@@ -771,14 +759,7 @@
         }
 
         if (!sent){
-          const to = "fodelindia@gmail.com";
-          const body = Object.entries(data).map(([k,v]) => `${k}: ${v}`).join("%0A");
-          const mailto = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${body}`;
-          window.location.href = mailto;
-        }
-
-        form.reset();
-        const overlay = form.closest('.overlay');
+          const toy = form.closest('.overlay');
         if (overlay) overlay.classList.remove('active');
         document.body.classList.remove('modal-open');
         showToast('✅ Request submitted. We’ll contact you shortly.');
@@ -791,4 +772,3 @@
   </script>
 </body>
 </html>
-``
