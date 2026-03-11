@@ -1,444 +1,433 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Fodel India — Systems • Travels • Transport • Wedding Services • Hospitality Supplies</title>
-
-<meta name="description" content="Future Oriented Digital Enterprises & Logistics. Explore Systems, Travels, Transport, Wedding Services and Hospitality Supplies in Jammu & nearby regions. Trusted since 2015.">
-
-<meta name="robots" content="index,follow">
-
-<meta name="theme-color" content="#f9e64a">
-
-<link rel="canonical" href="https://www.fodel.in/">
-
-<meta name="keywords" content="restaurant calling system india, waiter calling system jammu, travel agency jammu katra, logistics jammu transport services, wedding decoration jammu, catering jammu, hotel linen supplier jammu, hospitality supplies india">
-
-<link rel="icon" href="/favicon.png">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-/* THEME */
-
-:root{
-
---yellow:#f9e64a;
---green:#397e51;
-
---text:#111827;
---muted:#4b5563;
-
---sys:#2563eb;
---trav:#0f766e;
---trans:#e11924;
---wedding:#7e3af2;
---hospital:#c2410c;
-
---radius:18px;
-
---shadow:0 14px 28px rgba(0,0,0,0.12);
---shadow-hover:0 22px 44px rgba(0,0,0,0.18);
-
-}
-
-/* BASE */
-
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-}
-
-body{
-
-font-family:Poppins,system-ui;
-
-background:linear-gradient(180deg,var(--yellow),#f7df33);
-
-color:var(--text);
-
-display:flex;
-justify-content:center;
-
-padding:40px 18px;
-
-}
-
-.wrapper{
-width:100%;
-max-width:1180px;
-margin:auto;
-}
-
-/* HEADER */
-
-header{
-text-align:center;
-margin-bottom:28px;
-}
-
-.brand{
-font-size:38px;
-font-weight:700;
-}
-
-.tagline{
-margin-top:6px;
-color:var(--muted);
-font-size:14px;
-}
-
-.separator{
-width:90px;
-height:4px;
-background:linear-gradient(90deg,var(--green),transparent);
-margin:16px auto;
-border-radius:10px;
-}
-
-.choose{
-font-size:15px;
-color:var(--muted);
-}
-
-/* GRID */
-
-.grid{
-display:grid;
-gap:22px;
-margin-top:22px;
-grid-template-columns:1fr;
-}
-
-@media(min-width:600px){
-.grid{grid-template-columns:repeat(2,1fr);}
-}
-
-@media(min-width:900px){
-.grid{grid-template-columns:repeat(3,1fr);}
-}
-
-@media(min-width:1200px){
-.grid{grid-template-columns:repeat(4,1fr);}
-}
-
-/* CARD */
-
-.card{
-
-background:#fff;
-
-border-radius:var(--radius);
-
-padding:20px;
-
-display:flex;
-flex-direction:column;
-justify-content:space-between;
-
-min-height:220px;
-
-box-shadow:var(--shadow);
-
-transition:.2s;
-
-}
-
-.card:hover{
-transform:translateY(-4px);
-box-shadow:var(--shadow-hover);
-}
-
-.card h2{
-font-size:19px;
-font-weight:700;
-margin-bottom:6px;
-}
-
-.service-text{
-font-size:14px;
-color:var(--muted);
-margin-bottom:16px;
-}
-
-.btn{
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-padding:11px 16px;
-
-border-radius:12px;
-
-font-weight:600;
-font-size:15px;
-
-text-decoration:none;
-
-background:#fff;
-
-border:1px solid #d1d5db;
-
-margin-top:auto;
-
-}
-
-.btn:hover{
-transform:translateY(-2px);
-}
-
-/* TRUST BAR */
-
-.trustbar{
-margin-top:26px;
-display:grid;
-gap:14px;
-grid-template-columns:1fr;
-}
-
-@media(min-width:860px){
-.trustbar{grid-template-columns:repeat(4,1fr);}
-}
-
-.trust-item{
-
-background:#fff;
-
-border-radius:14px;
-
-padding:12px;
-
-display:flex;
-align-items:center;
-
-gap:10px;
-
-box-shadow:0 8px 18px rgba(0,0,0,0.08);
-
-}
-
-.trust-text{
-font-weight:700;
-font-size:14px;
-}
-
-/* HUMANITY SECTION */
-
-.humanity{
-
-margin-top:30px;
-
-padding:18px;
-
-background:rgba(255,255,255,0.6);
-
-border-radius:16px;
-
-}
-
-.humanity-grid{
-display:grid;
-gap:14px;
-grid-template-columns:1fr;
-}
-
-@media(min-width:700px){
-.humanity-grid{grid-template-columns:repeat(2,1fr);}
-}
-
-.hum-card{
-
-background:#fff;
-
-border-radius:14px;
-
-padding:14px;
-
-display:flex;
-flex-wrap:wrap;
-
-gap:10px;
-
-align-items:center;
-justify-content:space-between;
-
-}
-
-.hum-left{
-display:flex;
-gap:12px;
-align-items:center;
-}
-
-.hum-title{
-font-weight:700;
-}
-
-.hum-note{
-font-size:12px;
-color:var(--muted);
-}
-
-.hum-btn{
-
-padding:10px 14px;
-
-border-radius:10px;
-
-font-weight:700;
-
-text-decoration:none;
-
-border:1px solid var(--green);
-
-color:var(--green);
-
-}
-
-.hum-btn:hover{
-background:var(--green);
-color:#fff;
-}
-
-/* MOBILE FIX */
-
-@media(max-width:520px){
-
-.hum-btn{
-width:100%;
-text-align:center;
-}
-
-}
-
-.footer{
-margin-top:30px;
-text-align:center;
-}
-
-.copy{
-font-size:12px;
-opacity:.75;
-}
-
-</style>
+  <!-- =========================
+       META / SEO
+  ========================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fodel India — Systems • Travel • Transport • Wedding Services • Hospitality Supplies</title>
+  <meta name="description" content="Future Oriented Digital Enterprises & Logistics. Explore Systems, Travel, Transport, Wedding Services and Hospitality Supplies in Jammu & nearby regions." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#f9e64a" />
+  <link rel="canonical" href="https://www.fodel.in/" />
+  <meta name="last-modified" content="2026-03-10" />
+  <meta property="og:updated_time" content="2026-03-10T00:00:00+05:30" />
+
+  <!-- Keywords -->
+  <meta name="keywords" content="systems, restaurant calling system, waiter calling device india, hotel bookings katra, travel agency jammu, transport jammu, intercity cab jammu, logistics jammu, wedding decor jammu, wedding catering jammu, home wedding decoration jammu, wedding services jammu, hospitality supplies jammu, hotel linen supplier jammu, hotel amenities supplier" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Fodel India — Systems • Travel • Transport • Wedding Services • Hospitality Supplies" />
+  <meta property="og:description" content="Explore Systems, Travel, Transport, Wedding Services and Hospitality Supplies. Trusted since 2015." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.fodel.in/" />
+  <meta property="og:image" content="https://www.fodel.in/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Fodel India — Systems • Travel • Transport • Wedding Services • Hospitality Supplies" />
+  <meta name="twitter:description" content="Future Oriented Digital Enterprises & Logistics — explore our divisions." />
+  <meta name="twitter:image" content="https://www.fodel.in/og-image.jpg" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.png" type="image/png" />
+
+  <!-- Fonts (performance) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- =========================
+       STRUCTURED DATA
+  ========================== -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Fodel India",
+    "url":"https://www.fodel.in/",
+    "description":"Future Oriented Digital Enterprises & Logistics providing restaurant technology, travel planning, transport, wedding services and hospitality supplies.",
+    "foundingDate":"2015",
+    "slogan":"Trusted since 2015",
+    "logo":"https://www.fodel.in/logo.png",
+    "areaServed":"India",
+    "department":[
+      {"@type":"Organization","name":"Fodel Systems","url":"https://www.fodel.in/systems.html","description":"Wireless waiter calling systems and restaurant technology."},
+      {"@type":"TravelAgency","name":"Fodel Travels","url":"https://www.fodel.in/travel.html","description":"Hotel bookings, banquets, destination weddings and group travel."},
+      {"@type":"TaxiService","name":"Fodel Transport","url":"https://www.fodel.in/transport.html","areaServed":["Jammu","Katra","Patnitop","Srinagar"],"description":"Local logistics, intercity shipments and last‑mile delivery."},
+      {"@type":"Service","name":"Fodel Wedding Services","url":"https://www.fodel.in/wedding.html","serviceType":"Wedding décor and catering coordination","areaServed":["Jammu"],"provider":"Verified partners"},
+      {"@type":"WholesaleStore","name":"Fodel Hospitality Supplies","url":"https://www.fodel.in/hospitality.html","description":"Hotel linen, towels, room amenities and essential supplies."}
+    ]
+  }
+  </script>
+
+  <style>
+  /* =========================
+     THEME
+  ========================== */
+  :root{
+    --yellow:#f9e64a;  /* brand primary */
+    --green:#397e51;   /* brand accent */
+
+    --text:#111827;
+    --muted:#4b5563;
+    --surface:#ffffff;
+
+    /* Division colors */
+    --sys:#2563eb;        --sys-hover:#1d4ed8;   /* blue */
+    --trav:#0f766e;       --trav-hover:#115e59;  /* teal */
+    --trans:#e11924;      --trans-hover:#b50f1b; /* red */
+    --wedding:#7e3af2;    --wedding-hover:#6c2bd9; /* purple */
+    --hospital:#c2410c;   --hospital-hover:#9a3412; /* earthy orange */
+
+    --radius:18px;
+    --shadow:0 14px 28px rgba(0,0,0,0.12);
+    --shadow-hover:0 22px 44px rgba(0,0,0,0.18);
+    --btn-border:#d1d5db;
+    --card-border:rgba(17,24,39,0.12);
+
+    --space-1:8px; --space-2:12px; --space-3:16px; --space-4:20px; --space-5:24px; --space-6:30px;
+  }
+
+  /* =========================
+     BASE
+  ========================== */
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{ height:100%; }
+  body{
+    font-family:Poppins,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    background:linear-gradient(180deg,var(--yellow),#f7df33);
+    color:var(--text);
+    display:flex; justify-content:center;
+    padding:40px 18px;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  body::before{
+    content:""; position:fixed; top:-220px; right:-220px; width:880px; height:880px;
+    background:radial-gradient(circle,rgba(57,126,81,0.16),transparent 70%);
+    z-index:-1; pointer-events:none;
+  }
+  .wrapper{ width:100%; max-width:1200px; }
+
+  /* Accessible hidden text */
+  .visually-hidden{
+    position:absolute !important; height:1px; width:1px; overflow:hidden;
+    clip:rect(1px, 1px, 1px, 1px); white-space:nowrap;
+  }
+
+  /* =========================
+     HEADER
+  ========================== */
+  header{ text-align:center; margin-bottom:var(--space-5); }
+  .brand{ font-size:clamp(28px, 4vw, 40px); font-weight:700; letter-spacing:-0.4px; }
+  .tagline{ margin-top:6px; color:var(--muted); font-size:14px; }
+  .separator{ width:96px; height:4px; background:linear-gradient(90deg,var(--green),transparent); margin:16px auto; border-radius:10px; }
+  .choose{ font-size:15px; color:var(--muted); }
+
+  /* =========================
+     GRID (Option B = 4 across on desktop)
+  ========================== */
+  .grid{
+    display:grid; gap:22px; margin-top:22px;
+    grid-template-columns:1fr; align-items:stretch;
+  }
+  @media (min-width:600px){  .grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (min-width:900px){  .grid{ grid-template-columns:repeat(3,1fr); } }
+  @media (min-width:1200px){ .grid{ grid-template-columns:repeat(4,1fr); } } /* 4 across */
+
+  /* =========================
+     CARDS
+  ========================== */
+  .card{
+    background:linear-gradient(180deg,rgba(255,255,255,0.96),rgba(255,255,255,0.88));
+    border:1px solid var(--card-border);
+    border-radius:var(--radius);
+    padding:clamp(16px,2.2vw,22px);
+    display:flex; flex-direction:column; justify-content:space-between;
+    min-height:clamp(220px, 28vw, 260px);
+    box-shadow:var(--shadow);
+    transition:transform .22s ease, box-shadow .22s ease;
+  }
+  .card:hover{ transform:translateY(-4px); box-shadow:var(--shadow-hover); }
+  .card:focus-within{ outline:2px solid rgba(57,126,81,0.45); outline-offset:2px; }
+  .card > div{ flex:1; }
+
+  .card h2{
+    display:flex; align-items:center; gap:12px;
+    font-size:clamp(18px,1.8vw,20px);
+    font-weight:700; margin-bottom:6px;
+  }
+
+  .icon{
+    width:42px; height:42px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    color:#fff; flex-shrink:0;
+  }
+  .icon-sys{       background:linear-gradient(135deg,var(--sys),var(--sys-hover)); }
+  .icon-trav{      background:linear-gradient(135deg,var(--trav),var(--trav-hover)); }
+  .icon-trans{     background:linear-gradient(135deg,var(--trans),var(--trans-hover)); }
+  .icon-wedding{   background:linear-gradient(135deg,var(--wedding),var(--wedding-hover)); }
+  .icon-hospital{  background:linear-gradient(135deg,var(--hospital),var(--hospital-hover)); }
+
+  .service-text{
+    font-size:14px; color:var(--muted);
+    line-height:1.55; margin-top:4px; margin-bottom:16px;
+  }
+
+  /* Buttons */
+  .btn{
+    display:flex; justify-content:center; align-items:center; gap:8px;
+    padding:11px 16px; border-radius:12px;
+    font-weight:600; font-size:15px; text-decoration:none;
+    background:#fff; border:1px solid var(--btn-border); color:inherit;
+    transition:transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+    margin-top:auto;
+  }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn:focus-visible{ outline:2px solid rgba(57,126,81,0.45); outline-offset:2px; }
+  .btn-sys{ border-color:var(--sys); color:var(--sys); }       .btn-sys:hover{ background:var(--sys); color:#fff; }
+  .btn-trav{ border-color:var(--trav); color:var(--trav); }    .btn-trav:hover{ background:var(--trav); color:#fff; }
+  .btn-trans{ border-color:var(--trans); color:var(--trans); } .btn-trans:hover{ background:var(--trans); color:#fff; }
+  .btn-wedding{ border-color:var(--wedding); color:var(--wedding); } .btn-wedding:hover{ background:var(--wedding); color:#fff; }
+  .btn-hospital{ border-color:var(--hospital); color:var(--hospital); } .btn-hospital:hover{ background:var(--hospital); color:#fff; }
+
+  /* =========================
+     TRUST BAR (fixed alignment)
+  ========================== */
+  .trustbar{
+    margin-top:26px; display:grid; gap:14px; grid-template-columns:1fr;
+  }
+  @media(min-width:860px){
+    .trustbar{ grid-template-columns:repeat(4,1fr); }
+  }
+  .trust-item{
+    background:#fff; border:1px solid var(--card-border);
+    border-radius:14px; padding:12px 14px;
+    display:flex; align-items:center; justify-content:flex-start; gap:10px;
+    min-height:56px; /* consistent pill height */
+    box-shadow:0 8px 18px rgba(0,0,0,0.08);
+  }
+  .trust-ico{
+    width:32px; height:32px; border-radius:8px;
+    display:grid; place-items:center; background:#f3f4f6; font-size:16px;
+    flex-shrink:0;
+  }
+  .trust-text{ font-weight:700; font-size:14px; }
+
+  /* =========================
+     HUMANITY (Donations) — optional
+  ========================== */
+  .humanity{
+    margin-top:28px; padding:18px;
+    background:rgba(255,255,255,0.6);
+    border:1px dashed rgba(17,24,39,0.18); border-radius:16px;
+    box-shadow:0 10px 24px rgba(0,0,0,0.08);
+  }
+  .humanity h3{ font-size:clamp(18px,2vw,22px); margin-bottom:6px; }
+  .humanity p{ color:var(--muted); font-size:14px; margin-bottom:14px; }
+  .humanity-grid{ display:grid; gap:14px; grid-template-columns:1fr; }
+  @media(min-width:700px){ .humanity-grid{ grid-template-columns:repeat(2,1fr); } }
+  .hum-card{
+    background:#fff; border:1px solid var(--card-border); border-radius:14px; padding:14px;
+    display:flex; gap:12px; align-items:center; justify-content:space-between;
+  }
+  .hum-left{ display:flex; gap:12px; align-items:center; }
+  .hum-ico{ width:38px; height:38px; border-radius:10px; display:grid; place-items:center; background:#f3f4f6; font-size:18px; }
+  .hum-title{ font-weight:700; }
+  .hum-note{ font-size:12px; color:var(--muted); }
+  .hum-btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:10px 14px; border-radius:10px; font-weight:700; text-decoration:none;
+    border:1px solid var(--green); color:var(--green); background:#fff;
+  }
+  .hum-btn:hover{ background:var(--green); color:#fff; }
+  .hum-disclaimer{ margin-top:10px; font-size:12px; color:#6b7280; }
+
+  /* =========================
+     FOOTER — moved clearly below Humanity
+  ========================== */
+  .footer{
+    margin-top:32px; text-align:center; padding-bottom:40px;
+  }
+  .copy{ font-size:12px; opacity:.75; }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) { *{ transition:none !important; animation:none !important; } }
+  </style>
 </head>
 
 <body>
 
-<div class="wrapper">
+  <!-- Hidden SEO text (accessible) -->
+  <div class="visually-hidden">
+    Systems, waiter calling devices, restaurant paging system, hotel booking Jammu, travel agent Jammu, transport Jammu, taxi Jammu Katra, logistics Katra Srinagar, wedding decoration Jammu, home wedding decor, catering Jammu, hospitality supplies Jammu, hotel linen supplier, hotel amenities supplier.
+  </div>
 
-<header>
+  <div class="wrapper">
+    <header>
+      <h1 class="brand">Fodel India</h1>
+      <p class="tagline">Future Oriented Digital Enterprises &amp; Logistics</p>
+      <div class="separator"></div>
+      <p class="choose">Choose your division</p>
+    </header>
 
-<h1 class="brand">Fodel India</h1>
+    <!-- =========================
+         DIVISIONS (Option B: 4 across)
+    ========================== -->
+    <section class="grid" aria-label="Divisions">
 
-<p class="tagline">Future Oriented Digital Enterprises & Logistics</p>
+      <!-- Systems -->
+      <article class="card">
+        <div>
+          <h2>
+            <span class="icon icon-sys" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+                <path d="M12 2a4 4 0 0 0-4 4v2H6a4 4 0 0 0-4 4v2h20v-2a4 4 0 0 0-4-4h-2V6a4 4 0 0 0-4-4Zm0 2a2 2 0 0 1 2 2v2h-4V6a2 2 0 0 1 2-2Zm-8 10h16v1H4v-1Zm3 3a2 2 0 1 0 4 0H7Zm6 0a2 2 0 1 0 4 0h-4Z"/>
+              </svg>
+            </span>
+            Systems
+          </h2>
+          <p class="service-text">Wireless waiter calling systems and restaurant technology solutions.</p>
+        </div>
+        <a class="btn btn-sys" href="systems.html" aria-label="Explore Systems">Explore Systems →</a>
+      </article>
 
-<div class="separator"></div>
+      <!-- Travel -->
+      <article class="card">
+        <div>
+          <h2>
+            <span class="icon icon-trav" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+                <path d="M3 11h18v7h-2v-2H5v2H3v-7Zm3-5h12a3 3 0 0 1 3 3v2H3V9a3 3 0 0 1 3-3Zm1 2a1 1 0 0 0-1 1v1h12V9a1 1 0 0 0-1-1H7Z"/>
+              </svg>
+            </span>
+            Travel
+          </h2>
+          <p class="service-text">Hotel bookings, banquets, destination weddings and group travel.</p>
+        </div>
+        <a class="btn btn-trav" href="travel.html" aria-label="Explore Travel">Explore Travel →</a>
+      </article>
 
-<p class="choose">Choose your division</p>
+      <!-- Transport -->
+      <article class="card">
+        <div>
+          <h2>
+            <span class="icon icon-trans" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+                <path d="M3 6h11v7h2.6l2.1-3H21v7h-1a2 2 0 1 1-4 0H9a2 2 0 1 1-4 0H3V6Zm14 8a2 2 0 0 1 2 2h1v-4h-1.2l-1.9 3H17Z"/>
+              </svg>
+            </span>
+            Transport
+          </h2>
+          <p class="service-text">Local logistics, intercity shipments and last‑mile delivery services.</p>
+        </div>
+        <a class="btn btn-trans" href="transport.html" aria-label="Explore Transport">Explore Transport →</a>
+      </article>
 
-</header>
+      <!-- Wedding Services -->
+      <article class="card">
+        <div>
+          <h2>
+            <span class="icon icon-wedding" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+                <path d="M9 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm6.5-5 1.2 1.2-1.1 1.1A4 4 0 1 1 18 12a4 4 0 0 1-3.7-5.5l1.2-1.2L14.5 3Z" opacity=".95"/>
+                <path d="M12 6a4 4 0 0 1 4 4v1h1a3 3 0 0 1 3 3v1H4v-1a3 3 0 0 1 3-3h1v-1a4 4 0 0 1 4-4Z" opacity=".85"/>
+              </svg>
+            </span>
+            Wedding Services
+          </h2>
+          <p class="service-text">Wedding décor &amp; catering coordination by our verified partner teams (currently Jammu).</p>
+        </div>
+        <a class="btn btn-wedding" href="wedding.html" aria-label="Explore Wedding Services">Explore Wedding →</a>
+      </article>
 
-<section class="grid">
+      <!-- Hospitality Supplies (wraps to row 2 on desktop) -->
+      <article class="card">
+        <div>
+          <h2>
+            <span class="icon icon-hospital" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+                <path d="M3 15a3 3 0 0 1 3-3h9a3 3 0 1 1 0 6H6a3 3 0 0 1-3-3Z" />
+                <path d="M6 8h8a2 2 0 0 1 0 4H6a2 2 0 0 1 0-4Z" opacity=".9"/>
+                <path d="M19 7h2v8h-2z" opacity=".9"/>
+                <path d="M18 5h4v2h-4z" opacity=".9"/>
+              </svg>
+            </span>
+            Hospitality Supplies
+          </h2>
+          <p class="service-text">Hotel linen, towels, room amenities and essential supplies for hospitality businesses.</p>
+        </div>
+        <a class="btn btn-hospital" href="hospitality.html" aria-label="Explore Hospitality Supplies">Explore Supplies →</a>
+      </article>
 
-<div class="card">
-<h2>Systems</h2>
-<p class="service-text">Wireless waiter calling systems and restaurant technology solutions.</p>
-<a class="btn" href="systems.html">Explore Systems →</a>
-</div>
+    </section>
 
-<div class="card">
-<h2>Travels</h2>
-<p class="service-text">Hotel bookings, banquets, destination weddings and group travel.</p>
-<a class="btn" href="travel.html">Explore Travels →</a>
-</div>
+    <!-- =========================
+         TRUST BAR (Aligned)
+    ========================== -->
+    <section class="trustbar" aria-label="Trust markers">
+      <div class="trust-item">
+        <div class="trust-ico" aria-hidden="true">🎖️</div>
+        <div class="trust-text">Trusted since 2015</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-ico" aria-hidden="true">🤝</div>
+        <div class="trust-text">Verified Partners</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-ico" aria-hidden="true">🧾</div>
+        <div class="trust-text">Transparent Pricing</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-ico" aria-hidden="true">📍</div>
+        <div class="trust-text">Local Support</div>
+      </div>
+    </section>
 
-<div class="card">
-<h2>Transport</h2>
-<p class="service-text">Local logistics and intercity delivery services.</p>
-<a class="btn" href="transport.html">Explore Transport →</a>
-</div>
+    <!-- =========================
+         HUMANITY (Optional Donation)
+    ========================== -->
+    <section class="humanity" aria-label="Humanity donations (optional)">
+      <h3>Humanity — Optional Help</h3>
+      <p>We don’t run an NGO. If you wish, you can optionally contribute towards <strong>animal care</strong> or <strong>helping people in need</strong>. 100% of what you send is used for this purpose, and we can share proof-of-use on request.</p>
 
-<div class="card">
-<h2>Wedding Services</h2>
-<p class="service-text">Wedding décor and catering coordination by verified partners.</p>
-<a class="btn" href="wedding.html">Explore Wedding →</a>
-</div>
+      <div class="humanity-grid">
+        <!-- Animals -->
+        <div class="hum-card">
+          <div class="hum-left">
+            <div class="hum-ico" aria-hidden="true">🐾</div>
+            <div>
+              <div class="hum-title">Animals (Food &amp; Care)</div>
+              <div class="hum-note">Small amounts help with feeding and treatment.</div>
+            </div>
+          </div>
+          <!-- Replace YOUR-UPI@bank with your VPA. 'am' is optional -->
+          <a class="hum-btn" href="upi://pay?pa=YOUR-UPI@bank&pn=Humanity%20Animals&am=1&cu=INR" rel="nofollow noopener">Donate UPI</a>
+        </div>
 
-<div class="card">
-<h2>Hospitality Supplies</h2>
-<p class="service-text">Hotel linen, towels, amenities and hospitality supplies.</p>
-<a class="btn" href="hospitality.html">Explore Supplies →</a>
-</div>
+        <!-- People in Need -->
+        <div class="hum-card">
+          <div class="hum-left">
+            <div class="hum-ico" aria-hidden="true">❤️</div>
+            <div>
+              <div class="hum-title">People in Need (Food &amp; Essentials)</div>
+              <div class="hum-note">Optional contribution for local support drives.</div>
+            </div>
+          </div>
+          <!-- Replace YOUR-UPI@bank with your VPA. 'am' is optional -->
+          <a class="hum-btn" href="upi://pay?pa=YOUR-UPI@bank&pn=Humanity%20Support&am=1&cu=INR" rel="nofollow noopener">Donate UPI</a>
+        </div>
+      </div>
 
-</section>
+      <div class="hum-disclaimer">Disclaimer: This is a voluntary contribution, <strong>not tax‑deductible</strong>. If you need transparency or receipts of items purchased, please contact us.</div>
+    </section>
 
-<section class="trustbar">
-
-<div class="trust-item">🎖️ Trusted since 2015</div>
-<div class="trust-item">🤝 Verified Partners</div>
-<div class="trust-item">🧾 Transparent Pricing</div>
-<div class="trust-item">📍 Local Support</div>
-
-</section>
-
-<section class="humanity">
-
-<h3>Humanity — Optional Help</h3>
-
-<p>If you wish, you may contribute towards animal care or helping people in need.</p>
-
-<div class="humanity-grid">
-
-<div class="hum-card">
-
-<div class="hum-left">
-🐾
-<div>
-<div class="hum-title">Animals (Food & Care)</div>
-<div class="hum-note">Support feeding and treatment.</div>
-</div>
-</div>
-
-<a class="hum-btn" href="upi://pay?pa=YOUR-UPI@bank">Donate UPI</a>
-
-</div>
-
-<div class="hum-card">
-
-<div class="hum-left">
-❤️
-<div>
-<div class="hum-title">People in Need (Food & Essentials)</div>
-<div class="hum-note">Help with basic needs.</div>
-</div>
-</div>
-
-<a class="hum-btn" href="upi://pay?pa=YOUR-UPI@bank">Donate UPI</a>
-
-</div>
-
-</div>
-
-</section>
-
-<footer class="footer">
-
-<div class="copy">© 2015–2026 Fodel India</div>
-
-</footer>
-
-</div>
-
+    <!-- =========================
+         FOOTER (always below Humanity)
+    ========================== -->
+    <footer class="footer" aria-label="Footer">
+      <div class="copy">© 2015–2026 Fodel India</div>
+    </footer>
+  </div>
 </body>
 </html>
+
