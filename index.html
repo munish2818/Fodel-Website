@@ -156,16 +156,7 @@
     font-size:clamp(18px,1.8vw,20px);
     font-weight:700; margin-bottom:6px;
   }
-/* Fix Humanity section spacing on mobile */
-@media (max-width: 600px) {
-  .humanity {
-    padding: 18px 14px !important; /* tighter, centered */
-  }
 
-  .hum-card {
-    padding: 14px 12px !important; /* prevents touching edges */
-  }
-}
   .icon{
     width:42px; height:42px; border-radius:50%;
     display:flex; align-items:center; justify-content:center;
@@ -258,15 +249,7 @@
     margin-top:32px; text-align:center; padding-bottom:40px;
   }
   .copy{ font-size:12px; opacity:.75; }
-    
-.hum-title {
-  white-space: nowrap;
-  display: inline-block;
-}
 
-.hum-title span {
-  white-space: nowrap;
-}
   /* Reduced motion */
   @media (prefers-reduced-motion: reduce) { *{ transition:none !important; animation:none !important; } }
   </style>
@@ -404,59 +387,47 @@
          HUMANITY (Optional Donation)
     ========================== -->
     <section class="humanity" aria-label="Humanity donations (optional)">
-  <h3>Humanity — Optional Help</h3>
-  <p>We don’t run an NGO. If you wish, you can optionally contribute towards <strong>animal care</strong> or <strong>helping people in need</strong>. 100% of what you send is used for this purpose, and we can share proof-of-use on request.</p>
+      <h3>Humanity — Optional Help</h3>
+      <p>We don’t run an NGO. If you wish, you can optionally contribute towards <strong>animal care</strong> or <strong>helping people in need</strong>. 100% of what you send is used for this purpose, and we can share proof-of-use on request.</p>
 
-  <div class="humanity-grid">
+      <div class="humanity-grid">
+        <!-- Animals -->
+        <div class="hum-card">
+          <div class="hum-left">
+            <div class="hum-ico" aria-hidden="true">🐾</div>
+            <div>
+              <div class="hum-title">Animals (Food &amp; Care)</div>
+              <div class="hum-note">Small amounts help with feeding and treatment.</div>
+            </div>
+          </div>
+          <!-- Replace YOUR-UPI@bank with your VPA. 'am' is optional -->
+          <a class="hum-btn" href="upi://pay?pa=YOUR-UPI@bank&pn=Humanity%20Animals&am=1&cu=INR" rel="nofollow noopener">Donate UPI</a>
+        </div>
 
-    <!-- Animals -->
-    <div class="hum-card">
-      <div class="hum-left">
-        <div class="hum-ico" aria-hidden="true">🐾</div>
-        <div>
-          <div class="hum-title">Animals <span>(Food & Care)</span></div>
-          <div class="hum-note">Small amounts help with feeding and treatment.</div>
+        <!-- People in Need -->
+        <div class="hum-card">
+          <div class="hum-left">
+            <div class="hum-ico" aria-hidden="true">❤️</div>
+            <div>
+              <div class="hum-title">People in Need (Food &amp; Essentials)</div>
+              <div class="hum-note">Optional contribution for local support drives.</div>
+            </div>
+          </div>
+          <!-- Replace YOUR-UPI@bank with your VPA. 'am' is optional -->
+          <a class="hum-btn" href="upi://pay?pa=YOUR-UPI@bank&pn=Humanity%20Support&am=1&cu=INR" rel="nofollow noopener">Donate UPI</a>
         </div>
       </div>
 
-      <a class="hum-btn" 
-         href="upi://pay?pa=YOUR-UPI@bank&pn=Humanity%20Animals&cu=INR" 
-         rel="nofollow noopener">
-         Donate UPI
-      </a>
+      <div class="hum-disclaimer">Disclaimer: This is a voluntary contribution, <strong>not tax‑deductible</strong>. If you need transparency or receipts of items purchased, please contact us.</div>
+    </section>
 
-    </div>
-
-    <!-- People in Need -->
-    <div class="hum-card">
-      <div class="hum-left">
-        <div class="hum-ico" aria-hidden="true">❤️</div>
-        <div>
-          <div class="hum-title">People in Need <span>(Food & Essentials)</span></div>
-          <div class="hum-note">Optional contribution for local support drives.</div>
-        </div>
-      </div>
-
-      <a class="hum-btn" 
-         href="upi://pay?pa=YOUR-UPI@bank&pn=Humanity%20Support&cu=INR" 
-         rel="nofollow noopener">
-         Donate UPI
-      </a>
-
-    </div>
-
+    <!-- =========================
+         FOOTER (always below Humanity)
+    ========================== -->
+    <footer class="footer" aria-label="Footer">
+      <div class="copy">© 2015–2026 Fodel India</div>
+    </footer>
   </div>
-
-  <div class="hum-disclaimer">
-    Disclaimer: This is a voluntary contribution, <strong>not tax‑deductible</strong>. 
-    If you need transparency or receipts of items purchased, please contact us.
-  </div>
-</section>
-
-<!-- =========================
-     FOOTER (always below Humanity)
-========================== -->
-<footer class="footer" aria-label="Footer">
-  <div class="copy">© 2015–2026 Fodel India</div>
-</footer>
+</body>
+</html>
 
