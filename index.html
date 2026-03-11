@@ -249,7 +249,30 @@
     margin-top:32px; text-align:center; padding-bottom:40px;
   }
   .copy{ font-size:12px; opacity:.75; }
+    
+/* --- Humanity section fixes --- */
 
+/* Keep the titles on one line (incl. the parentheses part) */
+.hum-title { 
+  white-space: nowrap; 
+  display: inline-block; 
+}
+.hum-title span { 
+  white-space: nowrap; 
+}
+
+/* Mobile spacing: add inner padding so cards don't touch edges */
+@media (max-width: 600px) {
+  .humanity {
+    padding: 18px 14px !important;
+  }
+  .hum-card {
+    padding: 14px 12px !important;
+  }
+  .humanity-grid {
+    gap: 18px;  /* a little more breathing room between the two cards */
+  }
+}
   /* Reduced motion */
   @media (prefers-reduced-motion: reduce) { *{ transition:none !important; animation:none !important; } }
   </style>
@@ -396,7 +419,7 @@
           <div class="hum-left">
             <div class="hum-ico" aria-hidden="true">🐾</div>
             <div>
-              <div class="hum-title">Animals (Food &amp; Care)</div>
+              <div class="hum-title">Animals <span>(Food &amp; Care)</span></div>
               <div class="hum-note">Small amounts help with feeding and treatment.</div>
             </div>
           </div>
@@ -409,7 +432,7 @@
           <div class="hum-left">
             <div class="hum-ico" aria-hidden="true">❤️</div>
             <div>
-              <div class="hum-title">People in Need (Food &amp; Essentials)</div>
+             <div class="hum-title">People in Need <span>(Food &amp; Essentials)</span></div>
               <div class="hum-note">Optional contribution for local support drives.</div>
             </div>
           </div>
@@ -430,4 +453,5 @@
   </div>
 </body>
 </html>
+
 
