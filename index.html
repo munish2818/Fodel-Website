@@ -14,7 +14,7 @@
   <meta name="last-modified" content="2026-03-10" />
   <meta property="og:updated_time" content="2026-03-10T00:00:00+05:30" />
 
-  <!-- Keywords (clean, non-spammy, updated for all divisions) -->
+  <!-- Keywords -->
   <meta name="keywords" content="systems, restaurant calling system, waiter calling device india, hotel bookings katra, travel agency jammu, transport jammu, intercity cab jammu, logistics jammu, wedding decor jammu, wedding catering jammu, home wedding decoration jammu, wedding services jammu, hospitality supplies jammu, hotel linen supplier jammu, hotel amenities supplier" />
 
   <!-- Open Graph / Twitter -->
@@ -31,7 +31,7 @@
   <!-- Favicon -->
   <link rel="icon" href="/favicon.png" type="image/png" />
 
-  <!-- Fonts: performance -->
+  <!-- Fonts (performance) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -65,8 +65,8 @@
      THEME
   ========================== */
   :root{
-    --yellow:#f9e64a;     /* brand primary */
-    --green:#397e51;      /* brand accent */
+    --yellow:#f9e64a;  /* brand primary */
+    --green:#397e51;   /* brand accent */
 
     --text:#111827;
     --muted:#4b5563;
@@ -132,7 +132,7 @@
   }
   @media (min-width:600px){  .grid{ grid-template-columns:repeat(2,1fr); } }
   @media (min-width:900px){  .grid{ grid-template-columns:repeat(3,1fr); } }
-  @media (min-width:1200px){ .grid{ grid-template-columns:repeat(4,1fr); } } /* ← 4 across on desktop */
+  @media (min-width:1200px){ .grid{ grid-template-columns:repeat(4,1fr); } } /* 4 across */
 
   /* =========================
      CARDS
@@ -143,7 +143,7 @@
     border-radius:var(--radius);
     padding:clamp(16px,2.2vw,22px);
     display:flex; flex-direction:column; justify-content:space-between;
-    min-height:clamp(220px, 28vw, 260px); /* slightly reduced on wide screens */
+    min-height:clamp(220px, 28vw, 260px);
     box-shadow:var(--shadow);
     transition:transform .22s ease, box-shadow .22s ease;
   }
@@ -191,21 +191,30 @@
   .btn-hospital{ border-color:var(--hospital); color:var(--hospital); } .btn-hospital:hover{ background:var(--hospital); color:#fff; }
 
   /* =========================
-     TRUST BAR
+     TRUST BAR (fixed alignment)
   ========================== */
-  .trustbar{ margin-top:26px; display:grid; gap:14px; grid-template-columns:1fr; }
-  @media(min-width:860px){ .trustbar{ grid-template-columns:repeat(4,1fr); } }
+  .trustbar{
+    margin-top:26px; display:grid; gap:14px; grid-template-columns:1fr;
+  }
+  @media(min-width:860px){
+    .trustbar{ grid-template-columns:repeat(4,1fr); }
+  }
   .trust-item{
     background:#fff; border:1px solid var(--card-border);
-    border-radius:14px; padding:12px;
-    display:flex; align-items:center; justify-content:center; gap:10px;
-    min-height:52px; box-shadow:0 8px 18px rgba(0,0,0,0.08);
+    border-radius:14px; padding:12px 14px;
+    display:flex; align-items:center; justify-content:flex-start; gap:10px;
+    min-height:56px; /* consistent pill height */
+    box-shadow:0 8px 18px rgba(0,0,0,0.08);
   }
-  .trust-ico{ width:32px; height:32px; border-radius:8px; display:grid; place-items:center; background:#f3f4f6; }
+  .trust-ico{
+    width:32px; height:32px; border-radius:8px;
+    display:grid; place-items:center; background:#f3f4f6; font-size:16px;
+    flex-shrink:0;
+  }
   .trust-text{ font-weight:700; font-size:14px; }
 
   /* =========================
-     HUMANITY (donations)
+     HUMANITY (Donations) — optional
   ========================== */
   .humanity{
     margin-top:28px; padding:18px;
@@ -234,9 +243,11 @@
   .hum-disclaimer{ margin-top:10px; font-size:12px; color:#6b7280; }
 
   /* =========================
-     FOOTER
+     FOOTER — moved clearly below Humanity
   ========================== */
-  .footer{ margin-top:28px; text-align:center; padding-bottom:36px; } /* more breathing room on mobile */
+  .footer{
+    margin-top:32px; text-align:center; padding-bottom:40px;
+  }
   .copy{ font-size:12px; opacity:.75; }
 
   /* Reduced motion */
@@ -351,7 +362,7 @@
     </section>
 
     <!-- =========================
-         TRUST BAR
+         TRUST BAR (Aligned)
     ========================== -->
     <section class="trustbar" aria-label="Trust markers">
       <div class="trust-item">
@@ -385,15 +396,33 @@
           <div class="hum-left">
             <div class="hum-ico" aria-hidden="true">🐾</div>
             <div>
-              <div class="hum-title">Animals (Food & Care)</div>
+              <div class="hum-title">Animals (Food &amp; Care)</div>
               <div class="hum-note">Small amounts help with feeding and treatment.</div>
             </div>
           </div>
-          <a class="hum-btn" href="upi://pay?pa=YOUR-UPI@bank&pn=Humanity%20Animals&cu=INR" aria-label="Donatentary contribution, <strong>not tax‑deductible</strong>. If you need transparency or receipts of items purchased, please contact us.</div>
+          <!-- Replace YOUR-UPI@bank with your VPA. 'am' is optional -->
+          <a class="hum-btn" href="upi://pay?pa=YOUR-UPI@bank&pn=Humanity%20Animals&am=1&cu=INR" rel="nofollow noopener">Donate UPI</a>
+        </div>
+
+        <!-- People in Need -->
+        <div class="hum-card">
+          <div class="hum-left">
+            <div class="hum-ico" aria-hidden="true">❤️</div>
+            <div>
+              <div class="hum-title">People in Need (Food &amp; Essentials)</div>
+              <div class="hum-note">Optional contribution for local support drives.</div>
+            </div>
+          </div>
+          <!-- Replace YOUR-UPI@bank with your VPA. 'am' is optional -->
+          <a class="hum-btn" href="upi://pay?pa=YOUR-UPI@bank&pn=Humanity%20Support&am=1&cu=INR" rel="nofollow noopener">Donate UPI</a>
+        </div>
+      </div>
+
+      <div class="hum-disclaimer">Disclaimer: This is a voluntary contribution, <strong>not tax‑deductible</strong>. If you need transparency or receipts of items purchased, please contact us.</div>
     </section>
 
     <!-- =========================
-         FOOTER
+         FOOTER (always below Humanity)
     ========================== -->
     <footer class="footer" aria-label="Footer">
       <div class="copy">© 2015–2026 Fodel India</div>
