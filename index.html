@@ -5,15 +5,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Fodel India — Systems • Travels • Transport | Future Oriented Digital Enterprises & Logistics</title>
+<title>Fodel India — Systems • Travels • Transport • Wedding Décor | Future Oriented Digital Enterprises & Logistics</title>
 
-<meta name="description" content="Explore Fodel Systems, Fodel Travels, and Fodel Transport. Future Oriented Digital Enterprises & Logistics—restaurant tech, hotel booking, group travel, logistics and transport services.">
-
+<meta name="description" content="Explore Fodel Systems, Fodel Travels, Fodel Transport and Wedding Décor & Catering (Trusted Partner Service, Jammu). Future Oriented Digital Enterprises & Logistics—restaurant tech, hotel booking, group travel, logistics & transport services.">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#f9e64a">
 
 <!-- SEO KEYWORDS (hidden for crawlers) -->
-<meta name="keywords" content="katra hotel booking, vaishno devi hotel booking, jammu hotel booking, srinagar kashmir hotel booking, patnitop hotel booking, kashmir tour package, vaishno devi package, patnitop package, destination wedding katra, corporate events jammu, mice events jammu, kashmir group travel, hotel group booking katra">
+<meta name="keywords" content="katra hotel booking, vaishno devi hotel booking, jammu hotel booking, srinagar kashmir hotel booking, patnitop hotel booking, kashmir tour package, vaishno devi package, patnitop package, destination wedding katra, corporate events jammu, mice events jammu, kashmir group travel, hotel group booking katra, wedding decor jammu, wedding catering jammu">
 
 <!-- Favicon -->
 <link rel="icon" type="image/png" href="/favicon.png">
@@ -23,8 +22,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- Open Graph -->
-<meta property="og:title" content="Fodel India — Systems • Travels • Transport">
-<meta property="og:description" content="Future Oriented Digital Enterprises & Logistics. Explore Fodel Systems, Fodel Travels, and Fodel Transport.">
+<meta property="og:title" content="Fodel India — Systems • Travels • Transport • Wedding Décor">
+<meta property="og:description" content="Future Oriented Digital Enterprises & Logistics. Explore Fodel Systems, Fodel Travels, Fodel Transport and Wedding Décor & Catering (Trusted Partner Service, Jammu).">
 <meta property="og:type" content="website">
 
 <!-- Twitter -->
@@ -39,357 +38,207 @@
  "url":"https://www.fodel.in",
  "description":"Future Oriented Digital Enterprises & Logistics providing restaurant technology, hotel bookings, travel services and logistics solutions.",
  "areaServed":"India",
- "contactPoint":{
-   "@type":"ContactPoint",
-   "telephone":"+91-9086399392",
-   "contactType":"customer support"
- }
+ "foundingDate":"2015",
+ "slogan":"Trusted since 2015",
+ "department":[
+   {
+     "@type":"Organization",
+     "name":"Fodel Systems",
+     "url":"https://www.fodel.in/systems.html"
+   },
+   {
+     "@type":"TravelAgency",
+     "name":"Fodel Travels",
+     "url":"https://www.fodel.in/travel.html"
+   },
+   {
+     "@type":"TaxiService",
+     "name":"Fodel Transport",
+     "url":"https://www.fodel.in/transport.html",
+     "areaServed":["Jammu","Katra","Patnitop","Srinagar"]
+   },
+   {
+     "@type":"Service",
+     "name":"Fodel Wedding Décor & Catering",
+     "serviceType":"Wedding home decoration and catering (Trusted Partner Service)",
+     "areaServed":["Jammu"]
+   }
+ ]
 }
 </script>
 
 <style>
-
 /* THEME */
-
 :root{
+  --yellow:#f9e64a;
+  --green:#397e51;
 
---yellow:#f9e64a;
---green:#397e51;
+  --text:#111827;
+  --muted:#4b5563;
 
---text:#111827;
---muted:#4b5563;
+  /* Division palette */
+  --sys:#2563eb;           /* Systems (blue) */
+  --sys-hover:#1d4ed8;
 
---sys:#2563eb;
---sys-hover:#1d4ed8;
+  --trav:#0f766e;          /* Travels (green/teal) */
+  --trav-hover:#115e59;
 
---trav:#0f766e;
---trav-hover:#115e59;
+  --trans:#e11924;         /* Transport (red) */
+  --trans-hover:#b50f1b;
 
---trans:#e11924;
---trans-hover:#b50f1b;
+  --wedding:#7e3af2;       /* Wedding Décor (purple) */
+  --wedding-hover:#6c2bd9;
 
---radius:20px;
+  --radius:20px;
 
---shadow:0 18px 40px rgba(0,0,0,0.15);
---shadow-hover:0 28px 60px rgba(0,0,0,0.20);
+  --shadow:0 18px 40px rgba(0,0,0,0.15);
+  --shadow-hover:0 28px 60px rgba(0,0,0,0.20);
 
---btn-surface:#ffffff;
---btn-text:#111827;
---btn-border:#d1d5db;
---btn-hover-surface:#f9fafb;
+  --btn-surface:#ffffff;
+  --btn-text:#111827;
+  --btn-border:#d1d5db;
+  --btn-hover-surface:#f9fafb;
 
---chip-bg:#ffffff;
---chip-border:rgba(17,24,39,0.14);
-
+  --chip-bg:#ffffff;
+  --chip-border:rgba(17,24,39,0.14);
 }
 
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-}
+*{ box-sizing:border-box; margin:0; padding:0; }
 
 body{
-
-font-family:Poppins,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-
-background:linear-gradient(180deg,var(--yellow),#f7df33);
-
-color:var(--text);
-
-display:flex;
-justify-content:center;
-
-padding:40px 20px;
-
--webkit-font-smoothing:antialiased;
-text-rendering:optimizeLegibility;
-
+  font-family:Poppins,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  background:linear-gradient(180deg,var(--yellow),#f7df33);
+  color:var(--text);
+  display:flex; justify-content:center;
+  padding:40px 20px;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
 }
 
+/* soft decorative vignette */
 body::before{
-
-content:"";
-position:fixed;
-
-width:900px;
-height:900px;
-
-background:radial-gradient(circle,rgba(57,126,81,0.18),transparent 70%);
-
-top:-220px;
-right:-220px;
-
-z-index:-1;
-
+  content:"";
+  position:fixed;
+  width:900px; height:900px;
+  background:radial-gradient(circle,rgba(57,126,81,0.18),transparent 70%);
+  top:-220px; right:-220px;
+  z-index:-1;
 }
 
-.wrapper{
-width:100%;
-max-width:1100px;
-}
+.wrapper{ width:100%; max-width:1100px; }
 
-header{
-text-align:center;
-margin-bottom:30px;
-}
-
-.brand{
-font-size:42px;
-font-weight:700;
-}
-
-.tagline{
-margin-top:6px;
-color:var(--muted);
-font-size:15px;
-}
+header{ text-align:center; margin-bottom:30px; }
+.brand{ font-size:42px; font-weight:700; }
+.tagline{ margin-top:6px; color:var(--muted); font-size:15px; }
 
 .separator{
-width:90px;
-height:4px;
-background:linear-gradient(90deg,var(--green),transparent);
-margin:18px auto;
-border-radius:10px;
+  width:90px; height:4px;
+  background:linear-gradient(90deg,var(--green),transparent);
+  margin:18px auto; border-radius:10px;
 }
 
-.choose{
-font-size:16px;
-color:var(--muted);
-}
+.choose{ font-size:16px; color:var(--muted); }
 
 .grid{
-
-display:grid;
-gap:24px;
-margin-top:30px;
-grid-template-columns:1fr;
-
+  display:grid; gap:24px; margin-top:30px; grid-template-columns:1fr;
 }
-
 @media(min-width:800px){
-
-.grid{
-grid-template-columns:repeat(3,1fr);
-}
-
+  .grid{ grid-template-columns:repeat(4,1fr); } /* 4 divisions now */
 }
 
 .card{
-
-background:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.82));
-
-border:1px solid rgba(17,24,39,0.12);
-
-border-radius:var(--radius);
-
-padding:26px;
-
-box-shadow:var(--shadow);
-
-display:flex;
-flex-direction:column;
-justify-content:space-between;
-
-transition:.3s;
-
-animation:fadeUp .6s ease both;
-
+  background:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.82));
+  border:1px solid rgba(17,24,39,0.12);
+  border-radius:var(--radius);
+  padding:26px;
+  box-shadow:var(--shadow);
+  display:flex; flex-direction:column; justify-content:space-between;
+  transition:.3s; animation:fadeUp .6s ease both;
 }
-
-.card:nth-child(2){animation-delay:.08s;}
-.card:nth-child(3){animation-delay:.12s;}
-
-.card:hover{
-
-transform:translateY(-6px);
-box-shadow:var(--shadow-hover);
-
-}
-
-.card:hover .icon{
-transform:scale(1.06);
-}
+.card:nth-child(2){animation-delay:.06s;}
+.card:nth-child(3){animation-delay:.09s;}
+.card:nth-child(4){animation-delay:.12s;}
+.card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-hover); }
+.card:hover .icon{ transform:scale(1.06); }
 
 .card h3{
-
-display:flex;
-align-items:center;
-gap:12px;
-
-font-size:20px;
-font-weight:700;
-
-margin-bottom:8px;
-
+  display:flex; align-items:center; gap:12px;
+  font-size:20px; font-weight:700; margin-bottom:8px;
 }
 
 .icon{
-
-width:44px;
-height:44px;
-
-border-radius:50%;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-color:#fff;
-
-transition:.25s;
-
+  width:44px; height:44px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  color:#fff; transition:.25s;
 }
+.icon-sys{ background:linear-gradient(135deg,var(--sys),var(--sys-hover)); }
+.icon-trav{ background:linear-gradient(135deg,var(--trav),var(--trav-hover)); }
+.icon-trans{ background:linear-gradient(135deg,var(--trans),var(--trans-hover)); }
+.icon-wedding{ background:linear-gradient(135deg,var(--wedding),var(--wedding-hover)); }
 
-.icon-sys{
-background:linear-gradient(135deg,var(--sys),var(--sys-hover));
-}
-
-.icon-trav{
-background:linear-gradient(135deg,var(--trav),var(--trav-hover));
-}
-
-.icon-trans{
-background:linear-gradient(135deg,var(--trans),var(--trans-hover));
-}
-
-.service-text{
-
-font-size:14px;
-color:var(--muted);
-margin-bottom:20px;
-
-}
+.service-text{ font-size:14px; color:var(--muted); margin-bottom:20px; }
 
 .btn{
-
-display:inline-flex;
-justify-content:center;
-align-items:center;
-gap:10px;
-
-padding:12px 18px;
-
-border-radius:12px;
-
-font-weight:600;
-font-size:18px;
-
-text-decoration:none;
-
-background:var(--btn-surface);
-
-color:var(--btn-text);
-
-border:1px solid var(--btn-border);
-
-box-shadow:0 8px 20px rgba(0,0,0,0.10);
-
-transition:.2s;
-
+  display:inline-flex; justify-content:center; align-items:center; gap:10px;
+  padding:12px 18px; border-radius:12px;
+  font-weight:600; font-size:18px; text-decoration:none;
+  background:var(--btn-surface); color:var(--btn-text); border:1px solid var(--btn-border);
+  box-shadow:0 8px 20px rgba(0,0,0,0.10); transition:.2s;
 }
+.btn:hover{ transform:translateY(-2px); background:var(--btn-hover-surface); }
 
-.btn:hover{
-transform:translateY(-2px);
-background:var(--btn-hover-surface);
+.btn-sys{ border-color:var(--sys); color:var(--sys); }
+.btn-sys:hover{ background:var(--sys); color:#fff; }
+
+.btn-trav{ border-color:var(--trav); color:var(--trav); }
+.btn-trav:hover{ background:var(--trav); color:#fff; }
+
+.btn-trans{ border-color:var(--trans); color:var(--trans); }
+.btn-trans:hover{ background:var(--trans); color:#fff; }
+
+.btn-wedding{ border-color:var(--wedding); color:var(--wedding); }
+.btn-wedding:hover{ background:var(--wedding); color:#fff; }
+
+/* Trust bar */
+.trustbar{
+  margin-top:28px;
+  display:grid; gap:10px;
+  grid-template-columns:1fr;
 }
-
-.btn-sys{
-border-color:var(--sys);
-color:var(--sys);
+@media(min-width:860px){
+  .trustbar{ grid-template-columns:repeat(4,1fr); }
 }
-
-.btn-sys:hover{
-background:var(--sys);
-color:#fff;
+.trust-item{
+  background:#fff; border:1px solid rgba(17,24,39,0.12);
+  border-radius:14px; padding:10px 12px;
+  display:flex; align-items:center; gap:10px; justify-content:center;
+  box-shadow:0 8px 18px rgba(0,0,0,0.08);
 }
-
-.btn-trav{
-border-color:var(--trav);
-color:var(--trav);
+.trust-ico{
+  width:32px; height:32px; border-radius:8px;
+  display:grid; place-items:center; background:#f3f4f6; color:#111827;
+  border:1px solid rgba(17,24,39,0.10);
 }
+.trust-text{ font-weight:700; font-size:14px; }
 
-.btn-trav:hover{
-background:var(--trav);
-color:#fff;
-}
-
-.btn-trans{
-border-color:var(--trans);
-color:var(--trans);
-}
-
-.btn-trans:hover{
-background:var(--trans);
-color:#fff;
-}
-
+/* Footer (contacts removed as requested) */
 .footer{
-
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-
-gap:10px;
-margin-top:35px;
-
+  display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:24px;
 }
-
-.chip{
-
-display:inline-flex;
-align-items:center;
-gap:8px;
-
-padding:9px 14px;
-
-border-radius:999px;
-
-background:var(--chip-bg);
-
-border:1px solid var(--chip-border);
-
-text-decoration:none;
-
-font-size:14px;
-
-color:var(--text);
-
-transition:.2s;
-
-}
-
-.chip:hover{
-transform:translateY(-2px);
-}
-
 .copy{
-
-width:100%;
-text-align:center;
-
-font-size:12px;
-
-margin-top:8px;
-
-opacity:.72;
-
+  width:100%; text-align:center; font-size:12px; margin-top:8px; opacity:.72;
 }
 
 @keyframes fadeUp{
-
-from{
-opacity:0;
-transform:translateY(18px);
+  from{ opacity:0; transform:translateY(18px); }
+  to{ opacity:1; transform:translateY(0); }
 }
 
-to{
-opacity:1;
-transform:translateY(0);
+/* Accessibility: focus rings */
+:focus-visible{
+  outline:3px solid rgba(0,0,0,0.25);
+  outline-offset:3px; border-radius:10px;
 }
-
-}
-
 </style>
 </head>
 
@@ -399,130 +248,108 @@ transform:translateY(0);
 <div style="display:none">
 Katra hotel booking, Vaishno Devi hotel booking, Jammu hotel booking, Srinagar Kashmir hotel booking,
 Patnitop hotel booking, Kashmir tour package, Vaishno Devi travel package, Patnitop Jammu hotels,
-destination wedding Katra, corporate events Jammu, MICE events Jammu Kashmir.
+destination wedding Katra, corporate events Jammu, MICE events Jammu Kashmir, wedding décor Jammu, wedding catering Jammu.
 </div>
 
 <div class="wrapper">
 
-<header>
+  <header>
+    <h1 class="brand">Fodel India</h1>
+    <p class="tagline">Future Oriented Digital Enterprises &amp; Logistics</p>
+    <div class="separator"></div>
+    <p class="choose">Choose your division</p>
+  </header>
 
-<h1 class="brand">Fodel India</h1>
+  <section class="grid">
 
-<p class="tagline">
-Future Oriented Digital Enterprises & Logistics
-</p>
+    <!-- Fodel Systems -->
+    <article class="card">
+      <div>
+        <h3>
+          <span class="icon icon-sys">
+            <!-- Restaurant Service Bell -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+              <path d="M12 2a4 4 0 0 0-4 4v2H6a4 4 0 0 0-4 4v2h20v-2a4 4 0 0 0-4-4h-2V6a4 4 0 0 0-4-4Zm0 2a2 2 0 0 1 2 2v2h-4V6a2 2 0 0 1 2-2Zm-8 10h16v1H4v-1Zm3 3a2 2 0 1 0 4 0H7Zm6 0a2 2 0 1 0 4 0h-4Z"/>
+            </svg>
+          </span>
+          Fodel Systems
+        </h3>
+        <p class="service-text">Wireless waiter calling systems and restaurant technology solutions.</p>
+      </div>
+      <a href="systems.html" class="btn btn-sys" aria-label="Explore Fodel Systems">Explore Systems →</a>
+    </article>
 
-<div class="separator"></div>
+    <!-- Fodel Travels -->
+    <article class="card">
+      <div>
+        <h3>
+          <span class="icon icon-trav">
+            <!-- Hotel Icon -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+              <path d="M3 11h18v7h-2v-2H5v2H3v-7Zm3-5h12a3 3 0 0 1 3 3v2H3V9a3 3 0 0 1 3-3Zm1 2a1 1 0 0 0-1 1v1h12V9a1 1 0 0 0-1-1H7Z"/>
+            </svg>
+          </span>
+          Fodel Travels
+        </h3>
+        <p class="service-text">Hotel bookings, banquets, destination weddings and group travel.</p>
+      </div>
+      <a href="travel.html" class="btn btn-trav" aria-label="Explore Fodel Travels">Explore Travels →</a>
+    </article>
 
-<p class="choose">Choose your division</p>
+    <!-- Fodel Transport -->
+    <article class="card">
+      <div>
+        <h3>
+          <span class="icon icon-trans">🚚</span>
+          Fodel Transport
+        </h3>
+        <p class="service-text">Local logistics, intercity shipments and last-mile delivery.</p>
+      </div>
+      <a href="transport.html" class="btn btn-trans" aria-label="Explore Fodel Transport">Explore Transport →</a>
+    </article>
 
-</header>
+    <!-- NEW: Fodel Wedding Décor & Catering (Trusted Partner Service) -->
+    <article class="card">
+      <div>
+        <h3>
+          <span class="icon icon-wedding">💜</span>
+          Fodel Wedding Décor &amp; Catering
+        </h3>
+        <p class="service-text">
+          Trusted Partner Service (Currently in Jammu). Elegant home wedding decoration and seamless catering
+          delivered by our verified partners — you share the plan, we coordinate the experts.
+        </p>
+      </div>
+      <!-- Link this to a details page or a lead form when ready -->
+      <a href="wedding.html" class="btn btn-wedding" aria-label="Open Wedding Décor & Catering details">Open Wedding Décor →</a>
+    </article>
 
-<section class="grid">
+  </section>
 
-<article class="card">
+  <!-- TRUST BAR -->
+  <section class="trustbar" aria-label="Trust markers">
+    <div class="trust-item">
+      <div class="trust-ico">🎖️</div>
+      <div class="trust-text">Trusted since 2015</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-ico">🤝</div>
+      <div class="trust-text">Verified Partners</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-ico">🧾</div>
+      <div class="trust-text">Transparent Pricing</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-ico">📍</div>
+      <div class="trust-text">Local Support</div>
+    </div>
+  </section>
 
-<div>
-
-<h3>
-
-<span class="icon icon-sys">
-
-<!-- Restaurant Service Bell -->
-<svg width="22" height="22" viewBox="0 0 24 24" fill="white">
-<path d="M12 2a4 4 0 0 0-4 4v2H6a4 4 0 0 0-4 4v2h20v-2a4 4 0 0 0-4-4h-2V6a4 4 0 0 0-4-4Zm0 2a2 2 0 0 1 2 2v2h-4V6a2 2 0 0 1 2-2Zm-8 10h16v1H4v-1Zm3 3a2 2 0 1 0 4 0H7Zm6 0a2 2 0 1 0 4 0h-4Z"/>
-</svg>
-
-</span>
-
-Fodel Systems
-
-</h3>
-
-<p class="service-text">
-Wireless waiter calling systems and restaurant technology solutions.
-</p>
-
-</div>
-
-<a href="systems.html" class="btn btn-sys">
-Explore Systems →
-</a>
-
-</article>
-
-<article class="card">
-
-<div>
-
-<h3>
-
-<span class="icon icon-trav">
-
-<!-- Hotel Icon -->
-<svg width="22" height="22" viewBox="0 0 24 24" fill="white">
-<path d="M3 11h18v7h-2v-2H5v2H3v-7Zm3-5h12a3 3 0 0 1 3 3v2H3V9a3 3 0 0 1 3-3Zm1 2a1 1 0 0 0-1 1v1h12V9a1 1 0 0 0-1-1H7Z"/>
-</svg>
-
-</span>
-
-Fodel Travels
-
-</h3>
-
-<p class="service-text">
-Hotel bookings, banquets, destination weddings and group travel.
-</p>
-
-</div>
-
-<a href="travel.html" class="btn btn-trav">
-Explore Travels →
-</a>
-
-</article>
-
-<article class="card">
-
-<div>
-
-<h3>
-
-<span class="icon icon-trans">🚚</span>
-
-Fodel Transport
-
-</h3>
-
-<p class="service-text">
-Local logistics, intercity shipments and last-mile delivery.
-</p>
-
-</div>
-
-<a href="transport.html" class="btn btn-trans">
-Explore Transport →
-</a>
-
-</article>
-
-</section>
-
-<footer class="footer">
-
-<a href="mailto:support@fodel.in" class="chip">📧 support@fodel.in</a>
-
-<a href="tel:+919086399392" class="chip">📞 +91 9086399392</a>
-
-<a href="https://wa.me/9086399392" target="_blank" class="chip">💬 WhatsApp</a>
-
-<div class="copy">
-
-© 2015–2026 Fodel India
-
-</div>
-
-</footer>
+  <!-- Footer (contacts removed on this screen as requested) -->
+  <footer class="footer" aria-label="Footer">
+    <div class="copy">© 2015–2026 Fodel India</div>
+  </footer>
 
 </div>
 
