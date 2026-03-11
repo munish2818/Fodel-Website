@@ -250,29 +250,6 @@
   }
   .copy{ font-size:12px; opacity:.75; }
     
-/* --- Humanity section fixes --- */
-
-/* Keep the titles on one line (incl. the parentheses part) */
-.hum-title { 
-  white-space: nowrap; 
-  display: inline-block; 
-}
-.hum-title span { 
-  white-space: nowrap; 
-}
-
-/* Mobile spacing: add inner padding so cards don't touch edges */
-@media (max-width: 600px) {
-  .humanity {
-    padding: 18px 10px !important;
-  }
-  .hum-card {
-    padding: 18px 10px !important;
-  }
-  .humanity-grid {
-    gap: 10px;  /* a little more breathing room between the two cards */
-  }
-}
   /* Reduced motion */
   @media (prefers-reduced-motion: reduce) { *{ transition:none !important; animation:none !important; } }
   </style>
@@ -453,6 +430,7 @@
   </div>
 </body>
 </html>
+
 
 
 
