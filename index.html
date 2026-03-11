@@ -9,7 +9,27 @@
 
 <meta name="description" content="Future Oriented Digital Enterprises & Logistics. Explore Fodel Systems, Fodel Travels, Fodel Transport, Wedding Services and Hospitality Supplies.">
 
+<meta name="keywords" content="fodel systems, restaurant calling system, waiter calling device india, hotel bookings katra, travel agency jammu, transport jammu, intercity cab jammu, logistics jammu, wedding decor jammu, wedding catering jammu, home wedding decoration jammu, hospitality supplies jammu, hotel linen supplier jammu, hotel amenities supplier, fodel wedding services">
+
+<meta name="robots" content="index,follow">
+
+<meta name="last-modified" content="2026-03-10">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Fodel India — Digital Enterprises & Logistics">
+<meta property="og:description" content="Explore Fodel Systems, Travels, Transport, Wedding Services and Hospitality Supplies.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://yourdomain.com/og-image.jpg">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yourdomain.com/og-image.jpg">
+
 <link rel="icon" href="/favicon.png">
+
+<!-- Fonts performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -28,26 +48,15 @@ THEME
 --muted:#4b5563;
 
 --sys:#2563eb;
---sys-hover:#1d4ed8;
-
 --trav:#0f766e;
---trav-hover:#115e59;
-
 --trans:#e11924;
---trans-hover:#b50f1b;
-
 --wedding:#7e3af2;
---wedding-hover:#6c2bd9;
-
 --hospital:#f59e0b;
---hospital-hover:#d97706;
 
 --radius:20px;
 
 --shadow:0 18px 40px rgba(0,0,0,0.15);
 --shadow-hover:0 28px 60px rgba(0,0,0,0.20);
-
---btn-border:#d1d5db;
 
 }
 
@@ -63,10 +72,8 @@ padding:0;
 
 body{
 
-font-family:Poppins,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-
+font-family:Poppins,system-ui;
 background:linear-gradient(180deg,var(--yellow),#f7df33);
-
 color:var(--text);
 
 display:flex;
@@ -75,6 +82,8 @@ justify-content:center;
 padding:40px 20px;
 
 }
+
+/* soft background glow */
 
 body::before{
 
@@ -86,8 +95,8 @@ height:900px;
 
 background:radial-gradient(circle,rgba(57,126,81,0.18),transparent 70%);
 
-top:-220px;
-right:-220px;
+top:-200px;
+right:-200px;
 
 z-index:-1;
 
@@ -95,7 +104,7 @@ z-index:-1;
 
 .wrapper{
 width:100%;
-max-width:1100px;
+max-width:1300px;
 }
 
 /* =========================
@@ -104,13 +113,12 @@ HEADER
 
 header{
 text-align:center;
-margin-bottom:30px;
+margin-bottom:40px;
 }
 
 .brand{
-font-size:clamp(34px,4vw,42px);
+font-size:clamp(34px,4vw,44px);
 font-weight:700;
-letter-spacing:-0.5px;
 }
 
 .tagline{
@@ -139,19 +147,17 @@ GRID
 .grid{
 
 display:grid;
-gap:24px;
-
-margin-top:30px;
+gap:28px;
 
 grid-template-columns:1fr;
 
 }
 
-@media(min-width:600px){
+@media(min-width:700px){
 .grid{grid-template-columns:repeat(2,1fr);}
 }
 
-@media(min-width:900px){
+@media(min-width:1000px){
 .grid{grid-template-columns:repeat(3,1fr);}
 }
 
@@ -165,9 +171,7 @@ CARDS
 
 .card{
 
-background:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.82));
-
-border:1px solid rgba(17,24,39,0.12);
+background:rgba(255,255,255,0.88);
 
 border-radius:var(--radius);
 
@@ -177,7 +181,7 @@ display:flex;
 flex-direction:column;
 justify-content:space-between;
 
-min-height:250px;
+min-height:260px;
 
 box-shadow:var(--shadow);
 
@@ -188,16 +192,15 @@ transition:.3s;
 .card:hover{
 
 transform:translateY(-6px);
-
 box-shadow:var(--shadow-hover);
 
 }
 
-.card>div{
+.card > div{
 flex:1;
 }
 
-.card h3{
+.card h2{
 
 display:flex;
 align-items:center;
@@ -205,7 +208,6 @@ align-items:center;
 gap:12px;
 
 font-size:20px;
-font-weight:700;
 
 margin-bottom:8px;
 
@@ -215,8 +217,8 @@ margin-bottom:8px;
 
 .icon{
 
-width:44px;
-height:44px;
+width:42px;
+height:42px;
 
 border-radius:50%;
 
@@ -226,21 +228,20 @@ justify-content:center;
 
 color:white;
 
-flex-shrink:0;
+font-size:18px;
 
 }
 
-/* icon colors */
-
-.icon-sys{background:linear-gradient(135deg,var(--sys),var(--sys-hover));}
-.icon-trav{background:linear-gradient(135deg,var(--trav),var(--trav-hover));}
-.icon-trans{background:linear-gradient(135deg,var(--trans),var(--trans-hover));}
-.icon-wedding{background:linear-gradient(135deg,var(--wedding),var(--wedding-hover));}
-.icon-hospital{background:linear-gradient(135deg,var(--hospital),var(--hospital-hover));}
+.icon-sys{background:var(--sys);}
+.icon-trav{background:var(--trav);}
+.icon-trans{background:var(--trans);}
+.icon-wedding{background:var(--wedding);}
+.icon-hospital{background:var(--hospital);}
 
 .service-text{
 
 font-size:14px;
+
 color:var(--muted);
 
 line-height:1.5;
@@ -264,38 +265,35 @@ padding:12px 18px;
 border-radius:12px;
 
 font-weight:600;
-font-size:16px;
+
+font-size:15px;
 
 text-decoration:none;
 
 background:#fff;
 
-border:1px solid var(--btn-border);
+border:2px solid;
 
 transition:.2s;
 
 }
 
-.btn:hover{
-transform:translateY(-2px);
-}
-
-/* colored buttons */
+/* button colors */
 
 .btn-sys{border-color:var(--sys);color:var(--sys);}
-.btn-sys:hover{background:var(--sys);color:#fff;}
+.btn-sys:hover{background:var(--sys);color:white;}
 
 .btn-trav{border-color:var(--trav);color:var(--trav);}
-.btn-trav:hover{background:var(--trav);color:#fff;}
+.btn-trav:hover{background:var(--trav);color:white;}
 
 .btn-trans{border-color:var(--trans);color:var(--trans);}
-.btn-trans:hover{background:var(--trans);color:#fff;}
+.btn-trans:hover{background:var(--trans);color:white;}
 
 .btn-wedding{border-color:var(--wedding);color:var(--wedding);}
-.btn-wedding:hover{background:var(--wedding);color:#fff;}
+.btn-wedding:hover{background:var(--wedding);color:white;}
 
 .btn-hospital{border-color:var(--hospital);color:var(--hospital);}
-.btn-hospital:hover{background:var(--hospital);color:#fff;}
+.btn-hospital:hover{background:var(--hospital);color:white;}
 
 /* =========================
 TRUST BAR
@@ -303,24 +301,22 @@ TRUST BAR
 
 .trustbar{
 
-margin-top:28px;
+margin-top:36px;
 
 display:grid;
-gap:14px;
+gap:16px;
 
 grid-template-columns:1fr;
 
 }
 
-@media(min-width:860px){
+@media(min-width:900px){
 .trustbar{grid-template-columns:repeat(4,1fr);}
 }
 
 .trust-item{
 
 background:#fff;
-
-border:1px solid rgba(17,24,39,0.12);
 
 border-radius:14px;
 
@@ -332,31 +328,13 @@ justify-content:center;
 
 gap:10px;
 
-min-height:52px;
-
 box-shadow:0 8px 18px rgba(0,0,0,0.08);
 
 }
 
-.trust-ico{
-
-width:32px;
-height:32px;
-
-border-radius:8px;
-
-display:grid;
-place-items:center;
-
-background:#f3f4f6;
-
-}
-
 .trust-text{
-
-font-weight:700;
+font-weight:600;
 font-size:14px;
-
 }
 
 /* =========================
@@ -374,6 +352,27 @@ opacity:.7;
 }
 
 </style>
+
+<!-- Organization Schema -->
+
+<script type="application/ld+json">
+
+{
+ "@context":"https://schema.org",
+ "@type":"Organization",
+ "name":"Fodel India",
+ "url":"https://yourdomain.com",
+ "department":[
+   {"@type":"Organization","name":"Fodel Systems"},
+   {"@type":"Organization","name":"Fodel Travels"},
+   {"@type":"Organization","name":"Fodel Transport"},
+   {"@type":"Organization","name":"Fodel Wedding Services"},
+   {"@type":"Organization","name":"Fodel Hospitality Supplies"}
+ ]
+}
+
+</script>
+
 </head>
 
 <body>
@@ -394,84 +393,44 @@ opacity:.7;
 
 <section class="grid">
 
-<!-- Systems -->
-
 <article class="card">
-
 <div>
-
-<h3><span class="icon icon-sys">🍽️</span>Fodel Systems</h3>
-
+<h2><span class="icon icon-sys">🍽️</span>Fodel Systems</h2>
 <p class="service-text">Wireless waiter calling systems and restaurant technology solutions.</p>
-
 </div>
-
 <a href="systems.html" class="btn btn-sys">Explore Systems →</a>
-
 </article>
 
-<!-- Travels -->
-
 <article class="card">
-
 <div>
-
-<h3><span class="icon icon-trav">🏨</span>Fodel Travels</h3>
-
+<h2><span class="icon icon-trav">🏨</span>Fodel Travels</h2>
 <p class="service-text">Hotel bookings, banquets, destination weddings and group travel.</p>
-
 </div>
-
 <a href="travel.html" class="btn btn-trav">Explore Travels →</a>
-
 </article>
 
-<!-- Transport -->
-
 <article class="card">
-
 <div>
-
-<h3><span class="icon icon-trans">🚚</span>Fodel Transport</h3>
-
+<h2><span class="icon icon-trans">🚚</span>Fodel Transport</h2>
 <p class="service-text">Local logistics, intercity shipments and last-mile delivery services.</p>
-
 </div>
-
 <a href="transport.html" class="btn btn-trans">Explore Transport →</a>
-
 </article>
 
-<!-- Wedding -->
-
 <article class="card">
-
 <div>
-
-<h3><span class="icon icon-wedding">💜</span>Fodel Wedding Services</h3>
-
-<p class="service-text">Wedding decor & catering coordination by our verified partner (Currently Jammu).</p>
-
+<h2><span class="icon icon-wedding">💜</span>Fodel Wedding Services</h2>
+<p class="service-text">Wedding décor, home decoration and catering coordination delivered by our verified partner teams in Jammu.</p>
 </div>
-
 <a href="wedding.html" class="btn btn-wedding">Explore Wedding →</a>
-
 </article>
 
-<!-- Hospitality Supplies -->
-
 <article class="card">
-
 <div>
-
-<h3><span class="icon icon-hospital">🧺</span>Fodel Hospitality Supplies</h3>
-
+<h2><span class="icon icon-hospital">🧺</span>Fodel Hospitality Supplies</h2>
 <p class="service-text">Hotel linen, towels, room amenities and essential supplies for hospitality businesses.</p>
-
 </div>
-
 <a href="hospitality.html" class="btn btn-hospital">Explore Supplies →</a>
-
 </article>
 
 </section>
@@ -479,33 +438,38 @@ opacity:.7;
 <section class="trustbar">
 
 <div class="trust-item">
-<div class="trust-ico">🎖️</div>
+<div>🎖️</div>
 <div class="trust-text">Trusted since 2015</div>
 </div>
 
 <div class="trust-item">
-<div class="trust-ico">🤝</div>
+<div>🤝</div>
 <div class="trust-text">Verified Partners</div>
 </div>
 
 <div class="trust-item">
-<div class="trust-ico">🧾</div>
+<div>🧾</div>
 <div class="trust-text">Transparent Pricing</div>
 </div>
 
 <div class="trust-item">
-<div class="trust-ico">📍</div>
+<div>📍</div>
 <div class="trust-text">Local Support</div>
 </div>
 
 </section>
 
 <footer class="footer">
-
 <div class="copy">© 2015–2026 Fodel India</div>
-
 </footer>
 
+</div>
+
+<!-- hidden SEO keywords -->
+<div style="display:none">
+Fodel systems, waiter calling devices, hotel booking Jammu, travel agent Jammu,
+transport Jammu, taxi Jammu Katra, wedding decoration Jammu,
+catering Jammu, hospitality supplies Jammu, hotel linen supplier.
 </div>
 
 </body>
