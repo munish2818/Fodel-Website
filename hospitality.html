@@ -7,30 +7,21 @@
 
 <title>Hospitality Supplies India | Hotel Linen Towels Amenities Restaurant Supplies | Fodel India</title>
 
-<meta name="description" content="Hospitality supplies supplier India. Hotel linen, towels, room amenities, restaurant equipment, banquet supplies, housekeeping products. PAN India hotel supply distribution with fast WhatsApp quotations.">
-
-<meta name="keywords" content="hotel supplies india, hospitality supplies india, hotel linen supplier india, hotel towels supplier india, hotel amenities supplier india, restaurant equipment supplier india, hotel housekeeping supplies india, banquet supplies india, hotel products supplier india, hospitality procurement india">
+<meta name="description" content="Hospitality supplies supplier India. Hotel linen, towels, amenities, restaurant equipment, banquet supplies, housekeeping products. PAN India hotel supply distribution.">
 
 <link rel="canonical" href="https://www.fodel.in/hospitality.html">
 
-<meta property="og:title" content="Hospitality Supplies India | Fodel India">
-<meta property="og:description" content="Hotel linen, towels, amenities, restaurant equipment and banquet supplies across India.">
-<meta property="og:type" content="website">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
 :root{
-
 --primary:#c2410c;
 --navy:#0a1a2b;
 
 --text:#0f172a;
 --muted:#475569;
-
 --bg:#f8fafc;
 
 --radius:12px;
@@ -38,7 +29,6 @@
 
 --container:1200px;
 --topbar:60px;
-
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -50,24 +40,17 @@ color:var(--text);
 }
 
 .top-nav{
-
 position:fixed;
 top:0;
 left:0;
 right:0;
-
 height:var(--topbar);
-
 background:var(--primary);
-
 display:flex;
 align-items:center;
 justify-content:space-between;
-
 padding:10px 18px;
-
 z-index:1000;
-
 }
 
 .brand-mini{
@@ -103,14 +86,11 @@ background:rgba(255,255,255,.15);
 .chip.reviews{background:var(--navy)}
 
 .hero{
-
 margin-top:var(--topbar);
 background:var(--primary);
 color:#fff;
 text-align:center;
-
 padding:45px 20px 60px;
-
 }
 
 .hero h1{font-size:clamp(26px,5vw,38px)}
@@ -127,139 +107,95 @@ padding:18px;
 }
 
 .searchbox{
-
 background:#fff;
 border:1px solid #e2e8f0;
-
 border-radius:999px;
-
 padding:10px 14px;
-
 display:flex;
 gap:8px;
 align-items:center;
-
 margin-bottom:14px;
-
 }
 
 .searchbox input{
-
 border:none;
 outline:none;
 font:inherit;
 width:100%;
-
 }
 
-/* tabs */
-
 .tabs{
-
 display:flex;
 gap:8px;
 overflow:auto;
-
-margin-bottom:18px;
-
+margin-bottom:12px;
 }
 
 .tab{
-
 font-family:Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-
 padding:8px 14px;
-
 border-radius:999px;
-
 border:1px solid #e2e8f0;
-
 background:#fff;
-
 cursor:pointer;
-
 font-weight:600;
 font-size:14px;
-
 white-space:nowrap;
-
 }
 
 .tab.active{
-
 border-color:var(--primary);
-
 box-shadow:0 0 0 3px rgba(194,65,12,.15);
+}
 
+.tabs-divider{
+height:14px;
+border-bottom:1px solid #e5e7eb;
+margin-bottom:18px;
 }
 
 /* grid */
 
 .grid{
-
 display:grid;
-gap:12px;
-
+gap:14px;
 grid-template-columns:repeat(4,1fr);
-
 }
 
 @media(max-width:1024px){
-
-.grid{
-grid-template-columns:repeat(3,1fr);
-}
-
+.grid{grid-template-columns:repeat(3,1fr)}
 }
 
 @media(max-width:640px){
-
-.grid{
-grid-template-columns:repeat(2,1fr);
+.grid{grid-template-columns:repeat(2,1fr)}
 }
 
-}
-
-/* card */
+/* cards */
 
 .card{
-
 background:#fff;
-
 border-radius:var(--radius);
-
 box-shadow:var(--shadow);
-
-padding:10px;
+padding:12px;
 
 display:flex;
 flex-direction:column;
-
-gap:6px;
-
 }
 
 .thumb{
-
 width:100%;
 aspect-ratio:1/1;
-
 object-fit:cover;
-
 border-radius:8px;
-
 background:#f1f5f9;
-
+margin-bottom:8px;
 }
 
 .title{
-
 font-weight:700;
 font-size:14px;
-
 display:flex;
 justify-content:space-between;
-
 }
 
 .sku{
@@ -268,59 +204,77 @@ color:#64748b;
 }
 
 .desc{
-
 font-size:12px;
 color:var(--muted);
-
+margin-top:4px;
+min-height:36px;
 }
 
 .price{
-
 font-weight:700;
+margin-top:6px;
+}
 
+/* THIS FIXES BUTTON ALIGNMENT */
+
+.card-bottom{
+margin-top:auto;
 }
 
 .btn{
-
 background:var(--primary);
 color:#fff;
-
 border:none;
-
 padding:8px;
-
 border-radius:8px;
-
 font-weight:600;
-
 cursor:pointer;
-
 font-size:13px;
-
+width:100%;
+margin-top:8px;
 }
 
-footer{
+/* modal */
 
-margin-top:30px;
+.modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.6);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:2000;
+}
 
-padding:25px;
-
+.modal-content{
 background:#fff;
+padding:20px;
+border-radius:14px;
+max-width:420px;
+width:90%;
+}
 
+.close{
+float:right;
+cursor:pointer;
+font-weight:700;
+}
+
+/* footer */
+
+footer{
+margin-top:40px;
+padding:28px;
+background:#fff;
 border-top:1px solid #e5e7eb;
-
 text-align:center;
-
 }
 
 .footer-links{
-
 display:flex;
 gap:12px;
 justify-content:center;
-
 font-weight:700;
-
 }
 
 .footer-email{
@@ -331,6 +285,12 @@ text-decoration:none;
 .footer-wa{
 color:#25D366;
 text-decoration:none;
+}
+
+.copy{
+margin-top:8px;
+font-size:12px;
+color:#94a3b8;
 }
 
 </style>
@@ -346,21 +306,15 @@ Fodel Hospitality
 </div>
 
 <div class="top-actions">
-
 <a class="chip reviews" href="/reviews.html">Reviews</a>
-
 <a class="chip" href="/">Home</a>
-
 </div>
 
 </nav>
 
 <header class="hero">
-
 <h1>Hospitality Supplies</h1>
-
 <p class="tag">Hotel Linen • Towels • Amenities • Restaurant • Housekeeping • Banquet</p>
-
 </header>
 
 <main class="container">
@@ -371,7 +325,6 @@ Fodel Hospitality
 </div>
 
 <div class="tabs">
-
 <button class="tab active" data-cat="all">All</button>
 <button class="tab" data-cat="linen">Linen</button>
 <button class="tab" data-cat="towels">Towels</button>
@@ -379,8 +332,9 @@ Fodel Hospitality
 <button class="tab" data-cat="restaurant">Restaurant</button>
 <button class="tab" data-cat="housekeeping">Housekeeping</button>
 <button class="tab" data-cat="banquet">Banquet</button>
-
 </div>
+
+<div class="tabs-divider"></div>
 
 <section id="products" class="grid"></section>
 
@@ -389,28 +343,26 @@ Fodel Hospitality
 <footer>
 
 <div class="footer-links">
-
 <a class="footer-email" href="mailto:sales@hs.in">Email</a>
-
 <span>•</span>
-
 <a class="footer-wa" href="https://wa.me/919797459260">WhatsApp</a>
+</div>
 
+<div class="copy">
+© 2015–2026 Fodel India
 </div>
 
 </footer>
 
 <script>
 
-/* demo products */
-
 const products=[
 
 {cat:"linen",name:"Hotel Bedsheet 300TC",sku:"LINEN300",price:"₹450",img:"bedsheet.jpg",desc:"Hotel bedsheet. Sizes & colours available."},
 
-{cat:"linen",name:"Duvet Insert",sku:"DUVET",price:"₹950",img:"duvet.jpg",desc:"Hotel duvet. Multiple sizes."},
+{cat:"linen",name:"Duvet Insert",sku:"DUVET",price:"₹950",img:"duvet.jpg",desc:"Soft hotel duvet insert."},
 
-{cat:"towels",name:"Bath Towel 550 GSM",sku:"TWL550",price:"₹220",img:"towel.jpg",desc:"Soft hotel bath towel."},
+{cat:"towels",name:"Bath Towel 550 GSM",sku:"TWL550",price:"₹220",img:"towel.jpg",desc:"Premium cotton bath towel."},
 
 {cat:"amenities",name:"Hotel Shampoo 30ml",sku:"SHAM30",price:"₹12",img:"shampoo.jpg",desc:"Guest room shampoo bottle."},
 
@@ -433,15 +385,16 @@ list.forEach(p=>{
 const card=document.createElement("div")
 
 card.className="card"
-card.dataset.cat=p.cat
 
 card.innerHTML=`
 
-<img class="thumb" loading="lazy" src="/images/${p.img}" alt="${p.name}">
+<img class="thumb" src="/images/${p.img}">
 
 <div class="title">${p.name}<span class="sku">${p.sku}</span></div>
 
 <div class="desc">${p.desc}</div>
+
+<div class="card-bottom">
 
 <div class="price">${p.price}</div>
 
@@ -450,6 +403,8 @@ card.innerHTML=`
 Enquire
 
 </button>
+
+</div>
 
 `
 
@@ -461,11 +416,9 @@ grid.appendChild(card)
 
 render(products)
 
-/* tabs */
-
 document.querySelectorAll(".tab").forEach(tab=>{
 
-tab.addEventListener("click",()=>{
+tab.onclick=()=>{
 
 document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"))
 
@@ -473,29 +426,21 @@ tab.classList.add("active")
 
 const cat=tab.dataset.cat
 
-if(cat==="all"){
+if(cat==="all") render(products)
 
-render(products)
-
-}else{
-
-render(products.filter(p=>p.cat===cat))
+else render(products.filter(p=>p.cat===cat))
 
 }
 
 })
-
-})
-
-/* search */
 
 document.getElementById("search").addEventListener("input",e=>{
 
 const q=e.target.value.toLowerCase()
 
 render(products.filter(p=>
-p.name.toLowerCase().includes(q) ||
-p.sku.toLowerCase().includes(q) ||
+p.name.toLowerCase().includes(q)||
+p.sku.toLowerCase().includes(q)||
 p.cat.toLowerCase().includes(q)
 ))
 
