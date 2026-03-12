@@ -1,719 +1,417 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hospitality Supplies India | Hotel Linen Towels Amenities Restaurant Supplies | Fodel India</title>
-  <meta name="description" content="Hospitality supplies supplier India. Hotel linen, towels, amenities, restaurant equipment, banquet supplies, housekeeping products. PAN India hotel supply distribution." />
-  <link rel="canonical" href="https://www.fodel.in/hospitality.html">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <style>
-    :root{
-      --primary:#c2410c;
-      --navy:#0a1a2b;
+<title>Hospitality Supplies India | Hotel Linen Towels Amenities | Fodel India</title>
 
-      --text:#0f172a;
-      --muted:#475569;
-      --bg:#f8fafc;
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-      --radius:12px;
-      --shadow:0 8px 20px rgba(0,0,0,0.08);
+<style>
 
-      --container:1200px;
-      --topbar:60px;
-    }
+:root{
+--primary:#c2410c;
+--navy:#0a1a2b;
+--bg:#f8fafc;
+--text:#0f172a;
+--muted:#475569;
+--radius:12px;
+--shadow:0 8px 20px rgba(0,0,0,.08);
+--topbar:60px;
+--container:1200px;
+}
 
-    *{box-sizing:border-box;margin:0;padding:0}
+*{box-sizing:border-box;margin:0;padding:0}
 
-    body{
-      font-family:Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-    }
+body{
+font-family:Poppins,system-ui;
+background:var(--bg);
+color:var(--text);
+}
 
-    a{color:inherit;text-decoration:none}
+.top-nav{
+position:fixed;
+top:0;
+left:0;
+right:0;
+height:var(--topbar);
+background:var(--primary);
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:10px 18px;
+z-index:1000;
+}
 
-    /* Top nav */
-    .top-nav{
-      position:fixed;top:0;left:0;right:0;height:var(--topbar);
-      background:var(--primary);
-      display:flex;align-items:center;justify-content:space-between;
-      padding:10px 18px;z-index:1000;
-    }
-    .brand-mini{display:flex;gap:8px;align-items:center;font-weight:700;color:#fff}
-    .brand-mini .dot{width:10px;height:10px;background:#fff;border-radius:50%}
-    .top-actions{display:flex;gap:10px}
-    .chip{font-weight:600;font-size:13px;border-radius:999px;padding:7px 12px;color:#fff;background:rgba(255,255,255,.15)}
-    .chip.reviews{background:var(--navy)}
+.brand-mini{
+display:flex;
+gap:8px;
+align-items:center;
+color:#fff;
+font-weight:700;
+}
 
-    /* Hero */
-    .hero{
-      margin-top:var(--topbar);
-      background:var(--primary);color:#fff;text-align:center;
-      padding:40px 20px 34px;
-    }
-    .hero h1{font-size:clamp(26px,5vw,38px)}
-    .hero .tag{margin-top:6px;font-weight:600}
-    .hero-stats{display:flex;justify-content:center;gap:28px;margin-top:18px;flex-wrap:wrap}
-    .hero-stats div{text-align:center;font-size:13px;opacity:.95}
-    .hero-stats strong{display:block;font-size:22px}
-    .hero-cta{margin-top:22px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-    .hero-btn{padding:12px 20px;border-radius:999px;font-weight:700;font-size:14px;display:inline-block}
-    .hero-btn.primary{background:#fff;color:var(--primary)}
-    .hero-btn.ghost{border:2px solid rgba(255,255,255,.7);color:#fff}
+.brand-mini .dot{
+width:10px;
+height:10px;
+background:#fff;
+border-radius:50%;
+}
 
-    /* Trust */
-    .trust{background:#fff;padding:20px;border-bottom:1px solid #e5e7eb}
-    .trust-grid{max-width:var(--container);margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;text-align:center;font-weight:600;font-size:13px}
-    @media(max-width:768px){ .trust-grid{grid-template-columns:repeat(2,1fr)} }
+.chip{
+padding:7px 12px;
+border-radius:999px;
+background:rgba(255,255,255,.15);
+color:#fff;
+text-decoration:none;
+font-weight:600;
+font-size:13px;
+}
 
-    /* Main container */
-    .container{max-width:var(--container);margin:auto;padding:18px}
+.hero{
+margin-top:var(--topbar);
+background:var(--primary);
+color:#fff;
+text-align:center;
+padding:45px 20px;
+}
 
-    /* Search + tabs */
-    .searchbox{
-      background:#fff;border:1px solid #e2e8f0;border-radius:999px;
-      padding:10px 14px;display:flex;gap:8px;align-items:center;margin-bottom:14px;
-    }
-    .searchbox input{border:none;outline:none;font:inherit;width:100%}
+.hero h1{
+font-size:32px;
+}
 
-    .tabs{display:flex;gap:8px;overflow:auto;margin-bottom:0;padding-bottom:10px}
-    .tab{
-      padding:8px 14px;border-radius:999px;border:1px solid #e2e8f0;background:#fff;cursor:pointer;
-      font-weight:600;font-size:14px;white-space:nowrap;
-    }
-    .tab.active{border-color:var(--primary);box-shadow:0 0 0 3px rgba(194,65,12,.15)}
-    /* Increased spacing so divider sits comfortably below the pill buttons */
-    .tabs-divider{height:0;border-bottom:1px solid #e5e7eb;margin:10px 0 18px}
+.container{
+max-width:var(--container);
+margin:auto;
+padding:20px;
+}
 
-    /* Grid */
-    .grid{display:grid;gap:14px;grid-template-columns:repeat(4,1fr)}
-    @media(max-width:1024px){ .grid{grid-template-columns:repeat(3,1fr)} }
-    @media(max-width:640px){ .grid{grid-template-columns:repeat(2,1fr)} }
+.searchbox{
+background:#fff;
+border:1px solid #e2e8f0;
+border-radius:999px;
+padding:10px 14px;
+display:flex;
+gap:8px;
+margin-bottom:14px;
+}
 
-    /* Cards */
-    .card{
-      background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:12px;
-      display:flex;flex-direction:column;min-height:100%;
-    }
-    .thumb{
-      width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:8px;background:#f1f5f9;margin-bottom:8px;
-    }
-    .title{font-weight:700;font-size:14px;display:flex;justify-content:space-between;gap:8px;align-items:baseline}
-    .sku{font-size:11px;color:#64748b}
-    .desc{
-      font-size:12px;color:var(--muted);margin-top:4px;
-      min-height:42px; /* helps equalize card heights, keeping buttons aligned */
-      line-height:1.45;
-    }
-    .meta{display:flex;justify-content:space-between;font-size:11px;color:#64748b;margin-top:6px}
-    .price{font-weight:700;margin-top:8px}
+.searchbox input{
+border:none;
+outline:none;
+width:100%;
+font:inherit;
+}
 
-    /* Ensure all action buttons align by pushing the bottom area down */
-    .card-bottom{margin-top:auto}
+.tabs{
+display:flex;
+gap:8px;
+overflow:auto;
+margin-bottom:12px;
+}
 
-    /* Inputs & buttons */
-    .qty-row{display:flex;align-items:center;gap:8px;margin-top:8px;flex-wrap:wrap}
-    .qty{width:78px;border:1px solid #e2e8f0;border-radius:8px;padding:10px 8px;text-align:center;font:inherit;background:#fff}
+.tab{
+padding:8px 14px;
+border-radius:999px;
+border:1px solid #e2e8f0;
+background:#fff;
+cursor:pointer;
+font-weight:600;
+white-space:nowrap;
+}
 
-    .btn{
-      background:var(--primary);color:#fff;border:none;padding:12px;border-radius:10px;
-      font-weight:700;cursor:pointer;font-size:13px;width:100%;text-align:center;
-      transition:transform .02s ease;
-    }
-    .btn:active{transform:scale(0.995)}
-    .btn.inline{width:auto;padding:10px 12px;border-radius:8px;font-weight:600}
-    .btn.secondary{background:var(--navy)}
-    .btn.ghost{background:transparent;border:2px solid var(--navy);color:var(--navy)}
-    .btn.danger{background:#dc2626}
+.tab.active{
+border-color:var(--primary);
+}
 
-    /* Vertical rhythm: every button after another button gets spacing */
-    .btn + .btn{margin-top:8px}
+.tabs-divider{
+height:24px;
+border-bottom:1px solid #e5e7eb;
+margin-bottom:20px;
+}
 
-    /* Modal */
-    .modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:2500}
-    .modal-content{background:#fff;padding:20px;border-radius:14px;max-width:520px;width:92%}
-    .modal .close{float:right;cursor:pointer;font-weight:700;font-size:20px;border:none;background:transparent}
+.grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:14px;
+}
 
-    .input{
-      width:100%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #e2e8f0;font:inherit;background:#fff
-    }
-    textarea.input{min-height:90px;resize:vertical}
+@media(max-width:900px){
+.grid{grid-template-columns:repeat(2,1fr)}
+}
 
-    /* RFQ drawer */
-    .rfq-bar{
-      position:fixed;bottom:16px;right:16px;background:var(--navy);color:#fff;padding:10px 14px;
-      border-radius:999px;box-shadow:var(--shadow);display:flex;gap:10px;align-items:center;cursor:pointer;z-index:1200;
-    }
-    .rfq-drawer{
-      position:fixed;right:-460px;top:0;bottom:0;width:460px;max-width:95vw;background:#fff;
-      box-shadow:-8px 0 28px rgba(0,0,0,.1);z-index:2400;display:flex;flex-direction:column;transition:right .25s ease;
-    }
-    .rfq-drawer.open{right:0}
-    .rfq-header{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid #e5e7eb}
-    .rfq-actions-top{display:flex;gap:8px;padding:10px 16px;border-bottom:1px solid #f1f5f9;flex-wrap:wrap}
-    .rfq-list{flex:1;overflow:auto;padding:10px 12px}
-    .rfq-item{
-      display:grid;grid-template-columns:1fr 80px 1fr 28px;gap:8px;align-items:center;
-      padding:10px;border:1px solid #e5e7eb;border-radius:10px;margin-bottom:8px;background:#fff;
-    }
-    .rfq-item .sku{font-size:12px;color:#64748b}
-    .rfq-footer{border-top:1px solid #e5e7eb;padding:12px}
-    .rfq-footer-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.card{
+background:#fff;
+border-radius:var(--radius);
+box-shadow:var(--shadow);
+padding:12px;
+display:flex;
+flex-direction:column;
+height:100%;
+}
 
-    /* Footer (trimmed as requested) */
-    footer{margin-top:40px;padding:28px;background:#fff;border-top:1px solid #e5e7eb;text-align:center}
-    .footer-links{display:flex;gap:12px;justify-content:center;font-weight:700;flex-wrap:wrap;margin:6px 0}
-    .footer-email{color:var(--navy);text-decoration:none}
-    .footer-wa{color:#25D366;text-decoration:none}
-    .copy{margin-top:6px;font-size:12px;color:#94a3b8}
+.thumb{
+width:100%;
+aspect-ratio:1/1;
+object-fit:cover;
+border-radius:8px;
+background:#f1f5f9;
+margin-bottom:8px;
+}
 
-    /* Focus */
-    button:focus, a:focus, input:focus, textarea:focus{outline:3px solid rgba(194,65,12,.3);outline-offset:2px}
-  </style>
+.title{
+font-weight:700;
+font-size:14px;
+display:flex;
+justify-content:space-between;
+}
 
-  <!-- SEO: Organization Schema -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"Fodel India",
-    "url":"https://www.fodel.in",
-    "logo":"https://www.fodel.in/logo.png",
-    "contactPoint": [{
-      "@type":"ContactPoint",
-      "telephone":"+91-9797459260",
-      "contactType":"sales",
-      "areaServed":"IN",
-      "availableLanguage":["en","hi"]
-    }]
-  }
-  </script>
+.sku{
+font-size:11px;
+color:#64748b;
+}
+
+.desc{
+font-size:12px;
+color:var(--muted);
+margin-top:4px;
+min-height:48px;
+}
+
+.meta{
+display:flex;
+justify-content:space-between;
+font-size:11px;
+color:#64748b;
+margin-top:4px;
+}
+
+.price{
+font-weight:700;
+margin-top:6px;
+}
+
+.card-bottom{
+margin-top:auto;
+}
+
+.qty{
+width:90px;
+border:1px solid #e2e8f0;
+border-radius:8px;
+padding:8px;
+text-align:center;
+margin-top:6px;
+}
+
+.btn{
+background:var(--primary);
+color:#fff;
+border:none;
+padding:8px;
+border-radius:8px;
+font-weight:600;
+cursor:pointer;
+font-size:13px;
+width:100%;
+margin-top:8px;
+}
+
+.btn.secondary{
+background:var(--navy);
+}
+
+footer{
+margin-top:40px;
+padding:28px;
+background:#fff;
+border-top:1px solid #e5e7eb;
+text-align:center;
+}
+
+.footer-links{
+margin:10px 0;
+}
+
+.footer-email{
+color:var(--navy);
+text-decoration:none;
+font-weight:600;
+}
+
+.footer-wa{
+color:#25D366;
+text-decoration:none;
+font-weight:600;
+}
+
+.copy{
+font-size:12px;
+color:#94a3b8;
+}
+
+</style>
 </head>
 
 <body>
 
-  <!-- Top Nav -->
-  <nav class="top-nav" aria-label="Top navigation">
-    <div class="brand-mini">
-      <span class="dot"></span>
-      Fodel Hospitality
-    </div>
-    <div class="top-actions">
-      <a class="chip reviews" href="/reviews.html">Reviews</a>
-      <a class="chip" href="/">Home</a>
-    </div>
-  </nav>
+<nav class="top-nav">
+<div class="brand-mini"><span class="dot"></span>Fodel Hospitality</div>
+<a class="chip" href="/">Home</a>
+</nav>
 
-  <!-- Hero -->
-  <header class="hero">
-    <h1>India’s Trusted Hospitality Supply Partner</h1>
-    <p class="tag">Hotel Linen • Towels • Guest Amenities • Restaurant &amp; Banquet Supplies</p>
+<header class="hero">
+<h1>India’s Trusted Hospitality Supply Partner</h1>
+<p>Hotel Linen • Towels • Amenities • Restaurant Supplies</p>
+</header>
 
-    <div class="hero-stats">
-      <div><strong>2,500+</strong><span>Hotels Served</span></div>
-      <div><strong>28</strong><span>States Covered</span></div>
-      <div><strong>10+</strong><span>Years Experience</span></div>
-    </div>
+<main class="container">
 
-    <div class="hero-cta">
-      <a class="hero-btn primary" href="#products">Browse Products</a>
-      <a class="hero-btn ghost" href="https://wa.me/919797459260" target="_blank" rel="noopener">Talk to Sales</a>
-    </div>
-  </header>
+<div class="searchbox">
+<input id="search" placeholder="Search products">
+</div>
 
-  <!-- Trust -->
-  <section class="trust" aria-label="Trust & certifications">
-    <div class="trust-grid">
-      <div>⭐ ISO 9001 Certified</div>
-      <div>🚚 PAN India Logistics</div>
-      <div>🏨 Hotel • Resort • Hospital Supply</div>
-      <div>🤝 Bulk & Contract Pricing</div>
-    </div>
-  </section>
+<div class="tabs">
+<button class="tab active" data-cat="all">All</button>
+<button class="tab" data-cat="linen">Linen</button>
+<button class="tab" data-cat="towels">Towels</button>
+<button class="tab" data-cat="amenities">Amenities</button>
+<button class="tab" data-cat="restaurant">Restaurant</button>
+<button class="tab" data-cat="housekeeping">Housekeeping</button>
+<button class="tab" data-cat="banquet">Banquet</button>
+</div>
 
-  <!-- Main -->
-  <main class="container">
-    <div class="searchbox" role="search">
-      <span aria-hidden="true">🔎</span>
-      <input id="search" placeholder="Search products" aria-label="Search products by name, SKU, or category" />
-    </div>
+<div class="tabs-divider"></div>
 
-    <div class="tabs" role="tablist" aria-label="Categories">
-      <button class="tab active" data-cat="all" role="tab" aria-selected="true">All</button>
-      <button class="tab" data-cat="linen" role="tab">Linen</button>
-      <button class="tab" data-cat="towels" role="tab">Towels</button>
-      <button class="tab" data-cat="amenities" role="tab">Amenities</button>
-      <button class="tab" data-cat="restaurant" role="tab">Restaurant</button>
-      <button class="tab" data-cat="housekeeping" role="tab">Housekeeping</button>
-      <button class="tab" data-cat="banquet" role="tab">Banquet</button>
-    </div>
+<section id="products" class="grid"></section>
 
-    <!-- More spacing before divider so it doesn't touch the pills -->
-    <div class="tabs-divider"></div>
+</main>
 
-    <section id="products" class="grid" aria-label="Product grid"></section>
-  </main>
+<footer>
 
-  <!-- Footer (trimmed) -->
-  <footer>
-    <div class="footer-links">
-      <a class="footer-email" id="footerEmail" href="mailto:sales@hs.in">sales@hs.in</a>
-      <span>•</span>
-      <a class="footer-wa" id="footerWA" href="https://wa.me/919797459260" target="_blank" rel="noopener">Talk to Sales (WhatsApp)</a>
-    </div>
-    <div class="copy">© 2015–2026 Fodel India</div>
-  </footer>
+<p><strong>Fodel India – Hospitality Supply Specialists</strong></p>
+<p>Serving Hotels, Resorts, Hospitals & Institutions since 2015</p>
 
-  <!-- RFQ Drawer Trigger -->
-  <div id="rfqBar" class="rfq-bar" onclick="toggleRFQ(true)" aria-label="Open RFQ cart">
-    <span>🧾 RFQ Cart</span>
-    <span id="rfqCount">0 items</span>
-  </div>
+<div class="footer-links">
 
-  <!-- RFQ Drawer -->
-  <aside id="rfqDrawer" class="rfq-drawer" aria-label="RFQ drawer" aria-hidden="true">
-    <div class="rfq-header">
-      <strong>RFQ Cart</strong>
-      <button class="close" onclick="toggleRFQ(false)" aria-label="Close RFQ">×</button>
-    </div>
+<a class="footer-email" href="mailto:sales@fodel.in">sales@fodel.in</a>
 
-    <div class="rfq-actions-top">
-      <button class="btn inline" onclick="openBulkPaste()">Paste from Excel</button>
-      <label class="btn inline" style="cursor:pointer">
-        Upload CSV
-        <input type="file" id="csvInput" accept=".csv" hidden />
-      </label>
-      <button class="btn inline secondary" onclick="exportCSV()">Export CSV</button>
-    </div>
+<span> • </span>
 
-    <div id="rfqList" class="rfq-list" aria-live="polite"></div>
+<a class="footer-wa" href="https://wa.me/919797459260">Talk to Sales</a>
 
-    <div class="rfq-footer">
-      <textarea id="rfqNotes" class="input" placeholder="Add purchase notes (delivery city, GST, target dates)…"></textarea>
-      <div class="rfq-footer-actions">
-        <button class="btn" onclick="sendRFQWhatsApp()">Send via WhatsApp</button>
-        <a id="rfqEmail" class="btn secondary" href="mailto:sales@hs.in">Email RFQ</a>
-        <button class="btn danger" onclick="clearRFQ()">Clear</button>
-      </div>
-    </div>
-  </aside>
+</div>
 
-  <!-- Bulk Paste Modal -->
-  <div class="modal" id="bulkModal" role="dialog" aria-modal="true" aria-label="Bulk paste from Excel">
-    <div class="modal-content">
-      <button class="close" onclick="closeBulkPaste()" aria-label="Close">×</button>
-      <h3 style="margin-bottom:6px">Bulk Paste from Excel</h3>
-      <p>Paste rows in any of these formats:</p>
-      <ul style="margin:8px 0 12px 16px; font-size:13px; color:#475569;">
-        <li>SKU, Qty, Notes</li>
-        <li>SKU &nbsp;Qty</li>
-        <li>SKU &nbsp;Qty &nbsp;Unit</li>
-      </ul>
-      <textarea id="bulkText" class="input" rows="8" placeholder="Example:
-LINEN300, 50, King size white
-TWL550 120 Spa wing
-SHAM30, 500"></textarea>
-      <div style="display:flex; gap:8px; margin-top:8px;">
-        <button class="btn" onclick="parseBulk()">Add to RFQ</button>
-        <button class="btn secondary" onclick="downloadTemplate()">Download CSV Template</button>
-      </div>
-    </div>
-  </div>
+<div class="copy">© 2015–2026 Fodel India</div>
 
-  <!-- Request Quote Modal -->
-  <div class="modal" id="quoteModal" role="dialog" aria-modal="true" aria-label="Request quotation">
-    <div class="modal-content">
-      <button class="close" onclick="closeQuote()" aria-label="Close">×</button>
-      <h3 style="margin-bottom:6px">Request Quotation</h3>
-      <p id="quoteProduct" style="font-size:13px;color:#475569;margin-bottom:8px;"></p>
+</footer>
 
-      <input id="qCompany" placeholder="Company Name" class="input" />
-      <input id="qQuantity" placeholder="Quantity" class="input" />
-      <input id="qContact" placeholder="Phone / Email" class="input" />
+<script>
 
-      <div style="display:flex; gap:8px; margin-top:4px; flex-wrap:wrap;">
-        <button class="btn" onclick="submitQuote()">Submit via WhatsApp</button>
-        <button class="btn secondary" onclick="submitQuoteEmail()">Submit via Email</button>
-      </div>
-    </div>
-  </div>
+let products = []
 
-  <script>
-    // ------------------------
-    // Products (MOQ + Sample available)
-    // ------------------------
-    const products = [
-      {cat:"linen",name:"Hotel Bedsheet 300TC",sku:"LINEN300",price:"₹450 / piece",moq:"MOQ: 50 pcs",lead:"Dispatch: 5–7 days",sample:true,img:"bedsheet.jpg",desc:"Commercial-grade bedsheet. Sizes & colours available."},
-      {cat:"linen",name:"Duvet Insert",sku:"DUVET",price:"₹950 / piece",moq:"MOQ: 20 pcs",lead:"Dispatch: 5–7 days",sample:true,img:"duvet.jpg",desc:"Soft hotel duvet insert."},
-      {cat:"towels",name:"Bath Towel 550 GSM",sku:"TWL550",price:"₹220 / piece",moq:"MOQ: 60 pcs",lead:"Dispatch: 3–5 days",sample:true,img:"towel.jpg",desc:"Premium cotton bath towel."},
-      {cat:"amenities",name:"Hotel Shampoo 30ml",sku:"SHAM30",price:"₹12 / bottle",moq:"MOQ: 500 pcs",lead:"Dispatch: 2–4 days",sample:true,img:"shampoo.jpg",desc:"Guest room shampoo bottle."},
-      {cat:"restaurant",name:"Chafing Dish 6L",sku:"CHAF6",price:"₹3,200 / unit",moq:"MOQ: 5 units",lead:"Dispatch: 3–6 days",sample:false,img:"chafing.jpg",desc:"Buffet chafing dish."},
-      {cat:"housekeeping",name:"Housekeeping Cart",sku:"HKCART",price:"₹7,200 / unit",moq:"MOQ: 2 units",lead:"Dispatch: 6–10 days",sample:false,img:"cart.jpg",desc:"Professional housekeeping trolley."},
-      {cat:"banquet",name:"Chair Cover",sku:"CHAIRCOVER",price:"₹120 / piece",moq:"MOQ: 100 pcs",lead:"Dispatch: 3–5 days",sample:true,img:"chair.jpg",desc:"Stretch banquet chair cover."}
-    ];
+async function loadProducts(){
 
-    const grid = document.getElementById("products");
+const res = await fetch('/data/products.json')
 
-    function render(list){
-      grid.innerHTML = "";
-      list.forEach(p => {
-        const card = document.createElement("div");
-        card.className = "card";
-        card.innerHTML = `
-          <img class="thumb" src="/images/${p.img}" alt="${p.name}" loading="lazy">
-          <div class="title">${p.name}<span class="sku">${p.sku}</span></div>
-          <div class="desc">${p.desc}</div>
-          <div class="meta">
-            <span>${p.moq || "MOQ: 10 pcs"}</span>
-            <span>${p.lead || "Dispatch: 3–7 days"}</span>
-          </div>
+products = await res.json()
 
-          <div class="card-bottom">
-            <div class="price">${p.price}</div>
+render(products)
 
-            <div class="qty-row">
-              <input class="qty" type="number" min="1" step="1" value="1" id="qty-${p.sku}" aria-label="Quantity for ${p.name}">
-              <button class="btn inline" onclick="addToRFQ('${p.sku}')">Add to RFQ</button>
-              <button class="btn inline secondary" onclick="openQuote('${p.name}', '${p.sku}')">Request Quote</button>
-            </div>
+}
 
-            ${p.sample ? `<button class="btn ghost" onclick="orderSample('${p.sku}')">Order Sample (1 pc)</button>` : ``}
+function render(list){
 
-            <button class="btn" onclick="window.open('https://wa.me/919797459260?text=${encodeURIComponent('Hospitality enquiry: '+p.name+' ('+p.sku+')')}', '_blank')">
-              Enquire on WhatsApp
-            </button>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-    }
+const grid = document.getElementById("products")
 
-    // Initial render
-    render(products);
+grid.innerHTML = ""
 
-    // Tabs
-    document.querySelectorAll(".tab").forEach(tab => {
-      tab.onclick = () => {
-        document.querySelectorAll(".tab").forEach(t => {
-          t.classList.remove("active");
-          t.setAttribute('aria-selected','false');
-        });
-        tab.classList.add("active");
-        tab.setAttribute('aria-selected','true');
-        const cat = tab.dataset.cat;
-        if (cat === "all") render(products);
-        else render(products.filter(p => p.cat === cat));
-      }
-    });
+list.forEach(p=>{
 
-    // Search
-    document.getElementById("search").addEventListener("input", e => {
-      const q = e.target.value.toLowerCase();
-      render(products.filter(p =>
-        p.name.toLowerCase().includes(q) ||
-        p.sku.toLowerCase().includes(q)  ||
-        p.cat.toLowerCase().includes(q)
-      ));
-    });
+const card=document.createElement("div")
 
-    // ------------------------
-    // RFQ CART (Local Storage)
-    // ------------------------
-    const rfqKey = 'rfq_cart_v1';
-    let rfq = loadRFQ();
+card.className="card"
 
-    function loadRFQ(){
-      try { return JSON.parse(localStorage.getItem(rfqKey)) || []; }
-      catch(e){ return []; }
-    }
-    function saveRFQ(){
-      localStorage.setItem(rfqKey, JSON.stringify(rfq));
-      updateRFQBar();
-      updateMailtoLink();
-    }
+card.innerHTML=`
 
-    function addToRFQ(sku){
-      const product = products.find(p => p.sku === sku);
-      if(!product) return;
-      const qtyInput = document.getElementById(`qty-${sku}`);
-      const qty = Math.max(1, parseInt(qtyInput?.value || '1', 10));
-      const existing = rfq.find(i => i.sku === sku);
-      if(existing){ existing.qty += qty; }
-      else{
-        rfq.push({
-          sku: product.sku,
-          name: product.name,
-          qty,
-          price: product.price || '',
-          cat: product.cat || '',
-          note: ''
-        });
-      }
-      saveRFQ();
-      renderRFQ();
-      toggleRFQ(true);
-    }
+<img class="thumb"
+src="/images/${p.img}"
+onerror="this.src='/images/no-image.jpg'"
+alt="${p.name}">
 
-    // Order sample (always 1 pc; note "Sample Order")
-    function orderSample(sku){
-      const product = products.find(p => p.sku === sku);
-      if(!product) return;
-      const existing = rfq.find(i => i.sku === sku && i.note?.includes('Sample'));
-      if(existing){ existing.qty = 1; existing.note = 'Sample Order'; }
-      else{
-        rfq.push({
-          sku: product.sku,
-          name: product.name,
-          qty: 1,
-          price: product.price || '',
-          cat: product.cat || '',
-          note: 'Sample Order'
-        });
-      }
-      saveRFQ();
-      renderRFQ();
-      toggleRFQ(true);
-      alert('Added sample (1 pc) to RFQ.');
-    }
+<div class="title">${p.name}<span class="sku">${p.sku}</span></div>
 
-    function updateRFQQty(sku, qty){
-      const item = rfq.find(i => i.sku === sku);
-      if(!item) return;
-      item.qty = Math.max(1, parseInt(qty||'1',10));
-      saveRFQ();
-      renderRFQ();
-    }
+<div class="desc">${p.desc}</div>
 
-    function updateRFQNote(sku, note){
-      const item = rfq.find(i => i.sku === sku);
-      if(!item) return;
-      item.note = String(note||'').slice(0, 140);
-      saveRFQ();
-    }
+<div class="meta">
+<span>${p.moq}</span>
+<span>${p.lead}</span>
+</div>
 
-    function removeRFQItem(sku){
-      rfq = rfq.filter(i => i.sku !== sku);
-      saveRFQ();
-      renderRFQ();
-    }
+<div class="card-bottom">
 
-    function clearRFQ(){
-      if(!confirm('Clear all items from RFQ?')) return;
-      rfq = [];
-      saveRFQ();
-      renderRFQ();
-    }
+<div class="price">${p.price}</div>
 
-    function updateRFQBar(){
-      const count = rfq.reduce((a,b)=>a + (parseInt(b.qty)||0), 0);
-      document.getElementById('rfqCount').innerText = `${count} item${count===1?'':'s'}`;
-    }
+<input class="qty" type="number" value="1">
 
-    function renderRFQ(){
-      const list = document.getElementById('rfqList');
-      if(!list) return;
-      list.innerHTML = '';
-      if(rfq.length === 0){
-        list.innerHTML = `<div style="padding:6px 4px;color:#64748b">No items yet. Add products using “Add to RFQ”.</div>`;
-      }else{
-        rfq.forEach(item=>{
-          const row = document.createElement('div');
-          row.className = 'rfq-item';
-          row.innerHTML = `
-            <div>
-              <div><strong>${item.name}</strong></div>
-              <div class="sku">${item.sku} ${item.price? '• '+item.price:''}</div>
-            </div>
-            <input type="number" min="1" class="input" value="${item.qty}"
-                   aria-label="Quantity for ${item.sku}"
-                   oninput="updateRFQQty('${item.sku}', this.value)">
-            <input type="text" class="input" placeholder="Notes" value="${item.note||''}"
-                   aria-label="Note for ${item.sku}"
-                   oninput="updateRFQNote('${item.sku}', this.value)">
-            <button class="close" title="Remove" aria-label="Remove ${item.sku}" onclick="removeRFQItem('${item.sku}')">×</button>
-          `;
-          list.appendChild(row);
-        });
-      }
-      updateMailtoLink();
-    }
+<button class="btn">Add to RFQ</button>
 
-    function toggleRFQ(open){
-      const drawer = document.getElementById('rfqDrawer');
-      if(!drawer) return;
-      drawer.classList.toggle('open', !!open);
-      drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
-    }
+<button class="btn secondary">Request Quote</button>
 
-    function normalizeForMessage(i){
-      return `${i.sku} | ${i.name} | Qty: ${i.qty}${i.note? ' | '+i.note:''}`;
-    }
+<button class="btn"
+onclick="window.open('https://wa.me/919797459260?text=Product enquiry: ${p.name}')">
 
-    function sendRFQWhatsApp(){
-      if(rfq.length===0){
-        alert('RFQ is empty. Please add items.');
-        return;
-      }
-      const lines = rfq.map(normalizeForMessage);
-      const notes = (document.getElementById('rfqNotes')?.value||'').trim();
-      const payload = `RFQ – Fodel India\n${lines.join('\n')}${notes? '\n\nNotes: '+notes:''}`;
-      const url = `https://wa.me/919797459260?text=${encodeURIComponent(payload)}`;
-      window.open(url, '_blank');
-    }
+Enquire on WhatsApp
 
-    function updateMailtoLink(){
-      const a = document.getElementById('rfqEmail');
-      if(!a) return;
-      const subject = encodeURIComponent('RFQ – Fodel India');
-      const bodyLines = rfq.map(i => normalizeForMessage(i));
-      const footer = `\n\nNotes: ${(document.getElementById('rfqNotes')?.value||'').trim()}`;
-      const body = encodeURIComponent((bodyLines.join('\n')||'') + footer);
-      a.href = `mailto:sales@hs.in?subject=${subject}&body=${body}`;
-    }
+</button>
 
-    // ------------------------
-    // Bulk Paste & CSV Upload/Export
-    // ------------------------
-    function openBulkPaste(){ document.getElementById('bulkModal').style.display = 'flex'; }
-    function closeBulkPaste(){ document.getElementById('bulkModal').style.display = 'none'; }
+</div>
+`
 
-    function parseBulk(){
-      const text = document.getElementById('bulkText').value.trim();
-      if(!text) return;
-      const lines = text.split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
-      let added = 0;
+grid.appendChild(card)
 
-      lines.forEach(line=>{
-        const parts = line.split(/[,\t]+|\s{2,}/).map(s=>s.trim()).filter(Boolean);
-        if(!parts.length) return;
+})
 
-        const sku = parts[0].toUpperCase();
-        const qty = parseInt(parts[1]||'1',10) || 1;
-        const note = parts.slice(2).join(' ').slice(0, 140);
+}
 
-        const prod = products.find(p=>p.sku.toUpperCase()===sku);
-        const existing = rfq.find(i => i.sku.toUpperCase()===sku);
-        if(existing){ existing.qty += qty; if(note) existing.note = note; }
-        else{
-          rfq.push({
-            sku,
-            name: prod ? prod.name : `Custom – ${sku}`,
-            qty,
-            price: prod?.price || '',
-            cat: prod?.cat || 'misc',
-            note
-          });
-        }
-        added++;
-      });
+document.getElementById("search").addEventListener("input",e=>{
 
-      saveRFQ();
-      renderRFQ();
-      closeBulkPaste();
-      toggleRFQ(true);
-      alert(`${added} item(s) added to RFQ.`);
-    }
+const q=e.target.value.toLowerCase()
 
-    function downloadTemplate(){
-      const csv = 'SKU,Qty,Notes\nLINEN300,50,King size white\nTWL550,120,Spa wing\nSHAM30,500,\n';
-      const blob = new Blob([csv], {type:'text/csv'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = 'rfq_template.csv'; a.click();
-      URL.revokeObjectURL(url);
-    }
+render(products.filter(p=>
 
-    document.getElementById('csvInput')?.addEventListener('change', e=>{
-      const file = e.target.files?.[0];
-      if(!file) return;
-      const reader = new FileReader();
-      reader.onload = () => {
-        const text = String(reader.result||'');
-        const rows = text.split(/\r?\n/).map(r=>r.trim()).filter(Boolean);
-        let added=0;
-        rows.forEach((line, idx)=>{
-          const parts = line.split(',').map(s=>s.trim());
-          if(idx===0 && /sku/i.test(parts[0])) return; // skip header
-          if(!parts[0]) return;
-          const sku = parts[0].toUpperCase();
-          const qty = parseInt(parts[1]||'1',10) || 1;
-          const note = (parts[2]||'').slice(0,140);
-          const prod = products.find(p=>p.sku.toUpperCase()===sku);
-          const existing = rfq.find(i => i.sku.toUpperCase()===sku);
-          if(existing){ existing.qty += qty; if(note) existing.note = note; }
-          else{
-            rfq.push({
-              sku, name: prod? prod.name:`Custom – ${sku}`,
-              qty, price: prod?.price||'', cat: prod?.cat||'misc', note
-            });
-          }
-          added++;
-        });
-        saveRFQ(); renderRFQ(); toggleRFQ(true);
-        alert(`${added} item(s) added from CSV.`);
-        e.target.value = '';
-      };
-      reader.readAsText(file);
-    });
+p.name.toLowerCase().includes(q) ||
 
-    function exportCSV(){
-      if(rfq.length===0){
-        alert('RFQ is empty. Nothing to export.');
-        return;
-      }
-      const header = 'SKU,Name,Qty,Price,Category,Note\n';
-      const rows = rfq.map(i => [
-        i.sku, i.name.replace(/,/g,' '), i.qty, (i.price||'').replace(/,/g,''),
-        i.cat||'', (i.note||'').replace(/,/g,' ')
-      ].join(',')).join('\n');
-      const csv = header + rows + '\n';
-      const blob = new Blob([csv], {type:'text/csv'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = 'rfq_export.csv'; a.click();
-      URL.revokeObjectURL(url);
-    }
+p.sku.toLowerCase().includes(q)
 
-    // ------------------------
-    // Quote Modal (no backend)
-    // ------------------------
-    function openQuote(name, sku){
-     ntity').value.trim();
-      const contact = document.getElementById('qContact').value.trim();
-      const msg = `Quotation Request\nProduct: ${product}\nCompany: ${company}\nQuantity: ${qty}\nContact: ${contact}`;
-      const url = `https://wa.me/919797459260?text=${encodeURIComponent(msg)}`;
-      window.open(url, '_blank');
-      closeQuote();
-    }
+))
 
-    function submitQuoteEmail(){
-      const product = document.getElementById('quoteProduct').innerText || '';
-      const company = document.getElementById('qCompany').value.trim();
-      const qty = document.getElementById('qQuantity').value.trim();
-      const contact = document.getElementById('qContact').value.trim();
-      const subject = encodeURIComponent('Quotation Request – Fodel India');
-      const body = encodeURIComponent(`Product: ${product}\nCompany: ${company}\nQuantity: ${qty}\nContact: ${contact}`);
-      window.location.href = `mailto:sales@hs.in?subject=${subject}&body=${body}`;
-      closeQuote();
-    }
+})
 
-    // Init RFQ UI
-    updateRFQBar();
-    renderRFQ();
+document.querySelectorAll(".tab").forEach(tab=>{
 
-    // Close modals when clicking backdrop
-    document.addEventListener('click', (e)=>{
-      const bulk = document.getElementById('bulkModal');
-      const quote = document.getElementById('quoteModal');
-      if(e.target === bulk) closeBulkPaste();
-      if(e.target === quote) closeQuote();
-    });
-  </script>
+tab.onclick=()=>{
+
+document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"))
+
+tab.classList.add("active")
+
+const cat=tab.dataset.cat
+
+if(cat==="all")render(products)
+
+else render(products.filter(p=>p.cat===cat))
+
+}
+
+})
+
+loadProducts()
+
+</script>
+
 </body>
 </html>
