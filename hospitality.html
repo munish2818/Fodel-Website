@@ -19,14 +19,11 @@
 :root{
 --primary:#c2410c;
 --navy:#0a1a2b;
-
 --text:#0f172a;
 --muted:#475569;
 --bg:#f8fafc;
-
 --radius:12px;
 --shadow:0 8px 20px rgba(0,0,0,0.08);
-
 --container:1200px;
 --topbar:60px;
 }
@@ -128,7 +125,8 @@ width:100%;
 display:flex;
 gap:8px;
 overflow:auto;
-margin-bottom:12px;
+margin-bottom:10px;
+padding-bottom:6px;
 }
 
 .tab{
@@ -149,12 +147,17 @@ box-shadow:0 0 0 3px rgba(194,65,12,.15);
 }
 
 .tabs-divider{
-height:14px;
+height:20px;
 border-bottom:1px solid #e5e7eb;
 margin-bottom:18px;
 }
 
-/* grid */
+@media(max-width:640px){
+.tabs-divider{
+height:24px;
+margin-top:6px;
+}
+}
 
 .grid{
 display:grid;
@@ -170,14 +173,11 @@ grid-template-columns:repeat(4,1fr);
 .grid{grid-template-columns:repeat(2,1fr)}
 }
 
-/* cards */
-
 .card{
 background:#fff;
 border-radius:var(--radius);
 box-shadow:var(--shadow);
 padding:12px;
-
 display:flex;
 flex-direction:column;
 }
@@ -215,8 +215,6 @@ font-weight:700;
 margin-top:6px;
 }
 
-/* THIS FIXES BUTTON ALIGNMENT */
-
 .card-bottom{
 margin-top:auto;
 }
@@ -234,33 +232,45 @@ width:100%;
 margin-top:8px;
 }
 
-/* modal */
-
-.modal{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.6);
-display:none;
+.qty{
+display:flex;
 align-items:center;
-justify-content:center;
-z-index:2000;
+gap:6px;
+margin-top:6px;
 }
 
-.modal-content{
-background:#fff;
-padding:20px;
-border-radius:14px;
-max-width:420px;
-width:90%;
-}
-
-.close{
-float:right;
+.qty button{
+border:none;
+background:#eee;
+padding:3px 8px;
 cursor:pointer;
-font-weight:700;
+border-radius:4px;
 }
 
-/* footer */
+.rfq-bar{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+background:#fff;
+border-top:1px solid #e5e7eb;
+padding:10px 16px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:1500;
+box-shadow:0 -4px 20px rgba(0,0,0,0.08);
+}
+
+.rfq-btn{
+background:var(--primary);
+color:#fff;
+border:none;
+padding:8px 16px;
+border-radius:8px;
+font-weight:600;
+cursor:pointer;
+}
 
 footer{
 margin-top:40px;
@@ -277,15 +287,8 @@ justify-content:center;
 font-weight:700;
 }
 
-.footer-email{
-color:var(--navy);
-text-decoration:none;
-}
-
-.footer-wa{
-color:#25D366;
-text-decoration:none;
-}
+.footer-email{color:var(--navy);text-decoration:none;}
+.footer-wa{color:#25D366;text-decoration:none;}
 
 .copy{
 margin-top:8px;
@@ -340,6 +343,11 @@ Fodel Hospitality
 
 </main>
 
+<div class="rfq-bar">
+<span id="rfq-count">0 items selected</span>
+<button class="rfq-btn" onclick="sendRFQ()">Send RFQ</button>
+</div>
+
 <footer>
 
 <div class="footer-links">
@@ -356,31 +364,55 @@ Fodel Hospitality
 
 <script>
 
-const products=[
+const CSV_URL="PASTE_GOOGLE_SHEET_CSV_LINK"
 
-{cat:"linen",name:"Hotel Bedsheet 300TC",sku:"LINEN300",price:"₹450",img:"bedsheet.jpg",desc:"Hotel bedsheet. Sizes & colours available."},
-
-{cat:"linen",name:"Duvet Insert",sku:"DUVET",price:"₹950",img:"duvet.jpg",desc:"Soft hotel duvet insert."},
-
-{cat:"towels",name:"Bath Towel 550 GSM",sku:"TWL550",price:"₹220",img:"towel.jpg",desc:"Premium cotton bath towel."},
-
-{cat:"amenities",name:"Hotel Shampoo 30ml",sku:"SHAM30",price:"₹12",img:"shampoo.jpg",desc:"Guest room shampoo bottle."},
-
-{cat:"restaurant",name:"Chafing Dish 6L",sku:"CHAF6",price:"₹3200",img:"chafing.jpg",desc:"Buffet chafing dish."},
-
-{cat:"housekeeping",name:"Housekeeping Cart",sku:"HKCART",price:"₹7200",img:"cart.jpg",desc:"Professional housekeeping trolley."},
-
-{cat:"banquet",name:"Chair Cover",sku:"CHAIRCOVER",price:"₹120",img:"chair.jpg",desc:"Stretch banquet chair cover."}
-
-]
+let products=[]
+let selected=[]
+let qty={}
 
 const grid=document.getElementById("products")
+
+async function loadProducts(){
+
+if(!CSV_URL){render([]);return}
+
+try{
+
+const res=await fetch(CSV_URL)
+const text=await res.text()
+
+const rows=text.split("\n").slice(1)
+
+products=rows.map(r=>{
+
+const c=r.split(",")
+
+return{
+cat:c[0],
+name:c[1],
+sku:c[2],
+price:c[3],
+img:c[4],
+desc:c[5]
+}
+
+})
+
+render(products)
+
+}catch{
+
+render(products)
+
+}
+
+}
 
 function render(list){
 
 grid.innerHTML=""
 
-list.forEach(p=>{
+list.forEach((p,i)=>{
 
 const card=document.createElement("div")
 
@@ -393,6 +425,21 @@ card.innerHTML=`
 <div class="title">${p.name}<span class="sku">${p.sku}</span></div>
 
 <div class="desc">${p.desc}</div>
+
+<div class="qty">
+
+<button onclick="changeQty(${i},-1)">-</button>
+
+<span id="qty${i}">1</span>
+
+<button onclick="changeQty(${i},1)">+</button>
+
+</div>
+
+<label style="font-size:12px;margin-top:4px;">
+<input type="checkbox" onchange="toggleSelect(${i})">
+Select for RFQ
+</label>
 
 <div class="card-bottom">
 
@@ -414,20 +461,54 @@ grid.appendChild(card)
 
 }
 
-render(products)
+function changeQty(i,val){
+
+qty[i]=(qty[i]||1)+val
+if(qty[i]<1)qty[i]=1
+document.getElementById("qty"+i).innerText=qty[i]
+
+}
+
+function toggleSelect(i){
+
+if(selected.includes(i)){
+selected=selected.filter(x=>x!==i)
+}else{
+selected.push(i)
+}
+
+document.getElementById("rfq-count").innerText=selected.length+" items selected"
+
+}
+
+function sendRFQ(){
+
+if(selected.length===0){
+alert("Select products first")
+return
+}
+
+let msg="Hotel RFQ - Fodel India\n\n"
+
+selected.forEach(i=>{
+const p=products[i]
+msg+=`${p.name} (SKU:${p.sku}) Qty:${qty[i]||1}\n`
+})
+
+window.open("https://wa.me/919797459260?text="+encodeURIComponent(msg))
+
+}
 
 document.querySelectorAll(".tab").forEach(tab=>{
 
 tab.onclick=()=>{
 
 document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"))
-
 tab.classList.add("active")
 
 const cat=tab.dataset.cat
 
 if(cat==="all") render(products)
-
 else render(products.filter(p=>p.cat===cat))
 
 }
@@ -445,6 +526,8 @@ p.cat.toLowerCase().includes(q)
 ))
 
 })
+
+loadProducts()
 
 </script>
 
