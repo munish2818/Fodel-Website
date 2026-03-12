@@ -49,73 +49,7 @@
       padding:10px 18px;
       z-index:1000;
     }
-/* --- NEW: Utility for line clamping --- */
-.clamp-1, .clamp-2, .clamp-3 {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.clamp-1 { -webkit-line-clamp: 1; }
-.clamp-2 { -webkit-line-clamp: 2; }
-.clamp-3 { -webkit-line-clamp: 3; }
 
-/* --- NEW: Group the upper content region --- */
-.card-top {
-  display: grid;
-  /* small vertical rhythm between title, desc, meta */
-  row-gap: 6px;
-  /* ensure enough room so buttons sit at the same height */
-  min-height: 142px; /* tune if your copy changes */
-}
-
-/* Keep title/desc predictable */
-.title {
-  font-weight: 700;
-  font-size: 14px;
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  align-items: baseline;
-  line-height: 1.25;
-}
-.title .sku { font-size: 11px; color: #64748b; }
-.title.clamped { /* apply when using clamp */
-  display: block;
-}
-
-/* Make description 2 lines max on small screens */
-@media (max-width: 640px) {
-  .desc { line-height: 1.35; }
-}
-
-/* Meta single line */
-.meta { font-size: 11px; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-/* Badge compact, no wrapping */
-.badge{
-  display:inline-block;
-  background:#f59e0b;
-  color:#111827;
-  border-radius:6px;
-  font-weight:700;
-  font-size:10px;
-  padding:2px 6px;
-  margin-left:8px;
-  white-space: nowrap;
-}
-
-/* Thumb remains square (already), keep consistent spacing */
-.thumb{ margin-bottom: 10px; }
-
-/* Tighten card paddings on small screens to avoid squeeze */
-@media (max-width: 640px) {
-  .card { padding: 10px; }
-  .qty-row { gap: 6px; }
-  .btn.inline { padding: 8px 8px; }
-}
-
-/* Ensure grid items stretch evenly */
-.grid { align-items: stretch; }
     .brand-mini{
       display:flex;gap:8px;align-items:center;
       font-weight:700;color:#fff;
@@ -179,7 +113,7 @@
     .tabs-divider{height:14px;border-bottom:1px solid #e5e7eb;margin-bottom:18px}
 
     /* grid */
-    .grid{display:grid;gap:14px;grid-template-columns:repeat(4,1fr)}
+    .grid{display:grid;gap:14px;grid-template-columns:repeat(4,1fr);align-items:stretch}
     @media(max-width:1024px){ .grid{grid-template-columns:repeat(3,1fr)} }
     @media(max-width:640px){ .grid{grid-template-columns:repeat(2,1fr)} }
 
@@ -189,17 +123,44 @@
       display:flex;flex-direction:column;
     }
     .thumb{
-      width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:8px;background:#f1f5f9;margin-bottom:8px;
+      width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:8px;background:#f1f5f9;margin-bottom:10px;
     }
-    .title{font-weight:700;font-size:14px;display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+    .title{font-weight:700;font-size:14px;display:flex;justify-content:space-between;gap:8px;align-items:baseline;line-height:1.25}
     .sku{font-size:11px;color:#64748b}
-    .desc{font-size:12px;color:var(--muted);margin-top:4px;min-height:36px}
+    .desc{font-size:12px;color:var(--muted);margin-top:4px}
     .meta{display:flex;justify-content:space-between;font-size:11px;color:#64748b;margin-top:4px}
     .price{font-weight:700;margin-top:6px}
 
+    /* --- NEW: Utility for line clamping --- */
+    .clamp-1, .clamp-2, .clamp-3 {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .clamp-1 { -webkit-line-clamp: 1; }
+    .clamp-2 { -webkit-line-clamp: 2; }
+    .clamp-3 { -webkit-line-clamp: 3; }
+
+    /* --- NEW: Group the upper content region --- */
+    .card-top {
+      display: grid;
+      row-gap: 6px;     /* space between title/desc/meta */
+      min-height: 142px;/* adjust if your copy changes; aligns bottoms */
+    }
+    .title.clamped{display:block}
+
+    /* Make description a bit looser on mobile for readability */
+    @media (max-width: 640px) {
+      .desc { line-height: 1.35; }
+    }
+
+    /* Meta: keep single line */
+    .meta { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    /* Badge compact, no wrapping */
     .badge{
       display:inline-block;background:#f59e0b;color:#111827;border-radius:6px;
-      font-weight:700;font-size:10px;padding:2px 6px;margin-left:8px;
+      font-weight:700;font-size:10px;padding:2px 6px;margin-left:8px;white-space: nowrap;
     }
 
     .card-bottom{margin-top:auto}
@@ -249,7 +210,7 @@
     .rfq-footer{border-top:1px solid #e5e7eb;padding:12px}
     .rfq-footer-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
 
-    /* footer */
+    /* footer (cleaned) */
     footer{margin-top:40px;padding:28px;background:#fff;border-top:1px solid #e5e7eb;text-align:center}
     .footer-links{display:flex;gap:12px;justify-content:center;font-weight:700;flex-wrap:wrap;margin:8px 0}
     .footer-email{color:var(--navy);text-decoration:none}
@@ -434,10 +395,12 @@ SHAM30, 500"></textarea>
         card.className = "card";
         card.innerHTML = `
           <img class="thumb" src="/images/${p.img}" alt="${p.name}" loading="lazy">
-          <div class="title">${p.name}<span class="sku">${p.sku}</span></div>
-          <div class="desc">${p.desc}</div>
-          <div class="meta">
-            <span>${p.moq || "MOQ: 10 pcs"}</span>
+          <div class="card-top">
+            <div class="title clamped clamp-2">${p.name} <span class="sku">${p.sku}</span></div>
+            <div class="desc clamp-2">${p.desc}</div>
+            <div class="meta clamp-1">
+              <span>${p.moq || "MOQ: 10 pcs"}</span>
+            </div>
           </div>
           <div class="card-bottom">
             <div class="price">${p.price} <span class="badge" title="Samples available">SAMPLES</span></div>
@@ -557,16 +520,15 @@ SHAM30, 500"></textarea>
       renderRFQ();
     }
 
-    function updateRFQNote(sku, note){
-      const item = rfq.find(i => i.sku === sku);
+    function updateRFQNote(sku, sample, note){
+      const item = rfq.find(i => i.sku === sku && !!i.sample === !!sample);
       if(!item) return;
       item.note = String(note||'').slice(0, 140);
       saveRFQ();
     }
 
-    function removeRFQItem(sku){
-      // remove both sample/bulk entries with same SKU
-      rfq = rfq.filter(i => i.sku !== sku);
+    function removeRFQItem(sku, sample){
+      rfq = rfq.filter(i => !(i.sku === sku && (!!i.sample === !!sample)));
       saveRFQ();
       renderRFQ();
     }
@@ -608,8 +570,8 @@ SHAM30, 500"></textarea>
             }
             <input type="text" class="input" placeholder="Notes" value="${item.note||''}"
                    aria-label="Note for ${item.sku}"
-                   oninput="updateRFQNote('${item.sku}', this.value)">
-            <button class="close" title="Remove" aria-label="Remove ${item.sku}" onclick="removeRFQItem('${item.sku}')">×</button>
+                   oninput="updateRFQNote('${item.sku}', ${isSample}, this.value)">
+            <button class="close" title="Remove" aria-label="Remove ${item.sku}" onclick="removeRFQItem('${item.sku}', ${isSample})">×</button>
           `;
           list.appendChild(row);
         });
