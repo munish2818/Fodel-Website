@@ -1,535 +1,730 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hospitality Supplies India | Hotel Linen Towels Amenities Restaurant Supplies | Fodel India</title>
+  <meta name="description" content="Hospitality supplies supplier India. Hotel linen, towels, amenities, restaurant equipment, banquet supplies, housekeeping products. PAN India hotel supply distribution." />
+  <link rel="canonical" href="https://www.fodel.in/hospitality.html" />
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
 
-<title>Hospitality Supplies India | Hotel Linen Towels Amenities Restaurant Supplies | Fodel India</title>
+  <style>
+    :root{
+      --primary:#c2410c;
+      --navy:#0a1a2b;
 
-<meta name="description" content="Hospitality supplies supplier India. Hotel linen, towels, amenities, restaurant equipment, banquet supplies, housekeeping products. PAN India hotel supply distribution.">
+      --text:#0f172a;
+      --muted:#475569;
+      --bg:#f8fafc;
 
-<link rel="canonical" href="https://www.fodel.in/hospitality.html">
+      --radius:12px;
+      --shadow:0 8px 20px rgba(0,0,0,0.08);
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+      --container:1200px;
+      --topbar:60px;
+    }
 
-<style>
+    *{box-sizing:border-box;margin:0;padding:0}
 
-:root{
---primary:#c2410c;
---navy:#0a1a2b;
---text:#0f172a;
---muted:#475569;
---bg:#f8fafc;
---radius:12px;
---shadow:0 8px 20px rgba(0,0,0,0.08);
---container:1200px;
---topbar:60px;
-}
+    body{
+      font-family:Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
 
-*{box-sizing:border-box;margin:0;padding:0}
+    a{color:inherit}
 
-body{
-font-family:Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-background:var(--bg);
-color:var(--text);
-}
+    .top-nav{
+      position:fixed;
+      top:0;left:0;right:0;
+      height:var(--topbar);
+      background:var(--primary);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:10px 18px;
+      z-index:1000;
+    }
 
-.top-nav{
-position:fixed;
-top:0;
-left:0;
-right:0;
-height:var(--topbar);
-background:var(--primary);
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:10px 18px;
-z-index:1000;
-}
+    .brand-mini{
+      display:flex;gap:8px;align-items:center;
+      font-weight:700;color:#fff;
+    }
+    .brand-mini .dot{width:10px;height:10px;background:#fff;border-radius:50%}
 
-.brand-mini{
-display:flex;
-gap:8px;
-align-items:center;
-font-weight:700;
-color:#fff;
-}
+    .top-actions{display:flex;gap:10px}
+    .chip{
+      text-decoration:none;font-weight:600;font-size:13px;border-radius:999px;
+      padding:7px 12px;color:#fff;background:rgba(255,255,255,.15);
+    }
+    .chip.reviews{background:var(--navy)}
 
-.brand-mini .dot{
-width:10px;
-height:10px;
-background:#fff;
-border-radius:50%;
-}
+    .hero{
+      margin-top:var(--topbar);
+      background:var(--primary);
+      color:#fff;
+      text-align:center;
+      padding:45px 20px 40px;
+    }
+    .hero h1{font-size:clamp(26px,5vw,38px)}
+    .hero .tag{margin-top:6px;font-weight:600}
 
-.top-actions{
-display:flex;
-gap:10px;
-}
+    .hero-stats{
+      display:flex;justify-content:center;gap:28px;margin-top:22px;flex-wrap:wrap;
+    }
+    .hero-stats div{text-align:center;font-size:13px;opacity:.95}
+    .hero-stats strong{display:block;font-size:22px}
 
-.chip{
-text-decoration:none;
-font-weight:600;
-font-size:13px;
-border-radius:999px;
-padding:7px 12px;
-color:#fff;
-background:rgba(255,255,255,.15);
-}
+    .hero-cta{margin-top:26px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+    .hero-btn{
+      padding:12px 20px;border-radius:999px;font-weight:700;text-decoration:none;font-size:14px;display:inline-block;
+    }
+    .hero-btn.primary{background:#fff;color:var(--primary)}
+    .hero-btn.ghost{border:2px solid rgba(255,255,255,.7);color:#fff}
 
-.chip.reviews{background:var(--navy)}
+    .trust{
+      background:#fff;padding:22px;border-bottom:1px solid #e5e7eb;
+    }
+    .trust-grid{
+      max-width:var(--container);margin:auto;
+      display:grid;grid-template-columns:repeat(4,1fr);gap:12px;text-align:center;font-weight:600;font-size:13px;
+    }
+    @media(max-width:768px){ .trust-grid{grid-template-columns:repeat(2,1fr)} }
 
-.hero{
-margin-top:var(--topbar);
-background:var(--primary);
-color:#fff;
-text-align:center;
-padding:45px 20px 60px;
-}
+    .container{max-width:var(--container);margin:auto;padding:18px}
 
-.hero h1{font-size:clamp(26px,5vw,38px)}
+    .searchbox{
+      background:#fff;border:1px solid #e2e8f0;border-radius:999px;
+      padding:10px 14px;display:flex;gap:8px;align-items:center;margin-bottom:14px;
+    }
+    .searchbox input{border:none;outline:none;font:inherit;width:100%}
 
-.hero .tag{
-margin-top:6px;
-font-weight:600;
-}
+    .tabs{display:flex;gap:8px;overflow:auto;margin-bottom:12px}
+    .tab{
+      font-family:Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      padding:8px 14px;border-radius:999px;border:1px solid #e2e8f0;background:#fff;cursor:pointer;
+      font-weight:600;font-size:14px;white-space:nowrap;
+    }
+    .tab.active{border-color:var(--primary);box-shadow:0 0 0 3px rgba(194,65,12,.15)}
+    .tabs-divider{height:14px;border-bottom:1px solid #e5e7eb;margin-bottom:18px}
 
-.container{
-max-width:var(--container);
-margin:auto;
-padding:18px;
-}
+    /* grid */
+    .grid{display:grid;gap:14px;grid-template-columns:repeat(4,1fr)}
+    @media(max-width:1024px){ .grid{grid-template-columns:repeat(3,1fr)} }
+    @media(max-width:640px){ .grid{grid-template-columns:repeat(2,1fr)} }
 
-.searchbox{
-background:#fff;
-border:1px solid #e2e8f0;
-border-radius:999px;
-padding:10px 14px;
-display:flex;
-gap:8px;
-align-items:center;
-margin-bottom:14px;
-}
+    /* cards */
+    .card{
+      background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:12px;
+      display:flex;flex-direction:column;
+    }
+    .thumb{
+      width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:8px;background:#f1f5f9;margin-bottom:8px;
+    }
+    .title{font-weight:700;font-size:14px;display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+    .sku{font-size:11px;color:#64748b}
+    .desc{font-size:12px;color:var(--muted);margin-top:4px;min-height:36px}
+    .meta{display:flex;justify-content:space-between;font-size:11px;color:#64748b;margin-top:4px}
+    .price{font-weight:700;margin-top:6px}
 
-.searchbox input{
-border:none;
-outline:none;
-font:inherit;
-width:100%;
-}
+    .card-bottom{margin-top:auto}
+    .btn{
+      background:var(--primary);color:#fff;border:none;padding:8px;border-radius:8px;
+      font-weight:600;cursor:pointer;font-size:13px;width:100%;margin-top:8px;text-align:center;
+    }
+    .btn.inline{width:auto;padding:8px 10px}
+    .btn.secondary{background:var(--navy)}
+    .btn.ghost{background:transparent;border:2px solid var(--navy);color:var(--navy)}
+    .btn.danger{background:#dc2626}
 
-.tabs{
-display:flex;
-gap:8px;
-overflow:auto;
-margin-bottom:10px;
-padding-bottom:6px;
-}
+    .qty-row{display:flex;align-items:center;gap:8px;margin-top:6px;flex-wrap:wrap}
+    .qty{
+      width:78px;border:1px solid #e2e8f0;border-radius:8px;padding:8px;text-align:center;font:inherit;
+    }
 
-.tab{
-font-family:Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-padding:8px 14px;
-border-radius:999px;
-border:1px solid #e2e8f0;
-background:#fff;
-cursor:pointer;
-font-weight:600;
-font-size:14px;
-white-space:nowrap;
-}
+    /* modal */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:2500}
+    .modal-content{background:#fff;padding:20px;border-radius:14px;max-width:520px;width:92%}
+    .modal .close{float:right;cursor:pointer;font-weight:700;font-size:20px;border:none;background:transparent}
 
-.tab.active{
-border-color:var(--primary);
-box-shadow:0 0 0 3px rgba(194,65,12,.15);
-}
+    .input{
+      width:100%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #e2e8f0;font:inherit;
+    }
+    textarea.input{min-height:90px;resize:vertical}
 
-.tabs-divider{
-height:20px;
-border-bottom:1px solid #e5e7eb;
-margin-bottom:18px;
-}
+    /* RFQ drawer */
+    .rfq-bar{
+      position:fixed;bottom:16px;right:16px;background:var(--navy);color:#fff;padding:10px 14px;
+      border-radius:999px;box-shadow:var(--shadow);display:flex;gap:10px;align-items:center;cursor:pointer;z-index:1200;
+    }
+    .rfq-drawer{
+      position:fixed;right:-460px;top:0;bottom:0;width:460px;max-width:95vw;background:#fff;
+      box-shadow:-8px 0 28px rgba(0,0,0,.1);z-index:2400;display:flex;flex-direction:column;transition:right .25s ease;
+    }
+    .rfq-drawer.open{right:0}
+    .rfq-header{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid #e5e7eb}
+    .rfq-actions-top{display:flex;gap:8px;padding:10px 16px;border-bottom:1px solid #f1f5f9;flex-wrap:wrap}
+    .rfq-list{flex:1;overflow:auto;padding:10px 12px}
+    .rfq-item{
+      display:grid;grid-template-columns:1fr 80px 1fr 28px;gap:8px;align-items:center;
+      padding:10px;border:1px solid #e5e7eb;border-radius:10px;margin-bottom:8px;background:#fff;
+    }
+    .rfq-item .sku{font-size:12px;color:#64748b}
+    .rfq-footer{border-top:1px solid #e5e7eb;padding:12px}
+    .rfq-footer-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
 
-@media(max-width:640px){
-.tabs-divider{
-height:24px;
-margin-top:6px;
-}
-}
+    /* footer */
+    footer{margin-top:40px;padding:28px;background:#fff;border-top:1px solid #e5e7eb;text-align:center}
+    .footer-links{display:flex;gap:12px;justify-content:center;font-weight:700;flex-wrap:wrap;margin:8px 0}
+    .footer-email{color:var(--navy);text-decoration:none}
+    .footer-wa{color:#25D366;text-decoration:none}
+    .copy{margin-top:8px;font-size:12px;color:#94a3b8}
 
-.grid{
-display:grid;
-gap:14px;
-grid-template-columns:repeat(4,1fr);
-}
+    /* focus states */
+    button:focus, a:focus, input:focus, textarea:focus{
+      outline:3px solid rgba(194,65,12,.3);outline-offset:2px;
+    }
+  </style>
 
-@media(max-width:1024px){
-.grid{grid-template-columns:repeat(3,1fr)}
-}
-
-@media(max-width:640px){
-.grid{grid-template-columns:repeat(2,1fr)}
-}
-
-.card{
-background:#fff;
-border-radius:var(--radius);
-box-shadow:var(--shadow);
-padding:12px;
-display:flex;
-flex-direction:column;
-}
-
-.thumb{
-width:100%;
-aspect-ratio:1/1;
-object-fit:cover;
-border-radius:8px;
-background:#f1f5f9;
-margin-bottom:8px;
-}
-
-.title{
-font-weight:700;
-font-size:14px;
-display:flex;
-justify-content:space-between;
-}
-
-.sku{
-font-size:11px;
-color:#64748b;
-}
-
-.desc{
-font-size:12px;
-color:var(--muted);
-margin-top:4px;
-min-height:36px;
-}
-
-.price{
-font-weight:700;
-margin-top:6px;
-}
-
-.card-bottom{
-margin-top:auto;
-}
-
-.btn{
-background:var(--primary);
-color:#fff;
-border:none;
-padding:8px;
-border-radius:8px;
-font-weight:600;
-cursor:pointer;
-font-size:13px;
-width:100%;
-margin-top:8px;
-}
-
-.qty{
-display:flex;
-align-items:center;
-gap:6px;
-margin-top:6px;
-}
-
-.qty button{
-border:none;
-background:#eee;
-padding:3px 8px;
-cursor:pointer;
-border-radius:4px;
-}
-
-.rfq-bar{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-background:#fff;
-border-top:1px solid #e5e7eb;
-padding:10px 16px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-z-index:1500;
-box-shadow:0 -4px 20px rgba(0,0,0,0.08);
-}
-
-.rfq-btn{
-background:var(--primary);
-color:#fff;
-border:none;
-padding:8px 16px;
-border-radius:8px;
-font-weight:600;
-cursor:pointer;
-}
-
-footer{
-margin-top:40px;
-padding:28px;
-background:#fff;
-border-top:1px solid #e5e7eb;
-text-align:center;
-}
-
-.footer-links{
-display:flex;
-gap:12px;
-justify-content:center;
-font-weight:700;
-}
-
-.footer-email{color:var(--navy);text-decoration:none;}
-.footer-wa{color:#25D366;text-decoration:none;}
-
-.copy{
-margin-top:8px;
-font-size:12px;
-color:#94a3b8;
-}
-
-</style>
+  <!-- SEO: Organization Schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Fodel India",
+    "url":"https://www.fodel.in",
+    "logo":"https://www.fodel.in/logo.png",
+    "sameAs": [],
+    "contactPoint": [{
+      "@type":"ContactPoint",
+      "telephone":"+91-9797459260",
+      "contactType":"sales",
+      "areaServed":"IN",
+      "availableLanguage":["en","hi"]
+    }]
+  }
+  </script>
 </head>
 
 <body>
 
-<nav class="top-nav">
-
-<div class="brand-mini">
-<span class="dot"></span>
-Fodel Hospitality
-</div>
-
-<div class="top-actions">
-<a class="chip reviews" href="/reviews.html">Reviews</a>
-<a class="chip" href="/">Home</a>
-</div>
-
-</nav>
-
-<header class="hero">
-<h1>Hospitality Supplies</h1>
-<p class="tag">Hotel Linen • Towels • Amenities • Restaurant • Housekeeping • Banquet</p>
-</header>
-
-<main class="container">
-
-<div class="searchbox">
-🔎
-<input id="search" placeholder="Search products">
-</div>
-
-<div class="tabs">
-<button class="tab active" data-cat="all">All</button>
-<button class="tab" data-cat="linen">Linen</button>
-<button class="tab" data-cat="towels">Towels</button>
-<button class="tab" data-cat="amenities">Amenities</button>
-<button class="tab" data-cat="restaurant">Restaurant</button>
-<button class="tab" data-cat="housekeeping">Housekeeping</button>
-<button class="tab" data-cat="banquet">Banquet</button>
-</div>
-
-<div class="tabs-divider"></div>
-
-<section id="products" class="grid"></section>
-
-</main>
-
-<div class="rfq-bar">
-<span id="rfq-count">0 items selected</span>
-<button class="rfq-btn" onclick="sendRFQ()">Send RFQ</button>
-</div>
-
-<footer>
-
-<div class="footer-links">
-<a class="footer-email" href="mailto:sales@hs.in">Email</a>
-<span>•</span>
-<a class="footer-wa" href="https://wa.me/919797459260">WhatsApp</a>
-</div>
-
-<div class="copy">
-© 2015–2026 Fodel India
-</div>
-
-</footer>
-
-<script>
-
-const CSV_URL="PASTE_GOOGLE_SHEET_CSV_LINK"
-
-let products=[]
-let selected=[]
-let qty={}
-
-const grid=document.getElementById("products")
-
-async function loadProducts(){
-
-if(!CSV_URL){render([]);return}
-
-try{
-
-const res=await fetch(CSV_URL)
-const text=await res.text()
-
-const rows=text.split("\n").slice(1)
-
-products=rows.map(r=>{
-
-const c=r.split(",")
-
-return{
-cat:c[0],
-name:c[1],
-sku:c[2],
-price:c[3],
-img:c[4],
-desc:c[5]
-}
-
-})
-
-render(products)
-
-}catch{
-
-render(products)
-
-}
-
-}
-
-function render(list){
-
-grid.innerHTML=""
-
-list.forEach((p,i)=>{
-
-const card=document.createElement("div")
-
-card.className="card"
-
-card.innerHTML=`
-
-<img class="thumb" src="/images/${p.img}">
-
-<div class="title">${p.name}<span class="sku">${p.sku}</span></div>
-
-<div class="desc">${p.desc}</div>
-
-<div class="qty">
-
-<button onclick="changeQty(${i},-1)">-</button>
-
-<span id="qty${i}">1</span>
-
-<button onclick="changeQty(${i},1)">+</button>
-
-</div>
-
-<label style="font-size:12px;margin-top:4px;">
-<input type="checkbox" onchange="toggleSelect(${i})">
-Select for RFQ
-</label>
-
-<div class="card-bottom">
-
-<div class="price">${p.price}</div>
-
-<button class="btn" onclick="window.open('https://wa.me/919797459260?text=Hospitality enquiry ${p.name}')">
-
-Enquire
-
-</button>
-
-</div>
-
-`
-
-grid.appendChild(card)
-
-})
-
-}
-
-function changeQty(i,val){
-
-qty[i]=(qty[i]||1)+val
-if(qty[i]<1)qty[i]=1
-document.getElementById("qty"+i).innerText=qty[i]
-
-}
-
-function toggleSelect(i){
-
-if(selected.includes(i)){
-selected=selected.filter(x=>x!==i)
-}else{
-selected.push(i)
-}
-
-document.getElementById("rfq-count").innerText=selected.length+" items selected"
-
-}
-
-function sendRFQ(){
-
-if(selected.length===0){
-alert("Select products first")
-return
-}
-
-let msg="Hotel RFQ - Fodel India\n\n"
-
-selected.forEach(i=>{
-const p=products[i]
-msg+=`${p.name} (SKU:${p.sku}) Qty:${qty[i]||1}\n`
-})
-
-window.open("https://wa.me/919797459260?text="+encodeURIComponent(msg))
-
-}
-
-document.querySelectorAll(".tab").forEach(tab=>{
-
-tab.onclick=()=>{
-
-document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"))
-tab.classList.add("active")
-
-const cat=tab.dataset.cat
-
-if(cat==="all") render(products)
-else render(products.filter(p=>p.cat===cat))
-
-}
-
-})
-
-document.getElementById("search").addEventListener("input",e=>{
-
-const q=e.target.value.toLowerCase()
-
-render(products.filter(p=>
-p.name.toLowerCase().includes(q)||
-p.sku.toLowerCase().includes(q)||
-p.cat.toLowerCase().includes(q)
-))
-
-})
-
-loadProducts()
-
-</script>
-
+  <!-- Top Nav -->
+  <nav class="top-nav" aria-label="Top navigation">
+    <div class="brand-mini">
+      <span class="dot"></span>
+      Fodel Hospitality
+    </div>
+    <div class="top-actions">
+      <a class="chip reviews" href="/reviews.html">Reviews</a>
+      <a class="chip" href="/">Home</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <h1>India’s Trusted Hospitality Supply Partner</h1>
+    <p class="tag">Hotel Linen • Towels • Guest Amenities • Restaurant &amp; Banquet Supplies</p>
+
+    <div class="hero-stats">
+      <div><strong>2,500+</strong><span>Hotels Served</span></div>
+      <div><strong>28</strong><span>States Covered</span></div>
+      <div><strong>10+</strong><span>Years Experience</span></div>
+    </div>
+
+    <div class="hero-cta">
+      <a class="hero-btn primary" href="#products">Browse Products</a>
+      <a class="hero-btn ghost" href="https://wa.me/919797459260" target="_blank" rel="noopener">Talk to Sales</a>
+    </div>
+  </header>
+
+  <!-- Trust Band -->
+  <section class="trust" aria-label="Trust & certifications">
+    <div class="trust-grid">
+      <div>⭐ ISO 9001 Certified</div>
+      <div>🚚 PAN India Logistics</div>
+      <div>🏨 Hotel • Resort • Hospital Supply</div>
+      <div>🤝 Bulk & Contract Pricing</div>
+    </div>
+  </section>
+
+  <!-- Main -->
+  <main class="container">
+    <div class="searchbox" role="search">
+      <span aria-hidden="true">🔎</span>
+      <input id="search" placeholder="Search products" aria-label="Search products by name, SKU, or category" />
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Categories">
+      <button class="tab active" data-cat="all" role="tab" aria-selected="true">All</button>
+      <button class="tab" data-cat="linen" role="tab">Linen</button>
+      <button class="tab" data-cat="towels" role="tab">Towels</button>
+      <button class="tab" data-cat="amenities" role="tab">Amenities</button>
+      <button class="tab" data-cat="restaurant" role="tab">Restaurant</button>
+      <button class="tab" data-cat="housekeeping" role="tab">Housekeeping</button>
+      <button class="tab" data-cat="banquet" role="tab">Banquet</button>
+    </div>
+
+    <div class="tabs-divider"></div>
+
+    <section id="products" class="grid" aria-label="Product grid"></section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p><strong>Fodel India – Hospitality Supply Specialists</strong></p>
+    <p>Serving Hotels, Resorts, Hospitals &amp; Institutions since 2015</p>
+
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <span>•</span>
+      <a href="/contact.html">Contact</a>
+      <span>•</span>
+      <a href="/terms.html">Terms</a>
+    </div>
+
+    <div class="footer-links">
+      <a class="footer-email" href="mailto:sales@hs.in">sales@hs.in</a>
+      <span>•</span>
+      <a class="footer-wa" href="https://wa.me/919797459260" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+
+    <div class="copy">© 2015–2026 Fodel India</div>
+  </footer>
+
+  <!-- RFQ Drawer Trigger -->
+  <div id="rfqBar" class="rfq-bar" onclick="toggleRFQ(true)" aria-label="Open RFQ cart">
+    <span>🧾 RFQ Cart</span>
+    <span id="rfqCount">0 items</span>
+  </div>
+
+  <!-- RFQ Drawer -->
+  <aside id="rfqDrawer" class="rfq-drawer" aria-label="RFQ drawer" aria-hidden="true">
+    <div class="rfq-header">
+      <strong>RFQ Cart</strong>
+      <button class="close" onclick="toggleRFQ(false)" aria-label="Close RFQ">×</button>
+    </div>
+
+    <div class="rfq-actions-top">
+      <button class="btn inline" onclick="openBulkPaste()">Paste from Excel</button>
+      <label class="btn inline" style="cursor:pointer">
+        Upload CSV
+        <input type="file" id="csvInput" accept=".csv" hidden />
+      </label>
+      <button class="btn inline secondary" onclick="exportCSV()">Export CSV</button>
+    </div>
+
+    <div id="rfqList" class="rfq-list" aria-live="polite"></div>
+
+    <div class="rfq-footer">
+      <textarea id="rfqNotes" class="input" placeholder="Add purchase notes (delivery city, GST, target dates)…"></textarea>
+      <div class="rfq-footer-actions">
+        <button class="btn" onclick="sendRFQWhatsApp()">Send via WhatsApp</button>
+        <a id="rfqEmail" class="btn ghost" href="mailto:sales@hs.in" target="_blank" rel="noopener">Email RFQ</a>
+        <button class="btn danger" onclick="clearRFQ()">Clear</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Bulk Paste Modal -->
+  <div class="modal" id="bulkModal" role="dialog" aria-modal="true" aria-label="Bulk paste from Excel">
+    <div class="modal-content">
+      <button class="close" onclick="closeBulkPaste()" aria-label="Close">×</button>
+      <h3 style="margin-bottom:6px">Bulk Paste from Excel</h3>
+      <p>Paste rows in any of these formats:</p>
+      <ul style="margin:8px 0 12px 16px; font-size:13px; color:#475569;">
+        <li>SKU, Qty, Notes</li>
+        <li>SKU &nbsp;Qty</li>
+        <li>SKU &nbsp;Qty &nbsp;Unit</li>
+      </ul>
+      <textarea id="bulkText" class="input" rows="8" placeholder="Example:
+LINEN300, 50, King size white
+TWL550 120 Spa wing
+SHAM30, 500"></textarea>
+      <div style="display:flex; gap:8px; margin-top:8px;">
+        <button class="btn" onclick="parseBulk()">Add to RFQ</button>
+        <button class="btn secondary" onclick="downloadTemplate()">Download CSV Template</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Request Quote Modal -->
+  <div class="modal" id="quoteModal" role="dialog" aria-modal="true" aria-label="Request quotation">
+    <div class="modal-content">
+      <button class="close" onclick="closeQuote()" aria-label="Close">×</button>
+      <h3 style="margin-bottom:6px">Request Quotation</h3>
+      <p id="quoteProduct" style="font-size:13px;color:#475569;margin-bottom:8px;"></p>
+
+      <input id="qCompany" placeholder="Company Name" class="input" />
+      <input id="qQuantity" placeholder="Quantity" class="input" />
+      <input id="qContact" placeholder="Phone / Email" class="input" />
+
+      <div style="display:flex; gap:8px; margin-top:4px; flex-wrap:wrap;">
+        <button class="btn" onclick="submitQuote()">Submit via WhatsApp</button>
+        <button class="btn secondary" onclick="submitQuoteEmail()">Submit via Email</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ------------------------
+    // Product catalog (with B2B fields)
+    // ------------------------
+    const products = [
+      {cat:"linen",name:"Hotel Bedsheet 300TC",sku:"LINEN300",price:"₹450 / piece",moq:"MOQ: 50 pcs",lead:"Dispatch: 5–7 days",img:"bedsheet.jpg",desc:"Commercial-grade bedsheet. Sizes & colours available."},
+      {cat:"linen",name:"Duvet Insert",sku:"DUVET",price:"₹950 / piece",moq:"MOQ: 20 pcs",lead:"Dispatch: 5–7 days",img:"duvet.jpg",desc:"Soft hotel duvet insert."},
+      {cat:"towels",name:"Bath Towel 550 GSM",sku:"TWL550",price:"₹220 / piece",moq:"MOQ: 60 pcs",lead:"Dispatch: 3–5 days",img:"towel.jpg",desc:"Premium cotton bath towel."},
+      {cat:"amenities",name:"Hotel Shampoo 30ml",sku:"SHAM30",price:"₹12 / bottle",moq:"MOQ: 500 pcs",lead:"Dispatch: 2–4 days",img:"shampoo.jpg",desc:"Guest room shampoo bottle."},
+      {cat:"restaurant",name:"Chafing Dish 6L",sku:"CHAF6",price:"₹3,200 / unit",moq:"MOQ: 5 units",lead:"Dispatch: 3–6 days",img:"chafing.jpg",desc:"Buffet chafing dish."},
+      {cat:"housekeeping",name:"Housekeeping Cart",sku:"HKCART",price:"₹7,200 / unit",moq:"MOQ: 2 units",lead:"Dispatch: 6–10 days",img:"cart.jpg",desc:"Professional housekeeping trolley."},
+      {cat:"banquet",name:"Chair Cover",sku:"CHAIRCOVER",price:"₹120 / piece",moq:"MOQ: 100 pcs",lead:"Dispatch: 3–5 days",img:"chair.jpg",desc:"Stretch banquet chair cover."}
+    ];
+
+    const grid = document.getElementById("products");
+
+    function render(list){
+      grid.innerHTML = "";
+      list.forEach(p => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <img class="thumb" src="/images/${p.img}" alt="${p.name}" loading="lazy">
+          <div class="title">${p.name}<span class="sku">${p.sku}</span></div>
+          <div class="desc">${p.desc}</div>
+          <div class="meta">
+            <span>${p.moq || "MOQ: 10 pcs"}</span>
+            <span>${p.lead || "Dispatch: 3–7 days"}</span>
+          </div>
+          <div class="card-bottom">
+            <div class="price">${p.price}</div>
+            <div class="qty-row">
+              <input class="qty" type="number" min="1" step="1" value="1" id="qty-${p.sku}" aria-label="Quantity for ${p.name}">
+              <button class="btn inline" onclick="addToRFQ('${p.sku}')">Add to RFQ</button>
+              <button class="btn inline secondary" onclick="openQuote('${p.name}', '${p.sku}')">Request Quote</button>
+            </div>
+            <button class="btn" onclick="window.open('https://wa.me/919797459260?text=${encodeURIComponent('Hospitality enquiry: '+p.name+' ('+p.sku+')')}', '_blank')">
+              Enquire on WhatsApp
+            </button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Initial render
+    render(products);
+
+    // Tabs
+    document.querySelectorAll(".tab").forEach(tab => {
+      tab.onclick = () => {
+        document.querySelectorAll(".tab").forEach(t => {
+          t.classList.remove("active");
+          t.setAttribute('aria-selected','false');
+        });
+        tab.classList.add("active");
+        tab.setAttribute('aria-selected','true');
+        const cat = tab.dataset.cat;
+        if (cat === "all") render(products);
+        else render(products.filter(p => p.cat === cat));
+      }
+    });
+
+    // Search
+    document.getElementById("search").addEventListener("input", e => {
+      const q = e.target.value.toLowerCase();
+      render(products.filter(p =>
+        p.name.toLowerCase().includes(q) ||
+        p.sku.toLowerCase().includes(q)  ||
+        p.cat.toLowerCase().includes(q)
+      ));
+    });
+
+    // ------------------------
+    // RFQ CART (Local Storage)
+    // ------------------------
+    const rfqKey = 'rfq_cart_v1';
+    let rfq = loadRFQ();
+
+    function loadRFQ(){
+      try { return JSON.parse(localStorage.getItem(rfqKey)) || []; }
+      catch(e){ return []; }
+    }
+    function saveRFQ(){
+      localStorage.setItem(rfqKey, JSON.stringify(rfq));
+      updateRFQBar();
+      updateMailtoLink();
+    }
+
+    function addToRFQ(sku){
+      const product = products.find(p => p.sku === sku);
+      if(!product) return;
+      const qtyInput = document.getElementById(`qty-${sku}`);
+      const qty = Math.max(1, parseInt(qtyInput?.value || '1', 10));
+      const existing = rfq.find(i => i.sku === sku);
+      if(existing){ existing.qty += qty; }
+      else{
+        rfq.push({
+          sku: product.sku,
+          name: product.name,
+          qty,
+          price: product.price || '',
+          cat: product.cat || '',
+          note: ''
+        });
+      }
+      saveRFQ();
+      renderRFQ();
+      toggleRFQ(true);
+    }
+
+    function updateRFQQty(sku, qty){
+      const item = rfq.find(i => i.sku === sku);
+      if(!item) return;
+      item.qty = Math.max(1, parseInt(qty||'1',10));
+      saveRFQ();
+      renderRFQ();
+    }
+
+    function updateRFQNote(sku, note){
+      const item = rfq.find(i => i.sku === sku);
+      if(!item) return;
+      item.note = String(note||'').slice(0, 140);
+      saveRFQ();
+    }
+
+    function removeRFQItem(sku){
+      rfq = rfq.filter(i => i.sku !== sku);
+      saveRFQ();
+      renderRFQ();
+    }
+
+    function clearRFQ(){
+      if(!confirm('Clear all items from RFQ?')) return;
+      rfq = [];
+      saveRFQ();
+      renderRFQ();
+    }
+
+    function updateRFQBar(){
+      const count = rfq.reduce((a,b)=>a + (parseInt(b.qty)||0), 0);
+      document.getElementById('rfqCount').innerText = `${count} item${count===1?'':'s'}`;
+    }
+
+    function renderRFQ(){
+      const list = document.getElementById('rfqList');
+      if(!list) return;
+      list.innerHTML = '';
+      if(rfq.length === 0){
+        list.innerHTML = `<div style="padding:6px 4px;color:#64748b">No items yet. Add products using “Add to RFQ”.</div>`;
+      }else{
+        rfq.forEach(item=>{
+          const row = document.createElement('div');
+          row.className = 'rfq-item';
+          row.innerHTML = `
+            <div>
+              <div><strong>${item.name}</strong></div>
+              <div class="sku">${item.sku} ${item.price? '• '+item.price:''}</div>
+            </div>
+            <input type="number" min="1" class="input" value="${item.qty}"
+                   aria-label="Quantity for ${item.sku}"
+                   oninput="updateRFQQty('${item.sku}', this.value)">
+            <input type="text" class="input" placeholder="Notes" value="${item.note||''}"
+                   aria-label="Note for ${item.sku}"
+                   oninput="updateRFQNote('${item.sku}', this.value)">
+            <button class="close" title="Remove" aria-label="Remove ${item.sku}" onclick="removeRFQItem('${item.sku}')">×</button>
+          `;
+          list.appendChild(row);
+        });
+      }
+      updateMailtoLink();
+    }
+
+    function toggleRFQ(open){
+      const drawer = document.getElementById('rfqDrawer');
+      if(!drawer) return;
+      drawer.classList.toggle('open', !!open);
+      drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
+    }
+
+    function normalizeForMessage(i){
+      return `${i.sku} | ${i.name} | Qty: ${i.qty}${i.note? ' | '+i.note:''}`;
+    }
+
+    function sendRFQWhatsApp(){
+      if(rfq.length===0){
+        alert('RFQ is empty. Please add items.');
+        return;
+      }
+      const lines = rfq.map(normalizeForMessage);
+      const notes = (document.getElementById('rfqNotes')?.value||'').trim();
+      const payload = `RFQ – Fodel India\n${lines.join('\n')}${notes? '\n\nNotes: '+notes:''}`;
+      const url = `https://wa.me/919797459260?text=${encodeURIComponent(payload)}`;
+      window.open(url, '_blank');
+    }
+
+    function updateMailtoLink(){
+      const a = document.getElementById('rfqEmail');
+      if(!a) return;
+      const subject = encodeURIComponent('RFQ – Fodel India');
+      const bodyLines = rfq.map(i => normalizeForMessage(i));
+      const footer = `\n\nNotes: ${(document.getElementById('rfqNotes')?.value||'').trim()}`;
+      const body = encodeURIComponent((bodyLines.join('\n')||'') + footer);
+      a.href = `mailto:sales@hs.in?subject=${subject}&body=${body}`;
+    }
+
+    // ------------------------
+    // Bulk Paste & CSV Upload/Export
+    // ------------------------
+    function openBulkPaste(){ document.getElementById('bulkModal').style.display = 'flex'; }
+    function closeBulkPaste(){ document.getElementById('bulkModal').style.display = 'none'; }
+
+    function parseBulk(){
+      const text = document.getElementById('bulkText').value.trim();
+      if(!text) return;
+      const lines = text.split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
+      let added = 0;
+
+      lines.forEach(line=>{
+        // Accept comma, tab, or 2+ spaces as delimiter
+        const parts = line.split(/[,\t]+|\s{2,}/).map(s=>s.trim()).filter(Boolean);
+        if(!parts.length) return;
+
+        const sku = parts[0].toUpperCase();
+        const qty = parseInt(parts[1]||'1',10) || 1;
+        const note = parts.slice(2).join(' ').slice(0, 140);
+
+        const prod = products.find(p=>p.sku.toUpperCase()===sku);
+        const existing = rfq.find(i => i.sku.toUpperCase()===sku);
+        if(existing){ existing.qty += qty; if(note) existing.note = note; }
+        else{
+          rfq.push({
+            sku,
+            name: prod ? prod.name : `Custom – ${sku}`,
+            qty,
+            price: prod?.price || '',
+            cat: prod?.cat || 'misc',
+            note
+          });
+        }
+        added++;
+      });
+
+      saveRFQ();
+      renderRFQ();
+      closeBulkPaste();
+      toggleRFQ(true);
+      alert(`${added} item(s) added to RFQ.`);
+    }
+
+    function downloadTemplate(){
+      const csv = 'SKU,Qty,Notes\nLINEN300,50,King size white\nTWL550,120,Spa wing\nSHAM30,500,\n';
+      const blob = new Blob([csv], {type:'text/csv'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'rfq_template.csv'; a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    document.getElementById('csvInput')?.addEventListener('change', e=>{
+      const file = e.target.files?.[0];
+      if(!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        const text = String(reader.result||'');
+        const rows = text.split(/\r?\n/).map(r=>r.trim()).filter(Boolean);
+        let added=0;
+        rows.forEach((line, idx)=>{
+          const parts = line.split(',').map(s=>s.trim());
+          if(idx===0 && /sku/i.test(parts[0])) return; // skip header
+          if(!parts[0]) return;
+          const sku = parts[0].toUpperCase();
+          const qty = parseInt(parts[1]||'1',10) || 1;
+          const note = (parts[2]||'').slice(0,140);
+          const prod = products.find(p=>p.sku.toUpperCase()===sku);
+          const existing = rfq.find(i => i.sku.toUpperCase()===sku);
+          if(existing){ existing.qty += qty; if(note) existing.note = note; }
+          else{
+            rfq.push({
+              sku, name: prod? prod.name:`Custom – ${sku}`,
+              qty, price: prod?.price||'', cat: prod?.cat||'misc', note
+            });
+          }
+          added++;
+        });
+        saveRFQ(); renderRFQ(); toggleRFQ(true);
+        alert(`${added} item(s) added from CSV.`);
+        e.target.value = '';
+      };
+      reader.readAsText(file);
+    });
+
+    function exportCSV(){
+      if(rfq.length===0){
+        alert('RFQ is empty. Nothing to export.');
+        return;
+      }
+      const header = 'SKU,Name,Qty,Price,Category,Note\n';
+      const rows = rfq.map(i => [
+        i.sku, i.name.replace(/,/g,' '), i.qty, (i.price||'').replace(/,/g,''),
+        i.cat||'', (i.note||'').replace(/,/g,' ')
+      ].join(',')).join('\n');
+      const csv = header + rows + '\n';
+      const blob = new Blob([csv], {type:'text/csv'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'rfq_export.csv'; a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // ------------------------
+    // Quote Modal (no backend; WA/mailto)
+    // ------------------------
+    function openQuote(name, sku){
+      document.getElementById('quoteProduct').innerText = `${name}${sku? ' • '+sku:''}`;
+      document.getElementById('quoteModal').style.display = 'flex';
+    }
+    function closeQuote(){ document.getElementById('quoteModal').style.display = 'none'; }
+
+    function submitQuote(){
+      const product = document.getElementById('quoteProduct').innerText || '';
+      const company = document.getElementById('qCompany').value.trim();
+      const qty = document.getElementById('qQuantity').value.trim();
+      const contact = document.getElementById('qContact').value.trim();
+      const msg = `Quotation Request\nProduct: ${product}\nCompany: ${company}\nQuantity: ${qty}\nContact: ${contact}`;
+      const url = `https://wa.me/919797459260?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+      closeQuote();
+    }
+
+    function submitQuoteEmail(){
+      const product = document.getElementById('quoteProduct').innerText || '';
+      const company = document.getElementById('qCompany').value.trim();
+      const qty = document.getElementById('qQuantity').value.trim();
+      const contact = document.getElementById('qContact').value.trim();
+      const subject = encodeURIComponent('Quotation Request – Fodel India');
+      const body = encodeURIComponent(
+        `Product: ${product}\nCompany: ${company}\nQuantity: ${qty}\nContact: ${contact}`
+      );
+      window.location.href = `mailto:sales@hs.in?subject=${subject}&body=${body}`;
+      closeQuote();
+    }
+
+    // ------------------------
+    // Init RFQ UI
+    // ------------------------
+    updateRFQBar();
+    renderRFQ();
+
+    // Close modals when clicking backdrop
+    document.addEventListener('click', (e)=>{
+      const bulk = document.getElementById('bulkModal');
+      const quote = document.getElementById('quoteModal');
+      if(e.target === bulk) closeBulkPaste();
+      if(e.target === quote) closeQuote();
+    });
+  </script>
 </body>
 </html>
