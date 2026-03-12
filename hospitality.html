@@ -4,14 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hospitality Supplies | Fodel India</title>
-  <meta name="description" content="Hotel supplies supplier India. Linen, towels, amenities, banquet and restaurant equipment with PAN India dispatch." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <meta name="description" content="Hotel supplies: linen, towels, amenities, housekeeping, banquet & restaurant equipment — PAN India dispatch, fast WhatsApp quotes." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
   <style>
     :root{
       /* Brand */
-      --primary:#c2410c;  /* Hospitality division */
-      --navy:#0a1a2b;     /* Reviews button + email */
+      --primary:#c2410c; /* Hospitality */
+      --navy:#0a1a2b;    /* Reviews/email */
       --text:#0f172a;
       --muted:#475569;
       --bg:#f8fafc;
@@ -23,65 +26,92 @@
 
       /* Layout */
       --container:1200px;
-      --topbar:56px;
+      --topbar:60px;
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{
       font-family:Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-      background:var(--bg);
-      color:var(--text);
+      background:var(--bg); color:var(--text);
     }
 
-    /* Sticky top mini-nav (like other pages) */
+    /* ===== Top header (solid #c2410c, no gradient) ===== */
     .top-nav{
-      position:fixed; inset:0 0 auto 0; height:var(--topbar);
-      display:flex; justify-content:center; gap:10px; align-items:center;
-      background:#fff; border-bottom:1px solid #e5e7eb; z-index:1000;
-      padding:8px 12px;
+      position:fixed; top:0; left:0; right:0; height:var(--topbar);
+      background:var(--primary);
+      display:flex; justify-content:center; align-items:center; gap:10px;
+      padding:8px 12px; z-index:1000; box-shadow:0 2px 10px rgba(0,0,0,.08);
     }
-    .top-nav a{
-      text-decoration:none; font-weight:700; font-size:14px; color:#fff;
-      padding:8px 12px; border-radius:10px; display:inline-flex; align-items:center; gap:8px;
+    .chip{
+      text-decoration:none; font-weight:700; font-size:14px; border-radius:999px; padding:8px 12px;
+      display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(255,255,255,.6);
+      color:#fff; background:transparent;
     }
-    .top-reviews{ background:var(--navy); }
-    .top-home{ background:var(--primary); }
+    .chip.reviews{ background:var(--navy); border-color:var(--navy); }
+    .chip:hover{ filter:brightness(1.05); }
 
-    /* Hero like Travels/Transport (but hospitality orange) */
+    /* ===== Hero (taller on desktop & mobile) ===== */
     .hero{
       margin-top:var(--topbar);
-      background: radial-gradient(140% 80% at 20% 20%, #f08a4b 0%, #c2410c 40%, #7a2e0e 100%);
+      background:var(--primary); /* solid, no gradient */
       color:#fff;
-      padding:60px 18px 40px;
+      display:flex; align-items:center; justify-content:center; text-align:center;
+      min-height:280px; /* desktop height */
+      padding:24px 18px;
     }
-    .hero .wrap{ max-width:var(--container); margin:0 auto; text-align:center; }
+    @media(max-width:640px){ .hero{ min-height:240px; padding:22px 14px; } }
+    .hero .wrap{ max-width:var(--container); width:100%; }
     .brand{ font-size:clamp(26px,5vw,40px); font-weight:700; letter-spacing:-.3px; }
-    .tag{ opacity:.92; margin-top:8px; font-weight:600; }
+    .tag{ margin-top:8px; font-weight:600; opacity:.95; }
 
-    /* Page body */
+    /* ===== Body container ===== */
     .container{ max-width:var(--container); margin:0 auto; padding:18px; }
+    @media(max-width:640px){ .container{ padding:14px; } }
 
-    /* Filters (mobile-first) */
+    /* Contact row (email + WA quick) */
+    .contact-row{
+      margin:8px 0 6px;
+      display:flex; gap:14px; align-items:center; justify-content:center; flex-wrap:wrap;
+      font-weight:700;
+    }
+    .contact-row a{ text-decoration:none; }
+    .email-link{ color:var(--navy); }
+    .wa-link{ color:#25D366; display:inline-flex; align-items:center; gap:6px; }
+
+    /* ===== Tools row: search + filters ===== */
+    .tools{
+      margin:12px 0 10px;
+      display:grid; gap:10px;
+      grid-template-columns:1fr;
+    }
+    @media(min-width:820px){
+      .tools{ grid-template-columns: 1fr auto; align-items:center; }
+    }
+    .searchbox{
+      display:flex; gap:8px; align-items:center;
+      background:#fff; border:1px solid #e2e8f0; border-radius:10px; padding:8px 10px;
+    }
+    .searchbox input{
+      width:100%; border:none; outline:none; font:inherit; font-size:16px; color:var(--text);
+    }
     .filters{
-      margin:14px 0;
       display:flex; gap:10px; align-items:center; overflow:auto; padding-bottom:4px;
       scrollbar-width:thin;
     }
     .filter{
       flex:0 0 auto; padding:8px 14px; border-radius:999px; border:1px solid #e2e8f0;
-      background:#fff; cursor:pointer; font-weight:600; font-size:14px; color:var(--text);
+      background:#fff; cursor:pointer; font-weight:700; font-size:14px; color:var(--text);
     }
-    .filter.active{ background:var(--primary); color:#fff; border-color:var(--primary); }
+    .filter.active{ background:#fff; color:#000; border-color:var(--primary); box-shadow:var(--ring); }
+    .stats{ margin:6px 0 2px; color:#64748b; font-weight:600; text-align:center; }
 
-    /* Grid */
+    /* ===== Grid & Cards ===== */
     .grid{
-      display:grid; gap:16px;
-      grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
+      display:grid; gap:16px; margin-top:8px;
+      grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); /* desktop uses space */
       scroll-margin-top:calc(var(--topbar) + 16px);
     }
-
-    /* Cards */
     .card{
       background:#fff; border-radius:var(--radius); box-shadow:var(--shadow);
       padding:12px; display:flex; flex-direction:column; gap:10px;
@@ -101,7 +131,7 @@
     .btn:hover{ filter:brightness(1.05); }
     .btn:focus{ outline:none; box-shadow:var(--ring); }
 
-    /* Skeleton loaders */
+    /* Skeletons */
     .skeleton{
       animation:pulse 1.2s ease-in-out infinite;
       background:linear-gradient(90deg,#f1f5f9 25%,#e2e8f0 37%,#f1f5f9 63%); background-size:400% 100%;
@@ -109,65 +139,102 @@
     }
     @keyframes pulse{0%{background-position:100% 50%}100%{background-position:0 50%}}
 
-    /* Footer spacing */
-    .spacer{ height:28px; }
-
-    /* Mobile refinements */
-    @media(max-width:640px){
-      .hero{ padding:44px 14px 28px; }
-      .container{ padding:14px; }
+    /* WhatsApp bubble + Scroll top */
+    .wa-float{
+      position:fixed; right:14px; bottom:14px; z-index:60;
+    }
+    .wa-btn{
+      display:inline-flex; align-items:center; gap:8px;
+      background:#25D366; color:#fff; font-weight:800; border-radius:999px; padding:12px 14px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.18); text-decoration:none;
+    }
+    .topBtn{
+      position:fixed; right:14px; bottom:74px; z-index:60;
+      background:var(--primary); color:#fff; border:none; cursor:pointer;
+      padding:12px 14px; border-radius:50%; font-size:18px; line-height:1; display:none;
+      box-shadow:0 8px 20px rgba(0,0,0,0.18);
     }
   </style>
 </head>
 <body>
 
-  <!-- Top bar -->
-  <nav class="top-nav">
-    <a class="top-reviews" href="/reviews.html">⭐ Reviews</a>
-    <a class="top-home" href="/">🏠 Home</a>
+  <!-- Sticky top header (solid #c2410c) -->
+  <nav class="top-nav" aria-label="Top navigation">
+    <a class="chip reviews" href="/reviews.html">⭐ Reviews</a>
+    <a class="chip" href="/">🏠 Home</a>
   </nav>
 
-  <!-- Hero -->
-  <section class="hero" aria-label="Page intro">
+  <!-- Hero (taller) -->
+  <header class="hero" aria-label="Page intro">
     <div class="wrap">
       <h1 class="brand">Hospitality Supplies</h1>
       <p class="tag">Linen • Towels • Amenities • Restaurant • Housekeeping • Banquet</p>
     </div>
-  </section>
+  </header>
 
   <!-- Body -->
   <main class="container">
-    <!-- Filters -->
-    <div class="filters" id="filters" role="tablist" aria-label="Quick filters">
-      <button class="filter active" data-cat="all" role="tab" aria-selected="true">All</button>
-      <button class="filter" data-cat="linen" role="tab" aria-selected="false">Linen</button>
-      <button class="filter" data-cat="towels" role="tab" aria-selected="false">Towels</button>
-      <button class="filter" data-cat="amenities" role="tab" aria-selected="false">Amenities</button>
-      <button class="filter" data-cat="restaurant" role="tab" aria-selected="false">F&amp;B</button>
-      <button class="filter" data-cat="housekeeping" role="tab" aria-selected="false">Housekeeping</button>
-      <button class="filter" data-cat="banquet" role="tab" aria-selected="false">Banquet</button>
+    <!-- Contact -->
+    <div class="contact-row">
+      <a class="email-link" href="mailto:sales@hs.in">✉️ sales@hs.in</a>
+      <a class="wa-link" href="https://wa.me/919797459260" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+        <!-- WhatsApp SVG (original) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M20.52 3.48A11.83 11.83 0 0 0 12.06 0C5.46 0 .1 5.34.1 11.93c0 2.1.55 4.15 1.59 5.95L0 24l6.3-1.64a11.9 11.9 0 0 0 5.77 1.49h.01c6.6 0 11.96-5.36 11.96-11.96 0-3.2-1.25-6.21-3.52-8.41Zm-8.46 18.3h-.01a10.26 10.26 0 0 1-5.23-1.44l-.38-.23-3.74.97 1-3.65-.25-.38a10.29 10.29 0 0 1-1.58-5.53c0-5.68 4.62-10.3 10.31-10.3 2.75 0 5.34 1.07 7.29 3.01a10.24 10.24 0 0 1 3.02 7.29c0 5.68-4.62 10.26-10.43 10.26Zm5.97-7.68c-.33-.16-1.95-.96-2.25-1.07-.3-.12-.5-.16-.71.16-.2.3-.82 1.07-1.01 1.29-.2.22-.37.25-.7.09-.33-.16-1.39-.51-2.65-1.62-.98-.86-1.64-1.91-1.83-2.23-.19-.33-.02-.51.14-.67.14-.14.33-.37.49-.55.16-.19.21-.32.32-.54.11-.22.05-.41-.02-.58-.16-.16-.71-1.72-.97-2.36-.26-.63-.52-.54-.71-.55h-.6c-.2 0-.52.07-.79.37s-1.04 1.01-1.04 2.46 1.07 2.86 1.22 3.06c.16.22 2.1 3.21 5.1 4.49.71.31 1.27.49 1.71.63.72.23 1.38.2 1.9.12.58-.09 1.95-.8 2.22-1.57.27-.77.27-1.43.19-1.57-.08-.14-.29-.22-.62-.38Z"/></svg>
+        WhatsApp
+      </a>
     </div>
+
+    <!-- Tools: Search + Filters -->
+    <div class="tools">
+      <label class="searchbox" aria-label="Search products">
+        🔎
+        <input id="search" type="search" placeholder="Search by name, SKU, or category…" autocomplete="off" />
+      </label>
+      <div class="filters" id="filters" role="tablist">
+        <button class="filter active" data-cat="all" role="tab" aria-selected="true">All</button>
+        <button class="filter" data-cat="linen" role="tab" aria-selected="false">Linen</button>
+        <button class="filter" data-cat="towels" role="tab" aria-selected="false">Towels</button>
+        <button class="filter" data-cat="amenities" role="tab" aria-selected="false">Amenities</button>
+        <button class="filter" data-cat="restaurant" role="tab" aria-selected="false">F&amp;B</button>
+        <button class="filter" data-cat="housekeeping" role="tab" aria-selected="false">Housekeeping</button>
+        <button class="filter" data-cat="banquet" role="tab" aria-selected="false">Banquet</button>
+      </div>
+    </div>
+
+    <!-- Product count -->
+    <div id="stats" class="stats" aria-live="polite"></div>
 
     <!-- Grid -->
     <section id="products" class="grid" aria-live="polite" aria-busy="true"></section>
-
-    <div class="spacer"></div>
+    <div style="height:28px"></div>
   </main>
+
+  <!-- WhatsApp bubble (original) -->
+  <div class="wa-float">
+    <a class="wa-btn" href="https://wa.me/919797459260?text=Hi%20Fodel%2C%20I%27m%20interested%20in%20hospitality%20supplies." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+      <!-- same SVG icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M20.52 3.48A11.83 11.83 0 0 0 12.06 0C5.46 0 .1 5.34.1 11.93c0 2.1.55 4.15 1.59 5.95L0 24l6.3-1.64a11.9 11.9 0 0 0 5.77 1.49h.01c6.6 0 11.96-5.36 11.96-11.96 0-3.2-1.25-6.21-3.52-8.41Zm-8.46 18.3h-.01a10.26 10.26 0 0 1-5.23-1.44l-.38-.23-3.74.97 1-3.65-.25-.38a10.29 10.29 0 0 1-1.58-5.53c0-5.68 4.62-10.3 10.31-10.3 2.75 0 5.34 1.07 7.29 3.01a10.24 10.24 0 0 1 3.02 7.29c0 5.68-4.62 10.26-10.43 10.26Zm5.97-7.68c-.33-.16-1.95-.96-2.25-1.07-.3-.12-.5-.16-.71.16-.2.3-.82 1.07-1.01 1.29-.2.22-.37.25-.7.09-.33-.16-1.39-.51-2.65-1.62-.98-.86-1.64-1.91-1.83-2.23-.19-.33-.02-.51.14-.67.14-.14.33-.37.49-.55.16-.19.21-.32.32-.54.11-.22.05-.41-.02-.58-.16-.16-.71-1.72-.97-2.36-.26-.63-.52-.54-.71-.55h-.6c-.2 0-.52.07-.79.37s-1.04 1.01-1.04 2.46 1.07 2.86 1.22 3.06c.16.22 2.1 3.21 5.1 4.49.71.31 1.27.49 1.71.63.72.23 1.38.2 1.9.12.58-.09 1.95-.8 2.22-1.57.27-.77.27-1.43.19-1.57-.08-.14-.29-.22-.62-.38Z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+
+  <!-- Scroll to top -->
+  <button id="topBtn" class="topBtn" aria-label="Scroll to top">↑</button>
 
   <script>
   /***************
    * CONFIG
    ***************/
   // --- Option A: Google Sheets (recommended) ---
-  const SHEET_ID   = 'PUT_YOUR_SHEET_ID_HERE';
-  const SHEET_NAME = 'Hospitality'; // the visible tab name
-  // --- Option B: CSV (fallback; leave empty if using Sheets) ---
-  const CSV_URL    = ''; // e.g., '/data/hospitality.csv' or a published CSV url
+  const SHEET_ID   = 'PUT_YOUR_SHEET_ID_HERE';  // e.g. 1AbCdEfG...
+  const SHEET_NAME = 'Hospitality';             // Your tab name
+  // --- Option B: CSV (fallback) ---
+  const CSV_URL    = ''; // e.g. '/data/hospitality.csv'
 
   // WhatsApp
   const WA_NUMBER = '919797459260';
 
-  // Column names expected in your sheet/CSV:
+  // Expected columns
   const COLS = ['Category','Name','SKU','Price','Image','Description'];
 
   /***************
@@ -175,27 +242,28 @@
    ***************/
   const productsEl = document.getElementById('products');
   const filtersBar = document.getElementById('filters');
+  const searchInput = document.getElementById('search');
+  const statsEl = document.getElementById('stats');
+  const topBtn = document.getElementById('topBtn');
 
-  function escapeHtml(str=''){
-    return str.replace(/[&<>"'`=\/]/g, s => ({
-      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;','/':'&#x2F;','`':'&#x60;','=':'&#x3D;'
-    }[s]));
-  }
   const slug = s => (s||'').toString().trim().toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+  function escapeHtml(str=''){
+    return str.replace(/[&<>"'`=\/]/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;','/':'&#x2F;','`':'&#x60;','=':'&#x3D;'}[s]));
+  }
   const safeImg = s => {
     if(!s) return '/images/placeholder.webp';
     const t = s.trim();
-    // if full http(s) url
     if(/^https?:\/\//i.test(t)) return t;
-    // else relative file name in /images
     return '/images/' + encodeURIComponent(t);
   };
-
-  // Minimal skeleton loader
+  function debounce(fn, delay=200){
+    let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn(...args), delay); };
+  }
   function renderSkeleton(count=8){
+    productsEl.innerHTML = '';
     const frag = document.createDocumentFragment();
     for(let i=0;i<count;i++){
-      const card = document.createElement('div');
+      const card = document.createElement('article');
       card.className = 'card';
       card.innerHTML = `
         <div class="thumb skeleton" style="aspect-ratio:4/3;"></div>
@@ -210,33 +278,29 @@
     productsEl.appendChild(frag);
   }
 
-  // Robust CSV parser (handles quotes, commas, newlines)
+  // CSV parser (robust)
   function parseCSV(text){
     const rows = [];
     let i = 0, field = '', row = [], inQuotes = false;
     while (i < text.length){
-      const char = text[i];
+      const c = text[i];
       if (inQuotes){
-        if (char === '"'){
-          if (text[i+1] === '"'){ field += '"'; i++; } // escaped "
-          else inQuotes = false;
-        } else {
-          field += char;
-        }
+        if (c === '"'){
+          if (text[i+1] === '"'){ field += '"'; i++; } else { inQuotes = false; }
+        } else { field += c; }
       } else {
-        if (char === '"'){ inQuotes = true; }
-        else if (char === ','){ row.push(field); field=''; }
-        else if (char === '\n'){ row.push(field); rows.push(row); row=[]; field=''; }
-        else if (char === '\r'){ /* ignore */ }
-        else { field += char; }
+        if (c === '"'){ inQuotes = true; }
+        else if (c === ','){ row.push(field); field=''; }
+        else if (c === '\n'){ row.push(field); rows.push(row); row=[]; field=''; }
+        else if (c === '\r'){ /* ignore */ }
+        else { field += c; }
       }
       i++;
     }
-    if (field.length || row.length) { row.push(field); rows.push(row); }
+    if (field.length || row.length){ row.push(field); rows.push(row); }
     return rows;
   }
 
-  // Build card HTML safely
   function createCard(item){
     const img = safeImg(item.Image);
     const name = escapeHtml(item.Name || '');
@@ -279,7 +343,6 @@
     return card;
   }
 
-  // Render all
   function renderItems(items){
     productsEl.innerHTML = '';
     const frag = document.createDocumentFragment();
@@ -288,35 +351,48 @@
     productsEl.setAttribute('aria-busy','false');
   }
 
-  // Filtering
+  function updateStats(total, filtered){
+    const text = (filtered === total) ? `${total} products` : `${filtered} of ${total} products`;
+    statsEl.textContent = text;
+  }
+
+  // Filtering + Search
   function hookFilters(allItems){
     const buttons = filtersBar.querySelectorAll('.filter');
     buttons.forEach(btn => {
       btn.addEventListener('click', () => {
         buttons.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
         btn.classList.add('active'); btn.setAttribute('aria-selected','true');
-        const cat = btn.dataset.cat;
-        const list = (cat === 'all') ? allItems : allItems.filter(x => slug(x.Category) === cat);
-        renderItems(list);
-        // auto scroll to products after filtering
+        applyFilterAndSearch(allItems);
         document.getElementById('products').scrollIntoView({behavior:'smooth', block:'start'});
       });
     });
   }
+  function applyFilterAndSearch(allItems){
+    const active = filtersBar.querySelector('.filter.active')?.dataset.cat || 'all';
+    const q = (searchInput.value || '').trim().toLowerCase();
+    let list = (active === 'all') ? allItems : allItems.filter(x => slug(x.Category) === active);
+    if (q){
+      list = list.filter(x => (
+        (x.Name||'').toLowerCase().includes(q) ||
+        (x.SKU||'').toLowerCase().includes(q) ||
+        (x.Category||'').toLowerCase().includes(q)
+      ));
+    }
+    renderItems(list);
+    updateStats(allItems.length, list.length);
+  }
+  const onSearch = debounce(()=>applyFilterAndSearch(window.__ALL_ITEMS__||[]), 220);
 
-  /***************
-   * LOADERS
-   ***************/
+  // Loaders
   async function loadFromSheets(){
     const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}`;
     const res = await fetch(url, {cache:'no-store'});
     const txt = await res.text();
-    const jsonStart = txt.indexOf('{');
-    const jsonEnd   = txt.lastIndexOf('}');
-    if (jsonStart === -1 || jsonEnd === -1) throw new Error('Bad GViz response');
-    const data = JSON.parse(txt.slice(jsonStart, jsonEnd+1));
+    const s = txt.indexOf('{'), e = txt.lastIndexOf('}');
+    if (s === -1 || e === -1) throw new Error('Bad GViz response');
+    const data = JSON.parse(txt.slice(s, e+1));
     const cols = (data.table.cols || []).map(c => (c.label || c.id || '').toString().trim());
-    // map columns to indices by label (fallback to default order)
     const idx = {};
     COLS.forEach(name => {
       const i = cols.findIndex(c => c.toLowerCase() === name.toLowerCase());
@@ -326,16 +402,15 @@
       .map(r => (r.c || []).map(c => (c && c.v != null) ? String(c.v) : ''))
       .filter(cells => cells.some(v => (v||'').trim().length));
     const items = rows.map(cells => ({
-      Category: cells[idx['Category']] || '',
-      Name:     cells[idx['Name']] || '',
-      SKU:      cells[idx['SKU']] || '',
-      Price:    cells[idx['Price']] || '',
-      Image:    cells[idx['Image']] || '',
-      Description: cells[idx['Description']] || ''
+      Category:    (cells[idx['Category']]||'').trim(),
+      Name:        (cells[idx['Name']]||'').trim(),
+      SKU:         (cells[idx['SKU']]||'').trim(),
+      Price:       (cells[idx['Price']]||'').trim(),
+      Image:       (cells[idx['Image']]||'').trim(),
+      Description: (cells[idx['Description']]||'').trim()
     }));
     return items;
   }
-
   async function loadFromCSV(){
     const res = await fetch(CSV_URL, {cache:'no-store'});
     const txt = await res.text();
@@ -360,7 +435,7 @@
   }
 
   async function init(){
-    renderSkeleton(8);
+    renderSkeleton(9);
     try{
       let items = [];
       if (SHEET_ID && SHEET_NAME){
@@ -370,23 +445,31 @@
       } else {
         throw new Error('Please set SHEET_ID & SHEET_NAME or CSV_URL');
       }
-      // Defensive: remove empties & normalise categories
-      items = items.filter(x => (x.Name||'').trim().length);
-      if (!items.length) throw new Error('No rows found. Check share permission or sheet name.');
-
-      renderItems(items);
+      items = items.filter(x => (x.Name||'').length); // guard
+      window.__ALL_ITEMS__ = items;
+      productsEl.setAttribute('aria-busy','false');
       hookFilters(items);
+      renderItems(items);
+      updateStats(items.length, items.length);
     }catch(err){
       console.error(err);
       productsEl.setAttribute('aria-busy','false');
       productsEl.innerHTML = `
-        <div class="card">
+        <article class="card">
           <div class="title" style="color:#b91c1c;">Couldn’t load products</div>
-          <p class="desc">Please check Google Sheet share settings / sheet name or CSV URL.</p>
+          <p class="desc">Please check Google Sheet share settings, Sheet ID / tab name, or CSV URL.</p>
           <button class="btn" onclick="location.reload()">Retry</button>
-        </div>`;
+        </article>`;
+      updateStats(0,0);
     }
   }
+
+  // Scroll-to-top show/hide
+  window.addEventListener('scroll', () => {
+    topBtn.style.display = window.scrollY > 480 ? 'block' : 'none';
+  });
+  topBtn.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+  searchInput.addEventListener('input', onSearch);
 
   init();
   </script>
