@@ -5,11 +5,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Hospitality Supplies India | Hotel Linen Towels Amenities Restaurant Supplies | Fodel India</title>
+<title>Hospitality Supplies India | Hotel Linen Towels Amenities Restaurant Supplies</title>
 
-<meta name="description" content="Hospitality supplies supplier India. Hotel linen, towels, amenities, restaurant equipment, banquet supplies, housekeeping products. PAN India hotel supply distribution.">
+<meta name="description" content="Hotel supplies supplier India. Linen, towels, amenities, restaurant equipment, housekeeping supplies and banquet products with PAN India dispatch.">
 
-<link rel="canonical" href="https://www.fodel.in/hospitality.html">
+<meta name="keywords" content="hotel supplies india, hospitality supplies india, hotel linen supplier india, hotel towels supplier india, restaurant equipment supplier india, hotel amenities supplier india">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -19,147 +19,75 @@
 :root{
 --primary:#c2410c;
 --navy:#0a1a2b;
-
 --text:#0f172a;
 --muted:#475569;
 --bg:#f8fafc;
-
 --radius:12px;
---shadow:0 8px 20px rgba(0,0,0,0.08);
-
---container:1200px;
---topbar:60px;
+--shadow:0 8px 20px rgba(0,0,0,.08);
 }
 
-*{box-sizing:border-box;margin:0;padding:0}
-
 body{
-font-family:Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+font-family:Poppins,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
 background:var(--bg);
+margin:0;
 color:var(--text);
 }
 
-.top-nav{
-position:fixed;
-top:0;
-left:0;
-right:0;
-height:var(--topbar);
-background:var(--primary);
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:10px 18px;
-z-index:1000;
-}
-
-.brand-mini{
-display:flex;
-gap:8px;
-align-items:center;
-font-weight:700;
-color:#fff;
-}
-
-.brand-mini .dot{
-width:10px;
-height:10px;
-background:#fff;
-border-radius:50%;
-}
-
-.top-actions{
-display:flex;
-gap:10px;
-}
-
-.chip{
-text-decoration:none;
-font-weight:600;
-font-size:13px;
-border-radius:999px;
-padding:7px 12px;
-color:#fff;
-background:rgba(255,255,255,.15);
-}
-
-.chip.reviews{background:var(--navy)}
-
 .hero{
-margin-top:var(--topbar);
 background:var(--primary);
-color:#fff;
+color:white;
 text-align:center;
-padding:45px 20px 60px;
-}
-
-.hero h1{font-size:clamp(26px,5vw,38px)}
-
-.hero .tag{
-margin-top:6px;
-font-weight:600;
+padding:60px 20px;
 }
 
 .container{
-max-width:var(--container);
+max-width:1200px;
 margin:auto;
-padding:18px;
+padding:20px;
 }
+
+/* search */
 
 .searchbox{
-background:#fff;
-border:1px solid #e2e8f0;
+background:white;
 border-radius:999px;
-padding:10px 14px;
-display:flex;
-gap:8px;
-align-items:center;
-margin-bottom:14px;
+padding:10px 15px;
+border:1px solid #e2e8f0;
+margin-bottom:20px;
 }
 
-.searchbox input{
-border:none;
-outline:none;
-font:inherit;
-width:100%;
-}
+/* tabs */
 
 .tabs{
 display:flex;
 gap:8px;
 overflow:auto;
-margin-bottom:12px;
+position:sticky;
+top:0;
+background:var(--bg);
+padding:10px 0;
+z-index:5;
 }
 
 .tab{
-font-family:Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 padding:8px 14px;
 border-radius:999px;
 border:1px solid #e2e8f0;
-background:#fff;
+background:white;
 cursor:pointer;
 font-weight:600;
-font-size:14px;
-white-space:nowrap;
 }
 
 .tab.active{
 border-color:var(--primary);
-box-shadow:0 0 0 3px rgba(194,65,12,.15);
-}
-
-.tabs-divider{
-height:14px;
-border-bottom:1px solid #e5e7eb;
-margin-bottom:18px;
 }
 
 /* grid */
 
 .grid{
 display:grid;
-gap:14px;
 grid-template-columns:repeat(4,1fr);
+gap:14px;
 }
 
 @media(max-width:1024px){
@@ -170,44 +98,28 @@ grid-template-columns:repeat(4,1fr);
 .grid{grid-template-columns:repeat(2,1fr)}
 }
 
-/* cards */
+/* card */
 
 .card{
-background:#fff;
-border-radius:var(--radius);
+background:white;
+border-radius:12px;
 box-shadow:var(--shadow);
 padding:12px;
-
 display:flex;
 flex-direction:column;
 }
 
 .thumb{
-width:100%;
 aspect-ratio:1/1;
-object-fit:cover;
-border-radius:8px;
 background:#f1f5f9;
+border-radius:8px;
 margin-bottom:8px;
-}
-
-.title{
-font-weight:700;
-font-size:14px;
-display:flex;
-justify-content:space-between;
-}
-
-.sku{
-font-size:11px;
-color:#64748b;
 }
 
 .desc{
 font-size:12px;
 color:var(--muted);
-margin-top:4px;
-min-height:36px;
+min-height:32px;
 }
 
 .price{
@@ -215,82 +127,53 @@ font-weight:700;
 margin-top:6px;
 }
 
-/* THIS FIXES BUTTON ALIGNMENT */
-
-.card-bottom{
-margin-top:auto;
-}
-
-.btn{
-background:var(--primary);
-color:#fff;
-border:none;
-padding:8px;
-border-radius:8px;
-font-weight:600;
-cursor:pointer;
-font-size:13px;
-width:100%;
-margin-top:8px;
-}
-
-/* modal */
-
-.modal{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.6);
-display:none;
-align-items:center;
-justify-content:center;
-z-index:2000;
-}
-
-.modal-content{
-background:#fff;
-padding:20px;
-border-radius:14px;
-max-width:420px;
-width:90%;
-}
-
-.close{
-float:right;
-cursor:pointer;
-font-weight:700;
-}
-
-/* footer */
-
-footer{
-margin-top:40px;
-padding:28px;
-background:#fff;
-border-top:1px solid #e5e7eb;
-text-align:center;
-}
-
-.footer-links{
+.qty{
 display:flex;
-gap:12px;
-justify-content:center;
-font-weight:700;
+align-items:center;
+gap:6px;
+margin-top:6px;
 }
 
-.footer-email{
-color:var(--navy);
-text-decoration:none;
+.qty button{
+border:none;
+background:#eee;
+padding:4px 8px;
+cursor:pointer;
 }
 
-.footer-wa{
-color:#25D366;
-text-decoration:none;
-}
-
-.copy{
+.select{
 margin-top:8px;
-font-size:12px;
-color:#94a3b8;
+}
+
+/* RFQ bar */
+
+.rfq-bar{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+background:white;
+box-shadow:0 -4px 20px rgba(0,0,0,.1);
+padding:12px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.rfq-btn{
+background:var(--primary);
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:8px;
+font-weight:700;
+cursor:pointer;
+}
+
+.trust{
+text-align:center;
+margin-top:40px;
+color:var(--muted);
 }
 
 </style>
@@ -298,31 +181,17 @@ color:#94a3b8;
 
 <body>
 
-<nav class="top-nav">
-
-<div class="brand-mini">
-<span class="dot"></span>
-Fodel Hospitality
-</div>
-
-<div class="top-actions">
-<a class="chip reviews" href="/reviews.html">Reviews</a>
-<a class="chip" href="/">Home</a>
-</div>
-
-</nav>
-
 <header class="hero">
+
 <h1>Hospitality Supplies</h1>
-<p class="tag">Hotel Linen • Towels • Amenities • Restaurant • Housekeeping • Banquet</p>
+
+<p>Hotel Linen • Towels • Amenities • Restaurant • Housekeeping • Banquet</p>
+
 </header>
 
 <main class="container">
 
-<div class="searchbox">
-🔎
-<input id="search" placeholder="Search products">
-</div>
+<input class="searchbox" id="search" placeholder="Search products">
 
 <div class="tabs">
 <button class="tab active" data-cat="all">All</button>
@@ -334,53 +203,59 @@ Fodel Hospitality
 <button class="tab" data-cat="banquet">Banquet</button>
 </div>
 
-<div class="tabs-divider"></div>
-
 <section id="products" class="grid"></section>
+
+<div class="trust">
+
+Trusted by hotels, resorts, restaurants and banquet halls across India.
+
+<br><br>
+
+<button onclick="window.open('/catalogue.pdf')">
+
+Download Full Product Catalogue
+
+</button>
+
+</div>
 
 </main>
 
-<footer>
+<div class="rfq-bar">
 
-<div class="footer-links">
-<a class="footer-email" href="mailto:sales@hs.in">Email</a>
-<span>•</span>
-<a class="footer-wa" href="https://wa.me/919797459260">WhatsApp</a>
+<span id="selected-count">0 items selected</span>
+
+<button class="rfq-btn" onclick="sendRFQ()">
+
+Send RFQ on WhatsApp
+
+</button>
+
 </div>
-
-<div class="copy">
-© 2015–2026 Fodel India
-</div>
-
-</footer>
 
 <script>
 
 const products=[
 
-{cat:"linen",name:"Hotel Bedsheet 300TC",sku:"LINEN300",price:"₹450",img:"bedsheet.jpg",desc:"Hotel bedsheet. Sizes & colours available."},
+{cat:"linen",name:"Hotel Bedsheet 300TC",sku:"LINEN300",price:"₹450",desc:"Hotel bedsheet."},
 
-{cat:"linen",name:"Duvet Insert",sku:"DUVET",price:"₹950",img:"duvet.jpg",desc:"Soft hotel duvet insert."},
+{cat:"towels",name:"Bath Towel 550 GSM",sku:"TWL550",price:"₹220",desc:"Soft bath towel."},
 
-{cat:"towels",name:"Bath Towel 550 GSM",sku:"TWL550",price:"₹220",img:"towel.jpg",desc:"Premium cotton bath towel."},
+{cat:"amenities",name:"Hotel Shampoo 30ml",sku:"SHAM30",price:"₹12",desc:"Guest room shampoo."},
 
-{cat:"amenities",name:"Hotel Shampoo 30ml",sku:"SHAM30",price:"₹12",img:"shampoo.jpg",desc:"Guest room shampoo bottle."},
-
-{cat:"restaurant",name:"Chafing Dish 6L",sku:"CHAF6",price:"₹3200",img:"chafing.jpg",desc:"Buffet chafing dish."},
-
-{cat:"housekeeping",name:"Housekeeping Cart",sku:"HKCART",price:"₹7200",img:"cart.jpg",desc:"Professional housekeeping trolley."},
-
-{cat:"banquet",name:"Chair Cover",sku:"CHAIRCOVER",price:"₹120",img:"chair.jpg",desc:"Stretch banquet chair cover."}
+{cat:"restaurant",name:"Chafing Dish 6L",sku:"CHAF6",price:"₹3200",desc:"Buffet chafing dish."}
 
 ]
 
 const grid=document.getElementById("products")
 
+let selected=[]
+
 function render(list){
 
 grid.innerHTML=""
 
-list.forEach(p=>{
+list.forEach((p,i)=>{
 
 const card=document.createElement("div")
 
@@ -388,23 +263,31 @@ card.className="card"
 
 card.innerHTML=`
 
-<img class="thumb" src="/images/${p.img}">
+<div class="thumb"></div>
 
-<div class="title">${p.name}<span class="sku">${p.sku}</span></div>
+<strong>${p.name}</strong>
 
 <div class="desc">${p.desc}</div>
 
-<div class="card-bottom">
-
 <div class="price">${p.price}</div>
 
-<button class="btn" onclick="window.open('https://wa.me/919797459260?text=Hospitality enquiry ${p.name}')">
+<div class="qty">
 
-Enquire
+<button onclick="changeQty(${i},-1)">-</button>
 
-</button>
+<span id="qty${i}">1</span>
+
+<button onclick="changeQty(${i},1)">+</button>
 
 </div>
+
+<label class="select">
+
+<input type="checkbox" onchange="toggleSelect(${i})">
+
+Select
+
+</label>
 
 `
 
@@ -416,35 +299,51 @@ grid.appendChild(card)
 
 render(products)
 
-document.querySelectorAll(".tab").forEach(tab=>{
+let qty={}
 
-tab.onclick=()=>{
+function changeQty(i,val){
 
-document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"))
+qty[i]=(qty[i]||1)+val
 
-tab.classList.add("active")
+if(qty[i]<1)qty[i]=1
 
-const cat=tab.dataset.cat
-
-if(cat==="all") render(products)
-
-else render(products.filter(p=>p.cat===cat))
+document.getElementById("qty"+i).innerText=qty[i]
 
 }
 
+function toggleSelect(i){
+
+if(selected.includes(i)){
+
+selected=selected.filter(x=>x!==i)
+
+}else{
+
+selected.push(i)
+
+}
+
+document.getElementById("selected-count").innerText=
+
+selected.length+" items selected"
+
+}
+
+function sendRFQ(){
+
+let msg="Hotel RFQ - Fodel India\n\n"
+
+selected.forEach(i=>{
+
+const p=products[i]
+
+msg+=`${p.name} (SKU:${p.sku}) Qty:${qty[i]||1}\n`
+
 })
 
-document.getElementById("search").addEventListener("input",e=>{
+window.open("https://wa.me/919797459260?text="+encodeURIComponent(msg))
 
-const q=e.target.value.toLowerCase()
-
-render(products.filter(p=>
-p.name.toLowerCase().includes(q)||
-p.sku.toLowerCase().includes(q)||
-p.cat.toLowerCase().includes(q)
-))
-
-})
+}
 
 </script>
 
