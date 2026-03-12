@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hospitality Supplies India | Hotel Linen Towels Amenities Restaurant Supplies | Fodel India</title>
   <meta name="description" content="Hospitality supplies supplier India. Hotel linen, towels, amenities, restaurant equipment, banquet supplies, housekeeping products. PAN India hotel supply distribution." />
-  <link rel="canonical" href="https://www.fodel.in/hospitality.html" />
+  <link rel="canonical" href="https://www.fodel.in/hospitality.html">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -36,123 +36,112 @@
       -moz-osx-font-smoothing:grayscale;
     }
 
-    a{color:inherit}
+    a{color:inherit;text-decoration:none}
 
+    /* Top nav */
     .top-nav{
-      position:fixed;
-      top:0;left:0;right:0;
-      height:var(--topbar);
+      position:fixed;top:0;left:0;right:0;height:var(--topbar);
       background:var(--primary);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:10px 18px;
-      z-index:1000;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:10px 18px;z-index:1000;
     }
-
-    .brand-mini{
-      display:flex;gap:8px;align-items:center;
-      font-weight:700;color:#fff;
-    }
+    .brand-mini{display:flex;gap:8px;align-items:center;font-weight:700;color:#fff}
     .brand-mini .dot{width:10px;height:10px;background:#fff;border-radius:50%}
-
     .top-actions{display:flex;gap:10px}
-    .chip{
-      text-decoration:none;font-weight:600;font-size:13px;border-radius:999px;
-      padding:7px 12px;color:#fff;background:rgba(255,255,255,.15);
-    }
+    .chip{font-weight:600;font-size:13px;border-radius:999px;padding:7px 12px;color:#fff;background:rgba(255,255,255,.15)}
     .chip.reviews{background:var(--navy)}
 
+    /* Hero */
     .hero{
       margin-top:var(--topbar);
-      background:var(--primary);
-      color:#fff;
-      text-align:center;
-      padding:45px 20px 40px;
+      background:var(--primary);color:#fff;text-align:center;
+      padding:40px 20px 34px;
     }
     .hero h1{font-size:clamp(26px,5vw,38px)}
     .hero .tag{margin-top:6px;font-weight:600}
-
-    .hero-stats{
-      display:flex;justify-content:center;gap:28px;margin-top:22px;flex-wrap:wrap;
-    }
+    .hero-stats{display:flex;justify-content:center;gap:28px;margin-top:18px;flex-wrap:wrap}
     .hero-stats div{text-align:center;font-size:13px;opacity:.95}
     .hero-stats strong{display:block;font-size:22px}
-
-    .hero-cta{margin-top:26px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
-    .hero-btn{
-      padding:12px 20px;border-radius:999px;font-weight:700;text-decoration:none;font-size:14px;display:inline-block;
-    }
+    .hero-cta{margin-top:22px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+    .hero-btn{padding:12px 20px;border-radius:999px;font-weight:700;font-size:14px;display:inline-block}
     .hero-btn.primary{background:#fff;color:var(--primary)}
     .hero-btn.ghost{border:2px solid rgba(255,255,255,.7);color:#fff}
 
-    .trust{
-      background:#fff;padding:22px;border-bottom:1px solid #e5e7eb;
-    }
-    .trust-grid{
-      max-width:var(--container);margin:auto;
-      display:grid;grid-template-columns:repeat(4,1fr);gap:12px;text-align:center;font-weight:600;font-size:13px;
-    }
+    /* Trust */
+    .trust{background:#fff;padding:20px;border-bottom:1px solid #e5e7eb}
+    .trust-grid{max-width:var(--container);margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;text-align:center;font-weight:600;font-size:13px}
     @media(max-width:768px){ .trust-grid{grid-template-columns:repeat(2,1fr)} }
 
+    /* Main container */
     .container{max-width:var(--container);margin:auto;padding:18px}
 
+    /* Search + tabs */
     .searchbox{
       background:#fff;border:1px solid #e2e8f0;border-radius:999px;
       padding:10px 14px;display:flex;gap:8px;align-items:center;margin-bottom:14px;
     }
     .searchbox input{border:none;outline:none;font:inherit;width:100%}
 
-    .tabs{display:flex;gap:8px;overflow:auto;margin-bottom:12px}
+    .tabs{display:flex;gap:8px;overflow:auto;margin-bottom:0;padding-bottom:10px}
     .tab{
-      font-family:Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
       padding:8px 14px;border-radius:999px;border:1px solid #e2e8f0;background:#fff;cursor:pointer;
       font-weight:600;font-size:14px;white-space:nowrap;
     }
     .tab.active{border-color:var(--primary);box-shadow:0 0 0 3px rgba(194,65,12,.15)}
-    .tabs-divider{height:14px;border-bottom:1px solid #e5e7eb;margin-bottom:18px}
+    /* Increased spacing so divider sits comfortably below the pill buttons */
+    .tabs-divider{height:0;border-bottom:1px solid #e5e7eb;margin:10px 0 18px}
 
-    /* grid */
+    /* Grid */
     .grid{display:grid;gap:14px;grid-template-columns:repeat(4,1fr)}
     @media(max-width:1024px){ .grid{grid-template-columns:repeat(3,1fr)} }
     @media(max-width:640px){ .grid{grid-template-columns:repeat(2,1fr)} }
 
-    /* cards */
+    /* Cards */
     .card{
       background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:12px;
-      display:flex;flex-direction:column;
+      display:flex;flex-direction:column;min-height:100%;
     }
     .thumb{
       width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:8px;background:#f1f5f9;margin-bottom:8px;
     }
     .title{font-weight:700;font-size:14px;display:flex;justify-content:space-between;gap:8px;align-items:baseline}
     .sku{font-size:11px;color:#64748b}
-    .desc{font-size:12px;color:var(--muted);margin-top:4px;min-height:36px}
-    .meta{display:flex;justify-content:space-between;font-size:11px;color:#64748b;margin-top:4px}
-    .price{font-weight:700;margin-top:6px}
-
-    .card-bottom{margin-top:auto}
-    .btn{
-      background:var(--primary);color:#fff;border:none;padding:8px;border-radius:8px;
-      font-weight:600;cursor:pointer;font-size:13px;width:100%;margin-top:8px;text-align:center;
+    .desc{
+      font-size:12px;color:var(--muted);margin-top:4px;
+      min-height:42px; /* helps equalize card heights, keeping buttons aligned */
+      line-height:1.45;
     }
-    .btn.inline{width:auto;padding:8px 10px}
+    .meta{display:flex;justify-content:space-between;font-size:11px;color:#64748b;margin-top:6px}
+    .price{font-weight:700;margin-top:8px}
+
+    /* Ensure all action buttons align by pushing the bottom area down */
+    .card-bottom{margin-top:auto}
+
+    /* Inputs & buttons */
+    .qty-row{display:flex;align-items:center;gap:8px;margin-top:8px;flex-wrap:wrap}
+    .qty{width:78px;border:1px solid #e2e8f0;border-radius:8px;padding:10px 8px;text-align:center;font:inherit;background:#fff}
+
+    .btn{
+      background:var(--primary);color:#fff;border:none;padding:12px;border-radius:10px;
+      font-weight:700;cursor:pointer;font-size:13px;width:100%;text-align:center;
+      transition:transform .02s ease;
+    }
+    .btn:active{transform:scale(0.995)}
+    .btn.inline{width:auto;padding:10px 12px;border-radius:8px;font-weight:600}
     .btn.secondary{background:var(--navy)}
     .btn.ghost{background:transparent;border:2px solid var(--navy);color:var(--navy)}
     .btn.danger{background:#dc2626}
 
-    .qty-row{display:flex;align-items:center;gap:8px;margin-top:6px;flex-wrap:wrap}
-    .qty{
-      width:78px;border:1px solid #e2e8f0;border-radius:8px;padding:8px;text-align:center;font:inherit;
-    }
+    /* Vertical rhythm: every button after another button gets spacing */
+    .btn + .btn{margin-top:8px}
 
-    /* modal */
+    /* Modal */
     .modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:2500}
     .modal-content{background:#fff;padding:20px;border-radius:14px;max-width:520px;width:92%}
     .modal .close{float:right;cursor:pointer;font-weight:700;font-size:20px;border:none;background:transparent}
 
     .input{
-      width:100%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #e2e8f0;font:inherit;
+      width:100%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #e2e8f0;font:inherit;background:#fff
     }
     textarea.input{min-height:90px;resize:vertical}
 
@@ -177,17 +166,15 @@
     .rfq-footer{border-top:1px solid #e5e7eb;padding:12px}
     .rfq-footer-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
 
-    /* footer */
+    /* Footer (trimmed as requested) */
     footer{margin-top:40px;padding:28px;background:#fff;border-top:1px solid #e5e7eb;text-align:center}
-    .footer-links{display:flex;gap:12px;justify-content:center;font-weight:700;flex-wrap:wrap;margin:8px 0}
+    .footer-links{display:flex;gap:12px;justify-content:center;font-weight:700;flex-wrap:wrap;margin:6px 0}
     .footer-email{color:var(--navy);text-decoration:none}
     .footer-wa{color:#25D366;text-decoration:none}
-    .copy{margin-top:8px;font-size:12px;color:#94a3b8}
+    .copy{margin-top:6px;font-size:12px;color:#94a3b8}
 
-    /* focus states */
-    button:focus, a:focus, input:focus, textarea:focus{
-      outline:3px solid rgba(194,65,12,.3);outline-offset:2px;
-    }
+    /* Focus */
+    button:focus, a:focus, input:focus, textarea:focus{outline:3px solid rgba(194,65,12,.3);outline-offset:2px}
   </style>
 
   <!-- SEO: Organization Schema -->
@@ -198,7 +185,6 @@
     "name":"Fodel India",
     "url":"https://www.fodel.in",
     "logo":"https://www.fodel.in/logo.png",
-    "sameAs": [],
     "contactPoint": [{
       "@type":"ContactPoint",
       "telephone":"+91-9797459260",
@@ -241,7 +227,7 @@
     </div>
   </header>
 
-  <!-- Trust Band -->
+  <!-- Trust -->
   <section class="trust" aria-label="Trust & certifications">
     <div class="trust-grid">
       <div>⭐ ISO 9001 Certified</div>
@@ -268,30 +254,19 @@
       <button class="tab" data-cat="banquet" role="tab">Banquet</button>
     </div>
 
+    <!-- More spacing before divider so it doesn't touch the pills -->
     <div class="tabs-divider"></div>
 
     <section id="products" class="grid" aria-label="Product grid"></section>
   </main>
 
-  <!-- Footer -->
+  <!-- Footer (trimmed) -->
   <footer>
-    <p><strong>Fodel India – Hospitality Supply Specialists</strong></p>
-    <p>Serving Hotels, Resorts, Hospitals &amp; Institutions since 2015</p>
-
     <div class="footer-links">
-      <a href="/about.html">About</a>
+      <a class="footer-email" id="footerEmail" href="mailto:sales@hs.in">sales@hs.in</a>
       <span>•</span>
-      <a href="/contact.html">Contact</a>
-      <span>•</span>
-      <a href="/terms.html">Terms</a>
+      <a class="footer-wa" id="footerWA" href="https://wa.me/919797459260" target="_blank" rel="noopener">Talk to Sales (WhatsApp)</a>
     </div>
-
-    <div class="footer-links">
-      <a class="footer-email" href="mailto:sales@hs.in">sales@hs.in</a>
-      <span>•</span>
-      <a class="footer-wa" href="https://wa.me/919797459260" target="_blank" rel="noopener">WhatsApp</a>
-    </div>
-
     <div class="copy">© 2015–2026 Fodel India</div>
   </footer>
 
@@ -323,7 +298,7 @@
       <textarea id="rfqNotes" class="input" placeholder="Add purchase notes (delivery city, GST, target dates)…"></textarea>
       <div class="rfq-footer-actions">
         <button class="btn" onclick="sendRFQWhatsApp()">Send via WhatsApp</button>
-        <a id="rfqEmail" class="btn ghost" href="mailto:sales@hs.in" target="_blank" rel="noopener">Email RFQ</a>
+        <a id="rfqEmail" class="btn secondary" href="mailto:sales@hs.in">Email RFQ</a>
         <button class="btn danger" onclick="clearRFQ()">Clear</button>
       </div>
     </div>
@@ -371,16 +346,16 @@ SHAM30, 500"></textarea>
 
   <script>
     // ------------------------
-    // Product catalog (with B2B fields)
+    // Products (MOQ + Sample available)
     // ------------------------
     const products = [
-      {cat:"linen",name:"Hotel Bedsheet 300TC",sku:"LINEN300",price:"₹450 / piece",moq:"MOQ: 50 pcs",lead:"Dispatch: 5–7 days",img:"bedsheet.jpg",desc:"Commercial-grade bedsheet. Sizes & colours available."},
-      {cat:"linen",name:"Duvet Insert",sku:"DUVET",price:"₹950 / piece",moq:"MOQ: 20 pcs",lead:"Dispatch: 5–7 days",img:"duvet.jpg",desc:"Soft hotel duvet insert."},
-      {cat:"towels",name:"Bath Towel 550 GSM",sku:"TWL550",price:"₹220 / piece",moq:"MOQ: 60 pcs",lead:"Dispatch: 3–5 days",img:"towel.jpg",desc:"Premium cotton bath towel."},
-      {cat:"amenities",name:"Hotel Shampoo 30ml",sku:"SHAM30",price:"₹12 / bottle",moq:"MOQ: 500 pcs",lead:"Dispatch: 2–4 days",img:"shampoo.jpg",desc:"Guest room shampoo bottle."},
-      {cat:"restaurant",name:"Chafing Dish 6L",sku:"CHAF6",price:"₹3,200 / unit",moq:"MOQ: 5 units",lead:"Dispatch: 3–6 days",img:"chafing.jpg",desc:"Buffet chafing dish."},
-      {cat:"housekeeping",name:"Housekeeping Cart",sku:"HKCART",price:"₹7,200 / unit",moq:"MOQ: 2 units",lead:"Dispatch: 6–10 days",img:"cart.jpg",desc:"Professional housekeeping trolley."},
-      {cat:"banquet",name:"Chair Cover",sku:"CHAIRCOVER",price:"₹120 / piece",moq:"MOQ: 100 pcs",lead:"Dispatch: 3–5 days",img:"chair.jpg",desc:"Stretch banquet chair cover."}
+      {cat:"linen",name:"Hotel Bedsheet 300TC",sku:"LINEN300",price:"₹450 / piece",moq:"MOQ: 50 pcs",lead:"Dispatch: 5–7 days",sample:true,img:"bedsheet.jpg",desc:"Commercial-grade bedsheet. Sizes & colours available."},
+      {cat:"linen",name:"Duvet Insert",sku:"DUVET",price:"₹950 / piece",moq:"MOQ: 20 pcs",lead:"Dispatch: 5–7 days",sample:true,img:"duvet.jpg",desc:"Soft hotel duvet insert."},
+      {cat:"towels",name:"Bath Towel 550 GSM",sku:"TWL550",price:"₹220 / piece",moq:"MOQ: 60 pcs",lead:"Dispatch: 3–5 days",sample:true,img:"towel.jpg",desc:"Premium cotton bath towel."},
+      {cat:"amenities",name:"Hotel Shampoo 30ml",sku:"SHAM30",price:"₹12 / bottle",moq:"MOQ: 500 pcs",lead:"Dispatch: 2–4 days",sample:true,img:"shampoo.jpg",desc:"Guest room shampoo bottle."},
+      {cat:"restaurant",name:"Chafing Dish 6L",sku:"CHAF6",price:"₹3,200 / unit",moq:"MOQ: 5 units",lead:"Dispatch: 3–6 days",sample:false,img:"chafing.jpg",desc:"Buffet chafing dish."},
+      {cat:"housekeeping",name:"Housekeeping Cart",sku:"HKCART",price:"₹7,200 / unit",moq:"MOQ: 2 units",lead:"Dispatch: 6–10 days",sample:false,img:"cart.jpg",desc:"Professional housekeeping trolley."},
+      {cat:"banquet",name:"Chair Cover",sku:"CHAIRCOVER",price:"₹120 / piece",moq:"MOQ: 100 pcs",lead:"Dispatch: 3–5 days",sample:true,img:"chair.jpg",desc:"Stretch banquet chair cover."}
     ];
 
     const grid = document.getElementById("products");
@@ -398,13 +373,18 @@ SHAM30, 500"></textarea>
             <span>${p.moq || "MOQ: 10 pcs"}</span>
             <span>${p.lead || "Dispatch: 3–7 days"}</span>
           </div>
+
           <div class="card-bottom">
             <div class="price">${p.price}</div>
+
             <div class="qty-row">
               <input class="qty" type="number" min="1" step="1" value="1" id="qty-${p.sku}" aria-label="Quantity for ${p.name}">
               <button class="btn inline" onclick="addToRFQ('${p.sku}')">Add to RFQ</button>
               <button class="btn inline secondary" onclick="openQuote('${p.name}', '${p.sku}')">Request Quote</button>
             </div>
+
+            ${p.sample ? `<button class="btn ghost" onclick="orderSample('${p.sku}')">Order Sample (1 pc)</button>` : ``}
+
             <button class="btn" onclick="window.open('https://wa.me/919797459260?text=${encodeURIComponent('Hospitality enquiry: '+p.name+' ('+p.sku+')')}', '_blank')">
               Enquire on WhatsApp
             </button>
@@ -478,6 +458,28 @@ SHAM30, 500"></textarea>
       saveRFQ();
       renderRFQ();
       toggleRFQ(true);
+    }
+
+    // Order sample (always 1 pc; note "Sample Order")
+    function orderSample(sku){
+      const product = products.find(p => p.sku === sku);
+      if(!product) return;
+      const existing = rfq.find(i => i.sku === sku && i.note?.includes('Sample'));
+      if(existing){ existing.qty = 1; existing.note = 'Sample Order'; }
+      else{
+        rfq.push({
+          sku: product.sku,
+          name: product.name,
+          qty: 1,
+          price: product.price || '',
+          cat: product.cat || '',
+          note: 'Sample Order'
+        });
+      }
+      saveRFQ();
+      renderRFQ();
+      toggleRFQ(true);
+      alert('Added sample (1 pc) to RFQ.');
     }
 
     function updateRFQQty(sku, qty){
@@ -588,7 +590,6 @@ SHAM30, 500"></textarea>
       let added = 0;
 
       lines.forEach(line=>{
-        // Accept comma, tab, or 2+ spaces as delimiter
         const parts = line.split(/[,\t]+|\s{2,}/).map(s=>s.trim()).filter(Boolean);
         if(!parts.length) return;
 
@@ -680,18 +681,10 @@ SHAM30, 500"></textarea>
     }
 
     // ------------------------
-    // Quote Modal (no backend; WA/mailto)
+    // Quote Modal (no backend)
     // ------------------------
     function openQuote(name, sku){
-      document.getElementById('quoteProduct').innerText = `${name}${sku? ' • '+sku:''}`;
-      document.getElementById('quoteModal').style.display = 'flex';
-    }
-    function closeQuote(){ document.getElementById('quoteModal').style.display = 'none'; }
-
-    function submitQuote(){
-      const product = document.getElementById('quoteProduct').innerText || '';
-      const company = document.getElementById('qCompany').value.trim();
-      const qty = document.getElementById('qQuantity').value.trim();
+     ntity').value.trim();
       const contact = document.getElementById('qContact').value.trim();
       const msg = `Quotation Request\nProduct: ${product}\nCompany: ${company}\nQuantity: ${qty}\nContact: ${contact}`;
       const url = `https://wa.me/919797459260?text=${encodeURIComponent(msg)}`;
@@ -705,16 +698,12 @@ SHAM30, 500"></textarea>
       const qty = document.getElementById('qQuantity').value.trim();
       const contact = document.getElementById('qContact').value.trim();
       const subject = encodeURIComponent('Quotation Request – Fodel India');
-      const body = encodeURIComponent(
-        `Product: ${product}\nCompany: ${company}\nQuantity: ${qty}\nContact: ${contact}`
-      );
+      const body = encodeURIComponent(`Product: ${product}\nCompany: ${company}\nQuantity: ${qty}\nContact: ${contact}`);
       window.location.href = `mailto:sales@hs.in?subject=${subject}&body=${body}`;
       closeQuote();
     }
 
-    // ------------------------
     // Init RFQ UI
-    // ------------------------
     updateRFQBar();
     renderRFQ();
 
