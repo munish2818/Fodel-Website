@@ -5,11 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Hospitality Supplies India | Hotel Linen Towels Amenities Restaurant Supplies</title>
+<title>Hospitality Supplies India | Hotel Linen Towels Amenities Restaurant Equipment</title>
 
-<meta name="description" content="Hotel supplies supplier India. Linen, towels, amenities, restaurant equipment, housekeeping supplies and banquet products with PAN India dispatch.">
-
-<meta name="keywords" content="hotel supplies india, hospitality supplies india, hotel linen supplier india, hotel towels supplier india, restaurant equipment supplier india, hotel amenities supplier india">
+<meta name="description" content="Hospitality supplies supplier India. Hotel linen, towels, amenities, restaurant equipment, housekeeping supplies and banquet products.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -28,10 +26,12 @@
 
 body{
 font-family:Poppins,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
-background:var(--bg);
 margin:0;
+background:var(--bg);
 color:var(--text);
 }
+
+/* HERO */
 
 .hero{
 background:var(--primary);
@@ -46,27 +46,28 @@ margin:auto;
 padding:20px;
 }
 
-/* search */
+/* SEARCH */
 
 .searchbox{
 background:white;
 border-radius:999px;
-padding:10px 15px;
+padding:10px 16px;
 border:1px solid #e2e8f0;
-margin-bottom:20px;
+margin-bottom:18px;
+width:100%;
 }
 
-/* tabs */
+/* TABS FIX */
+
+.tabs-wrapper{
+margin-top:10px;
+}
 
 .tabs{
 display:flex;
 gap:8px;
 overflow:auto;
-position:sticky;
-top:0;
-background:var(--bg);
-padding:10px 0;
-z-index:5;
+padding-bottom:12px;
 }
 
 .tab{
@@ -76,13 +77,20 @@ border:1px solid #e2e8f0;
 background:white;
 cursor:pointer;
 font-weight:600;
+white-space:nowrap;
 }
 
 .tab.active{
 border-color:var(--primary);
 }
 
-/* grid */
+.tabs-divider{
+height:14px;
+border-bottom:1px solid #e5e7eb;
+margin-bottom:18px;
+}
+
+/* GRID */
 
 .grid{
 display:grid;
@@ -98,7 +106,7 @@ gap:14px;
 .grid{grid-template-columns:repeat(2,1fr)}
 }
 
-/* card */
+/* CARD */
 
 .card{
 background:white;
@@ -119,7 +127,7 @@ margin-bottom:8px;
 .desc{
 font-size:12px;
 color:var(--muted);
-min-height:32px;
+min-height:34px;
 }
 
 .price{
@@ -141,11 +149,23 @@ padding:4px 8px;
 cursor:pointer;
 }
 
-.select{
+.card-bottom{
+margin-top:auto;
+}
+
+.btn{
+background:var(--primary);
+color:white;
+border:none;
+padding:8px;
+border-radius:8px;
+font-weight:600;
+cursor:pointer;
+width:100%;
 margin-top:8px;
 }
 
-/* RFQ bar */
+/* RFQ BAR */
 
 .rfq-bar{
 position:fixed;
@@ -170,10 +190,33 @@ font-weight:700;
 cursor:pointer;
 }
 
-.trust{
-text-align:center;
-margin-top:40px;
-color:var(--muted);
+/* MODAL */
+
+.modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.6);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:2000;
+}
+
+.modal-box{
+background:white;
+padding:20px;
+border-radius:14px;
+max-width:400px;
+width:90%;
+}
+
+.modal input{
+width:100%;
+padding:8px;
+margin-top:6px;
+margin-bottom:10px;
+border:1px solid #ddd;
+border-radius:6px;
 }
 
 </style>
@@ -193,7 +236,10 @@ color:var(--muted);
 
 <input class="searchbox" id="search" placeholder="Search products">
 
-<div class="tabs">
+<div class="tabs-wrapper">
+
+<div class="tabs" id="tabs">
+
 <button class="tab active" data-cat="all">All</button>
 <button class="tab" data-cat="linen">Linen</button>
 <button class="tab" data-cat="towels">Towels</button>
@@ -201,23 +247,14 @@ color:var(--muted);
 <button class="tab" data-cat="restaurant">Restaurant</button>
 <button class="tab" data-cat="housekeeping">Housekeeping</button>
 <button class="tab" data-cat="banquet">Banquet</button>
+
+</div>
+
+<div class="tabs-divider"></div>
+
 </div>
 
 <section id="products" class="grid"></section>
-
-<div class="trust">
-
-Trusted by hotels, resorts, restaurants and banquet halls across India.
-
-<br><br>
-
-<button onclick="window.open('/catalogue.pdf')">
-
-Download Full Product Catalogue
-
-</button>
-
-</div>
 
 </main>
 
@@ -225,11 +262,25 @@ Download Full Product Catalogue
 
 <span id="selected-count">0 items selected</span>
 
-<button class="rfq-btn" onclick="sendRFQ()">
+<button class="rfq-btn" onclick="openRFQ()">Send RFQ</button>
 
-Send RFQ on WhatsApp
+</div>
 
-</button>
+<div class="modal" id="rfqModal">
+
+<div class="modal-box">
+
+<h3>Hotel RFQ Details</h3>
+
+<input id="hotelName" placeholder="Hotel Name">
+
+<input id="hotelCity" placeholder="City">
+
+<input id="delivery" placeholder="Delivery timeline">
+
+<button class="rfq-btn" onclick="sendRFQ()">Send WhatsApp RFQ</button>
+
+</div>
 
 </div>
 
@@ -241,15 +292,16 @@ const products=[
 
 {cat:"towels",name:"Bath Towel 550 GSM",sku:"TWL550",price:"₹220",desc:"Soft bath towel."},
 
-{cat:"amenities",name:"Hotel Shampoo 30ml",sku:"SHAM30",price:"₹12",desc:"Guest room shampoo."},
+{cat:"amenities",name:"Hotel Shampoo 30ml",sku:"SHAM30",price:"₹12",desc:"Guest shampoo."},
 
-{cat:"restaurant",name:"Chafing Dish 6L",sku:"CHAF6",price:"₹3200",desc:"Buffet chafing dish."}
+{cat:"restaurant",name:"Chafing Dish 6L",sku:"CHAF6",price:"₹3200",desc:"Buffet dish."}
 
 ]
 
-const grid=document.getElementById("products")
-
 let selected=[]
+let qty={}
+
+const grid=document.getElementById("products")
 
 function render(list){
 
@@ -281,7 +333,7 @@ card.innerHTML=`
 
 </div>
 
-<label class="select">
+<label>
 
 <input type="checkbox" onchange="toggleSelect(${i})">
 
@@ -299,11 +351,9 @@ grid.appendChild(card)
 
 render(products)
 
-let qty={}
+function changeQty(i,v){
 
-function changeQty(i,val){
-
-qty[i]=(qty[i]||1)+val
+qty[i]=(qty[i]||1)+v
 
 if(qty[i]<1)qty[i]=1
 
@@ -329,9 +379,21 @@ selected.length+" items selected"
 
 }
 
+function openRFQ(){
+
+document.getElementById("rfqModal").style.display="flex"
+
+}
+
 function sendRFQ(){
 
 let msg="Hotel RFQ - Fodel India\n\n"
+
+msg+="Hotel: "+document.getElementById("hotelName").value+"\n"
+
+msg+="City: "+document.getElementById("hotelCity").value+"\n"
+
+msg+="Delivery: "+document.getElementById("delivery").value+"\n\n"
 
 selected.forEach(i=>{
 
