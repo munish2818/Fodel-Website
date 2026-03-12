@@ -380,7 +380,7 @@ SHAM30, 500"></textarea>
       list.forEach(p => {
         const card = document.createElement("div");
         card.className = "card";
-        card.innerHTML = `
+        card.innerHTML = 
           <img class="thumb" src="/images/${p.img}" alt="${p.name}" loading="lazy">
           <div class="title">${p.name}<span class="sku">${p.sku}</span></div>
           <div class="desc">${p.desc}</div>
@@ -399,7 +399,7 @@ SHAM30, 500"></textarea>
               Enquire on WhatsApp
             </button>
           </div>
-        `;
+        ;
         grid.appendChild(card);
       });
     }
@@ -451,7 +451,7 @@ SHAM30, 500"></textarea>
     function addToRFQ(sku){
       const product = products.find(p => p.sku === sku);
       if(!product) return;
-      const qtyInput = document.getElementById(`qty-${sku}`);
+      const qtyInput = document.getElementById(qty-${sku});
       const qty = Math.max(1, parseInt(qtyInput?.value || '1', 10));
       const existing = rfq.find(i => i.sku === sku);
       if(existing){ existing.qty += qty; }
@@ -500,7 +500,7 @@ SHAM30, 500"></textarea>
 
     function updateRFQBar(){
       const count = rfq.reduce((a,b)=>a + (parseInt(b.qty)||0), 0);
-      document.getElementById('rfqCount').innerText = `${count} item${count===1?'':'s'}`;
+      document.getElementById('rfqCount').innerText = ${count} item${count===1?'':'s'};
     }
 
     function renderRFQ(){
@@ -508,12 +508,12 @@ SHAM30, 500"></textarea>
       if(!list) return;
       list.innerHTML = '';
       if(rfq.length === 0){
-        list.innerHTML = `<div style="padding:6px 4px;color:#64748b">No items yet. Add products using “Add to RFQ”.</div>`;
+        list.innerHTML = <div style="padding:6px 4px;color:#64748b">No items yet. Add products using “Add to RFQ”.</div>;
       }else{
         rfq.forEach(item=>{
           const row = document.createElement('div');
           row.className = 'rfq-item';
-          row.innerHTML = `
+          row.innerHTML = 
             <div>
               <div><strong>${item.name}</strong></div>
               <div class="sku">${item.sku} ${item.price? '• '+item.price:''}</div>
@@ -525,7 +525,7 @@ SHAM30, 500"></textarea>
                    aria-label="Note for ${item.sku}"
                    oninput="updateRFQNote('${item.sku}', this.value)">
             <button class="close" title="Remove" aria-label="Remove ${item.sku}" onclick="removeRFQItem('${item.sku}')">×</button>
-          `;
+          ;
           list.appendChild(row);
         });
       }
@@ -540,7 +540,7 @@ SHAM30, 500"></textarea>
     }
 
     function normalizeForMessage(i){
-      return `${i.sku} | ${i.name} | Qty: ${i.qty}${i.note? ' | '+i.note:''}`;
+      return ${i.sku} | ${i.name} | Qty: ${i.qty}${i.note? ' | '+i.note:''};
     }
 
     function sendRFQWhatsApp(){
@@ -550,8 +550,8 @@ SHAM30, 500"></textarea>
       }
       const lines = rfq.map(normalizeForMessage);
       const notes = (document.getElementById('rfqNotes')?.value||'').trim();
-      const payload = `RFQ – Fodel India\n${lines.join('\n')}${notes? '\n\nNotes: '+notes:''}`;
-      const url = `https://wa.me/919797459260?text=${encodeURIComponent(payload)}`;
+      const payload = RFQ – Fodel India\n${lines.join('\n')}${notes? '\n\nNotes: '+notes:''};
+      const url = https://wa.me/919797459260?text=${encodeURIComponent(payload)};
       window.open(url, '_blank');
     }
 
@@ -560,9 +560,9 @@ SHAM30, 500"></textarea>
       if(!a) return;
       const subject = encodeURIComponent('RFQ – Fodel India');
       const bodyLines = rfq.map(i => normalizeForMessage(i));
-      const footer = `\n\nNotes: ${(document.getElementById('rfqNotes')?.value||'').trim()}`;
+      const footer = \n\nNotes: ${(document.getElementById('rfqNotes')?.value||'').trim()};
       const body = encodeURIComponent((bodyLines.join('\n')||'') + footer);
-      a.href = `mailto:sales@hs.in?subject=${subject}&body=${body}`;
+      a.href = mailto:sales@hs.in?subject=${subject}&body=${body};
     }
 
     // ------------------------
@@ -592,7 +592,7 @@ SHAM30, 500"></textarea>
         else{
           rfq.push({
             sku,
-            name: prod ? prod.name : `Custom – ${sku}`,
+            name: prod ? prod.name : Custom – ${sku},
             qty,
             price: prod?.price || '',
             cat: prod?.cat || 'misc',
@@ -606,7 +606,7 @@ SHAM30, 500"></textarea>
       renderRFQ();
       closeBulkPaste();
       toggleRFQ(true);
-      alert(`${added} item(s) added to RFQ.`);
+      alert(${added} item(s) added to RFQ.);
     }
 
     function downloadTemplate(){
@@ -638,14 +638,14 @@ SHAM30, 500"></textarea>
           if(existing){ existing.qty += qty; if(note) existing.note = note; }
           else{
             rfq.push({
-              sku, name: prod? prod.name:`Custom – ${sku}`,
+              sku, name: prod? prod.name:Custom – ${sku},
               qty, price: prod?.price||'', cat: prod?.cat||'misc', note
             });
           }
           added++;
         });
         saveRFQ(); renderRFQ(); toggleRFQ(true);
-        alert(`${added} item(s) added from CSV.`);
+        alert(${added} item(s) added from CSV.);
         e.target.value = '';
       };
       reader.readAsText(file);
@@ -673,7 +673,7 @@ SHAM30, 500"></textarea>
     // Quote Modal (no backend; WA/mailto)
     // ------------------------
     function openQuote(name, sku){
-      document.getElementById('quoteProduct').innerText = `${name}${sku? ' • '+sku:''}`;
+      document.getElementById('quoteProduct').innerText = ${name}${sku? ' • '+sku:''};
       document.getElementById('quoteModal').style.display = 'flex';
     }
     function closeQuote(){ document.getElementById('quoteModal').style.display = 'none'; }
@@ -683,8 +683,8 @@ SHAM30, 500"></textarea>
       const company = document.getElementById('qCompany').value.trim();
       const qty = document.getElementById('qQuantity').value.trim();
       const contact = document.getElementById('qContact').value.trim();
-      const msg = `Quotation Request\nProduct: ${product}\nCompany: ${company}\nQuantity: ${qty}\nContact: ${contact}`;
-      const url = `https://wa.me/919797459260?text=${encodeURIComponent(msg)}`;
+      const msg = Quotation Request\nProduct: ${product}\nCompany: ${company}\nQuantity: ${qty}\nContact: ${contact};
+      const url = https://wa.me/919797459260?text=${encodeURIComponent(msg)};
       window.open(url, '_blank');
       closeQuote();
     }
@@ -696,9 +696,9 @@ SHAM30, 500"></textarea>
       const contact = document.getElementById('qContact').value.trim();
       const subject = encodeURIComponent('Quotation Request – Fodel India');
       const body = encodeURIComponent(
-        `Product: ${product}\nCompany: ${company}\nQuantity: ${qty}\nContact: ${contact}`
+        Product: ${product}\nCompany: ${company}\nQuantity: ${qty}\nContact: ${contact}
       );
-      window.location.href = `mailto:sales@hs.in?subject=${subject}&body=${body}`;
+      window.location.href = mailto:sales@hs.in?subject=${subject}&body=${body};
       closeQuote();
     }
 
@@ -718,4 +718,3 @@ SHAM30, 500"></textarea>
   </script>
 </body>
 </html>
-
