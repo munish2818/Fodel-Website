@@ -269,8 +269,9 @@
     </div>
 
     <div class="tabs-divider"></div>
-
-    <section id="products" class="grid" aria-label="Product grid"></section>
+<div style="margin-bottom:12px;display:flex;gap:10px;flex-wrap:wrap;">
+  <button class="btn" onclick="sendSelected()">Send Selected to WhatsApp</button>
+</div>
   </main>
 
   <!-- Footer -->
@@ -363,15 +364,7 @@ SHAM30, 500"></textarea>
     // ------------------------
     // Product catalog (with B2B fields)
     // ------------------------
-    const products = [
-      {cat:"linen",name:"Hotel Bedsheet 300TC",sku:"LINEN300",price:"₹450 / piece",moq:"MOQ: 50 pcs",lead:"Dispatch: 5–7 days",img:"bedsheet.jpg",desc:"Commercial-grade bedsheet. Sizes & colours available."},
-      {cat:"linen",name:"Duvet Insert",sku:"DUVET",price:"₹950 / piece",moq:"MOQ: 20 pcs",lead:"Dispatch: 5–7 days",img:"duvet.jpg",desc:"Soft hotel duvet insert."},
-      {cat:"towels",name:"Bath Towel 550 GSM",sku:"TWL550",price:"₹220 / piece",moq:"MOQ: 60 pcs",lead:"Dispatch: 3–5 days",img:"towel.jpg",desc:"Premium cotton bath towel."},
-      {cat:"amenities",name:"Hotel Shampoo 30ml",sku:"SHAM30",price:"₹12 / bottle",moq:"MOQ: 500 pcs",lead:"Dispatch: 2–4 days",img:"shampoo.jpg",desc:"Guest room shampoo bottle."},
-      {cat:"restaurant",name:"Chafing Dish 6L",sku:"CHAF6",price:"₹3,200 / unit",moq:"MOQ: 5 units",lead:"Dispatch: 3–6 days",img:"chafing.jpg",desc:"Buffet chafing dish."},
-      {cat:"housekeeping",name:"Housekeeping Cart",sku:"HKCART",price:"₹7,200 / unit",moq:"MOQ: 2 units",lead:"Dispatch: 6–10 days",img:"cart.jpg",desc:"Professional housekeeping trolley."},
-      {cat:"banquet",name:"Chair Cover",sku:"CHAIRCOVER",price:"₹120 / piece",moq:"MOQ: 100 pcs",lead:"Dispatch: 3–5 days",img:"chair.jpg",desc:"Stretch banquet chair cover."}
-    ];
+  
 
     const grid = document.getElementById("products");
 
@@ -385,16 +378,15 @@ SHAM30, 500"></textarea>
           <div class="title">${p.name}<span class="sku">${p.sku}</span></div>
           <div class="desc">${p.desc}</div>
           <div class="meta">
-            <span>${p.moq || "MOQ: 10 pcs"}</span>
-            <span>${p.lead || "Dispatch: 3–7 days"}</span>
-          </div>
+  <span>${p.moq || "MOQ: 10 pcs"}</span>
+</div>
           <div class="card-bottom">
             <div class="price">${p.price}</div>
-            <div class="qty-row">
-              <input class="qty" type="number" min="1" step="1" value="1" id="qty-${p.sku}" aria-label="Quantity for ${p.name}">
-              <button class="btn inline" onclick="addToRFQ('${p.sku}')">Add to RFQ</button>
-              <button class="btn inline secondary" onclick="openQuote('${p.name}', '${p.sku}')">Request Quote</button>
-            </div>
+           <div class="qty-row">
+  <input class="qty" type="number" min="1" step="1" value="1" id="qty-${p.sku}">
+  <button class="btn inline" onclick="addToSelection('${p.sku}')">Select</button>
+  <button class="btn inline ghost" onclick="sampleOrder('${p.sku}')">Sample 1pc</button>
+</div>
             <button class="btn" onclick="window.open('https://wa.me/919797459260?text=${encodeURIComponent('Hospitality enquiry: '+p.name+' ('+p.sku+')')}', '_blank')">
               Enquire on WhatsApp
             </button>
