@@ -1,484 +1,628 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hospitality Supplies | Fodel India</title>
-  <meta name="description" content="Hotel supplies: linen, towels, amenities, housekeeping, banquet & restaurant equipment — PAN India dispatch, fast WhatsApp quotes." />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <style>
-    :root{
-      /* Brand */
-      --primary:#c2410c; /* Hospitality */
-      --navy:#0a1a2b;    /* Reviews/email */
-      --text:#0f172a;
-      --muted:#475569;
-      --bg:#f8fafc;
+<title>Hospitality Supplies | Fodel India</title>
 
-      /* UI */
-      --radius:14px;
-      --shadow:0 10px 24px rgba(0,0,0,0.10);
-      --ring:0 0 0 3px rgba(194,65,12,.18);
+<meta name="description" content="Hotel supplies: linen, towels, amenities, housekeeping, banquet & restaurant equipment — PAN India dispatch, fast WhatsApp quotes." />
 
-      /* Layout */
-      --container:1200px;
-      --topbar:56px;
-    }
+<link rel="canonical" href="https://www.fodel.in/hospitality.html">
 
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-      background:var(--bg); color:var(--text);
-    }
+<meta property="og:title" content="Hospitality Supplies | Fodel India">
+<meta property="og:description" content="Hotel linen, towels, amenities, housekeeping & banquet supplies across India.">
+<meta property="og:image" content="https://www.fodel.in/images/hospitality-og.jpg">
+<meta property="og:type" content="website">
 
-    /* ===== Sticky top bar (solid #c2410c, NO border line) ===== */
-    .top-nav{
-      position:fixed; top:0; left:0; right:0; height:var(--topbar);
-      background:var(--primary);
-      display:flex; align-items:center; justify-content:space-between;
-      padding:8px 14px; z-index:1000;
-    }
-    .brand-mini{
-      display:flex; align-items:center; gap:10px; color:#fff; font-weight:700;
-    }
-    .brand-mini .dot{ width:10px; height:10px; border-radius:50%; background:#fff; opacity:.85; }
-    .top-actions{ display:flex; gap:8px; align-items:center; }
-    .chip{
-      text-decoration:none; font-weight:700; font-size:14px; border-radius:999px; padding:8px 12px;
-      display:inline-flex; align-items:center; gap:8px; color:#fff;
-      background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.18);
-      box-shadow:none;
-    }
-    .chip.reviews{ background:var(--navy); border-color:var(--navy); }
-    .chip.home{ background:#00000022; border-color:#00000022; }
-    .chip:hover{ filter:brightness(1.06); }
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 
-    /* ===== Hero (aligned with reference pages; no gradient) ===== */
-    .hero{
-      margin-top:var(--topbar);
-      background:var(--primary);
-      color:#fff; text-align:center;
-      padding:50px 18px 70px;
-    }
-    .hero .wrap{ max-width:var(--container); margin:0 auto; }
-    .hero h1{ font-size:clamp(26px,5vw,40px); font-weight:700; letter-spacing:-.3px; }
-    .hero .tag{ margin-top:8px; font-weight:600; opacity:.96; }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-    /* ===== Body container ===== */
-    .container{ max-width:var(--container); margin:0 auto; padding:18px; }
-    @media(max-width:640px){ .container{ padding:14px; } }
+<style>
 
-    /* ===== Tools row: Search + Tabs ===== */
-    .tools{
-      margin-top:18px;
-      display:grid; gap:12px;
-      grid-template-columns:1fr;
-    }
-    @media(min-width:860px){
-      .tools{ grid-template-columns: 1fr auto; align-items:center; }
-    }
+:root{
 
-    .searchbox{
-      display:flex; gap:10px; align-items:center;
-      background:#fff; border:1px solid #e2e8f0; border-radius:999px; padding:10px 14px;
-      box-shadow:0 2px 8px rgba(0,0,0,.04);
-    }
-    .searchbox input{
-      width:100%; border:none; outline:none; font:inherit; font-size:16px; color:var(--text);
-      background:transparent;
-    }
+--primary:#c2410c;
+--navy:#0a1a2b;
 
-    .tabs{
-      display:flex; gap:10px; align-items:center;
-      overflow:auto; padding:6px 2px 8px;
-      scrollbar-width:thin;
-    }
-    .tab{
-      flex:0 0 auto; padding:10px 16px; border-radius:999px;
-      border:1px solid #e2e8f0; background:#fff; cursor:pointer;
-      font-weight:700; font-size:14px; color:#0b1220;
-      transition:box-shadow .12s ease, border-color .12s ease, transform .06s ease;
-    }
-    .tab:active{ transform:scale(.98); }
-    .tab.active{
-      border-color:var(--primary);
-      box-shadow:0 0 0 4px rgba(194,65,12,.12);
-    }
+--text:#0f172a;
+--muted:#475569;
 
-    /* Add generous space below tabs so the grey rule never hugs them */
-    .tabs-spacer{
-      height:18px;  /* space you asked for */
-      border-bottom:1px solid #e5e7eb;
-      margin-bottom:10px;
-    }
+--bg:#f8fafc;
 
-    /* ===== Product summary ===== */
-    .stats{ margin:10px 0 6px; color:#64748b; font-weight:600; text-align:left; }
+--radius:14px;
+--shadow:0 10px 24px rgba(0,0,0,0.10);
 
-    /* ===== Grid & Cards ===== */
-    .grid{
-      display:grid; gap:16px;
-      grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));  /* desktop looks like desktop */
-      scroll-margin-top:calc(var(--topbar) + 16px);
-    }
-    .card{
-      background:#fff; border-radius:var(--radius); box-shadow:var(--shadow);
-      padding:12px; display:flex; flex-direction:column; gap:10px;
-    }
-    .thumb{
-      width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:10px;
-      background:#f1f5f9; border:1px solid #eef2f7;
-    }
-    .title{ font-weight:700; font-size:16px; display:flex; justify-content:space-between; gap:8px; }
-    .sku{ color:#64748b; font-size:12px; font-weight:600; }
-    .desc{ color:var(--muted); font-size:13px; line-height:1.5; }
-    .price{ font-weight:700; }
+--container:1200px;
+--topbar:60px;
 
-    .btn{
-      background:var(--primary); color:#fff; border:none; padding:10px;
-      border-radius:10px; font-weight:700; cursor:pointer;
-    }
-    .btn:hover{ filter:brightness(1.05); }
-    .btn:focus{ outline:none; box-shadow:var(--ring); }
+}
 
-    /* Skeletons */
-    .skeleton{
-      animation:pulse 1.2s ease-in-out infinite;
-      background:linear-gradient(90deg,#f1f5f9 25%,#e2e8f0 37%,#f1f5f9 63%); background-size:400% 100%;
-      border-radius:10px;
-    }
-    @keyframes pulse{0%{background-position:100% 50%}100%{background-position:0 50%}}
+*{box-sizing:border-box;margin:0;padding:0}
 
-    /* ===== Footer with Email & WhatsApp only ===== */
-    footer{
-      margin-top:28px; padding:22px 18px 34px; text-align:center; background:#fff;
-      border-top:1px solid #e5e7eb;
-    }
-    .footer-links{
-      display:flex; gap:14px; justify-content:center; align-items:center; flex-wrap:wrap;
-      font-weight:700;
-    }
-    .footer-links a{ text-decoration:none; }
-    .footer-email{ color:var(--navy); }
-    .footer-wa{
-      color:#25D366; display:inline-flex; align-items:center; gap:6px;
-    }
+html{scroll-behavior:smooth}
 
-    /* Accessibility tweak for focus */
-    :focus-visible{ outline:2px dashed var(--primary); outline-offset:3px; }
-  </style>
+body{
+font-family:Poppins,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+background:var(--bg);
+color:var(--text);
+}
+
+.top-nav{
+
+position:fixed;
+top:0;
+left:0;
+right:0;
+
+height:var(--topbar);
+
+background:var(--primary);
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+padding:10px 18px;
+
+z-index:1000;
+
+}
+
+.brand-mini{
+
+display:flex;
+align-items:center;
+
+gap:10px;
+
+color:#fff;
+font-weight:700;
+font-size:15px;
+
+}
+
+.brand-mini .dot{
+
+width:10px;
+height:10px;
+
+border-radius:50%;
+background:#fff;
+
+}
+
+.top-actions{
+
+display:flex;
+gap:10px;
+align-items:center;
+
+}
+
+.chip{
+
+text-decoration:none;
+
+font-weight:700;
+font-size:14px;
+
+border-radius:999px;
+
+padding:8px 14px;
+
+display:inline-flex;
+align-items:center;
+
+gap:6px;
+
+color:#fff;
+
+background:rgba(255,255,255,.14);
+
+border:1px solid rgba(255,255,255,.18);
+
+}
+
+.chip.reviews{
+background:var(--navy);
+border-color:var(--navy);
+}
+
+.chip.home{
+background:#00000022;
+}
+
+.hero{
+
+margin-top:var(--topbar);
+
+background:var(--primary);
+
+color:#fff;
+
+text-align:center;
+
+padding:50px 20px 70px;
+
+}
+
+.hero .wrap{
+max-width:var(--container);
+margin:auto;
+}
+
+.hero h1{
+
+font-size:clamp(26px,5vw,40px);
+
+}
+
+.hero .tag{
+
+margin-top:8px;
+
+font-weight:600;
+
+}
+
+.container{
+
+max-width:var(--container);
+
+margin:auto;
+
+padding:20px;
+
+}
+
+.tools{
+
+margin-top:18px;
+
+display:grid;
+
+gap:12px;
+
+grid-template-columns:1fr;
+
+}
+
+@media(min-width:860px){
+
+.tools{
+grid-template-columns:1fr auto;
+align-items:center;
+}
+
+}
+
+.searchbox{
+
+display:flex;
+gap:10px;
+align-items:center;
+
+background:#fff;
+
+border:1px solid #e2e8f0;
+
+border-radius:999px;
+
+padding:10px 14px;
+
+}
+
+.searchbox input{
+
+width:100%;
+
+border:none;
+outline:none;
+
+font:inherit;
+font-size:16px;
+
+}
+
+.tabs{
+
+display:flex;
+
+gap:10px;
+
+overflow:auto;
+
+padding:8px 4px 14px;
+
+}
+
+.tab{
+
+flex:0 0 auto;
+
+padding:10px 16px;
+
+border-radius:999px;
+
+border:1px solid #e2e8f0;
+
+background:#fff;
+
+cursor:pointer;
+
+font-weight:700;
+
+font-size:14px;
+
+}
+
+.tab.active{
+
+border-color:var(--primary);
+
+box-shadow:0 0 0 4px rgba(194,65,12,.12);
+
+}
+
+.tabs-spacer{
+
+height:26px;
+
+border-bottom:1px solid #e5e7eb;
+
+margin-bottom:14px;
+
+}
+
+.stats{
+
+margin-bottom:12px;
+
+color:#64748b;
+
+font-weight:600;
+
+}
+
+.grid{
+
+display:grid;
+
+gap:18px;
+
+grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+
+}
+
+.card{
+
+background:#fff;
+
+border-radius:var(--radius);
+
+box-shadow:var(--shadow);
+
+padding:14px;
+
+display:flex;
+flex-direction:column;
+gap:10px;
+
+}
+
+.thumb{
+
+width:100%;
+
+aspect-ratio:4/3;
+
+object-fit:cover;
+
+border-radius:10px;
+
+background:#f1f5f9;
+
+}
+
+.title{
+
+font-weight:700;
+
+display:flex;
+justify-content:space-between;
+
+}
+
+.sku{
+
+font-size:12px;
+
+color:#64748b;
+
+}
+
+.desc{
+
+font-size:13px;
+
+color:var(--muted);
+
+}
+
+.price{
+
+font-weight:700;
+
+}
+
+.btn{
+
+background:var(--primary);
+
+color:#fff;
+
+border:none;
+
+padding:10px;
+
+border-radius:10px;
+
+font-weight:700;
+
+cursor:pointer;
+
+}
+
+footer{
+
+margin-top:40px;
+
+padding:26px 20px;
+
+background:#fff;
+
+border-top:1px solid #e5e7eb;
+
+text-align:center;
+
+}
+
+.footer-links{
+
+display:flex;
+
+gap:14px;
+
+justify-content:center;
+
+flex-wrap:wrap;
+
+font-weight:700;
+
+}
+
+.footer-email{
+
+color:var(--navy);
+
+text-decoration:none;
+
+}
+
+.footer-wa{
+
+color:#25D366;
+
+text-decoration:none;
+
+display:inline-flex;
+gap:6px;
+
+}
+
+/* MOBILE HEADER FIX */
+
+@media(max-width:640px){
+
+.top-nav{
+
+padding:10px 14px;
+
+}
+
+.brand-mini{
+
+font-size:14px;
+
+}
+
+.top-actions{
+
+gap:8px;
+
+}
+
+.chip{
+
+font-size:13px;
+
+padding:7px 10px;
+
+}
+
+.tabs{
+
+padding-bottom:18px;
+
+}
+
+.tabs-spacer{
+
+height:32px;
+
+}
+
+}
+
+</style>
 </head>
+
 <body>
 
-  <!-- Sticky top bar (no border line) -->
-  <nav class="top-nav" aria-label="Top">
-    <div class="brand-mini">
-      <span class="dot" aria-hidden="true"></span>
-      <span>Fodel Hospitality</span>
-    </div>
-    <div class="top-actions">
-      <a class="chip reviews" href="/reviews.html">⭐ Reviews</a>
-      <a class="chip home" href="/">🏠 Home</a>
-    </div>
-  </nav>
+<nav class="top-nav">
 
-  <!-- Hero -->
-  <header class="hero" aria-label="Intro">
-    <div class="wrap">
-      <h1>Hospitality Supplies</h1>
-      <p class="tag">Linen • Towels • Amenities • Restaurant • Housekeeping • Banquet</p>
-    </div>
-  </header>
+<div class="brand-mini">
 
-  <!-- Body -->
-  <main class="container">
+<span class="dot"></span>
 
-    <!-- Tools row -->
-    <div class="tools">
-      <!-- Search -->
-      <label class="searchbox" aria-label="Search products">
-        <span aria-hidden="true">🔎</span>
-        <input id="search" type="search" placeholder="Search by name, SKU, or category…" autocomplete="off" />
-      </label>
+<span>Fodel Hospitality</span>
 
-      <!-- Tabs (clickable) -->
-      <div id="tabs" class="tabs" role="tablist" aria-label="Quick filters">
-        <button class="tab active" data-cat="all" role="tab" aria-selected="true">All</button>
-        <button class="tab" data-cat="linen" role="tab" aria-selected="false">Linen</button>
-        <button class="tab" data-cat="towels" role="tab" aria-selected="false">Towels</button>
-        <button class="tab" data-cat="amenities" role="tab" aria-selected="false">Amenities</button>
-        <button class="tab" data-cat="restaurant" role="tab" aria-selected="false">F&amp;B</button>
-        <button class="tab" data-cat="housekeeping" role="tab" aria-selected="false">Housekeeping</button>
-        <button class="tab" data-cat="banquet" role="tab" aria-selected="false">Banquet</button>
-      </div>
-    </div>
+</div>
 
-    <!-- Spacer / bottom rule not too close to tabs -->
-    <div class="tabs-spacer" aria-hidden="true"></div>
+<div class="top-actions">
 
-    <!-- Count -->
-    <div id="stats" class="stats" aria-live="polite"></div>
+<a class="chip reviews" href="/reviews.html">⭐ Reviews</a>
 
-    <!-- Grid -->
-    <section id="products" class="grid" aria-live="polite" aria-busy="true"></section>
-  </main>
+<a class="chip home" href="/">🏠 Home</a>
 
-  <!-- Footer (Email & WhatsApp only) -->
-  <footer>
-    <div class="footer-links">
-      <a class="footer-email" href="mailto:sales@hs.in">✉️ sales@hs.in</a>
-      <span>•</span>
-      <a class="footer-wa" href="https://wa.me/919797459260?text=Hi%20Fodel%2C%20I%27m%20interested%20in%20hospitality%20supplies." rel="noopener" target="_blank" aria-label="WhatsApp Fodel">
-        <!-- Original WhatsApp mark (green) -->
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true">
-          <path d="M20.52 3.48A11.83 11.83 0 0 0 12.06 0C5.46 0 .1 5.34.1 11.93c0 2.1.55 4.15 1.59 5.95L0 24l6.3-1.64a11.9 11.9 0 0 0 5.77 1.49h.01c6.6 0 11.96-5.36 11.96-11.96 0-3.2-1.25-6.21-3.52-8.41Zm-8.46 18.3h-.01a10.26 10.26 0 0 1-5.23-1.44l-.38-.23-3.74.97 1-3.65-.25-.38a10.29 10.29 0 0 1-1.58-5.53c0-5.68 4.62-10.3 10.31-10.3 2.75 0 5.34 1.07 7.29 3.01a10.24 10.24 0 0 1 3.02 7.29c0 5.68-4.62 10.26-10.43 10.26Zm5.97-7.68c-.33-.16-1.95-.96-2.25-1.07-.3-.12-.5-.16-.71.16-.2.3-.82 1.07-1.01 1.29-.2.22-.37.25-.7.09-.33-.16-1.39-.51-2.65-1.62-.98-.86-1.64-1.91-1.83-2.23-.19-.33-.02-.51.14-.67.14-.14.33-.37.49-.55.16-.19.21-.32.32-.54.11-.22.05-.41-.02-.58-.16-.16-.71-1.72-.97-2.36-.26-.63-.52-.54-.71-.55h-.6c-.2 0-.52.07-.79.37s-1.04 1.01-1.04 2.46 1.07 2.86 1.22 3.06c.16.22 2.1 3.21 5.1 4.49.71.31 1.27.49 1.71.63.72.23 1.38.2 1.9.12.58-.09 1.95-.8 2.22-1.57.27-.77.27-1.43.19-1.57-.08-.14-.29-.22-.62-.38Z"/>
-        </svg>
-        WhatsApp
-      </a>
-    </div>
-    <div style="margin-top:8px; color:#94a3b8; font-size:12px;">© 2015–2026 Fodel India</div>
-  </footer>
+</div>
 
-  <script>
-  /***************
-   * CONFIG (set this)
-   ***************/
-  // Option A: Google Sheets (recommended)
-  const SHEET_ID   = 'PUT_YOUR_SHEET_ID_HERE';  // e.g. 1AbCdEfG...
-  const SHEET_NAME = 'Hospitality';             // your tab name
-  // Option B: CSV (fallback) – leave blank if using Sheets
-  const CSV_URL    = ''; // e.g. '/data/hospitality.csv'
+</nav>
 
-  const WA_NUMBER = '919797459260';
-  const COLS = ['Category','Name','SKU','Price','Image','Description'];
+<header class="hero">
 
-  /***************
-   * UTILITIES
-   ***************/
-  const productsEl = document.getElementById('products');
-  const tabsBar = document.getElementById('tabs');
-  const searchInput = document.getElementById('search');
-  const statsEl = document.getElementById('stats');
+<div class="wrap">
 
-  const slug = s => (s||'').toString().trim().toLowerCase()
-    .replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
-  function escapeHtml(str=''){
-    return str.replace(/[&<>"'`=\/]/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;','/':'&#x2F;','`':'&#x60;','=':'&#x3D;'}[s]));
-  }
-  const safeImg = s => {
-    if(!s) return '/images/placeholder.webp';
-    const t = s.trim();
-    return /^https?:\/\//i.test(t) ? t : '/images/' + encodeURIComponent(t);
-  };
-  function debounce(fn, delay=220){ let t; return (...a)=>{ clearTimeout(t); t=setTimeout(()=>fn(...a),delay); }; }
+<h1>Hospitality Supplies</h1>
 
-  function renderSkeleton(n=9){
-    productsEl.innerHTML = '';
-    const frag = document.createDocumentFragment();
-    for(let i=0;i<n;i++){
-      const el = document.createElement('article');
-      el.className = 'card';
-      el.innerHTML = `
-        <div class="thumb skeleton" style="aspect-ratio:4/3;"></div>
-        <div class="skeleton" style="height:16px;width:70%;"></div>
-        <div class="skeleton" style="height:12px;width:100%;"></div>
-        <div class="skeleton" style="height:12px;width:85%;"></div>
-        <div class="skeleton" style="height:16px;width:40%;"></div>
-        <div class="skeleton" style="height:38px;width:100%;border-radius:10px;"></div>`;
-      frag.appendChild(el);
-    }
-    productsEl.appendChild(frag);
-  }
+<p class="tag">
 
-  // Robust CSV parser (handles quotes, commas)
-  function parseCSV(text){
-    const rows = [];
-    let i=0, field='', row=[], q=false;
-    while(i<text.length){
-      const c=text[i];
-      if(q){
-        if(c==='"' && text[i+1] === '"'){ field+='"'; i++; }
-        else if(c === '"'){ q=false; }
-        else{ field+=c; }
-      }else{
-        if(c === '"'){ q=true; }
-        else if(c === ','){ row.push(field); field=''; }
-        else if(c === '\n'){ row.push(field); rows.push(row); row=[]; field=''; }
-        else if(c === '\r'){ /* ignore */ }
-        else{ field+=c; }
-      }
-      i++;
-    }
-    if(field.length || row.length){ row.push(field); rows.push(row); }
-    return rows;
-  }
+Linen • Towels • Amenities • Restaurant • Housekeeping • Banquet
 
-  function makeCard(item){
-    const img = safeImg(item.Image);
-    const name = escapeHtml(item.Name || '');
-    const sku  = escapeHtml(item.SKU || '');
-    const price = escapeHtml(item.Price || '');
-    const desc  = escapeHtml(item.Description || '');
+</p>
 
-    const card = document.createElement('article');
-    card.className = 'card';
-    card.dataset.cat = slug(item.Category);
+</div>
 
-    const imgEl = document.createElement('img');
-    imgEl.className = 'thumb';
-    imgEl.loading = 'lazy';
-    imgEl.alt = name || 'Product image';
-    imgEl.src = img;
-    imgEl.onerror = () => { imgEl.src = '/images/placeholder.webp'; };
+</header>
 
-    const t = document.createElement('div');
-    t.className = 'title';
-    t.innerHTML = `<span>${name || '—'}</span> ${sku ? `<span class="sku">${sku}</span>` : ''}`;
+<main class="container">
 
-    const d = document.createElement('p');
-    d.className = 'desc'; d.textContent = desc;
+<div class="tools">
 
-    const p = document.createElement('div');
-    p.className = 'price'; p.textContent = price;
+<label class="searchbox">
 
-    const b = document.createElement('button');
-    b.className = 'btn'; b.textContent = 'Enquire on WhatsApp';
-    b.addEventListener('click', () => {
-      const msg = `Hospitality enquiry - ${name}${sku ? ` (SKU:${sku})` : ''}`;
-      window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
-    });
+🔎
 
-    card.append(imgEl, t, d, p, b);
-    return card;
-  }
+<input id="search" type="search" placeholder="Search products…" />
 
-  function renderList(items){
-    productsEl.innerHTML = '';
-    const frag = document.createDocumentFragment();
-    items.forEach(i => frag.appendChild(makeCard(i)));
-    productsEl.appendChild(frag);
-    productsEl.setAttribute('aria-busy','false');
-  }
+</label>
 
-  function updateStats(total, shown){
-    statsEl.textContent = (shown === total) ? `${total} products` : `${shown} of ${total} products`;
-  }
+<div id="tabs" class="tabs">
 
-  function applyFilterAndSearch(all){
-    const active = tabsBar.querySelector('.tab.active')?.dataset.cat || 'all';
-    const q = (searchInput.value || '').trim().toLowerCase();
+<button class="tab active" data-cat="all">All</button>
+<button class="tab" data-cat="linen">Linen</button>
+<button class="tab" data-cat="towels">Towels</button>
+<button class="tab" data-cat="amenities">Amenities</button>
+<button class="tab" data-cat="restaurant">F&B</button>
+<button class="tab" data-cat="housekeeping">Housekeeping</button>
+<button class="tab" data-cat="banquet">Banquet</button>
 
-    let list = (active === 'all') ? all : all.filter(x => slug(x.Category) === active);
-    if(q){
-      list = list.filter(x =>
-        (x.Name||'').toLowerCase().includes(q) ||
-        (x.SKU||'').toLowerCase().includes(q) ||
-        (x.Category||'').toLowerCase().includes(q)
-      );
-    }
-    renderList(list);
-    updateStats(all.length, list.length);
-  }
+</div>
 
-  function hookTabs(all){
-    tabsBar.addEventListener('click', (e)=>{
-      const btn = e.target.closest('.tab');
-      if(!btn) return;
-      tabsBar.querySelectorAll('.tab').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
-      btn.classList.add('active'); btn.setAttribute('aria-selected','true');
-      applyFilterAndSearch(all);
-      document.getElementById('products').scrollIntoView({behavior:'smooth', block:'start'});
-    });
-  }
-  const onSearch = debounce(()=> applyFilterAndSearch(window.__ALL__ || []), 220);
+</div>
 
-  // Load from Sheets
-  async function loadFromSheets(){
-    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}`;
-    const res = await fetch(url, {cache:'no-store'});
-    const txt = await res.text();
-    const s = txt.indexOf('{'), e = txt.lastIndexOf('}');
-    if(s===-1 || e===-1) throw new Error('Bad GViz response');
-    const data = JSON.parse(txt.slice(s, e+1));
-    const cols = (data.table.cols || []).map(c => (c.label || c.id || '').toString().trim());
-    const idx = {};
-    COLS.forEach(name=>{
-      const i = cols.findIndex(c => c.toLowerCase() === name.toLowerCase());
-      idx[name] = i >= 0 ? i : COLS.indexOf(name);
-    });
-    const rows = (data.table.rows || [])
-      .map(r => (r.c || []).map(c => (c && c.v != null) ? String(c.v) : ''))
-      .filter(cells => cells.some(v => (v||'').trim().length));
-    return rows.map(cells => ({
-      Category:    (cells[idx['Category']]||'').trim(),
-      Name:        (cells[idx['Name']]||'').trim(),
-      SKU:         (cells[idx['SKU']]||'').trim(),
-      Price:       (cells[idx['Price']]||'').trim(),
-      Image:       (cells[idx['Image']]||'').trim(),
-      Description: (cells[idx['Description']]||'').trim()
-    }));
-  }
+<div class="tabs-spacer"></div>
 
-  // Load from CSV
-  async function loadFromCSV(){
-    const res = await fetch(CSV_URL, {cache:'no-store'});
-    const txt = await res.text();
-    const rows = parseCSV(txt);
-    if(!rows.length) return [];
-    const header = rows[0].map(h => (h||'').trim());
-    const idx = {};
-    COLS.forEach(name=>{
-      const i = header.findIndex(h => h.toLowerCase() === name.toLowerCase());
-      idx[name] = i >= 0 ? i : COLS.indexOf(name);
-    });
-    return rows.slice(1)
-      .filter(r => r && r.some(v => (v||'').trim().length))
-      .map(r => ({
-        Category:(r[idx['Category']]||'').trim(),
-        Name:(r[idx['Name']]||'').trim(),
-        SKU:(r[idx['SKU']]||'').trim(),
-        Price:(r[idx['Price']]||'').trim(),
-        Image:(r[idx['Image']]||'').trim(),
-        Description:(r[idx['Description']]||'').trim()
-      }));
-  }
+<div id="stats" class="stats"></div>
 
-  async function init(){
-    renderSkeleton(9);
-    try{
-      let items = [];
-      if (SHEET_ID && SHEET_NAME){ items = await loadFromSheets(); }
-      else if (CSV_URL){ items = await loadFromCSV(); }
-      else { throw new Error('Set SHEET_ID & SHEET_NAME or CSV_URL'); }
+<section id="products" class="grid"></section>
 
-      items = items.filter(x => (x.Name||'').length);
-      window.__ALL__ = items;
+</main>
 
-      productsEl.setAttribute('aria-busy','false');
-      hookTabs(items);
-      renderList(items);
-      updateStats(items.length, items.length);
+<footer>
 
-      searchInput.addEventListener('input', onSearch);
-    }catch(err){
-      console.error(err);
-      productsEl.setAttribute('aria-busy','false');
-      productsEl.innerHTML = `
-        <article class="card">
-          <div class="title" style="color:#b91c1c;">Couldn’t load products</div>
-          <p class="desc">Please check Google Sheet share settings, Sheet ID / tab name, or CSV URL.</p>
-          <button class="btn" onclick="location.reload()">Retry</button>
-        </article>`;
-      updateStats(0,0);
-    }
-  }
+<div class="footer-links">
 
-  init();
-  </script>
+<a class="footer-email" href="mailto:sales@hs.in">✉️ sales@hs.in</a>
+
+<span>•</span>
+
+<a class="footer-wa" href="https://wa.me/919797459260">WhatsApp</a>
+
+</div>
+
+<div style="margin-top:10px;font-size:12px;color:#94a3b8">
+
+© 2015–2026 Fodel India
+
+</div>
+
+</footer>
+
+<script>
+
+/* PRODUCT DEMO DATA */
+
+const products=[
+
+{Category:"linen",Name:"Hotel Bedsheet 300TC",SKU:"LINEN-300TC",Price:"₹450",Image:"bedsheet.jpg",Description:"Hotel grade cotton bedsheet."},
+
+{Category:"towels",Name:"Bath Towel 550 GSM",SKU:"TWL-550",Price:"₹220",Image:"towel.jpg",Description:"Soft cotton hotel towel."},
+
+{Category:"amenities",Name:"Hotel Shampoo 30ml",SKU:"AM-SHAM",Price:"₹12",Image:"shampoo.jpg",Description:"Guest room shampoo bottle."},
+
+{Category:"restaurant",Name:"Chafing Dish 6L",SKU:"FNB-6L",Price:"₹3200",Image:"chafing.jpg",Description:"Buffet chafing dish."},
+
+{Category:"housekeeping",Name:"Housekeeping Cart",SKU:"HK-CART",Price:"₹7200",Image:"cart.jpg",Description:"Professional housekeeping trolley."},
+
+{Category:"banquet",Name:"Chair Cover",SKU:"BNQ-COVER",Price:"₹120",Image:"chair.jpg",Description:"Stretch banquet chair cover."}
+
+]
+
+const grid=document.getElementById("products")
+
+function render(list){
+
+grid.innerHTML=""
+
+list.forEach(p=>{
+
+const card=document.createElement("div")
+
+card.className="card"
+
+card.innerHTML=`
+
+<img class="thumb" loading="lazy" width="800" height="600" src="/images/${p.Image}" alt="${p.Name}">
+
+<div class="title">${p.Name}<span class="sku">${p.SKU}</span></div>
+
+<div class="desc">${p.Description}</div>
+
+<div class="price">${p.Price}</div>
+
+<button class="btn" onclick="window.open('https://wa.me/919797459260?text=Hospitality enquiry ${p.Name}')">
+
+Enquire on WhatsApp
+
+</button>
+
+`
+
+grid.appendChild(card)
+
+})
+
+document.getElementById("stats").innerText=list.length+" products"
+
+}
+
+render(products)
+
+</script>
+
 </body>
 </html>
