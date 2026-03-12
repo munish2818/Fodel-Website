@@ -46,17 +46,17 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
-      padding:px 18px;
-      z-index:00;
+      padding:10px 18px;
+      z-index:1000;
     }
 
     .brand-mini{
       display:flex;gap:8px;align-items:center;
       font-weight:700;color:#fff;
     }
-    .brand-mini .dot{width:px;height:px;background:#fff;border-radius:50%}
+    .brand-mini .dot{width:10px;height:10px;background:#fff;border-radius:50%}
 
-    .top-actions{display:flex;gap:px}
+    .top-actions{display:flex;gap:10px}
     .chip{
       text-decoration:none;font-weight:600;font-size:13px;border-radius:999px;
       padding:7px 12px;color:#fff;background:rgba(255,255,255,.15);
@@ -99,9 +99,9 @@
 
     .searchbox{
       background:#fff;border:1px solid #e2e8f0;border-radius:999px;
-      padding:px 14px;display:flex;gap:8px;align-items:center;margin-bottom:14px;
+      padding:10px 14px;display:flex;gap:8px;align-items:center;margin-bottom:14px;
     }
-    .searchbox input{border:none;outline:none;font:inherit;width:0%}
+    .searchbox input{border:none;outline:none;font:inherit;width:100%}
 
     .tabs{display:flex;gap:8px;overflow:auto;margin-bottom:12px}
     .tab{
@@ -114,7 +114,7 @@
 
     /* grid */
     .grid{display:grid;gap:14px;grid-template-columns:repeat(4,1fr)}
-    @media(max-width:24px){ .grid{grid-template-columns:repeat(3,1fr)} }
+    @media(max-width:1024px){ .grid{grid-template-columns:repeat(3,1fr)} }
     @media(max-width:640px){ .grid{grid-template-columns:repeat(2,1fr)} }
 
     /* cards */
@@ -123,7 +123,7 @@
       display:flex;flex-direction:column;
     }
     .thumb{
-      width:0%;aspect-ratio:1/1;object-fit:cover;border-radius:8px;background:#f1f5f9;margin-bottom:8px;
+      width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:8px;background:#f1f5f9;margin-bottom:8px;
     }
     .title{font-weight:700;font-size:14px;display:flex;justify-content:space-between;gap:8px;align-items:baseline}
     .sku{font-size:11px;color:#64748b}
@@ -232,7 +232,7 @@
     <div class="hero-stats">
       <div><strong>2,500+</strong><span>Hotels Served</span></div>
       <div><strong>28</strong><span>States Covered</span></div>
-      <div><strong>9+</strong><span>Years Experience</span></div>
+      <div><strong>10+</strong><span>Years Experience</span></div>
     </div>
 
     <div class="hero-cta">
@@ -269,14 +269,23 @@
     </div>
 
     <div class="tabs-divider"></div>
-<div style="margin-bottom:12px;display:flex;gap:10px;flex-wrap:wrap;">
-  <button class="btn" onclick="sendSelected()">Send Selected to WhatsApp</button>
-</div>
+
+    <section id="products" class="grid" aria-label="Product grid"></section>
   </main>
 
   <!-- Footer -->
   <footer>
-  
+    <p><strong>Fodel India – Hospitality Supply Specialists</strong></p>
+    <p>Serving Hotels, Resorts, Hospitals &amp; Institutions since 2015</p>
+
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <span>•</span>
+      <a href="/contact.html">Contact</a>
+      <span>•</span>
+      <a href="/terms.html">Terms</a>
+    </div>
+
     <div class="footer-links">
       <a class="footer-email" href="mailto:sales@hs.in">sales@hs.in</a>
       <span>•</span>
@@ -364,7 +373,15 @@ SHAM30, 500"></textarea>
     // ------------------------
     // Product catalog (with B2B fields)
     // ------------------------
-  
+    const products = [
+      {cat:"linen",name:"Hotel Bedsheet 300TC",sku:"LINEN300",price:"₹450 / piece",moq:"MOQ: 50 pcs",lead:"Dispatch: 5–7 days",img:"bedsheet.jpg",desc:"Commercial-grade bedsheet. Sizes & colours available."},
+      {cat:"linen",name:"Duvet Insert",sku:"DUVET",price:"₹950 / piece",moq:"MOQ: 20 pcs",lead:"Dispatch: 5–7 days",img:"duvet.jpg",desc:"Soft hotel duvet insert."},
+      {cat:"towels",name:"Bath Towel 550 GSM",sku:"TWL550",price:"₹220 / piece",moq:"MOQ: 60 pcs",lead:"Dispatch: 3–5 days",img:"towel.jpg",desc:"Premium cotton bath towel."},
+      {cat:"amenities",name:"Hotel Shampoo 30ml",sku:"SHAM30",price:"₹12 / bottle",moq:"MOQ: 500 pcs",lead:"Dispatch: 2–4 days",img:"shampoo.jpg",desc:"Guest room shampoo bottle."},
+      {cat:"restaurant",name:"Chafing Dish 6L",sku:"CHAF6",price:"₹3,200 / unit",moq:"MOQ: 5 units",lead:"Dispatch: 3–6 days",img:"chafing.jpg",desc:"Buffet chafing dish."},
+      {cat:"housekeeping",name:"Housekeeping Cart",sku:"HKCART",price:"₹7,200 / unit",moq:"MOQ: 2 units",lead:"Dispatch: 6–10 days",img:"cart.jpg",desc:"Professional housekeeping trolley."},
+      {cat:"banquet",name:"Chair Cover",sku:"CHAIRCOVER",price:"₹120 / piece",moq:"MOQ: 100 pcs",lead:"Dispatch: 3–5 days",img:"chair.jpg",desc:"Stretch banquet chair cover."}
+    ];
 
     const grid = document.getElementById("products");
 
@@ -378,15 +395,16 @@ SHAM30, 500"></textarea>
           <div class="title">${p.name}<span class="sku">${p.sku}</span></div>
           <div class="desc">${p.desc}</div>
           <div class="meta">
-  <span>${p.moq || "MOQ: 10 pcs"}</span>
-</div>
+            <span>${p.moq || "MOQ: 10 pcs"}</span>
+            <span>${p.lead || "Dispatch: 3–7 days"}</span>
+          </div>
           <div class="card-bottom">
             <div class="price">${p.price}</div>
-           <div class="qty-row">
-  <input class="qty" type="number" min="1" step="1" value="1" id="qty-${p.sku}">
-  <button class="btn inline" onclick="addToSelection('${p.sku}')">Select</button>
-  <button class="btn inline ghost" onclick="sampleOrder('${p.sku}')">Sample 1pc</button>
-</div>
+            <div class="qty-row">
+              <input class="qty" type="number" min="1" step="1" value="1" id="qty-${p.sku}" aria-label="Quantity for ${p.name}">
+              <button class="btn inline" onclick="addToRFQ('${p.sku}')">Add to RFQ</button>
+              <button class="btn inline secondary" onclick="openQuote('${p.name}', '${p.sku}')">Request Quote</button>
+            </div>
             <button class="btn" onclick="window.open('https://wa.me/919797459260?text=${encodeURIComponent('Hospitality enquiry: '+p.name+' ('+p.sku+')')}', '_blank')">
               Enquire on WhatsApp
             </button>
@@ -710,3 +728,4 @@ SHAM30, 500"></textarea>
   </script>
 </body>
 </html>
+
