@@ -131,6 +131,11 @@
     .meta{display:flex;justify-content:space-between;font-size:11px;color:#64748b;margin-top:4px}
     .price{font-weight:700;margin-top:6px}
 
+    .badge{
+      display:inline-block;background:#f59e0b;color:#111827;border-radius:6px;
+      font-weight:700;font-size:10px;padding:2px 6px;margin-left:8px;
+    }
+
     .card-bottom{margin-top:auto}
     .btn{
       background:var(--primary);color:#fff;border:none;padding:8px;border-radius:8px;
@@ -140,6 +145,7 @@
     .btn.secondary{background:var(--navy)}
     .btn.ghost{background:transparent;border:2px solid var(--navy);color:var(--navy)}
     .btn.danger{background:#dc2626}
+    .btn:disabled{opacity:.6;cursor:not-allowed}
 
     .qty-row{display:flex;align-items:center;gap:8px;margin-top:6px;flex-wrap:wrap}
     .qty{
@@ -247,7 +253,7 @@
       <div>⭐ ISO 9001 Certified</div>
       <div>🚚 PAN India Logistics</div>
       <div>🏨 Hotel • Resort • Hospital Supply</div>
-      <div>🤝 Bulk & Contract Pricing</div>
+      <div>🤝 Bulk &amp; Contract Pricing</div>
     </div>
   </section>
 
@@ -273,25 +279,13 @@
     <section id="products" class="grid" aria-label="Product grid"></section>
   </main>
 
-  <!-- Footer -->
+  <!-- Footer (Cleaned) -->
   <footer>
-    <p><strong>Fodel India – Hospitality Supply Specialists</strong></p>
-    <p>Serving Hotels, Resorts, Hospitals &amp; Institutions since 2015</p>
-
-    <div class="footer-links">
-      <a href="/about.html">About</a>
-      <span>•</span>
-      <a href="/contact.html">Contact</a>
-      <span>•</span>
-      <a href="/terms.html">Terms</a>
-    </div>
-
     <div class="footer-links">
       <a class="footer-email" href="mailto:sales@hs.in">sales@hs.in</a>
       <span>•</span>
       <a class="footer-wa" href="https://wa.me/919797459260" target="_blank" rel="noopener">WhatsApp</a>
     </div>
-
     <div class="copy">© 2015–2026 Fodel India</div>
   </footer>
 
@@ -351,36 +345,18 @@ SHAM30, 500"></textarea>
     </div>
   </div>
 
-  <!-- Request Quote Modal -->
-  <div class="modal" id="quoteModal" role="dialog" aria-modal="true" aria-label="Request quotation">
-    <div class="modal-content">
-      <button class="close" onclick="closeQuote()" aria-label="Close">×</button>
-      <h3 style="margin-bottom:6px">Request Quotation</h3>
-      <p id="quoteProduct" style="font-size:13px;color:#475569;margin-bottom:8px;"></p>
-
-      <input id="qCompany" placeholder="Company Name" class="input" />
-      <input id="qQuantity" placeholder="Quantity" class="input" />
-      <input id="qContact" placeholder="Phone / Email" class="input" />
-
-      <div style="display:flex; gap:8px; margin-top:4px; flex-wrap:wrap;">
-        <button class="btn" onclick="submitQuote()">Submit via WhatsApp</button>
-        <button class="btn secondary" onclick="submitQuoteEmail()">Submit via Email</button>
-      </div>
-    </div>
-  </div>
-
   <script>
     // ------------------------
-    // Product catalog (with B2B fields)
+    // Product catalog (B2B fields; NO dispatch times)
     // ------------------------
     const products = [
-      {cat:"linen",name:"Hotel Bedsheet 300TC",sku:"LINEN300",price:"₹450 / piece",moq:"MOQ: 50 pcs",lead:"Dispatch: 5–7 days",img:"bedsheet.jpg",desc:"Commercial-grade bedsheet. Sizes & colours available."},
-      {cat:"linen",name:"Duvet Insert",sku:"DUVET",price:"₹950 / piece",moq:"MOQ: 20 pcs",lead:"Dispatch: 5–7 days",img:"duvet.jpg",desc:"Soft hotel duvet insert."},
-      {cat:"towels",name:"Bath Towel 550 GSM",sku:"TWL550",price:"₹220 / piece",moq:"MOQ: 60 pcs",lead:"Dispatch: 3–5 days",img:"towel.jpg",desc:"Premium cotton bath towel."},
-      {cat:"amenities",name:"Hotel Shampoo 30ml",sku:"SHAM30",price:"₹12 / bottle",moq:"MOQ: 500 pcs",lead:"Dispatch: 2–4 days",img:"shampoo.jpg",desc:"Guest room shampoo bottle."},
-      {cat:"restaurant",name:"Chafing Dish 6L",sku:"CHAF6",price:"₹3,200 / unit",moq:"MOQ: 5 units",lead:"Dispatch: 3–6 days",img:"chafing.jpg",desc:"Buffet chafing dish."},
-      {cat:"housekeeping",name:"Housekeeping Cart",sku:"HKCART",price:"₹7,200 / unit",moq:"MOQ: 2 units",lead:"Dispatch: 6–10 days",img:"cart.jpg",desc:"Professional housekeeping trolley."},
-      {cat:"banquet",name:"Chair Cover",sku:"CHAIRCOVER",price:"₹120 / piece",moq:"MOQ: 100 pcs",lead:"Dispatch: 3–5 days",img:"chair.jpg",desc:"Stretch banquet chair cover."}
+      {cat:"linen",name:"Hotel Bedsheet 300TC",sku:"LINEN300",price:"₹450 / piece",moq:"MOQ: 50 pcs",img:"bedsheet.jpg",desc:"Commercial-grade bedsheet. Sizes & colours available."},
+      {cat:"linen",name:"Duvet Insert",sku:"DUVET",price:"₹950 / piece",moq:"MOQ: 20 pcs",img:"duvet.jpg",desc:"Soft hotel duvet insert."},
+      {cat:"towels",name:"Bath Towel 550 GSM",sku:"TWL550",price:"₹220 / piece",moq:"MOQ: 60 pcs",img:"towel.jpg",desc:"Premium cotton bath towel."},
+      {cat:"amenities",name:"Hotel Shampoo 30ml",sku:"SHAM30",price:"₹12 / bottle",moq:"MOQ: 500 pcs",img:"shampoo.jpg",desc:"Guest room shampoo bottle."},
+      {cat:"restaurant",name:"Chafing Dish 6L",sku:"CHAF6",price:"₹3,200 / unit",moq:"MOQ: 5 units",img:"chafing.jpg",desc:"Buffet chafing dish."},
+      {cat:"housekeeping",name:"Housekeeping Cart",sku:"HKCART",price:"₹7,200 / unit",moq:"MOQ: 2 units",img:"cart.jpg",desc:"Professional housekeeping trolley."},
+      {cat:"banquet",name:"Chair Cover",sku:"CHAIRCOVER",price:"₹120 / piece",moq:"MOQ: 100 pcs",img:"chair.jpg",desc:"Stretch banquet chair cover."}
     ];
 
     const grid = document.getElementById("products");
@@ -396,14 +372,13 @@ SHAM30, 500"></textarea>
           <div class="desc">${p.desc}</div>
           <div class="meta">
             <span>${p.moq || "MOQ: 10 pcs"}</span>
-            <span>${p.lead || "Dispatch: 3–7 days"}</span>
           </div>
           <div class="card-bottom">
-            <div class="price">${p.price}</div>
+            <div class="price">${p.price} <span class="badge" title="Samples available">SAMPLES</span></div>
             <div class="qty-row">
               <input class="qty" type="number" min="1" step="1" value="1" id="qty-${p.sku}" aria-label="Quantity for ${p.name}">
               <button class="btn inline" onclick="addToRFQ('${p.sku}')">Add to RFQ</button>
-              <button class="btn inline secondary" onclick="openQuote('${p.name}', '${p.sku}')">Request Quote</button>
+              <button class="btn inline secondary" onclick="addSample('${p.sku}')">Add Sample</button>
             </div>
             <button class="btn" onclick="window.open('https://wa.me/919797459260?text=${encodeURIComponent('Hospitality enquiry: '+p.name+' ('+p.sku+')')}', '_blank')">
               Enquire on WhatsApp
@@ -463,7 +438,7 @@ SHAM30, 500"></textarea>
       if(!product) return;
       const qtyInput = document.getElementById(`qty-${sku}`);
       const qty = Math.max(1, parseInt(qtyInput?.value || '1', 10));
-      const existing = rfq.find(i => i.sku === sku);
+      const existing = rfq.find(i => i.sku === sku && !i.sample);
       if(existing){ existing.qty += qty; }
       else{
         rfq.push({
@@ -472,7 +447,8 @@ SHAM30, 500"></textarea>
           qty,
           price: product.price || '',
           cat: product.cat || '',
-          note: ''
+          note: '',
+          sample: false
         });
       }
       saveRFQ();
@@ -480,8 +456,35 @@ SHAM30, 500"></textarea>
       toggleRFQ(true);
     }
 
+    // NEW: Add Sample (qty fixed = 1)
+    function addSample(sku){
+      const product = products.find(p => p.sku === sku);
+      if(!product) return;
+
+      const existingSample = rfq.find(i => i.sku === sku && i.sample);
+      if(existingSample){
+        alert('Sample already added.');
+        toggleRFQ(true);
+        return;
+      }
+
+      rfq.push({
+        sku: product.sku,
+        name: product.name + ' (Sample)',
+        qty: 1,
+        price: 'Sample',
+        cat: product.cat || '',
+        note: 'Sample order',
+        sample: true
+      });
+
+      saveRFQ();
+      renderRFQ();
+      toggleRFQ(true);
+    }
+
     function updateRFQQty(sku, qty){
-      const item = rfq.find(i => i.sku === sku);
+      const item = rfq.find(i => i.sku === sku && !i.sample); // prevent changing sample qty
       if(!item) return;
       item.qty = Math.max(1, parseInt(qty||'1',10));
       saveRFQ();
@@ -496,6 +499,7 @@ SHAM30, 500"></textarea>
     }
 
     function removeRFQItem(sku){
+      // remove both sample/bulk entries with same SKU
       rfq = rfq.filter(i => i.sku !== sku);
       saveRFQ();
       renderRFQ();
@@ -518,19 +522,24 @@ SHAM30, 500"></textarea>
       if(!list) return;
       list.innerHTML = '';
       if(rfq.length === 0){
-        list.innerHTML = `<div style="padding:6px 4px;color:#64748b">No items yet. Add products using “Add to RFQ”.</div>`;
+        list.innerHTML = `<div style="padding:6px 4px;color:#64748b">No items yet. Add products using “Add to RFQ” or “Add Sample”.</div>`;
       }else{
         rfq.forEach(item=>{
           const row = document.createElement('div');
           row.className = 'rfq-item';
+          const isSample = !!item.sample;
           row.innerHTML = `
             <div>
-              <div><strong>${item.name}</strong></div>
+              <div><strong>${item.name}${isSample? ' <span class="badge">SAMPLE</span>':''}</strong></div>
               <div class="sku">${item.sku} ${item.price? '• '+item.price:''}</div>
             </div>
-            <input type="number" min="1" class="input" value="${item.qty}"
+            ${
+              isSample
+              ? `<input type="text" class="input" value="1" disabled aria-label="Sample quantity fixed at 1" title="Sample quantity is fixed to 1">`
+              : `<input type="number" min="1" class="input" value="${item.qty}"
                    aria-label="Quantity for ${item.sku}"
-                   oninput="updateRFQQty('${item.sku}', this.value)">
+                   oninput="updateRFQQty('${item.sku}', this.value)">`
+            }
             <input type="text" class="input" placeholder="Notes" value="${item.note||''}"
                    aria-label="Note for ${item.sku}"
                    oninput="updateRFQNote('${item.sku}', this.value)">
@@ -550,7 +559,16 @@ SHAM30, 500"></textarea>
     }
 
     function normalizeForMessage(i){
-      return `${i.sku} | ${i.name} | Qty: ${i.qty}${i.note? ' | '+i.note:''}`;
+      const tag = i.sample ? ' | SAMPLE' : '';
+      return `${i.sku} | ${i.name} | Qty: ${i.qty}${tag}${i.note? ' | '+i.note:''}`;
+    }
+
+    function computeHeader(){
+      const hasSample = rfq.some(i => i.sample);
+      const hasBulk = rfq.some(i => !i.sample);
+      if(hasSample && hasBulk) return 'RFQ + Sample Order – Fodel India';
+      if(hasSample) return 'Sample Order – Fodel India';
+      return 'RFQ – Fodel India';
     }
 
     function sendRFQWhatsApp(){
@@ -560,7 +578,8 @@ SHAM30, 500"></textarea>
       }
       const lines = rfq.map(normalizeForMessage);
       const notes = (document.getElementById('rfqNotes')?.value||'').trim();
-      const payload = `RFQ – Fodel India\n${lines.join('\n')}${notes? '\n\nNotes: '+notes:''}`;
+      const header = computeHeader();
+      const payload = `${header}\n${lines.join('\n')}${notes? '\n\nNotes: '+notes:''}`;
       const url = `https://wa.me/919797459260?text=${encodeURIComponent(payload)}`;
       window.open(url, '_blank');
     }
@@ -568,7 +587,7 @@ SHAM30, 500"></textarea>
     function updateMailtoLink(){
       const a = document.getElementById('rfqEmail');
       if(!a) return;
-      const subject = encodeURIComponent('RFQ – Fodel India');
+      const subject = encodeURIComponent(computeHeader());
       const bodyLines = rfq.map(i => normalizeForMessage(i));
       const footer = `\n\nNotes: ${(document.getElementById('rfqNotes')?.value||'').trim()}`;
       const body = encodeURIComponent((bodyLines.join('\n')||'') + footer);
@@ -597,7 +616,7 @@ SHAM30, 500"></textarea>
         const note = parts.slice(2).join(' ').slice(0, 140);
 
         const prod = products.find(p=>p.sku.toUpperCase()===sku);
-        const existing = rfq.find(i => i.sku.toUpperCase()===sku);
+        const existing = rfq.find(i => i.sku.toUpperCase()===sku && !i.sample);
         if(existing){ existing.qty += qty; if(note) existing.note = note; }
         else{
           rfq.push({
@@ -606,7 +625,8 @@ SHAM30, 500"></textarea>
             qty,
             price: prod?.price || '',
             cat: prod?.cat || 'misc',
-            note
+            note,
+            sample: false
           });
         }
         added++;
@@ -644,12 +664,12 @@ SHAM30, 500"></textarea>
           const qty = parseInt(parts[1]||'1',10) || 1;
           const note = (parts[2]||'').slice(0,140);
           const prod = products.find(p=>p.sku.toUpperCase()===sku);
-          const existing = rfq.find(i => i.sku.toUpperCase()===sku);
+          const existing = rfq.find(i => i.sku.toUpperCase()===sku && !i.sample);
           if(existing){ existing.qty += qty; if(note) existing.note = note; }
           else{
             rfq.push({
               sku, name: prod? prod.name:`Custom – ${sku}`,
-              qty, price: prod?.price||'', cat: prod?.cat||'misc', note
+              qty, price: prod?.price||'', cat: prod?.cat||'misc', note, sample: false
             });
           }
           added++;
@@ -666,10 +686,15 @@ SHAM30, 500"></textarea>
         alert('RFQ is empty. Nothing to export.');
         return;
       }
-      const header = 'SKU,Name,Qty,Price,Category,Note\n';
+      const header = 'SKU,Name,Qty,Price,Category,Note,Sample\n';
       const rows = rfq.map(i => [
-        i.sku, i.name.replace(/,/g,' '), i.qty, (i.price||'').replace(/,/g,''),
-        i.cat||'', (i.note||'').replace(/,/g,' ')
+        i.sku,
+        i.name.replace(/,/g,' '),
+        i.qty,
+        (i.price||'').replace(/,/g,''),
+        i.cat||'',
+        (i.note||'').replace(/,/g,' '),
+        i.sample ? 'Yes' : 'No'
       ].join(',')).join('\n');
       const csv = header + rows + '\n';
       const blob = new Blob([csv], {type:'text/csv'});
@@ -680,52 +705,16 @@ SHAM30, 500"></textarea>
     }
 
     // ------------------------
-    // Quote Modal (no backend; WA/mailto)
-    // ------------------------
-    function openQuote(name, sku){
-      document.getElementById('quoteProduct').innerText = `${name}${sku? ' • '+sku:''}`;
-      document.getElementById('quoteModal').style.display = 'flex';
-    }
-    function closeQuote(){ document.getElementById('quoteModal').style.display = 'none'; }
-
-    function submitQuote(){
-      const product = document.getElementById('quoteProduct').innerText || '';
-      const company = document.getElementById('qCompany').value.trim();
-      const qty = document.getElementById('qQuantity').value.trim();
-      const contact = document.getElementById('qContact').value.trim();
-      const msg = `Quotation Request\nProduct: ${product}\nCompany: ${company}\nQuantity: ${qty}\nContact: ${contact}`;
-      const url = `https://wa.me/919797459260?text=${encodeURIComponent(msg)}`;
-      window.open(url, '_blank');
-      closeQuote();
-    }
-
-    function submitQuoteEmail(){
-      const product = document.getElementById('quoteProduct').innerText || '';
-      const company = document.getElementById('qCompany').value.trim();
-      const qty = document.getElementById('qQuantity').value.trim();
-      const contact = document.getElementById('qContact').value.trim();
-      const subject = encodeURIComponent('Quotation Request – Fodel India');
-      const body = encodeURIComponent(
-        `Product: ${product}\nCompany: ${company}\nQuantity: ${qty}\nContact: ${contact}`
-      );
-      window.location.href = `mailto:sales@hs.in?subject=${subject}&body=${body}`;
-      closeQuote();
-    }
-
-    // ------------------------
     // Init RFQ UI
     // ------------------------
     updateRFQBar();
     renderRFQ();
 
-    // Close modals when clicking backdrop
+    // Close modal on backdrop click
     document.addEventListener('click', (e)=>{
       const bulk = document.getElementById('bulkModal');
-      const quote = document.getElementById('quoteModal');
       if(e.target === bulk) closeBulkPaste();
-      if(e.target === quote) closeQuote();
     });
   </script>
 </body>
 </html>
-
