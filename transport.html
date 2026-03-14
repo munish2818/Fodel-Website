@@ -1,396 +1,936 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- ===========================
+       META / SEO
+  ============================ -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Fodel Transport | Taxi & Transfers | Jammu · Katra · Patnitop · Srinagar</title>
+  <meta name="description" content="Book cabs, airport transfers, local sightseeing and multi-city tours with Fodel Transport. Jammu, Katra Vaishno Devi, Patnitop, Srinagar, Gulmarg, Pahalgam and more." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#e11924" />
 
-<title>Fodel Transport Booking</title>
+  <!-- Open Graph -->
+  <meta property="og:title" content="Fodel Transport — Taxi, Transfers & Multi-city Tours" />
+  <meta property="og:description" content="Airport transfers, point-to-point and multi-city taxi services across Jammu, Katra, Patnitop and Srinagar." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.fodel.in/transport.html" />
+  <meta property="og:image" content="https://www.fodel.in/og-transport.jpg" />
+  <meta property="og:site_name" content="Fodel Transport" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Fodel Transport — Taxi, Transfers & Multi-city Tours" />
+  <meta name="twitter:description" content="Book cabs for Jammu, Katra, Patnitop, Srinagar, Gulmarg, Pahalgam & more." />
+  <meta name="twitter:image" content="https://www.fodel.in/og-transport.jpg" />
 
-<style>
+  <!-- Hidden SEO keywords -->
+  <meta name="keywords" content="jammu taxi, katra taxi, patnitop taxi, srinagar taxi, gulmarg cab, pahalgam cab, vaishno devi taxi, jammu airport transfer, jammu railway taxi, multi city tour jammu, katra to patnitop cab, srinagar to jammu taxi" />
 
-:root{
---accent:#e11924;
---accent-hover:#b50f1b;
---bg:#f5f7fb;
---card:#ffffff;
---border:#e2e8f0;
---radius:16px;
-}
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TaxiService",
+    "name":"Fodel Transport",
+    "url":"https://www.fodel.in/transport.html",
+    "areaServed":["Jammu","Katra","Patnitop","Srinagar","Gulmarg","Pahalgam","Udhampur","Sonmarg"],
+    "provider":{"@type":"Organization","name":"Fodel India","url":"https://www.fodel.in"},
+    "telephone":"+91-9797459260",
+    "sameAs":["https://wa.me/919797459260"],
+    "priceRange":"₹₹",
+    "currenciesAccepted":"INR"
+  }
+  </script>
 
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-}
+  <!-- Fonts (fast) -->
+  <!-- (Keep your original font links here if needed) -->
 
-body{
-font-family:Poppins;
-background:var(--bg);
-color:#0f172a;
-}
+  <style>
+    /* ===========================
+       THEME
+    ============================ */
+    :root{
+      --page-bg:#f8fafc;
 
-/* HERO */
+      --banner-deep:#770c12;
+      --banner-mid:#a31018;
+      --banner-top:#c8141d;
 
-.hero{
-background:linear-gradient(150deg,#c8141d,#770c12);
-color:white;
-padding:70px 20px;
-text-align:center;
-}
+      --accent:#e11924;
+      --accent-hover:#b50f1b;
 
-.hero h1{
-font-size:38px;
-margin-bottom:8px;
-}
+      --text:#0f172a;
+      --muted:#475569;
 
-.hero p{
-opacity:.9;
-}
+      --card:#ffffff;
+      --card-tint:rgba(255,255,255,0.98);
+      --border:rgba(15,23,42,0.12);
 
-/* CONTAINER */
+      --radius:16px;
+      --shadow:0 14px 30px rgba(17,24,39,0.18);
+      --shadow-lg:0 24px 60px rgba(17,24,39,0.25);
+      --shadow-soft:0 8px 20px rgba(17,24,39,0.14);
+    }
 
-.container{
-width:min(1100px,92%);
-margin:auto;
-margin-top:-50px;
-}
+    /* ===========================
+       BASE
+    ============================ */
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    html,body{ overflow-x:hidden; }
+    body{
+      font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:var(--page-bg);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    a{ color:inherit; text-decoration:none; }
+    :focus-visible{
+      outline:3px solid color-mix(in srgb, var(--accent) 70%, transparent);
+      outline-offset:3px; border-radius:10px;
+      transition:outline-color .2s ease;
+    }
+    @media (prefers-reduced-motion: reduce){
+      *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+    }
 
-/* CARD */
+    /* ===========================
+       BANNER (reduced height for mobile)
+    ============================ */
+    .banner{
+      position:relative; 
+      min-height:44vh; /* reduced */
+      display:grid; place-items:center; text-align:center; color:#ffeef0;
+      background:
+        radial-gradient(900px 600px at 85% 15%, rgba(249,230,74,0.20), transparent 60%),
+        radial-gradient(900px 600px at 15% 85%, rgba(249,230,74,0.12), transparent 65%),
+        linear-gradient(160deg, var(--banner-top) 0%, var(--banner-mid) 55%, var(--banner-deep) 100%);
+    }
+    @media (max-width:640px){ .banner{ min-height:36vh; } }
+    .banner-inner{ width:min(1100px,92%); margin:auto; padding:24px; }
 
-.card{
-background:var(--card);
-border-radius:var(--radius);
-box-shadow:0 20px 60px rgba(0,0,0,0.2);
-padding:24px;
-}
+    .topbar{ position:absolute; left:0; right:0; top:20px; padding:0 16px; display:flex; justify-content:space-between; align-items:center; color:#fff; }
+    .brand{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:20px; white-space:nowrap; }
+    .brand-badge{ width:34px; height:34px; border-radius:50%; display:grid; place-items:center; background:#ffffff1a; color:#fff; border:1px solid #ffffff40; }
+    .nav{ display:flex; align-items:center; gap:8px; }
+    .pill-btn{ display:inline-flex; align-items:center; gap:6px; padding:6px 10px; font-size:14px; font-weight:600; border-radius:10px; color:#fff; box-shadow:0 4px 12px rgba(0,0,0,0.18); }
+    .reviews-btn{ background:#0b1220; } .reviews-btn:hover{ background:#111827; }
+    .home-btn{ background:var(--accent); } .home-btn:hover{ background:var(--accent-hover); }
 
-/* GRID */
+    .hero{ display:grid; gap:14px; justify-items:center; padding:64px 0 44px; color:#ffe8ea; }
+    .hero h1{ font-size:clamp(28px,5vw,46px); font-weight:700; text-shadow:0 3px 14px rgba(0,0,0,.25); }
+    .hero p{ font-size:16px; max-width:820px; opacity:.92; }
 
-.grid{
-display:grid;
-grid-template-columns:1fr;
-gap:14px;
-}
+    /* ===========================
+       SECTIONS / CARDS / FORMS
+    ============================ */
+    .section{ width:min(1100px,92%); margin:28px auto 70px; }
+    .grid-2{ display:grid; grid-template-columns:1fr; gap:14px; }
+    @media (min-width:760px){ .grid-2{ grid-template-columns:1fr 1fr; } }
 
-@media(min-width:700px){
+    .card{
+      background:var(--card-tint);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:18px; box-shadow:var(--shadow);
+      transition:transform .2s ease, box-shadow .25s ease;
+    }
+    .card h2{ font-size:20px; margin-bottom:6px; }
+    .muted{ color:var(--muted); font-size:13px; }
 
-.grid-2{
-grid-template-columns:1fr 1fr;
-}
+    label{ display:block; font-weight:600; font-size:13px; margin-bottom:6px; color:#0f172a; }
+    input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="time"], input[type="number"], select, textarea{
+      width:100%; padding:11px 12px; border-radius:10px; border:1px solid rgba(15,23,42,0.18);
+      background:#fff; font:inherit; font-size:14px; color:#0f172a; outline:none; transition:border-color .15s, box-shadow .15s;
+    }
+    textarea{ min-height:90px; resize:vertical; }
+    input:focus, select:focus, textarea:focus{
+      border-color:var(--accent);
+      box-shadow:0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
+    }
+    .row{ margin-bottom:12px; }
+    .inline{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+    .chip{ display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; border:1px solid var(--border); background:#fff; font-size:13px; }
+    .chip:hover{ transform:translateY(-1px); border-color: color-mix(in srgb, var(--accent) 30%, #ccc); box-shadow:0 6px 14px rgba(0,0,0,.08); }
 
-}
+    .btn{ display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:12px; background:var(--accent); color:#fff; border:1px solid transparent; font-weight:700; font-size:16px; box-shadow:var(--shadow-soft); cursor:pointer; }
+    .btn:hover{ transform:translateY(-2px); background:var(--accent-hover); box-shadow:0 12px 26px rgba(0,0,0,0.18); }
+    .btn-ghost{ padding:10px 14px; border-radius:10px; font-weight:600; background:#f1f5f9; color:#0f172a; border:1px solid var(--border); cursor:pointer; }
+    .actions{ display:flex; gap:10px; justify-content:flex-end; margin-top:14px; }
 
-/* INPUTS */
+    .estimate{ padding:12px 14px; border-radius:12px; background:#fff; border:1px dashed color-mix(in srgb, var(--accent) 45%, #e2e8f0); display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+    .estimate strong{ font-size:18px; }
+    .note{ font-size:12px; color:#475569; }
 
-label{
-font-size:13px;
-font-weight:600;
-margin-bottom:4px;
-display:block;
-}
+    /* Multi-city legs */
+    .leg{ border:1px dashed rgba(15,23,42,0.22); border-radius:12px; padding:12px; margin-bottom:12px; background:#fff; }
+    .leg .inline > * { flex:1; }
+    .leg-actions{ display:flex; gap:8px; margin-top:8px; }
 
-input,select{
-width:100%;
-padding:12px;
-border-radius:10px;
-border:1px solid var(--border);
-font-size:14px;
-}
+    /* Admin modal */
+    .overlay{ position:fixed; inset:0; z-index:70; background:rgba(0,0,0,0.45); display:none; align-items:center; justify-content:center; padding:18px; }
+    .overlay.active{ display:flex; }
+    .modal{ width:min(760px,100%); max-height:92svh; border-radius:16px; background:#fff; color:#0f172a; border:1px solid rgba(17,24,39,0.14); box-shadow:0 30px 80px rgba(0,0,0,0.35); overflow:hidden; display:flex; flex-direction:column; }
+    .modal-header{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 14px; color:#fff; background:linear-gradient(90deg, var(--accent), var(--accent-hover)); position:sticky; top:0; z-index:1; }
+    .modal-title{ font-weight:700; }
+    .modal-close{ background:transparent; border:none; color:#fff; cursor:pointer; font-size:20px; line-height:1; padding:6px 10px; border-radius:8px; }
+    .modal-close:hover{ background:rgba(255,255,255,0.18); }
+    .modal-body{ padding:14px; overflow:auto; -webkit-overflow-scrolling:touch; }
 
-/* ADDONS */
+    /* Footer */
+    .footer{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin:0 auto 28px; width:min(1100px,92%); }
+    .copy{ text-align:center; width:100%; margin-top:6px; font-size:12px; opacity:.78; }
 
-.addons{
-display:flex;
-flex-wrap:wrap;
-gap:10px;
-}
+    /* Toast */
+    .toast{ position:fixed; bottom:18px; right:18px; z-index:90; background:var(--accent); color:#fff; padding:12px 14px; border-radius:10px; box-shadow:0 12px 24px rgba(0,0,0,0.2); display:none; }
+    .toast.show{ display:block; }
 
-.chip{
-border:1px solid var(--border);
-border-radius:999px;
-padding:6px 10px;
-display:flex;
-gap:6px;
-font-size:13px;
-}
-
-/* BUTTON */
-
-.btn{
-background:var(--accent);
-color:white;
-border:0;
-padding:14px 18px;
-border-radius:12px;
-font-weight:700;
-cursor:pointer;
-}
-
-.btn:hover{
-background:var(--accent-hover);
-}
-
-/* ESTIMATE */
-
-.estimate{
-margin-top:14px;
-border:1px dashed var(--accent);
-border-radius:12px;
-padding:12px;
-display:flex;
-justify-content:space-between;
-}
-
-/* MOBILE */
-
-@media(max-width:600px){
-
-.hero{
-padding:50px 10px;
-}
-
-.hero h1{
-font-size:26px;
-}
-
-}
-
-</style>
-
+    /* WhatsApp FAB (official green) */
+    .fw-whatsapp{ position: fixed; right: 16px; bottom: 16px; z-index: 60; display:flex; align-items:center; gap:10px; }
+    .fw-whatsapp .fab{ width:56px; height:56px; border-radius:50%; display:grid; place-items:center; background:#25D366; color:#fff; font-size:22px; box-shadow:0 10px 22px rgba(0,0,0,.22); }
+    .fw-whatsapp .fab:hover{ transform:translateY(-2px); box-shadow:0 14px 28px rgba(0,0,0,0.26); }
+    .fw-whatsapp .tag{ display:none; padding:10px 12px; background:#fff; border:1px solid var(--border); border-radius:12px; font-weight:600; box-shadow:var(--shadow-soft); color:var(--text); }
+    @media(min-width:720px){ .fw-whatsapp .tag{ display:block; } }
+  </style>
 </head>
-
 <body>
 
-<section class="hero">
-
-<h1>Taxi · Airport Transfers · Tours</h1>
-<p>Jammu · Katra · Patnitop · Srinagar</p>
-
-</section>
-
-<section class="container">
-
-<div class="card">
-
-<h2>Book Your Transport</h2>
-
-<br>
-
-<div class="grid grid-2">
-
-<div>
-<label>Pickup Location</label>
-<input id="pickup">
-</div>
-
-<div>
-<label>Drop Location</label>
-<input id="drop">
-</div>
-
-</div>
-
-<div class="grid grid-2">
-
-<div>
-<label>Date</label>
-<input type="date" id="date">
-</div>
-
-<div>
-<label>Pickup Time</label>
-<input type="time" id="time">
-</div>
-
-</div>
-
-<div id="transportFields" style="display:none">
-
-<br>
-
-<div class="grid grid-2">
-
-<div>
-<label>Flight Number</label>
-<input id="flight">
-</div>
-
-<div>
-<label>Train Number</label>
-<input id="train">
-</div>
-
-</div>
-
-</div>
-
-<br>
-
-<label>Vehicle</label>
-
-<select id="vehicle">
-
-<option value="sedan">Sedan</option>
-<option value="suv">SUV</option>
-<option value="innova">Innova</option>
-<option value="traveller">Traveller</option>
-
-</select>
-
-<br><br>
-
-<label>Add-ons</label>
-
-<div class="addons">
-
-<label class="chip">
-<input type="checkbox" value="roof"> Roof Carrier
-</label>
-
-<label class="chip">
-<input type="checkbox" value="placard"> Meet & Greet Placard
-</label>
-
-</div>
-
-<div class="estimate">
-
-<span id="distance">Distance: --</span>
-<span id="price">Estimate: --</span>
-
-</div>
-
-<br>
-
-<button class="btn" id="submitBtn">Submit Transport Request</button>
-
-</div>
-
-</section>
-<script>
-
-/* AIRPORT / RAILWAY DETECTION */
-
-function isAirport(v){
-return /airport/i.test(v)
-}
-
-function isRailway(v){
-return /(railway|station|tawi)/i.test(v)
-}
-
-const pickup=document.getElementById("pickup")
-const drop=document.getElementById("drop")
-
-const flight=document.getElementById("flight")
-const train=document.getElementById("train")
-
-const transportFields=document.getElementById("transportFields")
-
-function updateTransportFields(){
-
-if(isAirport(pickup.value)){
-
-transportFields.style.display="block"
-flight.parentElement.style.display="block"
-train.parentElement.style.display="none"
-
-}
-
-else if(isRailway(pickup.value)){
-
-transportFields.style.display="block"
-train.parentElement.style.display="block"
-flight.parentElement.style.display="none"
-
-}
-
-else{
-
-transportFields.style.display="none"
-
-}
-
-}
-
-pickup.addEventListener("input",updateTransportFields)
-
-/* DISTANCE MOCK */
-
-function calculateDistance(){
-
-if(!pickup.value || !drop.value) return
-
-const km=Math.floor(Math.random()*120)+20
-
-document.getElementById("distance").innerText=
-"Distance: "+km+" km"
-
-calculatePrice(km)
-
-}
-
-/* PRICE ENGINE */
-
-function calculatePrice(km){
-
-let rate=14
-
-const v=document.getElementById("vehicle").value
-
-if(v==="suv") rate=18
-if(v==="innova") rate=22
-if(v==="traveller") rate=28
-
-let price=km*rate
-
-document.querySelectorAll(".addons input:checked").forEach(a=>{
-
-if(a.value==="roof") price+=200
-if(a.value==="placard") price+=100
-
-})
-
-document.getElementById("price").innerText=
-"Estimate: ₹"+price
-
-}
-
-pickup.addEventListener("change",calculateDistance)
-drop.addEventListener("change",calculateDistance)
-
-/* SUBMIT */
-
-document.getElementById("submitBtn").addEventListener("click",function(){
-
-const msg=
-
-`Transport Request
-
-Pickup: ${pickup.value}
-Drop: ${drop.value}
-
-Date: ${document.getElementById("date").value}
-Time: ${document.getElementById("time").value}
-
-Vehicle: ${document.getElementById("vehicle").value}
-
-Flight: ${flight.value||"-"}
-Train: ${train.value||"-"}
-
-`
-
-const url="https://wa.me/919797459260?text="+encodeURIComponent(msg)
-
-window.open(url)
-
-})
-
-</script>
-
-</body>
-</html>
+  <!-- ========== BANNER ========== -->
+  <header class="banner" role="banner">
+    <div class="topbar">
+      <a class="brand" href="/">
+        <div class="brand-badge" aria-hidden="true">🚘</div>
+        <span>Fodel Transport</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a class="pill-btn reviews-btn" href="/reviews-travels.html">⭐ Reviews</a>
+        <a class="pill-btn home-btn" href="/index.html">← Home</a>
+      </nav>
+    </div>
+
+    <div class="banner-inner">
+      <div class="hero">
+        <h1>Taxi · Transfers · Local &amp; Multi‑City Tours</h1>
+        <p>Jammu, Katra (Vaishno Devi), Patnitop, Srinagar, Gulmarg, Pahalgam and beyond.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== BOOKING FORM ========== -->
+  <section class="section" aria-labelledby="transport-title">
+    <div class="card">
+      <h2 id="transport-title">Transport Requirement</h2>
+      <p class="muted">Tell us your route and vehicle needs. We’ll confirm availability and share the best price.</p>
+
+      <!-- Trip type -->
+      <div class="row inline" role="radiogroup" aria-label="Trip type">
+        <label class="chip"><input type="radio" name="tripType" value="oneway" checked> One‑way</label>
+        <label class="chip"><input type="radio" name="tripType" value="round"> Round‑trip</label>
+        <label class="chip"><input type="radio" name="tripType" value="local"> Local (hours/km)</label>
+        <label class="chip"><input type="radio" name="tripType" value="multi"> Multi‑city</label>
+      </div>
+
+      <!-- ONE-WAY / ROUND -->
+      <div id="block-std">
+        <div class="grid-2">
+          <div class="row">
+            <label for="pickup">Pickup location</label>
+            <select id="pickup" autocomplete="address-level2"></select>
+            <div class="inline" style="margin-top:8px">
+              <label class="chip"><input type="checkbox" id="pickup-other-toggle"> Other pickup</label>
+              <input id="pickup-other" type="text" placeholder="Type custom pickup location" style="display:none;" inputmode="text" autocomplete="off">
+            </div>
+          </div>
+          <div class="row">
+            <label for="drop">Drop location</label>
+            <select id="drop" autocomplete="address-level2"></select>
+            <div class="inline" style="margin-top:8px">
+              <label class="chip"><input type="checkbox" id="drop-other-toggle"> Other drop</label>
+              <input id="drop-other" type="text" placeholder="Type custom drop location" style="display:none;" inputmode="text" autocomplete="off">
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="row">
+            <label for="date">Pickup date</label>
+            <input id="date" type="date" required>
+          </div>
+          <div class="row">
+            <label for="time">Pickup time</label>
+            <input id="time" type="time" required>
+          </div>
+        </div>
+
+        <div id="block-return" class="grid-2" style="display:none;">
+          <div class="row">
+            <label for="ret-date">Return date</label>
+            <input id="ret-date" type="date">
+          </div>
+          <div class="row">
+            <label for="ret-time">Return time</label>
+            <input id="ret-time" type="time">
+          </div>
+        </div>
+
+        <!-- Flight/Train details (PICKUP-based) -->
+        <div id="block-ft" style="display:none;">
+          <div class="grid-2">
+            <div class="row" id="ft-flight-row" style="display:none;">
+              <label for="flight">Flight no.</label>
+              <input id="flight" type="text" placeholder="e.g., UK 123" inputmode="text" autocomplete="off">
+            </div>
+            <div class="row" id="ft-train-row" style="display:none;">
+              <label for="train">Train no./name</label>
+              <input id="train" type="text" placeholder="e.g., 12426 Jammu Rajdhani" inputmode="text" autocomplete="off">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOCAL PACKAGE -->
+      <div id="block-local" style="display:none;">
+        <div class="grid-2">
+          <div class="row">
+            <label for="local-package">Local package</label>
+            <select id="local-package">
+              <option value="">Select</option>
+              <option value="4-40">4 hours / 40 km</option>
+              <option value="8-80">8 hours / 80 km</option>
+              <option value="12-120">12 hours / 120 km</option>
+              <option value="custom">Custom (we’ll confirm)</option>
+            </select>
+          </div>
+          <div class="row">
+            <label for="local-city">City</label>
+            <select id="local-city"></select>
+          </div>
+        </div>
+        <div class="row">
+          <label for="local-date">Date</label>
+          <input id="local-date" type="date">
+        </div>
+      </div>
+
+      <!-- MULTI-CITY BUILDER -->
+      <div id="block-multi" style="display:none;">
+        <div id="legs"></div>
+        <div class="leg-actions">
+          <button type="button" class="btn" id="add-leg">+ Add Leg</button>
+          <button type="button" class="btn-ghost" id="clear-legs">Clear Legs</button>
+        </div>
+        <p class="note" style="margin-top:8px;">Example: Jammu → Katra → Patnitop → Srinagar → Jammu</p>
+      </div>
+
+      <!-- VEHICLE & ADD-ONS -->
+      <div class="grid-2" style="margin-top:8px;">
+        <div class="row">
+          <label for="vehicle">Vehicle type</label>
+          <select id="vehicle" required></select>
+        </div>
+        <div class="row">
+          <label for="cars">How many cars</label>
+          <input id="cars" type="number" min="1" value="1" inputmode="numeric">
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="row">
+          <label for="pax">No. of passengers (approx.)</label>
+          <input id="pax" type="number" min="1" placeholder="e.g., 4" inputmode="numeric">
+        </div>
+        <div class="row">
+          <label for="addons">Add‑ons</label>
+          <div class="inline" id="addons">
+            <label class="chip"><input type="checkbox" value="roofcarrier" class="addon"> Roof carrier</label>
+            <label class="chip"><input type="checkbox" value="placard" class="addon"> Placard (Meet &amp; Greet)</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- NOTES -->
+      <div class="row">
+        <label for="notes">Additional notes (optional)</label>
+        <textarea id="notes" placeholder="Any stops, hotel details, delays, accessibility needs, etc." inputmode="text" autocomplete="off"></textarea>
+      </div>
+
+      <!-- ESTIMATE -->
+      <div class="estimate" id="estimate" aria-live="polite">
+        <div>
+          <div><strong>Estimate:</strong> <span id="est-text">Add locations to see estimate</span></div>
+          <div class="note"><strong>Total distance:</strong> <span id="km-text">—</span></div>
+        </div>
+        <button type="button" class="btn" id="refresh-est" aria-label="Refresh estimate">Refresh</button>
+      </div>
+
+      <!-- CONTACT & SUBMIT -->
+      <div class="grid-2" style="margin-top:12px;">
+        <div class="row">
+          <label for="name">Your name</label>
+          <input id="name" type="text" placeholder="Full name" required autocomplete="name">
+        </div>
+        <div class="row">
+          <label for="mobile">Mobile</label>
+          <input id="mobile" type="tel" inputmode="tel" pattern="[0-9+\-\s]{8,15}" placeholder="+91 9XXXXXXXXX" required autocomplete="tel">
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="row">
+          <label for="email">Email (optional)</label>
+          <input id="email" type="email" placeholder="name@example.com" autocomplete="email">
+        </div>
+        <div class="row">
+          <label for="pref-contact">Prefer contact on</label>
+          <select id="pref-contact">
+            <option>WhatsApp</option>
+            <option>Call</option>
+            <option>Email</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn-ghost" type="button" id="open-admin" style="display:none;">⚙ Admin Console</button>
+        <button class="btn" id="submit-btn">Submit Transport Request</button>
+      </div>
+
+      <p class="note" style="margin-top:10px;">
+        Estimate is indicative for planning. Final fare may vary based on actual kms, waiting, tolls, parking, night charges, and chosen vehicle. We’ll confirm the best possible price before booking.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer" aria-label="Contact">
+    <a href="mailto:sales@fodeltravels.in">📧 sales@fodeltravels.in</a>
+    <a class="pill-btn home-btn" href="https://wa.me/919797459260?text=Hi%20Fodel%20Transport%2C%20I%20need%20a%20cab%20quote.">🟢 WhatsApp</a>
+    <div class="copy">© 2015–2026 Fodel India — Fodel Transport</div>
+  </footer>
+
+  <!-- ========== ADMIN CONSOLE (localStorage) ========== -->
+  <div class="overlay" id="admin-ov" role="dialog" aria-modal="true" aria-labelledby="admin-title">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title" id="admin-title">Fodel Transport — Admin Console</div>
+        <button class="modal-close" data-close aria-label="Close admin console">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="card" style="margin-bottom:12px;">
+          <h3 style="margin-bottom:6px;">Locations (Pickup/Drop)</h3>
+          <div class="inline">
+            <input id="loc-new" type="text" placeholder="Add location e.g., Jammu Airport">
+            <button class="btn" id="loc-add">Add</button>
+            <button class="btn-ghost" id="loc-reset">Reset to defaults</button>
+          </div>
+          <div id="loc-list" class="inline" style="margin-top:10px; flex-wrap:wrap;"></div>
+        </div>
+
+        <div class="card" style="margin-bottom:12px;">
+          <h3 style="margin-bottom:6px;">Route Prices (per vehicle type)</h3>
+          <div class="grid-2">
+            <div class="row">
+              <label>From</label>
+              <select id="price-from"></select>
+            </div>
+            <div class="row">
+              <label>To</label>
+              <select id="price-to"></select>
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="row">
+              <label>Sedan (Dzire/Amaze)</label>
+              <input id="p-sedan" type="number" min="0" placeholder="₹ e.g., 1900" inputmode="numeric">
+            </div>
+            <div class="row">
+              <label>SUV (Ertiga)</label>
+              <input id="p-suv" type="number" min="0" placeholder="₹" inputmode="numeric">
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="row">
+              <label>Innova / Crysta</label>
+              <input id="p-innova" type="number" min="0" placeholder="₹" inputmode="numeric">
+            </div>
+            <div class="row">
+              <label>Tempo Traveller 12 / 17</label>
+              <input id="p-tt" type="number" min="0" placeholder="₹" inputmode="numeric">
+            </div>
+          </div>
+          <div class="actions">
+            <button class="btn" id="price-save">Save Route Price</button>
+            <button class="btn-ghost" id="price-clear">Clear Route Price</button>
+          </div>
+          <p class="note">Leave empty (or 0) for “Ask for Quote”.</p>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-bottom:6px;">Backup / Restore</h3>
+          <div class="inline">
+            <button class="btn" id="export-json">Export JSON</button>
+            <input type="file" id="import-file" accept="application/json" aria-label="Import JSON file">
+            <button class="btn-ghost" id="import-json">Import</button>
+          </div>
+          <p class="note">Data is saved in your browser’s localStorage.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite">Saved</div>
+
+  <!-- Floating WhatsApp -->
+  <div class="fw-whatsapp" aria-label="WhatsApp quick contact">
+    <a class="fab" href="https://wa.me/919797459260?text=Hi%20Fodel%20Transport%2C%20I%20need%20a%20cab%20quote." aria-label="Chat on WhatsApp">💬</a>
+    <span class="tag">WhatsApp</span>
+  </div>
+
+  <script>
+    /* ===========================
+       CONFIG / STORE
+    ============================ */
+
+    const DEFAULTS = {
+      locations: [
+        "Jammu Airport", "Jammu Tawi Railway Station", "Jammu City",
+        "Katra", "Katra Helipad", "Katra Bus Stand",
+        "Udhampur", "Patnitop", "Nathatop",
+        "Srinagar Airport", "Srinagar City / Dal Gate", "Gulmarg", "Pahalgam", "Sonmarg"
+      ],
+      vehicles: [
+        { id:"sedan",  label:"Sedan (Dzire/Amaze) — 4 pax" },
+        { id:"suv",    label:"SUV (Ertiga) — 5/6 pax" },
+        { id:"innova", label:"Innova / Crysta — 6/7 pax" },
+        { id:"tt",     label:"Tempo Traveller 12 / 17" }
+      ],
+      priceTable: { sedan:{}, suv:{}, innova:{}, tt:{} },
+      distanceTable: {
+        // Optional examples:
+        // "Jammu Airport|Katra": 49,
+        // "Katra|Patnitop": 80
+      },
+      addons: { roofcarrier: 200, placard: 100 }
+    };
+
+    const STORE_KEY = "fodel_transport_v2";
+    let STORE = null;
+
+    function loadStore(){
+      try{
+        const s = localStorage.getItem(STORE_KEY);
+        STORE = s ? JSON.parse(s) : JSON.parse(JSON.stringify(DEFAULTS));
+      }catch(e){
+        STORE = JSON.parse(JSON.stringify(DEFAULTS));
+      }
+      if (!STORE.addons) STORE.addons = { roofcarrier: 200, placard: 100 };
+      if (!STORE.distanceTable) STORE.distanceTable = {};
+    }
+    function saveStore(){ localStorage.setItem(STORE_KEY, JSON.stringify(STORE)); }
+
+    const byId = (id) => document.getElementById(id);
+    const todayISO = () => new Date().toISOString().split('T')[0];
+    const showToast = (msg) => { const t = byId('toast'); if(!t) return; t.textContent = msg || t.textContent; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'), 2200); };
+    const priceKey = (a,b) => `${(a||"").trim()}|${(b||"").trim()}`;
+
+    loadStore();
+
+    /* ===========================
+       UI HOOKS
+    ============================ */
+    const tripRadios = [...document.querySelectorAll('input[name="tripType"]')];
+    const blockStd = byId('block-std');
+    const blockReturn = byId('block-return');
+    const blockFT = byId('block-ft');
+    const ftFlightRow = byId('ft-flight-row');
+    const ftTrainRow = byId('ft-train-row');
+    const blockLocal = byId('block-local');
+    const blockMulti = byId('block-multi');
+
+    const selPickup = byId('pickup');
+    const selDrop = byId('drop');
+    const selLocalCity = byId('local-city');
+    const pickupOtherToggle = byId('pickup-other-toggle');
+    const pickupOther = byId('pickup-other');
+    const dropOtherToggle = byId('drop-other-toggle');
+    const dropOther = byId('drop-other');
+
+    const date = byId('date');
+    const time = byId('time');
+    const rdate = byId('ret-date');
+    const rtime = byId('ret-time');
+
+    const vehicle = byId('vehicle');
+    const cars = byId('cars');
+    const pax = byId('pax');
+
+    const legsBox = byId('legs');
+    const addLegBtn = byId('add-leg');
+    const clearLegsBtn = byId('clear-legs');
+
+    const estText = byId('est-text');
+    const kmText = byId('km-text');
+    const refreshBtn = byId('refresh-est');
+
+    const submitBtn = byId('submit-btn');
+
+    const openAdmin = byId('open-admin');
+    const adminOv = byId('admin-ov');
+
+    const locNew = byId('loc-new'), locAdd = byId('loc-add'), locReset = byId('loc-reset'), locList = byId('loc-list');
+    const priceFrom = byId('price-from'), priceTo = byId('price-to');
+    const pSedan = byId('p-sedan'), pSuv = byId('p-suv'), pInnova = byId('p-innova'), pTT = byId('p-tt');
+    const priceSave = byId('price-save'), priceClear = byId('price-clear');
+    const exportJSON = byId('export-json'), importFile = byId('import-file'), importJSON = byId('import-json');
+
+    function fillLocations(sel){
+      if(!sel) return;
+      sel.innerHTML = '<option value="">Select</option>' + STORE.locations.map(l => `<option>${l}</option>`).join('');
+    }
+    function fillVehicles(){
+      vehicle.innerHTML = '<option value="">Select</option>' + STORE.vehicles.map(v => `<option value="${v.id}">${v.label}</option>`).join('');
+    }
+    function fillAllLocations(){
+      fillLocations(selPickup);
+      fillLocations(selDrop);
+      fillLocations(selLocalCity);
+      fillLocations(priceFrom);
+      fillLocations(priceTo);
+    }
+
+    fillVehicles();
+    fillAllLocations();
+
+    [date, rdate, byId('local-date')].forEach(el => el && (el.min = todayISO()));
+
+    const urlParams = new URLSearchParams(location.search);
+    if (urlParams.get('admin') === '1'){ openAdmin.style.display = 'inline-flex'; }
+
+    /* ===========================
+       HUB DETECTION (Pickup-based)
+    ============================ */
+    const containsAirport = (s) => /airport/i.test(s || "");
+    const containsRailway = (s) => /(railway|station|tawi)/i.test(s || "");
+
+    function pickupContext(){
+      const type = document.querySelector('input[name="tripType"]:checked')?.value || 'oneway';
+      let p = '';
+      if (type === 'oneway' || type === 'round'){
+        p = pickupOtherToggle?.checked ? (pickupOther?.value || '') : (selPickup?.value || '');
+      } else if (type === 'local'){
+        p = selLocalCity?.value || '';
+      } else if (type === 'multi'){
+        p = document.querySelector('#legs .leg .leg-from')?.value || '';
+      }
+      if (!p) return null;
+      if (containsAirport(p)) return 'airport';
+      if (containsRailway(p)) return 'railway';
+      return null;
+    }
+
+    function updateFTVisibility(){
+      const ctx = pickupContext(); // 'airport'|'railway'|null
+      const show = !!ctx;
+      blockFT.style.display = show ? '' : 'none';
+      if (show){
+        ftFlightRow.style.display = (ctx === 'airport') ? '' : 'none';
+        ftTrainRow.style.display  = (ctx === 'railway') ? '' : 'none';
+      } else {
+        ftFlightRow.style.display = 'none';
+        ftTrainRow.style.display  = 'none';
+      }
+    }
+
+    function updateTripBlocks(){
+      const type = tripRadios.find(r => r.checked)?.value || 'oneway';
+      blockStd.style.display   = (type === 'oneway' || type === 'round') ? '' : 'none';
+      blockReturn.style.display= (type === 'round') ? '' : 'none';
+      blockLocal.style.display = (type === 'local') ? '' : 'none';
+      blockMulti.style.display = (type === 'multi') ? '' : 'none';
+      refreshEstimate();
+      updateFTVisibility();
+    }
+    tripRadios.forEach(r => r.addEventListener('change', updateTripBlocks));
+    [selPickup, selDrop, pickupOther, dropOther, pickupOtherToggle, dropOtherToggle, selLocalCity]
+      .forEach(el => el && el.addEventListener('input', () => { updateFTVisibility(); refreshEstimate(); }));
+
+    /* ===========================
+       MULTI-CITY BUILDER
+    ============================ */
+    function createLeg(fromVal="", toVal=""){
+      const div = document.createElement('div');
+      div.className = 'leg';
+      div.innerHTML = `
+        <div class="inline">
+          <div><label>From</label><select class="leg-from"></select></div>
+          <div><label>To</label><select class="leg-to"></select></div>
+        </div>
+        <div class="inline" style="margin-top:8px;">
+          <div><label>Date</label><input type="date" class="leg-date" min="${todayISO()}"></div>
+          <div><label>Pickup time</label><input type="time" class="leg-time"></div>
+        </div>
+        <div class="leg-actions">
+          <button type="button" class="btn-ghost btn-leg-up">↑</button>
+          <button type="button" class="btn-ghost btn-leg-down">↓</button>
+          <button type="button" class="btn-ghost btn-leg-del">Delete</button>
+        </div>
+      `;
+      legsBox.appendChild(div);
+      const lf = div.querySelector('.leg-from');
+      const lt = div.querySelector('.leg-to');
+      fillLocations(lf); fillLocations(lt);
+      if (fromVal) lf.value = fromVal;
+      if (toVal) lt.value = toVal;
+
+      div.querySelector('.btn-leg-up').addEventListener('click', () => {
+        if (div.previousElementSibling) legsBox.insertBefore(div, div.previousElementSibling);
+        refreshEstimate(); updateFTVisibility();
+      });
+      div.querySelector('.btn-leg-down').addEventListener('click', () => {
+        if (div.nextElementSibling) legsBox.insertBefore(div.nextElementSibling, div);
+        refreshEstimate(); updateFTVisibility();
+      });
+      div.querySelector('.btn-leg-del').addEventListener('click', () => {
+        div.remove(); refreshEstimate(); updateFTVisibility();
+      });
+      [lf, lt, ...div.querySelectorAll('.leg-date, .leg-time')]
+        .forEach(el => el.addEventListener('input', () => { refreshEstimate(); updateFTVisibility(); }));
+
+      return div;
+    }
+
+    addLegBtn.addEventListener('click', () => {
+      const last = legsBox.lastElementChild;
+      let fromPref = "", toPref = "";
+      if (last) {
+        const lastTo = last.querySelector('.leg-to')?.value || "";
+        fromPref = lastTo;
+      } else {
+        fromPref = selPickup.value || "";
+        toPref = selDrop.value || "";
+      }
+      createLeg(fromPref, toPref);
+      refreshEstimate(); updateFTVisibility();
+    });
+
+    clearLegsBtn.addEventListener('click', () => { legsBox.innerHTML = ""; refreshEstimate(); updateFTVisibility(); });
+
+    /* ===========================
+       ESTIMATE ENGINE
+    ============================ */
+    function getRoutePrice(vId, from, to) {
+      const table = STORE.priceTable?.[vId] || {};
+      const p = Number(table[priceKey(from, to)]) || 0;
+      return p > 0 ? p : null;
+    }
+    function getRouteDistance(from, to){
+      const km = Number(STORE.distanceTable?.[priceKey(from, to)]);
+      return km > 0 ? km : null;
+    }
+    function getLegsForEstimate(){
+      const type = document.querySelector('input[name="tripType"]:checked')?.value || "oneway";
+      if (type === "oneway" || type === "round") {
+        const p = pickupOtherToggle.checked ? pickupOther.value : selPickup.value;
+        const d = dropOtherToggle.checked ? dropOther.value : selDrop.value;
+        if (!p || !d) return null;
+        const arr = [[p, d]];
+        if (type === "round") arr.push([d, p]);
+        return arr;
+      } else if (type === "multi") {
+        const legEls = [...document.querySelectorAll('#legs .leg')];
+        if (!legEls.length) return null;
+        return legEls.map(el => [
+          el.querySelector(".leg-from").value,
+          el.querySelector(".leg-to").value
+        ]);
+      }
+      return []; // local
+    }
+
+    function refreshEstimate() {
+      const type = document.querySelector('input[name="tripType"]:checked')?.value || "oneway";
+      const vId  = vehicle.value;
+      const nCars= Math.max(1, parseInt(cars.value || "1", 10));
+
+      if (type === "local") {
+        estText.textContent = "Local package — ask for quote";
+        kmText.textContent = "—";
+        return;
+      }
+
+      const legs = getLegsForEstimate();
+      if (!legs || !legs.length) { estText.textContent="Add locations to see estimate"; kmText.textContent="—"; return; }
+
+      // Distance (shows even if vehicle not chosen)
+      let kmSum = 0, kmKnown = 0;
+      legs.forEach(([a,b]) => { const km = getRouteDistance(a,b); if (km!=null){ kmSum+=km; kmKnown++; } });
+      kmText.textContent = (kmKnown>0) ? `${kmSum.toLocaleString("en-IN")} km${kmKnown<legs.length?` (${kmKnown}/${legs.length} legs)`:''}` : "—";
+
+      // Pricing only when vehicle chosen
+      if (!vId){ estText.textContent = "Select vehicle"; return; }
+
+      let sum = 0, missing = 0;
+      legs.forEach(([a,b]) => { const p = getRoutePrice(vId,a,b); if (p!=null) sum+=p; else missing++; });
+
+      // Add‑ons (once per booking; × cars)
+      const roofChecked = document.querySelector('.addon[value="roofcarrier"]')?.checked;
+      const placChecked = document.querySelector('.addon[value="placard"]')?.checked;
+      const addonOnce = (roofChecked ? (STORE.addons?.roofcarrier||0) : 0)
+                      + (placChecked ? (STORE.addons?.placard||0)    : 0);
+
+      if (missing){
+        estText.textContent = `${legs.length - missing}/${legs.length} legs priced — remaining ask for quote`;
+      } else {
+        const total = (sum + addonOnce) * nCars;
+        estText.textContent = `₹ ${total.toLocaleString("en-IN")} estimate`;
+      }
+    }
+
+    refreshBtn.addEventListener("click", refreshEstimate);
+    [selPickup, selDrop, vehicle, cars, date, time, rdate, rtime, pickupOther, dropOther, pickupOtherToggle, dropOtherToggle, selLocalCity, ...document.querySelectorAll('.addon')]
+      .forEach(el => el && el.addEventListener("input", refreshEstimate));
+
+    /* ===========================
+       ADMIN CONSOLE (locations, prices, backup)
+    ============================ */
+    openAdmin.addEventListener("click", () => adminOv.classList.add("active"));
+    adminOv.addEventListener("click", e => { if (e.target === adminOv || e.target.hasAttribute("data-close")) adminOv.classList.remove("active"); });
+
+    function renderLocs() {
+      locList.innerHTML = "";
+      STORE.locations.forEach((l, idx) => {
+        const btn = document.createElement("button");
+        btn.className = "chip"; btn.type = "button"; btn.textContent = l + " ✕";
+        btn.onclick = () => { STORE.locations.splice(idx,1); saveStore(); fillAllLocations(); renderLocs(); showToast("Location removed"); };
+        locList.appendChild(btn);
+      });
+    }
+    function fillPriceSelectors(){ fillLocations(priceFrom); fillLocations(priceTo); }
+    renderLocs(); fillPriceSelectors();
+
+    locAdd.addEventListener("click", () => {
+      const v = locNew.value.trim(); if (!v) return;
+      if (!STORE.locations.includes(v)) STORE.locations.push(v);
+      locNew.value = ""; saveStore(); fillAllLocations(); renderLocs(); showToast("Location added");
+    });
+
+    locReset.addEventListener("click", () => {
+      STORE.locations = [...DEFAULTS.locations]; saveStore(); fillAllLocations(); renderLocs(); showToast("Locations reset");
+    });
+
+    priceSave.addEventListener("click", () => {
+      const from = priceFrom.value, to = priceTo.value;
+      const sedan = parseInt(pSedan.value||"0",10)||0, suv = parseInt(pSuv.value||"0",10)||0, innova=parseInt(pInnova.value||"0",10)||0, tt=parseInt(pTT.value||"0",10)||0;
+      if(!from||!to){ alert("Select From and To locations"); return; }
+      const k = priceKey(from,to);
+      STORE.priceTable.sedan[k]=sedan; STORE.priceTable.suv[k]=suv; STORE.priceTable.innova[k]=innova; STORE.priceTable.tt[k]=tt;
+      saveStore(); showToast("Route price saved"); refreshEstimate();
+    });
+
+    priceClear.addEventListener("click", () => {
+      const from = priceFrom.value, to = priceTo.value; if(!from||!to){ alert("Select From and To locations"); return; }
+      const k = priceKey(from,to); delete STORE.priceTable.sedan[k]; delete STORE.priceTable.suv[k]; delete STORE.priceTable.innova[k]; delete STORE.priceTable.tt[k];
+      saveStore(); showToast("Route price cleared"); refreshEstimate();
+    });
+
+    exportJSON.addEventListener("click", () => {
+      const data = JSON.stringify(STORE, null, 2);
+      const blob = new Blob([data], {type:"application/json"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url; a.download = `fodel-transport-${Date.now()}.json`;
+      document.body.appendChild(a); a.click();
+      a.remove(); URL.revokeObjectURL(url);
+      showToast("Exported");
+    });
+
+    importJSON.addEventListener("click", async () => {
+      const file = importFile.files?.[0];
+      if(!file){ alert("Choose a JSON file to import."); return; }
+      try{
+        const text = await file.text();
+        const obj = JSON.parse(text);
+        if(!obj || !obj.locations || !obj.vehicles || !obj.priceTable){ alert("Invalid JSON format."); return; }
+        STORE = obj;
+        if (!STORE.addons) STORE.addons = { roofcarrier: 200, placard: 100 };
+        if (!STORE.distanceTable) STORE.distanceTable = {};
+        saveStore(); fillVehicles(); fillAllLocations(); renderLocs(); showToast("Imported"); refreshEstimate(); updateFTVisibility();
+      }catch(e){ alert("Failed to import JSON."); }
+    });
+
+    /* ===========================
+       SUBMIT (respects preference)
+    ============================ */
+    submitBtn.addEventListener("click", () => {
+      const name = byId("name").value.trim();
+      const mobile = byId("mobile").value.trim();
+      const email = byId("email").value.trim();
+      const pref = byId("pref-contact").value; // WhatsApp | Call | Email
+      if (!name || !mobile){ alert("Please fill name and mobile"); return; }
+
+      const type = document.querySelector('input[name="tripType"]:checked')?.value || "oneway";
+      const lines = [];
+      lines.push(`Name: ${name}`);
+      lines.push(`Mobile: ${mobile}`);
+
+      if (type === "oneway" || type === "round"){
+        const p = pickupOtherToggle.checked ? pickupOther.value : selPickup.value;
+        const d = dropOtherToggle.checked ? dropOther.value   : selDrop.value;
+        lines.push(`Pickup: ${p || "-"}`);
+        lines.push(`Drop: ${d || "-"}`);
+        lines.push(`Date: ${date.value || "-"} ${time.value ? ("@" + time.value) : ""}`);
+      } else if (type === "local"){
+        lines.push(`Local city: ${selLocalCity.value || "-"}`);
+        lines.push(`Package: ${byId('local-package').value || "-"}`);
+        lines.push(`Date: ${byId('local-date').value || "-"}`);
+      } else if (type === "multi"){
+        const legEls = [...document.querySelectorAll('#legs .leg')];
+        if (!legEls.length){ alert("Please add trip legs"); return; }
+        lines.push(`Trip legs (${legEls.length}):`);
+        legEls.forEach((el,i) => {
+          const f = el.querySelector('.leg-from')?.value || "-";
+          const t = el.querySelector('.leg-to')?.value   || "-";
+          const d = el.querySelector('.leg-date')?.value || "-";
+          const tm= el.querySelector('.leg-time')?.value || "";
+          lines.push(`${i+1}) ${f} → ${t}  ${d}${tm?(" @"+tm):""}`);
+        });
+      }
+
+      lines.push(`Vehicle: ${vehicle.value || "-"}`);
+      lines.push(`Passengers: ${pax.value || "-"}`);
+
+      const ctx = pickupContext();
+      if (ctx === 'airport') lines.push(`Flight: ${byId('flight')?.value || "-"}`);
+      if (ctx === 'railway') lines.push(`Train: ${byId('train')?.value || "-"}`);
+
+      const addonLabel = { roofcarrier: 'Roof carrier', placard: 'Placard (Meet & Greet)' };
+      const addonsPicked = [...document.querySelectorAll('.addon')].filter(a=>a.checked).map(a=> addonLabel[a.value] || a.value);
+      lines.push(`Add-ons: ${addonsPicked.join(", ") || "-"}`);
+
+      lines.push(`Notes: ${byId("notes").value || "-"}`);
+      lines.push(`Preferred contact: ${pref}`);
+
+      const msg = "Transport Request\n" + lines.join("\n");
+
+      if (pref === "Email") {
+        const to = "sales@fodeltravels.in";
+        const subject = `Transport Request — ${name}`;
+        const ccParam = email ? `&cc=${encodeURIComponent(email)}` : "";
+        const href = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}${ccParam}&body=${encodeURIComponent(msg)}`;
+        window.location.href = href;
+        return;
+      }
+      // WhatsApp or Call -> WhatsApp
+      window.open("https://wa.me/919797459260?text=" + encodeURIComponent(msg), "_blank", "noopener,noreferrer");
+    });
+
+    // Init
+    refreshEstimate();
+    updateTripBlocks();
+    updateFTVisibility();
+  </script>
+
+  <noscript>
+    <div style="margin:16px auto; width:min(900px,92%); padding:12px; background:#fff3cd; border:1px solid #ffeeba; border-radius:10px; color:#
