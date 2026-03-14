@@ -478,10 +478,12 @@
               <input type="checkbox" value="roofcarrier" class="addon"> Roof carrier
               <small>(+₹<span id="roof-amt">0</span>)</small>
             </label>
-            <label class="chip" id="chip-placard" style="display:none;">
-              <input type="checkbox" value="placard" class="addon"> Placard (Meet &amp; Greet)
-              <small>(+₹<span id="placard-amt">0</span>)</small>
-            </label>
+           
+<label class="chip" id="chip-placard">
+  <input type="checkbox" value="placard" class="addon"> Placard (Meet &amp; Greet)
+  <small>(+₹<span id="placard-amt">0</span>)</small>
+</label>
+
           </div>
           <small class="note">Add‑ons are charged once per booking and multiplied by number of cars.</small>
         </div>
@@ -914,13 +916,14 @@ Jammu Airport,Katra,49</pre>
         ftInput.value = '';
       }
 
-      // Placard chip: appears if ANY location is a hub
-      const anyHub = getActiveLocations().some(containsTransportHub);
-      chipPlacard.style.display = anyHub ? '' : 'none';
-      if (!anyHub){
-        const chk = chipPlacard.querySelector('input[type="checkbox"]');
-        if (chk) chk.checked = false;
-      }
+     
+/ 2) Placard chip: appears if ANY selected location is a hub
+const anyHub = getActiveLocations().some(containsTransportHub);
+chipPlacard.style.display = anyHub ? '' : 'none';
+if (!anyHub){
+  const chk = chipPlacard.querySelector('input[type="checkbox"]');
+  if (chk) chk.checked = false;
+}
     }
 
     [selPickup, selDrop, pickupOther, dropOther, pickupOtherToggle, dropOtherToggle].forEach(el => el && el.addEventListener('input', () => { updateFTVisibility(); refreshEstimate(); }));
