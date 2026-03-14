@@ -11,6 +11,7 @@
   <meta name="description" content="Book cabs, airport transfers, local sightseeing and multi-city tours with Fodel Transport. Jammu, Katra Vaishno Devi, Patnitop, Srinagar, Gulmarg, Pahalgam and more." />
   <meta name="robots" content="index,follow" />
   <meta name="theme-color" content="#e11924" />
+
   <link rel="canonical" href="https://www.fodel.in/transport.html" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/icon.svg" type="image/svg+xml" />
@@ -196,7 +197,6 @@
       border-radius:var(--radius);
       padding:18px; box-shadow:var(--shadow);
       transition:transform .2s ease, box-shadow .25s ease;
-      will-change:transform;
     }
     .card:hover{ transform:translateY(-2px); box-shadow:var(--shadow-lg); }
     .card h2{ font-size:20px; margin-bottom:6px; }
@@ -217,7 +217,6 @@
     .chip{
       display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px;
       border:1px solid var(--border); background:#fff; font-size:13px; transition: box-shadow .2s, transform .2s, border-color .2s;
-      will-change:transform;
     }
     .chip:hover{ transform:translateY(-1px); border-color: color-mix(in srgb, var(--accent) 30%, #ccc); box-shadow:0 6px 14px rgba(0,0,0,.08); }
 
@@ -229,12 +228,10 @@
       box-shadow:var(--shadow-soft);
       transition: transform .18s ease, box-shadow .18s ease, background .18s ease, filter .18s ease;
       cursor:pointer;
-      will-change:transform;
     }
     .btn:hover{ transform:translateY(-2px); background:var(--accent-hover); box-shadow:0 12px 26px rgba(0,0,0,0.18); }
-    .btn:active{ transform:translateY(0); filter:saturate(1.05); }
     .btn-ghost{
-      padding:10px 14px; border-radius:10px; font-weight:600; background:#f1f5f9; color:#0f172a; border:1px solid var(--border); cursor:pointer;
+      padding:10px 14px; border-radius:10px; font-weight:600; background:#f1f5f9; color:#0f172a; border:1px solid var(--border);
       transition: background .18s, transform .18s, border-color .18s;
     }
     .btn-ghost:hover{ background:#eef2f7; transform:translateY(-1px); border-color: color-mix(in srgb, var(--accent) 25%, #cbd5e1); }
@@ -293,7 +290,6 @@
       width:56px; height:56px; border-radius:50%; display:grid; place-items:center;
       background:#25D366; color:#fff; font-size:22px; box-shadow:0 10px 22px rgba(0,0,0,.22);
       transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
-      will-change:transform;
     }
     .fw-whatsapp .fab:hover{ transform:translateY(-2px) scale(1.02); box-shadow:0 14px 28px rgba(0,0,0,.26); filter:saturate(1.08); }
     .fw-whatsapp .tag{
@@ -504,7 +500,7 @@
         </div>
         <div class="row">
           <label for="mobile">Mobile</label>
-          <input id="mobile" type="tel" inputmode="tel" pattern="[0-9+\\-\\s]{8,15}" placeholder="+91 9XXXXXXXXX" required autocomplete="tel">
+          <input id="mobile" type="tel" inputmode="tel" pattern="[0-9+\-\s]{8,15}" placeholder="+91 9XXXXXXXXX" required autocomplete="tel">
         </div>
       </div>
       <div class="grid-2">
@@ -536,7 +532,7 @@
   <!-- ========== FOOTER ========== -->
   <footer class="footer" aria-label="Contact">
     <a href="mailto:sales@fodeltravels.in" class="chip">📧 sales@fodeltravels.in</a>
-    <a class="chip" target="_blank" rel="noopener noreferrer" href="https://wa.me/919797459260?text=Hi%20Fodel%20Transport%2C%20I%20need%20a%20cab%20quote.">🟢 WhatsApp</a>
+    <a target="_blank" rel="noopener noreferrer" class="chip" href="https://wa.me/919797459260?text=Hi%20Fodel%20Transport%2C%20I%20need%20a%20cab%20quote.">🟢 WhatsApp</a>
     <div class="copy">© 2015–2026 Fodel India — Fodel Transport</div>
   </footer>
 
@@ -548,6 +544,7 @@
         <button class="modal-close" data-close aria-label="Close admin console">✕</button>
       </div>
       <div class="modal-body">
+        <!-- Locations -->
         <div class="card" style="margin-bottom:12px;">
           <h3 style="margin-bottom:6px;">Locations (Pickup/Drop)</h3>
           <div class="inline">
@@ -558,6 +555,7 @@
           <div id="loc-list" class="inline" style="margin-top:10px; flex-wrap:wrap;"></div>
         </div>
 
+        <!-- Route Prices -->
         <div class="card" style="margin-bottom:12px;">
           <h3 style="margin-bottom:6px;">Route Prices (per vehicle type)</h3>
           <div class="grid-2">
@@ -699,7 +697,6 @@
 
     const FORMSPREE_ENDPOINT = ""; // Optional: set if you want background email submission later
 
-    // Default seed data
     const DEFAULTS = {
       locations: [
         "Jammu Airport", "Jammu Tawi Railway Station", "Jammu City",
@@ -713,19 +710,12 @@
         { id:"innova",label:"Innova / Crysta — 6/7 pax" },
         { id:"tt",    label:"Tempo Traveller 12 / 17" }
       ],
-      priceTable: {
-        sedan:{}, suv:{}, innova:{}, tt:{}
-      },
-      // NEW: store distance per route in km (From|To => km)
-      distanceTable: {},
-      // NEW: Add-on prices (per booking; multiplied by number of cars)
-      addons: {
-        roofcarrier: 200,
-        placard: 100
-      }
+      priceTable: { sedan:{}, suv:{}, innova:{}, tt:{} },
+      distanceTable: {}, // "From|To" => km
+      addons: { roofcarrier: 200, placard: 100 }
     };
 
-    const STORE_KEY = "fodel_transport_v2"; // bumped key to avoid clashing older schema
+    const STORE_KEY = "fodel_transport_v2";
     let STORE = null;
 
     function loadStore(){
@@ -735,19 +725,14 @@
       }catch(e){
         STORE = JSON.parse(JSON.stringify(DEFAULTS));
       }
-      // Backfill guards
       if (!STORE.addons) STORE.addons = { roofcarrier: 200, placard: 100 };
       if (!STORE.distanceTable) STORE.distanceTable = {};
     }
     function saveStore(){ localStorage.setItem(STORE_KEY, JSON.stringify(STORE)); }
 
-    // Helpers
     const byId = (id) => document.getElementById(id);
     const todayISO = () => new Date().toISOString().split('T')[0];
-    const showToast = (msg) => {
-      const t = byId('toast'); if(!t) return;
-      t.textContent = msg || t.textContent; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'), 2200);
-    };
+    const showToast = (msg) => { const t = byId('toast'); if(!t) return; t.textContent = msg || t.textContent; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'), 2200); };
     const priceKey = (a,b) => `${(a||"").trim()}|${(b||"").trim()}`;
 
     loadStore();
@@ -780,7 +765,6 @@
     const vehicle = byId('vehicle');
     const cars = byId('cars');
     const pax = byId('pax');
-    const addons = [...document.querySelectorAll('.addon')];
 
     const meetSel = byId('meet');
     const placardNote = byId('placard-note');
@@ -831,7 +815,6 @@
     const distCsvImport = byId('dist-csv-import');
     const distCsvExport = byId('dist-csv-export');
 
-    // Populate selects
     function fillLocations(sel){
       if(!sel) return;
       sel.innerHTML = '<option value="">Select</option>' + STORE.locations.map(l => `<option>${l}</option>`).join('');
@@ -853,14 +836,11 @@
     fillVehicles();
     fillAllLocations();
 
-    // Date defaults
     [date, rdate, byId('local-date')].forEach(el => el && (el.min = todayISO()));
 
-    // Admin mode toggle via ?admin=1
     const urlParams = new URLSearchParams(location.search);
     if (urlParams.get('admin') === '1'){ openAdmin.style.display = 'inline-flex'; }
 
-    // Toggle trip type blocks
     function updateTripBlocks(){
       const type = tripRadios.find(r => r.checked)?.value || 'oneway';
       blockStd.style.display   = (type === 'oneway' || type === 'round') ? '' : 'none';
@@ -873,7 +853,6 @@
     tripRadios.forEach(r => r.addEventListener('change', updateTripBlocks));
     updateTripBlocks();
 
-    // Other pickup/drop toggles
     function toggleOther(tgl, input, select){
       if(!tgl || !input || !select) return;
       input.style.display = tgl.checked ? '' : 'none';
@@ -884,13 +863,11 @@
     pickupOtherToggle.addEventListener('change', () => toggleOther(pickupOtherToggle, pickupOther, selPickup));
     dropOtherToggle.addEventListener('change', () => toggleOther(dropOtherToggle, dropOther, selDrop));
 
-    // Airport/Railway detection -> show flight/train fields
-    function isAirportOrRail(val){ return /airport/i.test(val || ''); }
-    function isRailway(val){ return /(railway|station|tawi)/i.test(val || ''); }
+    function isAirportOrRail(val){ return /airport/i.test(val || '') || /(railway|station|tawi)/i.test(val || ''); }
     function updateFTVisibility(){
       const p = pickupOtherToggle.checked ? pickupOther.value : selPickup.value;
       const d = dropOtherToggle.checked ? dropOther.value : selDrop.value;
-      const showFT = isAirportOrRail(p) || isAirportOrRail(d) || isRailway(p) || isRailway(d);
+      const showFT = isAirportOrRail(p) || isAirportOrRail(d);
       blockFT.style.display = showFT ? '' : 'none';
       updatePlacardNote();
     }
@@ -903,7 +880,6 @@
     [selPickup, selDrop, pickupOther, dropOther, pickupOtherToggle, dropOtherToggle].forEach(el => el && el.addEventListener('input', updateFTVisibility));
     updateFTVisibility();
 
-    // Multi-city legs
     function createLeg(fromVal="", toVal=""){
       const div = document.createElement('div');
       div.className = 'leg';
@@ -980,75 +956,79 @@
       const p = table[priceKey(from, to)];
       return (p && p > 0) ? p : null;
     }
-
     function getRouteDistance(from, to){
       const km = STORE.distanceTable?.[priceKey(from, to)];
       return (km && Number(km) > 0) ? Number(km) : null;
     }
 
-    function refreshEstimate() {
-      const vId = vehicle.value;
-      const nCars = Math.max(1, parseInt(cars.value || "1", 10));
+    function getCurrentLegs(){
       const type = tripRadios.find(r => r.checked)?.value || "oneway";
-
-      if (!vId) {
-        estText.textContent = "Select vehicle";
-        kmText.textContent = "—";
-        return;
-      }
-
-      let legs = [];
-
       if (type === "oneway" || type === "round") {
         const p = pickupOtherToggle.checked ? pickupOther.value : selPickup.value;
         const d = dropOtherToggle.checked ? dropOther.value : selDrop.value;
-
-        if (!p || !d) {
-          estText.textContent = "Select pickup & drop";
-          kmText.textContent = "—";
-          return;
-        }
-
-        legs.push([p, d]);
-        if (type === "round") {
-          legs.push([d, p]);
-        }
-
+        if (!p || !d) return null;
+        const legs = [[p, d]];
+        if (type === "round") legs.push([d, p]);
+        return legs;
       } else if (type === "multi") {
         const legEls = [...legsBox.querySelectorAll(".leg")];
-        if (!legEls.length) {
-          estText.textContent = "Add trip legs";
-          kmText.textContent = "—";
-          return;
-        }
-        legs = legEls.map(el => [
+        if (!legEls.length) return null;
+        return legEls.map(el => [
           el.querySelector(".leg-from").value,
           el.querySelector(".leg-to").value
         ]);
       } else {
+        return []; // local; we don't compute estimate or km
+      }
+    }
+
+    function refreshEstimate() {
+      const vId = vehicle.value;
+      const nCars = Math.max(1, parseInt(cars.value || "1", 10));
+      const legs = getCurrentLegs();
+
+      // Handle Local package separately
+      const type = tripRadios.find(r => r.checked)?.value || "oneway";
+      if (type === "local") {
         estText.textContent = "Local package — ask for quote";
         kmText.textContent = "—";
         return;
       }
 
-      // Prices
-      let sum = 0;
-      let missing = 0;
+      // No legs yet
+      if (!legs || legs.length === 0) {
+        estText.textContent = "Add locations to see estimate";
+        // But still attempt to show km? No legs means undefined.
+        kmText.textContent = "—";
+        return;
+      }
 
-      // Distances
+      // ---- Distances (always compute & show even if vehicle not selected)
       let kmSum = 0;
       let kmKnown = 0;
+      legs.forEach(([a,b]) => {
+        const km = getRouteDistance(a,b);
+        if (km != null) { kmSum += km; kmKnown++; }
+      });
+      if (kmKnown > 0) {
+        const txt = `${kmSum.toLocaleString("en-IN")} km${kmKnown < legs.length ? ` (${kmKnown}/${legs.length} legs)` : ""}`;
+        kmText.textContent = txt;
+      } else {
+        kmText.textContent = "—";
+      }
 
+      // ---- Prices (only if vehicle selected)
+      if (!vId) {
+        estText.textContent = "Select vehicle";
+        return;
+      }
+
+      let sum = 0;
+      let missing = 0;
       legs.forEach(([a, b]) => {
         const price = getRoutePrice(vId, a, b);
         if (price) sum += price;
         else missing++;
-
-        const km = getRouteDistance(a, b);
-        if (km != null) {
-          kmSum += km;
-          kmKnown++;
-        }
       });
 
       // Add‑ons (once per booking; multiplied by number of cars)
@@ -1065,87 +1045,58 @@
         const total = (sum + addonOnce) * nCars;
         estText.textContent = `₹ ${total.toLocaleString("en-IN")} estimate`;
       }
-
-      if (kmKnown > 0) {
-        const txt = `${kmSum.toLocaleString("en-IN")} km${kmKnown < legs.length ? ` (${kmKnown}/${legs.length} legs)` : ""}`;
-        kmText.textContent = txt;
-      } else {
-        kmText.textContent = "—";
-      }
     }
 
-    refreshBtn.addEventListener("click", refreshEstimate);
-
-    [
+    // Refresh on inputs
+    const allInputs = [
       selPickup, selDrop, vehicle, cars,
       date, time, rdate, rtime,
       ...document.querySelectorAll('.addon'), meetSel
-    ].forEach(el => el && el.addEventListener("input", refreshEstimate));
+    ];
+    allInputs.forEach(el => el && el.addEventListener("input", refreshEstimate));
+    const tripRadiosEls = document.querySelectorAll('input[name="tripType"]');
+    tripRadiosEls.forEach(el => el.addEventListener("change", refreshEstimate));
+    refreshBtn.addEventListener("click", refreshEstimate);
 
     /* ===========================
        ADMIN CONSOLE
     ============================ */
 
-    openAdmin.addEventListener("click", () => {
-      adminOv.classList.add("active");
-    });
-
-    adminOv.addEventListener("click", e => {
-      if (e.target === adminOv || e.target.hasAttribute("data-close")) {
-        adminOv.classList.remove("active");
-      }
-    });
+    openAdmin.addEventListener("click", () => { adminOv.classList.add("active"); });
+    adminOv.addEventListener("click", e => { if (e.target === adminOv || e.target.hasAttribute("data-close")) adminOv.classList.remove("active"); });
 
     function renderLocs() {
       locList.innerHTML = "";
       STORE.locations.forEach((l, idx) => {
         const btn = document.createElement("button");
-        btn.className = "chip";
-        btn.type = "button";
+        btn.className = "chip"; btn.type = "button";
         btn.textContent = l + " ✕";
         btn.onclick = () => {
           STORE.locations.splice(idx, 1);
-          saveStore();
-          fillAllLocations();
-          renderLocs();
-          showToast("Location removed");
+          saveStore(); fillAllLocations(); renderLocs(); showToast("Location removed");
         };
         locList.appendChild(btn);
       });
     }
     renderLocs();
 
+    function fillVehicles(){ if(!vehicle) return; vehicle.innerHTML = '<option value="">Select</option>' + STORE.vehicles.map(v => `<option value="${v.id}">${v.label}</option>`).join(''); }
+    fillVehicles(); // re-fill in case of import
+
     locAdd.addEventListener("click", () => {
-      const v = locNew.value.trim();
-      if (!v) return;
-      if (!STORE.locations.includes(v)) {
-        STORE.locations.push(v);
-      }
-      locNew.value = "";
-      saveStore();
-      fillAllLocations();
-      renderLocs();
-      showToast("Location added");
+      const v = locNew.value.trim(); if (!v) return;
+      if (!STORE.locations.includes(v)) STORE.locations.push(v);
+      locNew.value = ""; saveStore(); fillAllLocations(); renderLocs(); showToast("Location added");
     });
 
     locReset.addEventListener("click", () => {
       STORE.locations = [...DEFAULTS.locations];
-      saveStore();
-      fillAllLocations();
-      renderLocs();
-      showToast("Locations reset");
+      saveStore(); fillAllLocations(); renderLocs(); showToast("Locations reset");
     });
 
-    // Price selectors
-    function fillPriceSelectors(){
-      fillLocations(priceFrom);
-      fillLocations(priceTo);
-    }
+    function fillPriceSelectors(){ fillLocations(priceFrom); fillLocations(priceTo); }
     fillPriceSelectors();
 
-    // Distance selectors (already filled by fillAllLocations)
-
-    // Save prices
     priceSave.addEventListener("click", () => {
       const from = priceFrom.value; const to = priceTo.value;
       const sedan = parseInt(pSedan.value || "0", 10) || 0;
@@ -1153,19 +1104,14 @@
       const innova = parseInt(pInnova.value || "0", 10) || 0;
       const tt = parseInt(pTT.value || "0", 10) || 0;
       if(!from || !to) { alert("Select From and To locations"); return; }
-
       const key = priceKey(from, to);
       STORE.priceTable.sedan[key] = sedan;
       STORE.priceTable.suv[key] = suv;
       STORE.priceTable.innova[key] = innova;
       STORE.priceTable.tt[key] = tt;
-
-      saveStore();
-      showToast("Route price saved");
-      refreshEstimate();
+      saveStore(); showToast("Route price saved"); refreshEstimate();
     });
 
-    // Clear prices
     priceClear.addEventListener("click", () => {
       const from = priceFrom.value; const to = priceTo.value;
       if(!from || !to) { alert("Select From and To locations"); return; }
@@ -1174,12 +1120,9 @@
       delete STORE.priceTable.suv[key];
       delete STORE.priceTable.innova[key];
       delete STORE.priceTable.tt[key];
-      saveStore();
-      showToast("Route price cleared");
-      refreshEstimate();
+      saveStore(); showToast("Route price cleared"); refreshEstimate();
     });
 
-    // Add-on fields
     function loadAddonFields(){
       if (!STORE.addons) STORE.addons = { roofcarrier: 200, placard: 100 };
       if (pRoof)  pRoof.value  = STORE.addons.roofcarrier ?? 0;
@@ -1190,39 +1133,29 @@
     }
     loadAddonFields();
 
-    // Save addons
     if (addonsSave) {
       addonsSave.addEventListener('click', () => {
         const roof = parseInt(pRoof?.value || "0", 10) || 0;
         const plac = parseInt(pPlacard?.value || "0", 10) || 0;
         STORE.addons = { roofcarrier: roof, placard: plac };
-        saveStore();
-        loadAddonFields();
-        showToast("Add‑on prices saved");
-        refreshEstimate();
+        saveStore(); loadAddonFields(); showToast("Add‑on prices saved"); refreshEstimate();
       });
     }
 
-    // Save distances
     distSave.addEventListener("click", () => {
       const from = distFrom.value; const to = distTo.value;
       const km = parseFloat(dKm.value || "0");
       if(!from || !to) { alert("Select From and To"); return; }
       if(!(km > 0)) { alert("Enter distance in km (> 0)"); return; }
       STORE.distanceTable[priceKey(from, to)] = km;
-      saveStore();
-      showToast("Distance saved");
-      refreshEstimate();
+      saveStore(); showToast("Distance saved"); refreshEstimate();
     });
 
-    // Clear distance
     distClear.addEventListener("click", () => {
       const from = distFrom.value; const to = distTo.value;
       if(!from || !to) { alert("Select From and To"); return; }
       delete STORE.distanceTable[priceKey(from, to)];
-      saveStore();
-      showToast("Distance cleared");
-      refreshEstimate();
+      saveStore(); showToast("Distance cleared"); refreshEstimate();
     });
 
     // Export / Import JSON
@@ -1250,12 +1183,8 @@
         if (!STORE.addons) STORE.addons = { roofcarrier: 200, placard: 100 };
         if (!STORE.distanceTable) STORE.distanceTable = {};
         saveStore();
-        fillVehicles();
-        fillAllLocations();
-        renderLocs();
-        loadAddonFields();
-        showToast("Imported");
-        refreshEstimate();
+        fillVehicles(); fillAllLocations(); renderLocs(); loadAddonFields();
+        showToast("Imported"); refreshEstimate();
       }catch(e){
         alert("Failed to import JSON.");
       }
@@ -1266,14 +1195,9 @@
       const lines = text.trim().split(/\r?\n/).filter(l => l.trim());
       if (!lines.length) return [];
       const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
-      const idx = {
-        from:   headers.indexOf('from'),
-        to:     headers.indexOf('to'),
-        sedan:  headers.indexOf('sedan'),
-        suv:    headers.indexOf('suv'),
-        innova: headers.indexOf('innova'),
-        tt:     headers.indexOf('tt'),
-      };
+      const idx = { from: headers.indexOf('from'), to: headers.indexOf('to'),
+                    sedan: headers.indexOf('sedan'), suv: headers.indexOf('suv'),
+                    innova: headers.indexOf('innova'), tt: headers.indexOf('tt') };
       if (idx.from < 0 || idx.to < 0) return [];
       const rows = [];
       for (let i = 1; i < lines.length; i++){
@@ -1290,7 +1214,6 @@
       }
       return rows;
     }
-
     function importPriceRows(rows){
       rows.forEach(r => {
         const key = priceKey(r.from, r.to);
@@ -1299,11 +1222,8 @@
         STORE.priceTable.innova[key] = r.innova|| 0;
         STORE.priceTable.tt[key]     = r.tt    || 0;
       });
-      saveStore();
-      showToast(`Imported ${rows.length} routes`);
-      refreshEstimate();
+      saveStore(); showToast(`Imported ${rows.length} routes`); refreshEstimate();
     }
-
     function exportPricesToCSV(){
       const keys = new Set([
         ...Object.keys(STORE.priceTable.sedan || {}),
@@ -1329,36 +1249,27 @@
       a.remove(); URL.revokeObjectURL(url);
       showToast('CSV exported');
     }
-
-    if (csvImport) {
-      csvImport.addEventListener('click', async () => {
-        const f = csvFile?.files?.[0];
-        if (!f) { alert('Choose a CSV file.'); return; }
-        const text = await f.text();
-        const rows = parseCSVText(text);
-        if (!rows.length) { alert('No valid rows found.'); return; }
-        importPriceRows(rows);
-      });
-    }
+    if (csvImport) csvImport.addEventListener('click', async () => {
+      const f = csvFile?.files?.[0];
+      if (!f) { alert('Choose a CSV file.'); return; }
+      const text = await f.text();
+      const rows = parseCSVText(text);
+      if (!rows.length) { alert('No valid rows found.'); return; }
+      importPriceRows(rows);
+    });
     if (csvExport) csvExport.addEventListener('click', exportPricesToCSV);
-    if (csvPasteBtn) {
-      csvPasteBtn.addEventListener('click', () => {
-        const rows = parseCSVText(csvPaste.value || '');
-        if (!rows.length) { alert('Paste CSV with header: From,To,Sedan,SUV,Innova,TT'); return; }
-        importPriceRows(rows);
-      });
-    }
+    if (csvPasteBtn) csvPasteBtn.addEventListener('click', () => {
+      const rows = parseCSVText(csvPaste.value || '');
+      if (!rows.length) { alert('Paste CSV with header: From,To,Sedan,SUV,Innova,TT'); return; }
+      importPriceRows(rows);
+    });
 
     /* ========== CSV HELPERS (Distances) ========== */
     function parseDistCSV(text){
       const lines = text.trim().split(/\r?\n/).filter(l => l.trim());
       if (!lines.length) return [];
       const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
-      const idx = {
-        from: headers.indexOf('from'),
-        to:   headers.indexOf('to'),
-        km:   headers.indexOf('km')
-      };
+      const idx = { from: headers.indexOf('from'), to: headers.indexOf('to'), km: headers.indexOf('km') };
       if (idx.from < 0 || idx.to < 0 || idx.km < 0) return [];
       const rows = [];
       for (let i = 1; i < lines.length; i++){
@@ -1370,16 +1281,10 @@
       }
       return rows;
     }
-
     function importDistRows(rows){
-      rows.forEach(r => {
-        STORE.distanceTable[priceKey(r.from, r.to)] = r.km;
-      });
-      saveStore();
-      showToast(`Imported ${rows.length} distances`);
-      refreshEstimate();
+      rows.forEach(r => { STORE.distanceTable[priceKey(r.from, r.to)] = r.km; });
+      saveStore(); showToast(`Imported ${rows.length} distances`); refreshEstimate();
     }
-
     function exportDistToCSV(){
       const keys = Object.keys(STORE.distanceTable || {});
       const lines = ['From,To,KM'];
@@ -1397,17 +1302,14 @@
       a.remove(); URL.revokeObjectURL(url);
       showToast('Distances CSV exported');
     }
-
-    if (distCsvImport) {
-      distCsvImport.addEventListener('click', async () => {
-        const f = distCsvFile?.files?.[0];
-        if (!f) { alert('Choose a Distances CSV file.'); return; }
-        const text = await f.text();
-        const rows = parseDistCSV(text);
-        if (!rows.length) { alert('No valid rows found.'); return; }
-        importDistRows(rows);
-      });
-    }
+    if (distCsvImport) distCsvImport.addEventListener('click', async () => {
+      const f = distCsvFile?.files?.[0];
+      if (!f) { alert('Choose a Distances CSV file.'); return; }
+      const text = await f.text();
+      const rows = parseDistCSV(text);
+      if (!rows.length) { alert('No valid rows found.'); return; }
+      importDistRows(rows);
+    });
     if (distCsvExport) distCsvExport.addEventListener('click', exportDistToCSV);
 
     /* ===========================
@@ -1419,17 +1321,12 @@
       const email = byId("email").value.trim();
       const pref = byId("pref-contact").value; // WhatsApp | Call | Email
 
-      if (!name || !mobile) {
-        alert("Please fill name and mobile");
-        return;
-      }
+      if (!name || !mobile) { alert("Please fill name and mobile"); return; }
 
       const pickup = pickupOtherToggle.checked ? pickupOther.value : selPickup.value;
       const drop   = dropOtherToggle.checked ? dropOther.value   : selDrop.value;
 
-      const addonsList = [...document.querySelectorAll('.addon')]
-                          .filter(a => a.checked)
-                          .map(a => a.value);
+      const addonsList = [...document.querySelectorAll('.addon')].filter(a => a.checked).map(a => a.value);
       const meetText = (meetSel?.value === 'placard') ? 'Placard: Yes' : 'Placard: No';
 
       const msg = `Transport Request
@@ -1455,11 +1352,11 @@ Notes: ${byId("notes").value || "-"}`;
       }
 
       // WhatsApp or Call -> WhatsApp (as requested)
-      const waText = encodeURIComponent(msg);
-      const waURL = "https://wa.me/919797459260?text=" + waText;
+      const waURL = "https://wa.me/919797459260?text=" + encodeURIComponent(msg);
       window.open(waURL, "_blank", "noopener,noreferrer");
     });
 
+    // Initial render
     refreshEstimate();
   </script>
 
