@@ -478,10 +478,11 @@
         <div class="row">
           <label for="addons">Add‑ons</label>
           <div class="inline" id="addons">
+            <!-- Removed Driver (English). Kept child seat and roof carrier. -->
             <label class="chip"><input type="checkbox" value="childseat" class="addon"> Child seat</label>
             <label class="chip"><input type="checkbox" value="roofcarrier" class="addon"> Roof carrier</label>
-            <label class="chip"><input type="checkbox" value="englishdriver" class="addon"> Driver (English)</label>
           </div>
+          <small class="note">Roof carrier adds ₹<span id="roof-amt">0</span> (if selected).</small>
         </div>
       </div>
 
@@ -505,7 +506,7 @@
         </div>
         <div class="row">
           <label for="mobile">Mobile</label>
-          <input id="mobile" type="tel" inputmode="tel" pattern="[0-9+\-\s]{8,15}" placeholder="+91 9XXXXXXXXX" required autocomplete="tel">
+          <input id="mobile" type="tel" inputmode="tel" pattern="[0-9+\\-\\s]{8,15}" placeholder="+91 9XXXXXXXXX" required autocomplete="tel">
         </div>
       </div>
       <div class="grid-2">
@@ -537,7 +538,7 @@
   <!-- ========== FOOTER ========== -->
   <footer class="footer" aria-label="Contact">
     <a href="mailto:sales@fodeltravels.in" class="chip">📧 sales@fodeltravels.in</a>
-    <a href="tel:+919797459260" class="chip">📞 +91 9797459260</a>
+    <a href="https://wa.me/919797459260?text=Hi%20Fodel%20Transport%2C%20I%20need%20a%20cab%20quote." target="_blank" rel="noopener noreferrer" class="chip">🟢 WhatsApp</a>
     <div class="copy">© 2015–2026 Fodel India — Fodel Transport</div>
   </footer>
 
@@ -598,6 +599,43 @@
           <p class="note">Leave empty (or 0) for “Ask for Quote”. Prices here are your internal reference and shown as estimate to the user.</p>
         </div>
 
+        <!-- NEW: Add-on Prices -->
+        <div class="card" style="margin-bottom:12px;">
+          <h3 style="margin-bottom:6px;">Add‑on Prices</h3>
+          <div class="grid-2">
+            <div class="row">
+              <label for="p-roof">Roof carrier</label>
+              <input id="p-roof" type="number" min="0" placeholder="₹ e.g., 200" inputmode="numeric">
+            </div>
+            <div class="row">
+              <label for="p-child">Child seat</label>
+              <input id="p-child" type="number" min="0" placeholder="₹ e.g., 0" inputmode="numeric">
+            </div>
+          </div>
+          <div class="actions">
+            <button class="btn" id="addons-save">Save Add‑on Prices</button>
+          </div>
+          <p class="note">Applied once per booking and multiplied by number of cars. Roof carrier total = price × cars.</p>
+        </div>
+
+        <!-- NEW: Bulk Import / Export (CSV) -->
+        <div class="card" style="margin-bottom:12px;">
+          <h3 style="margin-bottom:6px;">Bulk Import / Export (CSV)</h3>
+          <p class="note">Use the Excel template and save as CSV (UTF‑8). Columns required: From, To, Sedan, SUV, Innova, TT. Avoid commas in city names.</p>
+          <div class="inline" style="align-items:flex-start;">
+            <input type="file" id="csv-file" accept=".csv" aria-label="Import CSV file">
+            <button class="btn" id="csv-import">Import CSV</button>
+            <button class="btn-ghost" id="csv-export">Export CSV</button>
+          </div>
+          <div style="margin-top:8px;">
+            <label for="csv-paste">Or paste CSV below</label>
+            <textarea id="csv-paste" placeholder="From,To,Sedan,SUV,Innova,TT&#10;Jammu Airport,Katra,1900,2400,3200,0" spellcheck="false"></textarea>
+            <div class="actions">
+              <button class="btn-ghost" id="csv-paste-btn">Import from Paste</button>
+            </div>
+          </div>
+        </div>
+
         <div class="card">
           <h3 style="margin-bottom:6px;">Backup / Restore</h3>
           <div class="inline">
@@ -649,6 +687,11 @@
         suv:{},
         innova:{},
         tt:{}
+      },
+      // NEW: Add-on prices (per booking; multiplied by number of cars)
+      addons: {
+        roofcarrier: 200,
+        childseat: 0
       }
     };
 
@@ -662,6 +705,8 @@
       }catch(e){
         STORE = JSON.parse(JSON.stringify(DEFAULTS));
       }
+      // Backfill older saves to ensure addons always exist
+      if (!STORE.addons) STORE.addons = { roofcarrier: 200, childseat: 0 };
     }
     function saveStore(){ localStorage.setItem(STORE_KEY, JSON.stringify(STORE)); }
 
@@ -723,6 +768,19 @@
     const pSedan = byId('p-sedan'), pSuv = byId('p-suv'), pInnova = byId('p-innova'), pTT = byId('p-tt');
     const priceSave = byId('price-save'), priceClear = byId('price-clear');
     const exportJSON = byId('export-json'), importFile = byId('import-file'), importJSON = byId('import-json');
+
+    // NEW: Add-on fields
+    const roofAmt = byId('roof-amt');
+    const pRoof = byId('p-roof');
+    const pChild = byId('p-child');
+    const addonsSave = byId('addons-save');
+
+    // NEW: CSV fields
+    const csvFile = byId('csv-file');
+    const csvImport = byId('csv-import');
+    const csvExport = byId('csv-export');
+    const csvPaste = byId('csv-paste');
+    const csvPasteBtn = byId('csv-paste-btn');
 
     // Populate selects from STORE
     function fillLocations(sel){
@@ -919,10 +977,18 @@
         else missing++;
       });
 
+      // Add‑ons (once per booking; multiplied by number of cars)
+      const roofChecked  = document.querySelector('.addon[value="roofcarrier"]')?.checked;
+      const childChecked = document.querySelector('.addon[value="childseat"]')?.checked;
+
+      const addonOnce =
+        (roofChecked  ? (STORE.addons?.roofcarrier || 0) : 0) +
+        (childChecked ? (STORE.addons?.childseat   || 0) : 0);
+
       if (missing) {
         estText.textContent = `${legs.length - missing}/${legs.length} legs priced — remaining ask for quote`;
       } else {
-        const total = sum * nCars;
+        const total = (sum + addonOnce) * nCars;
         estText.textContent = `₹ ${total.toLocaleString("en-IN")} estimate`;
       }
     }
@@ -966,6 +1032,13 @@
       });
     }
     renderLocs();
+
+    function loadAddonFields(){
+      if (!STORE.addons) STORE.addons = { roofcarrier: 0, childseat: 0 };
+      if (pRoof)  pRoof.value  = STORE.addons.roofcarrier ?? 0;
+      if (pChild) pChild.value = STORE.addons.childseat ?? 0;
+      if (roofAmt) roofAmt.textContent = (STORE.addons.roofcarrier ?? 0).toLocaleString("en-IN");
+    }
 
     locAdd.addEventListener("click", () => {
       const v = locNew.value.trim();
@@ -1027,7 +1100,7 @@
       refreshEstimate();
     });
 
-    // Export / Import
+    // Export / Import JSON
     exportJSON.addEventListener("click", () => {
       const data = JSON.stringify(STORE, null, 2);
       const blob = new Blob([data], {type:"application/json"});
@@ -1049,16 +1122,126 @@
           alert("Invalid JSON format."); return;
         }
         STORE = obj;
+        // Backfill addons if missing
+        if (!STORE.addons) STORE.addons = { roofcarrier: 200, childseat: 0 };
         saveStore();
         fillVehicles();
         fillAllLocations();
         renderLocs();
+        loadAddonFields();
         showToast("Imported");
         refreshEstimate();
       }catch(e){
         alert("Failed to import JSON.");
       }
     });
+
+    // NEW: Add-on save
+    if (addonsSave) {
+      addonsSave.addEventListener('click', () => {
+        const roof = parseInt(pRoof.value || "0", 10) || 0;
+        const child = parseInt(pChild.value || "0", 10) || 0;
+        STORE.addons = { roofcarrier: roof, childseat: child };
+        saveStore();
+        loadAddonFields();
+        showToast("Add‑on prices saved");
+        refreshEstimate();
+      });
+    }
+
+    // NEW: CSV helpers
+    function parseCSVText(text){
+      const lines = text.trim().split(/\r?\n/).filter(l => l.trim());
+      if (!lines.length) return [];
+      const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
+      const idx = {
+        from:   headers.indexOf('from'),
+        to:     headers.indexOf('to'),
+        sedan:  headers.indexOf('sedan'),
+        suv:    headers.indexOf('suv'),
+        innova: headers.indexOf('innova'),
+        tt:     headers.indexOf('tt'),
+      };
+      if (idx.from < 0 || idx.to < 0) return [];
+      const rows = [];
+      for (let i = 1; i < lines.length; i++){
+        const cells = lines[i].split(',').map(c => c.trim());
+        const row = {
+          from:   cells[idx.from] || '',
+          to:     cells[idx.to]   || '',
+          sedan:  parseInt(cells[idx.sedan]  || '0', 10) || 0,
+          suv:    parseInt(cells[idx.suv]    || '0', 10) || 0,
+          innova: parseInt(cells[idx.innova] || '0', 10) || 0,
+          tt:     parseInt(cells[idx.tt]     || '0', 10) || 0,
+        };
+        if (row.from && row.to) rows.push(row);
+      }
+      return rows;
+    }
+
+    function importPriceRows(rows){
+      rows.forEach(r => {
+        const key = priceKey(r.from, r.to);
+        STORE.priceTable.sedan[key]  = r.sedan || 0;
+        STORE.priceTable.suv[key]    = r.suv   || 0;
+        STORE.priceTable.innova[key] = r.innova|| 0;
+        STORE.priceTable.tt[key]     = r.tt    || 0;
+      });
+      saveStore();
+      showToast(`Imported ${rows.length} routes`);
+      refreshEstimate();
+    }
+
+    function exportPricesToCSV(){
+      const keys = new Set([
+        ...Object.keys(STORE.priceTable.sedan || {}),
+        ...Object.keys(STORE.priceTable.suv   || {}),
+        ...Object.keys(STORE.priceTable.innova|| {}),
+        ...Object.keys(STORE.priceTable.tt    || {}),
+      ]);
+      const lines = ['From,To,Sedan,SUV,Innova,TT'];
+      keys.forEach(k => {
+        const [from, to] = k.split('|');
+        const s = STORE.priceTable.sedan?.[k]  ?? '';
+        const u = STORE.priceTable.suv?.[k]    ?? '';
+        const i = STORE.priceTable.innova?.[k] ?? '';
+        const t = STORE.priceTable.tt?.[k]     ?? '';
+        lines.push([from, to, s, u, i, t].join(','));
+      });
+      const csv = lines.join('\n');
+      const blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = `fodel-route-prices.csv`;
+      document.body.appendChild(a); a.click();
+      a.remove(); URL.revokeObjectURL(url);
+      showToast('CSV exported');
+    }
+
+    // Wire CSV UI
+    if (csvImport) {
+      csvImport.addEventListener('click', async () => {
+        const f = csvFile?.files?.[0];
+        if (!f) { alert('Choose a CSV file.'); return; }
+        const text = await f.text();
+        const rows = parseCSVText(text);
+        if (!rows.length) { alert('No valid rows found.'); return; }
+        importPriceRows(rows);
+      });
+    }
+    if (csvExport) {
+      csvExport.addEventListener('click', exportPricesToCSV);
+    }
+    if (csvPasteBtn) {
+      csvPasteBtn.addEventListener('click', () => {
+        const rows = parseCSVText(csvPaste.value || '');
+        if (!rows.length) { alert('Paste CSV with header: From,To,Sedan,SUV,Innova,TT'); return; }
+        importPriceRows(rows);
+      });
+    }
+
+    // Initialize addon fields
+    loadAddonFields();
 
     /* ===========================
        SUBMIT (WhatsApp)
@@ -1091,7 +1274,7 @@ Drop: ${drop || "-"}
 Date: ${date.value || "-"} ${time.value ? ("@" + time.value) : ""}
 Vehicle: ${vehicle.value || "-"}
 Passengers: ${pax.value || "-"}
-Add-ons: ${[...addons].filter(a=>a.checked).map(a=>a.value).join(", ") || "-"}
+Add-ons: ${[...document.querySelectorAll('.addon')].filter(a=>a.checked).map(a=>a.value).join(", ") || "-"}
 Notes: ${byId("notes").value || "-"}`;
 
       const url =
