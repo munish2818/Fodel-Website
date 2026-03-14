@@ -30,7 +30,7 @@
   <meta name="twitter:description" content="Book cabs for Jammu, Katra, Patnitop, Srinagar, Gulmarg, Pahalgam & more." />
   <meta name="twitter:image" content="https://www.fodel.in/og-transport.jpg" />
 
-  <!-- Hidden SEO keywords (minimal) -->
+  <!-- Keywords -->
   <meta name="keywords" content="jammu taxi, katra taxi, patnitop taxi, srinagar taxi, gulmarg cab, pahalgam cab, vaishno devi taxi, jammu airport transfer, jammu railway taxi, multi city tour jammu, katra to patnitop cab, srinagar to jammu taxi" />
 
   <!-- Structured Data -->
@@ -53,34 +53,30 @@
   }
   </script>
 
-  <!-- Fonts (fast) -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- DNS prefetch for WhatsApp click-through -->
-  <link rel="dns-prefetch" href="//wa.me"/>
+  <!-- DNS prefetch for WhatsApp -->
+  <link rel="dns-prefetch" href="//wa.me" />
 
-  <!-- Preload banner image (optional; keep if file exists) -->
+  <!-- Preload banner image -->
   <link rel="preload" as="image" href="transport-banner.jpg" imagesrcset="transport-banner.jpg" />
 
   <style>
     /* ===========================
        THEME
-       (Transport is RED accent)
     ============================ */
     :root{
       --page-bg:#f8fafc;
 
-      --yellow:#f9e64a;         /* Fodel brand yellow */
-      --green:#397e51;          /* Fodel legacy green (unused in UI here) */
+      --yellow:#f9e64a;
 
-      /* Banner (RED family now; removed teal/green) */
       --banner-deep:#770c12;
       --banner-mid:#a31018;
       --banner-top:#c8141d;
 
-      /* TRANSPORT ACCENT (RED) */
       --accent:#e11924;
       --accent-hover:#b50f1b;
 
@@ -117,7 +113,6 @@
       transition:outline-color .2s ease;
     }
 
-    /* Reduced motion */
     @media (prefers-reduced-motion: reduce){
       *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
     }
@@ -136,7 +131,6 @@
       background-blend-mode: overlay, overlay, normal, multiply;
     }
     .banner::after{
-      /* soft red glow to tie transport accent into hero */
       content:""; position:absolute; inset:0; pointer-events:none;
       background: radial-gradient(600px 360px at 50% 10%, color-mix(in srgb, var(--accent) 18%, transparent) 0%, transparent 60%);
     }
@@ -264,7 +258,7 @@
     .overlay{ position:fixed; inset:0; z-index:70; background:rgba(0,0,0,0.45); display:none; align-items:center; justify-content:center; padding:18px; }
     .overlay.active{ display:flex; }
     .modal{
-      width:min(760px,100%); max-height:92svh;
+      width:min(860px,100%); max-height:92svh;
       border-radius:16px; background:#ffffff; color:#0f172a; border:1px solid rgba(17,24,39,0.14);
       box-shadow:0 30px 80px rgba(0,0,0,0.35); overflow:hidden; display:flex; flex-direction:column;
       animation:pop .18s ease-out both;
@@ -290,14 +284,14 @@
     .toast{ position:fixed; bottom:18px; right:18px; z-index:90; background:var(--accent); color:#fff; padding:12px 14px; border-radius:10px; box-shadow:0 12px 24px rgba(0,0,0,0.2); display:none; }
     .toast.show{ display:block; animation:slideUp .25s ease-out both; }
 
-    /* Floating WhatsApp (UI button is red as requested) */
+    /* Floating WhatsApp — official green */
     .fw-whatsapp{
       position: fixed; right: 16px; bottom: 16px; z-index: 60;
       display:flex; align-items:center; gap:10px;
     }
     .fw-whatsapp .fab{
       width:56px; height:56px; border-radius:50%; display:grid; place-items:center;
-      background:var(--accent); color:#fff; font-size:22px; box-shadow:0 10px 22px rgba(0,0,0,.22);
+      background:#25D366; color:#fff; font-size:22px; box-shadow:0 10px 22px rgba(0,0,0,.22);
       transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
       will-change:transform;
     }
@@ -308,19 +302,18 @@
     }
     @media(min-width:720px){ .fw-whatsapp .tag{ display:block; } }
 
-    /* Hidden SEO keywords block */
+    /* Hidden SEO keywords */
     .visually-hidden-seo{
       position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; clip:rect(1px, 1px, 1px, 1px);
     }
 
-    /* Animations */
     @keyframes pop{ from{ transform:scale(.98); opacity:.7; } to{ transform:scale(1); opacity:1; } }
     @keyframes slideUp{ from{ opacity:0; transform:translateY(10px);} to{ opacity:1; transform:translateY(0);} }
   </style>
 </head>
 <body>
 
-  <!-- hidden-but-accessible keywords (minimal, non-spammy) -->
+  <!-- hidden SEO -->
   <div class="visually-hidden-seo" aria-hidden="true">
     Jammu taxi, Katra taxi, Patnitop cab, Srinagar cab, Gulmarg taxi, Pahalgam taxi, Vaishno Devi transfers, Jammu airport taxi, Jammu railway taxi, multi city taxi Jammu Katra Patnitop Srinagar.
   </div>
@@ -403,7 +396,7 @@
           </div>
         </div>
 
-        <!-- Flight/Train details (auto toggled) -->
+        <!-- Flight/Train details -->
         <div id="block-ft" style="display:none;">
           <div class="grid-2">
             <div class="row">
@@ -421,6 +414,9 @@
               <option value="">No</option>
               <option value="placard">Yes — Driver with name‑board</option>
             </select>
+            <small class="note" id="placard-note" style="display:none;">
+              Placard adds ₹<span id="placard-amt">0</span>.
+            </small>
           </div>
         </div>
       </div>
@@ -477,11 +473,10 @@
         </div>
         <div class="row">
           <label for="addons">Add‑ons</label>
-         <div class="inline" id="addons">
-  <label class="chip">
-    <input type="checkbox" value="roofcarrier" class="addon"> Roof carrier
-  </label>
-</div>
+          <div class="inline" id="addons">
+            <!-- Only roof carrier remains -->
+            <label class="chip"><input type="checkbox" value="roofcarrier" class="addon"> Roof carrier</label>
+          </div>
           <small class="note">Roof carrier adds ₹<span id="roof-amt">0</span> (if selected).</small>
         </div>
       </div>
@@ -494,7 +489,10 @@
 
       <!-- ESTIMATE -->
       <div class="estimate" id="estimate" aria-live="polite">
-        <div><strong>Estimate:</strong> <span id="est-text">Add locations to see estimate</span></div>
+        <div>
+          <div><strong>Estimate:</strong> <span id="est-text">Add locations to see estimate</span></div>
+          <div class="note"><strong>Total distance:</strong> <span id="km-text">—</span></div>
+        </div>
         <button type="button" class="btn" id="refresh-est" aria-label="Refresh estimate">Refresh</button>
       </div>
 
@@ -538,7 +536,7 @@
   <!-- ========== FOOTER ========== -->
   <footer class="footer" aria-label="Contact">
     <a href="mailto:sales@fodeltravels.in" class="chip">📧 sales@fodeltravels.in</a>
-    <a href="https://wa.me/919797459260?text=Hi%20Fodel%20Transport%2C%20I%20need%20a%20cab%20quote." target="_blank" rel="noopener noreferrer" class="chip">🟢 WhatsApp</a>
+    <a class="chip" target="_blank" rel="noopener noreferrer" href="https://wa.me/919797459260?text=Hi%20Fodel%20Transport%2C%20I%20need%20a%20cab%20quote.">🟢 WhatsApp</a>
     <div class="copy">© 2015–2026 Fodel India — Fodel Transport</div>
   </footer>
 
@@ -596,10 +594,10 @@
             <button class="btn" id="price-save">Save Route Price</button>
             <button class="btn-ghost" id="price-clear">Clear Route Price</button>
           </div>
-          <p class="note">Leave empty (or 0) for “Ask for Quote”. Prices here are your internal reference and shown as estimate to the user.</p>
+          <p class="note">Leave empty (or 0) for “Ask for Quote”.</p>
         </div>
 
-        <!-- NEW: Add-on Prices -->
+        <!-- Add-on Prices -->
         <div class="card" style="margin-bottom:12px;">
           <h3 style="margin-bottom:6px;">Add‑on Prices</h3>
           <div class="grid-2">
@@ -608,20 +606,44 @@
               <input id="p-roof" type="number" min="0" placeholder="₹ e.g., 200" inputmode="numeric">
             </div>
             <div class="row">
-              <label for="p-child">Child seat</label>
-              <input id="p-child" type="number" min="0" placeholder="₹ e.g., 0" inputmode="numeric">
+              <label for="p-placard">Placard (Meet &amp; Greet)</label>
+              <input id="p-placard" type="number" min="0" placeholder="₹ e.g., 100" inputmode="numeric">
             </div>
           </div>
           <div class="actions">
             <button class="btn" id="addons-save">Save Add‑on Prices</button>
           </div>
-          <p class="note">Applied once per booking and multiplied by number of cars. Roof carrier total = price × cars.</p>
+          <p class="note">Applied once per booking and multiplied by number of cars.</p>
         </div>
 
-        <!-- NEW: Bulk Import / Export (CSV) -->
+        <!-- Distances (KM) -->
         <div class="card" style="margin-bottom:12px;">
-          <h3 style="margin-bottom:6px;">Bulk Import / Export (CSV)</h3>
-          <p class="note">Use the Excel template and save as CSV (UTF‑8). Columns required: From, To, Sedan, SUV, Innova, TT. Avoid commas in city names.</p>
+          <h3 style="margin-bottom:6px;">Route Distance (km)</h3>
+          <div class="grid-2">
+            <div class="row">
+              <label>From</label>
+              <select id="dist-from"></select>
+            </div>
+            <div class="row">
+              <label>To</label>
+              <select id="dist-to"></select>
+            </div>
+          </div>
+          <div class="row">
+            <label for="d-km">Distance (km)</label>
+            <input id="d-km" type="number" min="0" step="0.1" placeholder="e.g., 50">
+          </div>
+          <div class="actions">
+            <button class="btn" id="dist-save">Save Distance</button>
+            <button class="btn-ghost" id="dist-clear">Clear Distance</button>
+          </div>
+          <p class="note">Distances are optional; shown as “Total distance” if available for legs.</p>
+        </div>
+
+        <!-- Bulk CSV (Prices) -->
+        <div class="card" style="margin-bottom:12px;">
+          <h3 style="margin-bottom:6px;">Bulk Import / Export (Prices CSV)</h3>
+          <p class="note">Columns: From, To, Sedan, SUV, Innova, TT</p>
           <div class="inline" style="align-items:flex-start;">
             <input type="file" id="csv-file" accept=".csv" aria-label="Import CSV file">
             <button class="btn" id="csv-import">Import CSV</button>
@@ -636,14 +658,26 @@
           </div>
         </div>
 
+        <!-- Bulk CSV (Distances) -->
         <div class="card">
+          <h3 style="margin-bottom:6px;">Bulk Import / Export (Distances CSV)</h3>
+          <p class="note">Columns: From, To, KM</p>
+          <div class="inline" style="align-items:flex-start;">
+            <input type="file" id="dist-csv-file" accept=".csv" aria-label="Import Distances CSV">
+            <button class="btn" id="dist-csv-import">Import Distances CSV</button>
+            <button class="btn-ghost" id="dist-csv-export">Export Distances CSV</button>
+          </div>
+        </div>
+
+        <!-- Backup / Restore -->
+        <div class="card" style="margin-top:12px;">
           <h3 style="margin-bottom:6px;">Backup / Restore</h3>
           <div class="inline">
             <button class="btn" id="export-json">Export JSON</button>
             <input type="file" id="import-file" accept="application/json" aria-label="Import JSON file">
             <button class="btn-ghost" id="import-json">Import</button>
           </div>
-          <p class="note">Data is saved in your browser’s localStorage. Use export to keep a backup or to migrate.</p>
+          <p class="note">Data is saved in your browser’s localStorage.</p>
         </div>
       </div>
     </div>
@@ -655,7 +689,6 @@
   <!-- Floating WhatsApp -->
   <div class="fw-whatsapp" aria-label="WhatsApp quick contact">
     <a class="tag" target="_blank" rel="noopener noreferrer" href="https://wa.me/919797459260?text=Hi%20Fodel%20Transport%2C%20I%20need%20a%20cab%20quote.">WhatsApp Us</a>
-    <!-- UI color is red; still links to WhatsApp -->
     <a class="fab" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" href="https://wa.me/919797459260?text=Hi%20Fodel%20Transport%2C%20I%20need%20a%20cab%20quote.">💬</a>
   </div>
 
@@ -664,7 +697,7 @@
        CONFIG / STORE
     ============================ */
 
-    const FORMSPREE_ENDPOINT = ""; // <-- paste your Formspree endpoint like "https://formspree.io/f/abcdwxyz"
+    const FORMSPREE_ENDPOINT = ""; // Optional: set if you want background email submission later
 
     // Default seed data
     const DEFAULTS = {
@@ -674,28 +707,25 @@
         "Udhampur", "Patnitop", "Nathatop",
         "Srinagar Airport", "Srinagar City / Dal Gate", "Gulmarg", "Pahalgam", "Sonmarg"
       ],
-      // Vehicles — ids must match price table keys
       vehicles: [
         { id:"sedan", label:"Sedan (Dzire/Amaze) — 4 pax" },
         { id:"suv",   label:"SUV (Ertiga) — 5/6 pax" },
         { id:"innova",label:"Innova / Crysta — 6/7 pax" },
         { id:"tt",    label:"Tempo Traveller 12 / 17" }
       ],
-      // Route price table (admin editable). Keep 0 or undefined for "Ask for Quote".
       priceTable: {
-        sedan:{ /* "From|To": price */ },
-        suv:{},
-        innova:{},
-        tt:{}
+        sedan:{}, suv:{}, innova:{}, tt:{}
       },
+      // NEW: store distance per route in km (From|To => km)
+      distanceTable: {},
       // NEW: Add-on prices (per booking; multiplied by number of cars)
       addons: {
         roofcarrier: 200,
-        childseat: 0
+        placard: 100
       }
     };
 
-    const STORE_KEY = "fodel_transport_v1";
+    const STORE_KEY = "fodel_transport_v2"; // bumped key to avoid clashing older schema
     let STORE = null;
 
     function loadStore(){
@@ -705,8 +735,9 @@
       }catch(e){
         STORE = JSON.parse(JSON.stringify(DEFAULTS));
       }
-      // Backfill older saves to ensure addons always exist
-      if (!STORE.addons) STORE.addons = { roofcarrier: 200, childseat: 0 };
+      // Backfill guards
+      if (!STORE.addons) STORE.addons = { roofcarrier: 200, placard: 100 };
+      if (!STORE.distanceTable) STORE.distanceTable = {};
     }
     function saveStore(){ localStorage.setItem(STORE_KEY, JSON.stringify(STORE)); }
 
@@ -717,6 +748,7 @@
       const t = byId('toast'); if(!t) return;
       t.textContent = msg || t.textContent; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'), 2200);
     };
+    const priceKey = (a,b) => `${(a||"").trim()}|${(b||"").trim()}`;
 
     loadStore();
 
@@ -750,11 +782,16 @@
     const pax = byId('pax');
     const addons = [...document.querySelectorAll('.addon')];
 
+    const meetSel = byId('meet');
+    const placardNote = byId('placard-note');
+    const placardAmt = byId('placard-amt');
+
     const legsBox = byId('legs');
     const addLegBtn = byId('add-leg');
     const clearLegsBtn = byId('clear-legs');
 
     const estText = byId('est-text');
+    const kmText = byId('km-text');
     const refreshBtn = byId('refresh-est');
 
     const submitBtn = byId('submit-btn');
@@ -769,20 +806,32 @@
     const priceSave = byId('price-save'), priceClear = byId('price-clear');
     const exportJSON = byId('export-json'), importFile = byId('import-file'), importJSON = byId('import-json');
 
-    // NEW: Add-on fields
+    // Add-ons Admin
     const roofAmt = byId('roof-amt');
     const pRoof = byId('p-roof');
-    const pChild = byId('p-child');
+    const pPlacard = byId('p-placard');
     const addonsSave = byId('addons-save');
 
-    // NEW: CSV fields
+    // Distance Admin
+    const distFrom = byId('dist-from');
+    const distTo = byId('dist-to');
+    const dKm = byId('d-km');
+    const distSave = byId('dist-save');
+    const distClear = byId('dist-clear');
+
+    // CSV (prices)
     const csvFile = byId('csv-file');
     const csvImport = byId('csv-import');
     const csvExport = byId('csv-export');
     const csvPaste = byId('csv-paste');
     const csvPasteBtn = byId('csv-paste-btn');
 
-    // Populate selects from STORE
+    // CSV (distances)
+    const distCsvFile = byId('dist-csv-file');
+    const distCsvImport = byId('dist-csv-import');
+    const distCsvExport = byId('dist-csv-export');
+
+    // Populate selects
     function fillLocations(sel){
       if(!sel) return;
       sel.innerHTML = '<option value="">Select</option>' + STORE.locations.map(l => `<option>${l}</option>`).join('');
@@ -797,6 +846,8 @@
       fillLocations(selLocalCity);
       fillLocations(priceFrom);
       fillLocations(priceTo);
+      fillLocations(distFrom);
+      fillLocations(distTo);
     }
 
     fillVehicles();
@@ -841,7 +892,14 @@
       const d = dropOtherToggle.checked ? dropOther.value : selDrop.value;
       const showFT = isAirportOrRail(p) || isAirportOrRail(d) || isRailway(p) || isRailway(d);
       blockFT.style.display = showFT ? '' : 'none';
+      updatePlacardNote();
     }
+    function updatePlacardNote(){
+      if (!placardNote) return;
+      const on = (meetSel?.value === 'placard');
+      placardNote.style.display = on ? '' : 'none';
+    }
+    if (meetSel) meetSel.addEventListener('change', () => { updatePlacardNote(); refreshEstimate(); });
     [selPickup, selDrop, pickupOther, dropOther, pickupOtherToggle, dropOtherToggle].forEach(el => el && el.addEventListener('input', updateFTVisibility));
     updateFTVisibility();
 
@@ -917,14 +975,15 @@
        ESTIMATE ENGINE
     ============================ */
 
-    function priceKey(a, b) {
-      return `${(a || "").trim()}|${(b || "").trim()}`;
-    }
-
     function getRoutePrice(vId, from, to) {
       const table = STORE.priceTable?.[vId] || {};
       const p = table[priceKey(from, to)];
       return (p && p > 0) ? p : null;
+    }
+
+    function getRouteDistance(from, to){
+      const km = STORE.distanceTable?.[priceKey(from, to)];
+      return (km && Number(km) > 0) ? Number(km) : null;
     }
 
     function refreshEstimate() {
@@ -934,6 +993,7 @@
 
       if (!vId) {
         estText.textContent = "Select vehicle";
+        kmText.textContent = "—";
         return;
       }
 
@@ -945,6 +1005,7 @@
 
         if (!p || !d) {
           estText.textContent = "Select pickup & drop";
+          kmText.textContent = "—";
           return;
         }
 
@@ -957,6 +1018,7 @@
         const legEls = [...legsBox.querySelectorAll(".leg")];
         if (!legEls.length) {
           estText.textContent = "Add trip legs";
+          kmText.textContent = "—";
           return;
         }
         legs = legEls.map(el => [
@@ -965,25 +1027,37 @@
         ]);
       } else {
         estText.textContent = "Local package — ask for quote";
+        kmText.textContent = "—";
         return;
       }
 
+      // Prices
       let sum = 0;
       let missing = 0;
+
+      // Distances
+      let kmSum = 0;
+      let kmKnown = 0;
 
       legs.forEach(([a, b]) => {
         const price = getRoutePrice(vId, a, b);
         if (price) sum += price;
         else missing++;
+
+        const km = getRouteDistance(a, b);
+        if (km != null) {
+          kmSum += km;
+          kmKnown++;
+        }
       });
 
       // Add‑ons (once per booking; multiplied by number of cars)
       const roofChecked  = document.querySelector('.addon[value="roofcarrier"]')?.checked;
-      const childChecked = document.querySelector('.addon[value="childseat"]')?.checked;
+      const selectedPlacard = (meetSel?.value === 'placard');
 
       const addonOnce =
-        (roofChecked  ? (STORE.addons?.roofcarrier || 0) : 0) +
-        (childChecked ? (STORE.addons?.childseat   || 0) : 0);
+        (roofChecked ? (STORE.addons?.roofcarrier || 0) : 0) +
+        (selectedPlacard ? (STORE.addons?.placard || 0) : 0);
 
       if (missing) {
         estText.textContent = `${legs.length - missing}/${legs.length} legs priced — remaining ask for quote`;
@@ -991,13 +1065,21 @@
         const total = (sum + addonOnce) * nCars;
         estText.textContent = `₹ ${total.toLocaleString("en-IN")} estimate`;
       }
+
+      if (kmKnown > 0) {
+        const txt = `${kmSum.toLocaleString("en-IN")} km${kmKnown < legs.length ? ` (${kmKnown}/${legs.length} legs)` : ""}`;
+        kmText.textContent = txt;
+      } else {
+        kmText.textContent = "—";
+      }
     }
 
     refreshBtn.addEventListener("click", refreshEstimate);
 
     [
       selPickup, selDrop, vehicle, cars,
-      date, time, rdate, rtime
+      date, time, rdate, rtime,
+      ...document.querySelectorAll('.addon'), meetSel
     ].forEach(el => el && el.addEventListener("input", refreshEstimate));
 
     /* ===========================
@@ -1033,13 +1115,6 @@
     }
     renderLocs();
 
-    function loadAddonFields(){
-      if (!STORE.addons) STORE.addons = { roofcarrier: 0, childseat: 0 };
-      if (pRoof)  pRoof.value  = STORE.addons.roofcarrier ?? 0;
-      if (pChild) pChild.value = STORE.addons.childseat ?? 0;
-      if (roofAmt) roofAmt.textContent = (STORE.addons.roofcarrier ?? 0).toLocaleString("en-IN");
-    }
-
     locAdd.addEventListener("click", () => {
       const v = locNew.value.trim();
       if (!v) return;
@@ -1061,13 +1136,16 @@
       showToast("Locations reset");
     });
 
-    // Prices
+    // Price selectors
     function fillPriceSelectors(){
       fillLocations(priceFrom);
       fillLocations(priceTo);
     }
     fillPriceSelectors();
 
+    // Distance selectors (already filled by fillAllLocations)
+
+    // Save prices
     priceSave.addEventListener("click", () => {
       const from = priceFrom.value; const to = priceTo.value;
       const sedan = parseInt(pSedan.value || "0", 10) || 0;
@@ -1087,6 +1165,7 @@
       refreshEstimate();
     });
 
+    // Clear prices
     priceClear.addEventListener("click", () => {
       const from = priceFrom.value; const to = priceTo.value;
       if(!from || !to) { alert("Select From and To locations"); return; }
@@ -1097,6 +1176,52 @@
       delete STORE.priceTable.tt[key];
       saveStore();
       showToast("Route price cleared");
+      refreshEstimate();
+    });
+
+    // Add-on fields
+    function loadAddonFields(){
+      if (!STORE.addons) STORE.addons = { roofcarrier: 200, placard: 100 };
+      if (pRoof)  pRoof.value  = STORE.addons.roofcarrier ?? 0;
+      if (pPlacard) pPlacard.value = STORE.addons.placard ?? 0;
+      if (roofAmt) roofAmt.textContent = (STORE.addons.roofcarrier ?? 0).toLocaleString("en-IN");
+      if (placardAmt) placardAmt.textContent = (STORE.addons.placard ?? 0).toLocaleString("en-IN");
+      updatePlacardNote();
+    }
+    loadAddonFields();
+
+    // Save addons
+    if (addonsSave) {
+      addonsSave.addEventListener('click', () => {
+        const roof = parseInt(pRoof?.value || "0", 10) || 0;
+        const plac = parseInt(pPlacard?.value || "0", 10) || 0;
+        STORE.addons = { roofcarrier: roof, placard: plac };
+        saveStore();
+        loadAddonFields();
+        showToast("Add‑on prices saved");
+        refreshEstimate();
+      });
+    }
+
+    // Save distances
+    distSave.addEventListener("click", () => {
+      const from = distFrom.value; const to = distTo.value;
+      const km = parseFloat(dKm.value || "0");
+      if(!from || !to) { alert("Select From and To"); return; }
+      if(!(km > 0)) { alert("Enter distance in km (> 0)"); return; }
+      STORE.distanceTable[priceKey(from, to)] = km;
+      saveStore();
+      showToast("Distance saved");
+      refreshEstimate();
+    });
+
+    // Clear distance
+    distClear.addEventListener("click", () => {
+      const from = distFrom.value; const to = distTo.value;
+      if(!from || !to) { alert("Select From and To"); return; }
+      delete STORE.distanceTable[priceKey(from, to)];
+      saveStore();
+      showToast("Distance cleared");
       refreshEstimate();
     });
 
@@ -1122,8 +1247,8 @@
           alert("Invalid JSON format."); return;
         }
         STORE = obj;
-        // Backfill addons if missing
-        if (!STORE.addons) STORE.addons = { roofcarrier: 200, childseat: 0 };
+        if (!STORE.addons) STORE.addons = { roofcarrier: 200, placard: 100 };
+        if (!STORE.distanceTable) STORE.distanceTable = {};
         saveStore();
         fillVehicles();
         fillAllLocations();
@@ -1136,20 +1261,7 @@
       }
     });
 
-    // NEW: Add-on save
-    if (addonsSave) {
-      addonsSave.addEventListener('click', () => {
-        const roof = parseInt(pRoof.value || "0", 10) || 0;
-        const child = parseInt(pChild.value || "0", 10) || 0;
-        STORE.addons = { roofcarrier: roof, childseat: child };
-        saveStore();
-        loadAddonFields();
-        showToast("Add‑on prices saved");
-        refreshEstimate();
-      });
-    }
-
-    // NEW: CSV helpers
+    /* ========== CSV HELPERS (Prices) ========== */
     function parseCSVText(text){
       const lines = text.trim().split(/\r?\n/).filter(l => l.trim());
       if (!lines.length) return [];
@@ -1218,7 +1330,6 @@
       showToast('CSV exported');
     }
 
-    // Wire CSV UI
     if (csvImport) {
       csvImport.addEventListener('click', async () => {
         const f = csvFile?.files?.[0];
@@ -1229,9 +1340,7 @@
         importPriceRows(rows);
       });
     }
-    if (csvExport) {
-      csvExport.addEventListener('click', exportPricesToCSV);
-    }
+    if (csvExport) csvExport.addEventListener('click', exportPricesToCSV);
     if (csvPasteBtn) {
       csvPasteBtn.addEventListener('click', () => {
         const rows = parseCSVText(csvPaste.value || '');
@@ -1240,31 +1349,88 @@
       });
     }
 
-    // Initialize addon fields
-    loadAddonFields();
+    /* ========== CSV HELPERS (Distances) ========== */
+    function parseDistCSV(text){
+      const lines = text.trim().split(/\r?\n/).filter(l => l.trim());
+      if (!lines.length) return [];
+      const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
+      const idx = {
+        from: headers.indexOf('from'),
+        to:   headers.indexOf('to'),
+        km:   headers.indexOf('km')
+      };
+      if (idx.from < 0 || idx.to < 0 || idx.km < 0) return [];
+      const rows = [];
+      for (let i = 1; i < lines.length; i++){
+        const cells = lines[i].split(',').map(c => c.trim());
+        const from = cells[idx.from] || '';
+        const to   = cells[idx.to]   || '';
+        const km   = parseFloat(cells[idx.km] || '0');
+        if (from && to && km > 0) rows.push({from, to, km});
+      }
+      return rows;
+    }
+
+    function importDistRows(rows){
+      rows.forEach(r => {
+        STORE.distanceTable[priceKey(r.from, r.to)] = r.km;
+      });
+      saveStore();
+      showToast(`Imported ${rows.length} distances`);
+      refreshEstimate();
+    }
+
+    function exportDistToCSV(){
+      const keys = Object.keys(STORE.distanceTable || {});
+      const lines = ['From,To,KM'];
+      keys.forEach(k => {
+        const [from, to] = k.split('|');
+        const km = STORE.distanceTable[k] ?? '';
+        lines.push([from, to, km].join(','));
+      });
+      const csv = lines.join('\n');
+      const blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = `fodel-route-distances.csv`;
+      document.body.appendChild(a); a.click();
+      a.remove(); URL.revokeObjectURL(url);
+      showToast('Distances CSV exported');
+    }
+
+    if (distCsvImport) {
+      distCsvImport.addEventListener('click', async () => {
+        const f = distCsvFile?.files?.[0];
+        if (!f) { alert('Choose a Distances CSV file.'); return; }
+        const text = await f.text();
+        const rows = parseDistCSV(text);
+        if (!rows.length) { alert('No valid rows found.'); return; }
+        importDistRows(rows);
+      });
+    }
+    if (distCsvExport) distCsvExport.addEventListener('click', exportDistToCSV);
 
     /* ===========================
-       SUBMIT (WhatsApp)
+       SUBMIT (respects preference)
     ============================ */
-
     submitBtn.addEventListener("click", () => {
       const name = byId("name").value.trim();
       const mobile = byId("mobile").value.trim();
+      const email = byId("email").value.trim();
+      const pref = byId("pref-contact").value; // WhatsApp | Call | Email
 
       if (!name || !mobile) {
         alert("Please fill name and mobile");
         return;
       }
 
-      const pickup =
-        pickupOtherToggle.checked
-          ? pickupOther.value
-          : selPickup.value;
+      const pickup = pickupOtherToggle.checked ? pickupOther.value : selPickup.value;
+      const drop   = dropOtherToggle.checked ? dropOther.value   : selDrop.value;
 
-      const drop =
-        dropOtherToggle.checked
-          ? dropOther.value
-          : selDrop.value;
+      const addonsList = [...document.querySelectorAll('.addon')]
+                          .filter(a => a.checked)
+                          .map(a => a.value);
+      const meetText = (meetSel?.value === 'placard') ? 'Placard: Yes' : 'Placard: No';
 
       const msg = `Transport Request
 Name: ${name}
@@ -1274,14 +1440,24 @@ Drop: ${drop || "-"}
 Date: ${date.value || "-"} ${time.value ? ("@" + time.value) : ""}
 Vehicle: ${vehicle.value || "-"}
 Passengers: ${pax.value || "-"}
-Add-ons: ${[...document.querySelectorAll('.addon')].filter(a=>a.checked).map(a=>a.value).join(", ") || "-"}
+${meetText}
+Add-ons: ${addonsList.join(", ") || "-"}
+Preferred contact: ${pref}
 Notes: ${byId("notes").value || "-"}`;
 
-      const url =
-        "https://wa.me/919797459260?text=" +
-        encodeURIComponent(msg);
+      if (pref === "Email") {
+        const to = "sales@fodeltravels.in";
+        const subject = `Transport Request — ${name}`;
+        const ccParam = email ? `&cc=${encodeURIComponent(email)}` : "";
+        const href = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}${ccParam}&body=${encodeURIComponent(msg)}`;
+        window.location.href = href;
+        return;
+      }
 
-      window.open(url, "_blank", "noopener,noreferrer");
+      // WhatsApp or Call -> WhatsApp (as requested)
+      const waText = encodeURIComponent(msg);
+      const waURL = "https://wa.me/919797459260?text=" + waText;
+      window.open(waURL, "_blank", "noopener,noreferrer");
     });
 
     refreshEstimate();
