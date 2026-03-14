@@ -1948,7 +1948,7 @@ Jammu Airport,Katra,49</pre>
       try{
         const hasLocal = localStorage.getItem(STORE_KEY);
         if (hasLocal) return; // already initialized
-        const res = await fetch('/data/transport-backup.json', { cache: 'no-store' });
+        const res = await fetch('/data/transport-data.json', { cache: 'no-store' });
         if (!res.ok) return;
         const backup = await res.json();
         if (!backup || !backup.locations || !backup.vehicles || !backup.priceTable) return;
