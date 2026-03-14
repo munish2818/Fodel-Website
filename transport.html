@@ -780,6 +780,54 @@ Jammu Airport,Katra,49</pre>
     const openAdmin = byId('open-admin');
     const adminOv = byId('admin-ov');
 
+/* ✅✅✅ PASTE THE ADMIN AUTO-OPEN CODE RIGHT HERE ✅✅✅ */
+
+/* ===== Admin mode switchers ===== */
+
+// Helper: open/close admin modal
+function openAdminModal() {
+  if (!adminOv) return;
+  adminOv.classList.add('active');
+}
+function closeAdminModal() {
+  if (!adminOv) return;
+  adminOv.classList.remove('active');
+}
+
+// Detect ?admin=1 or persistent admin flag
+(function initAdminMode(){
+  const params = new URLSearchParams(window.location.search);
+  const urlAdmin = params.get('admin') === '1';
+  const lsAdmin  = localStorage.getItem('fodel_admin') === '1';
+
+  const isAdmin = urlAdmin || lsAdmin;
+
+  if (isAdmin && openAdmin) {
+    openAdmin.style.display = 'inline-flex';
+  }
+
+  // ✅ THIS is what makes ?admin=1 AUTO-OPEN
+  if (urlAdmin) {
+    setTimeout(openAdminModal, 0);
+  }
+})();
+
+// Keyboard shortcut: Shift + A
+document.addEventListener('keydown', (e) => {
+  if (e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+    const cur = localStorage.getItem('fodel_admin') === '1';
+    const next = !cur;
+    localStorage.setItem('fodel_admin', next ? '1' : '0');
+
+    if (openAdmin) openAdmin.style.display = next ? 'inline-flex' : 'none';
+    if (next) openAdminModal(); else closeAdminModal();
+
+    if (typeof showToast === 'function') {
+      showToast(next ? 'Admin mode ON' : 'Admin mode OFF');
+    }
+  }
+});
+
     // Contextual FT
     const ftWrap  = byId('ft-wrap');
     const ftLabel = byId('ft-label');
