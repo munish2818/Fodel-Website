@@ -290,14 +290,15 @@
     .toast{ position:fixed; bottom:18px; right:18px; z-index:90; background:var(--accent); color:#fff; padding:12px 14px; border-radius:10px; box-shadow:0 12px 24px rgba(0,0,0,0.2); display:none; }
     .toast.show{ display:block; animation:slideUp .25s ease-out both; }
 
-    /* Floating WhatsApp (official green) */
+    /* Floating WhatsApp (UI button is green now) */
     .fw-whatsapp{
       position: fixed; right: 16px; bottom: 16px; z-index: 60;
       display:flex; align-items:center; gap:10px;
     }
     .fw-whatsapp .fab{
       width:56px; height:56px; border-radius:50%; display:grid; place-items:center;
-      background:#25D366; color:#fff; font-size:22px; box-shadow:0 10px 22px rgba(0,0,0,.22);
+      background:#25D366; /* official WhatsApp green */
+      color:#fff; font-size:22px; box-shadow:0 10px 22px rgba(0,0,0,.22);
       transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
       will-change:transform;
     }
@@ -421,7 +422,7 @@
               <option value="">No</option>
               <option value="placard">Yes — Driver with name‑board</option>
             </select>
-            <!-- OPTIONAL tiny hint (remove if you don't want it) -->
+            <!-- OPTIONAL tiny hint; remove if you don't want it -->
             <small class="note" id="placard-note" style="display:none;">
               Placard adds ₹<span id="placard-amt">0</span>.
             </small>
@@ -482,7 +483,7 @@
         <div class="row">
           <label for="addons">Add‑ons</label>
           <div class="inline" id="addons">
-            <!-- Child seat removed; Driver(English) removed; only Roof carrier kept -->
+            <!-- Removed Child seat & Driver (English) as requested -->
             <label class="chip"><input type="checkbox" value="roofcarrier" class="addon"> Roof carrier</label>
           </div>
         </div>
@@ -543,7 +544,7 @@
   <!-- ========== FOOTER ========== -->
   <footer class="footer" aria-label="Contact">
     <a href="mailto:sales@fodeltravels.in" class="chip">📧 sales@fodeltravels.in</a>
-    <a class="chip" target="_blank" rel="noopener noreferrer" href="https://wa.me/919797459260?text=Hi%20Fodel%20Transport%2C%20I%20need%20a%20cab%20quote.">🟢 WhatsApp</a>
+    <!-- Phone link removed as requested -->
     <div class="copy">© 2015–2026 Fodel India — Fodel Transport</div>
   </footer>
 
@@ -604,78 +605,6 @@
           <p class="note">Leave empty (or 0) for “Ask for Quote”. Prices here are your internal reference and shown as estimate to the user.</p>
         </div>
 
-        <!-- Add-on Prices (roofcarrier + placard) -->
-        <div class="card" style="margin-bottom:12px;">
-          <h3 style="margin-bottom:6px;">Add‑on Prices</h3>
-          <div class="grid-2">
-            <div class="row">
-              <label for="p-roof">Roof carrier</label>
-              <input id="p-roof" type="number" min="0" placeholder="₹ e.g., 200" inputmode="numeric">
-            </div>
-            <div class="row">
-              <label for="p-placard">Placard (Meet &amp; Greet)</label>
-              <input id="p-placard" type="number" min="0" placeholder="₹ e.g., 100" inputmode="numeric">
-            </div>
-          </div>
-          <div class="actions">
-            <button class="btn" id="addons-save">Save Add‑on Prices</button>
-          </div>
-          <p class="note">Applied once per booking and multiplied by number of cars.</p>
-        </div>
-
-        <!-- Distances (KM) -->
-        <div class="card" style="margin-bottom:12px;">
-          <h3 style="margin-bottom:6px;">Route Distance (km)</h3>
-          <div class="grid-2">
-            <div class="row">
-              <label>From</label>
-              <select id="dist-from"></select>
-            </div>
-            <div class="row">
-              <label>To</label>
-              <select id="dist-to"></select>
-            </div>
-          </div>
-          <div class="row">
-            <label for="d-km">Distance (km)</label>
-            <input id="d-km" type="number" min="0" step="0.1" placeholder="e.g., 49">
-          </div>
-          <div class="actions">
-            <button class="btn" id="dist-save">Save Distance</button>
-            <button class="btn-ghost" id="dist-clear">Clear Distance</button>
-          </div>
-          <p class="note">Distances are optional; shown as “Total distance” if available for legs.</p>
-        </div>
-
-        <!-- Bulk Import/Export (Prices CSV) -->
-        <div class="card" style="margin-bottom:12px;">
-          <h3 style="margin-bottom:6px;">Bulk Import / Export (Prices CSV)</h3>
-          <p class="note">Columns: From, To, Sedan, SUV, Innova, TT</p>
-          <div class="inline" style="align-items:flex-start;">
-            <input type="file" id="csv-file" accept=".csv" aria-label="Import CSV file">
-            <button class="btn" id="csv-import">Import CSV</button>
-            <button class="btn-ghost" id="csv-export">Export CSV</button>
-          </div>
-          <div style="margin-top:8px;">
-            <label for="csv-paste">Or paste CSV below</label>
-            <textarea id="csv-paste" placeholder="From,To,Sedan,SUV,Innova,TT&#10;Jammu Airport,Katra,1900,2400,3200,0" spellcheck="false"></textarea>
-            <div class="actions">
-              <button class="btn-ghost" id="csv-paste-btn">Import from Paste</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bulk Import/Export (Distances CSV) -->
-        <div class="card">
-          <h3 style="margin-bottom:6px;">Bulk Import / Export (Distances CSV)</h3>
-          <p class="note">Columns: From, To, KM</p>
-          <div class="inline" style="align-items:flex-start;">
-            <input type="file" id="dist-csv-file" accept=".csv" aria-label="Import Distances CSV">
-            <button class="btn" id="dist-csv-import">Import Distances CSV</button>
-            <button class="btn-ghost" id="dist-csv-export">Export Distances CSV</button>
-          </div>
-        </div>
-
         <div class="card">
           <h3 style="margin-bottom:6px;">Backup / Restore</h3>
           <div class="inline">
@@ -695,7 +624,7 @@
   <!-- Floating WhatsApp -->
   <div class="fw-whatsapp" aria-label="WhatsApp quick contact">
     <a class="tag" target="_blank" rel="noopener noreferrer" href="https://wa.me/919797459260?text=Hi%20Fodel%20Transport%2C%20I%20need%20a%20cab%20quote.">WhatsApp Us</a>
-    <!-- UI color is green (official); still links to WhatsApp -->
+    <!-- UI color is green; still links to WhatsApp -->
     <a class="fab" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" href="https://wa.me/919797459260?text=Hi%20Fodel%20Transport%2C%20I%20need%20a%20cab%20quote.">💬</a>
   </div>
 
@@ -704,7 +633,7 @@
        CONFIG / STORE
     ============================ */
 
-    const FORMSPREE_ENDPOINT = ""; // <— optional future email POST
+    const FORMSPREE_ENDPOINT = ""; // <-- paste your Formspree endpoint if you want background email later
 
     // Default seed data
     const DEFAULTS = {
@@ -721,19 +650,20 @@
         { id:"innova",label:"Innova / Crysta — 6/7 pax" },
         { id:"tt",    label:"Tempo Traveller 12 / 17" }
       ],
-      // Route price table (admin editable). Keep 0 or undefined for “Ask for Quote”.
+      // Route price table (admin editable). Keep 0 or undefined for "Ask for Quote".
       priceTable: {
-        sedan:{}, suv:{}, innova:{}, tt:{}
+        sedan:{ /* "From|To": price */ },
+        suv:{},
+        innova:{},
+        tt:{}
       },
-      // NEW: distances (km) per route; shown as “Total distance”
-      distanceTable: {
-        // Example (you can edit/import via Admin):
-        // "Jammu Airport|Katra": 49
-      },
-      // NEW: Add‑on prices (per booking; multiplied by number of cars)
+      // NEW: Route distances (km). Example:
+      // distanceTable: { "Jammu Airport|Katra": 49, "Katra|Patnitop": 80 }
+      distanceTable: {},
+      // NEW: Add-on prices (per booking; multiplied by number of cars)
       addons: {
-        roofcarrier: 200,
-        placard: 100
+        roofcarrier: 200, // default ₹200 (edit in JSON export/import if needed)
+        placard: 100     // default ₹100
       }
     };
 
@@ -747,7 +677,7 @@
       }catch(e){
         STORE = JSON.parse(JSON.stringify(DEFAULTS));
       }
-      // Backfill to keep schema consistent
+      // Backfill to keep schema solid
       if (!STORE.addons) STORE.addons = { roofcarrier: 200, placard: 100 };
       if (!STORE.distanceTable) STORE.distanceTable = {};
     }
@@ -760,7 +690,39 @@
       const t = byId('toast'); if(!t) return;
       t.textContent = msg || t.textContent; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'), 2200);
     };
-    const priceKey = (a, b) => `${(a||"").trim()}|${(b||"").trim()}`;
+    const priceKey = (a, b) => `${(a || "").trim()}|${(b || "").trim()}`;
+
+    // NEW: hub keyword matcher (future-proof)
+    function containsTransportHub(s){
+      if (!s) return false;
+      const v = String(s).toLowerCase();
+      return v.includes('airport') || v.includes('railway') || v.includes('station') || v.includes('tawi');
+    }
+
+    // NEW: collect active locations across tabs
+    function getActiveLocations(){
+      const type = document.querySelector('input[name="tripType"]:checked')?.value || 'oneway';
+      const locs = [];
+
+      if (type === 'oneway' || type === 'round'){
+        const p = pickupOtherToggle?.checked ? (pickupOther?.value || '') : (selPickup?.value || '');
+        const d = dropOtherToggle?.checked   ? (dropOther?.value   || '') : (selDrop?.value   || '');
+        if (p) locs.push(p);
+        if (d) locs.push(d);
+      } else if (type === 'local'){
+        const city = selLocalCity?.value || '';
+        if (city) locs.push(city);
+      } else if (type === 'multi'){
+        const legEls = [...document.querySelectorAll('#legs .leg')];
+        for (const el of legEls){
+          const lf = el.querySelector('.leg-from')?.value || '';
+          const lt = el.querySelector('.leg-to')?.value   || '';
+          if (lf) locs.push(lf);
+          if (lt) locs.push(lt);
+        }
+      }
+      return locs;
+    }
 
     loadStore();
 
@@ -807,39 +769,17 @@
     const openAdmin = byId('open-admin');
     const adminOv = byId('admin-ov');
 
+    // FT row / placard hint
+    const meetSel = byId('meet');
+    const placardNote = byId('placard-note');
+    const placardAmt = byId('placard-amt');
+
     // Admin fields
     const locNew = byId('loc-new'), locAdd = byId('loc-add'), locReset = byId('loc-reset'), locList = byId('loc-list');
     const priceFrom = byId('price-from'), priceTo = byId('price-to');
     const pSedan = byId('p-sedan'), pSuv = byId('p-suv'), pInnova = byId('p-innova'), pTT = byId('p-tt');
     const priceSave = byId('price-save'), priceClear = byId('price-clear');
     const exportJSON = byId('export-json'), importFile = byId('import-file'), importJSON = byId('import-json');
-
-    // NEW (Placard hint)
-    const meetSel = document.getElementById('meet');
-    const placardNote = document.getElementById('placard-note');
-    const placardAmt = document.getElementById('placard-amt');
-
-    // Admin: Add‑ons and Distances
-    const roofAmt = byId('roof-amt');
-    const pRoof = byId('p-roof');
-    const pPlacard = byId('p-placard');
-    const addonsSave = byId('addons-save');
-
-    const distFrom = byId('dist-from');
-    const distTo = byId('dist-to');
-    const dKm = byId('d-km');
-    const distSave = byId('dist-save');
-    const distClear = byId('dist-clear');
-
-    const csvFile = byId('csv-file');
-    const csvImport = byId('csv-import');
-    const csvExport = byId('csv-export');
-    const csvPaste = byId('csv-paste');
-    const csvPasteBtn = byId('csv-paste-btn');
-
-    const distCsvFile = byId('dist-csv-file');
-    const distCsvImport = byId('dist-csv-import');
-    const distCsvExport = byId('dist-csv-export');
 
     // Populate selects from STORE
     function fillLocations(sel){
@@ -848,7 +788,7 @@
     }
     function fillVehicles(){
       if(!vehicle) return;
-      vehicle.innerHTML = '<option value="">Select</option>' + STORE.vehicles.map(v => `\n<option value="${v.id}">${v.label}</option>`).join('');
+      vehicle.innerHTML = '<option value="">Select</option>' + STORE.vehicles.map(v => `<option value="${v.id}">${v.label}</option>`).join('');
     }
     function fillAllLocations(){
       fillLocations(selPickup);
@@ -856,8 +796,6 @@
       fillLocations(selLocalCity);
       fillLocations(priceFrom);
       fillLocations(priceTo);
-      fillLocations(distFrom);
-      fillLocations(distTo);
     }
 
     fillVehicles();
@@ -894,22 +832,48 @@
     pickupOtherToggle.addEventListener('change', () => toggleOther(pickupOtherToggle, pickupOther, selPickup));
     dropOtherToggle.addEventListener('change', () => toggleOther(dropOtherToggle, dropOther, selDrop));
 
-    // Airport/Railway detection -> show flight/train fields
-    function isAirportOrRail(val){ return /airport/i.test(val || '') || /(railway|station|tawi)/i.test(val || ''); }
-    function updateFTVisibility(){
-      const p = pickupOtherToggle.checked ? pickupOther.value : selPickup.value;
-      const d = dropOtherToggle.checked ? dropOther.value : selDrop.value;
-      const showFT = isAirportOrRail(p) || isAirportOrRail(d);
-      blockFT.style.display = showFT ? '' : 'none';
-      updatePlacardNote();
-    }
+    // NEW: universal FT visibility (any tab, any field)
     function updatePlacardNote(){
       if (!placardNote) return;
       const on = (meetSel?.value === 'placard');
       placardNote.style.display = on ? '' : 'none';
       if (placardAmt) placardAmt.textContent = (STORE.addons?.placard ?? 0).toLocaleString("en-IN");
     }
+    function getActiveLocations(){
+      const type = document.querySelector('input[name="tripType"]:checked')?.value || 'oneway';
+      const locs = [];
+      if (type === 'oneway' || type === 'round'){
+        const p = pickupOtherToggle?.checked ? (pickupOther?.value || '') : (selPickup?.value || '');
+        const d = dropOtherToggle?.checked   ? (dropOther?.value   || '') : (selDrop?.value   || '');
+        if (p) locs.push(p);
+        if (d) locs.push(d);
+      } else if (type === 'local'){
+        const city = selLocalCity?.value || '';
+        if (city) locs.push(city);
+      } else if (type === 'multi'){
+        const legEls = [...document.querySelectorAll('#legs .leg')];
+        for (const el of legEls){
+          const lf = el.querySelector('.leg-from')?.value || '';
+          const lt = el.querySelector('.leg-to')?.value   || '';
+          if (lf) locs.push(lf);
+          if (lt) locs.push(lt);
+        }
+      }
+      return locs;
+    }
+    function containsTransportHub(s){
+      if (!s) return false;
+      const v = String(s).toLowerCase();
+      return v.includes('airport') || v.includes('railway') || v.includes('station') || v.includes('tawi');
+    }
+    function updateFTVisibility(){
+      const showFT = getActiveLocations().some(containsTransportHub);
+      blockFT.style.display = showFT ? '' : 'none';
+      updatePlacardNote();
+    }
+
     [selPickup, selDrop, pickupOther, dropOther, pickupOtherToggle, dropOtherToggle].forEach(el => el && el.addEventListener('input', updateFTVisibility));
+    if (selLocalCity) selLocalCity.addEventListener('input', updateFTVisibility);
     if (meetSel) meetSel.addEventListener('change', () => { updatePlacardNote(); refreshEstimate(); });
     updateFTVisibility();
 
@@ -951,11 +915,11 @@
       if (fromVal) lf.value = fromVal;
       if (toVal) lt.value = toVal;
 
-      div.querySelector('.btn-leg-up').addEventListener('click', () => { if (div.previousElementSibling) legsBox.insertBefore(div, div.previousElementSibling); refreshEstimate(); });
-      div.querySelector('.btn-leg-down').addEventListener('click', () => { if (div.nextElementSibling) legsBox.insertBefore(div.nextElementSibling, div); refreshEstimate(); });
-      div.querySelector('.btn-leg-del').addEventListener('click', () => { div.remove(); refreshEstimate(); });
+      div.querySelector('.btn-leg-up').addEventListener('click', () => { if (div.previousElementSibling) legsBox.insertBefore(div, div.previousElementSibling); refreshEstimate(); updateFTVisibility(); });
+      div.querySelector('.btn-leg-down').addEventListener('click', () => { if (div.nextElementSibling) legsBox.insertBefore(div.nextElementSibling, div); refreshEstimate(); updateFTVisibility(); });
+      div.querySelector('.btn-leg-del').addEventListener('click', () => { div.remove(); refreshEstimate(); updateFTVisibility(); });
       [lf, lt, ...div.querySelectorAll('.leg-date, .leg-time')]
-        .forEach(el => el.addEventListener('input', refreshEstimate));
+        .forEach(el => el.addEventListener('input', () => { refreshEstimate(); updateFTVisibility(); }));
 
       return div;
     }
@@ -974,11 +938,13 @@
 
       createLeg(fromPref, toPref);
       refreshEstimate();
+      updateFTVisibility();
     });
 
     clearLegsBtn.addEventListener('click', () => {
       legsBox.innerHTML = "";
       refreshEstimate();
+      updateFTVisibility();
     });
 
     /* ===========================
@@ -990,6 +956,7 @@
       const p = table[priceKey(from, to)];
       return (p && p > 0) ? p : null;
     }
+
     function getRouteDistance(from, to){
       const km = STORE.distanceTable?.[priceKey(from, to)];
       return (km && Number(km) > 0) ? Number(km) : null;
@@ -999,6 +966,12 @@
       const vId = vehicle.value;
       const nCars = Math.max(1, parseInt(cars.value || "1", 10));
       const type = tripRadios.find(r => r.checked)?.value || "oneway";
+
+      if (type === "local") {
+        estText.textContent = "Local package — ask for quote";
+        kmText.textContent = "—";
+        return;
+      }
 
       let legs = [];
 
@@ -1028,32 +1001,20 @@
           el.querySelector(".leg-from").value,
           el.querySelector(".leg-to").value
         ]);
-      } else {
-        estText.textContent = "Local package — ask for quote";
-        kmText.textContent = "—";
-        return;
       }
 
-      // ---- Distances (always compute & show even if vehicle not selected)
+      // Distances (show even if vehicle not selected)
       let kmSum = 0;
       let kmKnown = 0;
-
       legs.forEach(([a, b]) => {
         const km = getRouteDistance(a, b);
-        if (km != null) {
-          kmSum += km;
-          kmKnown++;
-        }
+        if (km != null) { kmSum += km; kmKnown++; }
       });
+      kmText.textContent = (kmKnown > 0)
+        ? `${kmSum.toLocaleString("en-IN")} km${kmKnown < legs.length ? ` (${kmKnown}/${legs.length} legs)` : ""}`
+        : "—";
 
-      if (kmKnown > 0) {
-        const txt = `${kmSum.toLocaleString("en-IN")} km${kmKnown < legs.length ? ` (${kmKnown}/${legs.length} legs)` : ""}`;
-        kmText.textContent = txt;
-      } else {
-        kmText.textContent = "—";
-      }
-
-      // ---- Prices (only if vehicle selected)
+      // Prices (only if vehicle selected)
       if (!vId) {
         estText.textContent = "Select vehicle";
         return;
@@ -1085,6 +1046,7 @@
     }
 
     refreshBtn.addEventListener("click", refreshEstimate);
+
     [
       selPickup, selDrop, vehicle, cars,
       date, time, rdate, rtime,
@@ -1185,56 +1147,7 @@
       refreshEstimate();
     });
 
-    // Add‑on Prices
-    function loadAddonFields(){
-      if (pRoof)  pRoof.value  = STORE.addons.roofcarrier ?? 0;
-      if (pPlacard) pPlacard.value = STORE.addons.placard ?? 0;
-      if (roofAmt) roofAmt.textContent = (STORE.addons.roofcarrier ?? 0).toLocaleString("en-IN");
-      if (placardAmt) placardAmt.textContent = (STORE.addons.placard ?? 0).toLocaleString("en-IN");
-      updatePlacardNote();
-    }
-    loadAddonFields();
-
-    if (addonsSave) {
-      addonsSave.addEventListener('click', () => {
-        const roof = parseInt(pRoof?.value || "0", 10) || 0;
-        const plac = parseInt(pPlacard?.value || "0", 10) || 0;
-        STORE.addons = { roofcarrier: roof, placard: plac };
-        saveStore();
-        loadAddonFields();
-        showToast("Add‑on prices saved");
-        refreshEstimate();
-      });
-    }
-
-    // Distances
-    function fillDistSelectors(){
-      fillLocations(distFrom);
-      fillLocations(distTo);
-    }
-    fillDistSelectors();
-
-    distSave.addEventListener("click", () => {
-      const from = distFrom.value; const to = distTo.value;
-      const km = parseFloat(dKm.value || "0");
-      if(!from || !to) { alert("Select From and To"); return; }
-      if(!(km > 0)) { alert("Enter distance in km (> 0)"); return; }
-      STORE.distanceTable[priceKey(from, to)] = km;
-      saveStore();
-      showToast("Distance saved");
-      refreshEstimate();
-    });
-
-    distClear.addEventListener("click", () => {
-      const from = distFrom.value; const to = distTo.value;
-      if(!from || !to) { alert("Select From and To"); return; }
-      delete STORE.distanceTable[priceKey(from, to)];
-      saveStore();
-      showToast("Distance cleared");
-      refreshEstimate();
-    });
-
-    // Export / Import JSON
+    // Export / Import
     exportJSON.addEventListener("click", () => {
       const data = JSON.stringify(STORE, null, 2);
       const blob = new Blob([data], {type:"application/json"});
@@ -1262,221 +1175,19 @@
         fillVehicles();
         fillAllLocations();
         renderLocs();
-        loadAddonFields();
+        // update placard hint amount if present
+        if (placardAmt) placardAmt.textContent = (STORE.addons.placard ?? 0).toLocaleString("en-IN");
         showToast("Imported");
         refreshEstimate();
+        updateFTVisibility();
       }catch(e){
         alert("Failed to import JSON.");
       }
     });
 
-    /* ========== CSV HELPERS (Prices) ========== */
-    function parseCSVText(text){
-      const lines = text.trim().split(/\r?\n/).filter(l => l.trim());
-      if (!lines.length) return [];
-      const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
-      const idx = {
-        from:   headers.indexOf('from'),
-        to:     headers.indexOf('to'),
-        sedan:  headers.indexOf('sedan'),
-        suv:    headers.indexOf('suv'),
-        innova: headers.indexOf('innova'),
-        tt:     headers.indexOf('tt'),
-      };
-      if (idx.from < 0 || idx.to < 0) return [];
-      const rows = [];
-      for (let i = 1; i < lines.length; i++){
-        const cells = lines[i].split(',').map(c => c.trim());
-        const row = {
-          from:   cells[idx.from] || '',
-          to:     cells[idx.to]   || '',
-          sedan:  parseInt(cells[idx.sedan]  || '0', 10) || 0,
-          suv:    parseInt(cells[idx.suv]    || '0', 10) || 0,
-          innova: parseInt(cells[idx.innova] || '0', 10) || 0,
-          tt:     parseInt(cells[idx.tt]     || '0', 10) || 0,
-        };
-        if (row.from && row.to) rows.push(row);
-      }
-      return rows;
-    }
-
-    function importPriceRows(rows){
-      rows.forEach(r => {
-        const key = priceKey(r.from, r.to);
-        STORE.priceTable.sedan[key]  = r.sedan || 0;
-        STORE.priceTable.suv[key]    = r.suv   || 0;
-        STORE.priceTable.innova[key] = r.innova|| 0;
-        STORE.priceTable.tt[key]     = r.tt    || 0;
-      });
-      saveStore();
-      showToast(`Imported ${rows.length} routes`);
-      refreshEstimate();
-    }
-
-    function exportPricesToCSV(){
-      const keys = new Set([
-        ...Object.keys(STORE.priceTable.sedan || {}),
-        ...Object.keys(STORE.priceTable.suv   || {}),
-        ...Object.keys(STORE.priceTable.innova|| {}),
-        ...Object.keys(STORE.priceTable.tt    || {}),
-      ]);
-      const lines = ['From,To,Sedan,SUV,Innova,TT'];
-      keys.forEach(k => {
-        const [from, to] = k.split('|');
-        const s = STORE.priceTable.sedan?.[k]  ?? '';
-        const u = STORE.priceTable.suv?.[k]    ?? '';
-        const i = STORE.priceTable.innova?.[k] ?? '';
-        const t = STORE.priceTable.tt?.[k]     ?? '';
-        lines.push([from, to, s, u, i, t].join(','));
-      });
-      const csv = lines.join('\n');
-      const blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = `fodel-route-prices.csv`;
-      document.body.appendChild(a); a.click();
-      a.remove(); URL.revokeObjectURL(url);
-      showToast('CSV exported');
-    }
-
-    if (csvImport) {
-      csvImport.addEventListener('click', async () => {
-        const f = csvFile?.files?.[0];
-        if (!f) { alert('Choose a CSV file.'); return; }
-        const text = await f.text();
-        const rows = parseCSVText(text);
-        if (!rows.length) { alert('No valid rows found.'); return; }
-        importPriceRows(rows);
-      });
-    }
-
-    if (csvExport) {
-      csvExport.addEventListener('click', exportPricesToCSV);
-    }
-
-    if (csvPasteBtn) {
-      csvPasteBtn.addEventListener('click', () => {
-        const rows = parseCSVText(csvPaste.value || '');
-        if (!rows.length) { alert('Paste CSV with header: From,To,Sedan,SUV,Innova,TT'); return; }
-        importPriceRows(rows);
-      });
-    }
-
-    /* ========== CSV HELPERS (Distances) ========== */
-    function parseDistCSV(text){
-      const lines = text.trim().split(/\r?\n/).filter(l => l.trim());
-      if (!lines.length) return [];
-      const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
-      const idx = { from: headers.indexOf('from'), to: headers.indexOf('to'), km: headers.indexOf('km') };
-      if (idx.from < 0 || idx.to < 0 || idx.km < 0) return [];
-      const rows = [];
-      for (let i = 1; i < lines.length; i++){
-        const cells = lines[i].split(',').map(c => c.trim());
-        const from = cells[idx.from] || '';
-        const to   = cells[idx.to]   || '';
-        const km   = parseFloat(cells[idx.km] || '0');
-        if (from && to && km > 0) rows.push({from, to, km});
-      }
-      return rows;
-    }
-
-    function importDistRows(rows){
-      rows.forEach(r => {
-        STORE.distanceTable[priceKey(r.from, r.to)] = r.km;
-      });
-      saveStore();
-      showToast(`Imported ${rows.length} distances`);
-      refreshEstimate();
-    }
-
-    function exportDistToCSV(){
-      const keys = Object.keys(STORE.distanceTable || {});
-      const lines = ['From,To,KM'];
-      keys.forEach(k => {
-        const [from, to] = k.split('|');
-        const km = STORE.distanceTable[k] ?? '';
-        lines.push([from, to, km].join(','));
-      });
-      const csv = lines.join('\n');
-      const blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = `fodel-route-distances.csv`;
-      document.body.appendChild(a); a.click();
-      a.remove(); URL.revokeObjectURL(url);
-      showToast('Distances CSV exported');
-    }
-
-    if (distCsvImport) {
-      distCsvImport.addEventListener('click', async () => {
-        const f = distCsvFile?.files?.[0];
-        if (!f) { alert('Choose a Distances CSV file.'); return; }
-        const text = await f.text();
-        const rows = parseDistCSV(text);
-        if (!rows.length) { alert('No valid rows found.'); return; }
-        importDistRows(rows);
-      });
-    }
-
-    if (distCsvExport) {
-      distCsvExport.addEventListener('click', exportDistToCSV);
-    }
-
-    /* ===========================
-       SUBMIT (WhatsApp/Email by preference)
-    ============================ */
-    submitBtn.addEventListener("click", () => {
-      const name = byId("name").value.trim();
-      const mobile = byId("mobile").value.trim();
-      const email = byId("email").value.trim();
-      const pref = byId("pref-contact").value; // WhatsApp | Call | Email
-
-      if (!name || !mobile) {
-        alert("Please fill name and mobile");
-        return;
-      }
-
-      const pickup =
-        pickupOtherToggle.checked ? pickupOther.value : selPickup.value;
-
-      const drop =
-        dropOtherToggle.checked ? dropOther.value : selDrop.value;
-
-      const addonsList = [...document.querySelectorAll('.addon')]
-                          .filter(a => a.checked)
-                          .map(a => a.value);
-      const meetText = (meetSel?.value === 'placard') ? 'Placard: Yes' : 'Placard: No';
-
-      const msg = `Transport Request
-Name: ${name}
-Mobile: ${mobile}
-Pickup: ${pickup || "-"}
-Drop: ${drop || "-"}
-Date: ${date.value || "-"} ${time.value ? ("@" + time.value) : ""}
-Vehicle: ${vehicle.value || "-"}
-Passengers: ${pax.value || "-"}
-${meetText}
-Add-ons: ${addonsList.join(", ") || "-"}
-Preferred contact: ${pref}
-Notes: ${byId("notes").value || "-"}`;
-
-      if (pref === "Email") {
-        const to = "sales@fodeltravels.in";
-        const subject = `Transport Request — ${name}`;
-        const ccParam = email ? `&cc=${encodeURIComponent(email)}` : "";
-        const href = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}${ccParam}&body=${encodeURIComponent(msg)}`;
-        window.location.href = href;
-        return;
-      }
-
-      // WhatsApp or Call -> WhatsApp (as requested)
-      const waText = encodeURIComponent(msg);
-      const waURL = "https://wa.me/919797459260?text=" + waText;
-      window.open(waURL, "_blank", "noopener,noreferrer");
-    });
-
-    // Initial render
+    // Initial
     refreshEstimate();
+    updateFTVisibility();
   </script>
 
   <noscript>
