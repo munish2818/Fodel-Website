@@ -16,22 +16,10 @@
     "Sonmarg"
   ],
   "vehicles": [
-    {
-      "id": "sedan",
-      "label": "Sedan (Dzire/Amaze) — 4 pax"
-    },
-    {
-      "id": "suv",
-      "label": "SUV (Ertiga) — 5/6 pax"
-    },
-    {
-      "id": "innova",
-      "label": "Innova / Crysta — 6/7 pax"
-    },
-    {
-      "id": "tt",
-      "label": "Tempo Traveller 12 / 17"
-    }
+    { "id": "sedan", "label": "Sedan (Dzire/Amaze) — 4 pax" },
+    { "id": "suv", "label": "SUV (Ertiga) — 5/6 pax" },
+    { "id": "innova", "label": "Innova / Crysta — 6/7 pax" },
+    { "id": "tt", "label": "Tempo Traveller 12 / 17" }
   ],
   "priceTable": {
     "sedan": {},
