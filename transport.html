@@ -767,7 +767,7 @@ Jammu Airport,Katra,49</pre>
     <a class="tag" target="_blank" rel="noopener noreferrer" href="https://wa.me/919797459260?text=Hi%20Fodel%20Transport%2C%20I%20need%20a%20cab%20quote.">WhatsApp Us</a>
     <a class="fab" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" href="https://wa.me/919797459260?text=Hi%20Fodel%20Transport%2C%20I%20need%20a%20cab%20quote.">💬</a>
   </div>
-``
+
   <script>
     /* ===========================
        CONFIG / STORE
@@ -1876,11 +1876,14 @@ Jammu Airport,Katra,49</pre>
       return true;
     }
 
-    const submitBtn = byId('submit-btn');
-    submitBtn?.addEventListener('click', async ()=>{
-      if (!validateForm()) return;
-      const msg = buildMessage();
-      const pref = (byId('pref-contact')?.value || 'WhatsApp').toLowerCase();
+
+    
+submitBtn?.addEventListener('click', async () => {
+       if (!validateForm()) return;
+       const msg = buildMessage();
+       const pref = (byId('pref-contact')?.value || 'WhatsApp').toLowerCase();
+       ...
+     });
 
       // If Formspree configured, post silently and then open WhatsApp/email
       const payload = {
