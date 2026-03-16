@@ -112,7 +112,7 @@
        BANNER
     ============================ */
     .banner{
-      position:relative; min-height:46vh; /* reduced; image removed to avoid 404 */
+      position:relative; min-height:46vh;
       display:grid; place-items:center; text-align:center; color:#ffeef0;
       background:
         radial-gradient(900px 600px at 85% 15%, rgba(249,230,74,0.20), transparent 60%),
@@ -157,12 +157,22 @@
     .home-btn{ background:var(--accent); }
     .home-btn:hover{ background:var(--accent-hover); }
 
+    /* Lang selector */
+    .lang-select{
+      display:inline-flex; gap:6px; align-items:center; background:#ffffff1a; border:1px solid #ffffff40;
+      padding:6px 10px; border-radius:10px; font-weight:700;
+    }
+    .lang-select select{
+      background:transparent; color:#fff; border:0; font:inherit; font-weight:700;
+    }
+
     @media (max-width:640px){
       .topbar{ top:14px; padding:0 14px; display:grid; grid-template-columns:1fr auto; gap:10px; }
       .brand{ font-size:17px; gap:8px; }
       .brand-badge{ width:30px; height:30px; }
       .nav{ gap:6px; justify-self:end; }
       .pill-btn{ padding:5px 9px; font-size:13px; border-radius:8px; box-shadow:0 3px 8px rgba(0,0,0,0.18); }
+      .lang-select{ padding:5px 8px; }
     }
     @media (max-width:380px){
       .topbar{ grid-template-columns:1fr; row-gap:6px; }
@@ -215,8 +225,9 @@
       border:1px solid var(--border); background:#fff; font-size:13px; transition: box-shadow .2s, transform .2s, border-color .2s;
       will-change:transform;
     }
-    .chip:hover{ transform:translateY(-1px); border-color: color-mix(in srgb, var(--accent) 30%, #ccc); box-shadow:0 6px 14px rgba(0,0,0,.08); }
     .chip small{ font-weight:700; color:#0f172a; opacity:.9; }
+
+    .chip:hover{ transform:translateY(-1px); border-color: color-mix(in srgb, var(--accent) 30%, #ccc); box-shadow:0 6px 14px rgba(0,0,0,.08); }
 
     .btn{
       display:inline-flex; align-items:center; gap:8px;
@@ -322,18 +333,26 @@
     <div class="topbar">
       <a class="brand" href="index.html" aria-label="Fodel — Home">
         <div class="brand-badge" aria-hidden="true">🚘</div>
-        <span>Fodel Transport</span>
+        <span data-i18n="brand">Fodel Transport</span>
       </a>
       <nav class="nav" aria-label="Primary">
-        <a class="pill-btn reviews-btn" href="reviews-travels.html" aria-label="Read customer reviews">⭐ Reviews</a>
-        <a class="pill-btn home-btn" href="index.html" aria-label="Back to Home">← Home</a>
+        <a class="pill-btn reviews-btn" href="reviews-travels.html" aria-label="Read customer reviews" data-i18n="reviews">⭐ Reviews</a>
+        <a class="pill-btn home-btn" href="index.html" aria-label="Back to Home" data-i18n="home">← Home</a>
+        <div class="lang-select" aria-label="Language">
+          <span data-i18n="lang">Language</span>
+          <select id="lang-picker" aria-label="Select language">
+            <option value="en">EN</option>
+            <option value="hi">हिंदी</option>
+            <option value="ur">اُردو</option>
+          </select>
+        </div>
       </nav>
     </div>
 
     <div class="banner-inner">
       <div class="hero">
-        <h1>Taxi · Transfers · Local &amp; Multi‑City Tours</h1>
-        <p>Jammu, Katra (Vaishno Devi), Patnitop, Srinagar, Gulmarg, Pahalgam and beyond.</p>
+        <h1 data-i18n="heroTitle">Taxi · Transfers · Local & Multi‑City Tours</h1>
+        <p data-i18n="heroSub">Jammu, Katra (Vaishno Devi), Patnitop, Srinagar, Gulmarg, Pahalgam and beyond.</p>
       </div>
     </div>
   </header>
@@ -341,33 +360,33 @@
   <!-- ========== BOOKING FORM ========== -->
   <section class="section" aria-labelledby="transport-title">
     <div class="card">
-      <h2 id="transport-title">Transport Requirement</h2>
-      <p class="muted">Tell us your route and vehicle needs. We’ll confirm availability and share the best price.</p>
+      <h2 id="transport-title" data-i18n="formTitle">Transport Requirement</h2>
+      <p class="muted" data-i18n="formSub">Tell us your route and vehicle needs. We’ll confirm availability and share the best price.</p>
 
       <!-- Trip type -->
       <div class="row inline" role="radiogroup" aria-label="Trip type">
-        <label class="chip"><input type="radio" name="tripType" value="oneway" checked> One‑way</label>
-        <label class="chip"><input type="radio" name="tripType" value="round"> Round‑trip</label>
-        <label class="chip"><input type="radio" name="tripType" value="local"> Local (hours/km)</label>
-        <label class="chip"><input type="radio" name="tripType" value="multi"> Multi‑city</label>
+        <label class="chip"><input type="radio" name="tripType" value="oneway" checked> <span data-i18n="oneway">One‑way</span></label>
+        <label class="chip"><input type="radio" name="tripType" value="round"> <span data-i18n="round">Round‑trip</span></label>
+        <label class="chip"><input type="radio" name="tripType" value="local"> <span data-i18n="local">Local (hours/km)</span></label>
+        <label class="chip"><input type="radio" name="tripType" value="multi"> <span data-i18n="multi">Multi‑city</span></label>
       </div>
 
       <!-- ONE-WAY / ROUND -->
       <div id="block-std">
         <div class="grid-2">
           <div class="row">
-            <label for="pickup">Pickup location</label>
+            <label for="pickup" data-i18n="pickup">Pickup location</label>
             <select id="pickup" autocomplete="address-level2"></select>
             <div class="inline" style="margin-top:8px">
-              <label class="chip"><input type="checkbox" id="pickup-other-toggle"> Other pickup</label>
+              <label class="chip"><input type="checkbox" id="pickup-other-toggle"> <span data-i18n="otherPickup">Other pickup</span></label>
               <input id="pickup-other" type="text" placeholder="Type custom pickup location" style="display:none;" inputmode="text" autocomplete="off">
             </div>
           </div>
           <div class="row">
-            <label for="drop">Drop location</label>
+            <label for="drop" data-i18n="drop">Drop location</label>
             <select id="drop" autocomplete="address-level2"></select>
             <div class="inline" style="margin-top:8px">
-              <label class="chip"><input type="checkbox" id="drop-other-toggle"> Other drop</label>
+              <label class="chip"><input type="checkbox" id="drop-other-toggle"> <span data-i18n="otherDrop">Other drop</span></label>
               <input id="drop-other" type="text" placeholder="Type custom drop location" style="display:none;" inputmode="text" autocomplete="off">
             </div>
           </div>
@@ -375,22 +394,22 @@
 
         <div class="grid-2">
           <div class="row">
-            <label for="date">Pickup date</label>
+            <label for="date" data-i18n="pickupDate">Pickup date</label>
             <input id="date" type="date" required>
           </div>
           <div class="row">
-            <label for="time">Pickup time</label>
+            <label for="time" data-i18n="pickupTime">Pickup time</label>
             <input id="time" type="time" required>
           </div>
         </div>
 
         <div id="block-return" class="grid-2" style="display:none;">
           <div class="row">
-            <label for="ret-date">Return date</label>
+            <label for="ret-date" data-i18n="returnDate">Return date</label>
             <input id="ret-date" type="date">
           </div>
           <div class="row">
-            <label for="ret-time">Return time</label>
+            <label for="ret-time" data-i18n="returnTime">Return time</label>
             <input id="ret-time" type="time">
           </div>
         </div>
@@ -400,22 +419,22 @@
       <div id="block-local" style="display:none;">
         <div class="grid-2">
           <div class="row">
-            <label for="local-package">Local package</label>
+            <label for="local-package" data-i18n="localPackage">Local package</label>
             <select id="local-package">
-              <option value="">Select</option>
+              <option value="" data-i18n="select">Select</option>
               <option value="4-40">4 hours / 40 km</option>
               <option value="8-80">8 hours / 80 km</option>
               <option value="12-120">12 hours / 120 km</option>
-              <option value="custom">Custom (we’ll confirm)</option>
+              <option value="custom" data-i18n="custom">Custom (we’ll confirm)</option>
             </select>
           </div>
           <div class="row">
-            <label for="local-city">City</label>
+            <label for="local-city" data-i18n="city">City</label>
             <select id="local-city"></select>
           </div>
         </div>
         <div class="row">
-          <label for="local-date">Date</label>
+          <label for="local-date" data-i18n="date">Date</label>
           <input id="local-date" type="date">
         </div>
       </div>
@@ -424,21 +443,21 @@
       <div id="block-multi" style="display:none;">
         <div id="legs"></div>
         <div class="leg-actions">
-          <button type="button" class="btn" id="add-leg">+ Add Leg</button>
-          <button type="button" class="btn-ghost" id="clear-legs">Clear Legs</button>
+          <button type="button" class="btn" id="add-leg" data-i18n="addLeg">+ Add Leg</button>
+          <button type="button" class="btn-ghost" id="clear-legs" data-i18n="clearLegs">Clear Legs</button>
         </div>
-        <p class="note" style="margin-top:8px;">Example: Jammu → Katra → Patnitop → Srinagar → Jammu</p>
+        <p class="note" style="margin-top:8px;" data-i18n="multiExample">Example: Jammu → Katra → Patnitop → Srinagar → Jammu</p>
       </div>
 
       <!-- ===== ROW 1: Flight/Train (contextual) + Vehicle ===== -->
       <div class="grid-2" id="row-1-ctx" style="margin-top:8px;">
         <div class="row" id="ft-wrap" style="display:none;">
-          <label id="ft-label" for="ft-input">Flight no.</label>
+          <label id="ft-label" for="ft-input" data-i18n="flightNo">Flight no.</label>
           <input id="ft-input" type="text" placeholder="" inputmode="text" autocomplete="off">
-          <small class="note" id="ft-hint" style="display:none;">Shown only when pickup is Airport / Railway</small>
+          <small class="note" id="ft-hint" style="display:none;" data-i18n="ftHint">Shown only when pickup is Airport / Railway</small>
         </div>
         <div class="row">
-          <label for="vehicle">Vehicle type</label>
+          <label for="vehicle" data-i18n="vehicleType">Vehicle type</label>
           <select id="vehicle" required></select>
         </div>
       </div>
@@ -446,11 +465,11 @@
       <!-- ===== ROW 2: Total passengers + How many cars ===== -->
       <div class="grid-2" id="row-2-cnt">
         <div class="row">
-          <label for="pax">Total passengers</label>
+          <label for="pax" data-i18n="pax">Total passengers</label>
           <input id="pax" type="number" min="1" placeholder="e.g., 4" inputmode="numeric">
         </div>
         <div class="row">
-          <label for="cars">How many cars</label>
+          <label for="cars" data-i18n="cars">How many cars</label>
           <input id="cars" type="number" min="1" value="1" inputmode="numeric">
         </div>
       </div>
@@ -458,21 +477,21 @@
       <!-- ===== ROW 3: Add-ons + Additional remarks ===== -->
       <div class="grid-2" id="row-3-addons">
         <div class="row">
-          <label>Add‑ons</label>
+          <label data-i18n="addons">Add‑ons</label>
           <div class="inline" id="addons">
             <label class="chip" id="chip-roof">
-              <input type="checkbox" value="roofcarrier" class="addon"> Roof carrier
+              <input type="checkbox" value="roofcarrier" class="addon"> <span data-i18n="roof">Roof carrier</span>
               <small>(+₹<span id="roof-amt">0</span>)</small>
             </label>
             <label class="chip" id="chip-placard">
-              <input type="checkbox" value="placard" class="addon"> Placard (Meet &amp; Greet)
+              <input type="checkbox" value="placard" class="addon"> <span data-i18n="placard">Placard (Meet & Greet)</span>
               <small>(+₹<span id="placard-amt">0</span>)</small>
             </label>
           </div>
-          <small class="note">Add‑ons are charged once per booking and multiplied by number of cars.</small>
+          <small class="note" data-i18n="addonsNote">Add‑ons are charged once per booking and multiplied by number of cars.</small>
         </div>
         <div class="row">
-          <label for="notes">Additional remarks</label>
+          <label for="notes" data-i18n="remarks">Additional remarks</label>
           <textarea id="notes" placeholder="Any stops, hotel details, delays, accessibility needs, etc." inputmode="text" autocomplete="off"></textarea>
         </div>
       </div>
@@ -480,52 +499,51 @@
       <!-- ESTIMATE -->
       <div class="estimate" id="estimate" aria-live="polite">
         <div style="min-width:260px;">
-          <div><strong>Estimate:</strong> <span id="est-text">Add locations to see estimate</span></div>
-          <div class="note"><strong>Total distance:</strong> <span id="km-text">—</span></div>
+          <div><strong data-i18n="estimate">Estimate:</strong> <span id="est-text" data-i18n="estAddLoc">Add locations to see estimate</span></div>
+          <div class="note"><strong data-i18n="totalDistance">Total distance:</strong> <span id="km-text">—</span></div>
           <div class="est-break" id="est-breakdown" style="display:none;">
-            <div class="line"><span>Base fare</span><span id="line-base">₹ 0</span></div>
+            <div class="line"><span data-i18n="baseFare">Base fare</span><span id="line-base">₹ 0</span></div>
             <div class="line" id="line-addons" style="display:none;">
-              <span>Add‑ons (once × cars)</span>
+              <span data-i18n="addonsOnceCars">Add‑ons (once × cars)</span>
               <span id="line-addons-val">₹ 0</span>
             </div>
-            <div class="line"><strong>Grand total</strong><strong id="line-grand">₹ 0</strong></div>
+            <div class="line"><strong data-i18n="grandTotal">Grand total</strong><strong id="line-grand">₹ 0</strong></div>
           </div>
         </div>
-        <button type="button" class="btn" id="refresh-est" aria-label="Refresh estimate">Refresh</button>
+        <button type="button" class="btn" id="refresh-est" aria-label="Refresh estimate" data-i18n="refresh">Refresh</button>
       </div>
 
       <!-- CONTACT & SUBMIT -->
       <div class="grid-2" style="margin-top:12px;">
         <div class="row">
-          <label for="name">Your name</label>
+          <label for="name" data-i18n="yourName">Your name</label>
           <input id="name" type="text" placeholder="Full name" required autocomplete="name">
         </div>
         <div class="row">
-          <label for="mobile">Mobile</label>
-          <input id="mobile" type="tel" inputmode="tel" pattern="[0-9+\-\s]{8,15}" placeholder="+91 9XXXXXXXXX" required autocomplete="tel">
+          <label for="mobile" data-i18n="mobile">Mobile</label>
+          <input id="mobile" type="tel" inputmode="tel" pattern="[0-9+\\-\\s]{8,15}" placeholder="+91 9XXXXXXXXX" required autocomplete="tel">
         </div>
       </div>
       <div class="grid-2">
         <div class="row">
-          <label for="email">Email (optional)</label>
+          <label for="email" data-i18n="emailOpt">Email (optional)</label>
           <input id="email" type="email" placeholder="name@example.com" autocomplete="email">
         </div>
         <div class="row">
-          <label for="pref-contact">Prefer contact on</label>
+          <label for="pref-contact" data-i18n="preferContact">Prefer contact on</label>
           <select id="pref-contact">
             <option>WhatsApp</option>
-            <option>Call</option>
             <option>Email</option>
           </select>
         </div>
       </div>
 
       <div class="actions">
-        <button class="btn-ghost" type="button" id="open-admin" style="display:none;">⚙ Admin Console</button>
-        <button class="btn" id="submit-btn">Submit Transport Request</button>
+        <button class="btn-ghost" type="button" id="open-admin" style="display:none;">⚙ <span data-i18n="adminConsole">Admin Console</span></button>
+        <button class="btn" id="submit-btn" data-i18n="submitBtn">Submit Transport Request</button>
       </div>
 
-      <p class="note" style="margin-top:10px;">
+      <p class="note" style="margin-top:10px;" data-i18n="disclaimerPlain">
         Estimate is indicative for planning. Final fare may vary based on actual kms, waiting, tolls, parking, night charges, and chosen vehicle. We’ll confirm the best possible price before booking.
       </p>
     </div>
@@ -678,10 +696,10 @@ Jammu Airport,Katra,49</pre>
         "Srinagar Airport", "Srinagar City / Dal Gate", "Gulmarg", "Pahalgam", "Sonmarg"
       ],
       vehicles: [
-        { id:"sedan", label:"Sedan (Dzire/Amaze) — 4 pax" },
-        { id:"suv",   label:"SUV (Ertiga) — 5/6 pax" },
-        { id:"innova",label:"Innova / Crysta — 6/7 pax" },
-        { id:"tt",    label:"Tempo Traveller 12 / 17" }
+        { id:"sedan",  label:"Sedan (Dzire/Amaze) — 4 pax" },
+        { id:"suv",    label:"SUV (Ertiga) — 5/6 pax" },
+        { id:"innova", label:"Innova / Crysta — 6/7 pax" },
+        { id:"tt",     label:"Tempo Traveller 12 / 17" }
       ],
       priceTable: { sedan:{}, suv:{}, innova:{}, tt:{} },
       distanceTable: {},
@@ -717,6 +735,198 @@ Jammu Airport,Katra,49</pre>
     function containsRailway(s){ if(!s) return false; const v=String(s).toLowerCase(); return v.includes('railway') || v.includes('station') || v.includes('tawi'); }
 
     loadStore();
+
+    /* ===========================
+       I18N (English, Hindi, Urdu)
+    ============================ */
+
+    const I18N = {
+      en: {
+        brand:"Fodel Transport",
+        reviews:"⭐ Reviews",
+        home:"← Home",
+        lang:"Language",
+        heroTitle:"Taxi · Transfers · Local & Multi‑City Tours",
+        heroSub:"Jammu, Katra (Vaishno Devi), Patnitop, Srinagar, Gulmarg, Pahalgam and beyond.",
+        formTitle:"Transport Requirement",
+        formSub:"Tell us your route and vehicle needs. We’ll confirm availability and share the best price.",
+        oneway:"One‑way",
+        round:"Round‑trip",
+        local:"Local (hours/km)",
+        multi:"Multi‑city",
+        pickup:"Pickup location",
+        otherPickup:"Other pickup",
+        drop:"Drop location",
+        otherDrop:"Other drop",
+        pickupDate:"Pickup date",
+        pickupTime:"Pickup time",
+        returnDate:"Return date",
+        returnTime:"Return time",
+        localPackage:"Local package",
+        select:"Select",
+        custom:"Custom (we’ll confirm)",
+        city:"City",
+        date:"Date",
+        multiExample:"Example: Jammu → Katra → Patnitop → Srinagar → Jammu",
+        flightNo:"Flight no.",
+        trainNo:"Train no.",
+        ftHint:"Shown only when pickup is Airport / Railway",
+        vehicleType:"Vehicle type",
+        pax:"Total passengers",
+        cars:"How many cars",
+        addons:"Add‑ons",
+        roof:"Roof carrier",
+        placard:"Placard (Meet & Greet)",
+        addonsNote:"Add‑ons are charged once per booking and multiplied by number of cars.",
+        remarks:"Additional remarks",
+        estimate:"Estimate:",
+        estAddLoc:"Add locations to see estimate",
+        totalDistance:"Total distance:",
+        baseFare:"Base fare",
+        addonsOnceCars:"Add‑ons (once × cars)",
+        grandTotal:"Grand total",
+        refresh:"Refresh",
+        yourName:"Your name",
+        mobile:"Mobile",
+        emailOpt:"Email (optional)",
+        preferContact:"Prefer contact on",
+        adminConsole:"Admin Console",
+        submitBtn:"Submit Transport Request",
+        disclaimerPlain:"Estimate is indicative for planning. Final fare may vary based on actual kms, waiting, tolls, parking, night charges, and chosen vehicle. We’ll confirm the best possible price before booking."
+      },
+      hi: {
+        brand:"Fodel Transport",
+        reviews:"⭐ रिव्यू",
+        home:"← होम",
+        lang:"भाषा",
+        heroTitle:"टैक्सी · ट्रांसफर · लोकल व मल्टी‑सिटी टूर",
+        heroSub:"जम्मू, कटरा (वैष्णो देवी), पटनीटॉप, श्रीनगर, गुलमर्ग, पहलगाम व अन्य।",
+        formTitle:"ट्रांसपोर्ट आवश्यकता",
+        formSub:"रूट व वाहन बताएँ। हम उपलब्धता कन्फर्म कर सर्वश्रेष्ठ कीमत साझा करेंगे।",
+        oneway:"वन‑वे",
+        round:"राउंड‑ट्रिप",
+        local:"लोकल (घंटे/किमी)",
+        multi:"मल्टी‑सिटी",
+        pickup:"पिकअप लोकेशन",
+        otherPickup:"अन्य पिकअप",
+        drop:"ड्रॉप लोकेशन",
+        otherDrop:"अन्य ड्रॉप",
+        pickupDate:"पिकअप तिथि",
+        pickupTime:"पिकअप समय",
+        returnDate:"रिटर्न तिथि",
+        returnTime:"रिटर्न समय",
+        localPackage:"लोकल पैकेज",
+        select:"चुनें",
+        custom:"कस्टम (हम कन्फर्म करेंगे)",
+        city:"शहर",
+        date:"तारीख",
+        multiExample:"उदा.: जम्मू → कटरा → पटनीटॉप → श्रीनगर → जम्मू",
+        flightNo:"फ्लाइट नंबर",
+        trainNo:"ट्रेन नंबर",
+        ftHint:"केवल एयरपोर्ट/रेलवे पिकअप पर दिखाई देगा",
+        vehicleType:"वाहन प्रकार",
+        pax:"कुल यात्री",
+        cars:"कितनी कारें",
+        addons:"एड‑ऑन",
+        roof:"रूफ कैरियर",
+        placard:"प्लैकार्ड (मीट & ग्रीट)",
+        addonsNote:"एड‑ऑन प्रति बुकिंग एक बार, कारों की संख्या से गुणा होगा।",
+        remarks:"अतिरिक्त विवरण",
+        estimate:"अनुमान:",
+        estAddLoc:"लोकेशन जोड़ें, अनुमान दिखेगा",
+        totalDistance:"कुल दूरी:",
+        baseFare:"बेस किराया",
+        addonsOnceCars:"एड‑ऑन (एक बार × कारें)",
+        grandTotal:"कुल राशि",
+        refresh:"रिफ्रेश",
+        yourName:"आपका नाम",
+        mobile:"मोबाइल",
+        emailOpt:"ईमेल (वैकल्पिक)",
+        preferContact:"संपर्क पसंद",
+        adminConsole:"एडमिन कंसोल",
+        submitBtn:"ट्रांसपोर्ट रिक्वेस्ट सबमिट करें",
+        disclaimerPlain:"अनुमान केवल योजना हेतु है। वास्तविक किमी, वेटिंग, टोल, पार्किंग, नाइट चार्ज व वाहन के अनुसार अंतिम किराया बदल सकता है। बुकिंग से पहले हम सर्वोत्तम कीमत कन्फर्म करेंगे।"
+      },
+      ur: {
+        brand:"Fodel Transport",
+        reviews:"⭐ ریویوز",
+        home:"← ہوم",
+        lang:"زبان",
+        heroTitle:"ٹیکسی · ٹرانسفر · مقامی اور ملٹی‑سٹی ٹورز",
+        heroSub:"جموں، کٹڑا (وشنو دیوی)، پٹن ٹاپ، سرینگر، گلمرگ، پہلگام اور مزید۔",
+        formTitle:"ٹرانسپورٹ کی ضرورت",
+        formSub:"اپنا روٹ اور گاڑی بتائیں۔ ہم دستیابی کنفرم کر کے بہترین قیمت شیئر کریں گے۔",
+        oneway:"ون‑وے",
+        round:"راؤنڈ‑ٹرپ",
+        local:"لوکل (گھنٹے/کلومیٹر)",
+        multi:"ملٹی‑سٹی",
+        pickup:"پک اپ لوکیشن",
+        otherPickup:"دیگر پک اپ",
+        drop:"ڈراپ لوکیشن",
+        otherDrop:"دیگر ڈراپ",
+        pickupDate:"پک اپ تاریخ",
+        pickupTime:"پک اپ وقت",
+        returnDate:"واپسی تاریخ",
+        returnTime:"واپسی وقت",
+        localPackage:"لوکل پیکیج",
+        select:"منتخب کریں",
+        custom:"کسٹم (ہم کنفرم کریں گے)",
+        city:"شہر",
+        date:"تاریخ",
+        multiExample:"مثال: جموں → کٹڑا → پٹن ٹاپ → سرینگر → جموں",
+        flightNo:"فلائٹ نمبر",
+        trainNo:"ٹرین نمبر",
+        ftHint:"صرف ایئرپورٹ/ریلوے پک اپ پر نظر آئے گا",
+        vehicleType:"گاڑی کی قسم",
+        pax:"کل مسافر",
+        cars:"کتنی گاڑیاں",
+        addons:"ایڈ‑آن",
+        roof:"روف کیریئر",
+        placard:"پلیکارد (میٹ & گریٹ)",
+        addonsNote:"ایڈ‑آن فی بکنگ ایک بار، گاڑیوں کی تعداد کے حساب سے ضرب ہوگا۔",
+        remarks:"اضافی تفصیل",
+        estimate:"تخمینہ:",
+        estAddLoc:"لوکیشن شامل کریں، تخمینہ نظر آئے گا",
+        totalDistance:"کل فاصلہ:",
+        baseFare:"بنیادی کرایہ",
+        addonsOnceCars:"ایڈ‑آن (ایک بار × گاڑیاں)",
+        grandTotal:"کل رقم",
+        refresh:"ریفریش",
+        yourName:"آپ کا نام",
+        mobile:"موبائل",
+        emailOpt:"ای میل (اختیاری)",
+        preferContact:"رابطے کا پسندیدہ ذریعہ",
+        adminConsole:"ایڈمن کنسول",
+        submitBtn:"ٹرانسپورٹ ریکوئسٹ جمع کریں",
+        disclaimerPlain:"تخمینہ صرف منصوبہ بندی کے لیے ہے۔ حقیقی کلومیٹر، ویٹنگ، ٹول، پارکنگ، نائٹ چارجز اور منتخب گاڑی کے مطابق آخری کرایہ بدل سکتا ہے۔ بُکنگ سے پہلے ہم بہترین قیمت کنفرم کریں گے۔"
+      }
+    };
+
+    const LANG_KEY = "fodel_lang";
+    const langPicker = document.getElementById("lang-picker");
+
+    function setLangAttr(code){
+      document.documentElement.setAttribute("lang", code);
+      // (Optional: set dir for Urdu if preferred)
+      document.documentElement.setAttribute("dir", code === "ur" ? "rtl" : "ltr");
+    }
+
+    function applyI18n(code){
+      const dict = I18N[code] || I18N.en;
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const key = el.getAttribute("data-i18n");
+        if (dict[key]) el.textContent = dict[key];
+      });
+      setLangAttr(code);
+      localStorage.setItem(LANG_KEY, code);
+    }
+
+    function initLang(){
+      const saved = localStorage.getItem(LANG_KEY) || "en";
+      if (langPicker) langPicker.value = saved;
+      applyI18n(saved);
+      langPicker?.addEventListener("change", (e)=>applyI18n(e.target.value));
+    }
 
     /* ===========================
        UI WIRING
@@ -763,119 +973,6 @@ Jammu Airport,Katra,49</pre>
     const openAdmin = byId('open-admin');
     const adminOv = byId('admin-ov');
 
-    // -----------------------------------------
-// ADMIN SECURITY (PIN) — runs after DOM ready
-// -----------------------------------------
-document.addEventListener('DOMContentLoaded', () => {
-  // Use the SHA-256 HASH (not the raw PIN)
-  const ADMIN_PIN_HASH = "380ab389d8400d508ce9a8393bda7161466bbed74cbaec488e931ddb1410c350";
-
-  // (Optional one-time logout after changing PIN)
-  // localStorage.removeItem('fodel_admin_auth_v1');
-  // localStorage.removeItem('fodel_admin');
-
-  const ADMIN_AUTH_KEY = 'fodel_admin_auth_v1'; // stores your authenticated token (hash)
-  const ADMIN_FLAG_KEY = 'fodel_admin';         // your existing "persistent admin" flag
-
-  async function sha256Hex(str){
-    if (!window.crypto?.subtle) {
-      // Fallback (not cryptographically strong, but avoids failures on locked systems)
-      let h = 0;
-      for (let i = 0; i < str.length; i++) h = ((h << 5) - h) + str.charCodeAt(i), h |= 0;
-      return String(h);
-    }
-    const enc = new TextEncoder().encode(str);
-    const buf = await crypto.subtle.digest('SHA-256', enc);
-    return [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
-  }
-  function isAdminAuthed(){
-    try{ return localStorage.getItem(ADMIN_AUTH_KEY) === ADMIN_PIN_HASH; }
-    catch{ return false; }
-  }
-  async function requireAdminAuth(){
-    if (isAdminAuthed()) return true;
-    for (let i = 0; i < 3; i++){
-      const pin = prompt('Enter admin PIN:');
-      if (pin == null) return false; // cancelled
-      const hash = await sha256Hex(pin);
-      if (hash === ADMIN_PIN_HASH){
-        localStorage.setItem(ADMIN_AUTH_KEY, ADMIN_PIN_HASH);
-        if (typeof showToast === 'function') showToast('Admin authenticated');
-        return true;
-      } else {
-        alert('Incorrect PIN.');
-      }
-    }
-    return false;
-  }
-
-  const openAdmin = document.getElementById('open-admin');
-  const adminOv   = document.getElementById('admin-ov');
-
-  // Guard the gear button
-  if (openAdmin) {
-    openAdmin.addEventListener('click', async (e) => {
-      e.preventDefault();
-      if (await requireAdminAuth()) {
-        adminOv.classList.add('active');
-      }
-    });
-  }
-
-  // Secure the ?admin=1 behavior (only opens if authed)
-  (function secureAdminParam(){
-    const params  = new URLSearchParams(location.search);
-    const urlAdmin= params.get('admin') === '1';
-    const lsAdmin = localStorage.getItem(ADMIN_FLAG_KEY) === '1';
-
-    if (openAdmin) {
-      openAdmin.style.display = (isAdminAuthed() || lsAdmin) ? 'inline-flex' : 'none';
-    }
-
-    if (urlAdmin){
-      (async () => {
-        if (await requireAdminAuth()){
-          if (openAdmin) openAdmin.style.display = 'inline-flex';
-          setTimeout(()=>adminOv.classList.add('active'), 0);
-        } else {
-          if (openAdmin) openAdmin.style.display = 'none';
-        }
-      })();
-    }
-  })();
-
-  // Keyboard shortcut: Shift + A toggles persistent admin (requires PIN first)
-  document.addEventListener('keydown', async (e) => {
-    if (e.shiftKey && (e.key === 'A' || e.key === 'a')) {
-      if (!await requireAdminAuth()) return;
-      const cur = localStorage.getItem(ADMIN_FLAG_KEY) === '1';
-      const next = !cur;
-      localStorage.setItem(ADMIN_FLAG_KEY, next ? '1' : '0');
-      if (openAdmin) openAdmin.style.display = next ? 'inline-flex' : 'none';
-      if (next) adminOv.classList.add('active'); else adminOv.classList.remove('active');
-      if (typeof showToast === 'function') showToast(next ? 'Admin mode ON' : 'Admin mode OFF');
-    }
-  });
-
-  // Add a Logout button into the Admin modal header
-  (function addAdminLogout(){
-    const header = document.querySelector('#admin-ov .modal-header');
-    if (!header || header.querySelector('.admin-logout')) return;
-    const btn = document.createElement('button');
-    btn.textContent = 'Logout';
-    btn.className = 'btn-ghost admin-logout';
-    btn.style.marginLeft = 'auto';
-    btn.onclick = () => {
-      localStorage.removeItem(ADMIN_AUTH_KEY);
-      localStorage.removeItem(ADMIN_FLAG_KEY);
-      adminOv.classList.remove('active');
-      if (openAdmin) openAdmin.style.display = 'none';
-      if (typeof showToast === 'function') showToast('Logged out');
-    };
-    header.appendChild(btn);
-  })();
-});
-
     // Contextual FT
     const ftWrap  = byId('ft-wrap');
     const ftLabel = byId('ft-label');
@@ -883,7 +980,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const ftHint  = byId('ft-hint');
 
     // Add-ons chips & amounts
-    const chipPlacard = byId('chip-placard');
     const roofAmt = byId('roof-amt');
     const placardAmt = byId('placard-amt');
 
@@ -898,11 +994,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Populate selects from STORE
     function fillLocations(sel){
       if(!sel) return;
-      sel.innerHTML = '<option value="">Select</option>' + STORE.locations.map(l => `<option>${l}</option>`).join('');
+      sel.innerHTML = '<option value="">' + (I18N[(localStorage.getItem(LANG_KEY)||'en')].select) + '</option>' + STORE.locations.map(l => `<option>${l}</option>`).join('');
     }
     function fillVehicles(){
       if(!vehicle) return;
-      vehicle.innerHTML = '<option value="">Select</option>' + STORE.vehicles.map(v => `<option value="${v.id}">${v.label}</option>`).join('');
+      vehicle.innerHTML = '<option value="">' + (I18N[(localStorage.getItem(LANG_KEY)||'en')].select) + '</option>' + STORE.vehicles.map(v => `<option value="${v.id}">${v.label}</option>`).join('');
     }
     function fillAllLocations(){
       fillLocations(selPickup);
@@ -911,31 +1007,16 @@ document.addEventListener('DOMContentLoaded', () => {
       fillLocations(priceFrom);
       fillLocations(priceTo);
     }
-    fillVehicles();
-    fillAllLocations();
 
-    // Show addon amounts on chips
     function refreshAddonLabels(){
       roofAmt.textContent = (STORE.addons?.roofcarrier ?? 0).toLocaleString("en-IN");
       placardAmt.textContent = (STORE.addons?.placard ?? 0).toLocaleString("en-IN");
     }
-    refreshAddonLabels();
 
     // Date defaults
-    [date, rdate, byId('local-date')].forEach(el => el && (el.min = todayISO()));
-
-    // Toggle trip type blocks
-    function updateTripBlocks(){
-      const type = tripRadios.find(r => r.checked)?.value || 'oneway';
-      blockStd.style.display   = (type === 'oneway' || type === 'round') ? '' : 'none';
-      blockReturn.style.display= (type === 'round') ? '' : 'none';
-      blockLocal.style.display = (type === 'local') ? '' : 'none';
-      blockMulti.style.display = (type === 'multi') ? '' : 'none';
-      updateFTVisibility();
-      refreshEstimate();
+    function initDates(){
+      [date, rdate, byId('local-date')].forEach(el => el && (el.min = todayISO()));
     }
-    tripRadios.forEach(r => r.addEventListener('change', updateTripBlocks));
-    updateTripBlocks();
 
     // Other pickup/drop toggles
     function toggleOther(tgl, input, select){
@@ -945,8 +1026,6 @@ document.addEventListener('DOMContentLoaded', () => {
       updateFTVisibility();
       refreshEstimate();
     }
-    pickupOtherToggle.addEventListener('change', () => toggleOther(pickupOtherToggle, pickupOther, selPickup));
-    dropOtherToggle.addEventListener('change', () => toggleOther(dropOtherToggle, dropOther, selDrop));
 
     // Pickup string for contextual FT UI
     function getPickupString(){
@@ -964,42 +1043,17 @@ document.addEventListener('DOMContentLoaded', () => {
       return '';
     }
 
-    // Collect active locations (for placard logic; here we always show it anyway)
-    function getActiveLocations(){
-      const type = document.querySelector('input[name="tripType"]:checked')?.value || 'oneway';
-      const locs = [];
-      if (type === 'oneway' || type === 'round'){
-        const p = pickupOtherToggle?.checked ? (pickupOther?.value || '') : (selPickup?.value || '');
-        const d = dropOtherToggle?.checked   ? (dropOther?.value   || '') : (selDrop?.value   || '');
-        if (p) locs.push(p);
-        if (d) locs.push(d);
-      } else if (type === 'local'){
-        const city = selLocalCity?.value || '';
-        if (city) locs.push(city);
-      } else if (type === 'multi'){
-        const legEls = [...document.querySelectorAll('#legs .leg')];
-        for (const el of legEls){
-          const lf = el.querySelector('.leg-from')?.value || '';
-          const lt = el.querySelector('.leg-to')?.value   || '';
-          if (lf) locs.push(lf);
-          if (lt) locs.push(lt);
-        }
-      }
-      return locs;
-    }
-
     function updateFTVisibility(){
-      // Contextual FT field: only if PICKUP is a hub
       const pickup = getPickupString();
       if (containsAirport(pickup)){
         ftWrap.style.display = '';
-        ftLabel.textContent  = 'Flight no.';
+        ftLabel.textContent  = I18N[(localStorage.getItem(LANG_KEY)||'en')].flightNo;
         ftInput.placeholder  = 'e.g., UK 123';
         ftInput.setAttribute('data-ft-type', 'flight');
         if (ftHint) ftHint.style.display = 'none';
       } else if (containsRailway(pickup)){
         ftWrap.style.display = '';
-        ftLabel.textContent  = 'Train no.';
+        ftLabel.textContent  = I18N[(localStorage.getItem(LANG_KEY)||'en')].trainNo;
         ftInput.placeholder  = 'e.g., 12426 Jammu Rajdhani';
         ftInput.setAttribute('data-ft-type', 'train');
         if (ftHint) ftHint.style.display = 'none';
@@ -1007,11 +1061,9 @@ document.addEventListener('DOMContentLoaded', () => {
         ftWrap.style.display = 'none';
         ftInput.value = '';
       }
-
-      // Placard is visible by default (no auto-hide)
     }
 
-    [selPickup, selDrop, pickupOther, dropOther, pickupOtherToggle, dropOtherToggle, selLocalCity].forEach(el => el && el.addEventListener('input', () => { updateFTVisibility(); refreshEstimate(); }));
+    [selPickup, selDrop, pickupOther, dropOther, pickupOtherToggle, dropOtherToggle, selLocalCity].forEach(el => el && el.addEventListener('input', ()=>{ updateFTVisibility(); refreshEstimate(); }));
 
     // Multi-city legs
     function createLeg(fromVal="", toVal=""){
@@ -1020,21 +1072,21 @@ document.addEventListener('DOMContentLoaded', () => {
       div.innerHTML = `
         <div class="inline">
           <div>
-            <label>From</label>
+            <label>${I18N[(localStorage.getItem(LANG_KEY)||'en')].pickup}</label>
             <select class="leg-from"></select>
           </div>
           <div>
-            <label>To</label>
+            <label>${I18N[(localStorage.getItem(LANG_KEY)||'en')].drop}</label>
             <select class="leg-to"></select>
           </div>
         </div>
         <div class="inline" style="margin-top:8px;">
           <div>
-            <label>Date</label>
+            <label>${I18N[(localStorage.getItem(LANG_KEY)||'en')].date}</label>
             <input type="date" class="leg-date" min="${todayISO()}">
           </div>
           <div>
-            <label>Pickup time</label>
+            <label>${I18N[(localStorage.getItem(LANG_KEY)||'en')].pickupTime}</label>
             <input type="time" class="leg-time">
           </div>
         </div>
@@ -1054,20 +1106,28 @@ document.addEventListener('DOMContentLoaded', () => {
       div.querySelector('.btn-leg-up').addEventListener('click', () => { if (div.previousElementSibling) legsBox.insertBefore(div, div.previousElementSibling); refreshEstimate(); updateFTVisibility(); });
       div.querySelector('.btn-leg-down').addEventListener('click', () => { if (div.nextElementSibling) legsBox.insertBefore(div.nextElementSibling, div); refreshEstimate(); updateFTVisibility(); });
       div.querySelector('.btn-leg-del').addEventListener('click', () => { div.remove(); refreshEstimate(); updateFTVisibility(); });
+
       [lf, lt, ...div.querySelectorAll('.leg-date, .leg-time')].forEach(el => el.addEventListener('input', () => { refreshEstimate(); updateFTVisibility(); }));
 
       return div;
+    }
+
+    function ensureAtLeastOneLeg(){
+      if (legsBox.children.length === 0){
+        const fromPref = pickupOtherToggle.checked ? (pickupOther.value || "") : (selPickup.value || "");
+        const toPref   = dropOtherToggle.checked ? (dropOther.value   || "") : (selDrop.value   || "");
+        createLeg(fromPref, toPref);
+      }
     }
 
     addLegBtn.addEventListener('click', () => {
       const last = legsBox.lastElementChild;
       let fromPref = "", toPref = "";
       if (last) {
-        const lastTo = last.querySelector('.leg-to')?.value || "";
-        fromPref = lastTo;
+        fromPref = last.querySelector('.leg-to')?.value || "";
       } else {
-        fromPref = selPickup.value || "";
-        toPref = selDrop.value || "";
+        fromPref = pickupOtherToggle.checked ? (pickupOther.value || "") : (selPickup.value || "");
+        toPref   = dropOtherToggle.checked ? (dropOther.value   || "") : (selDrop.value   || "");
       }
       createLeg(fromPref, toPref);
       refreshEstimate();
@@ -1110,8 +1170,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ]);
         return legs;
       }
-      // local
-      return legs;
+      return legs; // local
     }
 
     function refreshEstimate() {
@@ -1121,7 +1180,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Local
       if (type === "local") {
-        estText.textContent = "Local package — ask for quote";
+        estText.textContent = I18N[(localStorage.getItem(LANG_KEY)||'en')].local + " — " + "ask for quote";
         kmText.textContent = "—";
         estBreak.style.display = 'none';
         return;
@@ -1129,7 +1188,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const legs = calcLegs();
       if (!legs.length){
-        estText.textContent = (type === 'multi') ? 'Add trip legs' : 'Select pickup & drop';
+        estText.textContent = (type === 'multi') ? I18N[(localStorage.getItem(LANG_KEY)||'en')].estAddLoc.replace("locations","trip legs") : I18N[(localStorage.getItem(LANG_KEY)||'en')].estAddLoc;
         kmText.textContent = "—";
         estBreak.style.display = 'none';
         return;
@@ -1142,13 +1201,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const km = getRouteDistance(a, b);
         if (km != null) { kmSum += km; kmKnown++; }
       });
+      const dict = I18N[(localStorage.getItem(LANG_KEY)||'en')];
       kmText.textContent = (kmKnown > 0)
         ? `${kmSum.toLocaleString("en-IN")} km${kmKnown < legs.length ? ` (${kmKnown}/${legs.length} legs)` : ""}`
         : "—";
 
       // Prices require vehicle
       if (!vId) {
-        estText.textContent = "Select vehicle";
+        estText.textContent = dict.vehicleType + " — " + dict.select;
         estBreak.style.display = 'none';
         return;
       }
@@ -1161,23 +1221,20 @@ document.addEventListener('DOMContentLoaded', () => {
         else missing++;
       });
 
-      // Add‑ons (once per booking; multiplied by number of cars)
       const roofChecked    = document.querySelector('.addon[value="roofcarrier"]')?.checked;
       const placardChecked = document.querySelector('.addon[value="placard"]')?.checked;
-
       const addonOnce =
         (roofChecked    ? (STORE.addons?.roofcarrier || 0) : 0) +
         (placardChecked ? (STORE.addons?.placard    || 0) : 0);
 
-      const addonsTotalForCars     = addonOnce * nCars;     // once × cars
-      const grand = (base * nCars) + addonsTotalForCars;    // route prices × cars + add-ons × cars
+      const addonsTotalForCars = addonOnce * nCars;
+      const grand = (base * nCars) + addonsTotalForCars;
 
       if (missing) {
         estText.textContent = `${legs.length - missing}/${legs.length} legs priced — remaining ask for quote`;
         estBreak.style.display = 'none';
       } else {
-        estText.textContent = `₹ ${grand.toLocaleString("en-IN")} estimate`;
-        // Breakdown
+        estText.textContent = `₹ ${grand.toLocaleString("en-IN")} ${dict.estimate.replace(':','').trim().toLowerCase()}`;
         estBreak.style.display = '';
         lineBase.textContent = `₹ ${(base * nCars).toLocaleString("en-IN")}`;
         if (addonOnce > 0){
@@ -1198,41 +1255,121 @@ document.addEventListener('DOMContentLoaded', () => {
       ...document.querySelectorAll('.addon'), selLocalCity
     ].forEach(el => el && el.addEventListener("input", refreshEstimate));
 
+    // Toggle trip type blocks (+ ensure default leg for multi)
+    function updateTripBlocks(){
+      const type = tripRadios.find(r => r.checked)?.value || 'oneway';
+      blockStd.style.display    = (type === 'oneway' || type === 'round') ? '' : 'none';
+      blockReturn.style.display = (type === 'round') ? '' : 'none';
+      blockLocal.style.display  = (type === 'local') ? '' : 'none';
+      blockMulti.style.display  = (type === 'multi') ? '' : 'none';
+
+      if (type === 'multi') ensureAtLeastOneLeg();
+
+      updateFTVisibility();
+      refreshEstimate();
+    }
+    tripRadios.forEach(r => r.addEventListener('change', updateTripBlocks));
+
     /* ===========================
-       ADMIN: open/close + auto-open + toggle
+       ADMIN SECURITY (PIN)
     ============================ */
+    document.addEventListener('DOMContentLoaded', () => {
+      const ADMIN_PIN_HASH = "380ab389d8400d508ce9a8393bda7161466bbed74cbaec488e931ddb1410c350";
+      const ADMIN_AUTH_KEY = 'fodel_admin_auth_v1';
+      const ADMIN_FLAG_KEY = 'fodel_admin'; // persistent toggle (requires prior auth)
 
-    // Helper: open/close admin modal
-    function openAdminModal() { if (adminOv) adminOv.classList.add('active'); }
-    function closeAdminModal(){ if (adminOv) adminOv.classList.remove('active'); }
-
-    // Admin button click
-    openAdmin.addEventListener("click", () => { openAdminModal(); });
-    // Close when clicking overlay or ✕
-    adminOv.addEventListener("click", e => {
-      if (e.target === adminOv || e.target.hasAttribute("data-close")) closeAdminModal();
-    });
-
-    // Detect URL param ?admin=1 and/or persistent flag
-    (function initAdminMode(){
-      const params = new URLSearchParams(window.location.search);
-      const urlAdmin = params.get('admin') === '1';
-      const lsAdmin  = localStorage.getItem('fodel_admin') === '1';
-      const isAdmin = urlAdmin || lsAdmin;
-      if (isAdmin && openAdmin) openAdmin.style.display = 'inline-flex';
-      if (urlAdmin) setTimeout(openAdminModal, 0);
-    })();
-
-    // Keyboard shortcut: Shift + A toggles persistent admin
-    document.addEventListener('keydown', (e) => {
-      if (e.shiftKey && (e.key === 'A' || e.key === 'a')) {
-        const cur = localStorage.getItem('fodel_admin') === '1';
-        const next = !cur;
-        localStorage.setItem('fodel_admin', next ? '1' : '0');
-        if (openAdmin) openAdmin.style.display = next ? 'inline-flex' : 'none';
-        if (next) openAdminModal(); else closeAdminModal();
-        if (typeof showToast === 'function') showToast(next ? 'Admin mode ON' : 'Admin mode OFF');
+      async function sha256Hex(str){
+        if (!window.crypto?.subtle) {
+          // Fallback hash (non-cryptographic)
+          let h = 0;
+          for (let i = 0; i < str.length; i++) h = ((h << 5) - h) + str.charCodeAt(i), h |= 0;
+          return String(h);
+        }
+        const enc = new TextEncoder().encode(str);
+        const buf = await crypto.subtle.digest('SHA-256', enc);
+        return [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
       }
+      function isAdminAuthed(){
+        try{ return localStorage.getItem(ADMIN_AUTH_KEY) === ADMIN_PIN_HASH; }
+        catch{ return false; }
+      }
+      async function requireAdminAuth(){
+        if (isAdminAuthed()) return true;
+        for (let i = 0; i < 3; i++){
+          const pin = prompt('Enter admin PIN:');
+          if (pin == null) return false; // cancelled
+          const hash = await sha256Hex(pin);
+          if (hash === ADMIN_PIN_HASH){
+            localStorage.setItem(ADMIN_AUTH_KEY, ADMIN_PIN_HASH);
+            if (typeof showToast === 'function') showToast('Admin authenticated');
+            return true;
+          } else { alert('Incorrect PIN.'); }
+        }
+        return false;
+      }
+
+      // Guard the gear button
+      if (openAdmin) {
+        openAdmin.addEventListener('click', async (e) => {
+          e.preventDefault();
+          if (await requireAdminAuth()) {
+            adminOv.classList.add('active');
+          }
+        });
+      }
+
+      // Secure the ?admin=1 behavior (only opens if authed)
+      (function secureAdminParam(){
+        const params  = new URLSearchParams(location.search);
+        const urlAdmin= params.get('admin') === '1';
+        const lsAdmin = localStorage.getItem(ADMIN_FLAG_KEY) === '1';
+
+        if (openAdmin) {
+          openAdmin.style.display = (isAdminAuthed() || lsAdmin) ? 'inline-flex' : 'none';
+        }
+
+        if (urlAdmin){
+          (async () => {
+            if (await requireAdminAuth()){
+              if (openAdmin) openAdmin.style.display = 'inline-flex';
+              setTimeout(()=>adminOv.classList.add('active'), 0);
+            } else {
+              if (openAdmin) openAdmin.style.display = 'none';
+            }
+          })();
+        }
+      })();
+
+      // Keyboard shortcut: Shift + A toggles persistent admin (requires PIN first)
+      document.addEventListener('keydown', async (e) => {
+        if (e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+          if (!await requireAdminAuth()) return;
+          const cur = localStorage.getItem(ADMIN_FLAG_KEY) === '1';
+          const next = !cur;
+          localStorage.setItem(ADMIN_FLAG_KEY, next ? '1' : '0');
+          if (openAdmin) openAdmin.style.display = next ? 'inline-flex' : 'none';
+          if (next) adminOv.classList.add('active'); else adminOv.classList.remove('active');
+          if (typeof showToast === 'function') showToast(next ? 'Admin mode ON' : 'Admin mode OFF');
+        }
+      });
+
+      // Add a Logout button into the Admin modal header
+      (function addAdminLogout(){
+        const header = document.querySelector('#admin-ov .modal-header');
+        if (!header || header.querySelector('.admin-logout')) return;
+        const btn = document.createElement('button');
+        btn.textContent = 'Logout';
+        btn.className = 'btn-ghost admin-logout';
+        btn.style.marginLeft = 'auto';
+        btn.onclick = () => {
+          localStorage.removeItem(ADMIN_AUTH_KEY);
+          localStorage.removeItem(ADMIN_FLAG_KEY);
+          adminOv.classList.remove('active');
+          if (openAdmin) openAdmin.style.display = 'none';
+          if (typeof showToast === 'function') showToast('Logged out');
+        };
+        header.appendChild(btn);
+      })();
     });
 
     /* ===========================
@@ -1252,73 +1389,22 @@ document.addEventListener('DOMContentLoaded', () => {
           fillAllLocations();
           renderLocs();
           showToast("Location removed");
-          refreshEstimate(); // update selects/legs if needed
+          refreshEstimate();
         };
         locList.appendChild(btn);
       });
     }
-    renderLocs();
-
-    locAdd.addEventListener("click", () => {
-      const v = locNew.value.trim();
-      if (!v) return;
-      if (!STORE.locations.includes(v)) STORE.locations.push(v);
-      locNew.value = "";
-      saveStore(); fillAllLocations(); renderLocs();
-      showToast("Location added");
-      refreshEstimate();
-    });
-
-    locReset.addEventListener("click", () => {
-      STORE.locations = [...DEFAULTS.locations];
-      saveStore(); fillAllLocations(); renderLocs();
-      showToast("Locations reset");
-      refreshEstimate();
-    });
 
     function fillPriceSelectors(){ fillLocations(priceFrom); fillLocations(priceTo); }
-    fillPriceSelectors();
-
-    priceSave.addEventListener("click", () => {
-      const from = priceFrom.value; const to = priceTo.value;
-      const sedan = parseInt(pSedan.value || "0", 10) || 0;
-      const suv = parseInt(pSuv.value || "0", 10) || 0;
-      const innova = parseInt(pInnova.value || "0", 10) || 0;
-      const tt = parseInt(pTT.value || "0", 10) || 0;
-      if(!from || !to) { alert("Select From and To locations"); return; }
-      const key = priceKey(from, to);
-      STORE.priceTable.sedan[key] = sedan;
-      STORE.priceTable.suv[key] = suv;
-      STORE.priceTable.innova[key] = innova;
-      STORE.priceTable.tt[key] = tt;
-      saveStore(); showToast("Route price saved"); refreshEstimate();
-    });
-
-    priceClear.addEventListener("click", () => {
-      const from = priceFrom.value; const to = priceTo.value;
-      if(!from || !to) { alert("Select From and To locations"); return; }
-      const key = priceKey(from, to);
-      delete STORE.priceTable.sedan[key];
-      delete STORE.priceTable.suv[key];
-      delete STORE.priceTable.innova[key];
-      delete STORE.priceTable.tt[key];
-      saveStore(); showToast("Route price cleared"); refreshEstimate();
-    });
 
     // Add-on admin
     function loadAddonAdmin(){
       aRoof.value = STORE.addons?.roofcarrier ?? 0;
       aPlacard.value = STORE.addons?.placard ?? 0;
     }
-    loadAddonAdmin();
-    addonsSave.addEventListener('click', () => {
-      STORE.addons.roofcarrier = Math.max(0, parseInt(aRoof.value || '0', 10) || 0);
-      STORE.addons.placard     = Math.max(0, parseInt(aPlacard.value || '0', 10) || 0);
-      saveStore(); refreshAddonLabels(); refreshEstimate(); showToast('Add‑on prices saved');
-    });
 
     // Export / Import JSON (full backup)
-    exportJSON.addEventListener("click", () => {
+    exportJSON?.addEventListener("click", () => {
       const data = JSON.stringify(STORE, null, 2);
       const blob = new Blob([data], {type:"application/json"});
       const url = URL.createObjectURL(blob);
@@ -1329,7 +1415,7 @@ document.addEventListener('DOMContentLoaded', () => {
       showToast("Exported");
     });
 
-    importJSON.addEventListener("click", async () => {
+    importJSON?.addEventListener("click", async () => {
       const file = importFile.files?.[0];
       if(!file) { alert("Choose a JSON file to import."); return; }
       try{
@@ -1350,9 +1436,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // CSV helpers
     function parseCSV(text){
-      // Simple CSV (no quoted commas). For complex CSV, we can add a parser later.
       return text
         .split(/\r?\n/)
         .map(l => l.trim())
@@ -1427,10 +1511,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       rows.forEach(r => {
         const from = r[idxFrom] || '';
-        the_to   = r[idxTo] || '';
+        const to   = r[idxTo] || '';
         const km   = Number(r[idxKm] || '0');
-        if (!from || !the_to || !km) return;
-        STORE.distanceTable[priceKey(from, the_to)] = km;
+        if (!from || !to || !km) return;
+        STORE.distanceTable[priceKey(from, to)] = km;
       });
       saveStore(); showToast('Distances CSV imported'); refreshEstimate();
     });
@@ -1451,13 +1535,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ===========================
-       SUBMIT (Prefer contact on)
+       SUBMIT (WhatsApp or Email)
+       + FINAL BOLD DISCLAIMER
     ============================ */
+
     function getVehicleLabelById(id){
       const v = STORE.vehicles.find(v => v.id === id);
       return v ? v.label : id || '';
     }
     function buildTripSummary(){
+      const dict = I18N[(localStorage.getItem(LANG_KEY)||'en')];
       const type = document.querySelector('input[name="tripType"]:checked')?.value || 'oneway';
       const parts = [];
       if (type === 'oneway' || type === 'round'){
@@ -1506,14 +1593,21 @@ document.addEventListener('DOMContentLoaded', () => {
       if (notesVal) parts.push(`Notes: ${notesVal}`);
 
       // Customer info
-      const customer = [];
       const nm = byId('name')?.value || '';
       const mb = byId('mobile')?.value || '';
       const em = byId('email')?.value || '';
-      if (nm) customer.push(`Name: ${nm}`);
-      if (mb) customer.push(`Mobile: ${mb}`);
-      if (em) customer.push(`Email: ${em}`);
-      if (customer.length) parts.push('', ...customer);
+      parts.push('');
+      if (nm) parts.push(`Name: ${nm}`);
+      if (mb) parts.push(`Mobile: ${mb}`);
+      if (em) parts.push(`Email: ${em}`);
+
+      // FINAL BOLD DISCLAIMER (WhatsApp bold markers work; same text for email)
+      parts.push(
+        '',
+        '*Estimate is indicative for planning. Final fare may vary based on actual kms,',
+        'waiting, tolls, parking, night charges, and chosen vehicle.',
+        'We’ll confirm the best possible price before booking.*'
+      );
 
       return parts.filter(Boolean).join('\n');
     }
@@ -1533,12 +1627,84 @@ document.addEventListener('DOMContentLoaded', () => {
       const pref = (byId('pref-contact')?.value || 'WhatsApp').toLowerCase();
       const summary = buildTripSummary();
       if (pref === 'email') openEmailTo(summary);
-      else openWhatsAppWith(summary); // Call -> WhatsApp; WhatsApp -> WhatsApp
+      else openWhatsAppWith(summary);
     });
 
-    // Initial
-    refreshEstimate();
+    /* ===========================
+       INIT (order matters)
+    ============================ */
+    initLang();          // set html[lang], fill texts
+    fillVehicles();
+    fillAllLocations();
+    refreshAddonLabels();
+    initDates();
+    updateTripBlocks();  // handles default leg for multi if selected initially
     updateFTVisibility();
+    refreshEstimate();
+
+    // "Other" toggles
+    pickupOtherToggle.addEventListener('change', () => toggleOther(pickupOtherToggle, pickupOther, selPickup));
+    dropOtherToggle.addEventListener('change', () => toggleOther(dropOtherToggle, dropOther, selDrop));
+
+    /* ===========================
+       ADMIN open/close
+    ============================ */
+    function openAdminModal() { if (adminOv) adminOv.classList.add('active'); }
+    function closeAdminModal(){ if (adminOv) adminOv.classList.remove('active'); }
+
+    openAdmin.addEventListener("click", () => { openAdminModal(); });
+    adminOv.addEventListener("click", e => {
+      if (e.target === adminOv || e.target.hasAttribute("data-close")) closeAdminModal();
+    });
+
+    // Admin lists & actions
+    renderLocs();
+    loadAddonAdmin();
+    fillPriceSelectors();
+
+    locAdd.addEventListener("click", () => {
+      const v = locNew.value.trim();
+      if (!v) return;
+      if (!STORE.locations.includes(v)) STORE.locations.push(v);
+      locNew.value = "";
+      saveStore(); fillAllLocations(); renderLocs();
+      showToast("Location added");
+      refreshEstimate();
+    });
+
+    locReset.addEventListener("click", () => {
+      STORE.locations = [...DEFAULTS.locations];
+      saveStore(); fillAllLocations(); renderLocs();
+      showToast("Locations reset");
+      refreshEstimate();
+    });
+
+    priceSave.addEventListener("click", () => {
+      const from = priceFrom.value; const to = priceTo.value;
+      const sedan = parseInt(pSedan.value || "0", 10) || 0;
+      const suv = parseInt(pSuv.value || "0", 10) || 0;
+      const innova = parseInt(pInnova.value || "0", 10) || 0;
+      const tt = parseInt(pTT.value || "0", 10) || 0;
+      if(!from || !to) { alert("Select From and To locations"); return; }
+      const key = priceKey(from, to);
+      STORE.priceTable.sedan[key] = sedan;
+      STORE.priceTable.suv[key] = suv;
+      STORE.priceTable.innova[key] = innova;
+      STORE.priceTable.tt[key] = tt;
+      saveStore(); showToast("Route price saved"); refreshEstimate();
+    });
+
+    priceClear.addEventListener("click", () => {
+      const from = priceFrom.value; const to = priceTo.value;
+      if(!from || !to) { alert("Select From and To locations"); return; }
+      const key = priceKey(from, to);
+      delete STORE.priceTable.sedan[key];
+      delete STORE.priceTable.suv[key];
+      delete STORE.priceTable.innova[key];
+      delete STORE.priceTable.tt[key];
+      saveStore(); showToast("Route price cleared"); refreshEstimate();
+    });
+
   </script>
 
   <noscript>
