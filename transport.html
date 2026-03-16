@@ -179,32 +179,41 @@
     .lang-item.active{ background:#111827; color:#fff; }
     .lang-item.disabled{ opacity:.4; cursor:not-allowed; }
     .lang-rtl-hint{ font-size:11px; opacity:.6; }
+/* Make the right column shrinkable on small screens */
+@media (max-width:640px){
+  .topbar{
+    top:14px; padding:0 10px;
+    display:grid;
+    grid-template-columns:minmax(0,1fr) max-content; /* allow right side to shrink */
+    align-items:center; gap:8px;
+  }
+  .nav{
+    display:flex; align-items:center;
+    gap:6px;
+    min-width:0;                    /* ✅ allow children to shrink */
+    overflow:hidden;                /* ✅ trim any overflow */
+  }
+  .pill-btn{ padding:5px 8px; font-size:13px; border-radius:8px; }
+  .lang-chip{
+    padding:5px 8px; min-width:0;  /* ✅ allow chip to shrink */
+    max-width:44vw;                 /* ✅ cap width on tiny screens */
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+}
 
-    @media (max-width:640px){
-      .topbar{
-        top:14px; padding:0 12px;
-        display:grid; grid-template-columns:1fr auto;
-        align-items:center; gap:8px;
-      }
-      .brand{ font-size:17px; gap:8px; }
-      .brand-badge{ width:30px; height:30px; }
-      .nav{ gap:6px; flex-wrap:nowrap; }
-      .pill-btn{ padding:5px 8px; font-size:13px; border-radius:8px; }
-      .lang-chip{ padding:5px 8px; min-width:auto; }
-      .lang-menu{ min-width:190px; }
-    }
-    @media (max-width:480px){
-      .topbar { grid-template-columns: 1fr auto; align-items: center; }
-      .nav { gap: 6px; }
-      /* KEEP Reviews on mobile */
-      .pill-btn.reviews-btn{ display:inline-flex; }
-      .lang-chip .lang-label{ display:none; } /* Shorten chip on tiny screens */
-      .lang-chip .lang-caret{ display:none; }
-      .lang-chip{ padding:5px 8px; }
-    }
-    @media (max-width:360px){
-      .home-btn{ padding:5px 8px; font-size:12px; }
-    }
+/* Ultra-small widths: compress spacing a bit more */
+@media (max-width:400px){
+  .nav{ gap:4px; }
+  .pill-btn{ padding:5px 7px; }
+  .lang-chip{ max-width:42vw; }
+}
+
+/* Keep reviews visible on mobile, as requested */
+@media (max-width:480px){
+  .pill-btn.reviews-btn{ display:inline-flex; }
+  .lang-chip .lang-label{ display:none; }
+  .lang-chip .lang-caret{ display:none; }
+}
 
     .hero{ display:grid; gap:14px; justify-items:center; padding:52px 0 36px; color:#ffe8ea; }
     .hero h1{ font-size:clamp(28px,5vw,46px); font-weight:700; text-shadow:0 3px 14px rgba(0,0,0,.25); }
