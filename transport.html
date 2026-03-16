@@ -103,6 +103,7 @@
     @media (prefers-reduced-motion: reduce){
       *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
     }
+
     /* ===========================
        BANNER
     ============================ */
@@ -176,21 +177,26 @@
     .lang-item:hover{ background:#111827; }
     .lang-item .code{ opacity:.8; font-size:12px; }
     .lang-item.active{ background:#111827; color:#fff; }
+    .lang-item.disabled{ opacity:.4; cursor:not-allowed; }
     .lang-rtl-hint{ font-size:11px; opacity:.6; }
 
     @media (max-width:640px){
-      .topbar{ top:14px; padding:0 14px; display:grid; grid-template-columns:1fr auto; gap:10px; }
+      .topbar{
+        top:14px; padding:0 12px;
+        display:grid; grid-template-columns:1fr auto;
+        align-items:center; gap:8px;
+      }
       .brand{ font-size:17px; gap:8px; }
       .brand-badge{ width:30px; height:30px; }
-      .nav{ gap:6px; justify-self:end; }
-      .pill-btn{ padding:5px 9px; font-size:13px; border-radius:8px; box-shadow:0 3px 8px rgba(0,0,0,0.18); }
-      .lang-chip{ padding:5px 8px; }
+      .nav{ gap:6px; flex-wrap:nowrap; }
+      .pill-btn{ padding:5px 8px; font-size:13px; border-radius:8px; }
+      .lang-chip{ padding:5px 8px; min-width:auto; }
       .lang-menu{ min-width:190px; }
     }
     @media (max-width:480px){
       .topbar { grid-template-columns: 1fr auto; align-items: center; }
       .nav { gap: 6px; }
-      /* SHOW Reviews button on mobile */
+      /* KEEP Reviews on mobile */
       .pill-btn.reviews-btn{ display:inline-flex; }
       .lang-chip .lang-label{ display:none; } /* Shorten chip on tiny screens */
       .lang-chip .lang-caret{ display:none; }
@@ -290,18 +296,17 @@
     .leg .inline > * { flex:1; }
     .leg-actions{ display:flex; gap:8px; margin-top:8px; }
 
-    /* Add-on quantity controls (vertical ▲▼) */
+    /* Add-on quantity controls (classic − / +) */
     .addon-row{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
     .addon-title{ font-weight:700; }
-    .qty.vertical{
+    .qty{
       display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--border); border-radius:10px; padding:6px 8px;
     }
-    .qty.vertical .qty-input{
-      width:64px; text-align:center; border:1px solid var(--border); border-radius:8px; padding:6px 8px;
-    }
-    .qty.vertical .stepper{ display:flex; flex-direction:column; gap:6px; }
-    .qty.vertical .stepper .btn-qty{
+    .qty button{
       width:28px; height:28px; border-radius:8px; border:1px solid var(--border); background:#f8fafc; cursor:pointer; font-weight:800; line-height:1;
+    }
+    .qty .qty-input{
+      width:56px; text-align:center; border:1px solid var(--border); border-radius:8px; padding:6px 8px;
     }
 
     /* Admin modal */
@@ -319,7 +324,7 @@
       position:sticky; top:0; z-index:1;
     }
     .modal-title{ font-weight:700; }
-    .modal-close{ background:transparent; border:none; color:#fff; cursor:pointer; font-size:20px; line-height:1; padding:6px 10px; border-radius:8px; margin-left:auto; }
+    .modal-close{ background:transparent; border:none; color:#fff; cursor:pointer; font-size:20px; line-height:1; padding:6px 10px; border-radius:8px; }
     .modal-close:hover{ background:rgba(255,255,255,0.18); }
     .modal-body{ padding:14px; overflow:auto; -webkit-overflow-scrolling:touch; }
 
@@ -395,6 +400,7 @@
       </div>
     </div>
   </header>
+
   <!-- ========== BOOKING FORM ========== -->
   <section class="section" aria-labelledby="transport-title">
     <div class="card">
@@ -511,7 +517,6 @@
           <input id="cars" type="number" min="1" value="1" inputmode="numeric">
         </div>
       </div>
-
       <!-- ===== ROW 3: Add-ons (per-car quantities) + Additional remarks ===== -->
       <div class="grid-2" id="row-3-addons">
         <div class="row">
@@ -520,12 +525,10 @@
           <div class="addon-row">
             <span class="addon-title" data-i18n="roof">Roof carrier</span>
             <small>(+₹<span id="roof-amt">0</span> <span data-i18n="perCar">per car</span>)</small>
-            <div class="qty vertical" data-addon="roofcarrier">
+            <div class="qty" data-addon="roofcarrier">
+              <button type="button" class="btn-qty" data-target="qty-roof" data-delta="-1" aria-label="Decrease">−</button>
               <input type="number" id="qty-roof" class="qty-input" value="0" min="0" step="1" inputmode="numeric" aria-label="Roof carrier quantity">
-              <div class="stepper">
-                <button type="button" class="btn-qty" data-target="qty-roof" data-delta="1" aria-label="Increase">▲</button>
-                <button type="button" class="btn-qty" data-target="qty-roof" data-delta="-1" aria-label="Decrease">▼</button>
-              </div>
+              <button type="button" class="btn-qty" data-target="qty-roof" data-delta="1" aria-label="Increase">+</button>
             </div>
             <small class="note" data-i18n="howManyCarsNeedRoof">How many cars?</small>
           </div>
@@ -533,12 +536,10 @@
           <div class="addon-row" style="margin-top:8px;">
             <span class="addon-title" data-i18n="placard">Placard (Meet &amp; Greet)</span>
             <small>(+₹<span id="placard-amt">0</span> <span data-i18n="perCard">per card</span>)</small>
-            <div class="qty vertical" data-addon="placard">
+            <div class="qty" data-addon="placard">
+              <button type="button" class="btn-qty" data-target="qty-placard" data-delta="-1" aria-label="Decrease">−</button>
               <input type="number" id="qty-placard" class="qty-input" value="0" min="0" step="1" inputmode="numeric" aria-label="Placard quantity">
-              <div class="stepper">
-                <button type="button" class="btn-qty" data-target="qty-placard" data-delta="1" aria-label="Increase">▲</button>
-                <button type="button" class="btn-qty" data-target="qty-placard" data-delta="-1" aria-label="Decrease">▼</button>
-              </div>
+              <button type="button" class="btn-qty" data-target="qty-placard" data-delta="1" aria-label="Increase">+</button>
             </div>
             <!-- Helper under Placard intentionally removed per request -->
           </div>
@@ -614,6 +615,7 @@
       </p>
     </div>
   </section>
+
   <!-- ========== FOOTER ========== -->
   <footer class="footer" aria-label="Contact">
     <a href="mailto:sales@fodeltravels.in" class="chip">📧 sales@fodeltravels.in</a>
@@ -625,7 +627,7 @@
     <div class="modal">
       <div class="modal-header">
         <div class="modal-title" id="admin-title">Fodel Transport — Admin Console</div>
-        <!-- Logout injected by JS -->
+        <!-- Logout will be injected here (near the close button) -->
         <button class="modal-close" data-close aria-label="Close admin console">✕</button>
       </div>
       <div class="modal-body">
@@ -861,7 +863,7 @@ Jammu Airport,Katra,49</pre>
     function containsRailway(s){ if(!s) return false; var v=String(s).toLowerCase(); return v.indexOf('railway')>-1 || v.indexOf('station')>-1 || v.indexOf('tawi')>-1; }
 
     /* ===========================
-       I18N (minimal set; falls back to EN)
+       I18N (EN / HI / UR only; others disabled)
     ============================ */
     var I18N = {
       en: {
@@ -1015,20 +1017,22 @@ Jammu Airport,Katra,49</pre>
       }
     };
 
+    /* Only EN/HI/UR enabled; others visible but disabled */
     var LANG_LIST = [
-      { code:'en', label:'English', short:'EN' },
-      { code:'hi', label:'हिंदी', short:'HI' },
-      { code:'ur', label:'اُردو', short:'UR', rtl:true },
-      { code:'ta', label:'தமிழ்', short:'TA' },
-      { code:'kn', label:'ಕನ್ನಡ', short:'KN' },
-      { code:'te', label:'తెలుగు', short:'TE' },
-      { code:'bn', label:'বাংলা', short:'BN' },
-      { code:'mr', label:'मराठी', short:'MR' },
-      { code:'gu', label:'ગુજરાતી', short:'GU' },
-      { code:'ml', label:'മലയാളം', short:'ML' },
-      { code:'pa', label:'ਪੰਜਾਬੀ', short:'PA' },
-      { code:'or', label:'ଓଡ଼ିଆ', short:'OR' },
-      { code:'as', label:'অসমীয়া', short:'AS' }
+      { code:'en', label:'English', short:'EN', enabled:true },
+      { code:'hi', label:'हिंदी', short:'HI', enabled:true },
+      { code:'ur', label:'اُردو', short:'UR', enabled:true },
+
+      { code:'ta', label:'தமிழ்', short:'TA', enabled:false },
+      { code:'kn', label:'ಕನ್ನಡ', short:'KN', enabled:false },
+      { code:'te', label:'తెలుగు', short:'TE', enabled:false },
+      { code:'bn', label:'বাংলা', short:'BN', enabled:false },
+      { code:'mr', label:'मराठी', short:'MR', enabled:false },
+      { code:'gu', label:'ગુજરાતી', short:'GU', enabled:false },
+      { code:'ml', label:'മലയാളം', short:'ML', enabled:false },
+      { code:'pa', label:'ਪੰਜਾਬੀ', short:'PA', enabled:false },
+      { code:'or', label:'ଓଡ଼ିଆ', short:'OR', enabled:false },
+      { code:'as', label:'অসমীয়া', short:'AS', enabled:false }
     ];
 
     var LANG_KEY = "fodel_lang_v2";
@@ -1055,7 +1059,7 @@ Jammu Airport,Katra,49</pre>
       var m = null;
       for (var i=0;i<LANG_LIST.length;i++){ if (LANG_LIST[i].code===code){ m=LANG_LIST[i]; break; } }
       if (langCurrent && m) langCurrent.textContent = m.short || code.toUpperCase();
-      // Update add-on labels in breakdown to localized (roof: per car, placard: per card)
+      // Update add-on labels in breakdown (roof: per car, placard: per card)
       var rLbl = byId('line-addon-roof-lbl');
       var pLbl = byId('line-addon-placard-lbl');
       if (rLbl) rLbl.textContent = (dict.roof || I18N.en.roof) + " (" + (dict.perCar || I18N.en.perCar) + ")";
@@ -1065,21 +1069,30 @@ Jammu Airport,Katra,49</pre>
     function renderLangMenu(active){
       if (!langMenu) return;
       langMenu.innerHTML = "";
-      for (var i=0;i<LANG_LIST.length;i++){
-        var item = LANG_LIST[i];
+      LANG_LIST.forEach(function(item){
         var div = document.createElement('div');
-        div.className = 'lang-item' + (active===item.code ? ' active':'');
+        div.className = 'lang-item' + (active===item.code ? ' active':'') + (item.enabled ? '' : ' disabled');
         div.setAttribute('role','menuitem');
         div.dataset.code = item.code;
         div.innerHTML = '<span>'+item.label+'</span><span class="code">'+item.short+'</span>';
+
+        if (item.enabled){
+          div.addEventListener('click', function(){
+            renderLangMenu(item.code);
+            applyI18n(item.code);
+            if (langChip){ langChip.classList.remove('open'); langChip.setAttribute('aria-expanded','false'); }
+          });
+        }
         langMenu.appendChild(div);
-      }
+      });
+      // RTL hint for Urdu
       var hint = document.createElement('div');
       hint.className = 'lang-rtl-hint';
       hint.style.padding = '4px 8px 2px';
       hint.textContent = (active==='ur') ? 'RTL (right to left)' : '';
       langMenu.appendChild(hint);
     }
+
     function initLang(){
       var saved = localStorage.getItem(LANG_KEY) || "en";
       renderLangMenu(saved);
@@ -1095,18 +1108,7 @@ Jammu Airport,Katra,49</pre>
           langChip.classList.toggle('open', !isOpen);
         });
       }
-      // Select language
-      if (langMenu){
-        langMenu.addEventListener('click', function(e){
-          var item = e.target.closest('.lang-item');
-          if (!item) return;
-          var code = item.dataset.code;
-          renderLangMenu(code);
-          applyI18n(code);
-          langChip.classList.remove('open');
-          langChip.setAttribute('aria-expanded', 'false');
-        });
-      }
+
       // Close on outside click/ESC
       document.addEventListener('click', function(e){
         if (langChip && !langChip.contains(e.target)){
@@ -1116,12 +1118,10 @@ Jammu Airport,Katra,49</pre>
       });
       document.addEventListener('keydown', function(e){
         if (e.key === 'Escape'){
-          langChip.classList.remove('open');
-          langChip.setAttribute('aria-expanded', 'false');
+          if (langChip){ langChip.classList.remove('open'); langChip.setAttribute('aria-expanded', 'false'); }
         }
       });
     }
-
     /* ===========================
        UI WIRING
     ============================ */
@@ -1196,8 +1196,11 @@ Jammu Airport,Katra,49</pre>
       var txt = (I18N[code] && I18N[code].select) ? I18N[code].select : I18N.en.select;
       var opts = '<option value="">' + txt + '</option>';
       var arr = (STORE.vehicles||[]);
+      var seen = {};
       for (var i=0;i<arr.length;i++){
         var v = arr[i];
+        if(seen[v.id]) continue; // prevent duplicates
+        seen[v.id] = true;
         opts += '<option value="'+v.id+'">'+v.label+'</option>';
       }
       vehicle.innerHTML = opts;
@@ -1236,14 +1239,12 @@ Jammu Airport,Katra,49</pre>
 
     // Pickup string for contextual FT UI
     function getPickupString(){
-      var typeEl = null, type = 'oneway';
+      var type = 'oneway';
       for (var i=0;i<tripRadios.length;i++){ if(tripRadios[i].checked){ type = tripRadios[i].value; break; } }
       if (type === 'oneway' || type === 'round'){
         return (pickupOtherToggle && pickupOtherToggle.checked ? (pickupOther && pickupOther.value || '') : (selPickup && selPickup.value || ''));
       }
-      if (type === 'local'){
-        return selLocalCity && selLocalCity.value || '';
-      }
+      if (type === 'local'){ return selLocalCity && selLocalCity.value || ''; }
       if (type === 'multi'){
         var firstLeg = document.querySelector('#legs .leg .leg-from');
         return firstLeg && firstLeg.value || '';
@@ -1492,12 +1493,12 @@ Jammu Airport,Katra,49</pre>
 
         if (addonsRoofTotal > 0){
           lineAddonRoof.style.display = '';
-          lineAddonRoofVal.textContent = "₹ " + addonsRoofTotal.toLocaleString("en-IN") + " (₹ " + priceRoof.toLocaleString("en-IN") + " × " + qRoof + " car" + (qRoof>1?'s':'') + ")";
+          lineAddonRoofVal.textContent = "₹ " + addonsRoofTotal.toLocaleString("en-IN") + " (₹ " + priceRoof.toLocaleString("en-IN") + " × " + qRoof + " " + (dict.perCar || 'per car') + ")";
         } else { lineAddonRoof.style.display = 'none'; }
 
         if (addonsPlacardTotal > 0){
           lineAddonPlacard.style.display = '';
-          lineAddonPlacardVal.textContent = "₹ " + addonsPlacardTotal.toLocaleString("en-IN") + " (₹ " + pricePlacard.toLocaleString("en-IN") + " × " + qPlacard + " card" + (qPlacard>1?'s':'') + ")";
+          lineAddonPlacardVal.textContent = "₹ " + addonsPlacardTotal.toLocaleString("en-IN") + " (₹ " + pricePlacard.toLocaleString("en-IN") + " × " + qPlacard + " " + (dict.perCard || 'per card') + ")";
         } else { lineAddonPlacard.style.display = 'none'; }
 
         lineGrand.textContent = "₹ " + grand.toLocaleString("en-IN");
@@ -1508,7 +1509,7 @@ Jammu Airport,Katra,49</pre>
     [selPickup, selDrop, vehicle, cars, date, time, rdate, rtime, pickupOther, dropOther, pickupOtherToggle, dropOtherToggle, selLocalCity, qtyRoof, qtyPlacard]
       .forEach(function(el){ if(el) el.addEventListener("input", refreshEstimate); });
 
-    // Qty ▲/▼ buttons (ES5-safe)
+    // Qty − / + buttons
     Array.prototype.forEach.call(document.querySelectorAll('.btn-qty'), function(btn){
       btn.addEventListener('click', function(){
         var target = document.getElementById(btn.dataset.target);
@@ -1575,7 +1576,7 @@ Jammu Airport,Katra,49</pre>
     if (locAdd) locAdd.addEventListener('click', function(){
       var v = (locNew.value || '').trim();
       if (!v) return;
-      if (STORE.locations.indexOf(v) === -1) {
+      if ((STORE.locations||[]).indexOf(v) === -1) {
         STORE.locations.push(v);
         saveStore();
         fillAllLocations();
@@ -1917,7 +1918,7 @@ Jammu Airport,Katra,49</pre>
       return true;
     }
 
-    submitBtn && submitBtn.addEventListener('click', function(){
+    if (submitBtn) submitBtn.addEventListener('click', function(){
       if (!validateForm()) return;
       var msg = buildMessage();
       var pref = (byId('pref-contact') && byId('pref-contact').value || 'WhatsApp').toLowerCase();
@@ -2044,15 +2045,24 @@ Jammu Airport,Katra,49</pre>
       }
     })();
 
+    // Open admin
     if (openAdmin) openAdmin.addEventListener('click', function(){ adminOv && adminOv.classList.add('active'); });
+
+    // Close admin = also logout & hide gear
+    function closeAdmin(){
+      if (adminOv) adminOv.classList.remove('active');
+      setAdminNew(false);
+      showToast('Logged out');
+    }
     if (adminOv){
-      adminOv.addEventListener('click', function(e){ if (e.target === adminOv) adminOv.classList.remove('active'); });
+      adminOv.addEventListener('click', function(e){ if (e.target === adminOv) closeAdmin(); });
     }
     Array.prototype.forEach.call(document.querySelectorAll('[data-close]'), function(x){
-      x.addEventListener('click', function(){ var ov=byId('admin-ov'); if (ov) ov.classList.remove('active'); });
+      x.addEventListener('click', closeAdmin);
     });
-    document.addEventListener('keydown', function(e){ if (e.key === 'Escape'){ var ov=byId('admin-ov'); if (ov) ov.classList.remove('active'); } });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeAdmin(); });
 
+    // Inject Logout near the ❌ button (right side)
     (function injectLogout(){
       var header = adminOv && adminOv.querySelector('.modal-header');
       if (!header) return;
@@ -2062,11 +2072,7 @@ Jammu Airport,Katra,49</pre>
       btn.className = 'btn-ghost logout';
       btn.textContent = 'Logout';
       btn.style.marginLeft = 'auto';
-      btn.addEventListener('click', function(){
-        setAdminNew(false);
-        adminOv && adminOv.classList.remove('active');
-        showToast('Logged out');
-      });
+      btn.addEventListener('click', closeAdmin);
       header.insertBefore(btn, header.querySelector('.modal-close'));
     })();
 
@@ -2083,9 +2089,12 @@ Jammu Airport,Katra,49</pre>
         refreshAddonLabels();
         initDates();
         updateTripBlocks(); // also calls estimate & FT visibility
+        // Prefill admin add-on inputs
+        var aRoof = byId('a-roof'), aPlacard = byId('a-placard');
         if (aRoof) aRoof.value = STORE.addons.roofcarrier || 0;
         if (aPlacard) aPlacard.value = STORE.addons.placard || 0;
-        setAdminNew(isAdminNew(), {}); // reflect admin gear visibility
+        // Reflect admin gear visibility on load (persist/session)
+        setAdminNew(isAdminNew(), {});
       });
     }
     document.addEventListener('DOMContentLoaded', init);
