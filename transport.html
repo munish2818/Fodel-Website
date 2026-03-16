@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
   <!-- ===========================
-       META / SEO
+       META / SEO (Google-friendly)
   ============================ -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <title>Fodel Transport | Taxi & Transfers | Jammu · Katra · Patnitop · Srinagar</title>
-  <meta name="description" content="Book cabs, airport transfers, local sightseeing and multi-city tours with Fodel Transport. Jammu, Katra Vaishno Devi, Patnitop, Srinagar, Gulmarg, Pahalgam and more." />
-  <meta name="robots" content="index,follow" />
-  <meta name="theme-color" content="#e11924" />
+  <meta name="description" content="Book reliable cabs, airport transfers, local sightseeing and multi-city tours with Fodel Transport. Jammu, Katra Vaishno Devi, Patnitop, Srinagar, Gulmarg, Pahalgam and pan-India routes on request." />
   <link rel="canonical" href="https://www.fodel.in/transport.html" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="theme-color" content="#e11924" />
+
+  <!-- Favicons -->
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -30,30 +31,50 @@
   <meta name="twitter:description" content="Book cabs for Jammu, Katra, Patnitop, Srinagar, Gulmarg, Pahalgam & more." />
   <meta name="twitter:image" content="https://www.fodel.in/og-transport.jpg" />
 
-  <!-- Hidden SEO keywords (minimal) -->
-  <meta name="keywords" content="jammu taxi, katra taxi, patnitop taxi, srinagar taxi, gulmarg cab, pahalgam cab, vaishno devi taxi, jammu airport transfer, jammu railway taxi, multi city tour jammu, katra to patnitop cab, srinagar to jammu taxi" />
+  <!-- (Optional) meta keywords: Google ignores this, but harmless -->
+  <meta name="keywords" content="taxi, cab, airport transfer, one way taxi, round trip taxi, multi city taxi, Jammu taxi, Katra taxi, Srinagar taxi, Patnitop cab, Gulmarg taxi, Pahalgam cab, Vaishno Devi taxi, outstation taxi, India taxi booking" />
 
-  <!-- Structured Data -->
+  <!-- Structured Data: Organization + TaxiService -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Fodel India",
+    "url":"https://www.fodel.in",
+    "logo":"https://www.fodel.in/icon.svg",
+    "sameAs":["https://wa.me/919797459260"],
+    "contactPoint":[{"@type":"ContactPoint","telephone":"+91-9797459260","contactType":"customer service","areaServed":"IN","availableLanguage":["en","hi","ur"]}]
+  }
+  </script>
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"TaxiService",
     "name":"Fodel Transport",
     "url":"https://www.fodel.in/transport.html",
-    "areaServed":["Jammu","Katra","Patnitop","Srinagar","Gulmarg","Pahalgam","Udhampur","Sonmarg"],
-    "provider":{
-      "@type":"Organization",
-      "name":"Fodel India",
-      "url":"https://www.fodel.in"
-    },
+    "areaServed":["Jammu","Katra","Patnitop","Srinagar","Gulmarg","Pahalgam","Udhampur","Sonmarg","India"],
+    "provider":{"@type":"Organization","name":"Fodel India","url":"https://www.fodel.in"},
     "telephone":"+91-9797459260",
-    "sameAs":["https://wa.me/919797459260"],
     "priceRange":"₹₹",
     "currenciesAccepted":"INR"
   }
   </script>
 
-  <!-- Fonts -->
+  <!-- Bonus SEO: Helpful FAQ (rich results) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Do you provide airport transfers and outstation taxis?","acceptedAnswer":{"@type":"Answer","text":"Yes. We handle airport transfers, point-to-point rides, local packages and multi-city tours. Jammu, Katra, Patnitop, Srinagar and pan-India on request."}},
+      {"@type":"Question","name":"How do I get an estimate?","acceptedAnswer":{"@type":"Answer","text":"Select pickup, drop and vehicle type on this page, then tap Refresh. Admin price tables update the estimate instantly."}},
+      {"@type":"Question","name":"Can I book for multiple legs (multi-city)?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use the Add Leg button to build your route. The estimate and total distance reflect the priced legs you set in Admin."}},
+      {"@type":"Question","name":"How do I confirm a booking?","acceptedAnswer":{"@type":"Answer","text":"Submit the form with your preferred contact method. We’ll confirm availability, share the best price and finalize your trip."}}
+    ]
+  }
+  </script>
+
+  <!-- Fonts / Perf -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -61,8 +82,7 @@
 
   <style>
     /* ===========================
-       THEME
-       (Transport is RED accent)
+       THEME (RED accent)
     ============================ */
     :root{
       --page-bg:#f8fafc;
@@ -123,7 +143,7 @@
     .banner-inner{ width:min(1100px,92%); margin:auto; padding:24px; }
 
     /* ===========================
-       TOPBAR
+       TOPBAR (mobile-safe)
     ============================ */
     .topbar{
       position:absolute; left:0; right:0; top:20px; padding:0 16px;
@@ -131,13 +151,8 @@
       display:flex; justify-content:space-between; align-items:center; gap:14px;
       color:#fff; box-sizing:border-box;
     }
-    .brand{
-      display:flex; align-items:center; gap:10px; font-weight:700; font-size:20px; white-space:nowrap;
-    }
-    .brand-badge{
-      width:34px; height:34px; border-radius:50%; display:grid; place-items:center;
-      background:#ffffff1a; color:#fff; border:1px solid #ffffff40; flex-shrink:0;
-    }
+    .brand{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:20px; white-space:nowrap; }
+    .brand-badge{ width:34px; height:34px; border-radius:50%; display:grid; place-items:center; background:#ffffff1a; color:#fff; border:1px solid #ffffff40; flex-shrink:0; }
     .nav{ display:flex; align-items:center; gap:8px; }
     .pill-btn{
       display:inline-flex; align-items:center; gap:6px;
@@ -145,7 +160,7 @@
       border:0; color:#fff; white-space:nowrap;
       box-shadow:0 4px 12px rgba(0,0,0,0.18);
       transition:transform .2s, background .2s, box-shadow .2s;
-      will-change:transform;
+      will-change:transform; cursor:pointer;
     }
     .pill-btn:hover{ transform:translateY(-2px); box-shadow:0 8px 18px rgba(0,0,0,0.24); }
     .reviews-btn{ background:#0b1220; }
@@ -153,67 +168,17 @@
     .home-btn{ background:var(--accent); }
     .home-btn:hover{ background:var(--accent-hover); }
 
-    /* ==== Custom Language Dropdown (dark, aligned like pills) ==== */
-    .lang-chip{
-      position:relative; display:inline-flex; align-items:center; gap:8px;
-      padding:6px 10px; font-size:14px; font-weight:700; border-radius:10px;
-      background:#ffffff1a; color:#fff; border:1px solid #ffffff40; cursor:pointer;
-      user-select:none;
+    /* Mobile header fix: brand text hides only on very small widths */
+    @media (max-width:640px){
+      .topbar{ top:14px; padding:0 10px; display:grid; grid-template-columns:minmax(0,1fr) max-content; align-items:center; gap:8px; }
+      .nav{ display:flex; align-items:center; gap:6px; min-width:0; overflow:hidden; }
+      .pill-btn{ padding:5px 8px; font-size:13px; border-radius:8px; }
     }
-    .lang-current{ letter-spacing:.5px; }
-    .lang-caret{ font-size:12px; opacity:.9; }
-    .lang-menu{
-      position:absolute; top:calc(100% + 6px); right:0; z-index:40;
-      min-width:210px; background:#0b1220; color:#fff; border:1px solid #1f2937;
-      border-radius:12px; box-shadow:0 14px 40px rgba(0,0,0,.35);
-      padding:6px; display:none;
+    @media (max-width:480px){ .brand span{ display:none; } }
+    @media (max-width:400px){
+      .nav{ gap:4px; }
+      .pill-btn{ padding:5px 7px; }
     }
-    .lang-chip.open .lang-menu{ display:block; }
-    .lang-item{
-      display:flex; align-items:center; justify-content:space-between; gap:8px;
-      padding:9px 10px; border-radius:8px; cursor:pointer;
-      font-weight:600; color:#e5e7eb;
-    }
-    .lang-item:hover{ background:#111827; }
-    .lang-item .code{ opacity:.8; font-size:12px; }
-    .lang-item.active{ background:#111827; color:#fff; }
-    .lang-item.disabled{ opacity:.4; cursor:not-allowed; }
-    .lang-rtl-hint{ font-size:11px; opacity:.6; }
-/* Make the right column shrinkable on small screens */
-@media (max-width:640px){
-  .topbar{
-    top:14px; padding:0 10px;
-    display:grid;
-    grid-template-columns:minmax(0,1fr) max-content; /* allow right side to shrink */
-    align-items:center; gap:8px;
-  }
-  .nav{
-    display:flex; align-items:center;
-    gap:6px;
-    min-width:0;                    /* ✅ allow children to shrink */
-    overflow:hidden;                /* ✅ trim any overflow */
-  }
-  .pill-btn{ padding:5px 8px; font-size:13px; border-radius:8px; }
-  .lang-chip{
-    padding:5px 8px; min-width:0;  /* ✅ allow chip to shrink */
-    max-width:44vw;                 /* ✅ cap width on tiny screens */
-    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
-  }
-}
-
-/* Ultra-small widths: compress spacing a bit more */
-@media (max-width:400px){
-  .nav{ gap:4px; }
-  .pill-btn{ padding:5px 7px; }
-  .lang-chip{ max-width:42vw; }
-}
-
-/* Keep reviews visible on mobile, as requested */
-@media (max-width:480px){
-  .pill-btn.reviews-btn{ display:inline-flex; }
-  .lang-chip .lang-label{ display:none; }
-  .lang-chip .lang-caret{ display:none; }
-}
 
     .hero{ display:grid; gap:14px; justify-items:center; padding:52px 0 36px; color:#ffe8ea; }
     .hero h1{ font-size:clamp(28px,5vw,46px); font-weight:700; text-shadow:0 3px 14px rgba(0,0,0,.25); }
@@ -271,8 +236,7 @@
       font-weight:700; font-size:16px; letter-spacing:0.2px;
       box-shadow:var(--shadow-soft);
       transition: transform .18s ease, box-shadow .18s ease, background .18s ease, filter .18s ease;
-      cursor:pointer;
-      will-change:transform;
+      cursor:pointer; will-change:transform;
     }
     .btn:hover{ transform:translateY(-2px); background:var(--accent-hover); box-shadow:0 12px 26px rgba(0,0,0,0.18); }
     .btn:active{ transform:translateY(0); filter:saturate(1.05); }
@@ -291,11 +255,7 @@
     .estimate strong{ font-size:18px; }
     .note{ font-size:12px; color:#475569; }
 
-    .est-break{
-      width:100%;
-      display:grid; gap:4px;
-      margin-top:8px; font-size:12.5px; color:#0f172a;
-    }
+    .est-break{ width:100%; display:grid; gap:4px; margin-top:8px; font-size:12.5px; color:#0f172a; }
     .est-break .line{ display:flex; justify-content:space-between; gap:8px; }
     .est-break .line span.wrap { max-width:70%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 
@@ -308,15 +268,9 @@
     /* Add-on quantity controls (classic − / +) */
     .addon-row{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
     .addon-title{ font-weight:700; }
-    .qty{
-      display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--border); border-radius:10px; padding:6px 8px;
-    }
-    .qty button{
-      width:28px; height:28px; border-radius:8px; border:1px solid var(--border); background:#f8fafc; cursor:pointer; font-weight:800; line-height:1;
-    }
-    .qty .qty-input{
-      width:56px; text-align:center; border:1px solid var(--border); border-radius:8px; padding:6px 8px;
-    }
+    .qty{ display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--border); border-radius:10px; padding:6px 8px; }
+    .qty button{ width:28px; height:28px; border-radius:8px; border:1px solid var(--border); background:#f8fafc; cursor:pointer; font-weight:800; line-height:1; }
+    .qty .qty-input{ width:56px; text-align:center; border:1px solid var(--border); border-radius:8px; padding:6px 8px; }
 
     /* Admin modal */
     .overlay{ position:fixed; inset:0; z-index:70; background:rgba(0,0,0,0.45); display:none; align-items:center; justify-content:center; padding:18px; }
@@ -327,11 +281,7 @@
       box-shadow:0 30px 80px rgba(0,0,0,0.35); overflow:hidden; display:flex; flex-direction:column;
       animation:pop .18s ease-out both;
     }
-    .modal-header{
-      display:flex; align-items:center; gap:12px; padding:12px 14px; color:#fff;
-      background:linear-gradient(90deg, var(--accent), var(--accent-hover));
-      position:sticky; top:0; z-index:1;
-    }
+    .modal-header{ display:flex; align-items:center; gap:12px; padding:12px 14px; color:#fff; background:linear-gradient(90deg, var(--accent), var(--accent-hover)); position:sticky; top:0; z-index:1; }
     .modal-title{ font-weight:700; }
     .modal-close{ background:transparent; border:none; color:#fff; cursor:pointer; font-size:20px; line-height:1; padding:6px 10px; border-radius:8px; }
     .modal-close:hover{ background:rgba(255,255,255,0.18); }
@@ -350,23 +300,18 @@
     .fw-whatsapp .fab{
       width:56px; height:56px; border-radius:50%; display:grid; place-items:center;
       background:#25D366; color:#fff; font-size:22px; box-shadow:0 10px 22px rgba(0,0,0,.22);
-      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
-      will-change:transform;
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease; will-change:transform;
     }
     .fw-whatsapp .fab:hover{ transform:translateY(-2px) scale(1.02); box-shadow:0 14px 28px rgba(0,0,0,.26); filter:saturate(1.08); }
     .fw-whatsapp .tag{
-      display:none; padding:10px 12px; background:#fff; border:1px solid var(--border); border-radius:12px; font-weight:600;
-      box-shadow:var(--shadow-soft); color:#0f172a;
+      display:none; padding:10px 12px; background:#fff; border:1px solid var(--border); border-radius:12px; font-weight:600; box-shadow:var(--shadow-soft); color:#0f172a;
     }
     @media(min-width:720px){ .fw-whatsapp .tag{ display:block; } }
 
-    /* Hidden SEO keywords block */
+    /* Visually-hidden SEO helper (kept concise) */
     .visually-hidden-seo{
       position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; clip:rect(1px, 1px, 1px, 1px);
     }
-
-    /* Hide the helper under Placard (“How many placards?”) as requested */
-    .note[data-i18n="howManyPlacards"]{ display:none !important; }
 
     /* Animations */
     @keyframes pop{ from{ transform:scale(.98); opacity:.7; } to{ transform:scale(1); opacity:1; } }
@@ -374,9 +319,12 @@
   </style>
 </head>
 <body>
-  <!-- hidden-but-accessible keywords -->
+  <!-- Hidden but accessible keywords (kept concise; pan-India) -->
   <div class="visually-hidden-seo" aria-hidden="true">
-    Jammu taxi, Katra taxi, Patnitop cab, Srinagar cab, Gulmarg taxi, Pahalgam taxi, Vaishno Devi transfers, Jammu airport taxi, Jammu railway taxi, multi city taxi Jammu Katra Patnitop Srinagar.
+    India taxi, airport taxi, outstation cab, one way taxi, round trip taxi, multi city taxi,
+    Delhi taxi, Mumbai taxi, Bengaluru taxi, Hyderabad cab, Chennai taxi, Kolkata cab,
+    Pune taxi, Ahmedabad cab, Jaipur taxi, Chandigarh taxi, Lucknow cab, Indore cab, Bhopal taxi,
+    Jammu taxi, Katra taxi, Patnitop cab, Srinagar taxi, Gulmarg taxi, Pahalgam cab, Sonmarg taxi.
   </div>
 
   <!-- ========== BANNER ========== -->
@@ -384,62 +332,52 @@
     <div class="topbar">
       <a class="brand" href="index.html" aria-label="Fodel — Home">
         <div class="brand-badge" aria-hidden="true">🚘</div>
-        <span data-i18n="brand">Fodel Transport</span>
+        <span>Fodel Transport</span>
       </a>
       <nav class="nav" aria-label="Primary">
-        <a class="pill-btn reviews-btn" href="reviews-travels.html" aria-label="Read customer reviews" data-i18n="reviews">⭐ Reviews</a>
-        <a class="pill-btn home-btn" href="index.html" aria-label="Back to Home" data-i18n="home">← Home</a>
-
-        <!-- Custom language pill -->
-        <div class="lang-chip" id="lang-chip" role="button" aria-haspopup="menu" aria-expanded="false" aria-label="Language">
-          <span class="lang-label" data-i18n="lang">Language</span>
-          <span class="lang-current" id="lang-current">EN</span>
-          <span class="lang-caret">▾</span>
-          <div class="lang-menu" id="lang-menu" role="menu" aria-label="Languages">
-            <!-- Items injected by JS -->
-          </div>
-        </div>
+        <a class="pill-btn reviews-btn" href="reviews-travels.html" aria-label="Read customer reviews">⭐ Reviews</a>
+        <a class="pill-btn home-btn" href="index.html" aria-label="Back to Home">← Home</a>
+        <button class="pill-btn" id="translate-btn" aria-label="Translate">🌐 Translate</button>
       </nav>
     </div>
 
     <div class="banner-inner">
       <div class="hero">
-        <h1 data-i18n="heroTitle">Taxi · Transfers · Local & Multi City Tours</h1>
-        <p data-i18n="heroSub">Jammu, Katra (Vaishno Devi), Patnitop, Srinagar, Gulmarg, Pahalgam and beyond.</p>
+        <h1>Taxi · Transfers · Local &amp; Multi City Tours</h1>
+        <p>Jammu, Katra (Vaishno Devi), Patnitop, Srinagar, Gulmarg, Pahalgam and beyond.</p>
       </div>
     </div>
   </header>
-
   <!-- ========== BOOKING FORM ========== -->
   <section class="section" aria-labelledby="transport-title">
     <div class="card">
-      <h2 id="transport-title" data-i18n="formTitle">Transport Requirement</h2>
-      <p class="muted" data-i18n="formSub">Tell us your route and vehicle needs. We’ll confirm availability and share the best price.</p>
+      <h2 id="transport-title">Transport Requirement</h2>
+      <p class="muted">Tell us your route and vehicle needs. We’ll confirm availability and share the best price.</p>
 
       <!-- Trip type -->
       <div class="row inline" role="radiogroup" aria-label="Trip type">
-        <label class="chip"><input type="radio" name="tripType" value="oneway" checked> <span data-i18n="oneway">One way</span></label>
-        <label class="chip"><input type="radio" name="tripType" value="round"> <span data-i18n="round">Round trip</span></label>
-        <label class="chip"><input type="radio" name="tripType" value="local"> <span data-i18n="local">Local (hours/km)</span></label>
-        <label class="chip"><input type="radio" name="tripType" value="multi"> <span data-i18n="multi">Multi city</span></label>
+        <label class="chip"><input type="radio" name="tripType" value="oneway" checked> <span>One way</span></label>
+        <label class="chip"><input type="radio" name="tripType" value="round"> <span>Round trip</span></label>
+        <label class="chip"><input type="radio" name="tripType" value="local"> <span>Local (hours/km)</span></label>
+        <label class="chip"><input type="radio" name="tripType" value="multi"> <span>Multi city</span></label>
       </div>
 
       <!-- ONE-WAY / ROUND -->
       <div id="block-std">
         <div class="grid-2">
           <div class="row">
-            <label for="pickup" data-i18n="pickup">Pickup location</label>
+            <label for="pickup">Pickup location</label>
             <select id="pickup" autocomplete="address-level2"></select>
             <div class="inline" style="margin-top:8px">
-              <label class="chip"><input type="checkbox" id="pickup-other-toggle"> <span data-i18n="otherPickup">Other pickup</span></label>
+              <label class="chip"><input type="checkbox" id="pickup-other-toggle"> <span>Other pickup</span></label>
               <input id="pickup-other" type="text" placeholder="Type custom pickup location" style="display:none;" inputmode="text" autocomplete="off">
             </div>
           </div>
           <div class="row">
-            <label for="drop" data-i18n="drop">Drop location</label>
+            <label for="drop">Drop location</label>
             <select id="drop" autocomplete="address-level2"></select>
             <div class="inline" style="margin-top:8px">
-              <label class="chip"><input type="checkbox" id="drop-other-toggle"> <span data-i18n="otherDrop">Other drop</span></label>
+              <label class="chip"><input type="checkbox" id="drop-other-toggle"> <span>Other drop</span></label>
               <input id="drop-other" type="text" placeholder="Type custom drop location" style="display:none;" inputmode="text" autocomplete="off">
             </div>
           </div>
@@ -447,22 +385,22 @@
 
         <div class="grid-2">
           <div class="row">
-            <label for="date" data-i18n="pickupDate">Pickup date</label>
+            <label for="date">Pickup date</label>
             <input id="date" type="date" required>
           </div>
           <div class="row">
-            <label for="time" data-i18n="pickupTime">Pickup time</label>
+            <label for="time">Pickup time</label>
             <input id="time" type="time" required>
           </div>
         </div>
 
         <div id="block-return" class="grid-2" style="display:none;">
           <div class="row">
-            <label for="ret-date" data-i18n="returnDate">Return date</label>
+            <label for="ret-date">Return date</label>
             <input id="ret-date" type="date">
           </div>
           <div class="row">
-            <label for="ret-time" data-i18n="returnTime">Return time</label>
+            <label for="ret-time">Return time</label>
             <input id="ret-time" type="time">
           </div>
         </div>
@@ -472,22 +410,22 @@
       <div id="block-local" style="display:none;">
         <div class="grid-2">
           <div class="row">
-            <label for="local-package" data-i18n="localPackage">Local package</label>
+            <label for="local-package">Local package</label>
             <select id="local-package">
-              <option value="" data-i18n="select">Select</option>
+              <option value="">Select</option>
               <option value="4-40">4 hours / 40 km</option>
               <option value="8-80">8 hours / 80 km</option>
               <option value="12-120">12 hours / 120 km</option>
-              <option value="custom" data-i18n="custom">Custom (we’ll confirm)</option>
+              <option value="custom">Custom (we’ll confirm)</option>
             </select>
           </div>
           <div class="row">
-            <label for="local-city" data-i18n="city">City</label>
+            <label for="local-city">City</label>
             <select id="local-city"></select>
           </div>
         </div>
         <div class="row">
-          <label for="local-date" data-i18n="date">Date</label>
+          <label for="local-date">Date</label>
           <input id="local-date" type="date">
         </div>
       </div>
@@ -496,69 +434,69 @@
       <div id="block-multi" style="display:none;">
         <div id="legs"></div>
         <div class="leg-actions">
-          <button type="button" class="btn" id="add-leg" data-i18n="addLeg">+ Add Leg</button>
-          <button type="button" class="btn-ghost" id="clear-legs" data-i18n="clearLegs">Clear Legs</button>
+          <button type="button" class="btn" id="add-leg">+ Add Leg</button>
+          <button type="button" class="btn-ghost" id="clear-legs">Clear Legs</button>
         </div>
-        <p class="note" style="margin-top:8px;" data-i18n="multiExample">Example: Jammu → Katra → Patnitop → Srinagar → Jammu</p>
+        <p class="note" style="margin-top:8px;">Example: Jammu → Katra → Patnitop → Srinagar → Jammu</p>
       </div>
 
-      <!-- ===== ROW 1: Flight/Train (contextual) + Vehicle ===== -->
+      <!-- ROW: Flight/Train (contextual) + Vehicle -->
       <div class="grid-2" id="row-1-ctx" style="margin-top:8px;">
         <div class="row" id="ft-wrap" style="display:none;">
-          <label id="ft-label" for="ft-input" data-i18n="flightNo">Flight no.</label>
+          <label id="ft-label" for="ft-input">Flight no.</label>
           <input id="ft-input" type="text" placeholder="" inputmode="text" autocomplete="off">
-          <small class="note" id="ft-hint" style="display:none;" data-i18n="ftHint">Shown only when pickup is Airport / Railway</small>
+          <small class="note" id="ft-hint" style="display:none;">Shown only when pickup is Airport / Railway</small>
         </div>
         <div class="row">
-          <label for="vehicle" data-i18n="vehicleType">Vehicle type</label>
+          <label for="vehicle">Vehicle type</label>
           <select id="vehicle" required></select>
         </div>
       </div>
 
-      <!-- ===== ROW 2: Total passengers + How many cars ===== -->
+      <!-- ROW: Total passengers + How many cars -->
       <div class="grid-2" id="row-2-cnt">
         <div class="row">
-          <label for="pax" data-i18n="pax">Total passengers</label>
+          <label for="pax">Total passengers</label>
           <input id="pax" type="number" min="1" placeholder="e.g., 4" inputmode="numeric">
         </div>
         <div class="row">
-          <label for="cars" data-i18n="cars">How many cars</label>
+          <label for="cars">How many cars</label>
           <input id="cars" type="number" min="1" value="1" inputmode="numeric">
         </div>
       </div>
-      <!-- ===== ROW 3: Add-ons (per-car quantities) + Additional remarks ===== -->
+
+      <!-- ROW: Add-ons + Additional remarks -->
       <div class="grid-2" id="row-3-addons">
         <div class="row">
-          <label data-i18n="addons">Add ons</label>
+          <label>Add ons</label>
 
           <div class="addon-row">
-            <span class="addon-title" data-i18n="roof">Roof carrier</span>
-            <small>(+₹<span id="roof-amt">0</span> <span data-i18n="perCar">per car</span>)</small>
+            <span class="addon-title">Roof carrier</span>
+            <small>(+₹<span id="roof-amt">0</span> per car)</small>
             <div class="qty" data-addon="roofcarrier">
               <button type="button" class="btn-qty" data-target="qty-roof" data-delta="-1" aria-label="Decrease">−</button>
               <input type="number" id="qty-roof" class="qty-input" value="0" min="0" step="1" inputmode="numeric" aria-label="Roof carrier quantity">
               <button type="button" class="btn-qty" data-target="qty-roof" data-delta="1" aria-label="Increase">+</button>
             </div>
-            <small class="note" data-i18n="howManyCarsNeedRoof">How many cars?</small>
+            <small class="note">How many cars?</small>
           </div>
 
           <div class="addon-row" style="margin-top:8px;">
-            <span class="addon-title" data-i18n="placard">Placard (Meet &amp; Greet)</span>
-            <small>(+₹<span id="placard-amt">0</span> <span data-i18n="perCard">per card</span>)</small>
+            <span class="addon-title">Placard (Meet &amp; Greet)</span>
+            <small>(+₹<span id="placard-amt">0</span> per card)</small>
             <div class="qty" data-addon="placard">
               <button type="button" class="btn-qty" data-target="qty-placard" data-delta="-1" aria-label="Decrease">−</button>
               <input type="number" id="qty-placard" class="qty-input" value="0" min="0" step="1" inputmode="numeric" aria-label="Placard quantity">
               <button type="button" class="btn-qty" data-target="qty-placard" data-delta="1" aria-label="Increase">+</button>
             </div>
-            <!-- Helper under Placard intentionally removed per request -->
           </div>
 
-          <small class="note" style="display:block; margin-top:6px;" data-i18n="addonsNotePerCar">
+          <small class="note" style="display:block; margin-top:6px;">
             Add ons are charged per car. Set the quantity based on how many cars need it.
           </small>
         </div>
         <div class="row">
-          <label for="notes" data-i18n="remarks">Additional remarks</label>
+          <label for="notes">Additional remarks</label>
           <textarea id="notes" placeholder="Any stops, hotel details, delays, accessibility needs, etc." inputmode="text" autocomplete="off"></textarea>
         </div>
       </div>
@@ -566,14 +504,12 @@
       <!-- ESTIMATE -->
       <div class="estimate" id="estimate" aria-live="polite">
         <div style="min-width:260px;">
-          <div><strong data-i18n="estimate">Estimate:</strong> <span id="est-text" data-i18n="estAddLoc">Add locations to see estimate</span></div>
-          <div class="note"><strong data-i18n="totalDistance">Total distance:</strong> <span id="km-text">—</span></div>
+          <div><strong>Estimate:</strong> <span id="est-text">Add locations to see estimate</span></div>
+          <div class="note"><strong>Total distance:</strong> <span id="km-text">—</span></div>
 
           <!-- Breakdown -->
           <div class="est-break" id="est-breakdown" style="display:none;">
-            <div class="line"><span data-i18n="baseFare">Base fare</span><span id="line-base">₹ 0</span></div>
-
-            <!-- Per add-on lines -->
+            <div class="line"><span>Base fare</span><span id="line-base">₹ 0</span></div>
             <div class="line" id="line-addon-roof" style="display:none;">
               <span class="wrap" id="line-addon-roof-lbl">Roof carrier (per car)</span>
               <span id="line-addon-roof-val">₹ 0</span>
@@ -582,31 +518,30 @@
               <span class="wrap" id="line-addon-placard-lbl">Placard (per card)</span>
               <span id="line-addon-placard-val">₹ 0</span>
             </div>
-
-            <div class="line"><strong data-i18n="grandTotal">Grand total</strong><strong id="line-grand">₹ 0</strong></div>
+            <div class="line"><strong>Grand total</strong><strong id="line-grand">₹ 0</strong></div>
           </div>
         </div>
-        <button type="button" class="btn" id="refresh-est" aria-label="Refresh estimate" data-i18n="refresh">Refresh</button>
+        <button type="button" class="btn" id="refresh-est" aria-label="Refresh estimate">Refresh</button>
       </div>
 
       <!-- CONTACT & SUBMIT -->
       <div class="grid-2" style="margin-top:12px;">
         <div class="row">
-          <label for="name" data-i18n="yourName">Your name</label>
+          <label for="name">Your name</label>
           <input id="name" type="text" placeholder="Full name" required autocomplete="name">
         </div>
         <div class="row">
-          <label for="mobile" data-i18n="mobile">Mobile</label>
+          <label for="mobile">Mobile</label>
           <input id="mobile" type="tel" inputmode="tel" pattern="[0-9+\-\s]{8,15}" placeholder="+91 9XXXXXXXXX" required autocomplete="tel">
         </div>
       </div>
       <div class="grid-2">
         <div class="row">
-          <label for="email" data-i18n="emailOpt">Email (optional)</label>
+          <label for="email">Email (optional)</label>
           <input id="email" type="email" placeholder="name@example.com" autocomplete="email">
         </div>
         <div class="row">
-          <label for="pref-contact" data-i18n="preferContact">Prefer contact on</label>
+          <label for="pref-contact">Prefer contact on</label>
           <select id="pref-contact">
             <option>WhatsApp</option>
             <option>Email</option>
@@ -615,16 +550,15 @@
       </div>
 
       <div class="actions">
-        <button class="btn-ghost" type="button" id="open-admin" style="display:none;">⚙ <span data-i18n="adminConsole">Admin Console</span></button>
-        <button class="btn" id="submit-btn" data-i18n="submitBtn">Submit Transport Request</button>
+        <button class="btn-ghost" type="button" id="open-admin" style="display:none;">⚙ Admin Console</button>
+        <button class="btn" id="submit-btn">Submit Transport Request</button>
       </div>
 
-      <p class="note" style="margin-top:10px;" data-i18n="disclaimerPlain">
+      <p class="note" style="margin-top:10px;">
         Estimate is indicative for planning. Final fare may vary based on actual kms, waiting, tolls, parking, night charges, and chosen vehicle. We’ll confirm the best possible price before booking.
       </p>
     </div>
   </section>
-
   <!-- ========== FOOTER ========== -->
   <footer class="footer" aria-label="Contact">
     <a href="mailto:sales@fodeltravels.in" class="chip">📧 sales@fodeltravels.in</a>
@@ -636,7 +570,7 @@
     <div class="modal">
       <div class="modal-header">
         <div class="modal-title" id="admin-title">Fodel Transport — Admin Console</div>
-        <!-- Logout will be injected here (near the close button) -->
+        <button class="btn-ghost" id="admin-logout" aria-label="Logout" style="margin-left:auto;">Logout</button>
         <button class="modal-close" data-close aria-label="Close admin console">✕</button>
       </div>
       <div class="modal-body">
@@ -655,59 +589,32 @@
         <div class="card" style="margin-bottom:12px;">
           <h3 style="margin-bottom:6px;">Route Prices (per vehicle type)</h3>
           <div class="grid-2">
-            <div class="row">
-              <label>From</label>
-              <select id="price-from"></select>
-            </div>
-            <div class="row">
-              <label>To</label>
-              <select id="price-to"></select>
-            </div>
+            <div class="row"><label>From</label><select id="price-from"></select></div>
+            <div class="row"><label>To</label><select id="price-to"></select></div>
           </div>
           <div class="grid-2">
-            <div class="row">
-              <label>Sedan (Dzire/Amaze)</label>
-              <input id="p-sedan" type="number" min="0" placeholder="₹ e.g., 1900" inputmode="numeric">
-            </div>
-            <div class="row">
-              <label>SUV (Ertiga)</label>
-              <input id="p-suv" type="number" min="0" placeholder="₹" inputmode="numeric">
-            </div>
+            <div class="row"><label>Sedan (Dzire/Amaze)</label><input id="p-sedan" type="number" min="0" placeholder="₹ e.g., 1900" inputmode="numeric"></div>
+            <div class="row"><label>SUV (Ertiga)</label><input id="p-suv" type="number" min="0" placeholder="₹" inputmode="numeric"></div>
           </div>
           <div class="grid-2">
-            <div class="row">
-              <label>Innova / Crysta</label>
-              <input id="p-innova" type="number" min="0" placeholder="₹" inputmode="numeric">
-            </div>
-            <div class="row">
-              <label>Tempo Traveller 12 / 17</label>
-              <input id="p-tt" type="number" min="0" placeholder="₹" inputmode="numeric">
-            </div>
+            <div class="row"><label>Innova / Crysta</label><input id="p-innova" type="number" min="0" placeholder="₹" inputmode="numeric"></div>
+            <div class="row"><label>Tempo Traveller 12 / 17</label><input id="p-tt" type="number" min="0" placeholder="₹" inputmode="numeric"></div>
           </div>
           <div class="actions">
             <button class="btn" id="price-save">Save Route Price</button>
             <button class="btn-ghost" id="price-clear">Clear Route Price</button>
           </div>
-          <p class="note">Leave empty (or 0) for “Ask for Quote”. Prices here are your internal reference and shown as estimate to the user.</p>
+          <p class="note">Leave empty (or 0) for “Ask for Quote”. Prices here are internal reference and shown as estimate.</p>
         </div>
 
-        <!-- Route Distances (manual) -->
+        <!-- Route Distances -->
         <div class="card" style="margin-bottom:12px;">
           <h3 style="margin-bottom:6px;">Route Distances (manual, km)</h3>
           <div class="grid-2">
-            <div class="row">
-              <label>From</label>
-              <select id="dist-from"></select>
-            </div>
-            <div class="row">
-              <label>To</label>
-              <select id="dist-to"></select>
-            </div>
+            <div class="row"><label>From</label><select id="dist-from"></select></div>
+            <div class="row"><label>To</label><select id="dist-to"></select></div>
           </div>
-          <div class="row">
-            <label>Distance (km)</label>
-            <input id="dist-km" type="number" min="1" step="1" inputmode="numeric" placeholder="e.g., 49">
-          </div>
+          <div class="row"><label>Distance (km)</label><input id="dist-km" type="number" min="1" step="1" inputmode="numeric" placeholder="e.g., 49"></div>
           <div class="actions">
             <button class="btn" id="dist-save">Save Distance</button>
             <button class="btn-ghost" id="dist-clear">Clear Distance</button>
@@ -719,37 +626,26 @@
         <div class="card" style="margin-bottom:12px;">
           <h3 style="margin-bottom:6px;">Add on Prices</h3>
           <div class="grid-2">
-            <div class="row">
-              <label>Roof carrier (per car)</label>
-              <input id="a-roof" type="number" min="0" placeholder="₹" inputmode="numeric">
-            </div>
-            <div class="row">
-              <label>Placard (per card)</label>
-              <input id="a-placard" type="number" min="0" placeholder="₹" inputmode="numeric">
-            </div>
+            <div class="row"><label>Roof carrier (per car)</label><input id="a-roof" type="number" min="0" placeholder="₹" inputmode="numeric"></div>
+            <div class="row"><label>Placard (per card)</label><input id="a-placard" type="number" min="0" placeholder="₹" inputmode="numeric"></div>
           </div>
-          <div class="actions">
-            <button class="btn" id="addons-save">Save Add on Prices</button>
-          </div>
+          <div class="actions"><button class="btn" id="addons-save">Save Add on Prices</button></div>
         </div>
 
         <!-- Bulk CSV -->
         <div class="card" style="margin-bottom:12px;">
           <h3 style="margin-bottom:6px;">Bulk Import/Export — CSV</h3>
           <p class="note">Use Excel → Save As → CSV (UTF‑8). Keep headers.</p>
-
           <div class="inline" style="margin-bottom:8px;">
             <input type="file" id="csv-prices" accept=".csv" aria-label="Import Prices CSV">
             <button class="btn" id="import-csv-prices">Import Prices CSV</button>
             <button class="btn-ghost" id="export-csv-prices">Export Prices CSV</button>
           </div>
-
           <div class="inline">
             <input type="file" id="csv-dist" accept=".csv" aria-label="Import Distances CSV">
             <button class="btn" id="import-csv-dist">Import Distances CSV</button>
             <button class="btn-ghost" id="export-csv-dist">Export Distances CSV</button>
           </div>
-
           <details style="margin-top:10px;">
             <summary>CSV format examples</summary>
             <pre class="note">From,To,sedan,suv,innova,tt
@@ -767,7 +663,7 @@ Jammu Airport,Katra,49</pre>
             <input type="file" id="import-file" accept="application/json" aria-label="Import JSON file">
             <button class="btn-ghost" id="import-json">Import</button>
           </div>
-          <p class="note">Data is saved in your browser’s localStorage. Use export to keep a backup or to migrate.</p>
+          <p class="note">Data is saved in your browser’s localStorage. Use export to backup or migrate.</p>
         </div>
       </div>
     </div>
@@ -786,7 +682,7 @@ Jammu Airport,Katra,49</pre>
        CONFIG / STORE
     ============================ */
     var FORMSPREE_ENDPOINT = ""; // optional
-    var DATA_URL = "/data/transport-data.json"; // optional seed file (your shared JSON)
+    var DATA_URL = "/data/transport-data.json"; // optional seed file
 
     var DEFAULTS = {
       locations: [
@@ -803,11 +699,10 @@ Jammu Airport,Katra,49</pre>
       ],
       priceTable: { sedan:{}, suv:{}, innova:{}, tt:{} },
       distanceTable: {},
-      // Add-ons are per CAR (Placard priced per CARD in text, but amount is per unit)
-      addons: { roofcarrier: 200, placard: 100 }
+      addons: { roofcarrier: 200, placard: 100 } /* per unit */
     };
 
-    var STORE_KEY = "fodel_transport_v4"; // v4 store
+    var STORE_KEY = "fodel_transport_v4";
     var STORE = null;
 
     function mergeDeep(target, source){
@@ -822,9 +717,7 @@ Jammu Airport,Katra,49</pre>
           target[k] = a;
         } else if (typeof source[k] === 'object' && source[k] !== null){
           target[k] = mergeDeep(target[k] || {}, source[k]);
-        } else {
-          target[k] = source[k];
-        }
+        } else { target[k] = source[k]; }
       });
       return target;
     }
@@ -855,6 +748,12 @@ Jammu Airport,Katra,49</pre>
       if (!STORE.addons) STORE.addons = { roofcarrier: 200, placard: 100 };
       if (!STORE.distanceTable) STORE.distanceTable = {};
       if (!STORE.priceTable) STORE.priceTable = { sedan:{}, suv:{}, innova:{}, tt:{} };
+      // De-duplicate vehicles by id
+      if (STORE.vehicles && STORE.vehicles.length){
+        STORE.vehicles = STORE.vehicles.filter(function (v, i, a) {
+          return a.findIndex(function (x) { return x.id === v.id; }) === i;
+        });
+      }
     }
     function saveStore(){ localStorage.setItem(STORE_KEY, JSON.stringify(STORE)); }
 
@@ -867,274 +766,12 @@ Jammu Airport,Katra,49</pre>
     }
     function priceKey(a,b){ return String((a||'').trim()) + '|' + String((b||'').trim()); }
 
-    // Hub detection
     function containsAirport(s){ if(!s) return false; var v=String(s).toLowerCase(); return v.indexOf('airport')>-1; }
     function containsRailway(s){ if(!s) return false; var v=String(s).toLowerCase(); return v.indexOf('railway')>-1 || v.indexOf('station')>-1 || v.indexOf('tawi')>-1; }
 
     /* ===========================
-       I18N (EN / HI / UR only; others disabled)
-    ============================ */
-    var I18N = {
-      en: {
-        brand:"Fodel Transport",
-        reviews:"⭐ Reviews",
-        home:"← Home",
-        lang:"Language",
-        heroTitle:"Taxi · Transfers · Local &amp; Multi City Tours",
-        heroSub:"Jammu, Katra (Vaishno Devi), Patnitop, Srinagar, Gulmarg, Pahalgam and beyond.",
-        formTitle:"Transport Requirement",
-        formSub:"Tell us your route and vehicle needs. We’ll confirm availability and share the best price.",
-        oneway:"One way",
-        round:"Round trip",
-        local:"Local (hours/km)",
-        multi:"Multi city",
-        pickup:"Pickup location",
-        otherPickup:"Other pickup",
-        drop:"Drop location",
-        otherDrop:"Other drop",
-        pickupDate:"Pickup date",
-        pickupTime:"Pickup time",
-        returnDate:"Return date",
-        returnTime:"Return time",
-        localPackage:"Local package",
-        select:"Select",
-        custom:"Custom (we’ll confirm)",
-        city:"City",
-        date:"Date",
-        addLeg:"Add Leg",
-        clearLegs:"Clear Legs",
-        multiExample:"Example: Jammu → Katra → Patnitop → Srinagar → Jammu",
-        flightNo:"Flight no.",
-        trainNo:"Train no.",
-        ftHint:"Shown only when pickup is Airport / Railway",
-        vehicleType:"Vehicle type",
-        pax:"Total passengers",
-        cars:"How many cars",
-        addons:"Add ons",
-        roof:"Roof carrier",
-        placard:"Placard (Meet &amp; Greet)",
-        perCar:"per car",
-        perCard:"per card",
-        howManyCarsNeedRoof:"How many cars?",
-        howManyPlacards:"How many placards?",
-        addonsNotePerCar:"Add ons are charged per car. Set the quantity based on how many cars need it.",
-        remarks:"Additional remarks",
-        estimate:"Estimate:",
-        estAddLoc:"Add locations to see estimate",
-        totalDistance:"Total distance:",
-        baseFare:"Base fare",
-        grandTotal:"Grand total",
-        refresh:"Refresh",
-        yourName:"Your name",
-        mobile:"Mobile",
-        emailOpt:"Email (optional)",
-        preferContact:"Prefer contact on",
-        adminConsole:"Admin Console",
-        submitBtn:"Submit Transport Request",
-        disclaimerPlain:"Estimate is indicative for planning. Final fare may vary based on actual kms, waiting, tolls, parking, night charges, and chosen vehicle. We’ll confirm the best possible price before booking.",
-
-        // Messaging
-        msTitle:"New Transport Request — Details",
-        msTrip:"Trip",
-        msRoute:"Route",
-        msPickup:"Pickup",
-        msReturn:"Return",
-        msFlight:"Flight no.",
-        msTrain:"Train no.",
-        msVehicle:"Vehicle",
-        msPassengers:"Passengers",
-        msCars:"Cars",
-        msAddons:"Add ons",
-        msDistance:"Distance",
-        msEstimate:"Estimate",
-        msNotes:"Notes",
-        msName:"Name",
-        msMobile:"Mobile",
-        msEmail:"Email",
-        msDisclaimerBold:"*Estimate is indicative for planning. Final fare may vary based on actual kms, waiting, tolls, parking, night charges, and chosen vehicle. We’ll confirm the best possible price before booking.*",
-        msEmailGreeting:"Dear Sir/Madam,"
-      },
-      hi: {
-        brand:"फोडेल ट्रांसपोर्ट",
-        reviews:"⭐ रिव्यू",
-        home:"← होम",
-        lang:"भाषा",
-        heroTitle:"टैक्सी · ट्रांसफर · लोकल व मल्टी सिटी टूर्स",
-        heroSub:"जम्मू, कटरा (वैष्णो देवी), पटनीटॉप, श्रीनगर, गुलमर्ग, पहलगाम आदि।",
-        formTitle:"ट्रांसपोर्ट आवश्यकता",
-        oneway:"वन वे",
-        round:"राउंड ट्रिप",
-        local:"लोकल (घंटे/किमी)",
-        multi:"मल्टी सिटी",
-        pickup:"पिकअप स्थान",
-        drop:"ड्रॉप स्थान",
-        pickupDate:"पिकअप तारीख",
-        pickupTime:"पिकअप समय",
-        localPackage:"लोकल पैकेज",
-        select:"सेलेक्ट",
-        vehicleType:"विहिकल टाइप",
-        pax:"कुल यात्री",
-        cars:"कितनी कारें",
-        addons:"एड‑ऑन",
-        roof:"रूफ कैरियर",
-        placard:"प्लैकार्ड (मीट &amp; ग्रीट)",
-        perCar:"प्रति कार",
-        perCard:"प्रति कार्ड",
-        remarks:"अतिरिक्त विवरण",
-        estimate:"अनुमान:",
-        totalDistance:"कुल दूरी:",
-        baseFare:"बेस किराया",
-        grandTotal:"कुल योग",
-        refresh:"रिफ्रेश",
-        adminConsole:"एडमिन कंसोल",
-        submitBtn:"सबमिट"
-      },
-      ur: {
-        brand:"فودیل ٹرانسپورٹ",
-        reviews:"⭐ جائزے",
-        home:"← ہوم",
-        lang:"زبان",
-        heroTitle:"ٹیکسی · ٹرانسفرز · مقامی و ملٹی سٹی ٹورز",
-        heroSub:"جموں، کٹرہ (ویشنو دیوی)، پٹن ٹاپ، سرینگر، گلمرگ، پہلگام وغیرہ۔",
-        formTitle:"ٹرانسپورٹ ضرورت",
-        oneway:"ون وے",
-        round:"راونڈ ٹرپ",
-        local:"لوکل (گھنٹے/کلومیٹر)",
-        multi:"ملٹی سٹی",
-        pickup:"پِک اپ مقام",
-        drop:"ڈراپ مقام",
-        pickupDate:"پِک اپ تاریخ",
-        pickupTime:"پِک اپ وقت",
-        localPackage:"لوکل پیکج",
-        select:"چنیں",
-        vehicleType:"گاڑی کی قسم",
-        pax:"کل مسافر",
-        cars:"کتنی گاڑیاں",
-        addons:"ایڈ آن",
-        roof:"روف کیریئر",
-        placard:"پلی کارڈ (میٹ &amp; گریٹ)",
-        perCar:"فی کار",
-        perCard:"فی کارڈ",
-        remarks:"اضافی نوٹس",
-        estimate:"تخمینہ:",
-        totalDistance:"کل فاصلہ:",
-        baseFare:"بنیادی کرایہ",
-        grandTotal:"کل رقم",
-        refresh:"ریفریش",
-        adminConsole:"ایڈمن کنسول",
-        submitBtn:"جمع کریں"
-      }
-    };
-
-    /* Only EN/HI/UR enabled; others visible but disabled */
-    var LANG_LIST = [
-      { code:'en', label:'English', short:'EN', enabled:true },
-      { code:'hi', label:'हिंदी', short:'HI', enabled:true },
-      { code:'ur', label:'اُردو', short:'UR', enabled:true },
-
-      { code:'ta', label:'தமிழ்', short:'TA', enabled:false },
-      { code:'kn', label:'ಕನ್ನಡ', short:'KN', enabled:false },
-      { code:'te', label:'తెలుగు', short:'TE', enabled:false },
-      { code:'bn', label:'বাংলা', short:'BN', enabled:false },
-      { code:'mr', label:'मराठी', short:'MR', enabled:false },
-      { code:'gu', label:'ગુજરાતી', short:'GU', enabled:false },
-      { code:'ml', label:'മലയാളം', short:'ML', enabled:false },
-      { code:'pa', label:'ਪੰਜਾਬੀ', short:'PA', enabled:false },
-      { code:'or', label:'ଓଡ଼ିଆ', short:'OR', enabled:false },
-      { code:'as', label:'অসমীয়া', short:'AS', enabled:false }
-    ];
-
-    var LANG_KEY = "fodel_lang_v2";
-    var langChip = byId('lang-chip');
-    var langMenu = byId('lang-menu');
-    var langCurrent = byId('lang-current');
-
-    function setLangAttr(code){
-      document.documentElement.setAttribute("lang", code);
-      document.documentElement.setAttribute("dir", code === "ur" ? "rtl" : "ltr");
-    }
-    function tDict(code){ return I18N[code] || I18N.en; }
-
-    function applyI18n(code){
-      var dict = tDict(code);
-      Array.prototype.forEach.call(document.querySelectorAll("[data-i18n]"), function(el){
-        var key = el.getAttribute("data-i18n");
-        var val = (dict && dict[key]) ? dict[key] : (I18N.en[key] || "");
-        if (val) el.innerHTML = val;
-      });
-      setLangAttr(code);
-      localStorage.setItem(LANG_KEY, code);
-      // Update current short
-      var m = null;
-      for (var i=0;i<LANG_LIST.length;i++){ if (LANG_LIST[i].code===code){ m=LANG_LIST[i]; break; } }
-      if (langCurrent && m) langCurrent.textContent = m.short || code.toUpperCase();
-      // Update add-on labels in breakdown (roof: per car, placard: per card)
-      var rLbl = byId('line-addon-roof-lbl');
-      var pLbl = byId('line-addon-placard-lbl');
-      if (rLbl) rLbl.textContent = (dict.roof || I18N.en.roof) + " (" + (dict.perCar || I18N.en.perCar) + ")";
-      if (pLbl) pLbl.textContent = (dict.placard || I18N.en.placard) + " (" + (dict.perCard || 'per card') + ")";
-    }
-
-    function renderLangMenu(active){
-      if (!langMenu) return;
-      langMenu.innerHTML = "";
-      LANG_LIST.forEach(function(item){
-        var div = document.createElement('div');
-        div.className = 'lang-item' + (active===item.code ? ' active':'') + (item.enabled ? '' : ' disabled');
-        div.setAttribute('role','menuitem');
-        div.dataset.code = item.code;
-        div.innerHTML = '<span>'+item.label+'</span><span class="code">'+item.short+'</span>';
-
-        if (item.enabled){
-          div.addEventListener('click', function(){
-            renderLangMenu(item.code);
-            applyI18n(item.code);
-            if (langChip){ langChip.classList.remove('open'); langChip.setAttribute('aria-expanded','false'); }
-          });
-        }
-        langMenu.appendChild(div);
-      });
-      // RTL hint for Urdu
-      var hint = document.createElement('div');
-      hint.className = 'lang-rtl-hint';
-      hint.style.padding = '4px 8px 2px';
-      hint.textContent = (active==='ur') ? 'RTL (right to left)' : '';
-      langMenu.appendChild(hint);
-    }
-
-    function initLang(){
-      var saved = localStorage.getItem(LANG_KEY) || "en";
-      renderLangMenu(saved);
-      applyI18n(saved);
-
-      // Toggle open/close
-      if (langChip){
-        langChip.addEventListener('click', function(e){
-          e.stopPropagation();
-          var isOpen = langChip.classList.contains('open');
-          Array.prototype.forEach.call(document.querySelectorAll('.lang-chip.open'), function(c){ c.classList.remove('open'); });
-          langChip.setAttribute('aria-expanded', String(!isOpen));
-          langChip.classList.toggle('open', !isOpen);
-        });
-      }
-
-      // Close on outside click/ESC
-      document.addEventListener('click', function(e){
-        if (langChip && !langChip.contains(e.target)){
-          langChip.classList.remove('open');
-          langChip.setAttribute('aria-expanded', 'false');
-        }
-      });
-      document.addEventListener('keydown', function(e){
-        if (e.key === 'Escape'){
-          if (langChip){ langChip.classList.remove('open'); langChip.setAttribute('aria-expanded', 'false'); }
-        }
-      });
-    }
-    /* ===========================
        UI WIRING
     ============================ */
-    // Elements
     var tripRadios = Array.prototype.slice.call(document.querySelectorAll('input[name="tripType"]'));
     var blockStd = byId('block-std');
     var blockReturn = byId('block-return');
@@ -1169,7 +806,6 @@ Jammu Airport,Katra,49</pre>
     var lineBase = byId('line-base');
     var lineGrand = byId('line-grand');
 
-    // Add-on amounts + qty inputs
     var roofAmt = byId('roof-amt');
     var placardAmt = byId('placard-amt');
     var qtyRoof = byId('qty-roof');
@@ -1183,32 +819,27 @@ Jammu Airport,Katra,49</pre>
     var openAdmin = byId('open-admin');
     var adminOv = byId('admin-ov');
 
-    // Contextual FT
     var ftWrap  = byId('ft-wrap');
     var ftLabel = byId('ft-label');
     var ftInput = byId('ft-input');
     var ftHint  = byId('ft-hint');
 
-    // Populate selects from STORE
+    // Populate selects
     function fillLocations(sel){
       if(!sel) return;
-      var code = localStorage.getItem(LANG_KEY)||'en';
-      var txt = (I18N[code] && I18N[code].select) ? I18N[code].select : I18N.en.select;
-      var opts = '<option value="">' + txt + '</option>';
+      var opts = '<option value="">Select</option>';
       var arr = (STORE.locations||[]);
       for (var i=0;i<arr.length;i++){ opts += '<option>'+arr[i]+'</option>'; }
       sel.innerHTML = opts;
     }
     function fillVehicles(){
       if(!vehicle) return;
-      var code = localStorage.getItem(LANG_KEY)||'en';
-      var txt = (I18N[code] && I18N[code].select) ? I18N[code].select : I18N.en.select;
-      var opts = '<option value="">' + txt + '</option>';
+      var opts = '<option value="">Select</option>';
       var arr = (STORE.vehicles||[]);
       var seen = {};
       for (var i=0;i<arr.length;i++){
         var v = arr[i];
-        if(seen[v.id]) continue; // prevent duplicates
+        if (seen[v.id]) continue;
         seen[v.id] = true;
         opts += '<option value="'+v.id+'">'+v.label+'</option>';
       }
@@ -1229,15 +860,14 @@ Jammu Airport,Katra,49</pre>
       placardAmt.textContent = (STORE.addons && STORE.addons.placard!=null ? STORE.addons.placard : 0).toLocaleString("en-IN");
     }
 
-    // Date defaults
     function initDates(){
       var ld = byId('local-date');
-      if (date) date.min = todayISO();
-      if (rdate) rdate.min = todayISO();
-      if (ld) ld.min = todayISO();
+      var t = todayISO();
+      if (date) date.min = t;
+      if (rdate) rdate.min = t;
+      if (ld) ld.min = t;
     }
 
-    // Other pickup/drop toggles
     function toggleOther(tgl, input, select){
       if(!tgl || !input || !select) return;
       input.style.display = tgl.checked ? '' : 'none';
@@ -1246,7 +876,6 @@ Jammu Airport,Katra,49</pre>
       refreshEstimate();
     }
 
-    // Pickup string for contextual FT UI
     function getPickupString(){
       var type = 'oneway';
       for (var i=0;i<tripRadios.length;i++){ if(tripRadios[i].checked){ type = tripRadios[i].value; break; } }
@@ -1263,17 +892,15 @@ Jammu Airport,Katra,49</pre>
 
     function updateFTVisibility(){
       var pickup = getPickupString();
-      var code = localStorage.getItem(LANG_KEY)||'en';
-      var dict = tDict(code);
       if (containsAirport(pickup)){
         ftWrap.style.display = '';
-        ftLabel.textContent  = dict.flightNo || I18N.en.flightNo;
+        ftLabel.textContent  = 'Flight no.';
         ftInput.placeholder  = 'e.g., UK 123';
         ftInput.setAttribute('data-ft-type', 'flight');
         if (ftHint) ftHint.style.display = 'none';
       } else if (containsRailway(pickup)){
         ftWrap.style.display = '';
-        ftLabel.textContent  = dict.trainNo || I18N.en.trainNo;
+        ftLabel.textContent  = 'Train no.';
         ftInput.placeholder  = 'e.g., 12426 Jammu Rajdhani';
         ftInput.setAttribute('data-ft-type', 'train');
         if (ftHint) ftHint.style.display = 'none';
@@ -1286,59 +913,35 @@ Jammu Airport,Katra,49</pre>
     [selPickup, selDrop, pickupOther, dropOther, pickupOtherToggle, dropOtherToggle, selLocalCity]
       .forEach(function(el){ if(el){ el.addEventListener('input', function(){ updateFTVisibility(); refreshEstimate(); }); } });
 
-    // Multi-city legs
+    // Multi-city legs (no ▲▼ — only Delete)
     function createLeg(fromVal, toVal){
       fromVal = fromVal || ""; toVal = toVal || "";
       var div = document.createElement('div');
-      var code = localStorage.getItem(LANG_KEY)||'en';
-      var dict = tDict(code);
       div.className = 'leg';
       div.innerHTML =
         '<div class="inline">'+
-          '<div>'+
-            '<label>'+(dict.pickup || I18N.en.pickup)+'</label>'+
-            '<select class="leg-from"></select>'+
-          '</div>'+
-          '<div>'+
-            '<label>'+(dict.drop || I18N.en.drop)+'</label>'+
-            '<select class="leg-to"></select>'+
-          '</div>'+
+          '<div><label>Pickup</label><select class="leg-from"></select></div>'+
+          '<div><label>Drop</label><select class="leg-to"></select></div>'+
         '</div>'+
         '<div class="inline" style="margin-top:8px;">'+
-          '<div>'+
-            '<label>'+(dict.date || I18N.en.date)+'</label>'+
-            '<input type="date" class="leg-date" min="'+todayISO()+'">'+
-          '</div>'+
-          '<div>'+
-            '<label>'+(dict.pickupTime || I18N.en.pickupTime)+'</label>'+
-            '<input type="time" class="leg-time">'+
-          '</div>'+
+          '<div><label>Date</label><input type="date" class="leg-date" min="'+todayISO()+'"></div>'+
+          '<div><label>Pickup time</label><input type="time" class="leg-time"></div>'+
         '</div>'+
         '<div class="leg-actions">'+
-          '<button type="button" class="btn-ghost btn-leg-up" aria-label="Move leg up">↑</button>'+
-          '<button type="button" class="btn-ghost btn-leg-down" aria-label="Move leg down">↓</button>'+
           '<button type="button" class="btn-ghost btn-leg-del" aria-label="Delete leg">Delete</button>'+
         '</div>';
       legsBox.appendChild(div);
+
       var lf = div.querySelector('.leg-from');
       var lt = div.querySelector('.leg-to');
       fillLocations(lf); fillLocations(lt);
       if (fromVal) lf.value = fromVal;
       if (toVal) lt.value = toVal;
 
-      div.querySelector('.btn-leg-up').addEventListener('click', function(){
-        if (div.previousElementSibling) legsBox.insertBefore(div, div.previousElementSibling);
-        refreshEstimate(); updateFTVisibility();
-      });
-      div.querySelector('.btn-leg-down').addEventListener('click', function(){
-        if (div.nextElementSibling) legsBox.insertBefore(div.nextElementSibling, div);
-        refreshEstimate(); updateFTVisibility();
-      });
       div.querySelector('.btn-leg-del').addEventListener('click', function(){
         div.remove(); refreshEstimate(); updateFTVisibility();
       });
 
-      // attach inputs
       var controls = [lf, lt];
       Array.prototype.forEach.call(div.querySelectorAll('.leg-date, .leg-time'), function(el){ controls.push(el); });
       controls.forEach(function(el){ if(el) el.addEventListener('input', function(){ refreshEstimate(); updateFTVisibility(); }); });
@@ -1428,12 +1031,10 @@ Jammu Airport,Katra,49</pre>
       var nCars = Math.max(1, parseInt(cars.value || "1", 10));
       var type = "oneway";
       for (var i=0;i<tripRadios.length;i++){ if(tripRadios[i].checked){ type = tripRadios[i].value; break; } }
-      var code = localStorage.getItem(LANG_KEY)||'en';
-      var dict = tDict(code);
 
       // Local
       if (type === "local") {
-        estText.textContent = (dict.local || I18N.en.local) + " — " + "ask for quote";
+        estText.textContent = "Local (hours/km) — ask for quote";
         kmText.textContent = "—";
         estBreak.style.display = 'none';
         return;
@@ -1441,8 +1042,8 @@ Jammu Airport,Katra,49</pre>
 
       var legs = calcLegs();
       if (!legs.length){
-        var msg = dict.estAddLoc || I18N.en.estAddLoc;
-        if (type === 'multi') msg = msg.replace("locations","trip legs");
+        var msg = "Add locations to see estimate";
+        if (type === 'multi') msg = "Add trip legs to see estimate";
         estText.textContent = msg;
         kmText.textContent = "—";
         estBreak.style.display = 'none';
@@ -1463,7 +1064,7 @@ Jammu Airport,Katra,49</pre>
 
       // Prices require vehicle
       if (!vId) {
-        estText.textContent = (dict.vehicleType || I18N.en.vehicleType) + " — " + (dict.select || I18N.en.select);
+        estText.textContent = "Vehicle type — Select";
         estBreak.style.display = 'none';
         return;
       }
@@ -1494,20 +1095,19 @@ Jammu Airport,Katra,49</pre>
         estText.textContent = (legs.length - missing) + "/" + legs.length + " legs priced — remaining ask for quote";
         estBreak.style.display = 'none';
       } else {
-        var estWord = (dict.estimate || I18N.en.estimate).replace(':','').trim().toLowerCase();
-        estText.textContent = "₹ " + grand.toLocaleString("en-IN") + " " + estWord;
+        estText.textContent = "₹ " + grand.toLocaleString("en-IN") + " estimate";
 
         estBreak.style.display = '';
         lineBase.textContent = "₹ " + baseForCars.toLocaleString("en-IN");
 
         if (addonsRoofTotal > 0){
           lineAddonRoof.style.display = '';
-          lineAddonRoofVal.textContent = "₹ " + addonsRoofTotal.toLocaleString("en-IN") + " (₹ " + priceRoof.toLocaleString("en-IN") + " × " + qRoof + " " + (dict.perCar || 'per car') + ")";
+          lineAddonRoofVal.textContent = "₹ " + addonsRoofTotal.toLocaleString("en-IN") + " (₹ " + priceRoof.toLocaleString("en-IN") + " × " + qRoof + " per car)";
         } else { lineAddonRoof.style.display = 'none'; }
 
         if (addonsPlacardTotal > 0){
           lineAddonPlacard.style.display = '';
-          lineAddonPlacardVal.textContent = "₹ " + addonsPlacardTotal.toLocaleString("en-IN") + " (₹ " + pricePlacard.toLocaleString("en-IN") + " × " + qPlacard + " " + (dict.perCard || 'per card') + ")";
+          lineAddonPlacardVal.textContent = "₹ " + addonsPlacardTotal.toLocaleString("en-IN") + " (₹ " + pricePlacard.toLocaleString("en-IN") + " × " + qPlacard + " per card)";
         } else { lineAddonPlacard.style.display = 'none'; }
 
         lineGrand.textContent = "₹ " + grand.toLocaleString("en-IN");
@@ -1551,12 +1151,107 @@ Jammu Airport,Katra,49</pre>
     if (dropOtherToggle)   dropOtherToggle.addEventListener('change',   function(){ toggleOther(dropOtherToggle,   dropOther,   selDrop); });
     toggleOther(pickupOtherToggle, pickupOther, selPickup);
     toggleOther(dropOtherToggle,   dropOther,   selDrop);
-
     /* ===========================
-       ADMIN CONSOLE
+       ADMIN SECURITY (PIN, URL, Gear)
     ============================ */
-    var ADMIN_KEY = 'fodel_is_admin';
+    var ADMIN_FLAG_LS = 'fodel_is_admin';
+    var ADMIN_FLAG_SS = 'fodel_is_admin_ss';
+    var ADMIN_PIN_SHA256 = '380ab389d8400d508ce9a8393bda7161466bbed74cbaec488e931ddb1410c350'; // "nameandfame19"
 
+    function isAdminNew(){
+      return sessionStorage.getItem(ADMIN_FLAG_SS)==='1' || localStorage.getItem(ADMIN_FLAG_LS)==='1';
+    }
+    function setAdminNew(v, opts){
+      opts = opts || {};
+      if (v){
+        sessionStorage.setItem(ADMIN_FLAG_SS, '1');
+        if (opts.persist) localStorage.setItem(ADMIN_FLAG_LS, '1');
+      } else {
+        sessionStorage.removeItem(ADMIN_FLAG_SS);
+        localStorage.removeItem(ADMIN_FLAG_LS);
+      }
+      if (openAdmin) openAdmin.style.display = v ? 'inline-flex' : 'none';
+    }
+
+    function sha256hex(s){
+      if (!window.crypto || !crypto.subtle) { alert('Admin login not supported on this browser'); return Promise.resolve(''); }
+      var enc = new TextEncoder();
+      return crypto.subtle.digest('SHA-256', enc.encode(String(s))).then(function(buf){
+        var arr = new Uint8Array(buf);
+        return Array.prototype.map.call(arr, function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+      });
+    }
+    function verifyPin(rawPin){
+      if (!rawPin) return Promise.resolve(false);
+      return sha256hex(String(rawPin).trim()).then(function(h){
+        return h && h.toLowerCase() === String(ADMIN_PIN_SHA256).toLowerCase();
+      }).catch(function(){ return false; });
+    }
+    function promptPinAndUnlock(opts){
+      opts = opts || {};
+      var input = prompt('Enter Admin PIN');
+      return verifyPin(input).then(function(ok){
+        if (!ok){ showToast('Invalid PIN'); return false; }
+        setAdminNew(true, {persist: !!opts.persist});
+        showToast('Admin unlocked');
+        if (opts.autoOpen && adminOv) adminOv.classList.add('active');
+        return true;
+      });
+    }
+
+    (function handleAdminFromURL(){
+      var p = new URLSearchParams(location.search);
+      var wantAdmin = p.get('admin') === '1';
+      var pin       = p.get('pin');
+      var persist   = p.get('persist') === '1';
+
+      function reflect(){
+        setAdminNew(isAdminNew(), {});
+        if (wantAdmin){
+          if (isAdminNew()){
+            adminOv && adminOv.classList.add('active');
+          } else {
+            promptPinAndUnlock({persist:persist, autoOpen:true});
+          }
+        }
+        if (wantAdmin || pin || persist){
+          var clean = new URL(location.href);
+          clean.searchParams.delete('admin');
+          clean.searchParams.delete('pin');
+          clean.searchParams.delete('persist');
+          history.replaceState({}, document.title, clean.pathname + (clean.searchParams.toString() ? '?' + clean.searchParams.toString() : '') + clean.hash);
+        }
+      }
+
+      if (pin){
+        verifyPin(pin).then(function(ok){
+          if (ok){
+            setAdminNew(true, {persist:persist});
+            showToast('Admin unlocked');
+          } else {
+            showToast('Invalid PIN');
+          }
+          reflect();
+        });
+      } else {
+        reflect();
+      }
+    })();
+
+    // Admin open / logout / close
+    if (openAdmin) openAdmin.addEventListener('click', function(){ adminOv && adminOv.classList.add('active'); });
+    function closeAdmin(){
+      if (adminOv) adminOv.classList.remove('active');
+      setAdminNew(false);
+      showToast('Logged out');
+    }
+    var adminLogout = byId('admin-logout');
+    if (adminLogout) adminLogout.addEventListener('click', closeAdmin);
+    if (adminOv){ adminOv.addEventListener('click', function(e){ if (e.target === adminOv) closeAdmin(); }); }
+    Array.prototype.forEach.call(document.querySelectorAll('[data-close]'), function(x){ x.addEventListener('click', closeAdmin); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeAdmin(); });
+
+    /* ADMIN: Locations / Prices / Distances / Add-ons / CSV / Backup */
     function renderLocChips(){
       var locList = byId('loc-list');
       if (!locList) return;
@@ -1571,11 +1266,7 @@ Jammu Airport,Katra,49</pre>
         var btn = chip.querySelector('button');
         btn.addEventListener('click', function(){
           STORE.locations = (STORE.locations||[]).filter(function(x){ return x!==loc; });
-          saveStore();
-          fillAllLocations();
-          renderLocChips();
-          refreshEstimate();
-          showToast('Removed');
+          saveStore(); fillAllLocations(); renderLocChips(); refreshEstimate(); showToast('Removed');
         });
         locList.appendChild(chip);
       });
@@ -1587,25 +1278,14 @@ Jammu Airport,Katra,49</pre>
       if (!v) return;
       if ((STORE.locations||[]).indexOf(v) === -1) {
         STORE.locations.push(v);
-        saveStore();
-        fillAllLocations();
-        renderLocChips();
-        showToast('Location added');
-        locNew.value = '';
-      } else {
-        showToast('Already exists');
-      }
+        saveStore(); fillAllLocations(); renderLocChips(); refreshEstimate(); showToast('Location added'); locNew.value = '';
+      } else { showToast('Already exists'); }
     });
     if (locReset) locReset.addEventListener('click', function(){
       STORE.locations = DEFAULTS.locations.slice();
-      saveStore();
-      fillAllLocations();
-      renderLocChips();
-      refreshEstimate();
-      showToast('Locations reset');
+      saveStore(); fillAllLocations(); renderLocChips(); refreshEstimate(); showToast('Locations reset');
     });
 
-    // Price Save/Clear
     var priceFrom = byId('price-from'), priceTo = byId('price-to');
     var pSedan = byId('p-sedan'), pSuv = byId('p-suv'), pInnova = byId('p-innova'), pTT = byId('p-tt');
 
@@ -1626,24 +1306,18 @@ Jammu Airport,Katra,49</pre>
       setRoutePriceFor('suv',    from, to, getNumOrZero(pSuv));
       setRoutePriceFor('innova', from, to, getNumOrZero(pInnova));
       setRoutePriceFor('tt',     from, to, getNumOrZero(pTT));
-      saveStore();
-      showToast('Route price saved');
-      refreshEstimate();
+      saveStore(); showToast('Route price saved'); refreshEstimate();
     });
 
     var btnPriceClear = byId('price-clear');
     if (btnPriceClear) btnPriceClear.addEventListener('click', function(){
-      var from = priceFrom.value || '';
-      var to   = priceTo.value || '';
+      var from = priceFrom.value || ''; var to = priceTo.value || '';
       if (!from || !to) { showToast('Select From/To'); return; }
       var key = priceKey(from,to);
       ['sedan','suv','innova','tt'].forEach(function(v){ if (STORE.priceTable[v]) delete STORE.priceTable[v][key]; });
-      saveStore();
-      showToast('Route price cleared');
-      refreshEstimate();
+      saveStore(); showToast('Route price cleared'); refreshEstimate();
     });
 
-    // Distance Save/Clear
     var btnDistSave = byId('dist-save');
     if (btnDistSave) btnDistSave.addEventListener('click', function(){
       var from = byId('dist-from').value || '';
@@ -1651,9 +1325,7 @@ Jammu Airport,Katra,49</pre>
       var km   = parseInt(byId('dist-km').value, 10);
       if (!from || !to || !km) { showToast('Missing From/To/Km'); return; }
       STORE.distanceTable[priceKey(from,to)] = km;
-      saveStore();
-      showToast('Distance saved');
-      refreshEstimate();
+      saveStore(); showToast('Distance saved'); refreshEstimate();
     });
 
     var btnDistClear = byId('dist-clear');
@@ -1662,48 +1334,35 @@ Jammu Airport,Katra,49</pre>
       var to   = byId('dist-to').value || '';
       if (!from || !to) { showToast('Select From/To'); return; }
       delete STORE.distanceTable[priceKey(from,to)];
-      saveStore();
-      showToast('Distance cleared');
-      refreshEstimate();
+      saveStore(); showToast('Distance cleared'); refreshEstimate();
     });
 
-    // Add-ons Save
     var aRoof = byId('a-roof'), aPlacard = byId('a-placard'), addonsSave = byId('addons-save');
     if (addonsSave) addonsSave.addEventListener('click', function(){
       var r = parseInt(aRoof.value,10); var p = parseInt(aPlacard.value,10);
       if (!STORE.addons) STORE.addons = {};
       if (!isNaN(r) && r>=0) STORE.addons.roofcarrier = r;
       if (!isNaN(p) && p>=0) STORE.addons.placard = p;
-      saveStore();
-      refreshAddonLabels();
-      refreshEstimate();
-      showToast('Add-ons saved');
+      saveStore(); refreshAddonLabels(); refreshEstimate(); showToast('Add-ons saved');
     });
 
-    // CSV helpers (simple parser; expects no embedded commas/quotes)
     function download(filename, text){
       var blob = new Blob([text], {type:'text/csv;charset=utf-8;'});
       var a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
-      a.download = filename;
-      a.style.display='none';
-      document.body.appendChild(a);
-      a.click();
+      a.download = filename; a.style.display='none';
+      document.body.appendChild(a); a.click();
       setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 0);
     }
     function parseCSV(text){
       return text.split(/\r?\n/).map(function(r){ return r.trim(); }).filter(Boolean).map(function(r){ return r.split(',').map(function(c){ return c.trim(); }); });
     }
 
-    // Export Prices CSV
     var btnExportPrices = byId('export-csv-prices');
     if (btnExportPrices) btnExportPrices.addEventListener('click', function(){
       var sets = ['sedan','suv','innova','tt'];
       var keys = {};
-      sets.forEach(function(v){
-        var t = STORE.priceTable[v]||{};
-        Object.keys(t).forEach(function(k){ keys[k]=true; });
-      });
+      sets.forEach(function(v){ var t = STORE.priceTable[v]||{}; Object.keys(t).forEach(function(k){ keys[k]=true; }); });
       var out = ['From,To,sedan,suv,innova,tt'];
       Object.keys(keys).forEach(function(k){
         var parts = k.split('|'), from=parts[0], to=parts[1];
@@ -1716,7 +1375,6 @@ Jammu Airport,Katra,49</pre>
       download('prices.csv', out.join('\n'));
     });
 
-    // Import Prices CSV
     var btnImportPrices = byId('import-csv-prices');
     if (btnImportPrices) btnImportPrices.addEventListener('click', function(){
       var f = byId('csv-prices') && byId('csv-prices').files && byId('csv-prices').files[0];
@@ -1726,12 +1384,8 @@ Jammu Airport,Katra,49</pre>
         try{
           var rows = parseCSV(reader.result);
           var hdr = rows.shift() || [];
-          var colFrom = hdr.indexOf('From');
-          var colTo   = hdr.indexOf('To');
-          var colS    = hdr.indexOf('sedan');
-          var colU    = hdr.indexOf('suv');
-          var colI    = hdr.indexOf('innova');
-          var colT    = hdr.indexOf('tt');
+          var colFrom = hdr.indexOf('From'), colTo = hdr.indexOf('To');
+          var colS=hdr.indexOf('sedan'), colU=hdr.indexOf('suv'), colI=hdr.indexOf('innova'), colT=hdr.indexOf('tt');
           rows.forEach(function(c){
             var from = c[colFrom], to=c[colTo];
             if (!from||!to) return;
@@ -1741,15 +1395,18 @@ Jammu Airport,Katra,49</pre>
             if (colI>=0) { var v3=parseInt(c[colI],10); if(!isNaN(v3)&&v3>0){ if(!STORE.priceTable.innova) STORE.priceTable.innova={}; STORE.priceTable.innova[key]=v3; } }
             if (colT>=0) { var v4=parseInt(c[colT],10); if(!isNaN(v4)&&v4>0){ if(!STORE.priceTable.tt) STORE.priceTable.tt={}; STORE.priceTable.tt[key]=v4; } }
           });
-          saveStore();
-          showToast('Prices CSV imported');
-          refreshEstimate();
+          // Safety: dedupe vehicles (if CSV included any vehicle metadata elsewhere)
+          if (STORE.vehicles && STORE.vehicles.length){
+            STORE.vehicles = STORE.vehicles.filter(function (v, i, a) {
+              return a.findIndex(function (x) { return x.id === v.id; }) === i;
+            });
+          }
+          saveStore(); showToast('Prices CSV imported'); refreshEstimate();
         }catch(e){ showToast('Import failed'); }
       };
       reader.readAsText(f);
     });
 
-    // Export Distances CSV
     var btnExportDist = byId('export-csv-dist');
     if (btnExportDist) btnExportDist.addEventListener('click', function(){
       var dt = STORE.distanceTable || {};
@@ -1761,7 +1418,6 @@ Jammu Airport,Katra,49</pre>
       download('distances.csv', out.join('\n'));
     });
 
-    // Import Distances CSV
     var btnImportDist = byId('import-csv-dist');
     if (btnImportDist) btnImportDist.addEventListener('click', function(){
       var f = byId('csv-dist') && byId('csv-dist').files && byId('csv-dist').files[0];
@@ -1771,23 +1427,18 @@ Jammu Airport,Katra,49</pre>
         try{
           var rows = parseCSV(reader.result);
           var hdr = rows.shift() || [];
-          var colFrom = hdr.indexOf('From');
-          var colTo   = hdr.indexOf('To');
-          var colKm   = hdr.indexOf('km');
+          var colFrom = hdr.indexOf('From'), colTo = hdr.indexOf('To'), colKm = hdr.indexOf('km');
           rows.forEach(function(c){
             var from = c[colFrom], to=c[colTo], km = parseInt(c[colKm],10);
             if (!from||!to||isNaN(km)) return;
             STORE.distanceTable[priceKey(from,to)] = km;
           });
-          saveStore();
-          showToast('Distances CSV imported');
-          refreshEstimate();
+          saveStore(); showToast('Distances CSV imported'); refreshEstimate();
         }catch(e){ showToast('Import failed'); }
       };
       reader.readAsText(f);
     });
 
-    // Backup / Restore
     var btnExportJSON = byId('export-json');
     if (btnExportJSON) btnExportJSON.addEventListener('click', function(){
       var blob = new Blob([JSON.stringify(STORE, null, 2)], {type:'application/json'});
@@ -1809,14 +1460,15 @@ Jammu Airport,Katra,49</pre>
         try{
           var obj = JSON.parse(reader.result);
           if (!obj || typeof obj !== 'object') throw new Error('Invalid JSON');
+          // Shallow merge into defaults, then assign
           STORE = Object.assign({}, DEFAULTS, obj);
-          saveStore();
-          fillAllLocations();
-          fillVehicles();
-          renderLocChips();
-          refreshAddonLabels();
-          updateTripBlocks();
-          refreshEstimate();
+          // Safety: de-duplicate vehicles
+          if (STORE.vehicles && STORE.vehicles.length){
+            STORE.vehicles = STORE.vehicles.filter(function (v, i, a) {
+              return a.findIndex(function (x) { return x.id === v.id; }) === i;
+            });
+          }
+          saveStore(); fillAllLocations(); fillVehicles(); renderLocChips(); refreshAddonLabels(); updateTripBlocks(); refreshEstimate();
           if (aRoof) aRoof.value = STORE.addons.roofcarrier || 0;
           if (aPlacard) aPlacard.value = STORE.addons.placard || 0;
           showToast('Imported');
@@ -1829,9 +1481,6 @@ Jammu Airport,Katra,49</pre>
        SUBMIT HANDLER
     ============================ */
     function buildMessage(){
-      var lang = localStorage.getItem(LANG_KEY)||'en';
-      var d = tDict(lang);
-
       var trip = 'oneway';
       for (var i=0;i<tripRadios.length;i++){ if(tripRadios[i].checked){ trip = tripRadios[i].value; break; } }
       var legs = calcLegs();
@@ -1853,26 +1502,26 @@ Jammu Airport,Katra,49</pre>
       var ft = '';
       var ftType = ftInput.getAttribute('data-ft-type') || '';
       if (ftWrap.style.display !== 'none' && ftInput.value.trim()){
-        ft = (ftType==='train' ? (d.msTrain || 'Train no.') : (d.msFlight || 'Flight no.')) + ': ' + ftInput.value.trim();
+        ft = (ftType==='train' ? 'Train no.' : 'Flight no.') + ': ' + ftInput.value.trim();
       }
 
       var addOnsTxt = [];
-      var aR = parseInt(qtyRoof.value,10)||0; if (aR>0) addOnsTxt.push((d.roof||'Roof carrier') + ' × ' + aR);
-      var aP = parseInt(qtyPlacard.value,10)||0; if (aP>0) addOnsTxt.push((d.placard||'Placard') + ' × ' + aP);
+      var aR = parseInt(qtyRoof.value,10)||0; if (aR>0) addOnsTxt.push('Roof carrier × ' + aR);
+      var aP = parseInt(qtyPlacard.value,10)||0; if (aP>0) addOnsTxt.push('Placard × ' + aP);
 
       var distTxt = kmText.textContent || '';
       var estTxt  = estText.textContent || '';
 
       var lines = [
-        '**'+(d.msTitle || 'New Transport Request — Details')+'**',
+        '**New Transport Request — Details**',
         '',
-        '• '+(d.msTrip || 'Trip')+': '+trip.toUpperCase(),
-        '• '+(d.msRoute || 'Route')+': '+route
+        '• Trip: '+trip.toUpperCase(),
+        '• Route: '+route
       ];
 
       if (trip==='oneway' || trip==='round'){
-        if (date.value)  lines.push('• '+(d.msPickup || 'Pickup')+': '+date.value+' '+(time.value||''));
-        if (trip==='round' && rdate.value) lines.push('• '+(d.msReturn || 'Return')+': '+rdate.value+' '+(rtime.value||''));
+        if (date.value)  lines.push('• Pickup: '+date.value+' '+(time.value||''));
+        if (trip==='round' && rdate.value) lines.push('• Return: '+rdate.value+' '+(rtime.value||''));
       } else if (trip==='local'){
         var lp = (byId('local-package') && byId('local-package').value) || '';
         var lc = (selLocalCity.value||'');
@@ -1885,27 +1534,27 @@ Jammu Airport,Katra,49</pre>
       }
 
       if (ft) lines.push('• '+ft);
-      if (vehicle.value) lines.push('• '+(d.msVehicle || 'Vehicle')+': '+vehicle.options[vehicle.selectedIndex].text);
-      if (pax.value) lines.push('• '+(d.msPassengers || 'Passengers')+': '+pax.value);
-      if (cars.value) lines.push('• '+(d.msCars || 'Cars')+': '+cars.value);
+      if (vehicle.value) lines.push('• Vehicle: '+vehicle.options[vehicle.selectedIndex].text);
+      if (pax.value) lines.push('• Passengers: '+pax.value);
+      if (cars.value) lines.push('• Cars: '+cars.value);
 
-      if (addOnsTxt.length) lines.push('• '+(d.msAddons || 'Add ons')+': '+addOnsTxt.join(', '));
+      if (addOnsTxt.length) lines.push('• Add ons: '+addOnsTxt.join(', '));
 
-      if (distTxt && distTxt !== '—') lines.push('• '+(d.msDistance || 'Distance')+': '+distTxt);
-      if (estTxt) lines.push('• '+(d.msEstimate || 'Estimate')+': '+estTxt);
+      if (distTxt && distTxt !== '—') lines.push('• Distance: '+distTxt);
+      if (estTxt) lines.push('• Estimate: '+estTxt);
 
       if (byId('notes').value.trim()){
         lines.push('');
-        lines.push((d.msNotes || 'Notes')+': '+byId('notes').value.trim());
+        lines.push('Notes: '+byId('notes').value.trim());
       }
 
       lines.push('');
-      lines.push((d.msName || 'Name')+': '+byId('name').value.trim());
-      lines.push((d.msMobile || 'Mobile')+': '+byId('mobile').value.trim());
-      if (byId('email').value.trim()) lines.push((d.msEmail || 'Email')+': '+byId('email').value.trim());
+      lines.push('Name: '+byId('name').value.trim());
+      lines.push('Mobile: '+byId('mobile').value.trim());
+      if (byId('email').value.trim()) lines.push('Email: '+byId('email').value.trim());
 
       lines.push('');
-      lines.push(d.msDisclaimerBold || '*Estimate is indicative for planning. Final fare may vary based on actual kms, waiting, tolls, parking, night charges, and chosen vehicle. We’ll confirm the best possible price before booking.*');
+      lines.push('*Estimate is indicative for planning. Final fare may vary based on actual kms, waiting, tolls, parking, night charges, and chosen vehicle. We’ll confirm the best possible price before booking.*');
 
       return lines.join('\n');
     }
@@ -1932,18 +1581,10 @@ Jammu Airport,Katra,49</pre>
       var msg = buildMessage();
       var pref = (byId('pref-contact') && byId('pref-contact').value || 'WhatsApp').toLowerCase();
 
-      var payload = {
-        message: msg,
-        when: new Date().toISOString(),
-        source: 'fodel-transport'
-      };
+      var payload = { message: msg, when: new Date().toISOString(), source: 'fodel-transport' };
       if (FORMSPREE_ENDPOINT){
         try{
-          fetch(FORMSPREE_ENDPOINT, {
-            method:'POST',
-            headers:{ 'Content-Type':'application/json' },
-            body: JSON.stringify(payload)
-          }).catch(function(){});
+          fetch(FORMSPREE_ENDPOINT, { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify(payload) }).catch(function(){});
         }catch(e){}
       }
 
@@ -1959,139 +1600,30 @@ Jammu Airport,Katra,49</pre>
     });
 
     /* ===========================
-       ADMIN SECURITY (PIN, URL, Gear)
-       - Hashed PIN (SHA-256)
-       - ?admin=1 → auto-open (prompts if needed)
-       - ?pin=XXXX → auto-verify (no prompt)
-       - ?persist=1 → persist admin in localStorage
-       - Gear button visible only when authorized
+       TRANSLATE (overlay on click)
     ============================ */
-
-    var ADMIN_FLAG_LS = 'fodel_is_admin';
-    var ADMIN_FLAG_SS = 'fodel_is_admin_ss';
-
-    // Hashed PIN for "nameandfame19"
-    var ADMIN_PIN_SHA256 = '380ab389d8400d508ce9a8393bda7161466bbed74cbaec488e931ddb1410c350';
-
-    function isAdminNew(){
-      return sessionStorage.getItem(ADMIN_FLAG_SS)==='1' || localStorage.getItem(ADMIN_FLAG_LS)==='1';
-    }
-    function setAdminNew(v, opts){
-      opts = opts || {};
-      if (v){
-        sessionStorage.setItem(ADMIN_FLAG_SS, '1');
-        if (opts.persist) localStorage.setItem(ADMIN_FLAG_LS, '1');
+    document.getElementById('translate-btn').addEventListener('click', function () {
+      if (!window.googleTranslateElementInit) {
+        var s = document.createElement('script');
+        s.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+        document.body.appendChild(s);
       } else {
-        sessionStorage.removeItem(ADMIN_FLAG_SS);
-        localStorage.removeItem(ADMIN_FLAG_LS);
+        // If already loaded, re-init to ensure menu opens
+        googleTranslateElementInit();
       }
-      if (openAdmin) openAdmin.style.display = v ? 'inline-flex' : 'none';
-    }
-
-    function sha256hex(s){
-      var enc = new TextEncoder();
-      return crypto.subtle.digest('SHA-256', enc.encode(String(s))).then(function(buf){
-        var arr = new Uint8Array(buf);
-        return Array.prototype.map.call(arr, function(b){
-          return b.toString(16).padStart(2,'0');
-        }).join('');
-      });
-    }
-    function verifyPin(rawPin){
-      if (!rawPin) return Promise.resolve(false);
-      return sha256hex(String(rawPin).trim()).then(function(h){
-        return h.toLowerCase() === String(ADMIN_PIN_SHA256).toLowerCase();
-      }).catch(function(){ return false; });
-    }
-    function promptPinAndUnlock(opts){
-      opts = opts || {};
-      var input = prompt('Enter Admin PIN');
-      return verifyPin(input).then(function(ok){
-        if (!ok){ showToast('Invalid PIN'); return false; }
-        setAdminNew(true, {persist: !!opts.persist});
-        showToast('Admin unlocked');
-        if (opts.autoOpen && adminOv) adminOv.classList.add('active');
-        return true;
-      });
-    }
-
-    (function handleAdminFromURL(){
-      var p = new URLSearchParams(location.search);
-      var wantAdmin = p.get('admin') === '1';
-      var pin       = p.get('pin');
-      var persist   = p.get('persist') === '1';
-
-      if (pin){
-        verifyPin(pin).then(function(ok){
-          if (ok){
-            setAdminNew(true, {persist:persist});
-            showToast('Admin unlocked');
-          } else {
-            showToast('Invalid PIN');
-          }
-          reflect();
-        });
-      } else {
-        reflect();
-      }
-
-      function reflect(){
-        setAdminNew(isAdminNew(), {});
-        if (wantAdmin){
-          if (isAdminNew()){
-            adminOv && adminOv.classList.add('active');
-          } else {
-            promptPinAndUnlock({persist:persist, autoOpen:true});
-          }
-        }
-        if (wantAdmin || pin || persist){
-          var clean = new URL(location.href);
-          clean.searchParams.delete('admin');
-          clean.searchParams.delete('pin');
-          clean.searchParams.delete('persist');
-          history.replaceState({}, document.title, clean.pathname + (clean.searchParams.toString() ? '?' + clean.searchParams.toString() : '') + clean.hash);
-        }
-      }
-    })();
-
-    // Open admin
-    if (openAdmin) openAdmin.addEventListener('click', function(){ adminOv && adminOv.classList.add('active'); });
-
-    // Close admin = also logout & hide gear
-    function closeAdmin(){
-      if (adminOv) adminOv.classList.remove('active');
-      setAdminNew(false);
-      showToast('Logged out');
-    }
-    if (adminOv){
-      adminOv.addEventListener('click', function(e){ if (e.target === adminOv) closeAdmin(); });
-    }
-    Array.prototype.forEach.call(document.querySelectorAll('[data-close]'), function(x){
-      x.addEventListener('click', closeAdmin);
     });
-    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeAdmin(); });
-
-    // Inject Logout near the ❌ button (right side)
-    (function injectLogout(){
-      var header = adminOv && adminOv.querySelector('.modal-header');
-      if (!header) return;
-      var old = header.querySelector('.btn-ghost.logout');
-      if (old) old.remove();
-      var btn = document.createElement('button');
-      btn.className = 'btn-ghost logout';
-      btn.textContent = 'Logout';
-      btn.style.marginLeft = 'auto';
-      btn.addEventListener('click', closeAdmin);
-      header.insertBefore(btn, header.querySelector('.modal-close'));
-    })();
+    function googleTranslateElementInit() {
+      // Creates the overlay/menu
+      new google.translate.TranslateElement({ pageLanguage: 'en', autoDisplay: true },
+        document.body.appendChild(document.createElement('div')));
+    }
 
     /* ===========================
-       INITIALIZER (run-once, seeded)
+       INITIALIZER
     ============================ */
     function init(){
       primeDefaultsFromData().then(function(){
         loadStore();
-        initLang();
         fillVehicles();
         fillAllLocations();
         renderLocChips();
@@ -2099,10 +1631,9 @@ Jammu Airport,Katra,49</pre>
         initDates();
         updateTripBlocks(); // also calls estimate & FT visibility
         // Prefill admin add-on inputs
-        var aRoof = byId('a-roof'), aPlacard = byId('a-placard');
-        if (aRoof) aRoof.value = STORE.addons.roofcarrier || 0;
-        if (aPlacard) aPlacard.value = STORE.addons.placard || 0;
-        // Reflect admin gear visibility on load (persist/session)
+        var ar = byId('a-roof'), ap = byId('a-placard');
+        if (ar) ar.value = STORE.addons.roofcarrier || 0;
+        if (ap) ap.value = STORE.addons.placard || 0;
         setAdminNew(isAdminNew(), {});
       });
     }
