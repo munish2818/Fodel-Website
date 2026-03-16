@@ -103,7 +103,6 @@
     @media (prefers-reduced-motion: reduce){
       *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
     }
-
     /* ===========================
        BANNER
     ============================ */
@@ -191,7 +190,8 @@
     @media (max-width:480px){
       .topbar { grid-template-columns: 1fr auto; align-items: center; }
       .nav { gap: 6px; }
-      .pill-btn.reviews-btn{ display:none; } /* Hide Reviews to avoid crowding */
+      /* SHOW Reviews button on mobile */
+      .pill-btn.reviews-btn{ display:inline-flex; }
       .lang-chip .lang-label{ display:none; } /* Shorten chip on tiny screens */
       .lang-chip .lang-caret{ display:none; }
       .lang-chip{ padding:5px 8px; }
@@ -290,17 +290,18 @@
     .leg .inline > * { flex:1; }
     .leg-actions{ display:flex; gap:8px; margin-top:8px; }
 
-    /* Add-on quantity controls */
+    /* Add-on quantity controls (vertical ▲▼) */
     .addon-row{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
     .addon-title{ font-weight:700; }
-    .qty{
+    .qty.vertical{
       display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--border); border-radius:10px; padding:6px 8px;
     }
-    .qty button{
-      width:28px; height:28px; border-radius:8px; border:1px solid var(--border); background:#f8fafc; cursor:pointer; font-weight:800; line-height:1;
+    .qty.vertical .qty-input{
+      width:64px; text-align:center; border:1px solid var(--border); border-radius:8px; padding:6px 8px;
     }
-    .qty input{
-      width:56px; text-align:center; border:1px solid var(--border); border-radius:8px; padding:6px 8px;
+    .qty.vertical .stepper{ display:flex; flex-direction:column; gap:6px; }
+    .qty.vertical .stepper .btn-qty{
+      width:28px; height:28px; border-radius:8px; border:1px solid var(--border); background:#f8fafc; cursor:pointer; font-weight:800; line-height:1;
     }
 
     /* Admin modal */
@@ -394,7 +395,6 @@
       </div>
     </div>
   </header>
-
   <!-- ========== BOOKING FORM ========== -->
   <section class="section" aria-labelledby="transport-title">
     <div class="card">
@@ -520,21 +520,25 @@
           <div class="addon-row">
             <span class="addon-title" data-i18n="roof">Roof carrier</span>
             <small>(+₹<span id="roof-amt">0</span> <span data-i18n="perCar">per car</span>)</small>
-            <div class="qty" data-addon="roofcarrier">
-              <button type="button" class="btn-qty" data-target="qty-roof" data-delta="-1">−</button>
-              <input type="number" id="qty-roof" class="qty-input" value="0" min="0" step="1" inputmode="numeric">
-              <button type="button" class="btn-qty" data-target="qty-roof" data-delta="1">+</button>
+            <div class="qty vertical" data-addon="roofcarrier">
+              <input type="number" id="qty-roof" class="qty-input" value="0" min="0" step="1" inputmode="numeric" aria-label="Roof carrier quantity">
+              <div class="stepper">
+                <button type="button" class="btn-qty" data-target="qty-roof" data-delta="1" aria-label="Increase">▲</button>
+                <button type="button" class="btn-qty" data-target="qty-roof" data-delta="-1" aria-label="Decrease">▼</button>
+              </div>
             </div>
             <small class="note" data-i18n="howManyCarsNeedRoof">How many cars?</small>
           </div>
 
           <div class="addon-row" style="margin-top:8px;">
-            <span class="addon-title" data-i18n="placard">Placard (Meet & Greet)</span>
-            <small>(+₹<span id="placard-amt">0</span> <span data-i18n="perCar">per car</span>)</small>
-            <div class="qty" data-addon="placard">
-              <button type="button" class="btn-qty" data-target="qty-placard" data-delta="-1">−</button>
-              <input type="number" id="qty-placard" class="qty-input" value="0" min="0" step="1" inputmode="numeric">
-              <button type="button" class="btn-qty" data-target="qty-placard" data-delta="1">+</button>
+            <span class="addon-title" data-i18n="placard">Placard (Meet &amp; Greet)</span>
+            <small>(+₹<span id="placard-amt">0</span> <span data-i18n="perCard">per card</span>)</small>
+            <div class="qty vertical" data-addon="placard">
+              <input type="number" id="qty-placard" class="qty-input" value="0" min="0" step="1" inputmode="numeric" aria-label="Placard quantity">
+              <div class="stepper">
+                <button type="button" class="btn-qty" data-target="qty-placard" data-delta="1" aria-label="Increase">▲</button>
+                <button type="button" class="btn-qty" data-target="qty-placard" data-delta="-1" aria-label="Decrease">▼</button>
+              </div>
             </div>
             <!-- Helper under Placard intentionally removed per request -->
           </div>
@@ -565,7 +569,7 @@
               <span id="line-addon-roof-val">₹ 0</span>
             </div>
             <div class="line" id="line-addon-placard" style="display:none;">
-              <span class="wrap" id="line-addon-placard-lbl">Placard (per car)</span>
+              <span class="wrap" id="line-addon-placard-lbl">Placard (per card)</span>
               <span id="line-addon-placard-val">₹ 0</span>
             </div>
 
@@ -583,7 +587,7 @@
         </div>
         <div class="row">
           <label for="mobile" data-i18n="mobile">Mobile</label>
-          <input id="mobile" type="tel" inputmode="tel" pattern="[0-9+\\-\\s]{8,15}" placeholder="+91 9XXXXXXXXX" required autocomplete="tel">
+          <input id="mobile" type="tel" inputmode="tel" pattern="[0-9+\-\s]{8,15}" placeholder="+91 9XXXXXXXXX" required autocomplete="tel">
         </div>
       </div>
       <div class="grid-2">
@@ -610,7 +614,6 @@
       </p>
     </div>
   </section>
-
   <!-- ========== FOOTER ========== -->
   <footer class="footer" aria-label="Contact">
     <a href="mailto:sales@fodeltravels.in" class="chip">📧 sales@fodeltravels.in</a>
@@ -710,7 +713,7 @@
               <input id="a-roof" type="number" min="0" placeholder="₹" inputmode="numeric">
             </div>
             <div class="row">
-              <label>Placard (per car)</label>
+              <label>Placard (per card)</label>
               <input id="a-placard" type="number" min="0" placeholder="₹" inputmode="numeric">
             </div>
           </div>
@@ -767,15 +770,14 @@ Jammu Airport,Katra,49</pre>
     <a class="tag" target="_blank" rel="noopener noreferrer" href="https://wa.me/919797459260?text=Hi%20Fodel%20Transport%2C%20I%20need%20a%20cab%20quote.">WhatsApp Us</a>
     <a class="fab" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" href="https://wa.me/919797459260?text=Hi%20Fodel%20Transport%2C%20I%20need%20a%20cab%20quote.">💬</a>
   </div>
-
   <script>
     /* ===========================
        CONFIG / STORE
     ============================ */
-    const FORMSPREE_ENDPOINT = ""; // optional
-    const DATA_URL = "/data/transport-data.json"; // optional seed file (your shared JSON)
+    var FORMSPREE_ENDPOINT = ""; // optional
+    var DATA_URL = "/data/transport-data.json"; // optional seed file (your shared JSON)
 
-    const DEFAULTS = {
+    var DEFAULTS = {
       locations: [
         "Jammu Airport", "Jammu Tawi Railway Station", "Jammu City",
         "Katra", "Katra Helipad", "Katra Bus Stand",
@@ -790,19 +792,23 @@ Jammu Airport,Katra,49</pre>
       ],
       priceTable: { sedan:{}, suv:{}, innova:{}, tt:{} },
       distanceTable: {},
-      // Add-ons are per CAR
+      // Add-ons are per CAR (Placard priced per CARD in text, but amount is per unit)
       addons: { roofcarrier: 200, placard: 100 }
     };
 
-    const STORE_KEY = "fodel_transport_v4"; // v4 store
-    let STORE = null;
+    var STORE_KEY = "fodel_transport_v4"; // v4 store
+    var STORE = null;
 
     function mergeDeep(target, source){
       if (typeof target !== 'object' || target===null) return source;
       if (typeof source !== 'object' || source===null) return target;
-      Object.keys(source).forEach(k=>{
-        if (Array.isArray(source[k])){
-          target[k] = Array.isArray(target[k]) ? [...new Set([...target[k], ...source[k]])] : [...source[k]];
+      Object.keys(source).forEach(function(k){
+        if (Object.prototype.toString.call(source[k]) === '[object Array]'){
+          var a = Object.prototype.toString.call(target[k]) === '[object Array]' ? target[k].slice() : [];
+          for (var i=0;i<source[k].length;i++){
+            if (a.indexOf(source[k][i]) === -1) a.push(source[k][i]);
+          }
+          target[k] = a;
         } else if (typeof source[k] === 'object' && source[k] !== null){
           target[k] = mergeDeep(target[k] || {}, source[k]);
         } else {
@@ -812,26 +818,25 @@ Jammu Airport,Katra,49</pre>
       return target;
     }
 
-    async function primeDefaultsFromData(){
-      try{
-        const res = await fetch(DATA_URL, {cache:'no-store'});
-        if (!res.ok) return;
-        const json = await res.json();
-        // Accept only known keys
-        const seed = {
-          locations: Array.isArray(json.locations) ? json.locations : undefined,
-          vehicles:  Array.isArray(json.vehicles)  ? json.vehicles  : undefined,
-          priceTable: typeof json.priceTable==='object' ? json.priceTable : undefined,
-          distanceTable: typeof json.distanceTable==='object' ? json.distanceTable : undefined,
-          addons: typeof json.addons==='object' ? json.addons : undefined
-        };
-        mergeDeep(DEFAULTS, seed);
-      }catch(e){ /* ignore seed errors */ }
+    function primeDefaultsFromData(){
+      return fetch(DATA_URL, {cache:'no-store'}).then(function(res){
+        if (!res || !res.ok) return;
+        return res.json().then(function(json){
+          var seed = {
+            locations: Object.prototype.toString.call(json.locations)==='[object Array]' ? json.locations : undefined,
+            vehicles:  Object.prototype.toString.call(json.vehicles)==='[object Array]'  ? json.vehicles  : undefined,
+            priceTable: typeof json.priceTable==='object' ? json.priceTable : undefined,
+            distanceTable: typeof json.distanceTable==='object' ? json.distanceTable : undefined,
+            addons: typeof json.addons==='object' ? json.addons : undefined
+          };
+          mergeDeep(DEFAULTS, seed);
+        }).catch(function(){});
+      }).catch(function(){});
     }
 
     function loadStore(){
       try{
-        const s = localStorage.getItem(STORE_KEY);
+        var s = localStorage.getItem(STORE_KEY);
         STORE = s ? JSON.parse(s) : JSON.parse(JSON.stringify(DEFAULTS));
       }catch(e){
         STORE = JSON.parse(JSON.stringify(DEFAULTS));
@@ -843,28 +848,28 @@ Jammu Airport,Katra,49</pre>
     function saveStore(){ localStorage.setItem(STORE_KEY, JSON.stringify(STORE)); }
 
     // Helpers
-    const byId = (id) => document.getElementById(id);
-    const todayISO = () => new Date().toISOString().split('T')[0];
-    const showToast = (msg) => {
-      const t = byId('toast'); if(!t) return;
-      t.textContent = msg || t.textContent; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'), 2200);
-    };
-    const priceKey = (a, b) => `${(a || "").trim()}|${(b || "").trim()}`;
+    function byId(id){ return document.getElementById(id); }
+    function todayISO(){ return new Date().toISOString().split('T')[0]; }
+    function showToast(msg){
+      var t = byId('toast'); if(!t) return;
+      t.textContent = msg || t.textContent; t.classList.add('show'); setTimeout(function(){ t.classList.remove('show'); }, 2200);
+    }
+    function priceKey(a,b){ return String((a||'').trim()) + '|' + String((b||'').trim()); }
 
     // Hub detection
-    function containsAirport(s){ if(!s) return false; const v=String(s).toLowerCase(); return v.includes('airport'); }
-    function containsRailway(s){ if(!s) return false; const v=String(s).toLowerCase(); return v.includes('railway') || v.includes('station') || v.includes('tawi'); }
+    function containsAirport(s){ if(!s) return false; var v=String(s).toLowerCase(); return v.indexOf('airport')>-1; }
+    function containsRailway(s){ if(!s) return false; var v=String(s).toLowerCase(); return v.indexOf('railway')>-1 || v.indexOf('station')>-1 || v.indexOf('tawi')>-1; }
 
     /* ===========================
        I18N (minimal set; falls back to EN)
     ============================ */
-    const I18N = {
+    var I18N = {
       en: {
         brand:"Fodel Transport",
         reviews:"⭐ Reviews",
         home:"← Home",
         lang:"Language",
-        heroTitle:"Taxi · Transfers · Local & Multi City Tours",
+        heroTitle:"Taxi · Transfers · Local &amp; Multi City Tours",
         heroSub:"Jammu, Katra (Vaishno Devi), Patnitop, Srinagar, Gulmarg, Pahalgam and beyond.",
         formTitle:"Transport Requirement",
         formSub:"Tell us your route and vehicle needs. We’ll confirm availability and share the best price.",
@@ -896,8 +901,9 @@ Jammu Airport,Katra,49</pre>
         cars:"How many cars",
         addons:"Add ons",
         roof:"Roof carrier",
-        placard:"Placard (Meet & Greet)",
+        placard:"Placard (Meet &amp; Greet)",
         perCar:"per car",
+        perCard:"per card",
         howManyCarsNeedRoof:"How many cars?",
         howManyPlacards:"How many placards?",
         addonsNotePerCar:"Add ons are charged per car. Set the quantity based on how many cars need it.",
@@ -937,8 +943,6 @@ Jammu Airport,Katra,49</pre>
         msDisclaimerBold:"*Estimate is indicative for planning. Final fare may vary based on actual kms, waiting, tolls, parking, night charges, and chosen vehicle. We’ll confirm the best possible price before booking.*",
         msEmailGreeting:"Dear Sir/Madam,"
       },
-
-      /* Minimal Hindi & Urdu for visible parts (fallback to EN otherwise) */
       hi: {
         brand:"फोडेल ट्रांसपोर्ट",
         reviews:"⭐ रिव्यू",
@@ -962,8 +966,9 @@ Jammu Airport,Katra,49</pre>
         cars:"कितनी कारें",
         addons:"एड‑ऑन",
         roof:"रूफ कैरियर",
-        placard:"प्लैकार्ड (मीट & ग्रीट)",
+        placard:"प्लैकार्ड (मीट &amp; ग्रीट)",
         perCar:"प्रति कार",
+        perCard:"प्रति कार्ड",
         remarks:"अतिरिक्त विवरण",
         estimate:"अनुमान:",
         totalDistance:"कुल दूरी:",
@@ -996,8 +1001,9 @@ Jammu Airport,Katra,49</pre>
         cars:"کتنی گاڑیاں",
         addons:"ایڈ آن",
         roof:"روف کیریئر",
-        placard:"پلی کارڈ (میٹ & گریٹ)",
+        placard:"پلی کارڈ (میٹ &amp; گریٹ)",
         perCar:"فی کار",
+        perCard:"فی کارڈ",
         remarks:"اضافی نوٹس",
         estimate:"تخمینہ:",
         totalDistance:"کل فاصلہ:",
@@ -1009,7 +1015,7 @@ Jammu Airport,Katra,49</pre>
       }
     };
 
-    const LANG_LIST = [
+    var LANG_LIST = [
       { code:'en', label:'English', short:'EN' },
       { code:'hi', label:'हिंदी', short:'HI' },
       { code:'ur', label:'اُردو', short:'UR', rtl:true },
@@ -1025,10 +1031,10 @@ Jammu Airport,Katra,49</pre>
       { code:'as', label:'অসমীয়া', short:'AS' }
     ];
 
-    const LANG_KEY = "fodel_lang_v2";
-    const langChip = byId('lang-chip');
-    const langMenu = byId('lang-menu');
-    const langCurrent = byId('lang-current');
+    var LANG_KEY = "fodel_lang_v2";
+    var langChip = byId('lang-chip');
+    var langMenu = byId('lang-menu');
+    var langCurrent = byId('lang-current');
 
     function setLangAttr(code){
       document.documentElement.setAttribute("lang", code);
@@ -1037,74 +1043,78 @@ Jammu Airport,Katra,49</pre>
     function tDict(code){ return I18N[code] || I18N.en; }
 
     function applyI18n(code){
-      const dict = tDict(code);
-      document.querySelectorAll("[data-i18n]").forEach(el=>{
-        const key = el.getAttribute("data-i18n");
-        const val = (dict && dict[key]) ? dict[key] : (I18N.en[key] || "");
+      var dict = tDict(code);
+      Array.prototype.forEach.call(document.querySelectorAll("[data-i18n]"), function(el){
+        var key = el.getAttribute("data-i18n");
+        var val = (dict && dict[key]) ? dict[key] : (I18N.en[key] || "");
         if (val) el.innerHTML = val;
       });
       setLangAttr(code);
       localStorage.setItem(LANG_KEY, code);
       // Update current short
-      const m = LANG_LIST.find(x => x.code === code);
+      var m = null;
+      for (var i=0;i<LANG_LIST.length;i++){ if (LANG_LIST[i].code===code){ m=LANG_LIST[i]; break; } }
       if (langCurrent && m) langCurrent.textContent = m.short || code.toUpperCase();
-      // Update add-on labels in breakdown to localized
-      const rLbl = byId('line-addon-roof-lbl');
-      const pLbl = byId('line-addon-placard-lbl');
-      if (rLbl) rLbl.textContent = `${dict.roof || I18N.en.roof} (${dict.perCar || I18N.en.perCar})`;
-      if (pLbl) pLbl.textContent = `${dict.placard || I18N.en.placard} (${dict.perCar || I18N.en.perCar})`;
+      // Update add-on labels in breakdown to localized (roof: per car, placard: per card)
+      var rLbl = byId('line-addon-roof-lbl');
+      var pLbl = byId('line-addon-placard-lbl');
+      if (rLbl) rLbl.textContent = (dict.roof || I18N.en.roof) + " (" + (dict.perCar || I18N.en.perCar) + ")";
+      if (pLbl) pLbl.textContent = (dict.placard || I18N.en.placard) + " (" + (dict.perCard || 'per card') + ")";
     }
 
     function renderLangMenu(active){
       if (!langMenu) return;
       langMenu.innerHTML = "";
-      LANG_LIST.forEach(item=>{
-        const div = document.createElement('div');
+      for (var i=0;i<LANG_LIST.length;i++){
+        var item = LANG_LIST[i];
+        var div = document.createElement('div');
         div.className = 'lang-item' + (active===item.code ? ' active':'');
         div.setAttribute('role','menuitem');
         div.dataset.code = item.code;
-        div.innerHTML = `<span>${item.label}</span><span class="code">${item.short}</span>`;
+        div.innerHTML = '<span>'+item.label+'</span><span class="code">'+item.short+'</span>';
         langMenu.appendChild(div);
-      });
-      // RTL hint for Urdu
-      const hint = document.createElement('div');
+      }
+      var hint = document.createElement('div');
       hint.className = 'lang-rtl-hint';
       hint.style.padding = '4px 8px 2px';
       hint.textContent = (active==='ur') ? 'RTL (right to left)' : '';
       langMenu.appendChild(hint);
     }
-
     function initLang(){
-      const saved = localStorage.getItem(LANG_KEY) || "en";
+      var saved = localStorage.getItem(LANG_KEY) || "en";
       renderLangMenu(saved);
       applyI18n(saved);
 
       // Toggle open/close
-      langChip?.addEventListener('click', (e)=>{
-        e.stopPropagation();
-        const isOpen = langChip.classList.contains('open');
-        document.querySelectorAll('.lang-chip.open').forEach(c=>c.classList.remove('open'));
-        langChip.setAttribute('aria-expanded', String(!isOpen));
-        langChip.classList.toggle('open', !isOpen);
-      });
+      if (langChip){
+        langChip.addEventListener('click', function(e){
+          e.stopPropagation();
+          var isOpen = langChip.classList.contains('open');
+          Array.prototype.forEach.call(document.querySelectorAll('.lang-chip.open'), function(c){ c.classList.remove('open'); });
+          langChip.setAttribute('aria-expanded', String(!isOpen));
+          langChip.classList.toggle('open', !isOpen);
+        });
+      }
       // Select language
-      langMenu?.addEventListener('click', (e)=>{
-        const item = e.target.closest('.lang-item');
-        if (!item) return;
-        const code = item.dataset.code;
-        renderLangMenu(code);
-        applyI18n(code);
-        langChip.classList.remove('open');
-        langChip.setAttribute('aria-expanded', 'false');
-      });
+      if (langMenu){
+        langMenu.addEventListener('click', function(e){
+          var item = e.target.closest('.lang-item');
+          if (!item) return;
+          var code = item.dataset.code;
+          renderLangMenu(code);
+          applyI18n(code);
+          langChip.classList.remove('open');
+          langChip.setAttribute('aria-expanded', 'false');
+        });
+      }
       // Close on outside click/ESC
-      document.addEventListener('click', (e)=>{
-        if (!langChip.contains(e.target)){
+      document.addEventListener('click', function(e){
+        if (langChip && !langChip.contains(e.target)){
           langChip.classList.remove('open');
           langChip.setAttribute('aria-expanded', 'false');
         }
       });
-      document.addEventListener('keydown', (e)=>{
+      document.addEventListener('keydown', function(e){
         if (e.key === 'Escape'){
           langChip.classList.remove('open');
           langChip.setAttribute('aria-expanded', 'false');
@@ -1115,73 +1125,82 @@ Jammu Airport,Katra,49</pre>
     /* ===========================
        UI WIRING
     ============================ */
-
     // Elements
-    const tripRadios = [...document.querySelectorAll('input[name="tripType"]')];
-    const blockStd = byId('block-std');
-    const blockReturn = byId('block-return');
-    const blockLocal = byId('block-local');
-    const blockMulti = byId('block-multi');
+    var tripRadios = Array.prototype.slice.call(document.querySelectorAll('input[name="tripType"]'));
+    var blockStd = byId('block-std');
+    var blockReturn = byId('block-return');
+    var blockLocal = byId('block-local');
+    var blockMulti = byId('block-multi');
 
-    const selPickup = byId('pickup');
-    const selDrop = byId('drop');
-    const selLocalCity = byId('local-city');
-    const pickupOtherToggle = byId('pickup-other-toggle');
-    const pickupOther = byId('pickup-other');
-    const dropOtherToggle = byId('drop-other-toggle');
-    const dropOther = byId('drop-other');
+    var selPickup = byId('pickup');
+    var selDrop = byId('drop');
+    var selLocalCity = byId('local-city');
+    var pickupOtherToggle = byId('pickup-other-toggle');
+    var pickupOther = byId('pickup-other');
+    var dropOtherToggle = byId('drop-other-toggle');
+    var dropOther = byId('drop-other');
 
-    const date = byId('date');
-    const time = byId('time');
-    const rdate = byId('ret-date');
-    const rtime = byId('ret-time');
+    var date = byId('date');
+    var time = byId('time');
+    var rdate = byId('ret-date');
+    var rtime = byId('ret-time');
 
-    const vehicle = byId('vehicle');
-    const cars = byId('cars');
-    const pax = byId('pax');
+    var vehicle = byId('vehicle');
+    var cars = byId('cars');
+    var pax = byId('pax');
 
-    const legsBox = byId('legs');
-    const addLegBtn = byId('add-leg');
-    const clearLegsBtn = byId('clear-legs');
+    var legsBox = byId('legs');
+    var addLegBtn = byId('add-leg');
+    var clearLegsBtn = byId('clear-legs');
 
-    const estText = byId('est-text');
-    const kmText = byId('km-text');
-    const refreshBtn = byId('refresh-est');
-    const estBreak = byId('est-breakdown');
-    const lineBase = byId('line-base');
-    const lineGrand = byId('line-grand');
+    var estText = byId('est-text');
+    var kmText = byId('km-text');
+    var refreshBtn = byId('refresh-est');
+    var estBreak = byId('est-breakdown');
+    var lineBase = byId('line-base');
+    var lineGrand = byId('line-grand');
 
     // Add-on amounts + qty inputs
-    const roofAmt = byId('roof-amt');
-    const placardAmt = byId('placard-amt');
-    const qtyRoof = byId('qty-roof');
-    const qtyPlacard = byId('qty-placard');
-    const lineAddonRoof = byId('line-addon-roof');
-    const lineAddonPlacard = byId('line-addon-placard');
-    const lineAddonRoofVal = byId('line-addon-roof-val');
-    const lineAddonPlacardVal = byId('line-addon-placard-val');
+    var roofAmt = byId('roof-amt');
+    var placardAmt = byId('placard-amt');
+    var qtyRoof = byId('qty-roof');
+    var qtyPlacard = byId('qty-placard');
+    var lineAddonRoof = byId('line-addon-roof');
+    var lineAddonPlacard = byId('line-addon-placard');
+    var lineAddonRoofVal = byId('line-addon-roof-val');
+    var lineAddonPlacardVal = byId('line-addon-placard-val');
 
-    const submitBtn = byId('submit-btn');
-    const openAdmin = byId('open-admin');
-    const adminOv = byId('admin-ov');
+    var submitBtn = byId('submit-btn');
+    var openAdmin = byId('open-admin');
+    var adminOv = byId('admin-ov');
 
     // Contextual FT
-    const ftWrap  = byId('ft-wrap');
-    const ftLabel = byId('ft-label');
-    const ftInput = byId('ft-input');
-    const ftHint  = byId('ft-hint');
+    var ftWrap  = byId('ft-wrap');
+    var ftLabel = byId('ft-label');
+    var ftInput = byId('ft-input');
+    var ftHint  = byId('ft-hint');
+
     // Populate selects from STORE
     function fillLocations(sel){
       if(!sel) return;
-      const code = localStorage.getItem(LANG_KEY)||'en';
-      const txt = (I18N[code]?.select) || I18N.en.select;
-      sel.innerHTML = '<option value="">' + txt + '</option>' + (STORE.locations||[]).map(l => `<option>${l}</option>`).join('');
+      var code = localStorage.getItem(LANG_KEY)||'en';
+      var txt = (I18N[code] && I18N[code].select) ? I18N[code].select : I18N.en.select;
+      var opts = '<option value="">' + txt + '</option>';
+      var arr = (STORE.locations||[]);
+      for (var i=0;i<arr.length;i++){ opts += '<option>'+arr[i]+'</option>'; }
+      sel.innerHTML = opts;
     }
     function fillVehicles(){
       if(!vehicle) return;
-      const code = localStorage.getItem(LANG_KEY)||'en';
-      const txt = (I18N[code]?.select) || I18N.en.select;
-      vehicle.innerHTML = '<option value="">' + txt + '</option>' + (STORE.vehicles||[]).map(v => `<option value="${v.id}">${v.label}</option>`).join('');
+      var code = localStorage.getItem(LANG_KEY)||'en';
+      var txt = (I18N[code] && I18N[code].select) ? I18N[code].select : I18N.en.select;
+      var opts = '<option value="">' + txt + '</option>';
+      var arr = (STORE.vehicles||[]);
+      for (var i=0;i<arr.length;i++){
+        var v = arr[i];
+        opts += '<option value="'+v.id+'">'+v.label+'</option>';
+      }
+      vehicle.innerHTML = opts;
     }
     function fillAllLocations(){
       fillLocations(selPickup);
@@ -1194,13 +1213,16 @@ Jammu Airport,Katra,49</pre>
     }
 
     function refreshAddonLabels(){
-      roofAmt.textContent = (STORE.addons?.roofcarrier ?? 0).toLocaleString("en-IN");
-      placardAmt.textContent = (STORE.addons?.placard ?? 0).toLocaleString("en-IN");
+      roofAmt.textContent = (STORE.addons && STORE.addons.roofcarrier!=null ? STORE.addons.roofcarrier : 0).toLocaleString("en-IN");
+      placardAmt.textContent = (STORE.addons && STORE.addons.placard!=null ? STORE.addons.placard : 0).toLocaleString("en-IN");
     }
 
     // Date defaults
     function initDates(){
-      [date, rdate, byId('local-date')].forEach(el => el && (el.min = todayISO()));
+      var ld = byId('local-date');
+      if (date) date.min = todayISO();
+      if (rdate) rdate.min = todayISO();
+      if (ld) ld.min = todayISO();
     }
 
     // Other pickup/drop toggles
@@ -1214,24 +1236,25 @@ Jammu Airport,Katra,49</pre>
 
     // Pickup string for contextual FT UI
     function getPickupString(){
-      const type = document.querySelector('input[name="tripType"]:checked')?.value || 'oneway';
+      var typeEl = null, type = 'oneway';
+      for (var i=0;i<tripRadios.length;i++){ if(tripRadios[i].checked){ type = tripRadios[i].value; break; } }
       if (type === 'oneway' || type === 'round'){
-        return (pickupOtherToggle?.checked ? (pickupOther?.value || '') : (selPickup?.value || ''));
+        return (pickupOtherToggle && pickupOtherToggle.checked ? (pickupOther && pickupOther.value || '') : (selPickup && selPickup.value || ''));
       }
       if (type === 'local'){
-        return selLocalCity?.value || '';
+        return selLocalCity && selLocalCity.value || '';
       }
       if (type === 'multi'){
-        const firstLeg = document.querySelector('#legs .leg .leg-from');
-        return firstLeg?.value || '';
+        var firstLeg = document.querySelector('#legs .leg .leg-from');
+        return firstLeg && firstLeg.value || '';
       }
       return '';
     }
 
     function updateFTVisibility(){
-      const pickup = getPickupString();
-      const code = localStorage.getItem(LANG_KEY)||'en';
-      const dict = tDict(code);
+      var pickup = getPickupString();
+      var code = localStorage.getItem(LANG_KEY)||'en';
+      var dict = tDict(code);
       if (containsAirport(pickup)){
         ftWrap.style.display = '';
         ftLabel.textContent  = dict.flightNo || I18N.en.flightNo;
@@ -1251,101 +1274,118 @@ Jammu Airport,Katra,49</pre>
     }
 
     [selPickup, selDrop, pickupOther, dropOther, pickupOtherToggle, dropOtherToggle, selLocalCity]
-      .forEach(el => el && el.addEventListener('input', ()=>{ updateFTVisibility(); refreshEstimate(); }));
+      .forEach(function(el){ if(el){ el.addEventListener('input', function(){ updateFTVisibility(); refreshEstimate(); }); } });
 
     // Multi-city legs
-    function createLeg(fromVal="", toVal=""){
-      const div = document.createElement('div');
-      const code = localStorage.getItem(LANG_KEY)||'en';
-      const dict = tDict(code);
+    function createLeg(fromVal, toVal){
+      fromVal = fromVal || ""; toVal = toVal || "";
+      var div = document.createElement('div');
+      var code = localStorage.getItem(LANG_KEY)||'en';
+      var dict = tDict(code);
       div.className = 'leg';
-      div.innerHTML = `
-        <div class="inline">
-          <div>
-            <label>${dict.pickup || I18N.en.pickup}</label>
-            <select class="leg-from"></select>
-          </div>
-          <div>
-            <label>${dict.drop || I18N.en.drop}</label>
-            <select class="leg-to"></select>
-          </div>
-        </div>
-        <div class="inline" style="margin-top:8px;">
-          <div>
-            <label>${dict.date || I18N.en.date}</label>
-            <input type="date" class="leg-date" min="${todayISO()}">
-          </div>
-          <div>
-            <label>${dict.pickupTime || I18N.en.pickupTime}</label>
-            <input type="time" class="leg-time">
-          </div>
-        </div>
-        <div class="leg-actions">
-          <button type="button" class="btn-ghost btn-leg-up" aria-label="Move leg up">↑</button>
-          <button type="button" class="btn-ghost btn-leg-down" aria-label="Move leg down">↓</button>
-          <button type="button" class="btn-ghost btn-leg-del" aria-label="Delete leg">Delete</button>
-        </div>
-      `;
+      div.innerHTML =
+        '<div class="inline">'+
+          '<div>'+
+            '<label>'+(dict.pickup || I18N.en.pickup)+'</label>'+
+            '<select class="leg-from"></select>'+
+          '</div>'+
+          '<div>'+
+            '<label>'+(dict.drop || I18N.en.drop)+'</label>'+
+            '<select class="leg-to"></select>'+
+          '</div>'+
+        '</div>'+
+        '<div class="inline" style="margin-top:8px;">'+
+          '<div>'+
+            '<label>'+(dict.date || I18N.en.date)+'</label>'+
+            '<input type="date" class="leg-date" min="'+todayISO()+'">'+
+          '</div>'+
+          '<div>'+
+            '<label>'+(dict.pickupTime || I18N.en.pickupTime)+'</label>'+
+            '<input type="time" class="leg-time">'+
+          '</div>'+
+        '</div>'+
+        '<div class="leg-actions">'+
+          '<button type="button" class="btn-ghost btn-leg-up" aria-label="Move leg up">↑</button>'+
+          '<button type="button" class="btn-ghost btn-leg-down" aria-label="Move leg down">↓</button>'+
+          '<button type="button" class="btn-ghost btn-leg-del" aria-label="Delete leg">Delete</button>'+
+        '</div>';
       legsBox.appendChild(div);
-      const lf = div.querySelector('.leg-from');
-      const lt = div.querySelector('.leg-to');
+      var lf = div.querySelector('.leg-from');
+      var lt = div.querySelector('.leg-to');
       fillLocations(lf); fillLocations(lt);
       if (fromVal) lf.value = fromVal;
       if (toVal) lt.value = toVal;
 
-      div.querySelector('.btn-leg-up').addEventListener('click', () => { if (div.previousElementSibling) legsBox.insertBefore(div, div.previousElementSibling); refreshEstimate(); updateFTVisibility(); });
-      div.querySelector('.btn-leg-down').addEventListener('click', () => { if (div.nextElementSibling) legsBox.insertBefore(div.nextElementSibling, div); refreshEstimate(); updateFTVisibility(); });
-      div.querySelector('.btn-leg-del').addEventListener('click', () => { div.remove(); refreshEstimate(); updateFTVisibility(); });
+      div.querySelector('.btn-leg-up').addEventListener('click', function(){
+        if (div.previousElementSibling) legsBox.insertBefore(div, div.previousElementSibling);
+        refreshEstimate(); updateFTVisibility();
+      });
+      div.querySelector('.btn-leg-down').addEventListener('click', function(){
+        if (div.nextElementSibling) legsBox.insertBefore(div.nextElementSibling, div);
+        refreshEstimate(); updateFTVisibility();
+      });
+      div.querySelector('.btn-leg-del').addEventListener('click', function(){
+        div.remove(); refreshEstimate(); updateFTVisibility();
+      });
 
-      [lf, lt, ...div.querySelectorAll('.leg-date, .leg-time')].forEach(el => el.addEventListener('input', () => { refreshEstimate(); updateFTVisibility(); }));
+      // attach inputs
+      var controls = [lf, lt];
+      Array.prototype.forEach.call(div.querySelectorAll('.leg-date, .leg-time'), function(el){ controls.push(el); });
+      controls.forEach(function(el){ if(el) el.addEventListener('input', function(){ refreshEstimate(); updateFTVisibility(); }); });
 
       return div;
     }
 
     function ensureAtLeastOneLeg(){
       if (legsBox.children.length === 0){
-        const fromPref = pickupOtherToggle.checked ? (pickupOther.value || "") : (selPickup.value || "");
-        const toPref   = dropOtherToggle.checked ? (dropOther.value   || "") : (selDrop.value   || "");
+        var fromPref = pickupOtherToggle.checked ? (pickupOther.value || "") : (selPickup.value || "");
+        var toPref   = dropOtherToggle.checked ? (dropOther.value   || "") : (selDrop.value   || "");
         createLeg(fromPref, toPref);
       }
     }
 
-    addLegBtn?.addEventListener('click', () => {
-      const last = legsBox.lastElementChild;
-      let fromPref = "", toPref = "";
-      if (last) {
-        fromPref = last.querySelector('.leg-to')?.value || "";
-      } else {
-        fromPref = pickupOtherToggle.checked ? (pickupOther.value || "") : (selPickup.value || "");
-        toPref   = dropOtherToggle.checked ? (dropOther.value   || "") : (selDrop.value   || "");
-      }
-      createLeg(fromPref, toPref);
-      refreshEstimate();
-      updateFTVisibility();
-    });
-
-    clearLegsBtn?.addEventListener('click', () => {
-      legsBox.innerHTML = "";
-      refreshEstimate();
-      updateFTVisibility();
-    });
+    if (addLegBtn){
+      addLegBtn.addEventListener('click', function(){
+        var last = legsBox.lastElementChild;
+        var fromPref = "", toPref = "";
+        if (last) {
+          var lastTo = last.querySelector('.leg-to');
+          fromPref = lastTo ? (lastTo.value || "") : "";
+        } else {
+          fromPref = pickupOtherToggle.checked ? (pickupOther.value || "") : (selPickup.value || "");
+          toPref   = dropOtherToggle.checked ? (dropOther.value   || "") : (selDrop.value   || "");
+        }
+        createLeg(fromPref, toPref);
+        refreshEstimate();
+        updateFTVisibility();
+      });
+    }
+    if (clearLegsBtn){
+      clearLegsBtn.addEventListener('click', function(){
+        legsBox.innerHTML = "";
+        refreshEstimate();
+        updateFTVisibility();
+      });
+    }
 
     // Estimate helpers
     function getRoutePrice(vId, from, to) {
-      const table = STORE.priceTable?.[vId] || {};
-      const p = table[priceKey(from, to)];
+      var table = (STORE.priceTable && STORE.priceTable[vId]) || {};
+      var p = table[priceKey(from, to)];
       return (p && p > 0) ? p : null;
     }
     function getRouteDistance(from, to){
-      const km = STORE.distanceTable?.[priceKey(from, to)];
-      return (km && Number(km) > 0) ? Number(km) : null;
+      var km = STORE.distanceTable ? STORE.distanceTable[priceKey(from, to)] : null;
+      km = (km!=null) ? Number(km) : null;
+      return (km && km > 0) ? km : null;
     }
     function calcLegs(){
-      const type = tripRadios.find(r => r.checked)?.value || "oneway";
-      let legs = [];
+      var type = "oneway";
+      for (var i=0;i<tripRadios.length;i++){ if(tripRadios[i].checked){ type = tripRadios[i].value; break; } }
+      var legs = [];
       if (type === "oneway" || type === "round") {
-        const p = pickupOtherToggle.checked ? pickupOther.value : selPickup.value;
-        const d = dropOtherToggle.checked ? dropOther.value : selDrop.value;
+        var p = pickupOtherToggle.checked ? pickupOther.value : selPickup.value;
+        var d = dropOtherToggle.checked ? dropOther.value : selDrop.value;
         if (p && d){
           legs.push([p, d]);
           if (type === "round") legs.push([d, p]);
@@ -1353,21 +1393,20 @@ Jammu Airport,Katra,49</pre>
         return legs;
       }
       if (type === "multi") {
-        const legEls = [...legsBox.querySelectorAll(".leg")];
-        legs = legEls.map(el => [
-          el.querySelector(".leg-from").value,
-          el.querySelector(".leg-to").value
-        ]);
+        var legEls = Array.prototype.slice.call(legsBox.querySelectorAll(".leg"));
+        legs = legEls.map(function(el){
+          return [ el.querySelector(".leg-from").value, el.querySelector(".leg-to").value ];
+        });
         return legs;
       }
       return legs; // local
     }
 
     function clampAddonQty(){
-      const nCars = Math.max(1, parseInt(cars.value || "1", 10));
-      [qtyRoof, qtyPlacard].forEach(inp=>{
+      var nCars = Math.max(1, parseInt(cars.value || "1", 10));
+      [qtyRoof, qtyPlacard].forEach(function(inp){
         if (!inp) return;
-        const v = Math.max(0, Math.min(nCars, parseInt(inp.value || "0", 10)));
+        var v = Math.max(0, Math.min(nCars, parseInt(inp.value || "0", 10)));
         if (String(v) !== String(inp.value)) inp.value = v;
       });
     }
@@ -1375,11 +1414,12 @@ Jammu Airport,Katra,49</pre>
     function refreshEstimate() {
       clampAddonQty();
 
-      const vId = vehicle.value;
-      const nCars = Math.max(1, parseInt(cars.value || "1", 10));
-      const type = tripRadios.find(r => r.checked)?.value || "oneway";
-      const code = localStorage.getItem(LANG_KEY)||'en';
-      const dict = tDict(code);
+      var vId = vehicle.value;
+      var nCars = Math.max(1, parseInt(cars.value || "1", 10));
+      var type = "oneway";
+      for (var i=0;i<tripRadios.length;i++){ if(tripRadios[i].checked){ type = tripRadios[i].value; break; } }
+      var code = localStorage.getItem(LANG_KEY)||'en';
+      var dict = tDict(code);
 
       // Local
       if (type === "local") {
@@ -1389,9 +1429,9 @@ Jammu Airport,Katra,49</pre>
         return;
       }
 
-      const legs = calcLegs();
+      var legs = calcLegs();
       if (!legs.length){
-        let msg = dict.estAddLoc || I18N.en.estAddLoc;
+        var msg = dict.estAddLoc || I18N.en.estAddLoc;
         if (type === 'multi') msg = msg.replace("locations","trip legs");
         estText.textContent = msg;
         kmText.textContent = "—";
@@ -1400,14 +1440,15 @@ Jammu Airport,Katra,49</pre>
       }
 
       // Distances
-      let kmSum = 0;
-      let kmKnown = 0;
-      legs.forEach(([a, b]) => {
-        const km = getRouteDistance(a, b);
+      var kmSum = 0;
+      var kmKnown = 0;
+      for (var j=0;j<legs.length;j++){
+        var a = legs[j][0], b = legs[j][1];
+        var km = getRouteDistance(a, b);
         if (km != null) { kmSum += km; kmKnown++; }
-      });
+      }
       kmText.textContent = (kmKnown > 0)
-        ? `${kmSum.toLocaleString("en-IN")} km${kmKnown < legs.length ? ` (${kmKnown}/${legs.length} legs)` : ""}`
+        ? (kmSum.toLocaleString("en-IN") + " km" + (kmKnown < legs.length ? (" ("+kmKnown+"/"+legs.length+" legs)") : ""))
         : "—";
 
       // Prices require vehicle
@@ -1418,66 +1459,63 @@ Jammu Airport,Katra,49</pre>
       }
 
       // Base fare (sum of priced legs) × cars
-      let base = 0;
-      let missing = 0;
-      legs.forEach(([a, b]) => {
-        const price = getRoutePrice(vId, a, b);
+      var base = 0;
+      var missing = 0;
+      for (var k=0;k<legs.length;k++){
+        var a2 = legs[k][0], b2 = legs[k][1];
+        var price = getRoutePrice(vId, a2, b2);
         if (price) base += price;
         else missing++;
-      });
+      }
 
       // Add-ons per car quantities
-      const priceRoof = (STORE.addons?.roofcarrier || 0);
-      const pricePlacard = (STORE.addons?.placard || 0);
-      const qRoof = Math.max(0, parseInt(qtyRoof.value || "0", 10));
-      const qPlacard = Math.max(0, parseInt(qtyPlacard.value || "0", 10));
+      var priceRoof = (STORE.addons && STORE.addons.roofcarrier || 0);
+      var pricePlacard = (STORE.addons && STORE.addons.placard || 0);
+      var qRoof = Math.max(0, parseInt(qtyRoof.value || "0", 10));
+      var qPlacard = Math.max(0, parseInt(qtyPlacard.value || "0", 10));
 
-      const baseForCars = base * nCars;
-      const addonsRoofTotal = priceRoof * qRoof;
-      const addonsPlacardTotal = pricePlacard * qPlacard;
-      const addonsTotal = addonsRoofTotal + addonsPlacardTotal;
-      const grand = baseForCars + addonsTotal;
+      var baseForCars = base * nCars;
+      var addonsRoofTotal = priceRoof * qRoof;
+      var addonsPlacardTotal = pricePlacard * qPlacard;
+      var addonsTotal = addonsRoofTotal + addonsPlacardTotal;
+      var grand = baseForCars + addonsTotal;
 
       if (missing) {
-        estText.textContent = `${legs.length - missing}/${legs.length} legs priced — remaining ask for quote`;
+        estText.textContent = (legs.length - missing) + "/" + legs.length + " legs priced — remaining ask for quote";
         estBreak.style.display = 'none';
       } else {
-        const estWord = (dict.estimate || I18N.en.estimate).replace(':','').trim().toLowerCase();
-        estText.textContent = `₹ ${grand.toLocaleString("en-IN")} ${estWord}`;
+        var estWord = (dict.estimate || I18N.en.estimate).replace(':','').trim().toLowerCase();
+        estText.textContent = "₹ " + grand.toLocaleString("en-IN") + " " + estWord;
 
         estBreak.style.display = '';
-        lineBase.textContent = `₹ ${baseForCars.toLocaleString("en-IN")}`;
+        lineBase.textContent = "₹ " + baseForCars.toLocaleString("en-IN");
 
         if (addonsRoofTotal > 0){
           lineAddonRoof.style.display = '';
-          lineAddonRoofVal.textContent = `₹ ${addonsRoofTotal.toLocaleString("en-IN")} (₹ ${priceRoof.toLocaleString("en-IN")} × ${qRoof} car${qRoof>1?'s':''})`;
+          lineAddonRoofVal.textContent = "₹ " + addonsRoofTotal.toLocaleString("en-IN") + " (₹ " + priceRoof.toLocaleString("en-IN") + " × " + qRoof + " car" + (qRoof>1?'s':'') + ")";
         } else { lineAddonRoof.style.display = 'none'; }
 
         if (addonsPlacardTotal > 0){
           lineAddonPlacard.style.display = '';
-          lineAddonPlacardVal.textContent = `₹ ${addonsPlacardTotal.toLocaleString("en-IN")} (₹ ${pricePlacard.toLocaleString("en-IN")} × ${qPlacard} car${qPlacard>1?'s':''})`;
+          lineAddonPlacardVal.textContent = "₹ " + addonsPlacardTotal.toLocaleString("en-IN") + " (₹ " + pricePlacard.toLocaleString("en-IN") + " × " + qPlacard + " card" + (qPlacard>1?'s':'') + ")";
         } else { lineAddonPlacard.style.display = 'none'; }
 
-        lineGrand.textContent = `₹ ${grand.toLocaleString("en-IN")}`;
+        lineGrand.textContent = "₹ " + grand.toLocaleString("en-IN");
       }
     }
 
-    refreshBtn?.addEventListener("click", refreshEstimate);
-    [
-      selPickup, selDrop, vehicle, cars,
-      date, time, rdate, rtime,
-      pickupOther, dropOther, pickupOtherToggle, dropOtherToggle,
-      selLocalCity, qtyRoof, qtyPlacard
-    ].forEach(el => el && el.addEventListener("input", refreshEstimate));
+    if (refreshBtn){ refreshBtn.addEventListener("click", refreshEstimate); }
+    [selPickup, selDrop, vehicle, cars, date, time, rdate, rtime, pickupOther, dropOther, pickupOtherToggle, dropOtherToggle, selLocalCity, qtyRoof, qtyPlacard]
+      .forEach(function(el){ if(el) el.addEventListener("input", refreshEstimate); });
 
-    // Qty +/- buttons
-    document.querySelectorAll('.btn-qty').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const target = document.getElementById(btn.dataset.target);
-        const delta = parseInt(btn.dataset.delta,10) || 0;
+    // Qty ▲/▼ buttons (ES5-safe)
+    Array.prototype.forEach.call(document.querySelectorAll('.btn-qty'), function(btn){
+      btn.addEventListener('click', function(){
+        var target = document.getElementById(btn.dataset.target);
+        var delta = parseInt(btn.dataset.delta,10) || 0;
         if (!target) return;
-        const nCars = Math.max(1, parseInt(cars.value || "1", 10));
-        let val = parseInt(target.value || "0", 10) + delta;
+        var nCars = Math.max(1, parseInt(cars.value || "1", 10));
+        var val = parseInt(target.value || "0", 10) + delta;
         val = Math.max(0, Math.min(nCars, val));
         target.value = String(val);
         refreshEstimate();
@@ -1486,7 +1524,8 @@ Jammu Airport,Katra,49</pre>
 
     // Trip type switching
     function updateTripBlocks(){
-      const type = tripRadios.find(r => r.checked)?.value || "oneway";
+      var type = "oneway";
+      for (var i=0;i<tripRadios.length;i++){ if(tripRadios[i].checked){ type = tripRadios[i].value; break; } }
       blockStd.style.display   = (type === 'oneway' || type === 'round') ? '' : 'none';
       blockReturn.style.display= (type === 'round') ? '' : 'none';
       blockLocal.style.display = (type === 'local') ? '' : 'none';
@@ -1495,34 +1534,33 @@ Jammu Airport,Katra,49</pre>
       updateFTVisibility();
       refreshEstimate();
     }
-    tripRadios.forEach(r => r.addEventListener('change', updateTripBlocks));
+    tripRadios.forEach(function(r){ r.addEventListener('change', updateTripBlocks); });
 
     // Other toggles
-    pickupOtherToggle?.addEventListener('change', ()=> toggleOther(pickupOtherToggle, pickupOther, selPickup));
-    dropOtherToggle?.addEventListener('change',   ()=> toggleOther(dropOtherToggle,   dropOther,   selDrop));
-    // Initial other toggle state
+    if (pickupOtherToggle) pickupOtherToggle.addEventListener('change', function(){ toggleOther(pickupOtherToggle, pickupOther, selPickup); });
+    if (dropOtherToggle)   dropOtherToggle.addEventListener('change',   function(){ toggleOther(dropOtherToggle,   dropOther,   selDrop); });
     toggleOther(pickupOtherToggle, pickupOther, selPickup);
     toggleOther(dropOtherToggle,   dropOther,   selDrop);
 
     /* ===========================
        ADMIN CONSOLE
     ============================ */
-    const ADMIN_KEY = 'fodel_is_admin'; // legacy visible key (gear flag)
+    var ADMIN_KEY = 'fodel_is_admin';
 
     function renderLocChips(){
-      const locList = byId('loc-list');
+      var locList = byId('loc-list');
       if (!locList) return;
       locList.innerHTML = '';
-      (STORE.locations||[]).forEach(loc=>{
-        const chip = document.createElement('div');
+      (STORE.locations||[]).forEach(function(loc){
+        var chip = document.createElement('div');
         chip.className = 'chip';
         chip.style.display = 'inline-flex';
         chip.style.alignItems = 'center';
         chip.style.gap = '8px';
-        chip.innerHTML = `<small>${loc}</small> <button class="btn-ghost" aria-label="Remove">✕</button>`;
-        const btn = chip.querySelector('button');
-        btn.addEventListener('click', ()=>{
-          STORE.locations = (STORE.locations||[]).filter(x=>x!==loc);
+        chip.innerHTML = '<small>'+loc+'</small> <button class="btn-ghost" aria-label="Remove">✕</button>';
+        var btn = chip.querySelector('button');
+        btn.addEventListener('click', function(){
+          STORE.locations = (STORE.locations||[]).filter(function(x){ return x!==loc; });
           saveStore();
           fillAllLocations();
           renderLocChips();
@@ -1533,11 +1571,11 @@ Jammu Airport,Katra,49</pre>
       });
     }
 
-    const locNew = byId('loc-new'), locAdd = byId('loc-add'), locReset = byId('loc-reset');
-    locAdd?.addEventListener('click', ()=>{
-      const v = (locNew.value || '').trim();
+    var locNew = byId('loc-new'), locAdd = byId('loc-add'), locReset = byId('loc-reset');
+    if (locAdd) locAdd.addEventListener('click', function(){
+      var v = (locNew.value || '').trim();
       if (!v) return;
-      if (!STORE.locations.includes(v)) {
+      if (STORE.locations.indexOf(v) === -1) {
         STORE.locations.push(v);
         saveStore();
         fillAllLocations();
@@ -1548,8 +1586,8 @@ Jammu Airport,Katra,49</pre>
         showToast('Already exists');
       }
     });
-    locReset?.addEventListener('click', ()=>{
-      STORE.locations = [...DEFAULTS.locations];
+    if (locReset) locReset.addEventListener('click', function(){
+      STORE.locations = DEFAULTS.locations.slice();
       saveStore();
       fillAllLocations();
       renderLocChips();
@@ -1558,20 +1596,21 @@ Jammu Airport,Katra,49</pre>
     });
 
     // Price Save/Clear
-    const priceFrom = byId('price-from'), priceTo = byId('price-to');
-    const pSedan = byId('p-sedan'), pSuv = byId('p-suv'), pInnova = byId('p-innova'), pTT = byId('p-tt');
+    var priceFrom = byId('price-from'), priceTo = byId('price-to');
+    var pSedan = byId('p-sedan'), pSuv = byId('p-suv'), pInnova = byId('p-innova'), pTT = byId('p-tt');
 
-    function getNumOrZero(el){ const n = parseInt(el.value,10); return isNaN(n)?0:n; }
+    function getNumOrZero(el){ var n = parseInt(el.value,10); return isNaN(n)?0:n; }
     function setRoutePriceFor(vId, from, to, val){
       if (!STORE.priceTable[vId]) STORE.priceTable[vId] = {};
-      const key = priceKey(from,to);
+      var key = priceKey(from,to);
       if (val>0) STORE.priceTable[vId][key] = val;
       else delete STORE.priceTable[vId][key];
     }
 
-    byId('price-save')?.addEventListener('click', ()=>{
-      const from = priceFrom.value || '';
-      const to   = priceTo.value || '';
+    var btnPriceSave = byId('price-save');
+    if (btnPriceSave) btnPriceSave.addEventListener('click', function(){
+      var from = priceFrom.value || '';
+      var to   = priceTo.value || '';
       if (!from || !to) { showToast('Select From/To'); return; }
       setRoutePriceFor('sedan',  from, to, getNumOrZero(pSedan));
       setRoutePriceFor('suv',    from, to, getNumOrZero(pSuv));
@@ -1582,22 +1621,24 @@ Jammu Airport,Katra,49</pre>
       refreshEstimate();
     });
 
-    byId('price-clear')?.addEventListener('click', ()=>{
-      const from = priceFrom.value || '';
-      const to   = priceTo.value || '';
+    var btnPriceClear = byId('price-clear');
+    if (btnPriceClear) btnPriceClear.addEventListener('click', function(){
+      var from = priceFrom.value || '';
+      var to   = priceTo.value || '';
       if (!from || !to) { showToast('Select From/To'); return; }
-      const key = priceKey(from,to);
-      ['sedan','suv','innova','tt'].forEach(v => { if (STORE.priceTable[v]) delete STORE.priceTable[v][key]; });
+      var key = priceKey(from,to);
+      ['sedan','suv','innova','tt'].forEach(function(v){ if (STORE.priceTable[v]) delete STORE.priceTable[v][key]; });
       saveStore();
       showToast('Route price cleared');
       refreshEstimate();
     });
 
     // Distance Save/Clear
-    byId('dist-save')?.addEventListener('click', ()=>{
-      const from = byId('dist-from').value || '';
-      const to   = byId('dist-to').value || '';
-      const km   = parseInt(byId('dist-km').value, 10);
+    var btnDistSave = byId('dist-save');
+    if (btnDistSave) btnDistSave.addEventListener('click', function(){
+      var from = byId('dist-from').value || '';
+      var to   = byId('dist-to').value || '';
+      var km   = parseInt(byId('dist-km').value, 10);
       if (!from || !to || !km) { showToast('Missing From/To/Km'); return; }
       STORE.distanceTable[priceKey(from,to)] = km;
       saveStore();
@@ -1605,9 +1646,10 @@ Jammu Airport,Katra,49</pre>
       refreshEstimate();
     });
 
-    byId('dist-clear')?.addEventListener('click', ()=>{
-      const from = byId('dist-from').value || '';
-      const to   = byId('dist-to').value || '';
+    var btnDistClear = byId('dist-clear');
+    if (btnDistClear) btnDistClear.addEventListener('click', function(){
+      var from = byId('dist-from').value || '';
+      var to   = byId('dist-to').value || '';
       if (!from || !to) { showToast('Select From/To'); return; }
       delete STORE.distanceTable[priceKey(from,to)];
       saveStore();
@@ -1616,9 +1658,9 @@ Jammu Airport,Katra,49</pre>
     });
 
     // Add-ons Save
-    const aRoof = byId('a-roof'), aPlacard = byId('a-placard'), addonsSave = byId('addons-save');
-    addonsSave?.addEventListener('click', ()=>{
-      const r = parseInt(aRoof.value,10); const p = parseInt(aPlacard.value,10);
+    var aRoof = byId('a-roof'), aPlacard = byId('a-placard'), addonsSave = byId('addons-save');
+    if (addonsSave) addonsSave.addEventListener('click', function(){
+      var r = parseInt(aRoof.value,10); var p = parseInt(aPlacard.value,10);
       if (!STORE.addons) STORE.addons = {};
       if (!isNaN(r) && r>=0) STORE.addons.roofcarrier = r;
       if (!isNaN(p) && p>=0) STORE.addons.placard = p;
@@ -1630,62 +1672,64 @@ Jammu Airport,Katra,49</pre>
 
     // CSV helpers (simple parser; expects no embedded commas/quotes)
     function download(filename, text){
-      const blob = new Blob([text], {type:'text/csv;charset=utf-8;'});
-      const a = document.createElement('a');
+      var blob = new Blob([text], {type:'text/csv;charset=utf-8;'});
+      var a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
       a.download = filename;
       a.style.display='none';
       document.body.appendChild(a);
       a.click();
-      setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); }, 0);
+      setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 0);
     }
     function parseCSV(text){
-      return text.split(/\r?\n/).map(r=>r.trim()).filter(Boolean).map(r=>r.split(',').map(c=>c.trim()));
+      return text.split(/\r?\n/).map(function(r){ return r.trim(); }).filter(Boolean).map(function(r){ return r.split(',').map(function(c){ return c.trim(); }); });
     }
 
     // Export Prices CSV
-    byId('export-csv-prices')?.addEventListener('click', ()=>{
-      const sets = ['sedan','suv','innova','tt'];
-      const keys = new Set();
-      sets.forEach(v=>{
-        const t = STORE.priceTable[v]||{};
-        Object.keys(t).forEach(k=> keys.add(k));
+    var btnExportPrices = byId('export-csv-prices');
+    if (btnExportPrices) btnExportPrices.addEventListener('click', function(){
+      var sets = ['sedan','suv','innova','tt'];
+      var keys = {};
+      sets.forEach(function(v){
+        var t = STORE.priceTable[v]||{};
+        Object.keys(t).forEach(function(k){ keys[k]=true; });
       });
-      let out = ['From,To,sedan,suv,innova,tt'];
-      [...keys].forEach(k=>{
-        const [from,to] = k.split('|');
-        const s = (STORE.priceTable.sedan||{})[k]||'';
-        const u = (STORE.priceTable.suv||{})[k]||'';
-        const i = (STORE.priceTable.innova||{})[k]||'';
-        const t = (STORE.priceTable.tt||{})[k]||'';
+      var out = ['From,To,sedan,suv,innova,tt'];
+      Object.keys(keys).forEach(function(k){
+        var parts = k.split('|'), from=parts[0], to=parts[1];
+        var s = (STORE.priceTable.sedan||{})[k]||'';
+        var u = (STORE.priceTable.suv||{})[k]||'';
+        var i = (STORE.priceTable.innova||{})[k]||'';
+        var t = (STORE.priceTable.tt||{})[k]||'';
         out.push([from,to,s,u,i,t].join(','));
       });
       download('prices.csv', out.join('\n'));
     });
 
     // Import Prices CSV
-    byId('import-csv-prices')?.addEventListener('click', ()=>{
-      const f = byId('csv-prices')?.files?.[0];
+    var btnImportPrices = byId('import-csv-prices');
+    if (btnImportPrices) btnImportPrices.addEventListener('click', function(){
+      var f = byId('csv-prices') && byId('csv-prices').files && byId('csv-prices').files[0];
       if (!f) { showToast('Choose CSV file'); return; }
-      const reader = new FileReader();
-      reader.onload = ()=>{
+      var reader = new FileReader();
+      reader.onload = function(){
         try{
-          const rows = parseCSV(reader.result);
-          const hdr = rows.shift() || [];
-          const colFrom = hdr.indexOf('From');
-          const colTo   = hdr.indexOf('To');
-          const colS    = hdr.indexOf('sedan');
-          const colU    = hdr.indexOf('suv');
-          const colI    = hdr.indexOf('innova');
-          const colT    = hdr.indexOf('tt');
-          rows.forEach(c=>{
-            const from = c[colFrom], to=c[colTo];
+          var rows = parseCSV(reader.result);
+          var hdr = rows.shift() || [];
+          var colFrom = hdr.indexOf('From');
+          var colTo   = hdr.indexOf('To');
+          var colS    = hdr.indexOf('sedan');
+          var colU    = hdr.indexOf('suv');
+          var colI    = hdr.indexOf('innova');
+          var colT    = hdr.indexOf('tt');
+          rows.forEach(function(c){
+            var from = c[colFrom], to=c[colTo];
             if (!from||!to) return;
-            const key = priceKey(from,to);
-            if (colS>=0) { const v=parseInt(c[colS],10); if(!isNaN(v)&&v>0){ if(!STORE.priceTable.sedan) STORE.priceTable.sedan={}; STORE.priceTable.sedan[key]=v; } }
-            if (colU>=0) { const v=parseInt(c[colU],10); if(!isNaN(v)&&v>0){ if(!STORE.priceTable.suv) STORE.priceTable.suv={}; STORE.priceTable.suv[key]=v; } }
-            if (colI>=0) { const v=parseInt(c[colI],10); if(!isNaN(v)&&v>0){ if(!STORE.priceTable.innova) STORE.priceTable.innova={}; STORE.priceTable.innova[key]=v; } }
-            if (colT>=0) { const v=parseInt(c[colT],10); if(!isNaN(v)&&v>0){ if(!STORE.priceTable.tt) STORE.priceTable.tt={}; STORE.priceTable.tt[key]=v; } }
+            var key = priceKey(from,to);
+            if (colS>=0) { var v=parseInt(c[colS],10); if(!isNaN(v)&&v>0){ if(!STORE.priceTable.sedan) STORE.priceTable.sedan={}; STORE.priceTable.sedan[key]=v; } }
+            if (colU>=0) { var v2=parseInt(c[colU],10); if(!isNaN(v2)&&v2>0){ if(!STORE.priceTable.suv) STORE.priceTable.suv={}; STORE.priceTable.suv[key]=v2; } }
+            if (colI>=0) { var v3=parseInt(c[colI],10); if(!isNaN(v3)&&v3>0){ if(!STORE.priceTable.innova) STORE.priceTable.innova={}; STORE.priceTable.innova[key]=v3; } }
+            if (colT>=0) { var v4=parseInt(c[colT],10); if(!isNaN(v4)&&v4>0){ if(!STORE.priceTable.tt) STORE.priceTable.tt={}; STORE.priceTable.tt[key]=v4; } }
           });
           saveStore();
           showToast('Prices CSV imported');
@@ -1696,30 +1740,32 @@ Jammu Airport,Katra,49</pre>
     });
 
     // Export Distances CSV
-    byId('export-csv-dist')?.addEventListener('click', ()=>{
-      const dt = STORE.distanceTable || {};
-      const out = ['From,To,km'];
-      Object.keys(dt).forEach(k=>{
-        const [from,to] = k.split('|');
+    var btnExportDist = byId('export-csv-dist');
+    if (btnExportDist) btnExportDist.addEventListener('click', function(){
+      var dt = STORE.distanceTable || {};
+      var out = ['From,To,km'];
+      Object.keys(dt).forEach(function(k){
+        var parts = k.split('|'), from=parts[0], to=parts[1];
         out.push([from,to, dt[k]].join(','));
       });
       download('distances.csv', out.join('\n'));
     });
 
     // Import Distances CSV
-    byId('import-csv-dist')?.addEventListener('click', ()=>{
-      const f = byId('csv-dist')?.files?.[0];
+    var btnImportDist = byId('import-csv-dist');
+    if (btnImportDist) btnImportDist.addEventListener('click', function(){
+      var f = byId('csv-dist') && byId('csv-dist').files && byId('csv-dist').files[0];
       if (!f) { showToast('Choose CSV file'); return; }
-      const reader = new FileReader();
-      reader.onload = ()=>{
+      var reader = new FileReader();
+      reader.onload = function(){
         try{
-          const rows = parseCSV(reader.result);
-          const hdr = rows.shift() || [];
-          const colFrom = hdr.indexOf('From');
-          const colTo   = hdr.indexOf('To');
-          const colKm   = hdr.indexOf('km');
-          rows.forEach(c=>{
-            const from = c[colFrom], to=c[colTo], km = parseInt(c[colKm],10);
+          var rows = parseCSV(reader.result);
+          var hdr = rows.shift() || [];
+          var colFrom = hdr.indexOf('From');
+          var colTo   = hdr.indexOf('To');
+          var colKm   = hdr.indexOf('km');
+          rows.forEach(function(c){
+            var from = c[colFrom], to=c[colTo], km = parseInt(c[colKm],10);
             if (!from||!to||isNaN(km)) return;
             STORE.distanceTable[priceKey(from,to)] = km;
           });
@@ -1732,39 +1778,37 @@ Jammu Airport,Katra,49</pre>
     });
 
     // Backup / Restore
-    byId('export-json')?.addEventListener('click', ()=>{
-      const blob = new Blob([JSON.stringify(STORE, null, 2)], {type:'application/json'});
-      const a = document.createElement('a');
+    var btnExportJSON = byId('export-json');
+    if (btnExportJSON) btnExportJSON.addEventListener('click', function(){
+      var blob = new Blob([JSON.stringify(STORE, null, 2)], {type:'application/json'});
+      var a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
       a.download = 'fodel-transport-backup.json';
       a.style.display='none';
       document.body.appendChild(a);
       a.click();
-      setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); }, 0);
+      setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 0);
     });
 
-    const importFile = byId('import-file'), importJSON = byId('import-json');
-    importJSON?.addEventListener('click', ()=>{
-      const f = importFile?.files?.[0];
+    var importFile = byId('import-file'), importJSON = byId('import-json');
+    if (importJSON) importJSON.addEventListener('click', function(){
+      var f = importFile && importFile.files && importFile.files[0];
       if (!f) { showToast('Choose JSON file'); return; }
-      const reader = new FileReader();
-      reader.onload = ()=>{
+      var reader = new FileReader();
+      reader.onload = function(){
         try{
-          const obj = JSON.parse(reader.result);
-          // Basic validation
+          var obj = JSON.parse(reader.result);
           if (!obj || typeof obj !== 'object') throw new Error('Invalid JSON');
           STORE = Object.assign({}, DEFAULTS, obj);
           saveStore();
-          // Refresh everything
           fillAllLocations();
           fillVehicles();
           renderLocChips();
           refreshAddonLabels();
           updateTripBlocks();
           refreshEstimate();
-          // Prefill admin add-on inputs
-          if (aRoof) aRoof.value = STORE.addons.roofcarrier ?? 0;
-          if (aPlacard) aPlacard.value = STORE.addons.placard ?? 0;
+          if (aRoof) aRoof.value = STORE.addons.roofcarrier || 0;
+          if (aPlacard) aPlacard.value = STORE.addons.placard || 0;
           showToast('Imported');
         }catch(e){ showToast('Import failed'); }
       };
@@ -1775,84 +1819,80 @@ Jammu Airport,Katra,49</pre>
        SUBMIT HANDLER
     ============================ */
     function buildMessage(){
-      const lang = localStorage.getItem(LANG_KEY)||'en';
-      const d = tDict(lang);
+      var lang = localStorage.getItem(LANG_KEY)||'en';
+      var d = tDict(lang);
 
-      const trip = tripRadios.find(r => r.checked)?.value || "oneway";
-      const legs = calcLegs();
+      var trip = 'oneway';
+      for (var i=0;i<tripRadios.length;i++){ if(tripRadios[i].checked){ trip = tripRadios[i].value; break; } }
+      var legs = calcLegs();
 
-      const pLoc = pickupOtherToggle.checked ? (pickupOther.value||'') : (selPickup.value||'');
-      const dLoc = dropOtherToggle.checked ? (dropOther.value||'') : (selDrop.value||'');
+      var pLoc = pickupOtherToggle.checked ? (pickupOther.value||'') : (selPickup.value||'');
+      var dLoc = dropOtherToggle.checked ? (dropOther.value||'') : (selDrop.value||'');
 
-      // Route string
-      let route = '';
+      var route = '';
       if (trip==='multi'){
-        route = legs.filter(([a,b])=>a&&b).map(([a,b])=>`${a} → ${b}`).join(' | ');
+        route = legs.filter(function(x){return x[0]&&x[1];}).map(function(x){return x[0]+' → '+x[1];}).join(' | ');
       } else if (trip==='round'){
-        route = `${pLoc} ⇄ ${dLoc}`;
+        route = pLoc+' ⇄ '+dLoc;
       } else if (trip==='oneway') {
-        route = `${pLoc} → ${dLoc}`;
+        route = pLoc+' → '+dLoc;
       } else {
-        route = `Local — ${(selLocalCity.value||'')}`;
+        route = 'Local — '+(selLocalCity.value||'');
       }
 
-      // FT (flight/train) if shown
-      let ft = '';
-      const ftType = ftInput.getAttribute('data-ft-type') || '';
+      var ft = '';
+      var ftType = ftInput.getAttribute('data-ft-type') || '';
       if (ftWrap.style.display !== 'none' && ftInput.value.trim()){
-        ft = (ftType==='train' ? (d.msTrain || 'Train no.') : (d.msFlight || 'Flight no.')) + `: ${ftInput.value.trim()}`;
+        ft = (ftType==='train' ? (d.msTrain || 'Train no.') : (d.msFlight || 'Flight no.')) + ': ' + ftInput.value.trim();
       }
 
-      // Add-ons text
-      const addOnsTxt = [];
-      const aR = parseInt(qtyRoof.value,10)||0; if (aR>0) addOnsTxt.push(`${d.roof||'Roof carrier'} × ${aR}`);
-      const aP = parseInt(qtyPlacard.value,10)||0; if (aP>0) addOnsTxt.push(`${d.placard||'Placard'} × ${aP}`);
+      var addOnsTxt = [];
+      var aR = parseInt(qtyRoof.value,10)||0; if (aR>0) addOnsTxt.push((d.roof||'Roof carrier') + ' × ' + aR);
+      var aP = parseInt(qtyPlacard.value,10)||0; if (aP>0) addOnsTxt.push((d.placard||'Placard') + ' × ' + aP);
 
-      // Dist/Estimate text
-      const distTxt = kmText.textContent || '';
-      const estTxt  = estText.textContent || '';
+      var distTxt = kmText.textContent || '';
+      var estTxt  = estText.textContent || '';
 
-      // Compose message
-      const lines = [
-        `**${d.msTitle || 'New Transport Request — Details'}**`,
+      var lines = [
+        '**'+(d.msTitle || 'New Transport Request — Details')+'**',
         '',
-        `• ${d.msTrip || 'Trip'}: ${trip.toUpperCase()}`,
-        `• ${d.msRoute || 'Route'}: ${route}`,
+        '• '+(d.msTrip || 'Trip')+': '+trip.toUpperCase(),
+        '• '+(d.msRoute || 'Route')+': '+route
       ];
 
       if (trip==='oneway' || trip==='round'){
-        if (date.value)  lines.push(`• ${d.msPickup || 'Pickup'}: ${date.value} ${time.value||''}`);
-        if (trip==='round' && rdate.value) lines.push(`• ${d.msReturn || 'Return'}: ${rdate.value} ${rtime.value||''}`);
+        if (date.value)  lines.push('• '+(d.msPickup || 'Pickup')+': '+date.value+' '+(time.value||''));
+        if (trip==='round' && rdate.value) lines.push('• '+(d.msReturn || 'Return')+': '+rdate.value+' '+(rtime.value||''));
       } else if (trip==='local'){
-        const lp = (byId('local-package')?.value || '');
-        const lc = (selLocalCity.value||'');
-        const ld = (byId('local-date')?.value||'');
-        lines.push(`• Package: ${lp || 'Custom'}`);
-        lines.push(`• City: ${lc}`);
-        if (ld) lines.push(`• Date: ${ld}`);
+        var lp = (byId('local-package') && byId('local-package').value) || '';
+        var lc = (selLocalCity.value||'');
+        var ld = (byId('local-date') && byId('local-date').value) || '';
+        lines.push('• Package: '+(lp || 'Custom'));
+        lines.push('• City: '+lc);
+        if (ld) lines.push('• Date: '+ld);
       } else if (trip==='multi'){
-        legs.forEach(([a,b],i)=>{ if(a&&b) lines.push(`• Leg ${i+1}: ${a} → ${b}`); });
+        legs.forEach(function(x,i){ if(x[0]&&x[1]) lines.push('• Leg '+(i+1)+': '+x[0]+' → '+x[1]); });
       }
 
-      if (ft) lines.push(`• ${ft}`);
-      if (vehicle.value) lines.push(`• ${d.msVehicle || 'Vehicle'}: ${vehicle.options[vehicle.selectedIndex].text}`);
-      if (pax.value) lines.push(`• ${d.msPassengers || 'Passengers'}: ${pax.value}`);
-      if (cars.value) lines.push(`• ${d.msCars || 'Cars'}: ${cars.value}`);
+      if (ft) lines.push('• '+ft);
+      if (vehicle.value) lines.push('• '+(d.msVehicle || 'Vehicle')+': '+vehicle.options[vehicle.selectedIndex].text);
+      if (pax.value) lines.push('• '+(d.msPassengers || 'Passengers')+': '+pax.value);
+      if (cars.value) lines.push('• '+(d.msCars || 'Cars')+': '+cars.value);
 
-      if (addOnsTxt.length) lines.push(`• ${d.msAddons || 'Add ons'}: ${addOnsTxt.join(', ')}`);
+      if (addOnsTxt.length) lines.push('• '+(d.msAddons || 'Add ons')+': '+addOnsTxt.join(', '));
 
-      if (distTxt && distTxt !== '—') lines.push(`• ${d.msDistance || 'Distance'}: ${distTxt}`);
-      if (estTxt) lines.push(`• ${d.msEstimate || 'Estimate'}: ${estTxt}`);
+      if (distTxt && distTxt !== '—') lines.push('• '+(d.msDistance || 'Distance')+': '+distTxt);
+      if (estTxt) lines.push('• '+(d.msEstimate || 'Estimate')+': '+estTxt);
 
       if (byId('notes').value.trim()){
         lines.push('');
-        lines.push(`${d.msNotes || 'Notes'}: ${byId('notes').value.trim()}`);
+        lines.push((d.msNotes || 'Notes')+': '+byId('notes').value.trim());
       }
 
       lines.push('');
-      lines.push(`${d.msName || 'Name'}: ${byId('name').value.trim()}`);
-      lines.push(`${d.msMobile || 'Mobile'}: ${byId('mobile').value.trim()}`);
-      if (byId('email').value.trim()) lines.push(`${d.msEmail || 'Email'}: ${byId('email').value.trim()}`);
+      lines.push((d.msName || 'Name')+': '+byId('name').value.trim());
+      lines.push((d.msMobile || 'Mobile')+': '+byId('mobile').value.trim());
+      if (byId('email').value.trim()) lines.push((d.msEmail || 'Email')+': '+byId('email').value.trim());
 
       lines.push('');
       lines.push(d.msDisclaimerBold || '*Estimate is indicative for planning. Final fare may vary based on actual kms, waiting, tolls, parking, night charges, and chosen vehicle. We’ll confirm the best possible price before booking.*');
@@ -1861,12 +1901,13 @@ Jammu Airport,Katra,49</pre>
     }
 
     function validateForm(){
-      const trip = tripRadios.find(r => r.checked)?.value || "oneway";
+      var trip = 'oneway';
+      for (var i=0;i<tripRadios.length;i++){ if(tripRadios[i].checked){ trip = tripRadios[i].value; break; } }
       if (!byId('name').value.trim()) { showToast('Enter your name'); return false; }
       if (!byId('mobile').value.trim()) { showToast('Enter mobile'); return false; }
       if (trip==='oneway' || trip==='round'){
-        const p = pickupOtherToggle.checked ? pickupOther.value : selPickup.value;
-        const d = dropOtherToggle.checked ? dropOther.value : selDrop.value;
+        var p = pickupOtherToggle.checked ? pickupOther.value : selPickup.value;
+        var d = dropOtherToggle.checked ? dropOther.value : selDrop.value;
         if (!p || !d) { showToast('Select pickup/drop'); return false; }
       }
       if (trip==='round' && !rdate.value) { showToast('Select return date'); return false; }
@@ -1876,41 +1917,37 @@ Jammu Airport,Katra,49</pre>
       return true;
     }
 
+    submitBtn && submitBtn.addEventListener('click', function(){
+      if (!validateForm()) return;
+      var msg = buildMessage();
+      var pref = (byId('pref-contact') && byId('pref-contact').value || 'WhatsApp').toLowerCase();
 
-    
-submitBtn?.addEventListener('click', async () => {
-       if (!validateForm()) return;
-       const msg = buildMessage();
-       const pref = (byId('pref-contact')?.value || 'WhatsApp').toLowerCase();
-       ...
-     });
-
-      // If Formspree configured, post silently and then open WhatsApp/email
-      const payload = {
+      var payload = {
         message: msg,
         when: new Date().toISOString(),
-        source: 'fodel-transport',
+        source: 'fodel-transport'
       };
       if (FORMSPREE_ENDPOINT){
         try{
-          await fetch(FORMSPREE_ENDPOINT, {
+          fetch(FORMSPREE_ENDPOINT, {
             method:'POST',
             headers:{ 'Content-Type':'application/json' },
             body: JSON.stringify(payload)
-          });
-        }catch(e){ /* ignore */ }
+          }).catch(function(){});
+        }catch(e){}
       }
 
       if (pref === 'email'){
-        const subject = encodeURIComponent('Transport Request — Fodel Transport');
-        const body = encodeURIComponent(msg.replace(/\*\*/g,'').replace(/\*/g,''));
-        window.location.href = `mailto:sales@fodeltravels.in?subject=${subject}&body=${body}`;
+        var subject = encodeURIComponent('Transport Request — Fodel Transport');
+        var body = encodeURIComponent(msg.replace(/\*\*/g,'').replace(/\*/g,''));
+        window.location.href = "mailto:sales@fodeltravels.in?subject="+subject+"&body="+body;
       } else {
-        const wa = `https://wa.me/919797459260?text=${encodeURIComponent(msg)}`;
+        var wa = "https://wa.me/919797459260?text="+encodeURIComponent(msg);
         window.open(wa, '_blank', 'noopener,noreferrer');
       }
       showToast('Opening your preferred app…');
     });
+
     /* ===========================
        ADMIN SECURITY (PIN, URL, Gear)
        - Hashed PIN (SHA-256)
@@ -1920,21 +1957,20 @@ submitBtn?.addEventListener('click', async () => {
        - Gear button visible only when authorized
     ============================ */
 
-    const ADMIN_FLAG_LS = 'fodel_is_admin';    // persistent
-    const ADMIN_FLAG_SS = 'fodel_is_admin_ss'; // session (tab)
+    var ADMIN_FLAG_LS = 'fodel_is_admin';
+    var ADMIN_FLAG_SS = 'fodel_is_admin_ss';
 
-    // === Hashed PIN for "nameandfame19" ===
-    const ADMIN_PIN_SHA256 = '380ab389d8400d508ce9a8393bda7161466bbed74cbaec488e931ddb1410c350';
+    // Hashed PIN for "nameandfame19"
+    var ADMIN_PIN_SHA256 = '380ab389d8400d508ce9a8393bda7161466bbed74cbaec488e931ddb1410c350';
 
     function isAdminNew(){
       return sessionStorage.getItem(ADMIN_FLAG_SS)==='1' || localStorage.getItem(ADMIN_FLAG_LS)==='1';
     }
-    function setAdminNew(v, {persist=false}={}){
-      const openAdmin = byId('open-admin');
-      const adminOv = byId('admin-ov');
+    function setAdminNew(v, opts){
+      opts = opts || {};
       if (v){
-        sessionStorage.setItem(ADMIN_FLAG_SS, '1');     // current tab/session
-        if (persist) localStorage.setItem(ADMIN_FLAG_LS, '1'); // across sessions
+        sessionStorage.setItem(ADMIN_FLAG_SS, '1');
+        if (opts.persist) localStorage.setItem(ADMIN_FLAG_LS, '1');
       } else {
         sessionStorage.removeItem(ADMIN_FLAG_SS);
         localStorage.removeItem(ADMIN_FLAG_LS);
@@ -1942,97 +1978,93 @@ submitBtn?.addEventListener('click', async () => {
       if (openAdmin) openAdmin.style.display = v ? 'inline-flex' : 'none';
     }
 
-    async function sha256hex(s){
-      const enc = new TextEncoder();
-      const buf = await crypto.subtle.digest('SHA-256', enc.encode(String(s)));
-      return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2,'0')).join('');
+    function sha256hex(s){
+      var enc = new TextEncoder();
+      return crypto.subtle.digest('SHA-256', enc.encode(String(s))).then(function(buf){
+        var arr = new Uint8Array(buf);
+        return Array.prototype.map.call(arr, function(b){
+          return b.toString(16).padStart(2,'0');
+        }).join('');
+      });
     }
-    async function verifyPin(rawPin){
-      if (!rawPin) return false;
-      try {
-        const h = await sha256hex(String(rawPin).trim());
+    function verifyPin(rawPin){
+      if (!rawPin) return Promise.resolve(false);
+      return sha256hex(String(rawPin).trim()).then(function(h){
         return h.toLowerCase() === String(ADMIN_PIN_SHA256).toLowerCase();
-      } catch(e){ return false; }
+      }).catch(function(){ return false; });
     }
-    async function promptPinAndUnlock({persist=false, autoOpen=false}={}){
-      const adminOv = byId('admin-ov');
-      const input = prompt('Enter Admin PIN');
-      if (!(await verifyPin(input))){
-        showToast('Invalid PIN'); return false;
-      }
-      setAdminNew(true, {persist});
-      showToast('Admin unlocked');
-      if (autoOpen && adminOv) adminOv.classList.add('active');
-      return true;
+    function promptPinAndUnlock(opts){
+      opts = opts || {};
+      var input = prompt('Enter Admin PIN');
+      return verifyPin(input).then(function(ok){
+        if (!ok){ showToast('Invalid PIN'); return false; }
+        setAdminNew(true, {persist: !!opts.persist});
+        showToast('Admin unlocked');
+        if (opts.autoOpen && adminOv) adminOv.classList.add('active');
+        return true;
+      });
     }
 
-    // Handle URL params: ?admin=1, ?pin=XXXX, ?persist=1
-    ;(async function handleAdminFromURL(){
-      const adminOv = byId('admin-ov');
-      const openAdmin = byId('open-admin');
+    (function handleAdminFromURL(){
+      var p = new URLSearchParams(location.search);
+      var wantAdmin = p.get('admin') === '1';
+      var pin       = p.get('pin');
+      var persist   = p.get('persist') === '1';
 
-      const p = new URLSearchParams(location.search);
-      const wantAdmin = p.get('admin') === '1';
-      const pin       = p.get('pin');
-      const persist   = p.get('persist') === '1';
-
-      // 1) PIN in URL → verify without prompt
       if (pin){
-        if (await verifyPin(pin)) {
-          setAdminNew(true, {persist});
-          showToast('Admin unlocked');
-        } else {
-          showToast('Invalid PIN');
-        }
+        verifyPin(pin).then(function(ok){
+          if (ok){
+            setAdminNew(true, {persist:persist});
+            showToast('Admin unlocked');
+          } else {
+            showToast('Invalid PIN');
+          }
+          reflect();
+        });
+      } else {
+        reflect();
       }
 
-      // Reflect current state (show/hide gear)
-      setAdminNew(isAdminNew(), {});
-
-      // 2) ?admin=1 → open console (prompt if not yet admin)
-      if (wantAdmin){
-        if (isAdminNew()){
-          adminOv?.classList.add('active');
-        } else {
-          await promptPinAndUnlock({persist, autoOpen: true});
+      function reflect(){
+        setAdminNew(isAdminNew(), {});
+        if (wantAdmin){
+          if (isAdminNew()){
+            adminOv && adminOv.classList.add('active');
+          } else {
+            promptPinAndUnlock({persist:persist, autoOpen:true});
+          }
         }
-      }
-
-      // Clean URL (remove admin/pin/persist from address bar)
-      if (wantAdmin || pin || persist){
-        const clean = new URL(location.href);
-        clean.searchParams.delete('admin');
-        clean.searchParams.delete('pin');
-        clean.searchParams.delete('persist');
-        history.replaceState({}, document.title, clean.pathname + (clean.searchParams.toString() ? '?' + clean.searchParams.toString() : '') + clean.hash);
+        if (wantAdmin || pin || persist){
+          var clean = new URL(location.href);
+          clean.searchParams.delete('admin');
+          clean.searchParams.delete('pin');
+          clean.searchParams.delete('persist');
+          history.replaceState({}, document.title, clean.pathname + (clean.searchParams.toString() ? '?' + clean.searchParams.toString() : '') + clean.hash);
+        }
       }
     })();
 
-    // Open/Close admin modal (gear shown only when admin)
-    byId('open-admin')?.addEventListener('click', ()=>{
-      byId('admin-ov')?.classList.add('active');
+    if (openAdmin) openAdmin.addEventListener('click', function(){ adminOv && adminOv.classList.add('active'); });
+    if (adminOv){
+      adminOv.addEventListener('click', function(e){ if (e.target === adminOv) adminOv.classList.remove('active'); });
+    }
+    Array.prototype.forEach.call(document.querySelectorAll('[data-close]'), function(x){
+      x.addEventListener('click', function(){ var ov=byId('admin-ov'); if (ov) ov.classList.remove('active'); });
     });
-    byId('admin-ov')?.addEventListener('click', (e)=>{
-      const adminOv = byId('admin-ov');
-      if (e.target === adminOv) adminOv.classList.remove('active');
-    });
-    document.querySelectorAll('[data-close]').forEach(x=> x.addEventListener('click', ()=> byId('admin-ov').classList.remove('active')));
-    document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') byId('admin-ov').classList.remove('active'); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape'){ var ov=byId('admin-ov'); if (ov) ov.classList.remove('active'); } });
 
-    // Inject/replace a Logout button inside Admin modal header
     (function injectLogout(){
-      const adminOv = byId('admin-ov');
-      const header = adminOv?.querySelector('.modal-header');
+      var header = adminOv && adminOv.querySelector('.modal-header');
       if (!header) return;
-      const old = header.querySelector('.btn-ghost.logout');
+      var old = header.querySelector('.btn-ghost.logout');
       if (old) old.remove();
-      const btn = document.createElement('button');
+      var btn = document.createElement('button');
       btn.className = 'btn-ghost logout';
       btn.textContent = 'Logout';
       btn.style.marginLeft = 'auto';
-      btn.addEventListener('click', ()=>{
+      btn.addEventListener('click', function(){
         setAdminNew(false);
-        adminOv?.classList.remove('active');
+        adminOv && adminOv.classList.remove('active');
         showToast('Logged out');
       });
       header.insertBefore(btn, header.querySelector('.modal-close'));
@@ -2041,27 +2073,21 @@ submitBtn?.addEventListener('click', async () => {
     /* ===========================
        INITIALIZER (run-once, seeded)
     ============================ */
-    async function init(){
-      await primeDefaultsFromData();  // optional seed from /data/transport-data.json
-      loadStore();
-
-      initLang();
-      fillVehicles();
-      fillAllLocations();
-      renderLocChips();
-      refreshAddonLabels();
-      initDates();
-      updateTripBlocks(); // also calls estimate & FT visibility
-
-      // Prefill admin add-on inputs
-      const aRoof = byId('a-roof'), aPlacard = byId('a-placard');
-      if (aRoof) aRoof.value = STORE.addons.roofcarrier ?? 0;
-      if (aPlacard) aPlacard.value = STORE.addons.placard ?? 0;
-
-      // Reflect admin gear visibility on load (persist/session)
-      setAdminNew(isAdminNew(), {});
+    function init(){
+      primeDefaultsFromData().then(function(){
+        loadStore();
+        initLang();
+        fillVehicles();
+        fillAllLocations();
+        renderLocChips();
+        refreshAddonLabels();
+        initDates();
+        updateTripBlocks(); // also calls estimate & FT visibility
+        if (aRoof) aRoof.value = STORE.addons.roofcarrier || 0;
+        if (aPlacard) aPlacard.value = STORE.addons.placard || 0;
+        setAdminNew(isAdminNew(), {}); // reflect admin gear visibility
+      });
     }
-
     document.addEventListener('DOMContentLoaded', init);
   </script>
 </body>
