@@ -172,8 +172,12 @@
         text-overflow: ellipsis;
       }
     }
+    @media (max-width:400px){
+      .nav{ gap:4px; }
+      .pill-btn{ padding:5px 7px; }
+    }
 
-    /* Sections / Cards */
+    /* Sections / Cards / Forms */
     .section{ width:min(1100px,92%); margin:28px auto 70px; }
     .grid-2{ display:grid; grid-template-columns:1fr; gap:14px; }
     @media (min-width:760px){ .grid-2{ grid-template-columns:1fr 1fr; } }
@@ -203,7 +207,7 @@
     .row{ margin-bottom:12px; }
     .inline{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
 
-    /* Chips */
+    /* Chips & Tabs */
     .chip{
       display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px;
       border:1px solid var(--border); background:#fff; font-size:13px; transition: box-shadow .2s, transform .2s, border-color .2s;
@@ -216,27 +220,19 @@
       box-shadow: 0 6px 14px rgba(0,0,0,.08);
       background: #fff8f8;
     }
-
-    /* Only hide radios for FILTER chips (region/city) — not for trip type */
+    /* Only hide radios for filter chips (region/city)—NOT trip radios */
     .chip-filter input[type="radio"]{ appearance:none; width:0; height:0; position:absolute; opacity:0; }
 
-    .btn{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:12px 16px; border-radius:12px;
-      background:var(--accent); color:#fff; border:1px solid transparent; text-decoration:none;
-      font-weight:700; font-size:16px; letter-spacing:0.2px;
-      box-shadow:var(--shadow-soft);
-      transition: transform .18s ease, box-shadow .18s ease, background .18s ease, filter .18s ease;
-      cursor:pointer; will-change:transform;
+    .regions-strip .tabs{ display:flex; gap:10px; flex-wrap:wrap; }
+    .regions-strip .tabs .tab{
+      display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; font-weight:700;
+      border:1px solid var(--border); background:#fff; cursor:pointer;
     }
-    .btn:hover{ transform:translateY(-2px); background:var(--accent-hover); box-shadow:0 12px 26px rgba(0,0,0,0.18); }
-    .btn-ghost{
-      padding:10px 14px; border-radius:10px; font-weight:600; background:#f1f5f9; color:#0f172a; border:1px solid var(--border); cursor:pointer;
-      transition: background .18s, transform .18s, border-color .18s;
+    .regions-strip .tabs .tab.active{
+      border-color: color-mix(in srgb, var(--accent) 50%, #cbd5e1);
+      background:#fff6f6;
+      box-shadow:0 6px 14px rgba(0,0,0,.08);
     }
-    .btn-ghost:hover{ background:#eef2f7; transform:translateY(-1px); border-color: color-mix(in srgb, var(--accent) 25%, #cbd5e1); }
-
-    .actions{ display:flex; gap:10px; justify-content:flex-end; margin-top:14px; }
 
     /* Estimate */
     .estimate{
@@ -262,13 +258,27 @@
     .qty{ display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--border); border-radius:10px; padding:6px 8px; }
     .qty button{ width:28px; height:28px; border-radius:8px; border:1px solid var(--border); background:#f8fafc; cursor:pointer; font-weight:800; line-height:1; }
     .qty .qty-input{ width:56px; text-align:center; border:1px solid var(--border); border-radius:8px; padding:6px 8px; }
-
-    /* Remove number spinners for add-on qty inputs only */
+    /* Remove spinners for add-on qty inputs only */
     .qty-input::-webkit-outer-spin-button,
     .qty-input::-webkit-inner-spin-button{ -webkit-appearance: none; margin:0; }
     .qty-input[type="number"]{ -moz-appearance: textfield; }
 
-    /* Footer / Toast / WhatsApp */
+    /* Admin modal */
+    .overlay{ position:fixed; inset:0; z-index:70; background:rgba(0,0,0,0.45); display:none; align-items:center; justify-content:center; padding:18px; }
+    .overlay.active{ display:flex; }
+    .modal{
+      width:min(860px,100%); max-height:92svh;
+      border-radius:16px; background:#ffffff; color:#0f172a; border:1px solid rgba(17,24,39,0.14);
+      box-shadow:0 30px 80px rgba(0,0,0,0.35); overflow:hidden; display:flex; flex-direction:column;
+      animation:pop .18s ease-out both;
+    }
+    .modal-header{ display:flex; align-items:center; gap:12px; padding:12px 14px; color:#fff; background:linear-gradient(90deg, var(--accent), var(--accent-hover)); position:sticky; top:0; z-index:1; }
+    .modal-title{ font-weight:700; }
+    .modal-close{ background:transparent; border:none; color:#fff; cursor:pointer; font-size:20px; line-height:1; padding:6px 10px; border-radius:8px; }
+    .modal-close:hover{ background:rgba(255,255,255,0.18); }
+    .modal-body{ padding:14px; overflow:auto; -webkit-overflow-scrolling:touch; }
+
+    /* Footer & WhatsApp & Toast */
     .footer{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin:0 auto 28px; width:min(1100px,92%); }
     .copy{ text-align:center; width:100%; margin-top:6px; font-size:12px; opacity:.78; }
 
@@ -287,19 +297,7 @@
     }
     @media(min-width:720px){ .fw-whatsapp .tag{ display:block; } }
 
-    /* Region tabs area (below header) */
-    .regions-strip .tabs{ display:flex; gap:10px; flex-wrap:wrap; }
-    .regions-strip .tabs .tab{
-      display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; font-weight:700;
-      border:1px solid var(--border); background:#fff; cursor:pointer;
-    }
-    .regions-strip .tabs .tab.active{
-      border-color: color-mix(in srgb, var(--accent) 50%, #cbd5e1);
-      background:#fff6f6;
-      box-shadow:0 6px 14px rgba(0,0,0,.08);
-    }
-
-    /* Visually-hidden helper */
+    /* Visually hidden helper */
     .visually-hidden-seo{
       position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; clip:rect(1px, 1px, 1px, 1px);
     }
@@ -346,15 +344,15 @@
         <strong>Service Regions:</strong>
       </div>
       <div class="tabs" id="region-tabs" role="tablist" aria-label="Regions">
-        <!-- Rendered by JS: Jammu & Kashmir | Goa -->
+        <!-- Rendered by JS -->
       </div>
 
       <div class="row" style="margin-top:10px;">
         <div class="inline" id="city-chips-top" role="radiogroup" aria-label="Cities">
-          <!-- Rendered by JS: City chips for the selected region -->
+          <!-- Rendered by JS -->
         </div>
       </div>
-      <small class="note">Choose a region (and optionally a city). Pickup/Drop lists will update instantly.</small>
+      <small class="note">Choose a region (and optionally a city). Pickup/Drop lists update instantly.</small>
     </div>
   </section>
   <!-- ========== BOOKING FORM ========== -->
@@ -363,7 +361,7 @@
       <h2 id="transport-title">Transport Requirement</h2>
       <p class="muted">Tell us your route and vehicle needs. We’ll confirm availability and share the best price.</p>
 
-      <!-- Trip type (native radio dots preserved) -->
+      <!-- Trip type (native radio dots visible) -->
       <div class="row inline" role="radiogroup" aria-label="Trip type">
         <label class="chip"><input type="radio" name="tripType" value="oneway" checked> <span>One way</span></label>
         <label class="chip"><input type="radio" name="tripType" value="round"> <span>Round trip</span></label>
@@ -449,7 +447,7 @@
         <p class="note" style="margin-top:8px;">Example: Jammu → Katra → Patnitop → Srinagar → Jammu</p>
       </div>
 
-      <!-- Context row -->
+      <!-- Flight/Train + Vehicle -->
       <div class="grid-2" id="row-1-ctx" style="margin-top:8px;">
         <div class="row" id="ft-wrap" style="display:none;">
           <label id="ft-label" for="ft-input">Flight no.</label>
@@ -462,7 +460,7 @@
         </div>
       </div>
 
-      <!-- Counts -->
+      <!-- Pax + Cars -->
       <div class="grid-2" id="row-2-cnt">
         <div class="row">
           <label for="pax">Total passengers</label>
@@ -558,7 +556,7 @@
       </div>
 
       <div class="actions">
-        <!-- Large admin button (shown only when ?admin=1 + allowed user) -->
+        <!-- Big Admin button (only shown after ?admin=1 + auth) -->
         <button class="btn-ghost" type="button" id="open-admin" style="display:none;">⚙ Admin Console</button>
         <button class="btn" id="submit-btn">Submit Transport Request</button>
       </div>
@@ -568,7 +566,7 @@
       </p>
     </div>
   </section>
-<!-- ========== FOOTER ========== -->
+  <!-- ========== FOOTER ========== -->
   <footer class="footer" aria-label="Contact">
     <a href="mailto:sales@fodeltravels.in" class="chip">📧 sales@fodeltravels.in</a>
     <div class="copy">© 2015–2026 Fodel India — Fodel Transport</div>
@@ -583,15 +581,53 @@
         <button class="modal-close" data-close aria-label="Close admin console">✕</button>
       </div>
       <div class="modal-body">
-        <!-- Locations -->
+        <!-- Regions & Cities (drives front-end filters) -->
         <div class="card" style="margin-bottom:12px;">
-          <h3 style="margin-bottom:6px;">Locations (Pickup/Drop)</h3>
+          <h3 style="margin-bottom:6px;">Regions & Cities (Front-end Filters)</h3>
+
+          <div class="grid-2">
+            <div class="row">
+              <label>Regions</label>
+              <div class="inline" style="gap:8px;">
+                <input id="rg-new" type="text" placeholder="Add region e.g., Jammu & Kashmir">
+                <button class="btn" id="rg-add">Add Region</button>
+                <button class="btn-ghost" id="rg-reset">Reset Regions to Defaults</button>
+              </div>
+              <div id="rg-list" class="inline" style="margin-top:8px; flex-wrap:wrap;"></div>
+            </div>
+
+            <div class="row">
+              <label>Cities (for selected region)</label>
+              <div class="inline" style="gap:8px;">
+                <input id="ct-new" type="text" placeholder="Add city e.g., Jammu">
+                <button class="btn" id="ct-add">Add City</button>
+              </div>
+              <div id="ct-list" class="inline" style="margin-top:8px; flex-wrap:wrap;"></div>
+            </div>
+          </div>
+
+          <div class="row" style="margin-top:8px;">
+            <label>Locations (for selected city)</label>
+            <div class="inline" style="gap:8px;">
+              <input id="loc-new-city" type="text" placeholder="Add location e.g., Jammu Airport">
+              <button class="btn" id="loc-add-city">Add Location</button>
+              <button class="btn-ghost" id="sync-flat">Sync to Flat Locations</button>
+            </div>
+            <div id="loc-list-city" class="inline" style="margin-top:8px; flex-wrap:wrap;"></div>
+            <small class="note">Front-end Pickup/Drop shows only locations under the chosen Region/City. “Sync to Flat” copies all unique locations to the flat list for CSV/Price/Distance workflows.</small>
+          </div>
+        </div>
+
+        <!-- Flat Locations (legacy / for price & distance admin selects) -->
+        <div class="card" style="margin-bottom:12px;">
+          <h3 style="margin-bottom:6px;">Flat Locations (Legacy)</h3>
           <div class="inline">
             <input id="loc-new" type="text" placeholder="Add location e.g., Jammu Airport">
             <button class="btn" id="loc-add">Add</button>
-            <button class="btn-ghost" id="loc-reset">Reset to defaults</button>
+            <button class="btn-ghost" id="loc-reset">Reset Flat Locations to Defaults</button>
           </div>
           <div id="loc-list" class="inline" style="margin-top:10px; flex-wrap:wrap;"></div>
+          <small class="note">Flat list is used by Route Prices & Distances selects. You can ignore it and just use “Sync to Flat”.</small>
         </div>
 
         <!-- Route Prices -->
@@ -686,13 +722,22 @@ Jammu Airport,Katra,49</pre>
     <a class="tag" target="_blank" rel="noopener noreferrer" href="https://wa.me/919797459260?text=Hi%20Fodel%20Transport%2C%20I%20need%20a%20cab%20quote.">WhatsApp Us</a>
     <a class="fab" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" href="https://wa.me/919797459260?text=Hi%20Fodel%20Transport%2C%20I%20need%20a%20cab%20quote.">💬</a>
   </div>
-<script>
+  <script>
+    /* Force-hide Admin at boot for safety */
+    document.addEventListener('DOMContentLoaded', function(){
+      var ov = document.getElementById('admin-ov');
+      var btn = document.getElementById('open-admin');
+      if (ov) ov.classList.remove('active');
+      if (btn) btn.style.display = 'none';
+    });
+
     /* ===========================
-       CONFIG / STORE
+       CONFIG / DEFAULTS / STORE
     ============================ */
     var FORMSPREE_ENDPOINT = ""; // optional webhook
     var DATA_URL = "/data/transport-data.json"; // optional seed file
 
+    // Defaults include starter regions so "Reset" is meaningful.
     var DEFAULTS = {
       regions: {
         "Jammu & Kashmir": {
@@ -727,7 +772,7 @@ Jammu Airport,Katra,49</pre>
         }
       },
 
-      // Flat list retained for CSV/admin/keys
+      // Flat list used by Admin price/distance selects; can be synced from regions.
       locations: [
         "Jammu Airport", "Jammu Tawi Railway Station", "Jammu City",
         "Katra", "Katra Helipad", "Katra Bus Stand",
@@ -750,7 +795,7 @@ Jammu Airport,Katra,49</pre>
       addons: { roofcarrier: 200, placard: 100 } /* per unit */
     };
 
-    var STORE_KEY = "fodel_transport_v6"; // new key
+    var STORE_KEY = "fodel_transport_v7";
     var STORE = null;
 
     function mergeDeep(target, source){
@@ -773,12 +818,12 @@ Jammu Airport,Katra,49</pre>
         if (!res || !res.ok) return;
         return res.json().then(function(json){
           var seed = {
+            regions: typeof json.regions==='object' ? json.regions : undefined,
             locations: Array.isArray(json.locations) ? json.locations : undefined,
             vehicles:  Array.isArray(json.vehicles)  ? json.vehicles  : undefined,
             priceTable: typeof json.priceTable==='object' ? json.priceTable : undefined,
             distanceTable: typeof json.distanceTable==='object' ? json.distanceTable : undefined,
-            addons: typeof json.addons==='object' ? json.addons : undefined,
-            regions: typeof json.regions==='object' ? json.regions : undefined
+            addons: typeof json.addons==='object' ? json.addons : undefined
           };
           mergeDeep(DEFAULTS, seed);
         }).catch(function(){});
@@ -795,16 +840,18 @@ Jammu Airport,Katra,49</pre>
       if (!STORE.addons) STORE.addons = { roofcarrier: 200, placard: 100 };
       if (!STORE.distanceTable) STORE.distanceTable = {};
       if (!STORE.priceTable) STORE.priceTable = { sedan:{}, suv:{}, innova:{}, tt:{} };
+      if (!STORE.regions || typeof STORE.regions!=='object') STORE.regions = {};
+      if (!Array.isArray(STORE.locations)) STORE.locations = [];
+      // De-duplicate vehicles by id
       if (STORE.vehicles && STORE.vehicles.length){
         STORE.vehicles = STORE.vehicles.filter(function (v, i, a) {
           return a.findIndex(function (x) { return x.id === v.id; }) === i;
         });
       }
-      if (!STORE.regions) STORE.regions = DEFAULTS.regions;
     }
     function saveStore(){ localStorage.setItem(STORE_KEY, JSON.stringify(STORE)); }
 
-    // Dom helpers
+    // Helpers
     function byId(id){ return document.getElementById(id); }
     function todayISO(){ return new Date().toISOString().split('T')[0]; }
     function showToast(msg){
@@ -878,10 +925,9 @@ Jammu Airport,Katra,49</pre>
     /* ===========================
        Fillers
     ============================ */
-    function fillLocations(sel, list){
+    function fillSelectFromArray(sel, arr){
       if(!sel) return;
       var opts = '<option value="">Select</option>';
-      var arr = list || (STORE.locations||[]);
       for (var i=0;i<arr.length;i++){ opts += '<option>'+arr[i]+'</option>'; }
       sel.innerHTML = opts;
     }
@@ -911,9 +957,9 @@ Jammu Airport,Katra,49</pre>
     }
 
     /* ===========================
-       Region & City filtering
+       Regions → Cities → Locations (Front-end)
     ============================ */
-    var CURRENT = { region: 'Jammu & Kashmir', city: '' }; // default region
+    var CURRENT = { region: '', city: '' };
 
     function unique(arr){ return Array.from(new Set(arr)); }
 
@@ -929,13 +975,23 @@ Jammu Airport,Katra,49</pre>
         });
         return unique(acc);
       }
-      return (STORE.locations || DEFAULTS.locations || []).slice();
+      // Fallback to flat
+      return (STORE.locations || []).slice();
     }
 
     function renderRegionTabs(){
       if (!regionTabs) return;
       var regions = Object.keys(STORE.regions || {});
       regionTabs.innerHTML = '';
+      var strip = regionTabs.parentElement.parentElement; // card
+      if (!regions.length){
+        if (strip) strip.style.display = 'none';
+        return;
+      } else {
+        if (strip) strip.style.display = '';
+      }
+      if (!CURRENT.region || !STORE.regions[CURRENT.region]) CURRENT.region = regions[0];
+
       regions.forEach(function(rg){
         var btn = document.createElement('button');
         btn.className = 'tab' + (rg===CURRENT.region ? ' active' : '');
@@ -978,12 +1034,16 @@ Jammu Airport,Katra,49</pre>
       var list = getFilteredLocations();
       var keepPickup = selPickup && selPickup.value;
       var keepDrop = selDrop && selDrop.value;
-      fillLocations(selPickup, list);
-      fillLocations(selDrop, list);
-      fillLocations(selLocalCity, list);
-      // try to preserve selections if still present
+
+      fillSelectFromArray(selPickup, list);
+      fillSelectFromArray(selDrop, list);
+      fillSelectFromArray(selLocalCity, list);
+
       if (keepPickup && list.indexOf(keepPickup)>-1) selPickup.value = keepPickup;
       if (keepDrop && list.indexOf(keepDrop)>-1) selDrop.value = keepDrop;
+
+      // Also refresh Admin selects to avoid “dropdown not working” issues
+      fillAdminSelects();
     }
 
     /* ===========================
@@ -1034,7 +1094,7 @@ Jammu Airport,Katra,49</pre>
     [selPickup, selDrop, pickupOther, dropOther, pickupOtherToggle, dropOtherToggle, selLocalCity]
       .forEach(function(el){ if(el){ el.addEventListener('input', function(){ updateFTVisibility(); refreshEstimate(); }); } });
 
-    // Legs (Delete only)
+    // Legs
     function createLeg(fromVal, toVal){
       fromVal = fromVal || ""; toVal = toVal || "";
       var div = document.createElement('div');
@@ -1055,8 +1115,8 @@ Jammu Airport,Katra,49</pre>
 
       var lf = div.querySelector('.leg-from');
       var lt = div.querySelector('.leg-to');
-      fillLocations(lf, getFilteredLocations());
-      fillLocations(lt, getFilteredLocations());
+      fillSelectFromArray(lf, getFilteredLocations());
+      fillSelectFromArray(lt, getFilteredLocations());
       if (fromVal) lf.value = fromVal;
       if (toVal) lt.value = toVal;
 
@@ -1266,7 +1326,7 @@ Jammu Airport,Katra,49</pre>
     toggleOther(dropOtherToggle,   dropOther,   selDrop);
 
     /* ===========================
-       ADMIN UI open/close (auth in Part 6)
+       ADMIN UI open/close (auth gating in Part 6)
     ============================ */
     function openAdminModal(){ if (adminOv) adminOv.classList.add('active'); }
     function closeAdminModal(){ if (adminOv) adminOv.classList.remove('active'); }
@@ -1276,7 +1336,7 @@ Jammu Airport,Katra,49</pre>
     document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeAdminModal(); });
 
     /* ===========================
-       ADMIN: Locations / Prices / Distances / Add-ons / CSV / Backup
+       ADMIN: Flat Locations (legacy)
     ============================ */
     function renderLocChips(){
       var locList = byId('loc-list');
@@ -1285,14 +1345,10 @@ Jammu Airport,Katra,49</pre>
       (STORE.locations||[]).forEach(function(loc){
         var chip = document.createElement('div');
         chip.className = 'chip';
-        chip.style.display = 'inline-flex';
-        chip.style.alignItems = 'center';
-        chip.style.gap = '8px';
         chip.innerHTML = '<small>'+loc+'</small> <button class="btn-ghost" aria-label="Remove">✕</button>';
-        var btn = chip.querySelector('button');
-        btn.addEventListener('click', function(){
+        chip.querySelector('button').addEventListener('click', function(){
           STORE.locations = (STORE.locations||[]).filter(function(x){ return x!==loc; });
-          saveStore(); applyLocationFilter(); renderLocChips(); refreshEstimate(); showToast('Removed');
+          saveStore(); renderLocChips(); fillAdminSelects(); applyLocationFilter(); refreshEstimate(); showToast('Removed');
         });
         locList.appendChild(chip);
       });
@@ -1304,16 +1360,181 @@ Jammu Airport,Katra,49</pre>
       if (!v) return;
       if ((STORE.locations||[]).indexOf(v) === -1) {
         STORE.locations.push(v);
-        saveStore(); applyLocationFilter(); renderLocChips(); refreshEstimate(); showToast('Location added'); locNew.value = '';
+        saveStore(); locNew.value = '';
+        renderLocChips(); fillAdminSelects(); applyLocationFilter(); refreshEstimate(); showToast('Location added');
       } else { showToast('Already exists'); }
     });
     if (locReset) locReset.addEventListener('click', function(){
-      STORE.locations = DEFAULTS.locations.slice();
-      saveStore(); applyLocationFilter(); renderLocChips(); refreshEstimate(); showToast('Locations reset');
+      STORE.locations = (DEFAULTS.locations || []).slice();
+      saveStore(); renderLocChips(); fillAdminSelects(); applyLocationFilter(); refreshEstimate(); showToast('Flat locations reset');
     });
 
+    /* ===========================
+       ADMIN: Regions & Cities manager
+    ============================ */
+    var RG = { region: '', city: '' };
+
+    var rgNew = byId('rg-new'), rgAdd = byId('rg-add'), rgList = byId('rg-list'), rgReset = byId('rg-reset');
+    var ctNew = byId('ct-new'), ctAdd = byId('ct-add'), ctList = byId('ct-list');
+    var locNewCity = byId('loc-new-city'), locAddCity = byId('loc-add-city'), locListCity = byId('loc-list-city');
+    var btnSyncFlat = byId('sync-flat');
+
+    function ensureRegionsObj(){
+      if (!STORE.regions || typeof STORE.regions !== 'object') STORE.regions = {};
+    }
+    function renderRegions(){
+      ensureRegionsObj();
+      rgList.innerHTML = '';
+      var regions = Object.keys(STORE.regions);
+      if (!RG.region || !STORE.regions[RG.region]) RG.region = regions[0] || '';
+      regions.forEach(function(r){
+        var chip = document.createElement('div');
+        chip.className = 'chip' + (RG.region===r ? ' active':'');
+        chip.innerHTML = '<small><strong>'+r+'</strong></small> <button class="btn-ghost" aria-label="Remove">✕</button>';
+        var btn = chip.querySelector('button');
+        btn.addEventListener('click', function(){
+          if (!confirm('Delete region "'+r+'"? This will remove all its cities and locations.')) return;
+          delete STORE.regions[r];
+          if (RG.region===r){ RG.region=''; RG.city=''; }
+          saveStore();
+          renderRegions(); renderCities(); renderCityLocations();
+          renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
+          showToast('Region removed');
+        });
+        chip.addEventListener('click', function(e){
+          if (e.target===btn) return;
+          RG.region = r; RG.city = '';
+          renderRegions(); renderCities(); renderCityLocations();
+          renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
+        });
+        rgList.appendChild(chip);
+      });
+    }
+
+    function renderCities(){
+      ctList.innerHTML = '';
+      if (!RG.region || !STORE.regions[RG.region]) return;
+      var cities = Object.keys(STORE.regions[RG.region] || {});
+      if (!RG.city || !(STORE.regions[RG.region]||{})[RG.city]) RG.city = cities[0] || '';
+      cities.forEach(function(c){
+        var chip = document.createElement('div');
+        chip.className = 'chip' + (RG.city===c ? ' active':'');
+        chip.innerHTML = '<small>'+c+'</small> <button class="btn-ghost" aria-label="Remove">✕</button>';
+        var btn = chip.querySelector('button');
+        btn.addEventListener('click', function(){
+          if (!confirm('Delete city "'+c+'"? This will remove all its locations.')) return;
+          delete STORE.regions[RG.region][c];
+          if (RG.city===c) RG.city='';
+          saveStore();
+          renderCities(); renderCityLocations();
+          renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
+          showToast('City removed');
+        });
+        chip.addEventListener('click', function(e){
+          if (e.target===btn) return;
+          RG.city = c;
+          renderCities(); renderCityLocations();
+          renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
+        });
+        ctList.appendChild(chip);
+      });
+    }
+
+    function renderCityLocations(){
+      locListCity.innerHTML = '';
+      if (!RG.region || !RG.city) return;
+      var arr = STORE.regions[RG.region][RG.city] || [];
+      arr.forEach(function(loc){
+        var chip = document.createElement('div');
+        chip.className = 'chip';
+        chip.innerHTML = '<small>'+loc+'</small> <button class="btn-ghost" aria-label="Remove">✕</button>';
+        chip.querySelector('button').addEventListener('click', function(){
+          STORE.regions[RG.region][RG.city] = arr.filter(function(x){ return x!==loc; });
+          saveStore();
+          renderCityLocations();
+          renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
+          showToast('Location removed');
+        });
+        locListCity.appendChild(chip);
+      });
+    }
+
+    if (rgAdd) rgAdd.addEventListener('click', function(){
+      var v = (rgNew.value||'').trim();
+      if (!v) return;
+      ensureRegionsObj();
+      if (!STORE.regions[v]) STORE.regions[v] = {};
+      RG.region = v; RG.city = '';
+      saveStore(); rgNew.value='';
+      renderRegions(); renderCities(); renderCityLocations();
+      renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
+      showToast('Region added');
+    });
+
+    if (rgReset) rgReset.addEventListener('click', function(){
+      if (!confirm('Reset Regions to defaults? This will overwrite current Regions & Cities.')) return;
+      STORE.regions = JSON.parse(JSON.stringify(DEFAULTS.regions || {}));
+      saveStore();
+      RG.region = ''; RG.city = '';
+      renderRegions(); renderCities(); renderCityLocations();
+      renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
+      showToast('Regions reset');
+    });
+
+    if (ctAdd) ctAdd.addEventListener('click', function(){
+      if (!RG.region){ showToast('Select a region first'); return; }
+      var v = (ctNew.value||'').trim();
+      if (!v) return;
+      if (!STORE.regions[RG.region]) STORE.regions[RG.region] = {};
+      if (!STORE.regions[RG.region][v]) STORE.regions[RG.region][v] = [];
+      RG.city = v;
+      saveStore(); ctNew.value='';
+      renderCities(); renderCityLocations();
+      renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
+      showToast('City added');
+    });
+
+    if (locAddCity) locAddCity.addEventListener('click', function(){
+      if (!RG.region || !RG.city){ showToast('Select region & city first'); return; }
+      var v = (locNewCity.value||'').trim();
+      if (!v) return;
+      var arr = STORE.regions[RG.region][RG.city] || [];
+      if (arr.indexOf(v)===-1) arr.push(v);
+      STORE.regions[RG.region][RG.city] = arr;
+      saveStore(); locNewCity.value='';
+      renderCityLocations();
+      renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
+      showToast('Location added');
+    });
+
+    if (btnSyncFlat) btnSyncFlat.addEventListener('click', function(){
+      var set = new Set(STORE.locations || []);
+      Object.keys(STORE.regions||{}).forEach(function(r){
+        Object.keys(STORE.regions[r]||{}).forEach(function(c){
+          (STORE.regions[r][c]||[]).forEach(function(l){ set.add(l); });
+        });
+      });
+      STORE.locations = Array.from(set);
+      saveStore(); renderLocChips(); fillAdminSelects(); applyLocationFilter();
+      showToast('Synced to flat locations');
+    });
+
+    /* ===========================
+       ADMIN: Route Prices & Distances — selects
+    ============================ */
     var priceFrom = byId('price-from'), priceTo = byId('price-to');
     var pSedan = byId('p-sedan'), pSuv = byId('p-suv'), pInnova = byId('p-innova'), pTT = byId('p-tt');
+
+    var distFrom = byId('dist-from'), distTo = byId('dist-to'), distKm = byId('dist-km');
+
+    function fillAdminSelects(){
+      // Always use FLAT locations here for consistency with CSV/import/export
+      var flat = (STORE.locations || []).slice();
+      fillSelectFromArray(priceFrom, flat);
+      fillSelectFromArray(priceTo, flat);
+      fillSelectFromArray(distFrom, flat);
+      fillSelectFromArray(distTo, flat);
+    }
 
     function getNumOrZero(el){ var n = parseInt(el.value,10); return isNaN(n)?0:n; }
     function setRoutePriceFor(vId, from, to, val){
@@ -1346,9 +1567,9 @@ Jammu Airport,Katra,49</pre>
 
     var btnDistSave = byId('dist-save');
     if (btnDistSave) btnDistSave.addEventListener('click', function(){
-      var from = byId('dist-from').value || '';
-      var to   = byId('dist-to').value || '';
-      var km   = parseInt(byId('dist-km').value, 10);
+      var from = distFrom.value || '';
+      var to   = distTo.value || '';
+      var km   = parseInt(distKm.value, 10);
       if (!from || !to || !km) { showToast('Missing From/To/Km'); return; }
       STORE.distanceTable[priceKey(from,to)] = km;
       saveStore(); showToast('Distance saved'); refreshEstimate();
@@ -1356,13 +1577,16 @@ Jammu Airport,Katra,49</pre>
 
     var btnDistClear = byId('dist-clear');
     if (btnDistClear) btnDistClear.addEventListener('click', function(){
-      var from = byId('dist-from').value || '';
-      var to   = byId('dist-to').value || '';
+      var from = distFrom.value || '';
+      var to   = distTo.value || '';
       if (!from || !to) { showToast('Select From/To'); return; }
       delete STORE.distanceTable[priceKey(from,to)];
       saveStore(); showToast('Distance cleared'); refreshEstimate();
     });
 
+    /* ===========================
+       ADMIN: Add-ons / CSV / Backup
+    ============================ */
     var aRoof = byId('a-roof'), aPlacard = byId('a-placard'), addonsSave = byId('addons-save');
     if (addonsSave) addonsSave.addEventListener('click', function(){
       var r = parseInt(aRoof.value,10); var p = parseInt(aPlacard.value,10);
@@ -1381,7 +1605,18 @@ Jammu Airport,Katra,49</pre>
       setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 0);
     }
     function parseCSV(text){
-      return text.split(/\r?\n/).map(function(r){ return r.trim(); }).filter(Boolean).map(function(r){ return r.split(',').map(function(c){ return c.trim(); }); });
+      return text.split(/\r?\n/).map(function(r){ return r.trim(); }).filter(Boolean).map(function(r){
+        // Handle quoted CSV
+        var out=[], cur='', inQ=false;
+        for (var i=0;i<r.length;i++){
+          var ch=r[i];
+          if (ch==='"' ){ if (inQ && r[i+1]==='"'){ cur+='"'; i++; } else { inQ=!inQ; } }
+          else if (ch===',' && !inQ){ out.push(cur.trim()); cur=''; }
+          else cur+=ch;
+        }
+        out.push(cur.trim());
+        return out;
+      });
     }
 
     var btnExportPrices = byId('export-csv-prices');
@@ -1421,6 +1656,7 @@ Jammu Airport,Katra,49</pre>
             if (colI>=0) { var v3=parseInt(c[colI],10); if(!isNaN(v3)&&v3>0){ if(!STORE.priceTable.innova) STORE.priceTable.innova={}; STORE.priceTable.innova[key]=v3; } }
             if (colT>=0) { var v4=parseInt(c[colT],10); if(!isNaN(v4)&&v4>0){ if(!STORE.priceTable.tt) STORE.priceTable.tt={}; STORE.priceTable.tt[key]=v4; } }
           });
+          // De-dupe vehicles
           if (STORE.vehicles && STORE.vehicles.length){
             STORE.vehicles = STORE.vehicles.filter(function (v, i, a) {
               return a.findIndex(function (x) { return x.id === v.id; }) === i;
@@ -1511,7 +1747,7 @@ Jammu Airport,Katra,49</pre>
     });
 
     /* ===========================
-       Formal message (Email/WhatsApp)
+       Formal message (Email/WhatsApp) — as requested
     ============================ */
     function buildMessage(){
       var trip = 'oneway';
@@ -1618,12 +1854,14 @@ Jammu Airport,Katra,49</pre>
 
       var payload = { message: msg, when: new Date().toISOString(), source: 'fodel-transport' };
       if (FORMSPREE_ENDPOINT){
-        try{ fetch(FORMSPREE_ENDPOINT, { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify(payload) }).catch(function(){}); }catch(e){}
+        try{
+          fetch(FORMSPREE_ENDPOINT, { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify(payload) }).catch(function(){});
+        }catch(e){}
       }
 
       if (pref === 'email'){
         var subject = encodeURIComponent('Transport Request — Fodel Transport');
-        var body = encodeURIComponent(msg);
+        var body = encodeURIComponent(msg.replace(/\*\*/g,'').replace(/\*/g,''));
         window.location.href = "mailto:sales@fodeltravels.in?subject="+subject+"&body="+body;
       } else {
         var wa = "https://wa.me/919797459260?text="+encodeURIComponent(msg);
@@ -1639,111 +1877,114 @@ Jammu Airport,Katra,49</pre>
       primeDefaultsFromData().then(function(){
         loadStore();
         fillVehicles();
-        renderRegionTabs();
-        renderCityChipsTop();
-        applyLocationFilter();  // filter dropdowns to default region
-        renderLocChips();
         refreshAddonLabels();
         initDates();
-        updateTripBlocks();
+
+        // Prefill admin add-on inputs
+        var ar = byId('a-roof'), ap = byId('a-placard');
+        if (ar) ar.value = STORE.addons.roofcarrier || 0;
+        if (ap) ap.value = STORE.addons.placard || 0;
+
+        // Render admin lists
+        renderLocChips();
+        renderRegions(); renderCities(); renderCityLocations();
+        fillAdminSelects();
+
+        // Front-end selectors
+        renderRegionTabs();
+        renderCityChipsTop();
+        applyLocationFilter();
+
+        updateTripBlocks(); // also calls estimate & FT visibility
         refreshEstimate();
       });
     }
     document.addEventListener('DOMContentLoaded', init);
   </script>
-  <!-- Firebase Auth (Google) — Admin only via ?admin=1 -->
+  <!-- Admin auth (Google Firebase) — only when ?admin=1 -->
   <script type="module">
-    // Safe guards if Firebase not set
-    const HAS_CONFIG = !!window.FODEL_FIREBASE_READY;
+    const qp = new URLSearchParams(location.search);
+    const wantAdmin = qp.get('admin') === '1';
+    const wantLogout = qp.get('logout') === '1';
 
-    // Lazy import Firebase only if we need admin
-    const urlParams = new URLSearchParams(location.search);
-    const wantAdmin = urlParams.get('admin') === '1';
-    const wantLogout = urlParams.get('logout') === '1';
+    const adminOv   = document.getElementById('admin-ov');
+    const openAdmin = document.getElementById('open-admin');
+    const adminLogoutBtn = document.getElementById('admin-logout');
 
-    async function setup(){
-      if (!wantAdmin && !wantLogout) return; // nothing to do
+    function show(el, on){ if (el) el.style.display = on ? 'inline-flex' : 'none'; }
 
-      try{
-        // Dynamically import Firebase
-        const [{ initializeApp }, { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signOut }] =
-          await Promise.all([
-            import("https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js"),
-            import("https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js")
-          ]);
+    async function main(){
+      // Always hide initially
+      show(openAdmin, false);
+      if (adminOv) adminOv.classList.remove('active');
 
-        // TODO: Replace with your Firebase project's config
-        const firebaseConfig = {
-          apiKey: "YOUR_API_KEY",
-          authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-          projectId: "YOUR_PROJECT_ID",
-          appId: "YOUR_APP_ID"
-        };
+      if (!wantAdmin && !wantLogout) return;
 
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const provider = new GoogleAuthProvider();
+      const [{ initializeApp }, { getAuth, GoogleAuthProvider, signInWithPopup, signOut }] =
+        await Promise.all([
+          import("https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js"),
+          import("https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js")
+        ]);
 
-        // TODO: Allowed admin emails
-        const ADMIN_EMAILS = [
-          "sales@fodeltravels.in"
-          // ,"your.email@domain.com"
-        ];
-        const openAdminBtn = document.getElementById('open-admin');
-        const adminOv = document.getElementById('admin-ov');
-        const adminLogoutBtn = document.getElementById('admin-logout');
+      // TODO: Replace with your Firebase project's config
+      const firebaseConfig = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+        projectId: "YOUR_PROJECT_ID",
+        appId: "YOUR_APP_ID"
+      };
 
-        function isAllowed(user){
-          return !!(user && user.email && ADMIN_EMAILS.includes(user.email.toLowerCase()));
-        }
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const provider = new GoogleAuthProvider();
 
-        async function ensureLogin(){
-          const user = auth.currentUser;
-          if (user && isAllowed(user)) return user;
-          const res = await signInWithPopup(auth, provider);
-          return res.user;
-        }
-        async function doLogout(){ try{ await signOut(auth); }catch(e){} }
+      // TODO: Allowed admin emails
+      const ADMIN_EMAILS = [
+        "sales@fodeltravels.in"
+        // ,"your.email@domain.com"
+      ];
+      const isAllowed = (u) => !!(u && u.email && ADMIN_EMAILS.includes(u.email.toLowerCase()));
 
-        if (wantLogout){
-          await doLogout();
-          const clean = new URL(location.href);
-          clean.searchParams.delete('logout');
-          history.replaceState({}, document.title, clean.pathname + (clean.searchParams.toString() ? '?' + clean.searchParams.toString() : '') + clean.hash);
-          alert('Logged out.');
-          return;
-        }
+      async function doLogin(){
+        if (auth.currentUser && isAllowed(auth.currentUser)) return auth.currentUser;
+        const res = await signInWithPopup(auth, provider);
+        return res.user;
+      }
+      async function doLogout(){ try{ await signOut(auth); }catch(e){} }
 
-        // wantAdmin flow
-        const user = await ensureLogin();
-        if (!isAllowed(user)){
-          alert('This Google account is not authorized for Admin.');
-        } else {
-          if (openAdminBtn) openAdminBtn.style.display = 'inline-flex';
-          if (adminOv) adminOv.classList.add('active');
-        }
-
-        // Clean query params
-        const clean = new URL(location.href);
-        clean.searchParams.delete('admin');
+      if (wantLogout){
+        await doLogout();
+        const clean = new URL(location.href); clean.searchParams.delete('logout');
         history.replaceState({}, document.title, clean.pathname + (clean.searchParams.toString() ? '?' + clean.searchParams.toString() : '') + clean.hash);
+        alert('Logged out.');
+        return;
+      }
 
-        // Logout button inside modal
-        if (adminLogoutBtn){
-          adminLogoutBtn.addEventListener('click', async function(){
-            await doLogout();
-            if (openAdminBtn) openAdminBtn.style.display = 'none';
-            if (adminOv) adminOv.classList.remove('active');
-            alert('Logged out.');
-          });
-        }
+      // Admin open flow
+      const user = await doLogin().catch(() => null);
+      if (!isAllowed(user)){
+        alert('This Google account is not authorized for Admin.');
+      } else {
+        show(openAdmin, true);          // reveal big button
+        if (adminOv) adminOv.classList.add('active'); // and open once
+      }
 
-      }catch(err){
-        console.warn(err);
-        alert('Admin sign-in not configured. Please set Firebase config in the code.');
+      // Clean ?admin=1 from URL
+      const clean = new URL(location.href);
+      clean.searchParams.delete('admin');
+      history.replaceState({}, document.title, clean.pathname + (clean.searchParams.toString() ? '?' + clean.searchParams.toString() : '') + clean.hash);
+
+      // Modal logout
+      if (adminLogoutBtn){
+        adminLogoutBtn.addEventListener('click', async function(){
+          await doLogout();
+          show(openAdmin, false);
+          if (adminOv) adminOv.classList.remove('active');
+          alert('Logged out.');
+        });
       }
     }
-    setup();
+    main();
   </script>
 </body>
 </html>
