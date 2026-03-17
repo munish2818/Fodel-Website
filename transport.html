@@ -6,8 +6,8 @@
   ============================ -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fodel Transport | Taxi & Transfers | Jammu · Katra · Patnitop · Srinagar</title>
-  <meta name="description" content="Book reliable cabs, airport transfers, local sightseeing and multi-city tours with Fodel Transport. Jammu, Katra Vaishno Devi, Patnitop, Srinagar, Gulmarg, Pahalgam and pan-India routes on request." />
+  <title>Fodel Transport | Taxi & Transfers | Jammu · Katra · Srinagar · Goa</title>
+  <meta name="description" content="Book reliable cabs, airport transfers, local sightseeing and multi-city tours with Fodel Transport. Jammu, Katra (Vaishno Devi), Patnitop, Srinagar, Gulmarg, Pahalgam — now also Goa: Dabolim Airport, Panaji, Calangute, Madgaon and more." />
   <link rel="canonical" href="https://www.fodel.in/transport.html" />
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
   <meta name="theme-color" content="#e11924" />
@@ -19,7 +19,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="Fodel Transport — Taxi, Transfers & Multi-city Tours" />
-  <meta property="og:description" content="Airport transfers, point-to-point and multi-city taxi services across Jammu, Katra, Patnitop and Srinagar." />
+  <meta property="og:description" content="Airport transfers, point-to-point and multi-city taxi services across Jammu, Katra, Patnitop, Srinagar — now also Goa." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.fodel.in/transport.html" />
   <meta property="og:image" content="https://www.fodel.in/og-transport.jpg" />
@@ -28,13 +28,13 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Fodel Transport — Taxi, Transfers & Multi-city Tours" />
-  <meta name="twitter:description" content="Book cabs for Jammu, Katra, Patnitop, Srinagar, Gulmarg, Pahalgam & more." />
+  <meta name="twitter:description" content="Book cabs for Jammu, Katra, Patnitop, Srinagar, Gulmarg, Pahalgam & Goa (Dabolim Airport, Panaji, Calangute, Madgaon)." />
   <meta name="twitter:image" content="https://www.fodel.in/og-transport.jpg" />
 
-  <!-- (Optional) meta keywords: Google ignores this, but harmless -->
-  <meta name="keywords" content="taxi, cab, airport transfer, one way taxi, round trip taxi, multi city taxi, Jammu taxi, Katra taxi, Srinagar taxi, Patnitop cab, Gulmarg taxi, Pahalgam cab, Vaishno Devi taxi, outstation taxi, India taxi booking" />
+  <!-- (Optional) meta keywords: harmless (Google mostly ignores) -->
+  <meta name="keywords" content="taxi, cab, airport transfer, one way taxi, round trip taxi, multi city taxi, Jammu taxi, Katra taxi, Srinagar taxi, Patnitop cab, Gulmarg taxi, Pahalgam cab, Vaishno Devi taxi, Goa taxi, Panaji cab, Calangute taxi, Madgaon cab" />
 
-  <!-- Structured Data: Organization + TaxiService -->
+  <!-- Structured Data: Organization + TaxiService + FAQ -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -52,24 +52,22 @@
     "@type":"TaxiService",
     "name":"Fodel Transport",
     "url":"https://www.fodel.in/transport.html",
-    "areaServed":["Jammu","Katra","Patnitop","Srinagar","Gulmarg","Pahalgam","Udhampur","Sonmarg","India"],
+    "areaServed":["Jammu","Katra","Patnitop","Srinagar","Gulmarg","Pahalgam","Udhampur","Sonmarg","Goa","Panaji","Calangute","Madgaon","Vasco da Gama","India"],
     "provider":{"@type":"Organization","name":"Fodel India","url":"https://www.fodel.in"},
     "telephone":"+91-9797459260",
     "priceRange":"₹₹",
     "currenciesAccepted":"INR"
   }
   </script>
-
-  <!-- Bonus SEO: Helpful FAQ (rich results) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"FAQPage",
     "mainEntity":[
-      {"@type":"Question","name":"Do you provide airport transfers and outstation taxis?","acceptedAnswer":{"@type":"Answer","text":"Yes. We handle airport transfers, point-to-point rides, local packages and multi-city tours. Jammu, Katra, Patnitop, Srinagar and pan-India on request."}},
+      {"@type":"Question","name":"Do you provide airport transfers and outstation taxis?","acceptedAnswer":{"@type":"Answer","text":"Yes. We handle airport transfers, point-to-point rides, local packages and multi-city tours across Jammu, Katra, Patnitop, Srinagar and now Goa."}},
       {"@type":"Question","name":"How do I get an estimate?","acceptedAnswer":{"@type":"Answer","text":"Select pickup, drop and vehicle type on this page, then tap Refresh. Admin price tables update the estimate instantly."}},
       {"@type":"Question","name":"Can I book for multiple legs (multi-city)?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use the Add Leg button to build your route. The estimate and total distance reflect the priced legs you set in Admin."}},
-      {"@type":"Question","name":"How do I confirm a booking?","acceptedAnswer":{"@type":"Answer","text":"Submit the form with your preferred contact method. We’ll confirm availability, share the best price and finalize your trip."}}
+      {"@type":"Question","name":"Do you operate in Goa?","acceptedAnswer":{"@type":"Answer","text":"Yes. Dabolim Airport, Panaji, North Goa (Calangute, Baga, Candolim, Anjuna, Vagator) and South Goa (Madgaon, Colva, Palolem) are supported."}}
     ]
   }
   </script>
@@ -168,13 +166,21 @@
     .home-btn{ background:var(--accent); }
     .home-btn:hover{ background:var(--accent-hover); }
 
-    /* Mobile header fix: brand text hides only on very small widths */
+    /* Mobile header: always show brand text; truncate neatly */
     @media (max-width:640px){
       .topbar{ top:14px; padding:0 10px; display:grid; grid-template-columns:minmax(0,1fr) max-content; align-items:center; gap:8px; }
       .nav{ display:flex; align-items:center; gap:6px; min-width:0; overflow:hidden; }
       .pill-btn{ padding:5px 8px; font-size:13px; border-radius:8px; }
     }
-    @media (max-width:480px){ .brand span{ display:none; } }
+    @media (max-width:480px){
+      .brand span{
+        display:inline !important;
+        max-width: 62vw;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
     @media (max-width:400px){
       .nav{ gap:4px; }
       .pill-btn{ padding:5px 7px; }
@@ -224,7 +230,7 @@
     .chip{
       display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px;
       border:1px solid var(--border); background:#fff; font-size:13px; transition: box-shadow .2s, transform .2s, border-color .2s;
-      will-change:transform;
+      will-change:transform; cursor:pointer;
     }
     .chip small{ font-weight:700; color:#0f172a; opacity:.9; }
     .chip:hover{ transform:translateY(-1px); border-color: color-mix(in srgb, var(--accent) 30%, #ccc); box-shadow:0 6px 14px rgba(0,0,0,.08); }
@@ -241,7 +247,7 @@
     .btn:hover{ transform:translateY(-2px); background:var(--accent-hover); box-shadow:0 12px 26px rgba(0,0,0,0.18); }
     .btn:active{ transform:translateY(0); filter:saturate(1.05); }
     .btn-ghost{
-      padding:10px 14px; border-radius:10px; font-weight:600; background:#f1f5f9; color:#0f172a; border:1px solid var(--border); cursor:pointer;
+      padding:10px 14px; border-radius:10px; font-weight:600; background:#f1f59; color:#0f172a; border:1px solid var(--border); cursor:pointer;
       transition: background .18s, transform .18s, border-color .18s;
     }
     .btn-ghost:hover{ background:#eef2f7; transform:translateY(-1px); border-color: color-mix(in srgb, var(--accent) 25%, #cbd5e1); }
@@ -271,6 +277,11 @@
     .qty{ display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--border); border-radius:10px; padding:6px 8px; }
     .qty button{ width:28px; height:28px; border-radius:8px; border:1px solid var(--border); background:#f8fafc; cursor:pointer; font-weight:800; line-height:1; }
     .qty .qty-input{ width:56px; text-align:center; border:1px solid var(--border); border-radius:8px; padding:6px 8px; }
+
+    /* Remove number spinners for add-on qty inputs (desktop and mobile) */
+    .qty-input::-webkit-outer-spin-button,
+    .qty-input::-webkit-inner-spin-button{ -webkit-appearance: none; margin:0; }
+    .qty-input[type="number"]{ -moz-appearance: textfield; }
 
     /* Admin modal */
     .overlay{ position:fixed; inset:0; z-index:70; background:rgba(0,0,0,0.45); display:none; align-items:center; justify-content:center; padding:18px; }
@@ -308,9 +319,17 @@
     }
     @media(min-width:720px){ .fw-whatsapp .tag{ display:block; } }
 
-    /* Visually-hidden SEO helper (kept concise) */
+    /* Visually-hidden SEO helper */
     .visually-hidden-seo{
       position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; clip:rect(1px, 1px, 1px, 1px);
+    }
+
+    /* State/City chip styles */
+    .chip input[type="radio"]{ appearance:none; width:0; height:0; position:absolute; opacity:0; }
+    .chip.active{
+      border-color: color-mix(in srgb, var(--accent) 55%, #cbd5e1);
+      box-shadow: 0 6px 14px rgba(0,0,0,.08);
+      background: #fff8f8;
     }
 
     /* Animations */
@@ -319,12 +338,13 @@
   </style>
 </head>
 <body>
-  <!-- Hidden but accessible keywords (kept concise; pan-India) -->
+  <!-- Hidden but accessible keywords (kept concise; pan-India + Goa) -->
   <div class="visually-hidden-seo" aria-hidden="true">
     India taxi, airport taxi, outstation cab, one way taxi, round trip taxi, multi city taxi,
     Delhi taxi, Mumbai taxi, Bengaluru taxi, Hyderabad cab, Chennai taxi, Kolkata cab,
     Pune taxi, Ahmedabad cab, Jaipur taxi, Chandigarh taxi, Lucknow cab, Indore cab, Bhopal taxi,
-    Jammu taxi, Katra taxi, Patnitop cab, Srinagar taxi, Gulmarg taxi, Pahalgam cab, Sonmarg taxi.
+    Jammu taxi, Katra taxi, Patnitop cab, Srinagar taxi, Gulmarg taxi, Pahalgam cab, Sonmarg taxi,
+    Goa taxi, Panaji cab, Calangute taxi, Madgaon cab, Dabolim Airport transfer, North Goa taxi, South Goa cab.
   </div>
 
   <!-- ========== BANNER ========== -->
@@ -337,14 +357,17 @@
       <nav class="nav" aria-label="Primary">
         <a class="pill-btn reviews-btn" href="reviews-travels.html" aria-label="Read customer reviews">⭐ Reviews</a>
         <a class="pill-btn home-btn" href="index.html" aria-label="Back to Home">← Home</a>
-        <button class="pill-btn" id="translate-btn" aria-label="Translate">🌐 Translate</button>
+
+        <!-- Admin pills (auth-controlled in Part 6) -->
+        <button class="pill-btn" id="admin-login" aria-label="Admin login" style="display:none;">🔐 Admin Login</button>
+        <button class="pill-btn" id="admin-open" aria-label="Open admin" style="display:none;">⚙ Admin</button>
       </nav>
     </div>
 
     <div class="banner-inner">
       <div class="hero">
         <h1>Taxi · Transfers · Local &amp; Multi City Tours</h1>
-        <p>Jammu, Katra (Vaishno Devi), Patnitop, Srinagar, Gulmarg, Pahalgam and beyond.</p>
+        <p>Jammu, Katra (Vaishno Devi), Patnitop, Srinagar, Gulmarg, Pahalgam — and Goa.</p>
       </div>
     </div>
   </header>
@@ -360,6 +383,16 @@
         <label class="chip"><input type="radio" name="tripType" value="round"> <span>Round trip</span></label>
         <label class="chip"><input type="radio" name="tripType" value="local"> <span>Local (hours/km)</span></label>
         <label class="chip"><input type="radio" name="tripType" value="multi"> <span>Multi city</span></label>
+      </div>
+
+      <!-- STATE → CITY chips (fast filters for pickup/drop lists) -->
+      <div class="row">
+        <label>Region / State</label>
+        <div id="state-chips" class="inline" role="radiogroup" aria-label="State"></div>
+      </div>
+      <div class="row">
+        <label>City</label>
+        <div id="city-chips" class="inline" role="radiogroup" aria-label="City"></div>
       </div>
 
       <!-- ONE-WAY / ROUND -->
@@ -550,6 +583,7 @@
       </div>
 
       <div class="actions">
+        <!-- Large admin button shown only to authenticated admins (Part 6) -->
         <button class="btn-ghost" type="button" id="open-admin" style="display:none;">⚙ Admin Console</button>
         <button class="btn" id="submit-btn">Submit Transport Request</button>
       </div>
@@ -557,6 +591,14 @@
       <p class="note" style="margin-top:10px;">
         Estimate is indicative for planning. Final fare may vary based on actual kms, waiting, tolls, parking, night charges, and chosen vehicle. We’ll confirm the best possible price before booking.
       </p>
+    </div>
+  </section>
+
+  <!-- Goa content (optional SEO section) -->
+  <section class="section" aria-labelledby="goa-title">
+    <div class="card">
+      <h2 id="goa-title">Taxi & Transfers in Goa</h2>
+      <p class="muted">Airport (Dabolim), Panaji, North Goa (Calangute, Candolim, Baga, Anjuna, Vagator) and South Goa (Madgaon, Colva, Palolem) and custom routes. One-way, round trip and local packages available.</p>
     </div>
   </section>
   <!-- ========== FOOTER ========== -->
@@ -677,7 +719,7 @@ Jammu Airport,Katra,49</pre>
     <a class="tag" target="_blank" rel="noopener noreferrer" href="https://wa.me/919797459260?text=Hi%20Fodel%20Transport%2C%20I%20need%20a%20cab%20quote.">WhatsApp Us</a>
     <a class="fab" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" href="https://wa.me/919797459260?text=Hi%20Fodel%20Transport%2C%20I%20need%20a%20cab%20quote.">💬</a>
   </div>
-  <script>
+<script>
     /* ===========================
        CONFIG / STORE
     ============================ */
@@ -685,12 +727,53 @@ Jammu Airport,Katra,49</pre>
     var DATA_URL = "/data/transport-data.json"; // optional seed file
 
     var DEFAULTS = {
+      // New hierarchical regions for fast filtering (State → City)
+      regions: {
+        "Jammu & Kashmir": {
+          "Jammu": [
+            "Jammu Airport", "Jammu City", "Jammu Tawi Railway Station"
+          ],
+          "Katra": [
+            "Katra", "Katra Helipad", "Katra Bus Stand"
+          ],
+          "Srinagar": [
+            "Srinagar Airport", "Srinagar City / Dal Gate", "Gulmarg", "Pahalgam", "Sonmarg"
+          ],
+          "Udhampur/Patnitop": [
+            "Udhampur", "Patnitop", "Nathatop"
+          ]
+        },
+        "Goa": {
+          "Airports/Stations": [
+            "Goa International Airport (Dabolim)",
+            "Madgaon Railway Station",
+            "Thivim Railway Station"
+          ],
+          "Panaji": [
+            "Panaji (Panjim) City", "Panjim Bus Stand"
+          ],
+          "North Goa": [
+            "Calangute", "Candolim", "Baga", "Anjuna", "Vagator"
+          ],
+          "South Goa": [
+            "Madgaon", "Colva", "Benaulim", "Palolem"
+          ]
+        }
+      },
+
+      // Flat list kept for backward compatibility with Admin CSV/keys
       locations: [
         "Jammu Airport", "Jammu Tawi Railway Station", "Jammu City",
         "Katra", "Katra Helipad", "Katra Bus Stand",
         "Udhampur", "Patnitop", "Nathatop",
-        "Srinagar Airport", "Srinagar City / Dal Gate", "Gulmarg", "Pahalgam", "Sonmarg"
+        "Srinagar Airport", "Srinagar City / Dal Gate", "Gulmarg", "Pahalgam", "Sonmarg",
+
+        "Goa International Airport (Dabolim)", "Panaji (Panjim) City", "Panjim Bus Stand",
+        "Calangute", "Candolim", "Baga", "Anjuna", "Vagator",
+        "Madgaon", "Colva", "Benaulim", "Palolem",
+        "Madgaon Railway Station", "Thivim Railway Station"
       ],
+
       vehicles: [
         { id:"sedan",  label:"Sedan (Dzire/Amaze) — 4 pax" },
         { id:"suv",    label:"SUV (Ertiga) — 5/6 pax" },
@@ -702,7 +785,7 @@ Jammu Airport,Katra,49</pre>
       addons: { roofcarrier: 200, placard: 100 } /* per unit */
     };
 
-    var STORE_KEY = "fodel_transport_v4";
+    var STORE_KEY = "fodel_transport_v5";
     var STORE = null;
 
     function mergeDeep(target, source){
@@ -731,7 +814,8 @@ Jammu Airport,Katra,49</pre>
             vehicles:  Object.prototype.toString.call(json.vehicles)==='[object Array]'  ? json.vehicles  : undefined,
             priceTable: typeof json.priceTable==='object' ? json.priceTable : undefined,
             distanceTable: typeof json.distanceTable==='object' ? json.distanceTable : undefined,
-            addons: typeof json.addons==='object' ? json.addons : undefined
+            addons: typeof json.addons==='object' ? json.addons : undefined,
+            regions: typeof json.regions==='object' ? json.regions : undefined
           };
           mergeDeep(DEFAULTS, seed);
         }).catch(function(){});
@@ -1079,7 +1163,7 @@ Jammu Airport,Katra,49</pre>
         else missing++;
       }
 
-      // Add-ons per car quantities
+      // Add-ons
       var priceRoof = (STORE.addons && STORE.addons.roofcarrier || 0);
       var pricePlacard = (STORE.addons && STORE.addons.placard || 0);
       var qRoof = Math.max(0, parseInt(qtyRoof.value || "0", 10));
@@ -1151,107 +1235,21 @@ Jammu Airport,Katra,49</pre>
     if (dropOtherToggle)   dropOtherToggle.addEventListener('change',   function(){ toggleOther(dropOtherToggle,   dropOther,   selDrop); });
     toggleOther(pickupOtherToggle, pickupOther, selPickup);
     toggleOther(dropOtherToggle,   dropOther,   selDrop);
+
     /* ===========================
-       ADMIN SECURITY (PIN, URL, Gear)
+       ADMIN UI: open/close only (auth handled in Part 6)
     ============================ */
-    var ADMIN_FLAG_LS = 'fodel_is_admin';
-    var ADMIN_FLAG_SS = 'fodel_is_admin_ss';
-    var ADMIN_PIN_SHA256 = '380ab389d8400d508ce9a8393bda7161466bbed74cbaec488e931ddb1410c350'; // "nameandfame19"
-
-    function isAdminNew(){
-      return sessionStorage.getItem(ADMIN_FLAG_SS)==='1' || localStorage.getItem(ADMIN_FLAG_LS)==='1';
-    }
-    function setAdminNew(v, opts){
-      opts = opts || {};
-      if (v){
-        sessionStorage.setItem(ADMIN_FLAG_SS, '1');
-        if (opts.persist) localStorage.setItem(ADMIN_FLAG_LS, '1');
-      } else {
-        sessionStorage.removeItem(ADMIN_FLAG_SS);
-        localStorage.removeItem(ADMIN_FLAG_LS);
-      }
-      if (openAdmin) openAdmin.style.display = v ? 'inline-flex' : 'none';
-    }
-
-    function sha256hex(s){
-      if (!window.crypto || !crypto.subtle) { alert('Admin login not supported on this browser'); return Promise.resolve(''); }
-      var enc = new TextEncoder();
-      return crypto.subtle.digest('SHA-256', enc.encode(String(s))).then(function(buf){
-        var arr = new Uint8Array(buf);
-        return Array.prototype.map.call(arr, function(b){ return b.toString(16).padStart(2,'0'); }).join('');
-      });
-    }
-    function verifyPin(rawPin){
-      if (!rawPin) return Promise.resolve(false);
-      return sha256hex(String(rawPin).trim()).then(function(h){
-        return h && h.toLowerCase() === String(ADMIN_PIN_SHA256).toLowerCase();
-      }).catch(function(){ return false; });
-    }
-    function promptPinAndUnlock(opts){
-      opts = opts || {};
-      var input = prompt('Enter Admin PIN');
-      return verifyPin(input).then(function(ok){
-        if (!ok){ showToast('Invalid PIN'); return false; }
-        setAdminNew(true, {persist: !!opts.persist});
-        showToast('Admin unlocked');
-        if (opts.autoOpen && adminOv) adminOv.classList.add('active');
-        return true;
-      });
-    }
-
-    (function handleAdminFromURL(){
-      var p = new URLSearchParams(location.search);
-      var wantAdmin = p.get('admin') === '1';
-      var pin       = p.get('pin');
-      var persist   = p.get('persist') === '1';
-
-      function reflect(){
-        setAdminNew(isAdminNew(), {});
-        if (wantAdmin){
-          if (isAdminNew()){
-            adminOv && adminOv.classList.add('active');
-          } else {
-            promptPinAndUnlock({persist:persist, autoOpen:true});
-          }
-        }
-        if (wantAdmin || pin || persist){
-          var clean = new URL(location.href);
-          clean.searchParams.delete('admin');
-          clean.searchParams.delete('pin');
-          clean.searchParams.delete('persist');
-          history.replaceState({}, document.title, clean.pathname + (clean.searchParams.toString() ? '?' + clean.searchParams.toString() : '') + clean.hash);
-        }
-      }
-
-      if (pin){
-        verifyPin(pin).then(function(ok){
-          if (ok){
-            setAdminNew(true, {persist:persist});
-            showToast('Admin unlocked');
-          } else {
-            showToast('Invalid PIN');
-          }
-          reflect();
-        });
-      } else {
-        reflect();
-      }
-    })();
-
-    // Admin open / logout / close
+    if (byId('admin-open')) byId('admin-open').addEventListener('click', function(){ adminOv && adminOv.classList.add('active'); });
     if (openAdmin) openAdmin.addEventListener('click', function(){ adminOv && adminOv.classList.add('active'); });
     function closeAdmin(){
       if (adminOv) adminOv.classList.remove('active');
-      setAdminNew(false);
-      showToast('Logged out');
     }
-    var adminLogout = byId('admin-logout');
-    if (adminLogout) adminLogout.addEventListener('click', closeAdmin);
+    var adminLogoutBtn = byId('admin-logout'); // actual sign-out bound in Part 6
     if (adminOv){ adminOv.addEventListener('click', function(e){ if (e.target === adminOv) closeAdmin(); }); }
     Array.prototype.forEach.call(document.querySelectorAll('[data-close]'), function(x){ x.addEventListener('click', closeAdmin); });
     document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeAdmin(); });
 
-    /* ADMIN: Locations / Prices / Distances / Add-ons / CSV / Backup */
+    /* ADMIN: Locations / Prices / Distances / Add-ons / CSV / Backup (unchanged) */
     function renderLocChips(){
       var locList = byId('loc-list');
       if (!locList) return;
@@ -1395,7 +1393,7 @@ Jammu Airport,Katra,49</pre>
             if (colI>=0) { var v3=parseInt(c[colI],10); if(!isNaN(v3)&&v3>0){ if(!STORE.priceTable.innova) STORE.priceTable.innova={}; STORE.priceTable.innova[key]=v3; } }
             if (colT>=0) { var v4=parseInt(c[colT],10); if(!isNaN(v4)&&v4>0){ if(!STORE.priceTable.tt) STORE.priceTable.tt={}; STORE.priceTable.tt[key]=v4; } }
           });
-          // Safety: dedupe vehicles (if CSV included any vehicle metadata elsewhere)
+          // Safety: de-dupe vehicles
           if (STORE.vehicles && STORE.vehicles.length){
             STORE.vehicles = STORE.vehicles.filter(function (v, i, a) {
               return a.findIndex(function (x) { return x.id === v.id; }) === i;
@@ -1460,17 +1458,22 @@ Jammu Airport,Katra,49</pre>
         try{
           var obj = JSON.parse(reader.result);
           if (!obj || typeof obj !== 'object') throw new Error('Invalid JSON');
-          // Shallow merge into defaults, then assign
           STORE = Object.assign({}, DEFAULTS, obj);
-          // Safety: de-duplicate vehicles
           if (STORE.vehicles && STORE.vehicles.length){
             STORE.vehicles = STORE.vehicles.filter(function (v, i, a) {
               return a.findIndex(function (x) { return x.id === v.id; }) === i;
             });
           }
-          saveStore(); fillAllLocations(); fillVehicles(); renderLocChips(); refreshAddonLabels(); updateTripBlocks(); refreshEstimate();
-          if (aRoof) aRoof.value = STORE.addons.roofcarrier || 0;
-          if (aPlacard) aPlacard.value = STORE.addons.placard || 0;
+          saveStore();
+          fillVehicles();
+          fillAllLocations();
+          renderLocChips();
+          refreshAddonLabels();
+          updateTripBlocks();
+          refreshEstimate();
+          var ar = byId('a-roof'), ap = byId('a-placard');
+          if (ar) ar.value = STORE.addons.roofcarrier || 0;
+          if (ap) ap.value = STORE.addons.placard || 0;
           showToast('Imported');
         }catch(e){ showToast('Import failed'); }
       };
@@ -1478,7 +1481,8 @@ Jammu Airport,Katra,49</pre>
     });
 
     /* ===========================
-       SUBMIT HANDLER
+       Formal message builder (Email & WhatsApp)
+       Starts with: "Dear Sir/Ma’am, we have requirement of ..."
     ============================ */
     function buildMessage(){
       var trip = 'oneway';
@@ -1487,6 +1491,8 @@ Jammu Airport,Katra,49</pre>
 
       var pLoc = pickupOtherToggle.checked ? (pickupOther.value||'') : (selPickup.value||'');
       var dLoc = dropOtherToggle.checked ? (dropOther.value||'') : (selDrop.value||'');
+
+      function toTitle(s){ return (s||'').replace(/\b\w/g,m=>m.toUpperCase()); }
 
       var route = '';
       if (trip==='multi'){
@@ -1512,49 +1518,52 @@ Jammu Airport,Katra,49</pre>
       var distTxt = kmText.textContent || '';
       var estTxt  = estText.textContent || '';
 
-      var lines = [
-        '**New Transport Request — Details**',
-        '',
-        '• Trip: '+trip.toUpperCase(),
-        '• Route: '+route
-      ];
+      var lines = [];
+
+      // Greeting + opening sentence (as requested)
+      lines.push("Dear Sir/Ma’am,");
+      lines.push("");
+      lines.push("We have requirement of taxi/transport services as per the details below. Kindly confirm availability and share the best price.");
+
+      lines.push("");
+      lines.push("Trip Type: " + toTitle(trip));
+      lines.push("Route: " + route);
 
       if (trip==='oneway' || trip==='round'){
-        if (date.value)  lines.push('• Pickup: '+date.value+' '+(time.value||''));
-        if (trip==='round' && rdate.value) lines.push('• Return: '+rdate.value+' '+(rtime.value||''));
+        if (date.value)  lines.push("Pickup: " + date.value + (time.value ? (" " + time.value) : ""));
+        if (trip==='round' && rdate.value) lines.push("Return: " + rdate.value + (rtime.value ? (" " + rtime.value) : ""));
       } else if (trip==='local'){
         var lp = (byId('local-package') && byId('local-package').value) || '';
         var lc = (selLocalCity.value||'');
         var ld = (byId('local-date') && byId('local-date').value) || '';
-        lines.push('• Package: '+(lp || 'Custom'));
-        lines.push('• City: '+lc);
-        if (ld) lines.push('• Date: '+ld);
+        lines.push("Package: " + (lp ? lp.replace('-', ' hours / ') : 'Custom'));
+        lines.push("City: " + lc);
+        if (ld) lines.push("Date: " + ld);
       } else if (trip==='multi'){
-        legs.forEach(function(x,i){ if(x[0]&&x[1]) lines.push('• Leg '+(i+1)+': '+x[0]+' → '+x[1]); });
+        legs.forEach(function(x,i){ if(x[0]&&x[1]) lines.push("Leg " + (i+1) + ": " + x[0] + " → " + x[1]); });
       }
 
-      if (ft) lines.push('• '+ft);
-      if (vehicle.value) lines.push('• Vehicle: '+vehicle.options[vehicle.selectedIndex].text);
-      if (pax.value) lines.push('• Passengers: '+pax.value);
-      if (cars.value) lines.push('• Cars: '+cars.value);
-
-      if (addOnsTxt.length) lines.push('• Add ons: '+addOnsTxt.join(', '));
-
-      if (distTxt && distTxt !== '—') lines.push('• Distance: '+distTxt);
-      if (estTxt) lines.push('• Estimate: '+estTxt);
+      if (ft) lines.push(ft);
+      if (vehicle.value) lines.push("Vehicle: " + vehicle.options[vehicle.selectedIndex].text);
+      if (pax.value) lines.push("Passengers: " + pax.value);
+      if (cars.value) lines.push("Cars: " + cars.value);
+      if (addOnsTxt.length) lines.push("Add-ons: " + addOnsTxt.join(', '));
+      if (distTxt && distTxt !== '—') lines.push("Approx. Distance: " + distTxt);
+      if (estTxt) lines.push("Estimate: " + estTxt);
 
       if (byId('notes').value.trim()){
-        lines.push('');
-        lines.push('Notes: '+byId('notes').value.trim());
+        lines.push("");
+        lines.push("Additional Notes: " + byId('notes').value.trim());
       }
 
-      lines.push('');
-      lines.push('Name: '+byId('name').value.trim());
-      lines.push('Mobile: '+byId('mobile').value.trim());
-      if (byId('email').value.trim()) lines.push('Email: '+byId('email').value.trim());
+      lines.push("");
+      lines.push("Regards,");
+      lines.push((byId('name').value.trim() || ''));
+      lines.push("Mobile: " + (byId('mobile').value.trim() || ''));
+      if (byId('email').value.trim()) lines.push("Email: " + byId('email').value.trim());
 
-      lines.push('');
-      lines.push('*Estimate is indicative for planning. Final fare may vary based on actual kms, waiting, tolls, parking, night charges, and chosen vehicle. We’ll confirm the best possible price before booking.*');
+      lines.push("");
+      lines.push("Note: Estimate is indicative for planning. Final fare may vary based on actual kms, waiting, tolls, parking, night charges, and chosen vehicle.");
 
       return lines.join('\n');
     }
@@ -1589,8 +1598,8 @@ Jammu Airport,Katra,49</pre>
       }
 
       if (pref === 'email'){
-        var subject = encodeURIComponent('Transport Request — Fodel Transport');
-        var body = encodeURIComponent(msg.replace(/\*\*/g,'').replace(/\*/g,''));
+        var subject = encodeURIComponent('Transport Requirement — Fodel Transport');
+        var body = encodeURIComponent(msg);
         window.location.href = "mailto:sales@fodeltravels.in?subject="+subject+"&body="+body;
       } else {
         var wa = "https://wa.me/919797459260?text="+encodeURIComponent(msg);
@@ -1600,22 +1609,95 @@ Jammu Airport,Katra,49</pre>
     });
 
     /* ===========================
-       TRANSLATE (overlay on click)
+       STATE → CITY chips (filters)
     ============================ */
-    document.getElementById('translate-btn').addEventListener('click', function () {
-      if (!window.googleTranslateElementInit) {
-        var s = document.createElement('script');
-        s.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-        document.body.appendChild(s);
-      } else {
-        // If already loaded, re-init to ensure menu opens
-        googleTranslateElementInit();
+    var stateChips = byId('state-chips');
+    var cityChips  = byId('city-chips');
+    var CURRENT = { state: '', city: '' };
+
+    function unique(arr){ return Array.from(new Set(arr)); }
+
+    function renderStateChips(){
+      if (!stateChips) return;
+      var states = Object.keys(DEFAULTS.regions || {});
+      stateChips.innerHTML = '';
+      states.forEach(function(st){
+        var lab = document.createElement('label');
+        lab.className = 'chip';
+        lab.innerHTML = '<input type="radio" name="state"> <small><strong>'+st+'</strong></small>';
+        lab.addEventListener('click', function(){
+          CURRENT.state = st;
+          CURRENT.city = '';
+          refreshChipActive();
+          renderCityChips();
+          fillAllLocationsFiltered();
+          refreshEstimate();
+        });
+        stateChips.appendChild(lab);
+      });
+    }
+
+    function renderCityChips(){
+      if (!cityChips) return;
+      cityChips.innerHTML = '';
+      var cities = [];
+      if (CURRENT.state && DEFAULTS.regions[CURRENT.state]){
+        cities = Object.keys(DEFAULTS.regions[CURRENT.state] || {});
       }
-    });
-    function googleTranslateElementInit() {
-      // Creates the overlay/menu
-      new google.translate.TranslateElement({ pageLanguage: 'en', autoDisplay: true },
-        document.body.appendChild(document.createElement('div')));
+      cities.forEach(function(ct){
+        var lab = document.createElement('label');
+        lab.className = 'chip';
+        lab.innerHTML = '<input type="radio" name="city"> <small>'+ct+'</small>';
+        lab.addEventListener('click', function(){
+          CURRENT.city = ct;
+          refreshChipActive();
+          fillAllLocationsFiltered();
+          refreshEstimate();
+        });
+        cityChips.appendChild(lab);
+      });
+    }
+
+    function refreshChipActive(){
+      Array.prototype.forEach.call(stateChips.querySelectorAll('.chip'), function(el){
+        el.classList.toggle('active', el.textContent.trim() === CURRENT.state);
+      });
+      Array.prototype.forEach.call(cityChips.querySelectorAll('.chip'), function(el){
+        el.classList.toggle('active', el.textContent.trim() === CURRENT.city);
+      });
+    }
+
+    function getFilteredLocations(){
+      if (CURRENT.city && CURRENT.state && DEFAULTS.regions[CURRENT.state] && DEFAULTS.regions[CURRENT.state][CURRENT.city]){
+        return DEFAULTS.regions[CURRENT.state][CURRENT.city].slice();
+      }
+      if (CURRENT.state && DEFAULTS.regions[CURRENT.state]){
+        var acc = [];
+        Object.keys(DEFAULTS.regions[CURRENT.state]).forEach(function(ct){
+          acc = acc.concat(DEFAULTS.regions[CURRENT.state][ct] || []);
+        });
+        return unique(acc);
+      }
+      return (STORE.locations || DEFAULTS.locations || []).slice();
+    }
+
+    function fillLocationsFiltered(sel){
+      if(!sel) return;
+      var opts = '<option value="">Select</option>';
+      var arr = getFilteredLocations();
+      for (var i=0;i<arr.length;i++){ opts += '<option>'+arr[i]+'</option>'; }
+      sel.innerHTML = opts;
+    }
+
+    function fillAllLocationsFiltered(){
+      fillLocationsFiltered(selPickup);
+      fillLocationsFiltered(selDrop);
+      fillLocationsFiltered(selLocalCity);
+      // Admin dropdowns stay full list for CSV/backup workflows
+      fillLocations(byId('price-from'));
+      fillLocations(byId('price-to'));
+      fillLocations(byId('dist-from'));
+      fillLocations(byId('dist-to'));
     }
 
     /* ===========================
@@ -1625,19 +1707,90 @@ Jammu Airport,Katra,49</pre>
       primeDefaultsFromData().then(function(){
         loadStore();
         fillVehicles();
-        fillAllLocations();
+
+        // New: State/City chips
+        renderStateChips();
+        renderCityChips();
+        refreshChipActive();
+
+        // Use filtered locations for the customer selectors
+        fillAllLocationsFiltered();
+
         renderLocChips();
         refreshAddonLabels();
         initDates();
         updateTripBlocks(); // also calls estimate & FT visibility
+
         // Prefill admin add-on inputs
         var ar = byId('a-roof'), ap = byId('a-placard');
         if (ar) ar.value = STORE.addons.roofcarrier || 0;
         if (ap) ap.value = STORE.addons.placard || 0;
-        setAdminNew(isAdminNew(), {});
       });
     }
     document.addEventListener('DOMContentLoaded', init);
+  </script>
+<!-- Firebase Auth (Google) — Secure Admin (no PIN in code) -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+
+    // TODO: Replace with your Firebase project's config
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    // TODO: Add your allowed admin emails here:
+    const ADMIN_EMAILS = [
+      "sales@fodeltravels.in",
+      // "you@yourdomain.com"
+    ];
+
+    function userIsAdmin(user){
+      if (!user || !user.email) return false;
+      return ADMIN_EMAILS.includes(user.email.toLowerCase());
+    }
+
+    // Wire up UI bits (buttons exist in DOM)
+    const openAdminBtnTop = document.getElementById('admin-open');   // topbar small gear
+    const openAdminLarge  = document.getElementById('open-admin');   // large “⚙ Admin Console” near Submit
+    const adminLogout     = document.getElementById('admin-logout'); // inside modal header
+    const adminLogin      = document.getElementById('admin-login');  // topbar login
+
+    function show(el, on){ if (el) el.style.display = on ? 'inline-flex' : 'none'; }
+
+    async function login(){
+      try { await signInWithPopup(auth, provider); }
+      catch(e){ console.warn(e); }
+    }
+    async function logout(){
+      try { await signOut(auth); }
+      catch(e){ console.warn(e); }
+    }
+
+    if (adminLogin) adminLogin.addEventListener('click', login);
+    if (adminLogout) adminLogout.addEventListener('click', logout);
+
+    // Reflect auth => toggle Admin access
+    onAuthStateChanged(auth, (user) => {
+      const isAdmin = userIsAdmin(user);
+      // Show buttons only to admins
+      show(openAdminBtnTop, isAdmin);
+      show(openAdminLarge,  isAdmin);
+      // Show login only if not admin
+      show(adminLogin, !isAdmin);
+      // Close modal if user lost admin
+      if (!isAdmin) {
+        const adminOv = document.getElementById('admin-ov');
+        if (adminOv) adminOv.classList.remove('active');
+      }
+    });
   </script>
 </body>
 </html>
