@@ -1,104 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- ===== Fodel Travels — Travel Page with Dynamic Packages & Admin (Firebase) ===== -->
+<!-- Admin console: open https://www.fodel.in/travel.html?admin=1 -->
 <head>
-  <!-- ===========================
-       META / SEO
-  ============================ -->
+  <!-- META & SEO -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <title>Fodel Travels | Hotel Booking Katra Vaishno Devi | Jammu Kashmir Travel</title>
   <meta name="description" content="Fodel Travels offers hotel booking in Katra Vaishno Devi, Patnitop, Jammu hotel booking, Srinagar hotel booking, banquet events, destination weddings and Kashmir tour packages.">
   <meta name="robots" content="index,follow" />
-  <!-- <link rel="canonical" href="https://www.fodel.in/travel.html" /> -->
+  <link rel="canonical" href="https://www.fodel.in/travel.html" />
 
-  <meta name="keywords" content="
-  hotel booking katra vaishno devi,
-  katra hotel group booking,
-  banquet halls katra,
-  banquet halls jammu city,
-  destination wedding katra,
-  destination wedding jammu,
-  corporate events katra,
-  corporate events jammu,
-  mice event jammu,
-  exhibition venues jammu,
-  jammu hotel booking,
-  srinagar group hotel booking,
-  kashmir room booking,
-  kashmir package,
-  jammu and kashmir package,
-  vaishno devi travel booking,
-  helicopter booking katra,
-  patnitop package,
-  patnitop hotel booking,
-  resort property in katra,
-  vaishno devi package
-  ">
+  <!-- Social -->
+  <meta property="og:title" content="Fodel Travels | Jammu & Kashmir & Goa Packages | Hotel & Group Travel" />
+  <meta property="og:description" content="Curated Kashmir and Goa packages—hotels, transfers, sightseeing, and events. Enquire via WhatsApp or by form." />
+  <meta property="og:url" content="https://www.fodel.in/travel.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://www.fodel.in/images/travel-banner-1200.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Fodel Travels — Kashmir & Goa Packages" />
+  <meta name="twitter:description" content="Hotels, banquets, group travel, curated packages, and events." />
+  <meta name="twitter:image" content="https://www.fodel.in/images/travel-banner-1200.jpg" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 
-  <style>
-    /* ===========================
-       THEME
-    ============================ */
-    :root{
-      --page-bg:#f8fafc;       /* clean neutral */
-      --accent:#397e51;        /* brand green */
-      --brand-yellow:#f9e64a;
-
-      --text:#111827;
-      --muted:#374151;
-
-      --card:rgba(255,255,255,0.98);
-      --border:rgba(17,24,39,0.12);
-
-      /* Travel CTAs (solid green by default) */
-      --btn:#0f766e;
-      --btn-hover:#0f766e;
-
-      --radius:18px;
-      --shadow:0 14px 30px rgba(17,24,39,0.18);
-      --shadow-lg:0 24px 60px rgba(17,24,39,0.25);
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TravelAgency",
+    "name":"Fodel Travels",
+    "url":"https://www.fodel.in/travel.html",
+    "email":"sales@fodeltravels.in",
+    "telephone":"+919797459260",
+    "areaServed":["Jammu and Kashmir","Goa","India"],
+    "logo":"https://www.fodel.in/images/logo.png",
+    "address":{
+      "@type":"PostalAddress",
+      "addressLocality":"Katra",
+      "addressRegion":"Jammu and Kashmir",
+      "addressCountry":"IN"
     }
+  }
+  </script>
 
-    /* ===========================
-       BASE
-    ============================ */
+  <style>
+    /* ==== Theme & Base ==== */
+    :root{
+      --page-bg:#f8fafc; --accent:#397e51; --brand-yellow:#f9e64a; --text:#111827; --muted:#374151;
+      --card:rgba(255,255,255,0.98); --border:rgba(17,24,39,0.12); --btn:#0f766e; --btn-hover:#0f766e;
+      --radius:18px; --shadow:0 14px 30px rgba(17,24,39,0.18); --shadow-lg:0 24px 60px rgba(17,24,39,0.25);
+    }
     *{ box-sizing:border-box; margin:0; padding:0; }
-    html, body{ overflow-x:hidden; }   /* prevent right-edge white gutter */
+    html, body{ overflow-x:hidden; }
     body{
       font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-      color:var(--text);
-      background:var(--page-bg);
-      -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
+      color:var(--text); background:var(--page-bg);
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
     }
-
-    /* No underline globally */
     a{ color:inherit; text-decoration:none; }
-
     body.modal-open{ overflow:hidden; }
+    :focus-visible{ outline:3px solid rgba(17,24,39,0.75); outline-offset:3px; border-radius:10px; }
 
-    :focus-visible{
-      outline:3px solid rgba(17,24,39,0.75);
-      outline-offset:3px;
-      border-radius:10px;
-    }
-
-    /* ===========================
-       BANNER (teal/green with yellow glow)
-    ============================ */
+    /* ==== Banner ==== */
     .banner{
-      position:relative;
-      min-height:58vh;
-      display:grid;
-      place-items:center;
-      text-align:center;
-      color:#0b1220;
+      position:relative; min-height:58vh; display:grid; place-items:center; text-align:center; color:#0b1220;
       background:
         radial-gradient(1000px 700px at 85% 15%, rgba(249,230,74,0.25), transparent 60%),
         radial-gradient(900px 600px at 15% 85%, rgba(249,230,74,0.18), transparent 65%),
@@ -108,172 +77,81 @@
     }
     .banner-inner{ width:min(1100px,92%); margin:auto; padding:24px; }
 
-    /* ===========================
-       TOPBAR (fixed overflow + mobile UX)
-    ============================ */
     .topbar{
-      position:absolute;
-      left:0; right:0;
-      top:20px;                /* instead of inset */
-      padding:0 16px;          /* internal side padding -> no overflow */
-      width:100%;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:14px;
-      color:#fff;
-      box-sizing:border-box;
+      position:absolute; left:0; right:0; top:20px; padding:0 16px; width:100%;
+      display:flex; justify-content:space-between; align-items:center; gap:14px; color:#fff; box-sizing:border-box;
     }
-
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      font-weight:700; font-size:20px;
-      white-space:nowrap;       /* keep single-line brand */
-      min-width:0;
-    }
-    .brand-badge{
-      width:34px; height:34px; border-radius:50%;
-      display:grid; place-items:center;
-      background:#ffffff1a; color:#fff;
-      border:1px solid #ffffff40;
-      flex-shrink:0;
-    }
-
-    .topbar a{ text-decoration:none; color:inherit; }
-
-    .nav{
-      display:flex; align-items:center; gap:8px;
-      flex-wrap:nowrap; max-width:100%;
-    }
-
-    /* Unified compact pills */
+    .brand{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:20px; white-space:nowrap; min-width:0; }
+    .brand-badge{ width:34px; height:34px; border-radius:50%; display:grid; place-items:center; background:#ffffff1a; color:#fff; border:1px solid #ffffff40; flex-shrink:0; }
+    .nav{ display:flex; align-items:center; gap:8px; flex-wrap:nowrap; max-width:100%; }
     .pill-btn{
-      display:inline-flex; align-items:center; gap:6px;
-      padding:6px 10px; font-size:14px; font-weight:600;
-      border-radius:10px; white-space:nowrap;
-      border:0; /* remove white border */
-      color:#fff;
-      box-shadow:0 4px 12px rgba(0,0,0,0.18);
+      display:inline-flex; align-items:center; gap:6px; padding:6px 10px; font-size:14px; font-weight:600;
+      border-radius:10px; white-space:nowrap; border:0; color:#fff; box-shadow:0 4px 12px rgba(0,0,0,0.18);
       transition:transform .2s, background .2s;
     }
     .pill-btn:hover{ transform:translateY(-2px); }
-    .reviews-btn{ background:#0b1220; }
-    .reviews-btn:hover{ background:#111827; }
+    .reviews-btn{ background:#0b1220; } .reviews-btn:hover{ background:#111827; }
     .home-btn{ background:#2d6a51; }
-
-    /* Mobile topbar */
     @media (max-width:640px){
-      .topbar{
-        top:14px; padding:0 14px;
-        display:grid; grid-template-columns:1fr auto;
-        align-items:center; gap:10px;
-      }
+      .topbar{ top:14px; padding:0 14px; display:grid; grid-template-columns:1fr auto; align-items:center; gap:10px; }
       .brand{ font-size:17px; gap:8px; }
       .brand-badge{ width:30px; height:30px; }
       .nav{ gap:6px; justify-self:end; }
-      .pill-btn{
-        padding:5px 9px; font-size:13px; border-radius:8px;
-        box-shadow:0 3px 8px rgba(0,0,0,0.18);
-      }
+      .pill-btn{ padding:5px 9px; font-size:13px; border-radius:8px; box-shadow:0 3px 8px rgba(0,0,0,0.18); }
     }
-    /* Ultra-narrow phones */
-    @media (max-width:380px){
-      .topbar{ grid-template-columns:1fr; row-gap:6px; }
-      .nav{ justify-self:start; }
-    }
+    @media (max-width:380px){ .topbar{ grid-template-columns:1fr; row-gap:6px; } .nav{ justify-self:start; } }
 
-    /* ===========================
-       HERO
-    ============================ */
-    .hero{
-      display:grid; gap:14px; justify-items:center; padding:64px 0 44px;
-      color:#f1faf8;
-    }
+    .hero{ display:grid; gap:14px; justify-items:center; padding:64px 0 44px; color:#f1faf8; }
     .hero h1{ font-size:clamp(28px,5vw,46px); font-weight:700; }
     .hero p{ font-size:16px; max-width:850px; color:#e6fffb; }
 
-    /* ===========================
-       SERVICES
-    ============================ */
+    /* ==== Section & Cards ==== */
     .section{ width:min(1100px,92%); margin:32px auto 64px; text-align:center; }
     .section h2{ font-size:26px; margin-bottom:8px; }
     .separator{ width:90px; height:3px; margin:16px auto; background:linear-gradient(90deg,var(--brand-yellow),transparent); border-radius:6px; }
     .cards{ display:grid; grid-template-columns:1fr; gap:26px; margin-top:28px; }
     @media(min-width:760px){ .cards{ grid-template-columns:repeat(3,1fr) } }
     .card{
-      text-align:left; background:var(--card); border:1px solid var(--border);
-      border-radius:16px; padding:22px; box-shadow:var(--shadow);
-      transition:.25s;
+      text-align:left; background:var(--card); border:1px solid var(--border); border-radius:16px;
+      padding:22px; box-shadow:var(--shadow); transition:.25s;
     }
     .card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-lg); background:#fff; }
     .card h3{ display:flex; align-items:center; gap:10px; font-size:18px; margin-bottom:8px; }
-
-    .icon{
-      width:38px; height:38px; border-radius:50%;
-      display:grid; place-items:center;
-      background:var(--accent); color:#fff;
-    }
+    .icon{ width:38px; height:38px; border-radius:50%; display:grid; place-items:center; background:var(--accent); color:#fff; }
     .icon svg{ width:20px; height:20px; display:block; }
-
     .card p{ color:var(--muted); font-size:14px; margin-bottom:14px; }
 
-    /* ===========================
-       BUTTONS (body buttons)
-    ============================ */
     .btn{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:12px 16px; border-radius:12px;
-      background:var(--btn); color:#fff;
-      border:1px solid transparent; text-decoration:none;
-      font-weight:600; font-size:18px; letter-spacing:0.2px;
-      box-shadow:0 8px 20px rgba(0,0,0,0.14);
-      transition: transform .18s ease, box-shadow .18s ease;
+      display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:12px;
+      background:var(--btn); color:#fff; border:1px solid transparent; text-decoration:none; font-weight:600; font-size:18px; letter-spacing:0.2px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.14); transition: transform .18s ease, box-shadow .18s ease;
     }
     .btn:hover{ transform:translateY(-2px); box-shadow:0 12px 26px rgba(0,0,0,0.18); }
     .btn:active{ transform:translateY(0); box-shadow:0 8px 20px rgba(0,0,0,0.14); }
+    .btn-outline{ background:#fff; color:var(--btn); border:1px solid #0f766e; box-shadow:none; }
 
-    /* ===========================
-       MODALS
-    ============================ */
-    .overlay{
-      position:fixed; inset:0; z-index:50;
-      background:rgba(0,0,0,0.45);
-      display:none; align-items:center; justify-content:center; padding:18px;
-    }
+    /* ==== Modal & Form ==== */
+    .overlay{ position:fixed; inset:0; z-index:50; background:rgba(0,0,0,0.45); display:none; align-items:center; justify-content:center; padding:18px; }
     .overlay.active{ display:flex; }
-
     .modal{
-      width:min(680px,100%); max-height:90svh;
-      border-radius:16px; background:#ffffff; color:#0f172a;
-      border:1px solid rgba(17,24,39,0.14);
-      box-shadow:0 30px 80px rgba(0,0,0,0.35);
-      overflow:hidden; display:flex; flex-direction:column;
-      animation:pop .18s ease-out both;
+      width:min(680px,100%); max-height:90svh; border-radius:16px; background:#ffffff; color:#0f172a;
+      border:1px solid rgba(17,24,39,0.14); box-shadow:0 30px 80px rgba(0,0,0,0.35); overflow:hidden; display:flex; flex-direction:column; animation:pop .18s ease-out both;
     }
     .modal-header{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      padding:14px 16px; color:#fff;
-      background:linear-gradient(90deg, var(--accent), #3f8f5b);
-      position:sticky; top:0; z-index:1;
+      display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 16px; color:#fff;
+      background:linear-gradient(90deg, var(--accent), #3f8f5b); position:sticky; top:0; z-index:1;
     }
     .modal-title{ font-weight:600; }
-    .modal-close{
-      background:transparent; border:none; color:#fff; cursor:pointer;
-      font-size:20px; line-height:1; padding:6px 10px; border-radius:8px;
-    }
+    .modal-close{ background:transparent; border:none; color:#fff; cursor:pointer; font-size:20px; line-height:1; padding:6px 10px; border-radius:8px; }
     .modal-close:hover{ background:rgba(255,255,255,0.18); }
     .modal-body{ padding:16px; overflow:auto; -webkit-overflow-scrolling:touch; }
-    @media (max-width:640px){
-      .overlay{ align-items:stretch; }
-      .modal{ width:100%; height:100svh; max-height:none; border-radius:0; }
-    }
+    @media (max-width:640px){ .overlay{ align-items:stretch; } .modal{ width:100%; height:100svh; max-height:none; border-radius:0; } }
 
     .grid-2{ display:grid; grid-template-columns:1fr; gap:14px; }
     @media (min-width:640px){ .grid-2{ grid-template-columns:1fr 1fr; } }
     label{ display:block; font-weight:600; font-size:13px; margin-bottom:6px; color:#0f172a; }
     input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"], select, textarea{
-      width:100%; padding:12px 12px; border-radius:10px; border:1px solid rgba(15,23,42,0.18);
-      background:#fff; font:inherit; font-size:14px; color:#0f172a; outline:none;
+      width:100%; padding:12px 12px; border-radius:10px; border:1px solid rgba(15,23,42,0.18); background:#fff; font:inherit; font-size:14px; color:#0f172a; outline:none;
       transition:border-color .15s, box-shadow .15s;
     }
     textarea{ min-height:90px; resize:vertical; }
@@ -281,82 +159,101 @@
     .field-hint{ font-size:12px; color:#475569; margin-top:6px; }
     .row{ margin-bottom:12px; }
     .readonly{ background:#f1f5f9; }
-
     .actions{ display:flex; gap:10px; justify-content:flex-end; margin-top:14px; }
-    .btn-ghost{
-      padding:10px 14px; border-radius:10px; font-weight:600;
-      background:#f1f5f9; color:#0f172a; border:none; cursor:pointer;
-    }
+    .btn-ghost{ padding:10px 14px; border-radius:10px; font-weight:600; background:#f1f5f9; color:#0f172a; border:none; cursor:pointer; }
     .btn-primary{
-      padding:12px 16px; border-radius:10px; font-weight:700; letter-spacing:.2px;
-      background:var(--btn); color:#fff; border:none; cursor:pointer;
-      box-shadow:0 10px 24px rgba(0,0,0,0.22);
-      transition: transform .15s ease;
+      padding:12px 16px; border-radius:10px; font-weight:700; letter-spacing:.2px; background:var(--btn); color:#fff; border:none; cursor:pointer;
+      box-shadow:0 10px 24px rgba(0,0,0,0.22); transition: transform .15s ease;
     }
     .btn-primary:hover{ transform:translateY(-1px); }
 
-    /* Toast */
-    .toast{
-      position:fixed; bottom:18px; right:18px; z-index:60;
-      background:#0f766e; color:#fff; padding:12px 14px; border-radius:10px;
-      box-shadow:0 12px 24px rgba(0,0,0,0.2); display:none;
-    }
+    .toast{ position:fixed; bottom:18px; right:18px; z-index:60; background:#0f766e; color:#fff; padding:12px 14px; border-radius:10px; box-shadow:0 12px 24px rgba(0,0,0,0.2); display:none; }
     .toast.show{ display:block; animation:slideUp .25s ease-out both; }
 
-    /* ===========================
-       FOOTER
-    ============================ */
-    .footer{
-      display:flex; gap:12px; flex-wrap:wrap; justify-content:center;
-      margin:0 auto 26px; width:min(1100px,92%);
-    }
+    /* ==== Footer ==== */
+    .footer{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin:0 auto 26px; width:min(1100px,92%); }
     .chip{
-      padding:8px 14px; border-radius:999px; background:#fff;
-      border:1px solid var(--border); text-decoration:none; font-size:14px; color:var(--text);
-      transition:.2s; box-shadow:0 6px 14px rgba(0,0,0,0.08);
+      padding:8px 14px; border-radius:999px; background:#fff; border:1px solid var(--border); text-decoration:none; font-size:14px;
+      color: var(--text); transition:.2s; box-shadow:0 6px 14px rgba(0,0,0,0.08);
     }
     .chip:hover{ transform:translateY(-2px); }
     .copy{ text-align:center; width:100%; margin-top:6px; font-size:12px; opacity:.78; }
 
-    /* ===========================
-       FLOATING WHATSAPP
-    ============================ */
+    /* ==== WhatsApp FAB ==== */
     .fw-whatsapp { position: fixed; right: 16px; bottom: 16px; z-index: 70; }
     .fw-btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      width:56px; height:56px; border-radius:50%;
-      background:#25D366; color:#fff;
-      box-shadow:0 12px 24px rgba(0,0,0,0.22);
-      border:1px solid rgba(255,255,255,0.35);
-      text-decoration:none; transition: transform .18s, box-shadow .18s, background .18s;
+      display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px; border-radius:50%; background:#25D366; color:#fff;
+      box-shadow:0 12px 24px rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.35); text-decoration:none;
+      transition: transform .18s, box-shadow .18s, background .18s;
     }
     .fw-btn:hover{ transform:translateY(-2px); box-shadow:0 16px 32px rgba(0,0,0,0.26); background:#20c65a; }
     .fw-btn svg{ display:block; }
-    .fw-pulse{
-      position:absolute; inset:-8px; border-radius:999px;
-      background:rgba(37,211,102,0.18); filter:blur(8px); opacity:.8;
-      animation: fwPulse 2.2s ease-in-out infinite; z-index:-1;
+    .fw-pulse{ position:absolute; inset:-8px; border-radius:999px; background:rgba(37,211,102,0.18); filter:blur(8px); opacity:.8; animation: fwPulse 2.2s ease-in-out infinite; z-index:-1; }
+
+    /* ==== Packages & Admin ==== */
+    .packages{ width:min(1100px,92%); margin:12px auto 64px; }
+    .packages .head{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; }
+    .packages h2{ font-size:26px; }
+    .tablist{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:8px; }
+    .tab{ padding:8px 14px; border:1px solid var(--border); border-radius:999px; background:#fff; cursor:pointer; font-weight:600; }
+    .tab[aria-selected="true"]{ background:var(--accent); color:#fff; border-color:transparent; }
+    .filters{ display:flex; gap:8px; flex-wrap:wrap; margin:10px 0 0; }
+    .filter-chip{ display:inline-flex; gap:6px; align-items:center; padding:6px 10px; border:1px solid var(--border); border-radius:999px; background:#fff; font-size:13px; }
+    .filter-chip input{ accent-color: var(--accent); }
+    .pkg-grid{ display:grid; grid-template-columns:1fr; gap:22px; margin-top:18px; }
+    @media (min-width:760px){ .pkg-grid{ grid-template-columns:1fr 1fr; } }
+    .pkg-card{
+      background:var(--card); border:1px solid var(--border); border-radius:16px; box-shadow:var(--shadow); overflow:hidden;
+      display:grid; grid-template-columns:120px 1fr; gap:0;
     }
-    @keyframes fwPulse{ 0%{transform:scale(.9);opacity:.55;} 50%{transform:scale(1.05);opacity:.85;} 100%{transform:scale(.9);opacity:.55;} }
+    @media (max-width:520px){ .pkg-card{ grid-template-columns:1fr; } }
+    .pkg-media{ position:relative; overflow:hidden; background:#f3f4f6; }
+    .pkg-media img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .pkg-body{ padding:14px 14px 12px; }
+    .pkg-title{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:6px; }
+    .pkg-title h3{ font-size:18px; line-height:1.2; }
+    .badges{ display:flex; gap:6px; flex-wrap:wrap; margin:6px 0; }
+    .badge{ padding:4px 8px; border-radius:999px; background:#ecfdf5; color:#065f46; font-size:12px; border:1px solid #d1fae5; }
+    .badge.alt{ background:#eff6ff; color:#1d4ed8; border-color:#dbeafe; }
+    .pkg-meta{ display:flex; gap:10px; flex-wrap:wrap; font-size:13px; color:#374151; margin:6px 0 8px; }
+    details.itinerary{ background:#f9fafb; border:1px solid var(--border); border-radius:12px; padding:10px 12px; margin-top:8px; }
+    details.itinerary summary{ cursor:pointer; font-weight:600; }
+    .pkg-hidden{ display:none !important; }
+
+    /* Admin Overlay */
+    #travel-admin-root .admin-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.55); display: none; place-items: center; z-index: 100; }
+    #travel-admin-root .admin-overlay.show { display: grid; }
+    #travel-admin-root .admin-panel { width: min(1100px, 96%); max-height: 92svh; overflow: auto; background: #fff; border-radius: 14px; border: 1px solid #e5e7eb; box-shadow:0 30px 100px rgba(0,0,0,0.35); padding: 12px; }
+    #travel-admin-root header.admin-top{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px; border-bottom: 3px solid var(--accent); padding-bottom: 8px; }
+    #travel-admin-root header.admin-top h2{ margin:0; font-size:18px; color:var(--accent); }
+    #travel-admin-root .row2{ display:grid; grid-template-columns: 1fr 1fr; gap:8px; }
+    #travel-admin-root .grid2-1{ display:grid; grid-template-columns: 1.6fr 1fr; gap:12px; }
+    #travel-admin-root .card{ background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:10px; margin-bottom:10px; }
+    #travel-admin-root label{ font-size:12px; margin-top:6px; display:block; color:#0f172a; }
+    #travel-admin-root input, #travel-admin-root select, #travel-admin-root textarea{ width:100%; padding:8px; border:1px solid #cbd5e1; border-radius:8px; }
+    #travel-admin-root button{ background:var(--btn); color:#fff; border:0; border-radius:8px; padding:8px 12px; cursor:pointer; }
+    #travel-admin-root button:hover{ filter:brightness(.95); }
+    #travel-admin-root button.red{ background:#b91c1c; }
+    #travel-admin-root .list .item{ display:grid; grid-template-columns: 80px 1fr auto; gap:10px; align-items:center; border-bottom:1px dashed #e5e7eb; padding:8px 0; }
+    #travel-admin-root .list img{ width:80px; height:56px; object-fit:cover; border-radius:6px; background:#f1f5f9; }
+    #travel-admin-root .muted{ color:#64748b; font-size:12px; }
+    #travel-admin-root .msg{ color:#0f766e; min-height:18px; margin-top:6px; }
 
     /* Animations */
+    @keyframes fwPulse{ 0%{transform:scale(.9);opacity:.55;} 50%{transform:scale(1.05);opacity:.85;} 100%{transform:scale(.9);opacity:.55;} }
     @keyframes pop{ from{ transform:scale(.98); opacity:.7; } to{ transform:scale(1); opacity:1; } }
     @keyframes slideUp{ from{ opacity:0; transform:translateY(10px);} to{ opacity:1; transform:translateY(0);} }
   </style>
 </head>
-
 <body>
 
   <!-- BANNER -->
   <header class="banner">
     <div class="topbar">
-      <!-- Brand (clickable) -->
       <a class="brand" href="index.html" aria-label="Fodel Travels — Home">
         <div class="brand-badge" aria-hidden="true">🏨</div>
         <span>Fodel Travels</span>
       </a>
-
-      <!-- Right-side compact buttons -->
       <nav class="nav" aria-label="Primary">
         <a class="pill-btn reviews-btn" href="reviews-travels.html">⭐ Reviews</a>
         <a class="pill-btn home-btn" href="index.html">← Home</a>
@@ -378,11 +275,9 @@
     <div class="separator" aria-hidden="true"></div>
 
     <div class="cards">
-      <!-- Hotel Booking -->
       <div class="card">
         <h3>
           <span class="icon" aria-hidden="true">
-            <!-- Hotel / bed icon -->
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                  viewBox="0 0 24 24" fill="white" aria-hidden="true" role="img" focusable="false">
               <path d="M4 7h12a4 4 0 0 1 4 4v5h-2v-3H4v3H2v-6a3 3 0 0 1 2-3zm2 2a2 2 0 1 0 0 4h6a2 2 0 1 0 0-4H6z"/>
@@ -396,11 +291,9 @@
         </button>
       </div>
 
-      <!-- Banquet / Events -->
       <div class="card">
         <h3>
           <span class="icon" aria-hidden="true">
-            <!-- Event hall / stage icon -->
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                  viewBox="0 0 24 24" fill="white" aria-hidden="true" role="img" focusable="false">
               <path d="M3 6h18v12H3z"/>
@@ -415,11 +308,9 @@
         </button>
       </div>
 
-      <!-- Group Booking -->
       <div class="card">
         <h3>
           <span class="icon" aria-hidden="true">
-            <!-- Group / users icon -->
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                  viewBox="0 0 24 24" fill="white" aria-hidden="true" role="img" focusable="false">
               <path d="M16 11a3 3 0 1 0-3-3 3 3 0 0 0 3 3ZM7 12a3 3 0 1 0-3-3 3 3 0 0 0 3 3Z"/>
@@ -437,10 +328,28 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- FEATURED PACKAGES (dynamic) -->
+  <section class="packages" aria-labelledby="packages-title">
+    <div class="head">
+      <h2 id="packages-title">Featured Packages — Jammu & Kashmir & Goa</h2>
+    </div>
+    <div class="filters" id="pkg-filters" aria-label="Filters"></div>
+    <div class="tablist" role="tablist" aria-label="Destinations">
+      <button class="tab" role="tab" aria-selected="true" aria-controls="panel-jk" id="tab-jk">Jammu & Kashmir</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="panel-goa" id="tab-goa">Goa</button>
+    </div>
+    <div id="panel-jk" role="tabpanel" aria-labelledby="tab-jk">
+      <div id="pkg-grid-jk" class="pkg-grid"></div>
+    </div>
+    <div id="panel-goa" role="tabpanel" aria-labelledby="tab-goa" hidden>
+      <div id="pkg-grid-goa" class="pkg-grid"></div>
+    </div>
+  </section>
+
+  <!-- Footer (NO phone number here) -->
   <footer class="footer" aria-label="Contact">
     <a href="mailto:sales@fodeltravels.in" class="chip">📧 sales@fodeltravels.in</a>
-    <a href="tel:+919797459260" class="chip">📞 +91 9797459260</a>
+    <!-- Removed phone chip as requested -->
     <div class="copy">© 2015–2026 Fodel India — Fodel Travels</div>
   </footer>
 
@@ -459,18 +368,16 @@
           <label for="hotel-name">Hotel name you’re planning to stay (or short name)</label>
           <input id="hotel-name" name="hotelName" type="text" placeholder="e.g., Marriott Katra or Near Shrine Board" required>
         </div>
-
         <div class="grid-2">
           <div class="row">
-            <label for="checkin">Check‑in date</label>
+            <label for="checkin">Check in date</label>
             <input id="checkin" name="checkin" type="date" required>
           </div>
           <div class="row">
-            <label for="checkout">Check‑out date</label>
+            <label for="checkout">Check out date</label>
             <input id="checkout" name="checkout" type="date" required>
           </div>
         </div>
-
         <div class="grid-2">
           <div class="row">
             <label for="nights">No. of nights</label>
@@ -481,12 +388,10 @@
             <input id="rooms" name="rooms" type="number" min="1" placeholder="e.g., 2" required>
           </div>
         </div>
-
         <div class="row">
           <label for="category">Room category preference (optional)</label>
           <input id="category" name="category" type="text" placeholder="e.g., Deluxe, Suite, Mountain View">
         </div>
-
         <div class="grid-2">
           <div class="row">
             <label for="meal">Meal plan</label>
@@ -502,30 +407,26 @@
             <label for="adults">No. of adults</label>
             <input id="adults" name="adults" type="number" min="1" placeholder="e.g., 2" required>
           </div>
-          <!-- NEW: Extra bed under Adults -->
           <div class="row">
             <label for="extra-bed">Extra bed (optional)</label>
             <input id="extra-bed" name="extraBed" type="number" min="0" placeholder="e.g., 1">
           </div>
         </div>
-
         <div class="grid-2">
           <div class="row">
             <label for="mobile">Mobile</label>
-            <input id="mobile" name="mobile" type="tel" inputmode="tel" pattern="[0-9+\-\s]{8,15}" placeholder="+91 9XXXXXXXXX" required>
-            <div class="field-hint">Digits only; include country code if outside India.</div>
+            <input id="mobile" name="mobile" type="tel" inputmode="tel" pattern="^(\+91[\s-]?)?[6-9]\d{9}$" placeholder="+91 9XXXXXXXXX" required>
+            <div class="field-hint">Indian numbers: 10 digits, starting 6–9 (include +91 if needed).</div>
           </div>
           <div class="row">
             <label for="email">Email</label>
             <input id="email" name="email" type="email" placeholder="name@example.com" required>
           </div>
         </div>
-
         <div class="row">
           <label for="notes">Additional notes (optional)</label>
           <textarea id="notes" name="notes" placeholder="Any special requests, bed type, late arrival, etc."></textarea>
         </div>
-
         <div class="actions">
           <button class="btn-ghost" type="button" data-close>Cancel</button>
           <button class="btn-primary" type="submit">Submit Request</button>
@@ -552,7 +453,6 @@
             <input id="min-guarantee" name="minGuarantee" type="number" min="10" placeholder="e.g., 100" required>
           </div>
         </div>
-
         <div class="grid-2">
           <div class="row">
             <label for="venue">Preferred hotel / venue (optional)</label>
@@ -569,7 +469,6 @@
             </select>
           </div>
         </div>
-
         <div class="grid-2">
           <div class="row">
             <label for="event-start">Event start time (optional)</label>
@@ -580,23 +479,20 @@
             <input id="event-end" name="eventEnd" type="text" placeholder="e.g., 03:00 PM">
           </div>
         </div>
-
         <div class="grid-2">
           <div class="row">
             <label for="banquet-mobile">Mobile</label>
-            <input id="banquet-mobile" name="mobile" type="tel" inputmode="tel" pattern="[0-9+\-\s]{8,15}" placeholder="+91 9XXXXXXXXX" required>
+            <input id="banquet-mobile" name="mobile" type="tel" inputmode="tel" pattern="^(\+91[\s-]?)?[6-9]\d{9}$" placeholder="+91 9XXXXXXXXX" required>
           </div>
           <div class="row">
             <label for="banquet-email">Email</label>
             <input id="banquet-email" name="email" type="email" placeholder="name@example.com" required>
           </div>
         </div>
-
         <div class="row">
           <label for="banquet-notes">Additional notes (optional)</label>
           <textarea id="banquet-notes" name="notes" placeholder="Decoration, stage, AV, seating style, etc."></textarea>
         </div>
-
         <div class="actions">
           <button class="btn-ghost" type="button" data-close>Cancel</button>
           <button class="btn-primary" type="submit">Submit Request</button>
@@ -617,18 +513,16 @@
           <label for="group-name">Group / Company name</label>
           <input id="group-name" name="groupName" type="text" placeholder="e.g., ABC Pilgrims Group" required>
         </div>
-
         <div class="grid-2">
           <div class="row">
-            <label for="group-checkin">Check‑in date</label>
+            <label for="group-checkin">Check in date</label>
             <input id="group-checkin" name="checkin" type="date" required>
           </div>
           <div class="row">
-            <label for="group-checkout">Check‑out date</label>
+            <label for="group-checkout">Check out date</label>
             <input id="group-checkout" name="checkout" type="date" required>
           </div>
         </div>
-
         <div class="grid-2">
           <div class="row">
             <label for="group-rooms">No. of rooms</label>
@@ -639,17 +533,14 @@
             <input id="group-email" name="email" type="email" placeholder="name@example.com" required>
           </div>
         </div>
-
         <div class="row">
           <label for="group-mobile">Mobile (optional)</label>
-          <input id="group-mobile" name="mobile" type="tel" inputmode="tel" pattern="[0-9+\-\s]{8,15}" placeholder="+91 9XXXXXXXXX">
+          <input id="group-mobile" name="mobile" type="tel" inputmode="tel" pattern="^(\+91[\s-]?)?[6-9]\d{9}$" placeholder="+91 9XXXXXXXXX">
         </div>
-
         <div class="row">
           <label for="group-notes">Additional notes (optional)</label>
           <textarea id="group-notes" name="notes" placeholder="Destinations, transport, meal plan, budget, etc."></textarea>
         </div>
-
         <div class="actions">
           <button class="btn-ghost" type="button" data-close>Cancel</button>
           <button class="btn-primary" type="submit">Submit Request</button>
@@ -661,30 +552,23 @@
   <!-- Toast -->
   <div class="toast" id="toast">✅ Request submitted. We’ll contact you shortly.</div>
 
-  <!-- Floating WhatsApp -->
+  <!-- WhatsApp -->
   <div class="fw-whatsapp">
     <a class="fw-btn" href="https://wa.me/919797459260?text=Hi%20Fodel%20Travels%2C%20I%20need%20help%20with%20a%20booking." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
       <span class="fw-pulse" aria-hidden="true"></span>
       <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
-        <path d="M12.04 2a9.8 9.8 0 0 0-8.45 14.7L2 22l5.43-1.53A9.8 9.8 0 1 0 12.04 2zm5.74 14.18c-.24.67-1.4 1.29-1.94 1.33-.52.04-1.18.06-1.91-.12a8 8 0 0 1-4.57-2.61c-1.31-1.44-2.25-3.16-2.35-4.52-.04-.57.17-1.32.72-1.83.21-.2.46-.3.73-.3.12 0 .24 0 .35.02.26.02.41.03.6.47.23.55.79 1.89.86 2.03.07.14.12.3.02.48-.09.19-.14.31-.28.48-.14.17-.29.38-.41.51-.14.14-.29.3-.13.58.15.29.68 1.12 1.46 1.82 1 .88 1.84 1.16 2.16 1.29.33.12.52.11.71-.06.19-.17.82-.77 1.04-1.03.22-.25.44-.21.72-.12.29.1 1.83.86 2.15 1.01.32.14.53.22.61.35.08.13.08.76-.16 1.42z"/>
+        <path d="M12.04 2a9.8 9.8 0 0 0-8.45 14.7L2 22l5.43-1.53A9.8 9.8 0 1 0 12.04 2zm5.74 14.18c-.24.67-1.4 1.29-1.94 1.33-.52.04-1.18.06-1.91-.12a8 8 0 0 1-4.57-2.61c-1.31-1.44-2.25-3.16-2.35-4.52-.04-.57.17-1.32.72-1.83.21-.2.46-.3.73-.3.12 0 .24 0 .35.02.26.02.41.03.6.47.23.55.79 1.89.86 2.03.07.14.12.3.02.48-.09.19-.14.31-.28.48-.14.17-.29.38-.41.51-.14.14-.29.3-.13.58.15.29.68 1.12 1.46 1.82 1 .88 1.84 1.16 2.16 1.29.33.12.52.11.71-.06.19-.17.82-.77 1.04-1.03.22-.25.44 -.21.72-.12.29.1 1.83.86 2.15 1.01.32.14.53.22.61.35.08.13.08.76-.16 1.42z"/>
       </svg>
     </a>
   </div>
 
+  <!-- Base JS: modals + forms -->
   <script>
-    /* Email Delivery:
-       - Formspree (recommended): set endpoint below to receive emails at fodelindia@gmail.com
-       - Mailto fallback: kicks in if endpoint is empty or fails
-    */
     const FORMSPREE_ENDPOINT = ""; // e.g., "https://formspree.io/f/abcdwxyz"
-
     const todayISO = () => new Date().toISOString().split('T')[0];
-
-    // Modal open/close + lock body scroll
     const overlays = document.querySelectorAll('.overlay');
 
     document.addEventListener('click', (e) => {
-      // opener
       const opener = e.target.closest('[data-open]');
       if (opener){
         const openId = opener.getAttribute('data-open');
@@ -699,8 +583,6 @@
         }
         return;
       }
-
-      // closer
       const closer = e.target.closest('[data-close]');
       if (closer){
         const ov = closer.closest('.overlay');
@@ -710,8 +592,6 @@
         }
         return;
       }
-
-      // backdrop to close
       if (e.target.classList.contains('overlay')){
         e.target.classList.remove('active');
         if (![...document.querySelectorAll('.overlay')].some(o => o.classList.contains('active'))){
@@ -720,7 +600,6 @@
       }
     });
 
-    // ESC to close
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape'){
         overlays.forEach(o => o.classList.remove('active'));
@@ -728,7 +607,7 @@
       }
     });
 
-    // Hotel: date constraints + nights calc
+    // Nights calc
     const checkin = document.getElementById('checkin');
     const checkout = document.getElementById('checkout');
     const nights = document.getElementById('nights');
@@ -750,7 +629,7 @@
       checkout.addEventListener('change', calcNights);
     }
 
-    // Group: date constraints
+    // Group date guards
     const gIn = document.getElementById('group-checkin');
     const gOut = document.getElementById('group-checkout');
     if (gIn && gOut){
@@ -762,39 +641,29 @@
       });
     }
 
-    // Toast
+    // Toast & form wiring
     const toast = document.getElementById('toast');
     function showToast(msg){
       if (msg) toast.textContent = msg;
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 2600);
     }
-
-    // Serialize
     function serialize(form){ return Object.fromEntries(new FormData(form).entries()); }
 
-    // Submit with Formspree + mailto fallback
     async function wireForm(formId, subject){
       const form = document.getElementById(formId);
       if (!form) return;
-
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        if (!form.checkValidity()){
-          form.reportValidity();
-          return;
-        }
+        if (!form.checkValidity()){ form.reportValidity(); return; }
         const data = serialize(form);
-        data._page = location.href;
-        data._form = formId;
+        data._page = location.href; data._form = formId;
 
         let sent = false;
         if (FORMSPREE_ENDPOINT && FORMSPREE_ENDPOINT.includes("/f/")){
           try{
             const resp = await fetch(FORMSPREE_ENDPOINT, {
-              method:"POST",
-              headers:{ "Accept":"application/json" },
-              body:new FormData(form)
+              method:"POST", headers:{ "Accept":"application/json" }, body:new FormData(form)
             });
             sent = resp.ok;
           }catch(err){ sent = false; }
@@ -814,10 +683,488 @@
         showToast('✅ Request submitted. We’ll contact you shortly.');
       });
     }
-
     wireForm('form-hotel',  'Fodel Travels — Hotel Room Requirement');
     wireForm('form-banquet','Fodel Travels — Banquet/Event Inquiry');
     wireForm('form-group',  'Fodel Travels — Group Booking Request');
   </script>
+
+  <!-- Firebase bootstrap -->
+  <script type="module">
+    const [
+      { initializeApp, getApps },
+      { getAuth, setPersistence, browserLocalPersistence, GoogleAuthProvider,
+        signInWithPopup, signInWithRedirect, getRedirectResult, signOut, onAuthStateChanged },
+      { getFirestore, collection, doc, getDocs, getDoc, addDoc, setDoc, updateDoc, deleteDoc,
+        query, where, orderBy, serverTimestamp },
+      { getStorage, ref, uploadBytes, getDownloadURL }
+    ] = await Promise.all([
+      import('https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js'),
+      import('https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js'),
+      import('https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js'),
+      import('https://www.gstatic.com/firebasejs/10.13.0/firebase-storage.js')
+    ]);
+
+    const firebaseConfig = window.FODEL_FIREBASE_CONFIG ?? {
+      apiKey: "AIzaSyDaKEvqtnRRaj0kBZ-c4oPDhMxiwI3GQmE",
+      authDomain: "fodel-admin-transport.firebaseapp.com",
+      projectId: "fodel-admin-transport",
+      storageBucket: "fodel-admin-transport.firebasestorage.app",
+      messagingSenderId: "81364149405",
+      appId: "1:81364149405:web:a927a693f0402607966074",
+      measurementId: "G-DTLDMKYMZG"
+    };
+
+    const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+    window._fodel = {
+      app,
+      auth: getAuth(app),
+      db: getFirestore(app),
+      storage: getStorage(app),
+      fbmods: {
+        setPersistence, browserLocalPersistence, GoogleAuthProvider,
+        signInWithPopup, signInWithRedirect, getRedirectResult, signOut, onAuthStateChanged,
+        collection, doc, getDocs, getDoc, addDoc, setDoc, updateDoc, deleteDoc,
+        query, where, orderBy, serverTimestamp,
+        ref, uploadBytes, getDownloadURL
+      }
+    };
+  </script>
+
+  <!-- Widget -->
+  <script type="module">
+    const { db, fbmods: { collection, getDocs, query, where, orderBy } } = window._fodel;
+    const cacheKey = 'fodel_pkgs_cache_v2'; const cacheTTL = 10 * 60 * 1000;
+
+    function buildFilters(container){
+      const chips = [
+        { key:'duration-2-3', label:'2–3 Nights' },
+        { key:'duration-4-6', label:'4–6 Nights' },
+        { key:'theme-family', label:'Family' },
+        { key:'theme-honeymoon', label:'Honeymoon' },
+        { key:'theme-pilgrimage', label:'Pilgrimage' },
+        { key:'theme-corporate', label:'Corporate / MICE' },
+        { key:'theme-adventure', label:'Adventure' }
+      ];
+      container.innerHTML = chips.map(c => `<label class="filter-chip"><input type="checkbox" data-filter="${c.key}"/> ${c.label}</label>`).join('');
+      container.addEventListener('change', applyFilters);
+    }
+
+    function classFrom(pkg){
+      const n = Number(pkg.duration_nights || 0);
+      const base = n && n <= 3 ? ['duration-2-3'] : (n >=4 ? ['duration-4-6'] : []);
+      const themes = (pkg.themes || []).map(t => 'theme-' + String(t).toLowerCase());
+      return base.concat(themes).join(' ');
+    }
+    function priceBadge(paise, label='From'){
+      if (paise==null) return `<span class="badge alt">Price on request</span>`;
+      const ru = Math.round(Number(paise)/100).toLocaleString('en-IN');
+      return `<span class="badge">${label} ₹${ru}</span>`;
+    }
+    function pkgCard(pkg){
+      const title = pkg.title || 'Untitled Package';
+      const dest = pkg.destination || '';
+      const nights = pkg.duration_nights, days = pkg.duration_days;
+      const themes = pkg.themes || [];
+      const highlights = (pkg.highlights || []).slice(0,3);
+      const itinerary = pkg.itinerary || [];
+      const cover = pkg.cover_image || '';
+      const price = pkg.base_price; const priceLabel = pkg.price_label || 'From';
+      const waText = `Hi Fodel, interested in ${title} (${dest}) from travel.html`;
+      return `
+        <article class="pkg-card ${classFrom(pkg)}" data-destination="${dest}" data-package="${title}">
+          <div class="pkg-media">${cover ? `<img src="${cover}" loading="lazy" decoding="async" alt="${title} cover" />` : ''}</div>
+          <div class="pkg-body">
+            <div class="pkg-title"><h3>${title}</h3><span class="badge">${dest}</span></div>
+            <div class="badges">
+              ${themes.map(t => `<span class="badge">${t}</span>`).join('')}
+              ${ (nights && days) ? `<span class="badge">${nights}N/${days}D</span>` : '' }
+              ${ priceBadge(price, priceLabel) }
+            </div>
+            ${highlights.length ? `<div class="pkg-meta">${highlights.map(h => `<span>• ${h}</span>`).join('')}</div>` : ''}
+            ${itinerary.length ? `<details class="itinerary"><summary>Day-wise itinerary</summary><ul>${itinerary.map(d => `<li><strong>Day ${d.day}:</strong> ${d.title} — ${d.details}</li>`).join('')}</ul></details>` : ''}
+            <div class="pkg-cta">
+              <button class="btn enquire-btn" data-open="modal-group">Enquire →</button>
+              <a class="btn btn-outline" target="_blank" rel="noopener" href="https://wa.me/919797459260?text=${encodeURIComponent(waText)}">WhatsApp ↗</a>
+            </div>
+          </div>
+        </article>`;
+    }
+    function applyFilters(){
+      const chips = [...document.querySelectorAll('#pkg-filters [data-filter]')];
+      const active = chips.filter(i => i.checked).map(i => i.dataset.filter);
+      const allCards = document.querySelectorAll('.pkg-card');
+      allCards.forEach(card => {
+        if (!active.length){ card.classList.remove('pkg-hidden'); return; }
+        const ok = active.every(tag => card.classList.contains(tag));
+        card.classList.toggle('pkg-hidden', !ok);
+      });
+    }
+    function wireTabs(){
+      const tabs = document.querySelectorAll('.tab[role="tab"]');
+      const panels = { 'tab-jk': document.getElementById('panel-jk'), 'tab-goa': document.getElementById('panel-goa') };
+      tabs.forEach(t => t.addEventListener('click', () => {
+        tabs.forEach(x => x.setAttribute('aria-selected', x===t ? 'true':'false'));
+        Object.values(panels).forEach(p => p.hidden = true);
+        const target = panels[t.id]; if (target) target.hidden = false;
+      }));
+      if (location.hash.toLowerCase().includes('goa')) document.getElementById('tab-goa')?.click();
+    }
+    function wireEnquiryPrefill(){
+      document.addEventListener('click', (e) => {
+        const b = e.target.closest('.enquire-btn'); if (!b) return;
+        const card = b.closest('.pkg-card'); if (!card) return;
+        const pkg = card.dataset.package || 'Travel Package';
+        const dest = card.dataset.destination || '';
+        const form = document.getElementById('form-group'); if (!form) return;
+        const notes = form.querySelector('#group-notes'); const prev = notes?.value ? notes.value + '\n' : '';
+        if (notes) notes.value = `${prev}[Package Enquiry] ${pkg} — ${dest}`;
+        const gname = form.querySelector('#group-name'); if (gname && !gname.value) gname.value = pkg;
+      });
+    }
+    async function fetchPackages(){
+      try{
+        const cached = JSON.parse(localStorage.getItem(cacheKey) || 'null');
+        if (cached && (Date.now() - cached.ts) < cacheTTL) return cached.rows;
+        const col = collection(db, 'packages');
+        const q = query(col, where('active','==', true), orderBy('sort_order'));
+        const snap = await getDocs(q);
+        const rows = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        localStorage.setItem(cacheKey, JSON.stringify({ ts: Date.now(), rows }));
+        return rows;
+      }catch(e){
+        const cached = JSON.parse(localStorage.getItem(cacheKey) || 'null');
+        if (cached) return cached.rows;
+        console.warn('Fetch packages failed:', e);
+        return [];
+      }
+    }
+    function renderLists(rows){
+      const jk = rows.filter(r => (r.destination||'').toLowerCase().includes('jammu'));
+      const goa = rows.filter(r => (r.destination||'').toLowerCase().includes('goa'));
+      document.getElementById('pkg-grid-jk').innerHTML = jk.map(pkgCard).join('') || '<div class="muted">No packages for J&K yet.</div>';
+      document.getElementById('pkg-grid-goa').innerHTML = goa.map(pkgCard).join('') || '<div class="muted">No packages for Goa yet.</div>';
+    }
+    buildFilters(document.getElementById('pkg-filters'));
+    wireTabs(); wireEnquiryPrefill();
+    const rows = await fetchPackages(); renderLists(rows); applyFilters();
+  </script>
+
+  <!-- Admin Overlay -->
+  <div id="travel-admin-root"></div>
+  <script type="module">
+    const { auth, db, storage, fbmods: {
+      setPersistence, browserLocalPersistence, GoogleAuthProvider,
+      signInWithPopup, signInWithRedirect, getRedirectResult, signOut, onAuthStateChanged,
+      collection, doc, getDocs, getDoc, addDoc, setDoc, updateDoc, deleteDoc,
+      query, orderBy, serverTimestamp, ref, uploadBytes, getDownloadURL
+    }} = window._fodel;
+
+    const params = new URLSearchParams(location.search);
+    const wantAdmin = params.get('admin') === '1';
+    const wantLogout = params.get('logout') === '1';
+    const ADMIN_EMAILS = ["munish2818@gmail.com"]; // add more if needed
+    const lc = s => (s||'').toString().trim().toLowerCase();
+    const isAllowed = (u) => !!(u && u.email && ADMIN_EMAILS.includes(lc(u.email)));
+    const root = document.getElementById('travel-admin-root');
+
+    function renderAdminShell(){
+      root.innerHTML = `
+      <div class="admin-overlay" id="adminOverlay">
+        <div class="admin-panel">
+          <header class="admin-top">
+            <h2>Fodel Travel Admin</h2>
+            <div class="actions">
+              <button id="btn-close" class="btn-outline">Close</button>
+              <button id="btn-logout">Logout</button>
+            </div>
+          </header>
+          <div class="grid2-1">
+            <div>
+              <div class="card">
+                <h3 style="margin:0 0 8px 0;">Create / Edit Package</h3>
+                <form id="pkg-form">
+                  <input type="hidden" name="id" />
+                  <label>Title</label>
+                  <input name="title" required/>
+                  <label>Destination</label>
+                  <select name="destination" required>
+                    <option>Jammu & Kashmir</option>
+                    <option>Goa</option>
+                  </select>
+                  <div class="row2">
+                    <div><label>Nights</label><input type="number" name="duration_nights" min="1" value="3" required/></div>
+                    <div><label>Days</label><input type="number" name="duration_days" min="1" value="4" required/></div>
+                  </div>
+                  <label>Themes (comma)</label><input name="themes" placeholder="Family,Honeymoon,Pilgrimage,Corporate,Adventure"/>
+                  <label>Highlights (one per line)</label><textarea name="highlights" rows="3"></textarea>
+                  <label>Inclusions</label><textarea name="inclusions" rows="2"></textarea>
+                  <label>Exclusions</label><textarea name="exclusions" rows="2"></textarea>
+                  <label>Itinerary JSON</label><textarea name="itinerary" rows="5" placeholder='[{"day":1,"title":"Arrival","details":"Transfer & check-in"}]'></textarea>
+                  <div class="row2">
+                    <div><label>Base price (₹)</label><input type="number" name="base_price_inr" placeholder="e.g. 9999"/></div>
+                    <div><label>Price label</label><input name="price_label" placeholder="From / On Request" value="From"/></div>
+                  </div>
+                  <div class="row2">
+                    <div><label>Featured</label><select name="featured"><option value="0">No</option><option value="1">Yes</option></select></div>
+                    <div><label>Active</label><select name="active"><option value="1">Yes</option><option value="0">No</option></select></div>
+                  </div>
+                  <label>Sort order</label><input type="number" name="sort_order" value="100"/>
+                  <label>Cover image</label>
+                  <div class="row2">
+                    <input type="text" name="cover_image" placeholder="https://.../image.webp"/>
+                    <div>
+                      <input type="file" id="cover-input" accept="image/*"/>
+                      <button type="button" id="upload-cover">Upload</button>
+                    </div>
+                  </div>
+                  <label>Gallery (comma URLs)</label><textarea name="gallery" rows="2"></textarea>
+                  <button type="submit" id="save">Save Package</button>
+                  <div class="msg" id="form-msg"></div>
+                </form>
+              </div>
+              <div class="card">
+                <h3 style="margin:0 0 8px 0;">Seasonal Pricing</h3>
+                <form id="season-form">
+                  <input type="hidden" name="package_id"/>
+                  <label>Season name</label><input name="season_name" required/>
+                  <div class="row2"><div><label>Start</label><input type="date" name="start_date" required/></div><div><label>End</label><input type="date" name="end_date" required/></div></div>
+                  <label>Price per person (₹)</label><input type="number" name="price_inr" required/>
+                  <button type="submit">Add Season</button>
+                  <div class="msg" id="season-msg"></div>
+                </form>
+                <ul id="season-list" style="margin-top:8px;"></ul>
+              </div>
+            </div>
+            <div>
+              <div class="card">
+                <div style="display:flex;align-items:center;justify-content:space-between;"><h3 style="margin:0;">All Packages</h3><button id="btn-new" class="btn-outline">+ New</button></div>
+                <div id="pkgs" class="list" style="margin-top:8px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    }
+    function showOverlay(){ document.getElementById('adminOverlay')?.classList.add('show'); }
+    function hideOverlay(){ document.getElementById('adminOverlay')?.classList.remove('show'); }
+
+    async function ensureLogin(){
+      try{ await setPersistence(auth, browserLocalPersistence); }catch{}
+      const provider = new GoogleAuthProvider(); auth.useDeviceLanguage && auth.useDeviceLanguage();
+      if (wantLogout){
+        try{ await signOut(auth); }catch{}
+        params.delete('logout');
+        history.replaceState({},'',location.pathname+(params.toString() ? '?'+params.toString() : ''));
+      }
+      try{ const red = await getRedirectResult(auth); if (red?.user) return red.user; }catch(e){}
+      if (auth.currentUser) return auth.currentUser;
+      try{ const res = await signInWithPopup(auth, provider); return res.user; }
+      catch(e){ await signInWithRedirect(auth, provider); return null; }
+    }
+
+    const el = s => document.querySelector(s);
+
+    function toArrayFromComma(s){
+      return (s||'').split(',').map(x=>x.trim()).filter(Boolean);
+    }
+    function toLines(s){
+      return (s||'').split('\n').map(x=>x.trim()).filter(Boolean);
+    }
+    function parseJsonSafe(s, fallback){
+      try{ const j = JSON.parse(s||'[]'); return Array.isArray(j) ? j : fallback; }catch{ return fallback; }
+    }
+
+    function fillForm(r){
+      const f = el('#pkg-form');
+      f.reset();
+      f.querySelector('input[name="id"]').value = r.id||'';
+      f.title.value = r.title||'';
+      f.destination.value = r.destination||'Jammu & Kashmir';
+      f.duration_nights.value = r.duration_nights||3;
+      f.duration_days.value = r.duration_days||4;
+      f.themes.value = (r.themes||[]).join(',');
+      f.highlights.value = (r.highlights||[]).join('\n');
+      f.inclusions.value = r.inclusions||'';
+      f.exclusions.value = r.exclusions||'';
+      f.itinerary.value = JSON.stringify(r.itinerary||[], null, 0);
+      f.base_price_inr.value = r.base_price ? Math.round(r.base_price/100) : '';
+      f.price_label.value = r.price_label||'From';
+      f.featured.value = r.featured ? '1':'0';
+      f.active.value = r.active ? '1':'0';
+      f.sort_order.value = r.sort_order ?? 100;
+      f.cover_image.value = r.cover_image||'';
+      f.gallery.value = (r.gallery||[]).join(',');
+      el('input[name="package_id"]').value = r.id||'';
+    }
+
+    async function loadSeasons(pkgId){
+      const snap = await getDocs(collection(db,'packages', pkgId, 'seasons'));
+      const list = snap.docs.map(d => ({ id:d.id, ...d.data() }));
+      const ul = el('#season-list');
+      ul.innerHTML = list.map(s => `<li><strong>${s.season_name}</strong>: ${s.start_date} → ${s.end_date} — ₹${(s.price_per_person/100).toFixed(0)} <button class="red" data-del-season="${s.id}" data-pkg="${pkgId}" style="margin-left:6px;">Delete</button></li>`).join('') || '<li class="muted">No seasonal prices.</li>';
+      ul.onclick = async (e) => {
+        const sid = e.target.getAttribute('data-del-season'); const pid = e.target.getAttribute('data-pkg');
+        if (!sid) return; if (!confirm('Remove this season?')) return;
+        await deleteDoc(doc(db, 'packages', pid, 'seasons', sid)); await loadSeasons(pid);
+      };
+    }
+
+    async function loadPackageIntoForm(id){
+      const snap = await getDoc(doc(db,'packages', id));
+      if (!snap.exists()){ alert('Package not found'); return; }
+      const r = { id, ...snap.data() };
+      fillForm(r);
+      await loadSeasons(id);
+      el('#form-msg').textContent = 'Loaded package for editing.';
+    }
+
+    async function listPackages(){
+      const snap = await getDocs(query(collection(db,'packages'), orderBy('updatedAt','desc')));
+      const rows = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      const pkgsEl = el('#pkgs');
+      pkgsEl.innerHTML = rows.map(r => `
+        <div class="item">
+          <img src="${r.cover_image||'https://via.placeholder.com/160x110?text=No+Image'}" alt="${(r.title||'Package')+' cover'}">
+          <div>
+            <div><strong>${r.title||'-'}</strong> — <small>${r.destination||''}</small></div>
+            <div class="muted">${r.duration_nights||'-'}N/${r.duration_days||'-'}D • ${(r.themes||[]).join(', ')}</div>
+            <div class="muted">${r.active ? 'Active' : 'Inactive'} ${r.featured ? '• Featured' : ''}</div>
+          </div>
+          <div><button data-edit="${r.id}">Edit</button><button data-del="${r.id}" class="red" style="margin-left:6px;">Delete</button></div>
+        </div>`).join('') || '<div class="muted">No packages yet.</div>';
+      pkgsEl.onclick = async (e) => {
+        const idEdit = e.target.getAttribute('data-edit');
+        const idDel = e.target.getAttribute('data-del');
+        if (idEdit){ await loadPackageIntoForm(idEdit); }
+        if (idDel){
+          if (!confirm('Delete this package?')) return;
+          await deleteDoc(doc(db,'packages', idDel));
+          await listPackages(); el('#season-list').innerHTML=''; el('#season-form').reset();
+        }
+      };
+    }
+
+    function wireAdminUI(){
+      // Close & logout
+      el('#btn-close')?.addEventListener('click', hideOverlay);
+      el('#btn-logout')?.addEventListener('click', async () => {
+        try { await signOut(auth); } catch {}
+        alert('Logged out.');
+        hideOverlay();
+      });
+      // New package
+      el('#btn-new')?.addEventListener('click', () => {
+        fillForm({
+          destination:'Jammu & Kashmir',
+          duration_nights:3, duration_days:4,
+          active:1, featured:0, sort_order:100
+        });
+        el('#season-list').innerHTML='';
+        el('#season-form').reset();
+        el('#form-msg').textContent = 'Ready to create a new package.';
+      });
+      // Upload cover
+      el('#upload-cover')?.addEventListener('click', async () => {
+        const input = el('#cover-input');
+        if (!input?.files?.length){ alert('Select an image first.'); return; }
+        const file = input.files[0];
+        const path = `covers/${Date.now()}-${file.name}`;
+        const rref = ref(storage, path);
+        try {
+          await uploadBytes(rref, file);
+          const url = await getDownloadURL(rref);
+          el('input[name="cover_image"]').value = url;
+          el('#form-msg').textContent = 'Cover uploaded.';
+        } catch(e){
+          console.error(e);
+          alert('Upload failed. Try again.');
+        }
+      });
+      // Save package
+      el('#pkg-form')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const f = e.currentTarget;
+        const id = f.querySelector('input[name="id"]').value.trim();
+        const title = f.title.value.trim();
+        if (!title){ f.title.focus(); return; }
+        const payload = {
+          title,
+          destination: f.destination.value.trim(),
+          duration_nights: Number(f.duration_nights.value||0),
+          duration_days: Number(f.duration_days.value||0),
+          themes: toArrayFromComma(f.themes.value),
+          highlights: toLines(f.highlights.value),
+          inclusions: f.inclusions.value || '',
+          exclusions: f.exclusions.value || '',
+          itinerary: parseJsonSafe(f.itinerary.value, []),
+          base_price: f.base_price_inr.value ? Math.round(Number(f.base_price_inr.value)*100) : null,
+          price_label: (f.price_label.value||'From').trim(),
+          featured: f.featured.value === '1',
+          active: f.active.value === '1',
+          sort_order: Number(f.sort_order.value||100),
+          cover_image: f.cover_image.value.trim(),
+          gallery: toArrayFromComma(f.gallery.value),
+          updatedAt: serverTimestamp()
+        };
+        try{
+          if (id){
+            await updateDoc(doc(db,'packages', id), payload);
+          } else {
+            payload.createdAt = serverTimestamp();
+            const refDoc = await addDoc(collection(db,'packages'), payload);
+            f.querySelector('input[name="id"]').value = refDoc.id;
+            el('input[name="package_id"]').value = refDoc.id;
+          }
+          el('#form-msg').textContent = 'Saved successfully.';
+          await listPackages();
+        }catch(err){
+          console.error(err);
+          el('#form-msg').textContent = 'Save failed. See console.';
+        }
+      });
+      // Add season
+      el('#season-form')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const sf = e.currentTarget;
+        const pkgId = sf.package_id.value.trim();
+        if (!pkgId){ alert('Save the package first, then add seasons.'); return; }
+        const pricePaise = Math.round(Number(sf.price_inr.value)*100);
+        const row = {
+          season_name: sf.season_name.value.trim(),
+          start_date: sf.start_date.value,
+          end_date: sf.end_date.value,
+          price_per_person: pricePaise,
+          createdAt: serverTimestamp(), updatedAt: serverTimestamp()
+        };
+        try{
+          await addDoc(collection(db,'packages', pkgId, 'seasons'), row);
+          el('#season-msg').textContent = 'Season added.';
+          sf.reset(); sf.package_id.value = pkgId;
+          await loadSeasons(pkgId);
+        }catch(e2){
+          console.error(e2);
+          el('#season-msg').textContent = 'Failed to add season.';
+        }
+      });
+    }
+
+    async function initAdmin(){
+      if (!wantAdmin) return;
+      const user = await ensureLogin();
+      if (!user) return; // redirect flow continues
+      if (!isAllowed(user)){ alert('This Google account is not authorized for Travel Admin.'); return; }
+      renderAdminShell();
+      showOverlay();
+      wireAdminUI();
+      await listPackages();
+    }
+
+    initAdmin();
+  </script>
+
+  <noscript>
+    Please enable JavaScript to use travel package listings and the admin console.
+  </noscript>
+
 </body>
 </html>
