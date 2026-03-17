@@ -31,9 +31,6 @@
   <meta name="twitter:description" content="Book cabs for Jammu, Katra, Patnitop, Srinagar, Gulmarg, Pahalgam — and Goa (Dabolim, Panaji, Calangute, Madgaon)." />
   <meta name="twitter:image" content="https://www.fodel.in/og-transport.jpg" />
 
-  <!-- (Optional) meta keywords -->
-  <meta name="keywords" content="taxi, cab, airport transfer, one way taxi, round trip taxi, multi city taxi, Jammu taxi, Katra taxi, Srinagar taxi, Patnitop cab, Gulmarg taxi, Pahalgam cab, Vaishno Devi taxi, Goa taxi, Panaji cab, Calangute taxi, Madgaon cab" />
-
   <!-- Structured Data -->
   <script type="application/ld+json">
   {
@@ -96,7 +93,6 @@
       --shadow-lg:0 24px 60px rgba(17,24,39,0.25);
       --shadow-soft:0 8px 20px rgba(17,24,39,0.14);
     }
-
     *{ box-sizing:border-box; margin:0; padding:0; }
     html,body{ overflow-x:hidden; }
     body{
@@ -107,13 +103,11 @@
       text-rendering:optimizeLegibility;
     }
     a{ color:inherit; text-decoration:none; }
-
     :focus-visible{
       outline:3px solid color-mix(in srgb, var(--accent) 70%, transparent);
       outline-offset:3px; border-radius:10px;
       transition:outline-color .2s ease;
     }
-
     @media (prefers-reduced-motion: reduce){
       *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
     }
@@ -220,7 +214,7 @@
       box-shadow: 0 6px 14px rgba(0,0,0,.08);
       background: #fff8f8;
     }
-    /* Only hide radios for filter chips (region/city)—NOT trip radios */
+    /* hide radios for filter chips only */
     .chip-filter input[type="radio"]{ appearance:none; width:0; height:0; position:absolute; opacity:0; }
 
     .regions-strip .tabs{ display:flex; gap:10px; flex-wrap:wrap; }
@@ -262,7 +256,7 @@
     .qty-input::-webkit-inner-spin-button{ -webkit-appearance: none; margin:0; }
     .qty-input[type="number"]{ -moz-appearance: textfield; }
 
-    /* Buttons — NORMALIZED */
+    /* Buttons */
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
       gap:8px; padding:10px 14px; border-radius:10px;
@@ -319,6 +313,10 @@
     }
     @media(min-width:720px){ .fw-whatsapp .tag{ display:block; } }
 
+    /* Suggestions */
+    .suggestions { display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
+    .suggestions .sug { font-size:12.5px; }
+
     /* Visually hidden helper */
     .visually-hidden-seo{
       position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; clip:rect(1px, 1px, 1px, 1px);
@@ -357,32 +355,26 @@
       </div>
     </div>
   </header>
-
   <!-- ========== REGION / CITY SELECTOR (below header) ========== -->
   <section class="section regions-strip" aria-label="Select service region and city">
     <div class="card">
-      <div class="row">
-        <strong>Service Regions:</strong>
-      </div>
-      <div class="tabs" id="region-tabs" role="tablist" aria-label="Regions">
-        <!-- Rendered by JS -->
-      </div>
+      <div class="row"><strong>Service Regions:</strong></div>
+      <div class="tabs" id="region-tabs" role="tablist" aria-label="Regions"></div>
 
       <div class="row" style="margin-top:10px;">
-        <div class="inline" id="city-chips-top" role="radiogroup" aria-label="Cities">
-          <!-- Rendered by JS -->
-        </div>
+        <div class="inline" id="city-chips-top" role="radiogroup" aria-label="Cities"></div>
       </div>
       <small class="note">Choose a region (and optionally a city). Pickup/Drop lists update instantly.</small>
     </div>
   </section>
+
   <!-- ========== BOOKING FORM ========== -->
   <section class="section" aria-labelledby="transport-title">
     <div class="card">
       <h2 id="transport-title">Transport Requirement</h2>
       <p class="muted">Tell us your route and vehicle needs. We’ll confirm availability and share the best price.</p>
 
-      <!-- Trip type (native radio dots visible) -->
+      <!-- Trip type -->
       <div class="row inline" role="radiogroup" aria-label="Trip type">
         <label class="chip"><input type="radio" name="tripType" value="oneway" checked> <span>One way</span></label>
         <label class="chip"><input type="radio" name="tripType" value="round"> <span>Round trip</span></label>
@@ -408,6 +400,8 @@
               <label class="chip"><input type="checkbox" id="drop-other-toggle"> <span>Other drop</span></label>
               <input id="drop-other" type="text" placeholder="Type custom drop location" style="display:none;" inputmode="text" autocomplete="off">
             </div>
+            <!-- Suggested routes (chips) -->
+            <div id="quick-routes" class="suggestions" aria-live="polite"></div>
           </div>
         </div>
 
@@ -577,7 +571,7 @@
       </div>
 
       <div class="actions">
-        <!-- Big Admin button (only shown after ?admin=1 + auth) -->
+        <!-- Admin gear stays hidden by default; opens only in ?admin=1 flow -->
         <button class="btn-ghost" type="button" id="open-admin" style="display:none;">⚙ Admin Console</button>
         <button class="btn" id="submit-btn" type="button">Submit Transport Request</button>
       </div>
@@ -587,12 +581,12 @@
       </p>
     </div>
   </section>
+
   <!-- ========== FOOTER ========== -->
   <footer class="footer" aria-label="Contact">
     <a href="mailto:sales@fodeltravels.in" class="chip">📧 sales@fodeltravels.in</a>
     <div class="copy">© 2015–2026 Fodel India — Fodel Transport</div>
   </footer>
-
   <!-- ========== ADMIN CONSOLE ========== -->
   <div class="overlay" id="admin-ov" role="dialog" aria-modal="true" aria-labelledby="admin-title">
     <div class="modal">
@@ -604,13 +598,13 @@
       <div class="modal-body">
         <!-- Regions & Cities (drives front-end filters) -->
         <div class="card" style="margin-bottom:12px;">
-          <h3 style="margin-bottom:6px;">Regions & Cities (Front-end Filters)</h3>
+          <h3 style="margin-bottom:6px;">Regions &amp; Cities (Front-end Filters)</h3>
 
           <div class="grid-2">
             <div class="row">
               <label>Regions</label>
               <div class="inline" style="gap:8px;">
-                <input id="rg-new" type="text" placeholder="Add region e.g., Jammu & Kashmir">
+                <input id="rg-new" type="text" placeholder="Add region e.g., Jammu &amp; Kashmir">
                 <button class="btn" id="rg-add">Add Region</button>
                 <button class="btn-ghost" id="rg-reset">Reset Regions to Defaults</button>
               </div>
@@ -635,7 +629,7 @@
               <button class="btn-ghost" id="sync-flat">Sync to Flat Locations</button>
             </div>
             <div id="loc-list-city" class="inline" style="margin-top:8px; flex-wrap:wrap;"></div>
-            <small class="note">Front-end Pickup/Drop shows only locations under the chosen Region/City. “Sync to Flat” copies all unique locations to the flat list for CSV/Price/Distance workflows.</small>
+            <small class="note">Front-end Pickup/Drop shows only locations under the chosen Region/City (or “All”). “Sync to Flat” copies all unique locations to the flat list for CSV/Price/Distance workflows.</small>
           </div>
         </div>
 
@@ -648,7 +642,7 @@
             <button class="btn-ghost" id="loc-reset">Reset Flat Locations to Defaults</button>
           </div>
           <div id="loc-list" class="inline" style="margin-top:10px; flex-wrap:wrap;"></div>
-          <small class="note">Flat list is used by Route Prices & Distances selects. You can ignore it and just use “Sync to Flat”.</small>
+          <small class="note">Flat list is used by Route Prices & Distances selects. Prefer “Sync to Flat”.</small>
         </div>
 
         <!-- Route Prices -->
@@ -670,7 +664,7 @@
             <button class="btn" id="price-save">Save Route Price</button>
             <button class="btn-ghost" id="price-clear">Clear Route Price</button>
           </div>
-          <p class="note">Leave empty (or 0) for “Ask for Quote”. Prices here are internal reference and shown as estimate.</p>
+          <p class="note">Leave empty (or 0) for “Ask for Quote”. Prices show as estimate only.</p>
         </div>
 
         <!-- Route Distances -->
@@ -729,6 +723,9 @@ Jammu Airport,Katra,49</pre>
             <input type="file" id="import-file" accept="application/json" aria-label="Import JSON file">
             <button class="btn-ghost" id="import-json">Import</button>
           </div>
+          <div class="actions" style="margin-top:8px;">
+            <button class="btn-ghost" id="reset-hard">Hard Reset (clear browser data)</button>
+          </div>
           <p class="note">Data is saved in your browser’s localStorage. Use export to backup or migrate.</p>
         </div>
       </div>
@@ -756,1314 +753,1456 @@ Jammu Airport,Katra,49</pre>
     <a class="fab" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" href="https://wa.me/919797459260?text=Hi%20Fodel%20Transport%2C%20I%20need%20a%20cab%20quote.">💬</a>
   </div>
   <script>
-    /* Force-hide Admin at boot for safety */
-    document.addEventListener('DOMContentLoaded', function(){
-      var ov = document.getElementById('admin-ov');
-      var btn = document.getElementById('open-admin');
-      if (ov) ov.classList.remove('active');
-      if (btn) btn.style.display = 'none';
-    });
+  /* Force-hide Admin at boot for safety + BFCache restore */
+  function hideAdminGear() {
+    var ov = document.getElementById('admin-ov');
+    var btn = document.getElementById('open-admin');
+    if (ov) ov.classList.remove('active');
+    if (btn) btn.style.display = 'none';
+  }
+  document.addEventListener('DOMContentLoaded', hideAdminGear);
+  window.addEventListener('pageshow', hideAdminGear);
+  document.addEventListener('visibilitychange', function(){
+    if (document.visibilityState === 'visible') hideAdminGear();
+  });
 
-    /* ===========================
-       CONFIG / DEFAULTS / STORE
-    ============================ */
-    var FORMSPREE_ENDPOINT = ""; // optional webhook
-    var DATA_URL = "/data/transport-data.json"; // optional seed file
+  /* ===========================
+     CONFIG / DEFAULTS / STORE
+  ============================ */
+  var FORMSPREE_ENDPOINT = ""; // optional webhook
+  var DATA_URL = "/data/transport-data.json"; // optional seed file
 
-    var DEFAULTS = {
-      regions: {
-        "Jammu & Kashmir": {
-          "Jammu": ["Jammu Airport", "Jammu City", "Jammu Tawi Railway Station"],
-          "Katra": ["Katra", "Katra Helipad", "Katra Bus Stand"],
-          "Srinagar": ["Srinagar Airport", "Srinagar City / Dal Gate", "Gulmarg", "Pahalgam", "Sonmarg"],
-          "Udhampur/Patnitop": ["Udhampur", "Patnitop", "Nathatop"]
-        },
-        "Goa": {
-          "Airports/Stations": [
-            "Goa International Airport (Dabolim)",
-            "Madgaon Railway Station",
-            "Thivim Railway Station"
-          ],
-          "Panaji": ["Panaji (Panjim) City", "Panjim Bus Stand"],
-          "North Goa": ["Calangute", "Candolim", "Baga", "Anjuna", "Vagator"],
-          "South Goa": ["Madgaon", "Colva", "Benaulim", "Palolem"]
-        }
+  var DEFAULTS = {
+    regions: {
+      "Jammu & Kashmir": {
+        "Jammu": ["Jammu Airport", "Jammu City", "Jammu Tawi Railway Station"],
+        "Katra": ["Katra", "Katra Helipad", "Katra Bus Stand"],
+        "Srinagar": ["Srinagar Airport", "Srinagar City / Dal Gate", "Gulmarg", "Pahalgam", "Sonmarg"],
+        "Udhampur/Patnitop": ["Udhampur", "Patnitop", "Nathatop"]
       },
-      locations: [
-        "Jammu Airport", "Jammu Tawi Railway Station", "Jammu City",
-        "Katra", "Katra Helipad", "Katra Bus Stand",
-        "Udhampur", "Patnitop", "Nathatop",
-        "Srinagar Airport", "Srinagar City / Dal Gate", "Gulmarg", "Pahalgam", "Sonmarg",
-        "Goa International Airport (Dabolim)", "Panaji (Panjim) City", "Panjim Bus Stand",
-        "Calangute", "Candolim", "Baga", "Anjuna", "Vagator",
-        "Madgaon", "Colva", "Benaulim", "Palolem",
-        "Madgaon Railway Station", "Thivim Railway Station"
-      ],
-      vehicles: [
-        { id:"sedan",  label:"Sedan (Dzire/Amaze) — 4 pax" },
-        { id:"suv",    label:"SUV (Ertiga) — 5/6 pax" },
-        { id:"innova", label:"Innova / Crysta — 6/7 pax" },
-        { id:"tt",     label:"Tempo Traveller 12 / 17" }
-      ],
-      priceTable: { sedan:{}, suv:{}, innova:{}, tt:{} },
-      distanceTable: {},
-      addons: { roofcarrier: 200, placard: 100 }
-    };
+      "Goa": {
+        "Airports/Stations": [
+          "Goa International Airport (Dabolim)",
+          "Madgaon Railway Station",
+          "Thivim Railway Station"
+        ],
+        "Panaji": ["Panaji (Panjim) City", "Panjim Bus Stand"],
+        "North Goa": ["Calangute", "Candolim", "Baga", "Anjuna", "Vagator"],
+        "South Goa": ["Madgaon", "Colva", "Benaulim", "Palolem"]
+      }
+    },
+    locations: [
+      "Jammu Airport", "Jammu Tawi Railway Station", "Jammu City",
+      "Katra", "Katra Helipad", "Katra Bus Stand",
+      "Udhampur", "Patnitop", "Nathatop",
+      "Srinagar Airport", "Srinagar City / Dal Gate", "Gulmarg", "Pahalgam", "Sonmarg",
+      "Goa International Airport (Dabolim)", "Panaji (Panjim) City", "Panjim Bus Stand",
+      "Calangute", "Candolim", "Baga", "Anjuna", "Vagator",
+      "Madgaon", "Colva", "Benaulim", "Palolem",
+      "Madgaon Railway Station", "Thivim Railway Station"
+    ],
+    vehicles: [
+      { id:"sedan",  label:"Sedan (Dzire/Amaze) — 4 pax" },
+      { id:"suv",    label:"SUV (Ertiga) — 5/6 pax" },
+      { id:"innova", label:"Innova / Crysta — 6/7 pax" },
+      { id:"tt",     label:"Tempo Traveller 12 / 17" }
+    ],
+    priceTable: { sedan:{}, suv:{}, innova:{}, tt:{} },
+    distanceTable: {},
+    addons: { roofcarrier: 200, placard: 100 }
+  };
 
-    var STORE_KEY = "fodel_transport_v7";
-    var STORE = null;
+  var STORE_KEY = "fodel_transport_v8";
+  var STORE = null;
 
-    function mergeDeep(target, source){
-      if (typeof target !== 'object' || target===null) return source;
-      if (typeof source !== 'object' || source===null) return target;
-      Object.keys(source).forEach(function(k){
-        if (Array.isArray(source[k])){
-          var a = Array.isArray(target[k]) ? target[k].slice() : [];
-          source[k].forEach(function(x){ if (a.indexOf(x)===-1) a.push(x); });
-          target[k] = a;
-        } else if (typeof source[k] === 'object'){
-          target[k] = mergeDeep(target[k] || {}, source[k]);
-        } else { target[k] = source[k]; }
-      });
-      return target;
-    }
+  function mergeDeep(target, source){
+    if (typeof target !== 'object' || target===null) return source;
+    if (typeof source !== 'object' || source===null) return target;
+    Object.keys(source).forEach(function(k){
+      if (Array.isArray(source[k])){
+        var a = Array.isArray(target[k]) ? target[k].slice() : [];
+        source[k].forEach(function(x){ if (a.indexOf(x)===-1) a.push(x); });
+        target[k] = a;
+      } else if (typeof source[k] === 'object'){
+        target[k] = mergeDeep(target[k] || {}, source[k]);
+      } else { target[k] = source[k]; }
+    });
+    return target;
+  }
 
-    function primeDefaultsFromData(){
-      return fetch(DATA_URL, {cache:'no-store'}).then(function(res){
-        if (!res || !res.ok) return;
-        return res.json().then(function(json){
-          var seed = {
-            regions: typeof json.regions==='object' ? json.regions : undefined,
-            locations: Array.isArray(json.locations) ? json.locations : undefined,
-            vehicles:  Array.isArray(json.vehicles)  ? json.vehicles  : undefined,
-            priceTable: typeof json.priceTable==='object' ? json.priceTable : undefined,
-            distanceTable: typeof json.distanceTable==='object' ? json.distanceTable : undefined,
-            addons: typeof json.addons==='object' ? json.addons : undefined
-          };
-          mergeDeep(DEFAULTS, seed);
-        }).catch(function(){});
+  function primeDefaultsFromData(){
+    return fetch(DATA_URL, {cache:'no-store'}).then(function(res){
+      if (!res || !res.ok) return;
+      return res.json().then(function(json){
+        var seed = {
+          regions: typeof json.regions==='object' ? json.regions : undefined,
+          locations: Array.isArray(json.locations) ? json.locations : undefined,
+          vehicles:  Array.isArray(json.vehicles)  ? json.vehicles  : undefined,
+          priceTable: typeof json.priceTable==='object' ? json.priceTable : undefined,
+          distanceTable: typeof json.distanceTable==='object' ? json.distanceTable : undefined,
+          addons: typeof json.addons==='object' ? json.addons : undefined
+        };
+        mergeDeep(DEFAULTS, seed);
       }).catch(function(){});
+    }).catch(function(){});
+  }
+
+  function loadStore(){
+    try{
+      var s = localStorage.getItem(STORE_KEY);
+      STORE = s ? JSON.parse(s) : JSON.parse(JSON.stringify(DEFAULTS));
+    }catch(e){
+      STORE = JSON.parse(JSON.stringify(DEFAULTS));
     }
-
-    function loadStore(){
-      try{
-        var s = localStorage.getItem(STORE_KEY);
-        STORE = s ? JSON.parse(s) : JSON.parse(JSON.stringify(DEFAULTS));
-      }catch(e){
-        STORE = JSON.parse(JSON.stringify(DEFAULTS));
-      }
-      if (!STORE.addons) STORE.addons = { roofcarrier: 200, placard: 100 };
-      if (!STORE.distanceTable) STORE.distanceTable = {};
-      if (!STORE.priceTable) STORE.priceTable = { sedan:{}, suv:{}, innova:{}, tt:{} };
-      if (!STORE.regions || typeof STORE.regions!=='object' || !Object.keys(STORE.regions).length) STORE.regions = JSON.parse(JSON.stringify(DEFAULTS.regions));
-      if (!Array.isArray(STORE.locations)) STORE.locations = (DEFAULTS.locations || []).slice();
-      if (STORE.vehicles && STORE.vehicles.length){
-        STORE.vehicles = STORE.vehicles.filter(function (v, i, a) {
-          return a.findIndex(function (x) { return x.id === v.id; }) === i;
-        });
-      }
-    }
-    function saveStore(){
-      try {
-        localStorage.setItem(STORE_KEY, JSON.stringify(STORE));
-        return true;
-      } catch (e) {
-        console.error('Failed to save to localStorage', e);
-        showToast('Cannot save: browser storage blocked');
-        return false;
-      }
-    }
-
-    // Helpers
-    function byId(id){ return document.getElementById(id); }
-    function todayISO(){ return new Date().toISOString().split('T')[0]; }
-    function showToast(msg){
-      var t = byId('toast'); if(!t) return;
-      t.textContent = msg || t.textContent; t.classList.add('show'); setTimeout(function(){ t.classList.remove('show'); }, 2200);
-    }
-    function priceKey(a,b){ return String((a||'').trim()) + '|' + String((b||'').trim()); }
-
-    function containsAirport(s){ if(!s) return false; var v=String(s).toLowerCase(); return v.indexOf('airport')>-1; }
-    function containsRailway(s){ if(!s) return false; var v=String(s).toLowerCase(); return v.indexOf('railway')>-1 || v.indexOf('station')>-1 || v.indexOf('tawi')>-1; }
-
-    /* ===========================
-       UI refs
-    ============================ */
-    var tripRadios = Array.prototype.slice.call(document.querySelectorAll('input[name="tripType"]'));
-    var blockStd = byId('block-std');
-    var blockReturn = byId('block-return');
-    var blockLocal = byId('block-local');
-    var blockMulti = byId('block-multi');
-
-    var selPickup = byId('pickup');
-    var selDrop = byId('drop');
-    var selLocalCity = byId('local-city');
-    var pickupOtherToggle = byId('pickup-other-toggle');
-    var pickupOther = byId('pickup-other');
-    var dropOtherToggle = byId('drop-other-toggle');
-    var dropOther = byId('drop-other');
-
-    var date = byId('date');
-    var time = byId('time');
-    var rdate = byId('ret-date');
-    var rtime = byId('ret-time');
-
-    var vehicle = byId('vehicle');
-    var cars = byId('cars');
-    var pax = byId('pax');
-
-    var legsBox = byId('legs');
-    var addLegBtn = byId('add-leg');
-    var clearLegsBtn = byId('clear-legs');
-
-    var estText = byId('est-text');
-    var kmText = byId('km-text');
-    var refreshBtn = byId('refresh-est');
-    var estBreak = byId('est-breakdown');
-    var lineBase = byId('line-base');
-    var lineGrand = byId('line-grand');
-
-    var roofAmt = byId('roof-amt');
-    var placardAmt = byId('placard-amt');
-    var qtyRoof = byId('qty-roof');
-    var qtyPlacard = byId('qty-placard');
-    var lineAddonRoof = byId('line-addon-roof');
-    var lineAddonPlacard = byId('line-addon-placard');
-    var lineAddonRoofVal = byId('line-addon-roof-val');
-    var lineAddonPlacardVal = byId('line-addon-placard-val');
-
-    var submitBtn = byId('submit-btn');
-    var openAdmin = byId('open-admin');
-    var adminOv = byId('admin-ov');
-
-    var ftWrap  = byId('ft-wrap');
-    var ftLabel = byId('ft-label');
-    var ftInput = byId('ft-input');
-    var ftHint  = byId('ft-hint');
-
-    var regionTabs = byId('region-tabs');
-    var cityChipsTop = byId('city-chips-top');
-
-    /* ===========================
-       Fillers
-    ============================ */
-    function fillSelectFromArray(sel, arr){
-      if(!sel) return;
-      var opts = '<option value="">Select</option>';
-      for (var i=0;i<arr.length;i++){ opts += '<option>'+arr[i]+'</option>'; }
-      sel.innerHTML = opts;
-    }
-    function fillVehicles(){
-      if(!vehicle) return;
-      var opts = '<option value="">Select</option>';
-      var arr = (STORE.vehicles||[]);
-      var seen = {};
-      for (var i=0;i<arr.length;i++){
-        var v = arr[i];
-        if (seen[v.id]) continue;
-        seen[v.id] = true;
-        opts += '<option value="'+v.id+'">'+v.label+'</option>';
-      }
-      vehicle.innerHTML = opts;
-    }
-    function refreshAddonLabels(){
-      roofAmt.textContent = (STORE.addons && STORE.addons.roofcarrier!=null ? STORE.addons.roofcarrier : 0).toLocaleString("en-IN");
-      placardAmt.textContent = (STORE.addons && STORE.addons.placard!=null ? STORE.addons.placard : 0).toLocaleString("en-IN");
-    }
-    function initDates(){
-      var ld = byId('local-date');
-      var t = todayISO();
-      if (date) date.min = t;
-      if (rdate) rdate.min = t;
-      if (ld) ld.min = t;
-    }
-
-    /* ===========================
-       Regions → Cities → Locations (Front-end)
-    ============================ */
-    var CURRENT = { region: '', city: '' };
-
-    function unique(arr){ return Array.from(new Set(arr)); }
-
-    function getFilteredLocations(){
-      var regions = STORE.regions || {};
-      if (CURRENT.city && CURRENT.region && regions[CURRENT.region] && regions[CURRENT.region][CURRENT.city]){
-        return regions[CURRENT.region][CURRENT.city].slice();
-      }
-      if (CURRENT.region && regions[CURRENT.region]){
-        var acc = [];
-        Object.keys(regions[CURRENT.region]).forEach(function(ct){
-          acc = acc.concat(regions[CURRENT.region][ct] || []);
-        });
-        return unique(acc);
-      }
-      return (STORE.locations || []).slice();
-    }
-
-    function renderRegionTabs(){
-      if (!regionTabs) return;
-      var regions = Object.keys(STORE.regions || {});
-      regionTabs.innerHTML = '';
-      var card = regionTabs.closest('.card'); // robust
-      if (!regions.length){
-        if (card) card.style.display = 'none';
-        return;
-      } else {
-        if (card) card.style.display = '';
-      }
-      if (!CURRENT.region || !STORE.regions[CURRENT.region]) CURRENT.region = regions[0];
-
-      regions.forEach(function(rg){
-        var btn = document.createElement('button');
-        btn.className = 'tab' + (rg===CURRENT.region ? ' active' : '');
-        btn.setAttribute('role','tab');
-        btn.textContent = rg;
-        btn.addEventListener('click', function(){
-          CURRENT.region = rg;
-          CURRENT.city = '';
-          renderRegionTabs();
-          renderCityChipsTop();
-          applyLocationFilter();
-          updateFTVisibility();
-          refreshEstimate();
-        });
-        regionTabs.appendChild(btn);
+    if (!STORE.addons) STORE.addons = { roofcarrier: 200, placard: 100 };
+    if (!STORE.distanceTable) STORE.distanceTable = {};
+    if (!STORE.priceTable) STORE.priceTable = { sedan:{}, suv:{}, innova:{}, tt:{} };
+    if (!STORE.regions || typeof STORE.regions!=='object' || !Object.keys(STORE.regions).length) STORE.regions = JSON.parse(JSON.stringify(DEFAULTS.regions));
+    if (!Array.isArray(STORE.locations)) STORE.locations = (DEFAULTS.locations || []).slice();
+    if (STORE.vehicles && STORE.vehicles.length){
+      STORE.vehicles = STORE.vehicles.filter(function (v, i, a) {
+        return a.findIndex(function (x) { return x.id === v.id; }) === i;
       });
     }
-
-    function renderCityChipsTop(){
-      if (!cityChipsTop) return;
-      cityChipsTop.innerHTML = '';
-      var regions = STORE.regions || {};
-      var cities = (CURRENT.region && regions[CURRENT.region]) ? Object.keys(regions[CURRENT.region]) : [];
-      cities.forEach(function(ct){
-        var label = document.createElement('label');
-        label.className = 'chip chip-filter' + (ct===CURRENT.city ? ' active' : '');
-        label.innerHTML = '<input type="radio" name="city"> <small>'+ct+'</small>';
-        label.addEventListener('click', function(){
-          CURRENT.city = ct;
-          renderCityChipsTop();
-          applyLocationFilter();
-          updateFTVisibility();
-          refreshEstimate();
-        });
-        cityChipsTop.appendChild(label);
-      });
-    }
-
-    function applyLocationFilter(){
-      var list = getFilteredLocations();
-      var keepPickup = selPickup && selPickup.value;
-      var keepDrop = selDrop && selDrop.value;
-
-      fillSelectFromArray(selPickup, list);
-      fillSelectFromArray(selDrop, list);
-      fillSelectFromArray(selLocalCity, list);
-
-      if (keepPickup && list.indexOf(keepPickup)>-1) selPickup.value = keepPickup;
-      if (keepDrop && list.indexOf(keepDrop)>-1) selDrop.value = keepDrop;
-
-      fillAdminSelects();
-    }
-
-    /* ===========================
-       Trip helpers
-    ============================ */
-    function toggleOther(tgl, input, select){
-      if(!tgl || !input || !select) return;
-      input.style.display = tgl.checked ? '' : 'none';
-      select.disabled = tgl.checked;
-      updateFTVisibility();
-      refreshEstimate();
-    }
-
-    function getPickupString(){
-      var type = 'oneway';
-      for (var i=0;i<tripRadios.length;i++){ if(tripRadios[i].checked){ type = tripRadios[i].value; break; } }
-      if (type === 'oneway' || type === 'round'){
-        return (pickupOtherToggle && pickupOtherToggle.checked ? (pickupOther && pickupOther.value || '') : (selPickup && selPickup.value || ''));
-      }
-      if (type === 'local'){ return selLocalCity && selLocalCity.value || ''; }
-      if (type === 'multi'){
-        var firstLeg = document.querySelector('#legs .leg .leg-from');
-        return firstLeg && firstLeg.value || '';
-      }
-      return '';
-    }
-
-    function updateFTVisibility(){
-      var pickup = getPickupString();
-      if (containsAirport(pickup)){
-        ftWrap.style.display = '';
-        ftLabel.textContent  = 'Flight no.';
-        ftInput.placeholder  = 'e.g., UK 123';
-        ftInput.setAttribute('data-ft-type', 'flight');
-        if (ftHint) ftHint.style.display = 'none';
-      } else if (containsRailway(pickup)){
-        ftWrap.style.display = '';
-        ftLabel.textContent  = 'Train no.';
-        ftInput.placeholder  = 'e.g., 12426 Jammu Rajdhani';
-        ftInput.setAttribute('data-ft-type', 'train');
-        if (ftHint) ftHint.style.display = 'none';
-      } else {
-        ftWrap.style.display = 'none';
-        ftInput.value = '';
-      }
-    }
-
-    [selPickup, selDrop, pickupOther, dropOther, pickupOtherToggle, dropOtherToggle, selLocalCity]
-      .forEach(function(el){ if(el){ el.addEventListener('input', function(){ updateFTVisibility(); refreshEstimate(); }); } });
-
-    // Robust qty (+/-) via event delegation
-    document.addEventListener('click', function(e){
-      var btn = e.target.closest('.btn-qty');
-      if (!btn) return;
-      var target = document.getElementById(btn.dataset.target);
-      var delta = parseInt(btn.dataset.delta,10) || 0;
-      if (!target) return;
-      var nCars = Math.max(1, parseInt(cars.value || "1", 10));
-      var val = parseInt(target.value || "0", 10) + delta;
-      val = Math.max(0, Math.min(nCars, val));
-      target.value = String(val);
-      refreshEstimate();
-    });
-
-    // Legs
-    function createLeg(fromVal, toVal){
-      fromVal = fromVal || ""; toVal = toVal || "";
-      var div = document.createElement('div');
-      div.className = 'leg';
-      div.innerHTML =
-        '<div class="inline">'+
-          '<div><label>Pickup</label><select class="leg-from"></select></div>'+
-          '<div><label>Drop</label><select class="leg-to"></select></div>'+
-        '</div>'+
-        '<div class="inline" style="margin-top:8px;">'+
-          '<div><label>Date</label><input type="date" class="leg-date" min="'+todayISO()+'"></div>'+
-          '<div><label>Pickup time</label><input type="time" class="leg-time"></div>'+
-        '</div>'+
-        '<div class="leg-actions">'+
-          '<button type="button" class="btn-ghost btn-leg-del" aria-label="Delete leg">Delete</button>'+
-        '</div>';
-      legsBox.appendChild(div);
-
-      var lf = div.querySelector('.leg-from');
-      var lt = div.querySelector('.leg-to');
-      fillSelectFromArray(lf, getFilteredLocations());
-      fillSelectFromArray(lt, getFilteredLocations());
-      if (fromVal) lf.value = fromVal;
-      if (toVal) lt.value = toVal;
-
-      div.querySelector('.btn-leg-del').addEventListener('click', function(){
-        div.remove(); refreshEstimate(); updateFTVisibility();
-      });
-
-      var controls = [lf, lt];
-      Array.prototype.forEach.call(div.querySelectorAll('.leg-date, .leg-time'), function(el){ controls.push(el); });
-      controls.forEach(function(el){ if(el) el.addEventListener('input', function(){ refreshEstimate(); updateFTVisibility(); }); });
-
-      return div;
-    }
-
-    function ensureAtLeastOneLeg(){
-      if (legsBox.children.length === 0){
-        var fromPref = pickupOtherToggle && pickupOtherToggle.checked ? (pickupOther.value || "") : (selPickup.value || "");
-        var toPref   = dropOtherToggle && dropOtherToggle.checked ? (dropOther.value   || "") : (selDrop.value   || "");
-        createLeg(fromPref, toPref);
-      }
-    }
-
-    if (addLegBtn){
-      addLegBtn.addEventListener('click', function(){
-        var last = legsBox.lastElementChild;
-        var fromPref = "", toPref = "";
-        if (last) {
-          var lastTo = last.querySelector('.leg-to');
-          fromPref = lastTo ? (lastTo.value || "") : "";
-        } else {
-          fromPref = pickupOtherToggle && pickupOtherToggle.checked ? (pickupOther.value || "") : (selPickup.value || "");
-          toPref   = dropOtherToggle && dropOtherToggle.checked ? (dropOther.value   || "") : (selDrop.value   || "");
-        }
-        createLeg(fromPref, toPref);
-        refreshEstimate();
-        updateFTVisibility();
-      });
-    }
-    if (clearLegsBtn){
-      clearLegsBtn.addEventListener('click', function(){
-        legsBox.innerHTML = "";
-        refreshEstimate();
-        updateFTVisibility();
-      });
-    }
-
-    // Estimate
-    function getRoutePrice(vId, from, to) {
-      var table = (STORE.priceTable && STORE.priceTable[vId]) || {};
-      var p = table[priceKey(from, to)];
-      return (p && p > 0) ? p : null;
-    }
-    function getRouteDistance(from, to){
-      var km = STORE.distanceTable ? STORE.distanceTable[priceKey(from, to)] : null;
-      km = (km!=null) ? Number(km) : null;
-      return (km && km > 0) ? km : null;
-    }
-    function calcLegs(){
-      var type = "oneway";
-      for (var i=0;i<tripRadios.length;i++){ if(tripRadios[i].checked){ type = tripRadios[i].value; break; } }
-      var legs = [];
-      if (type === "oneway" || type === "round") {
-        var p = pickupOtherToggle && pickupOtherToggle.checked ? pickupOther.value : selPickup.value;
-        var d = dropOtherToggle && dropOtherToggle.checked ? dropOther.value : selDrop.value;
-        if (p && d){
-          legs.push([p, d]);
-          if (type === "round") legs.push([d, p]);
-        }
-        return legs;
-      }
-      if (type === "multi") {
-        var legEls = Array.prototype.slice.call(legsBox.querySelectorAll(".leg"));
-        legs = legEls.map(function(el){
-          return [ el.querySelector(".leg-from").value, el.querySelector(".leg-to").value ];
-        });
-        return legs;
-      }
-      return legs; // local
-    }
-
-    function clampAddonQty(){
-      var nCars = Math.max(1, parseInt(cars.value || "1", 10));
-      [qtyRoof, qtyPlacard].forEach(function(inp){
-        if (!inp) return;
-        var v = Math.max(0, Math.min(nCars, parseInt(inp.value || "0", 10)));
-        if (String(v) !== String(inp.value)) inp.value = v;
-      });
-    }
-
-    function refreshEstimate() {
-      clampAddonQty();
-
-      var vId = vehicle.value;
-      var nCars = Math.max(1, parseInt(cars.value || "1", 10));
-      var type = "oneway";
-      for (var i=0;i<tripRadios.length;i++){ if(tripRadios[i].checked){ type = tripRadios[i].value; break; } }
-
-      if (type === "local") {
-        estText.textContent = "Local (hours/km) — ask for quote";
-        kmText.textContent = "—";
-        estBreak.style.display = 'none';
-        return;
-      }
-
-      var legs = calcLegs();
-      if (!legs.length){
-        estText.textContent = (type === 'multi') ? "Add trip legs to see estimate" : "Add locations to see estimate";
-        kmText.textContent = "—";
-        estBreak.style.display = 'none';
-        return;
-      }
-
-      // Distances
-      var kmSum = 0;
-      var kmKnown = 0;
-      for (var j=0;j<legs.length;j++){
-        var a = legs[j][0], b = legs[j][1];
-        var km = getRouteDistance(a, b);
-        if (km != null) { kmSum += km; kmKnown++; }
-      }
-      kmText.textContent = (kmKnown > 0)
-        ? (kmSum.toLocaleString("en-IN") + " km" + (kmKnown < legs.length ? (" ("+kmKnown+"/"+legs.length+" legs)") : ""))
-        : "—";
-
-      if (!vId) {
-        estText.textContent = "Vehicle type — Select";
-        estBreak.style.display = 'none';
-        return;
-      }
-
-      // Prices
-      var base = 0, missing = 0;
-      for (var k=0;k<legs.length;k++){
-        var a2 = legs[k][0], b2 = legs[k][1];
-        var price = getRoutePrice(vId, a2, b2);
-        if (price) base += price;
-        else missing++;
-      }
-
-      // Add-ons
-      var priceRoof = (STORE.addons && STORE.addons.roofcarrier || 0);
-      var pricePlacard = (STORE.addons && STORE.addons.placard || 0);
-      var qRoof = Math.max(0, parseInt(qtyRoof.value || "0", 10));
-      var qPlacard = Math.max(0, parseInt(qtyPlacard.value || "0", 10));
-
-      var baseForCars = base * nCars;
-      var addonsRoofTotal = priceRoof * qRoof;
-      var addonsPlacardTotal = pricePlacard * qPlacard;
-      var grand = baseForCars + addonsRoofTotal + addonsPlacardTotal;
-
-      if (missing) {
-        estText.textContent = (legs.length - missing) + "/" + legs.length + " legs priced — remaining ask for quote";
-        estBreak.style.display = 'none';
-      } else {
-        estText.textContent = "₹ " + grand.toLocaleString("en-IN") + " estimate";
-
-        estBreak.style.display = '';
-        lineBase.textContent = "₹ " + baseForCars.toLocaleString("en-IN");
-        if (addonsRoofTotal > 0){
-          lineAddonRoof.style.display = '';
-          lineAddonRoofVal.textContent = "₹ " + addonsRoofTotal.toLocaleString("en-IN") + " (₹ " + priceRoof.toLocaleString("en-IN") + " × " + qRoof + " per car)";
-        } else { lineAddonRoof.style.display = 'none'; }
-        if (addonsPlacardTotal > 0){
-          lineAddonPlacard.style.display = '';
-          lineAddonPlacardVal.textContent = "₹ " + addonsPlacardTotal.toLocaleString("en-IN") + " (₹ " + pricePlacard.toLocaleString("en-IN") + " × " + qPlacard + " per card)";
-        } else { lineAddonPlacard.style.display = 'none'; }
-        lineGrand.textContent = "₹ " + grand.toLocaleString("en-IN");
-      }
-    }
-
-    if (refreshBtn){ refreshBtn.addEventListener("click", refreshEstimate); }
-    [selPickup, selDrop, vehicle, cars, date, time, rdate, rtime, pickupOther, dropOther, pickupOtherToggle, dropOtherToggle, selLocalCity, qtyRoof, qtyPlacard]
-      .forEach(function(el){ if(el) el.addEventListener("input", refreshEstimate); });
-
-    // Trip switching
-    function updateTripBlocks(){
-      var type = "oneway";
-      for (var i=0;i<tripRadios.length;i++){ if(tripRadios[i].checked){ type = tripRadios[i].value; break; } }
-      blockStd.style.display   = (type === 'oneway' || type === 'round') ? '' : 'none';
-      blockReturn.style.display= (type === 'round') ? '' : 'none';
-      blockLocal.style.display = (type === 'local') ? '' : 'none';
-      blockMulti.style.display = (type === 'multi') ? '' : 'none';
-      if (type === 'multi') ensureAtLeastOneLeg();
-      updateFTVisibility();
-      refreshEstimate();
-    }
-    tripRadios.forEach(function(r){ r.addEventListener('change', updateTripBlocks); });
-
-    // Other toggles
-    if (pickupOtherToggle) pickupOtherToggle.addEventListener('change', function(){ toggleOther(pickupOtherToggle, pickupOther, selPickup); });
-    if (dropOtherToggle)   dropOtherToggle.addEventListener('change',   function(){ toggleOther(dropOtherToggle,   dropOther,   selDrop); });
-    toggleOther(pickupOtherToggle, pickupOther, selPickup);
-    toggleOther(dropOtherToggle,   dropOther,   selDrop);
-
-    /* ===========================
-       ADMIN UI open/close
-    ============================ */
-    function openAdminModal(){ if (adminOv) adminOv.classList.add('active'); }
-    function closeAdminModal(){ if (adminOv) adminOv.classList.remove('active'); }
-    if (openAdmin) openAdmin.addEventListener('click', openAdminModal);
-    if (adminOv){ adminOv.addEventListener('click', function(e){ if (e.target === adminOv) closeAdminModal(); }); }
-    Array.prototype.forEach.call(document.querySelectorAll('[data-close]'), function(x){ x.addEventListener('click', closeAdminModal); });
-    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeAdminModal(); });
-
-    /* ===========================
-       ADMIN: Flat Locations (legacy)
-    ============================ */
-    function renderLocChips(){
-      var locList = byId('loc-list');
-      if (!locList) return;
-      locList.innerHTML = '';
-      (STORE.locations||[]).forEach(function(loc){
-        var chip = document.createElement('div');
-        chip.className = 'chip';
-        chip.innerHTML = '<small>'+loc+'</small> <button class="btn-ghost" aria-label="Remove">✕</button>';
-        chip.querySelector('button').addEventListener('click', function(){
-          STORE.locations = (STORE.locations||[]).filter(function(x){ return x!==loc; });
-          saveStore(); renderLocChips(); fillAdminSelects(); applyLocationFilter(); refreshEstimate(); showToast('Removed');
-        });
-        locList.appendChild(chip);
-      });
-    }
-
-    var locNew = byId('loc-new'), locAdd = byId('loc-add'), locReset = byId('loc-reset');
-    if (locAdd) locAdd.addEventListener('click', function(){
-      var v = (locNew.value || '').trim();
-      if (!v) return;
-      if ((STORE.locations||[]).indexOf(v) === -1) {
-        STORE.locations.push(v);
-        saveStore(); locNew.value = '';
-        renderLocChips(); fillAdminSelects(); applyLocationFilter(); refreshEstimate(); showToast('Location added');
-      } else { showToast('Already exists'); }
-    });
-    if (locReset) locReset.addEventListener('click', function(){
-      STORE.locations = (DEFAULTS.locations || []).slice();
-      saveStore(); renderLocChips(); fillAdminSelects(); applyLocationFilter(); refreshEstimate(); showToast('Flat locations reset');
-    });
-
-    /* ===========================
-       ADMIN: Regions & Cities manager
-    ============================ */
-    var RG = { region: '', city: '' };
-
-    var rgNew = byId('rg-new'), rgAdd = byId('rg-add'), rgList = byId('rg-list'), rgReset = byId('rg-reset');
-    var ctNew = byId('ct-new'), ctAdd = byId('ct-add'), ctList = byId('ct-list');
-    var locNewCity = byId('loc-new-city'), locAddCity = byId('loc-add-city'), locListCity = byId('loc-list-city');
-    var btnSyncFlat = byId('sync-flat');
-
-    function ensureRegionsObj(){
-      if (!STORE.regions || typeof STORE.regions !== 'object') STORE.regions = {};
-    }
-    function renderRegions(){
-      ensureRegionsObj();
-      rgList.innerHTML = '';
-      var regions = Object.keys(STORE.regions);
-      if (!RG.region || !STORE.regions[RG.region]) RG.region = regions[0] || '';
-      regions.forEach(function(r){
-        var chip = document.createElement('div');
-        chip.className = 'chip' + (RG.region===r ? ' active':'');
-        chip.innerHTML = '<small><strong>'+r+'</strong></small> <button class="btn-ghost" aria-label="Remove">✕</button>';
-        var btn = chip.querySelector('button');
-        btn.addEventListener('click', function(){
-          if (!confirm('Delete region "'+r+'"? This will remove all its cities and locations.')) return;
-          delete STORE.regions[r];
-          if (RG.region===r){ RG.region=''; RG.city=''; }
-          saveStore();
-          renderRegions(); renderCities(); renderCityLocations();
-          renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
-          showToast('Region removed');
-        });
-        chip.addEventListener('click', function(e){
-          if (e.target===btn) return;
-          RG.region = r; RG.city = '';
-          renderRegions(); renderCities(); renderCityLocations();
-          renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
-        });
-        rgList.appendChild(chip);
-      });
-    }
-
-    function renderCities(){
-      ctList.innerHTML = '';
-      if (!RG.region || !STORE.regions[RG.region]) return;
-      var cities = Object.keys(STORE.regions[RG.region] || {});
-      if (!RG.city || !(STORE.regions[RG.region]||{})[RG.city]) RG.city = cities[0] || '';
-      cities.forEach(function(c){
-        var chip = document.createElement('div');
-        chip.className = 'chip' + (RG.city===c ? ' active':'');
-        chip.innerHTML = '<small>'+c+'</small> <button class="btn-ghost" aria-label="Remove">✕</button>';
-        var btn = chip.querySelector('button');
-        btn.addEventListener('click', function(){
-          if (!confirm('Delete city "'+c+'"? This will remove all its locations.')) return;
-          delete STORE.regions[RG.region][c];
-          if (RG.city===c) RG.city='';
-          saveStore();
-          renderCities(); renderCityLocations();
-          renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
-          showToast('City removed');
-        });
-        chip.addEventListener('click', function(e){
-          if (e.target===btn) return;
-          RG.city = c;
-          renderCities(); renderCityLocations();
-          renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
-        });
-        ctList.appendChild(chip);
-      });
-    }
-
-    function renderCityLocations(){
-      locListCity.innerHTML = '';
-      if (!RG.region || !RG.city) return;
-      var arr = STORE.regions[RG.region][RG.city] || [];
-      arr.forEach(function(loc){
-        var chip = document.createElement('div');
-        chip.className = 'chip';
-        chip.innerHTML = '<small>'+loc+'</small> <button class="btn-ghost" aria-label="Remove">✕</button>';
-        chip.querySelector('button').addEventListener('click', function(){
-          STORE.regions[RG.region][RG.city] = arr.filter(function(x){ return x!==loc; });
-          saveStore();
-          renderCityLocations();
-          renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
-          showToast('Location removed');
-        });
-        locListCity.appendChild(chip);
-      });
-    }
-
-    if (rgAdd) rgAdd.addEventListener('click', function(){
-      var v = (rgNew.value||'').trim();
-      if (!v) return;
-      ensureRegionsObj();
-      if (!STORE.regions[v]) STORE.regions[v] = {};
-      RG.region = v; RG.city = '';
-      saveStore(); rgNew.value='';
-      renderRegions(); renderCities(); renderCityLocations();
-      renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
-      showToast('Region added');
-    });
-
-    if (rgReset) rgReset.addEventListener('click', function(){
-      if (!confirm('Reset Regions to defaults? This will overwrite current Regions & Cities.')) return;
-      STORE.regions = JSON.parse(JSON.stringify(DEFAULTS.regions || {}));
-      saveStore();
-      RG.region = ''; RG.city = '';
-      renderRegions(); renderCities(); renderCityLocations();
-      renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
-      showToast('Regions reset');
-    });
-
-    if (ctAdd) ctAdd.addEventListener('click', function(){
-      if (!RG.region){ showToast('Select a region first'); return; }
-      var v = (ctNew.value||'').trim();
-      if (!v) return;
-      if (!STORE.regions[RG.region]) STORE.regions[RG.region] = {};
-      if (!STORE.regions[RG.region][v]) STORE.regions[RG.region][v] = [];
-      RG.city = v;
-      saveStore(); ctNew.value='';
-      renderCities(); renderCityLocations();
-      renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
-      showToast('City added');
-    });
-
-    if (byId('loc-add-city')) byId('loc-add-city').addEventListener('click', function(){
-      if (!RG.region || !RG.city){ showToast('Select region & city first'); return; }
-      var v = (locNewCity.value||'').trim();
-      if (!v) return;
-      var arr = STORE.regions[RG.region][RG.city] || [];
-      if (arr.indexOf(v)===-1) arr.push(v);
-      STORE.regions[RG.region][RG.city] = arr;
-      saveStore(); locNewCity.value='';
-      renderCityLocations();
-      renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
-      showToast('Location added');
-    });
-
-    /* ===========================
-       ADMIN: Route Prices & Distances — selects
-    ============================ */
-    var priceFrom = byId('price-from'), priceTo = byId('price-to');
-    var pSedan = byId('p-sedan'), pSuv = byId('p-suv'), pInnova = byId('p-innova'), pTT = byId('p-tt');
-    var distFrom = byId('dist-from'), distTo = byId('dist-to'), distKm = byId('dist-km');
-
-    function fillAdminSelects(){
-      var flat = (STORE.locations || []).slice();
-      fillSelectFromArray(priceFrom, flat);
-      fillSelectFromArray(priceTo, flat);
-      fillSelectFromArray(distFrom, flat);
-      fillSelectFromArray(distTo, flat);
-    }
-
-    function getNumOrZero(el){ var n = parseInt(el.value,10); return isNaN(n)?0:n; }
-    function setRoutePriceFor(vId, from, to, val){
-      if (!STORE.priceTable[vId]) STORE.priceTable[vId] = {};
-      var key = priceKey(from,to);
-      if (val>0) STORE.priceTable[vId][key] = val;
-      else delete STORE.priceTable[vId][key];
-    }
-
-    var btnPriceSave = byId('price-save');
-    if (btnPriceSave) btnPriceSave.addEventListener('click', function(){
-      var from = priceFrom.value || '';
-      var to   = priceTo.value || '';
-      if (!from || !to) { showToast('Select From/To'); return; }
-      setRoutePriceFor('sedan',  from, to, getNumOrZero(pSedan));
-      setRoutePriceFor('suv',    from, to, getNumOrZero(pSuv));
-      setRoutePriceFor('innova', from, to, getNumOrZero(pInnova));
-      setRoutePriceFor('tt',     from, to, getNumOrZero(pTT));
-      saveStore(); showToast('Route price saved'); refreshEstimate();
-    });
-
-    var btnPriceClear = byId('price-clear');
-    if (btnPriceClear) btnPriceClear.addEventListener('click', function(){
-      var from = priceFrom.value || ''; var to = priceTo.value || '';
-      if (!from || !to) { showToast('Select From/To'); return; }
-      var key = priceKey(from,to);
-      ['sedan','suv','innova','tt'].forEach(function(v){ if (STORE.priceTable[v]) delete STORE.priceTable[v][key]; });
-      saveStore(); showToast('Route price cleared'); refreshEstimate();
-    });
-
-    var btnDistSave = byId('dist-save');
-    if (btnDistSave) btnDistSave.addEventListener('click', function(){
-      var from = distFrom.value || '';
-      var to   = distTo.value || '';
-      var km   = parseInt(distKm.value, 10);
-      if (!from || !to || !km) { showToast('Missing From/To/Km'); return; }
-      STORE.distanceTable[priceKey(from,to)] = km;
-      saveStore(); showToast('Distance saved'); refreshEstimate();
-    });
-
-    var btnDistClear = byId('dist-clear');
-    if (btnDistClear) btnDistClear.addEventListener('click', function(){
-      var from = distFrom.value || '';
-      var to   = distTo.value || '';
-      if (!from || !to) { showToast('Select From/To'); return; }
-      delete STORE.distanceTable[priceKey(from,to)];
-      saveStore(); showToast('Distance cleared'); refreshEstimate();
-    });
-
-    /* ===========================
-       ADMIN: Add-ons / CSV / Backup
-    ============================ */
-    var aRoof = byId('a-roof'), aPlacard = byId('a-placard'), addonsSave = byId('addons-save');
-    if (addonsSave) addonsSave.addEventListener('click', function(){
-      var r = parseInt(aRoof.value,10); var p = parseInt(aPlacard.value,10);
-      if (!STORE.addons) STORE.addons = {};
-      if (!isNaN(r) && r>=0) STORE.addons.roofcarrier = r;
-      if (!isNaN(p) && p>=0) STORE.addons.placard = p;
-      saveStore(); refreshAddonLabels(); refreshEstimate(); showToast('Add-ons saved');
-    });
-
-    function download(filename, text){
-      var blob = new Blob([text], {type:'text/csv;charset=utf-8;'});
-      var a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = filename; a.style.display='none';
-      document.body.appendChild(a); a.click();
-      setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 0);
-    }
-    function parseCSV(text){
-      return text.split(/\r?\n/).map(function(r){ return r.trim(); }).filter(Boolean).map(function(r){
-        var out=[], cur='', inQ=false;
-        for (var i=0;i<r.length;i++){
-          var ch=r[i];
-          if (ch==='"' ){ if (inQ && r[i+1]==='"'){ cur+='"'; i++; } else { inQ=!inQ; } }
-          else if (ch===',' && !inQ){ out.push(cur.trim()); cur=''; }
-          else cur+=ch;
-        }
-        out.push(cur.trim());
-        return out;
-      });
-    }
-
-    var btnExportPrices = byId('export-csv-prices');
-    if (btnExportPrices) btnExportPrices.addEventListener('click', function(){
-      var sets = ['sedan','suv','innova','tt'];
-      var keys = {};
-      sets.forEach(function(v){ var t = STORE.priceTable[v]||{}; Object.keys(t).forEach(function(k){ keys[k]=true; }); });
-      var out = ['From,To,sedan,suv,innova,tt'];
-      Object.keys(keys).forEach(function(k){
-        var parts = k.split('|'), from=parts[0], to=parts[1];
-        var s = (STORE.priceTable.sedan||{})[k]||'';
-        var u = (STORE.priceTable.suv||{})[k]||'';
-        var i = (STORE.priceTable.innova||{})[k]||'';
-        var t = (STORE.priceTable.tt||{})[k]||'';
-        out.push([from,to,s,u,i,t].join(','));
-      });
-      download('prices.csv', out.join('\n'));
-    });
-
-    var btnImportPrices = byId('import-csv-prices');
-    if (btnImportPrices) btnImportPrices.addEventListener('click', function(){
-      var f = byId('csv-prices') && byId('csv-prices').files && byId('csv-prices').files[0];
-      if (!f) { showToast('Choose CSV file'); return; }
-      var reader = new FileReader();
-      reader.onload = function(){
-        try{
-          var rows = parseCSV(reader.result);
-          var hdr = rows.shift() || [];
-          var colFrom = hdr.indexOf('From'), colTo = hdr.indexOf('To');
-          var colS=hdr.indexOf('sedan'), colU=hdr.indexOf('suv'), colI=hdr.indexOf('innova'), colT=hdr.indexOf('tt');
-          rows.forEach(function(c){
-            var from = c[colFrom], to=c[colTo];
-            if (!from||!to) return;
-            var key = priceKey(from,to);
-            if (colS>=0) { var v=parseInt(c[colS],10); if(!isNaN(v)&&v>0){ if(!STORE.priceTable.sedan) STORE.priceTable.sedan={}; STORE.priceTable.sedan[key]=v; } }
-            if (colU>=0) { var v2=parseInt(c[colU],10); if(!isNaN(v2)&&v2>0){ if(!STORE.priceTable.suv) STORE.priceTable.suv={}; STORE.priceTable.suv[key]=v2; } }
-            if (colI>=0) { var v3=parseInt(c[colI],10); if(!isNaN(v3)&&v3>0){ if(!STORE.priceTable.innova) STORE.priceTable.innova={}; STORE.priceTable.innova[key]=v3; } }
-            if (colT>=0) { var v4=parseInt(c[colT],10); if(!isNaN(v4)&&v4>0){ if(!STORE.priceTable.tt) STORE.priceTable.tt={}; STORE.priceTable.tt[key]=v4; } }
-          });
-          if (STORE.vehicles && STORE.vehicles.length){
-            STORE.vehicles = STORE.vehicles.filter(function (v, i, a) {
-              return a.findIndex(function (x) { return x.id === v.id; }) === i;
-            });
-          }
-          saveStore(); showToast('Prices CSV imported'); refreshEstimate();
-        }catch(e){ showToast('Import failed'); }
-      };
-      reader.readAsText(f);
-    });
-
-    var btnExportDist = byId('export-csv-dist');
-    if (btnExportDist) btnExportDist.addEventListener('click', function(){
-      var dt = STORE.distanceTable || {};
-      var out = ['From,To,km'];
-      Object.keys(dt).forEach(function(k){
-        var parts = k.split('|'), from=parts[0], to=parts[1];
-        out.push([from,to, dt[k]].join(','));
-      });
-      download('distances.csv', out.join('\n'));
-    });
-
-    var btnImportDist = byId('import-csv-dist');
-    if (btnImportDist) btnImportDist.addEventListener('click', function(){
-      var f = byId('csv-dist') && byId('csv-dist').files && byId('csv-dist').files[0];
-      if (!f) { showToast('Choose CSV file'); return; }
-      var reader = new FileReader();
-      reader.onload = function(){
-        try{
-          var rows = parseCSV(reader.result);
-          var hdr = rows.shift() || [];
-          var colFrom = hdr.indexOf('From'), colTo = hdr.indexOf('To'), colKm = hdr.indexOf('km');
-          rows.forEach(function(c){
-            var from = c[colFrom], to=c[colTo], km = parseInt(c[colKm],10);
-            if (!from||!to||isNaN(km)) return;
-            STORE.distanceTable[priceKey(from,to)] = km;
-          });
-          saveStore(); showToast('Distances CSV imported'); refreshEstimate();
-        }catch(e){ showToast('Import failed'); }
-      };
-      reader.readAsText(f);
-    });
-
-    var btnExportJSON = byId('export-json');
-    if (btnExportJSON) btnExportJSON.addEventListener('click', function(){
-      var blob = new Blob([JSON.stringify(STORE, null, 2)], {type:'application/json'});
-      var a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = 'fodel-transport-backup.json';
-      a.style.display='none';
-      document.body.appendChild(a);
-      a.click();
-      setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 0);
-    });
-
-    var importFile = byId('import-file'), importJSON = byId('import-json');
-    if (importJSON) importJSON.addEventListener('click', function(){
-      var f = importFile && importFile.files && importFile.files[0];
-      if (!f) { showToast('Choose JSON file'); return; }
-      var reader = new FileReader();
-      reader.onload = function(){
-        try{
-          var obj = JSON.parse(reader.result);
-          if (!obj || typeof obj !== 'object') throw new Error('Invalid JSON');
-          STORE = Object.assign({}, DEFAULTS, obj);
-          if (STORE.vehicles && STORE.vehicles.length){
-            STORE.vehicles = STORE.vehicles.filter(function (v, i, a) {
-              return a.findIndex(function (x) { return x.id === v.id; }) === i;
-            });
-          }
-          saveStore();
-          // Re-render everything
-          fillVehicles();
-          renderRegionTabs();
-          renderCityChipsTop();
-          applyLocationFilter();
-          renderLocChips();
-          refreshAddonLabels();
-          updateTripBlocks();
-          refreshEstimate();
-          var ar = byId('a-roof'), ap = byId('a-placard');
-          if (ar) ar.value = STORE.addons.roofcarrier || 0;
-          if (ap) ap.value = STORE.addons.placard || 0;
-          showToast('Imported');
-        }catch(e){ showToast('Import failed'); }
-      };
-      reader.readAsText(f);
-    });
-
-    /* ===========================
-       Formal message (Email/WhatsApp)
-    ============================ */
-    function buildMessage(){
-      var trip = 'oneway';
-      for (var i=0;i<tripRadios.length;i++){ if(tripRadios[i].checked){ trip = tripRadios[i].value; break; } }
-      var legs = calcLegs();
-
-      var pLoc = pickupOtherToggle && pickupOtherToggle.checked ? (pickupOther.value||'') : (selPickup.value||'');
-      var dLoc = dropOtherToggle && dropOtherToggle.checked ? (dropOther.value||'') : (selDrop.value||'');
-
-      function toTitle(s){ return (s||'').replace(/\b\w/g,function(m){return m.toUpperCase();}); }
-
-      var route = '';
-      if (trip==='multi'){
-        route = legs.filter(function(x){return x[0]&&x[1];}).map(function(x){return x[0]+' → '+x[1];}).join(' | ');
-      } else if (trip==='round'){
-        route = pLoc+' ⇄ '+dLoc;
-      } else if (trip==='oneway') {
-        route = pLoc+' → '+dLoc;
-      } else {
-        route = 'Local — '+(selLocalCity.value||'');
-      }
-
-      var ft = '';
-      var ftType = ftInput.getAttribute('data-ft-type') || '';
-      if (ftWrap.style.display !== 'none' && ftInput.value.trim()){
-        ft = (ftType==='train' ? 'Train no.' : 'Flight no.') + ': ' + ftInput.value.trim();
-      }
-
-      var addOnsTxt = [];
-      var aR = parseInt(qtyRoof.value,10)||0; if (aR>0) addOnsTxt.push('Roof carrier × ' + aR);
-      var aP = parseInt(qtyPlacard.value,10)||0; if (aP>0) addOnsTxt.push('Placard × ' + aP);
-
-      var distTxt = kmText.textContent || '';
-      var estTxt  = estText.textContent || '';
-
-      var lines = [];
-      lines.push("Dear Sir/Ma’am,");
-      lines.push("");
-      lines.push("We have requirement of taxi/transport services as per the details below. Kindly confirm availability and share the best price.");
-      lines.push("");
-      lines.push("Trip Type: " + toTitle(trip));
-      lines.push("Route: " + route);
-
-      if (trip==='oneway' || trip==='round'){
-        if (date.value)  lines.push("Pickup: " + date.value + (time.value ? (" " + time.value) : ""));
-        if (trip==='round' && rdate.value) lines.push("Return: " + rdate.value + (rtime.value ? (" " + rtime.value) : ""));
-      } else if (trip==='local'){
-        var lp = (byId('local-package') && byId('local-package').value) || '';
-        var lc = (selLocalCity.value||'');
-        var ld = (byId('local-date') && byId('local-date').value) || '';
-        lines.push("Package: " + (lp ? lp.replace('-', ' hours / ') : 'Custom'));
-        lines.push("City: " + lc);
-        if (ld) lines.push("Date: " + ld);
-      } else if (trip==='multi'){
-        legs.forEach(function(x,i){ if(x[0]&&x[1]) lines.push("Leg " + (i+1) + ": " + x[0] + " → " + x[1]); });
-      }
-
-      if (ft) lines.push(ft);
-      if (vehicle.value) lines.push("Vehicle: " + vehicle.options[vehicle.selectedIndex].text);
-      if (pax.value) lines.push("Passengers: " + pax.value);
-      if (cars.value) lines.push("Cars: " + cars.value);
-      if (addOnsTxt.length) lines.push("Add-ons: " + addOnsTxt.join(', '));
-      if (distTxt && distTxt !== '—') lines.push("Approx. Distance: " + distTxt);
-      if (estTxt) lines.push("Estimate: " + estTxt);
-
-      if (byId('notes').value.trim()){
-        lines.push("");
-        lines.push("Additional Notes: " + byId('notes').value.trim());
-      }
-
-      lines.push("");
-      lines.push("Regards,");
-      lines.push((byId('name').value.trim() || ''));
-      lines.push("Mobile: " + (byId('mobile').value.trim() || ''));
-      if (byId('email').value.trim()) lines.push("Email: " + byId('email').value.trim());
-
-      lines.push("");
-      lines.push("Note: Estimate is indicative for planning. Final fare may vary based on actual kms, waiting, tolls, parking, night charges, and chosen vehicle.");
-
-      return lines.join('\n');
-    }
-
-    function validateForm(){
-      var trip = 'oneway';
-      for (var i=0;i<tripRadios.length;i++){ if(tripRadios[i].checked){ trip = tripRadios[i].value; break; } }
-      if (!byId('name').value.trim()) { showToast('Enter your name'); return false; }
-      if (!byId('mobile').value.trim()) { showToast('Enter mobile'); return false; }
-      if (trip==='oneway' || trip==='round'){
-        var p = pickupOtherToggle && pickupOtherToggle.checked ? pickupOther.value : selPickup.value;
-        var d = dropOtherToggle && dropOtherToggle.checked ? dropOther.value : selDrop.value;
-        if (!p || !d) { showToast('Select pickup/drop'); return false; }
-      }
-      if (trip==='round' && !rdate.value) { showToast('Select return date'); return false; }
-      if (trip==='local' && !selLocalCity.value) { showToast('Select city'); return false; }
-      if (trip==='multi' && legsBox.children.length===0) { showToast('Add at least one leg'); return false; }
-      if (!vehicle.value) { showToast('Select vehicle'); return false; }
+  }
+  function saveStore(){
+    try {
+      localStorage.setItem(STORE_KEY, JSON.stringify(STORE));
       return true;
+    } catch (e) {
+      console.error('Failed to save to localStorage', e);
+      showToast('Cannot save: browser storage blocked');
+      return false;
     }
+  }
 
-    if (submitBtn) submitBtn.addEventListener('click', function(){
-      if (!validateForm()) return;
-      var msg = buildMessage();
-      var pref = (byId('pref-contact') && byId('pref-contact').value || 'WhatsApp').toLowerCase();
+  // Helpers
+  function byId(id){ return document.getElementById(id); }
+  function todayISO(){ return new Date().toISOString().split('T')[0]; }
+  function showToast(msg){
+    var t = byId('toast'); if(!t) return;
+    t.textContent = msg || t.textContent; t.classList.add('show'); setTimeout(function(){ t.classList.remove('show'); }, 2200);
+  }
+  function priceKey(a,b){ return String((a||'').trim()) + '|' + String((b||'').trim()); }
 
-      var payload = { message: msg, when: new Date().toISOString(), source: 'fodel-transport' };
-      if (FORMSPREE_ENDPOINT){
-        try{
-          fetch(FORMSPREE_ENDPOINT, { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify(payload) }).catch(function(){});
-        }catch(e){}
-      }
+  function containsAirport(s){ if(!s) return false; var v=String(s).toLowerCase(); return v.indexOf('airport')>-1; }
+  function containsRailway(s){ if(!s) return false; var v=String(s).toLowerCase(); return v.indexOf('railway')>-1 || v.indexOf('station')>-1 || v.indexOf('tawi')>-1; }
 
-      if (pref === 'email'){
-        var subject = encodeURIComponent('Transport Request — Fodel Transport');
-        var body = encodeURIComponent(msg);
-        window.location.href = "mailto:sales@fodeltravels.in?subject="+subject+"&body="+body;
-      } else {
-        var wa = "https://wa.me/919797459260?text="+encodeURIComponent(msg);
-        window.open(wa, '_blank', 'noopener,noreferrer');
-      }
-      showToast('Opening your preferred app…');
+  function unique(arr){ return Array.from(new Set(arr)); }
+</script>
+<script>
+  /* ===========================
+     UI refs
+  ============================ */
+  var tripRadios = Array.prototype.slice.call(document.querySelectorAll('input[name="tripType"]'));
+  var blockStd = byId('block-std');
+  var blockReturn = byId('block-return');
+  var blockLocal = byId('block-local');
+  var blockMulti = byId('block-multi');
+
+  var selPickup = byId('pickup');
+  var selDrop = byId('drop');
+  var selLocalCity = byId('local-city');
+  var pickupOtherToggle = byId('pickup-other-toggle');
+  var pickupOther = byId('pickup-other');
+  var dropOtherToggle = byId('drop-other-toggle');
+  var dropOther = byId('drop-other');
+
+  var date = byId('date');
+  var time = byId('time');
+  var rdate = byId('ret-date');
+  var rtime = byId('ret-time');
+
+  var vehicle = byId('vehicle');
+  var cars = byId('cars');
+  var pax = byId('pax');
+
+  var legsBox = byId('legs');
+  var addLegBtn = byId('add-leg');
+  var clearLegsBtn = byId('clear-legs');
+
+  var estText = byId('est-text');
+  var kmText = byId('km-text');
+  var refreshBtn = byId('refresh-est');
+  var estBreak = byId('est-breakdown');
+  var lineBase = byId('line-base');
+  var lineGrand = byId('line-grand');
+
+  var roofAmt = byId('roof-amt');
+  var placardAmt = byId('placard-amt');
+  var qtyRoof = byId('qty-roof');
+  var qtyPlacard = byId('qty-placard');
+  var lineAddonRoof = byId('line-addon-roof');
+  var lineAddonPlacard = byId('line-addon-placard');
+  var lineAddonRoofVal = byId('line-addon-roof-val');
+  var lineAddonPlacardVal = byId('line-addon-placard-val');
+
+  var submitBtn = byId('submit-btn');
+  var openAdmin = byId('open-admin');
+  var adminOv = byId('admin-ov');
+
+  var ftWrap  = byId('ft-wrap');
+  var ftLabel = byId('ft-label');
+  var ftInput = byId('ft-input');
+  var ftHint  = byId('ft-hint');
+
+  var regionTabs = byId('region-tabs');
+  var cityChipsTop = byId('city-chips-top');
+
+  var quickRoutes = byId('quick-routes');
+
+  /* ===========================
+     Fillers / Dates
+  ============================ */
+  function fillSelectFromArray(sel, arr){
+    if(!sel) return;
+    var opts = '<option value="">Select</option>';
+    for (var i=0;i<arr.length;i++){ opts += '<option>'+arr[i]+'</option>'; }
+    sel.innerHTML = opts;
+  }
+  function fillVehicles(){
+    if(!vehicle) return;
+    var opts = '<option value="">Select</option>';
+    var arr = (STORE.vehicles||[]);
+    var seen = {};
+    for (var i=0;i<arr.length;i++){
+      var v = arr[i];
+      if (seen[v.id]) continue;
+      seen[v.id] = true;
+      opts += '<option value="'+v.id+'">'+v.label+'</option>';
+    }
+    vehicle.innerHTML = opts;
+  }
+  function refreshAddonLabels(){
+    roofAmt.textContent = (STORE.addons && STORE.addons.roofcarrier!=null ? STORE.addons.roofcarrier : 0).toLocaleString("en-IN");
+    placardAmt.textContent = (STORE.addons && STORE.addons.placard!=null ? STORE.addons.placard : 0).toLocaleString("en-IN");
+  }
+  function initDates(){
+    var ld = byId('local-date');
+    var t = todayISO();
+    if (date) date.min = t;
+    if (rdate) rdate.min = t;
+    if (ld) ld.min = t;
+  }
+
+  /* ===========================
+     Regions → Cities → Locations
+  ============================ */
+  var CURRENT = { region: '', city: '' };
+
+  function getAllRegionLocations(regionName){
+    var regions = STORE.regions || {};
+    if (!regionName || !regions[regionName]) return (STORE.locations || []).slice();
+    var acc = [];
+    Object.keys(regions[regionName]).forEach(function(ct){
+      acc = acc.concat(regions[regionName][ct] || []);
     });
+    return Array.from(new Set(acc));
+  }
+  function listHas(list, v){ return Array.isArray(list) && list.indexOf(v)>-1; }
 
-    /* ===========================
-       INITIALIZER
-    ============================ */
-    function init(){
-      primeDefaultsFromData().then(function(){
-        loadStore();
-        fillVehicles();
-        refreshAddonLabels();
-        initDates();
+  function getFilteredLocations(){
+    var regions = STORE.regions || {};
+    if (CURRENT.city && CURRENT.region && regions[CURRENT.region] && regions[CURRENT.region][CURRENT.city]){
+      return regions[CURRENT.region][CURRENT.city].slice();
+    }
+    if (CURRENT.region && regions[CURRENT.region]){
+      return getAllRegionLocations(CURRENT.region);
+    }
+    return (STORE.locations || []).slice();
+  }
 
-        // Prefill admin add-on inputs
-        var ar = byId('a-roof'), ap = byId('a-placard');
-        if (ar) ar.value = STORE.addons.roofcarrier || 0;
-        if (ap) ap.value = STORE.addons.placard || 0;
+  function renderRegionTabs(){
+    if (!regionTabs) return;
+    var regions = Object.keys(STORE.regions || {});
+    regionTabs.innerHTML = '';
+    var card = regionTabs.closest('.card');
+    if (!regions.length){
+      if (card) card.style.display = 'none';
+      return;
+    } else {
+      if (card) card.style.display = '';
+    }
+    if (!CURRENT.region || !STORE.regions[CURRENT.region]) CURRENT.region = regions[0];
 
-        // Render admin lists
-        renderLocChips();
-        renderRegions(); renderCities(); renderCityLocations();
-        fillAdminSelects();
-
-        // Front-end selectors
+    regions.forEach(function(rg){
+      var btn = document.createElement('button');
+      btn.className = 'tab' + (rg===CURRENT.region ? ' active' : '');
+      btn.setAttribute('role','tab');
+      btn.textContent = rg;
+      btn.addEventListener('click', function(){
+        CURRENT.region = rg;
+        CURRENT.city = '';  // default to All
         renderRegionTabs();
         renderCityChipsTop();
         applyLocationFilter();
-
-        updateTripBlocks();
+        updateFTVisibility();
+        updateSuggestions();
         refreshEstimate();
       });
-    }
-    document.addEventListener('DOMContentLoaded', init);
-  </script>
-  <!-- Admin auth (Google Firebase) — only when ?admin=1 -->
-  <script type="module">
-  const qp = new URLSearchParams(location.search);
-  const wantAdmin  = qp.get('admin') === '1';
-  const wantLogout = qp.get('logout') === '1';
-  const debug      = qp.get('debug') === '1';
-
-  const adminOv         = document.getElementById('admin-ov');
-  const openAdmin       = document.getElementById('open-admin');
-  const adminLogoutBtn  = document.getElementById('admin-logout');
-  const guard           = document.getElementById('admin-guard');
-  const guardBody       = document.getElementById('admin-guard-body');
-
-  function log(...args){ if (debug) console.log('[ADMIN AUTH]', ...args); }
-  function show(el, on){ if (el) el.style.display = on ? 'inline-flex' : 'none'; }
-  function guardOn(msg){
-    if (!guard) return;
-    guard.classList.add('active');
-    if (guardBody) guardBody.innerHTML = msg || 'Checking admin access…';
-  }
-  function guardOff(){ if (guard) guard.classList.remove('active'); }
-  function cleanParam(param){
-    const clean = new URL(location.href);
-    clean.searchParams.delete(param);
-    history.replaceState({}, document.title, clean.pathname + (clean.searchParams.toString() ? '?' + clean.searchParams.toString() : '') + clean.hash);
+      regionTabs.appendChild(btn);
+    });
   }
 
-  async function main(){
-    show(openAdmin, false);
-    if (adminOv) adminOv.classList.remove('active');
+  function renderCityChipsTop(){
+    if (!cityChipsTop) return;
+    cityChipsTop.innerHTML = '';
+    var regions = STORE.regions || {};
+    var cities = (CURRENT.region && regions[CURRENT.region]) ? Object.keys(regions[CURRENT.region]) : [];
 
-    if (!wantAdmin && !wantLogout){
-      log('Public mode (no ?admin=1)');
-      return;
+    // "All" chip
+    (function addAllChip(){
+      var label = document.createElement('label');
+      var isAll = !CURRENT.city;
+      label.className = 'chip chip-filter' + (isAll ? ' active' : '');
+      label.innerHTML = '<input type="radio" name="city"> <small>All</small>';
+      label.addEventListener('click', function(){
+        CURRENT.city = '';
+        renderCityChipsTop();
+        applyLocationFilter();
+        updateFTVisibility();
+        updateSuggestions();
+        refreshEstimate();
+      });
+      cityChipsTop.appendChild(label);
+    })();
+
+    // City chips
+    cities.forEach(function(ct){
+      var label = document.createElement('label');
+      label.className = 'chip chip-filter' + (ct===CURRENT.city ? ' active' : '');
+      label.innerHTML = '<input type="radio" name="city"> <small>'+ct+'</small>';
+      label.addEventListener('click', function(){
+        CURRENT.city = ct;
+        renderCityChipsTop();
+        applyLocationFilter();
+        updateFTVisibility();
+        updateSuggestions();
+        refreshEstimate();
+      });
+      cityChipsTop.appendChild(label);
+    });
+  }
+
+  function applyLocationFilter(){
+    var list = getFilteredLocations();
+    var keepPickup = selPickup && selPickup.value;
+    var keepDrop   = selDrop   && selDrop.value;
+
+    // If current selection isn't present, widen to full Region
+    if ((keepPickup && !listHas(list, keepPickup)) || (keepDrop && !listHas(list, keepDrop))){
+      list = getAllRegionLocations(CURRENT.region);
     }
 
-    guardOn('Checking admin access…');
+    fillSelectFromArray(selPickup, list);
+    fillSelectFromArray(selDrop, list);
+    fillSelectFromArray(selLocalCity, list);
 
-    const [
-      { initializeApp },
-      { getAuth, setPersistence, browserLocalPersistence, GoogleAuthProvider,
-        signInWithPopup, signInWithRedirect, getRedirectResult, signOut, onAuthStateChanged }
-    ] = await Promise.all([
-      import('https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js'),
-      import('https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js'),
-    ]);
+    if (keepPickup && list.indexOf(keepPickup)>-1) selPickup.value = keepPickup;
+    if (keepDrop   && list.indexOf(keepDrop)>-1)   selDrop.value   = keepDrop;
 
-    // *** Paste your NEW rotated key below (keep other fields) ***
-   const firebaseConfig = {
-  apiKey: "AIzaSyDaKEvqtnRRaj0kBZ-c4oPDhMxiwI3GQmE", // ← real key
-  authDomain: "fodel-admin-transport.firebaseapp.com",
-  projectId: "fodel-admin-transport",
-  storageBucket: "fodel-admin-transport.firebasestorage.app",
-  messagingSenderId: "81364149405",
-  appId: "1:81364149405:web:a927a693f0402607966074",
-  measurementId: "G-DTLDMKYMZG"
-};
+    fillAdminSelects && fillAdminSelects();
+  }
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    try { await setPersistence(auth, browserLocalPersistence); } catch {}
-    const provider = new GoogleAuthProvider();
-    auth.useDeviceLanguage && auth.useDeviceLanguage();
+  /* ===========================
+     Trip helpers
+  ============================ */
+  function toggleOther(tgl, input, select){
+    if(!tgl || !input || !select) return;
+    input.style.display = tgl.checked ? '' : 'none';
+    select.disabled = tgl.checked;
+    updateFTVisibility();
+    updateSuggestions();
+    refreshEstimate();
+  }
 
-    // Lowercase + trim helper
-    const lc = (s) => (s || '').toString().trim().toLowerCase();
-
-    // Allowed admin emails (lowercase exact matches)
-    const ADMIN_EMAILS = [
-      "munish2818@gmail.com"
-      // ,"another.allowed@example.com"
-    ];
-    const isAllowed = (u) => !!(u && u.email && ADMIN_EMAILS.includes(lc(u.email)));
-
-    async function doLogin(){
-      // If we just returned from redirect, consume it
-      try {
-        const red = await getRedirectResult(auth);
-        if (red && red.user){
-          log('Redirect result user:', red.user.email);
-          return red.user;
-        }
-      } catch (e){ log('getRedirectResult error:', e?.code || e); }
-
-      // Try popup first
-      try {
-        const res = await signInWithPopup(auth, provider);
-        log('Popup signed in as:', res.user?.email);
-        return res.user;
-      } catch (e){
-        log('Popup failed:', e?.code || e);
-        // Fallback: redirect (works in Safari/ITP/blocked popups)
-        try {
-          log('Falling back to redirect flow…');
-          await signInWithRedirect(auth, provider);
-          return null; // flow resumes after redirect
-        } catch (e2){
-          log('Redirect failed:', e2?.code || e2);
-          throw e2;
-        }
-      }
+  function getPickupString(){
+    var type = 'oneway';
+    for (var i=0;i<tripRadios.length;i++){ if(tripRadios[i].checked){ type = tripRadios[i].value; break; } }
+    if (type === 'oneway' || type === 'round'){
+      return (pickupOtherToggle && pickupOtherToggle.checked ? (pickupOther && pickupOther.value || '') : (selPickup && selPickup.value || ''));
     }
-
-    async function doLogout(){
-      try { await signOut(auth); } catch {}
+    if (type === 'local'){ return selLocalCity && selLocalCity.value || ''; }
+    if (type === 'multi'){
+      var firstLeg = document.querySelector('#legs .leg .leg-from');
+      return firstLeg && firstLeg.value || '';
     }
+    return '';
+  }
 
-    if (wantLogout){
-      await doLogout();
-      cleanParam('logout');
-      alert('Logged out.');
-      guardOff();
-      return;
+  function updateFTVisibility(){
+    var pickup = getPickupString();
+    if (containsAirport(pickup)){
+      ftWrap.style.display = '';
+      ftLabel.textContent  = 'Flight no.';
+      ftInput.placeholder  = 'e.g., UK 123';
+      ftInput.setAttribute('data-ft-type', 'flight');
+      if (ftHint) ftHint.style.display = 'none';
+    } else if (containsRailway(pickup)){
+      ftWrap.style.display = '';
+      ftLabel.textContent  = 'Train no.';
+      ftInput.placeholder  = 'e.g., 12426 Jammu Rajdhani';
+      ftInput.setAttribute('data-ft-type', 'train');
+      if (ftHint) ftHint.style.display = 'none';
+    } else {
+      ftWrap.style.display = 'none';
+      ftInput.value = '';
     }
+  }
 
-    onAuthStateChanged(auth, (u) => {
-      if (debug) log('onAuthStateChanged →', u ? `signed in: ${u.email}` : 'signed out');
+  [selPickup, selDrop, pickupOther, dropOther, pickupOtherToggle, dropOtherToggle, selLocalCity]
+    .forEach(function(el){ if(el){ el.addEventListener('input', function(){ updateFTVisibility(); updateSuggestions(); refreshEstimate(); }); } });
+
+  // Robust qty (+/-)
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('.btn-qty');
+    if (!btn) return;
+    var target = document.getElementById(btn.dataset.target);
+    var delta = parseInt(btn.dataset.delta,10) || 0;
+    if (!target) return;
+    var nCars = Math.max(1, parseInt(cars.value || "1", 10));
+    var val = parseInt(target.value || "0", 10) + delta;
+    val = Math.max(0, Math.min(nCars, val));
+    target.value = String(val);
+    refreshEstimate();
+  });
+
+  // Legs
+  function createLeg(fromVal, toVal){
+    fromVal = fromVal || ""; toVal = toVal || "";
+    var div = document.createElement('div');
+    div.className = 'leg';
+    div.innerHTML =
+      '<div class="inline">'+
+        '<div><label>Pickup</label><select class="leg-from"></select></div>'+
+        '<div><label>Drop</label><select class="leg-to"></select></div>'+
+      '</div>'+
+      '<div class="inline" style="margin-top:8px;">'+
+        '<div><label>Date</label><input type="date" class="leg-date" min="'+todayISO()+'"></div>'+
+        '<div><label>Pickup time</label><input type="time" class="leg-time"></div>'+
+      '</div>'+
+      '<div class="leg-actions">'+
+        '<button type="button" class="btn-ghost btn-leg-del" aria-label="Delete leg">Delete</button>'+
+      '</div>';
+    legsBox.appendChild(div);
+
+    var lf = div.querySelector('.leg-from');
+    var lt = div.querySelector('.leg-to');
+    fillSelectFromArray(lf, getFilteredLocations());
+    fillSelectFromArray(lt, getFilteredLocations());
+    if (fromVal) lf.value = fromVal;
+    if (toVal) lt.value = toVal;
+
+    div.querySelector('.btn-leg-del').addEventListener('click', function(){
+      div.remove(); refreshEstimate(); updateFTVisibility();
     });
 
-    const tryAuth = async () => {
-      const user = await doLogin().catch(err => { log('doLogin error:', err?.code || err); return null; });
-      const email = user?.email ? lc(user.email) : null;
+    var controls = [lf, lt];
+    Array.prototype.forEach.call(div.querySelectorAll('.leg-date, .leg-time'), function(el){ controls.push(el); });
+    controls.forEach(function(el){ if(el) el.addEventListener('input', function(){ refreshEstimate(); updateFTVisibility(); }); });
 
-      if (!isAllowed(user)){
-        guardOn(`
-          <p style="margin-bottom:10px;"><strong>Access denied.</strong> This Google account is not authorized for Admin.</p>
-          ${email ? `<p style="margin-bottom:10px;">Signed in as: <code>${email}</code></p>` : ``}
-          <div class="actions">
-            <button class="btn" id="guard-try-again">Sign in with another account</button>
-            <button class="btn-ghost" id="guard-exit">Exit Admin</button>
-          </div>
-          <p class="note" style="margin-top:10px;">You can exit admin mode to view the public page. No admin data is visible here.</p>
-        `);
-        const again = document.getElementById('guard-try-again');
-        const exit  = document.getElementById('guard-exit');
-        if (again) again.onclick = async () => { await doLogout(); await doLogin(); };
-        if (exit)  exit.onclick  = () => { cleanParam('admin'); guardOff(); };
-        return;
-      }
+    return div;
+  }
 
-      // Authorized → show Admin
-      show(openAdmin, true);
-      if (adminOv) adminOv.classList.add('active');
-      guardOff();
-      cleanParam('admin');
-    };
-
-    await tryAuth();
-
-    if (adminLogoutBtn){
-      adminLogoutBtn.addEventListener('click', async () => {
-        await doLogout();
-        show(openAdmin, false);
-        if (adminOv) adminOv.classList.remove('active');
-        alert('Logged out.');
-      });
+  function ensureAtLeastOneLeg(){
+    if (legsBox.children.length === 0){
+      var fromPref = pickupOtherToggle && pickupOtherToggle.checked ? (pickupOther.value || "") : (selPickup.value || "");
+      var toPref   = dropOtherToggle && dropOtherToggle.checked ? (dropOther.value   || "") : (selDrop.value   || "");
+      createLeg(fromPref, toPref);
     }
   }
-  main();
+
+  if (addLegBtn){
+    addLegBtn.addEventListener('click', function(){
+      var last = legsBox.lastElementChild;
+      var fromPref = "", toPref = "";
+      if (last) {
+        var lastTo = last.querySelector('.leg-to');
+        fromPref = lastTo ? (lastTo.value || "") : "";
+      } else {
+        fromPref = pickupOtherToggle && pickupOtherToggle.checked ? (pickupOther.value || "") : (selPickup.value || "");
+        toPref   = dropOtherToggle && dropOtherToggle.checked ? (dropOther.value   || "") : (selDrop.value   || "");
+      }
+      createLeg(fromPref, toPref);
+      refreshEstimate();
+      updateFTVisibility();
+    });
+  }
+  if (clearLegsBtn){
+    clearLegsBtn.addEventListener('click', function(){
+      legsBox.innerHTML = "";
+      refreshEstimate();
+      updateFTVisibility();
+    });
+  }
+
+  // Estimate
+  function getRoutePrice(vId, from, to) {
+    var table = (STORE.priceTable && STORE.priceTable[vId]) || {};
+    var p = table[priceKey(from, to)];
+    return (p && p > 0) ? p : null;
+  }
+  function getRouteDistance(from, to){
+    var km = STORE.distanceTable ? STORE.distanceTable[priceKey(from, to)] : null;
+    km = (km!=null) ? Number(km) : null;
+    return (km && km > 0) ? km : null;
+  }
+  function calcLegs(){
+    var type = "oneway";
+    for (var i=0;i<tripRadios.length;i++){ if(tripRadios[i].checked){ type = tripRadios[i].value; break; } }
+    var legs = [];
+    if (type === "oneway" || type === "round") {
+      var p = pickupOtherToggle && pickupOtherToggle.checked ? pickupOther.value : selPickup.value;
+      var d = dropOtherToggle   && dropOtherToggle.checked   ? dropOther.value   : selDrop.value;
+      if (p && d){
+        legs.push([p, d]);
+        if (type === "round") legs.push([d, p]);
+      }
+      return legs;
+    }
+    if (type === "multi") {
+      var legEls = Array.prototype.slice.call(legsBox.querySelectorAll(".leg"));
+      legs = legEls.map(function(el){
+        return [ el.querySelector(".leg-from").value, el.querySelector(".leg-to").value ];
+      });
+      return legs;
+    }
+    return legs; // local
+  }
+
+  function clampAddonQty(){
+    var nCars = Math.max(1, parseInt(cars.value || "1", 10));
+    [qtyRoof, qtyPlacard].forEach(function(inp){
+      if (!inp) return;
+      var v = Math.max(0, Math.min(nCars, parseInt(inp.value || "0", 10)));
+      if (String(v) !== String(inp.value)) inp.value = v;
+    });
+  }
+
+  function refreshEstimate() {
+    clampAddonQty();
+
+    var vId = vehicle.value;
+    var nCars = Math.max(1, parseInt(cars.value || "1", 10));
+    var type = "oneway";
+    for (var i=0;i<tripRadios.length;i++){ if(tripRadios[i].checked){ type = tripRadios[i].value; break; } }
+
+    if (type === "local") {
+      estText.textContent = "Local (hours/km) — ask for quote";
+      kmText.textContent = "—";
+      estBreak.style.display = 'none';
+      return;
+    }
+
+    var legs = calcLegs();
+    if (!legs.length){
+      estText.textContent = (type === 'multi') ? "Add trip legs to see estimate" : "Add locations to see estimate";
+      kmText.textContent = "—";
+      estBreak.style.display = 'none';
+      return;
+    }
+
+    // Distances
+    var kmSum = 0;
+    var kmKnown = 0;
+    for (var j=0;j<legs.length;j++){
+      var a = legs[j][0], b = legs[j][1];
+      var km = getRouteDistance(a, b);
+      if (km != null) { kmSum += km; kmKnown++; }
+    }
+    kmText.textContent = (kmKnown > 0)
+      ? (kmSum.toLocaleString("en-IN") + " km" + (kmKnown < legs.length ? (" ("+kmKnown+"/"+legs.length+" legs)") : ""))
+      : "—";
+
+    if (!vId) {
+      estText.textContent = "Vehicle type — Select";
+      estBreak.style.display = 'none';
+      return;
+    }
+
+    // Prices
+    var base = 0, missing = 0;
+    for (var k=0;k<legs.length;k++){
+      var a2 = legs[k][0], b2 = legs[k][1];
+      var price = getRoutePrice(vId, a2, b2);
+      if (price) base += price;
+      else missing++;
+    }
+
+    // Add-ons
+    var priceRoof = (STORE.addons && STORE.addons.roofcarrier || 0);
+    var pricePlacard = (STORE.addons && STORE.addons.placard || 0);
+    var qRoof = Math.max(0, parseInt(qtyRoof.value || "0", 10));
+    var qPlacard = Math.max(0, parseInt(qtyPlacard.value || "0", 10));
+
+    var baseForCars = base * nCars;
+    var addonsRoofTotal = priceRoof * qRoof;
+    var addonsPlacardTotal = pricePlacard * qPlacard;
+    var grand = baseForCars + addonsRoofTotal + addonsPlacardTotal;
+
+    if (missing) {
+      estText.textContent = (legs.length - missing) + "/" + legs.length + " legs priced — remaining ask for quote";
+      estBreak.style.display = 'none';
+    } else {
+      estText.textContent = "₹ " + grand.toLocaleString("en-IN") + " estimate";
+
+      estBreak.style.display = '';
+      lineBase.textContent = "₹ " + baseForCars.toLocaleString("en-IN");
+      if (addonsRoofTotal > 0){
+        lineAddonRoof.style.display = '';
+        lineAddonRoofVal.textContent = "₹ " + addonsRoofTotal.toLocaleString("en-IN") + " (₹ " + priceRoof.toLocaleString("en-IN") + " × " + qRoof + " per car)";
+      } else { lineAddonRoof.style.display = 'none'; }
+      if (addonsPlacardTotal > 0){
+        lineAddonPlacard.style.display = '';
+        lineAddonPlacardVal.textContent = "₹ " + addonsPlacardTotal.toLocaleString("en-IN") + " (₹ " + pricePlacard.toLocaleString("en-IN") + " × " + qPlacard + " per card)";
+      } else { lineAddonPlacard.style.display = 'none'; }
+      lineGrand.textContent = "₹ " + grand.toLocaleString("en-IN");
+    }
+  }
+
+  if (refreshBtn){ refreshBtn.addEventListener("click", refreshEstimate); }
+  [selPickup, selDrop, vehicle, cars, date, time, rdate, rtime, pickupOther, dropOther, pickupOtherToggle, dropOtherToggle, selLocalCity, qtyRoof, qtyPlacard]
+    .forEach(function(el){ if(el) el.addEventListener("input", refreshEstimate); });
+
+  // Trip switching
+  function updateTripBlocks(){
+    var type = "oneway";
+    for (var i=0;i<tripRadios.length;i++){ if(tripRadios[i].checked){ type = tripRadios[i].value; break; } }
+    blockStd.style.display   = (type === 'oneway' || type === 'round') ? '' : 'none';
+    blockReturn.style.display= (type === 'round') ? '' : 'none';
+    blockLocal.style.display = (type === 'local') ? '' : 'none';
+    blockMulti.style.display = (type === 'multi') ? '' : 'none';
+    if (type === 'multi') ensureAtLeastOneLeg();
+    updateFTVisibility();
+    updateSuggestions();
+    refreshEstimate();
+  }
+  tripRadios.forEach(function(r){ r.addEventListener('change', updateTripBlocks); });
+
+  // Other toggles
+  if (pickupOtherToggle) pickupOtherToggle.addEventListener('change', function(){ toggleOther(pickupOtherToggle, pickupOther, selPickup); });
+  if (dropOtherToggle)   dropOtherToggle.addEventListener('change',   function(){ toggleOther(dropOtherToggle,   dropOther,   selDrop); });
+  toggleOther(pickupOtherToggle, pickupOther, selPickup);
+  toggleOther(dropOtherToggle,   dropOther,   selDrop);
+
+  /* ===========================
+     Suggestions (Quick routes)
+  ============================ */
+  function makeSugChip(label, onClick){
+    var a = document.createElement('button');
+    a.type = 'button';
+    a.className = 'chip sug';
+    a.textContent = label;
+    a.addEventListener('click', onClick);
+    return a;
+  }
+  function updateSuggestions(){
+    if (!quickRoutes) return;
+    quickRoutes.innerHTML = '';
+    var p = getPickupString();
+    if (!p) return;
+
+    var regionList = getAllRegionLocations(CURRENT.region);
+    function ensureInDrop(value){
+      // Widen if needed, then set value if present
+      var list = getFilteredLocations();
+      if (!listHas(list, value)) {
+        list = regionList.slice();
+        fillSelectFromArray(selDrop, list);
+      }
+      selDrop.value = value;
+      refreshEstimate();
+    }
+
+    // Example heuristics: Jammu Airport → popular
+    if (p.toLowerCase().indexOf('jammu airport')>-1){
+      quickRoutes.appendChild(makeSugChip('Katra', function(){ ensureInDrop('Katra'); }));
+      quickRoutes.appendChild(makeSugChip('Jammu City', function(){ ensureInDrop('Jammu City'); }));
+      quickRoutes.appendChild(makeSugChip('Udhampur', function(){ ensureInDrop('Udhampur'); }));
+      quickRoutes.appendChild(makeSugChip('Patnitop', function(){ ensureInDrop('Patnitop'); }));
+      return;
+    }
+    if (p.toLowerCase().indexOf('srinagar airport')>-1){
+      quickRoutes.appendChild(makeSugChip('Gulmarg', function(){ ensureInDrop('Gulmarg'); }));
+      quickRoutes.appendChild(makeSugChip('Pahalgam', function(){ ensureInDrop('Pahalgam'); }));
+      quickRoutes.appendChild(makeSugChip('Srinagar City / Dal Gate', function(){ ensureInDrop('Srinagar City / Dal Gate'); }));
+      return;
+    }
+    // Katra common
+    if (p.toLowerCase().indexOf('katra')>-1){
+      quickRoutes.appendChild(makeSugChip('Jammu Airport', function(){ ensureInDrop('Jammu Airport'); }));
+      quickRoutes.appendChild(makeSugChip('Jammu City', function(){ ensureInDrop('Jammu City'); }));
+      quickRoutes.appendChild(makeSugChip('Patnitop', function(){ ensureInDrop('Patnitop'); }));
+      return;
+    }
+  }
+
+  /* ===========================
+     Formal message (Email/WhatsApp)
+  ============================ */
+  function buildMessage(){
+    var trip = 'oneway';
+    for (var i=0;i<tripRadios.length;i++){ if(tripRadios[i].checked){ trip = tripRadios[i].value; break; } }
+    var legs = calcLegs();
+
+    var pLoc = pickupOtherToggle && pickupOtherToggle.checked ? (pickupOther.value||'') : (selPickup.value||'');
+    var dLoc = dropOtherToggle   && dropOtherToggle.checked   ? (dropOther.value  ||'') : (selDrop.value  ||'');
+
+    function toTitle(s){ return (s||'').replace(/\b\w/g,function(m){return m.toUpperCase();}); }
+
+    var route = '';
+    if (trip==='multi'){
+      route = legs.filter(function(x){return x[0]&&x[1];}).map(function(x){return x[0]+' → '+x[1];}).join(' | ');
+    } else if (trip==='round'){
+      route = pLoc+' ⇄ '+dLoc;
+    } else if (trip==='oneway') {
+      route = pLoc+' → '+dLoc;
+    } else {
+      route = 'Local — '+(selLocalCity.value||'');
+    }
+
+    var ft = '';
+    var ftType = ftInput.getAttribute('data-ft-type') || '';
+    if (ftWrap.style.display !== 'none' && ftInput.value.trim()){
+      ft = (ftType==='train' ? 'Train no.' : 'Flight no.') + ': ' + ftInput.value.trim();
+    }
+
+    var addOnsTxt = [];
+    var aR = parseInt(qtyRoof.value,10)||0; if (aR>0) addOnsTxt.push('Roof carrier × ' + aR);
+    var aP = parseInt(qtyPlacard.value,10)||0; if (aP>0) addOnsTxt.push('Placard × ' + aP);
+
+    var distTxt = kmText.textContent || '';
+    var estTxt  = estText.textContent || '';
+
+    var lines = [];
+    lines.push("Dear Sir/Ma’am,");
+    lines.push("");
+    lines.push("We have requirement of taxi/transport services as per the details below. Kindly confirm availability and share the best price.");
+    lines.push("");
+    lines.push("Trip Type: " + toTitle(trip));
+    lines.push("Route: " + route);
+
+    if (trip==='oneway' || trip==='round'){
+      if (date.value)  lines.push("Pickup: " + date.value + (time.value ? (" " + time.value) : ""));
+      if (trip==='round' && rdate.value) lines.push("Return: " + rdate.value + (rtime.value ? (" " + rtime.value) : ""));
+    } else if (trip==='local'){
+      var lp = (byId('local-package') && byId('local-package').value) || '';
+      var lc = (selLocalCity.value||'');
+      var ld = (byId('local-date') && byId('local-date').value) || '';
+      lines.push("Package: " + (lp ? lp.replace('-', ' hours / ') : 'Custom'));
+      lines.push("City: " + lc);
+      if (ld) lines.push("Date: " + ld);
+    } else if (trip==='multi'){
+      legs.forEach(function(x,i){ if(x[0]&&x[1]) lines.push("Leg " + (i+1) + ": " + x[0] + " → " + x[1]); });
+    }
+
+    if (ft) lines.push(ft);
+    if (vehicle.value) lines.push("Vehicle: " + vehicle.options[vehicle.selectedIndex].text);
+    if (pax.value) lines.push("Passengers: " + pax.value);
+    if (cars.value) lines.push("Cars: " + cars.value);
+    if (addOnsTxt.length) lines.push("Add-ons: " + addOnsTxt.join(', '));
+    if (distTxt && distTxt !== '—') lines.push("Approx. Distance: " + distTxt);
+    if (estTxt) lines.push("Estimate: " + estTxt);
+
+    if (byId('notes').value.trim()){
+      lines.push("");
+      lines.push("Additional Notes: " + byId('notes').value.trim());
+    }
+
+    lines.push("");
+    lines.push("Regards,");
+    lines.push((byId('name').value.trim() || ''));
+    lines.push("Mobile: " + (byId('mobile').value.trim() || ''));
+    if (byId('email').value.trim()) lines.push("Email: " + byId('email').value.trim());
+
+    lines.push("");
+    lines.push("Note: Estimate is indicative for planning. Final fare may vary based on actual kms, waiting, tolls, parking, night charges, and chosen vehicle.");
+
+    return lines.join('\n');
+  }
+
+  function validateForm(){
+    var trip = 'oneway';
+    for (var i=0;i<tripRadios.length;i++){ if(tripRadios[i].checked){ trip = tripRadios[i].value; break; } }
+    if (!byId('name').value.trim()) { showToast('Enter your name'); return false; }
+    if (!byId('mobile').value.trim()) { showToast('Enter mobile'); return false; }
+    if (trip==='oneway' || trip==='round'){
+      var p = pickupOtherToggle && pickupOtherToggle.checked ? pickupOther.value : selPickup.value;
+      var d = dropOtherToggle   && dropOtherToggle.checked   ? dropOther.value   : selDrop.value;
+      if (!p || !d) { showToast('Select pickup/drop'); return false; }
+    }
+    if (trip==='round' && !rdate.value) { showToast('Select return date'); return false; }
+    if (trip==='local' && !selLocalCity.value) { showToast('Select city'); return false; }
+    if (trip==='multi' && legsBox.children.length===0) { showToast('Add at least one leg'); return false; }
+    if (!vehicle.value) { showToast('Select vehicle'); return false; }
+    return true;
+  }
+
+  if (submitBtn) submitBtn.addEventListener('click', function(){
+    if (!validateForm()) return;
+    var msg = buildMessage();
+    var pref = (byId('pref-contact') && byId('pref-contact').value || 'WhatsApp').toLowerCase();
+
+    var payload = { message: msg, when: new Date().toISOString(), source: 'fodel-transport' };
+    if (FORMSPREE_ENDPOINT){
+      try{
+        fetch(FORMSPREE_ENDPOINT, { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify(payload) }).catch(function(){});
+      }catch(e){}
+    }
+
+    if (pref === 'email'){
+      var subject = encodeURIComponent('Transport Request — Fodel Transport');
+      var body = encodeURIComponent(msg);
+      window.location.href = "mailto:sales@fodeltravels.in?subject="+subject+"&body="+body;
+    } else {
+      var wa = "https://wa.me/919797459260?text="+encodeURIComponent(msg);
+      window.open(wa, '_blank', 'noopener,noreferrer');
+    }
+    showToast('Opening your preferred app…');
+  });
+
+  /* ===========================
+     INITIALIZER
+  ============================ */
+  function fillAdminSelects(){
+    var flat = (STORE.locations || []).slice();
+    var priceFrom = byId('price-from'), priceTo = byId('price-to');
+    var distFrom = byId('dist-from'),  distTo  = byId('dist-to');
+    fillSelectFromArray(priceFrom, flat);
+    fillSelectFromArray(priceTo,   flat);
+    fillSelectFromArray(distFrom,  flat);
+    fillSelectFromArray(distTo,    flat);
+  }
+
+  function init(){
+    primeDefaultsFromData().then(function(){
+      loadStore();
+      fillVehicles();
+      refreshAddonLabels();
+      initDates();
+
+      // Prefill admin add-on inputs
+      var ar = byId('a-roof'), ap = byId('a-placard');
+      if (ar) ar.value = STORE.addons.roofcarrier || 0;
+      if (ap) ap.value = STORE.addons.placard || 0;
+
+      // Render admin lists (basic)
+      renderLocChips();
+      renderRegions(); renderCities(); renderCityLocations();
+      fillAdminSelects();
+
+      // Front-end selectors
+      renderRegionTabs();
+      renderCityChipsTop();
+      applyLocationFilter();
+
+      updateTripBlocks();
+      updateSuggestions();
+      refreshEstimate();
+    });
+  }
+  document.addEventListener('DOMContentLoaded', init);
 </script>
-  </body>
+<script>
+  /* ===========================
+     ADMIN: Flat Locations (legacy)
+  ============================ */
+  function renderLocChips(){
+    var locList = byId('loc-list');
+    if (!locList) return;
+    locList.innerHTML = '';
+    (STORE.locations||[]).forEach(function(loc){
+      var chip = document.createElement('div');
+      chip.className = 'chip';
+      chip.innerHTML = '<small>'+loc+'</small> <button class="btn-ghost" aria-label="Remove">✕</button>';
+      chip.querySelector('button').addEventListener('click', function(){
+        STORE.locations = (STORE.locations||[]).filter(function(x){ return x!==loc; });
+        saveStore(); renderLocChips(); fillAdminSelects(); applyLocationFilter(); refreshEstimate(); showToast('Removed');
+      });
+      locList.appendChild(chip);
+    });
+  }
+  var locNew = byId('loc-new'), locAdd = byId('loc-add'), locReset = byId('loc-reset');
+  if (locAdd) locAdd.addEventListener('click', function(){
+    var v = (locNew.value || '').trim();
+    if (!v) return;
+    if ((STORE.locations||[]).indexOf(v) === -1) {
+      STORE.locations.push(v);
+      saveStore(); locNew.value = '';
+      renderLocChips(); fillAdminSelects(); applyLocationFilter(); refreshEstimate(); showToast('Location added');
+    } else { showToast('Already exists'); }
+  });
+  if (locReset) locReset.addEventListener('click', function(){
+    STORE.locations = (DEFAULTS.locations || []).slice();
+    saveStore(); renderLocChips(); fillAdminSelects(); applyLocationFilter(); refreshEstimate(); showToast('Flat locations reset');
+  });
+
+  /* ===========================
+     ADMIN: Regions & Cities manager
+  ============================ */
+  var RG = { region: '', city: '' };
+
+  var rgNew = byId('rg-new'), rgAdd = byId('rg-add'), rgList = byId('rg-list'), rgReset = byId('rg-reset');
+  var ctNew = byId('ct-new'), ctAdd = byId('ct-add'), ctList = byId('ct-list');
+  var locNewCity = byId('loc-new-city'), locAddCity = byId('loc-add-city'), locListCity = byId('loc-list-city');
+  var btnSyncFlat = byId('sync-flat');
+
+  function ensureRegionsObj(){
+    if (!STORE.regions || typeof STORE.regions !== 'object') STORE.regions = {};
+  }
+  function renderRegions(){
+    ensureRegionsObj();
+    rgList.innerHTML = '';
+    var regions = Object.keys(STORE.regions);
+    if (!RG.region || !STORE.regions[RG.region]) RG.region = regions[0] || '';
+    regions.forEach(function(r){
+      var chip = document.createElement('div');
+      chip.className = 'chip' + (RG.region===r ? ' active':'');
+      chip.innerHTML = '<small><strong>'+r+'</strong></small> <button class="btn-ghost" aria-label="Remove">✕</button>';
+      var btn = chip.querySelector('button');
+      btn.addEventListener('click', function(){
+        if (!confirm('Delete region "'+r+'"? This will remove all its cities and locations.')) return;
+        delete STORE.regions[r];
+        if (RG.region===r){ RG.region=''; RG.city=''; }
+        saveStore();
+        renderRegions(); renderCities(); renderCityLocations();
+        renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
+        showToast('Region removed');
+      });
+      chip.addEventListener('click', function(e){
+        if (e.target===btn) return;
+        RG.region = r; RG.city = '';
+        renderRegions(); renderCities(); renderCityLocations();
+        renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
+      });
+      rgList.appendChild(chip);
+    });
+  }
+
+  function renderCities(){
+    ctList.innerHTML = '';
+    if (!RG.region || !STORE.regions[RG.region]) return;
+    var cities = Object.keys(STORE.regions[RG.region] || {});
+    if (!RG.city || !(STORE.regions[RG.region]||{})[RG.city]) RG.city = cities[0] || '';
+    cities.forEach(function(c){
+      var chip = document.createElement('div');
+      chip.className = 'chip' + (RG.city===c ? ' active':'');
+      chip.innerHTML = '<small>'+c+'</small> <button class="btn-ghost" aria-label="Remove">✕</button>';
+      var btn = chip.querySelector('button');
+      btn.addEventListener('click', function(){
+        if (!confirm('Delete city "'+c+'"? This will remove all its locations.')) return;
+        delete STORE.regions[RG.region][c];
+        if (RG.city===c) RG.city='';
+        saveStore();
+        renderCities(); renderCityLocations();
+        renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
+        showToast('City removed');
+      });
+      chip.addEventListener('click', function(e){
+        if (e.target===btn) return;
+        RG.city = c;
+        renderCities(); renderCityLocations();
+        renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
+      });
+      ctList.appendChild(chip);
+    });
+  }
+
+  function renderCityLocations(){
+    locListCity.innerHTML = '';
+    if (!RG.region || !RG.city) return;
+    var arr = STORE.regions[RG.region][RG.city] || [];
+    arr.forEach(function(loc){
+      var chip = document.createElement('div');
+      chip.className = 'chip';
+      chip.innerHTML = '<small>'+loc+'</small> <button class="btn-ghost" aria-label="Remove">✕</button>';
+      chip.querySelector('button').addEventListener('click', function(){
+        STORE.regions[RG.region][RG.city] = arr.filter(function(x){ return x!==loc; });
+        saveStore();
+        renderCityLocations();
+        renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
+        showToast('Location removed');
+      });
+      locListCity.appendChild(chip);
+    });
+  }
+
+  if (rgAdd) rgAdd.addEventListener('click', function(){
+    var v = (rgNew.value||'').trim();
+    if (!v) return;
+    ensureRegionsObj();
+    if (!STORE.regions[v]) STORE.regions[v] = {};
+    RG.region = v; RG.city = '';
+    saveStore(); rgNew.value='';
+    renderRegions(); renderCities(); renderCityLocations();
+    renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
+    showToast('Region added');
+  });
+
+  if (rgReset) rgReset.addEventListener('click', function(){
+    if (!confirm('Reset Regions to defaults? This will overwrite current Regions & Cities.')) return;
+    STORE.regions = JSON.parse(JSON.stringify(DEFAULTS.regions || {}));
+    saveStore();
+    RG.region = ''; RG.city = '';
+    renderRegions(); renderCities(); renderCityLocations();
+    renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
+    showToast('Regions reset');
+  });
+
+  if (ctAdd) ctAdd.addEventListener('click', function(){
+    if (!RG.region){ showToast('Select a region first'); return; }
+    var v = (ctNew.value||'').trim();
+    if (!v) return;
+    if (!STORE.regions[RG.region]) STORE.regions[RG.region] = {};
+    if (!STORE.regions[RG.region][v]) STORE.regions[RG.region][v] = [];
+    RG.city = v;
+    saveStore(); ctNew.value='';
+    renderCities(); renderCityLocations();
+    renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
+    showToast('City added');
+  });
+
+  if (byId('loc-add-city')) byId('loc-add-city').addEventListener('click', function(){
+    if (!RG.region || !RG.city){ showToast('Select region & city first'); return; }
+    var v = (locNewCity.value||'').trim();
+    if (!v) return;
+    var arr = STORE.regions[RG.region][RG.city] || [];
+    if (arr.indexOf(v)===-1) arr.push(v);
+    STORE.regions[RG.region][RG.city] = arr;
+    saveStore(); locNewCity.value='';
+    renderCityLocations();
+    renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
+    showToast('Location added');
+  });
+
+  if (btnSyncFlat) btnSyncFlat.addEventListener('click', function(){
+    // Collect all unique locations from regions → cities
+    var out = [];
+    Object.keys(STORE.regions||{}).forEach(function(r){
+      var cities = STORE.regions[r]||{};
+      Object.keys(cities).forEach(function(c){
+        out = out.concat(cities[c]||[]);
+      });
+    });
+    STORE.locations = Array.from(new Set(out));
+    saveStore();
+    renderLocChips(); fillAdminSelects(); applyLocationFilter(); refreshEstimate();
+    showToast('Synced to Flat Locations');
+  });
+
+  /* ===========================
+     ADMIN: Route Prices & Distances
+  ============================ */
+  var priceFrom = byId('price-from'), priceTo = byId('price-to');
+  var pSedan = byId('p-sedan'), pSuv = byId('p-suv'), pInnova = byId('p-innova'), pTT = byId('p-tt');
+  var distFrom = byId('dist-from'), distTo = byId('dist-to'), distKm = byId('dist-km');
+
+  function getNumOrZero(el){ var n = parseInt(el.value,10); return isNaN(n)?0:n; }
+  function setRoutePriceFor(vId, from, to, val){
+    if (!STORE.priceTable[vId]) STORE.priceTable[vId] = {};
+    var key = priceKey(from,to);
+    if (val>0) STORE.priceTable[vId][key] = val;
+    else delete STORE.priceTable[vId][key];
+  }
+
+  var btnPriceSave = byId('price-save');
+  if (btnPriceSave) btnPriceSave.addEventListener('click', function(){
+    var from = priceFrom.value || '';
+    var to   = priceTo.value || '';
+    if (!from || !to) { showToast('Select From/To'); return; }
+    setRoutePriceFor('sedan',  from, to, getNumOrZero(pSedan));
+    setRoutePriceFor('suv',    from, to, getNumOrZero(pSuv));
+    setRoutePriceFor('innova', from, to, getNumOrZero(pInnova));
+    setRoutePriceFor('tt',     from, to, getNumOrZero(pTT));
+    saveStore(); showToast('Route price saved'); refreshEstimate();
+  });
+
+  var btnPriceClear = byId('price-clear');
+  if (btnPriceClear) btnPriceClear.addEventListener('click', function(){
+    var from = priceFrom.value || ''; var to = priceTo.value || '';
+    if (!from || !to) { showToast('Select From/To'); return; }
+    var key = priceKey(from,to);
+    ['sedan','suv','innova','tt'].forEach(function(v){ if (STORE.priceTable[v]) delete STORE.priceTable[v][key]; });
+    saveStore(); showToast('Route price cleared'); refreshEstimate();
+  });
+
+  var btnDistSave = byId('dist-save');
+  if (btnDistSave) btnDistSave.addEventListener('click', function(){
+    var from = distFrom.value || '';
+    var to   = distTo.value || '';
+    var km   = parseInt(distKm.value, 10);
+    if (!from || !to || !km) { showToast('Missing From/To/Km'); return; }
+    STORE.distanceTable[priceKey(from,to)] = km;
+    saveStore(); showToast('Distance saved'); refreshEstimate();
+  });
+
+  var btnDistClear = byId('dist-clear');
+  if (btnDistClear) btnDistClear.addEventListener('click', function(){
+    var from = distFrom.value || '';
+    var to   = distTo.value || '';
+    if (!from || !to) { showToast('Select From/To'); return; }
+    delete STORE.distanceTable[priceKey(from,to)];
+    saveStore(); showToast('Distance cleared'); refreshEstimate();
+  });
+
+  /* ===========================
+     ADMIN: Add-ons / CSV / Backup
+  ============================ */
+  var aRoof = byId('a-roof'), aPlacard = byId('a-placard'), addonsSave = byId('addons-save');
+  if (addonsSave) addonsSave.addEventListener('click', function(){
+    var r = parseInt(aRoof.value,10); var p = parseInt(aPlacard.value,10);
+    if (!STORE.addons) STORE.addons = {};
+    if (!isNaN(r) && r>=0) STORE.addons.roofcarrier = r;
+    if (!isNaN(p) && p>=0) STORE.addons.placard = p;
+    saveStore(); refreshAddonLabels(); refreshEstimate(); showToast('Add-ons saved');
+  });
+
+  function download(filename, text){
+    var blob = new Blob([text], {type:'text/csv;charset=utf-8;'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = filename; a.style.display='none';
+    document.body.appendChild(a); a.click();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 0);
+  }
+  function parseCSV(text){
+    return text.split(/\r?\n/).map(function(r){ return r.trim(); }).filter(Boolean).map(function(r){
+      var out=[], cur='', inQ=false;
+      for (var i=0;i<r.length;i++){
+        var ch=r[i];
+        if (ch=='"' ){ if (inQ && r[i+1]=='"'){ cur+='"'; i++; } else { inQ=!inQ; } }
+        else if (ch===',' && !inQ){ out.push(cur.trim()); cur=''; }
+        else cur+=ch;
+      }
+      out.push(cur.trim());
+      return out;
+    });
+  }
+
+  var btnExportPrices = byId('export-csv-prices');
+  if (btnExportPrices) btnExportPrices.addEventListener('click', function(){
+    var sets = ['sedan','suv','innova','tt'];
+    var keys = {};
+    sets.forEach(function(v){ var t = STORE.priceTable[v]||{}; Object.keys(t).forEach(function(k){ keys[k]=true; }); });
+    var out = ['From,To,sedan,suv,innova,tt'];
+    Object.keys(keys).forEach(function(k){
+      var parts = k.split('|'), from=parts[0], to=parts[1];
+      var s = (STORE.priceTable.sedan||{})[k]||'';
+      var u = (STORE.priceTable.suv||{})[k]||'';
+      var i = (STORE.priceTable.innova||{})[k]||'';
+      var t = (STORE.priceTable.tt||{})[k]||'';
+      out.push([from,to,s,u,i,t].join(','));
+    });
+    download('prices.csv', out.join('\n'));
+  });
+
+  var btnImportPrices = byId('import-csv-prices');
+  if (btnImportPrices) btnImportPrices.addEventListener('click', function(){
+    var f = byId('csv-prices') && byId('csv-prices').files && byId('csv-prices').files[0];
+    if (!f) { showToast('Choose CSV file'); return; }
+    var reader = new FileReader();
+    reader.onload = function(){
+      try{
+        var rows = parseCSV(reader.result);
+        var hdr = rows.shift() || [];
+        var colFrom = hdr.indexOf('From'), colTo = hdr.indexOf('To');
+        var colS=hdr.indexOf('sedan'), colU=hdr.indexOf('suv'), colI=hdr.indexOf('innova'), colT=hdr.indexOf('tt');
+        rows.forEach(function(c){
+          var from = c[colFrom], to=c[colTo];
+          if (!from||!to) return;
+          var key = priceKey(from,to);
+          if (colS>=0) { var v=parseInt(c[colS],10); if(!isNaN(v)&&v>0){ if(!STORE.priceTable.sedan) STORE.priceTable.sedan={}; STORE.priceTable.sedan[key]=v; } }
+          if (colU>=0) { var v2=parseInt(c[colU],10); if(!isNaN(v2)&&v2>0){ if(!STORE.priceTable.suv) STORE.priceTable.suv={}; STORE.priceTable.suv[key]=v2; } }
+          if (colI>=0) { var v3=parseInt(c[colI],10); if(!isNaN(v3)&&v3>0){ if(!STORE.priceTable.innova) STORE.priceTable.innova={}; STORE.priceTable.innova[key]=v3; } }
+          if (colT>=0) { var v4=parseInt(c[colT],10); if(!isNaN(v4)&&v4>0){ if(!STORE.priceTable.tt) STORE.priceTable.tt={}; STORE.priceTable.tt[key]=v4; } }
+        });
+        if (STORE.vehicles && STORE.vehicles.length){
+          STORE.vehicles = STORE.vehicles.filter(function (v, i, a) {
+            return a.findIndex(function (x) { return x.id === v.id; }) === i;
+          });
+        }
+        saveStore(); showToast('Prices CSV imported'); refreshEstimate();
+      }catch(e){ showToast('Import failed'); }
+    };
+    reader.readAsText(f);
+  });
+
+  var btnExportDist = byId('export-csv-dist');
+  if (btnExportDist) btnExportDist.addEventListener('click', function(){
+    var dt = STORE.distanceTable || {};
+    var out = ['From,To,km'];
+    Object.keys(dt).forEach(function(k){
+      var parts = k.split('|'), from=parts[0], to=parts[1];
+      out.push([from,to, dt[k]].join(','));
+    });
+    download('distances.csv', out.join('\n'));
+  });
+
+  var btnImportDist = byId('import-csv-dist');
+  if (btnImportDist) btnImportDist.addEventListener('click', function(){
+    var f = byId('csv-dist') && byId('csv-dist').files && byId('csv-dist').files[0];
+    if (!f) { showToast('Choose CSV file'); return; }
+    var reader = new FileReader();
+    reader.onload = function(){
+      try{
+        var rows = parseCSV(reader.result);
+        var hdr = rows.shift() || [];
+        var colFrom = hdr.indexOf('From'), colTo = hdr.indexOf('To'), colKm = hdr.indexOf('km');
+        rows.forEach(function(c){
+          var from = c[colFrom], to=c[colTo], km = parseInt(c[colKm],10);
+          if (!from||!to||isNaN(km)) return;
+          STORE.distanceTable[priceKey(from,to)] = km;
+        });
+        saveStore(); showToast('Distances CSV imported'); refreshEstimate();
+      }catch(e){ showToast('Import failed'); }
+    };
+    reader.readAsText(f);
+  });
+
+  var btnExportJSON = byId('export-json');
+  if (btnExportJSON) btnExportJSON.addEventListener('click', function(){
+    var blob = new Blob([JSON.stringify(STORE, null, 2)], {type:'application/json'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'fodel-transport-backup.json';
+    a.style.display='none';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 0);
+  });
+
+  var importFile = byId('import-file'), importJSON = byId('import-json');
+  if (importJSON) importJSON.addEventListener('click', function(){
+    var f = importFile && importFile.files && importFile.files[0];
+    if (!f) { showToast('Choose JSON file'); return; }
+    var reader = new FileReader();
+    reader.onload = function(){
+      try{
+        var obj = JSON.parse(reader.result);
+        if (!obj || typeof obj !== 'object') throw new Error('Invalid JSON');
+        STORE = Object.assign({}, DEFAULTS, obj);
+        if (STORE.vehicles && STORE.vehicles.length){
+          STORE.vehicles = STORE.vehicles.filter(function (v, i, a) {
+            return a.findIndex(function (x) { return x.id === v.id; }) === i;
+          });
+        }
+        saveStore();
+        // Re-render everything
+        fillVehicles();
+        renderRegionTabs();
+        renderCityChipsTop();
+        applyLocationFilter();
+        renderLocChips();
+        refreshAddonLabels();
+        updateTripBlocks();
+        updateSuggestions();
+        refreshEstimate();
+        var ar = byId('a-roof'), ap = byId('a-placard');
+        if (ar) ar.value = STORE.addons.roofcarrier || 0;
+        if (ap) ap.value = STORE.addons.placard || 0;
+        showToast('Imported');
+      }catch(e){ showToast('Import failed'); }
+    };
+    reader.readAsText(f);
+  });
+
+  var resetHard = document.getElementById('reset-hard');
+  if (resetHard) resetHard.addEventListener('click', function(){
+    if (!confirm('This will clear all saved admin data in this browser (localStorage) and reload defaults. Continue?')) return;
+    try { localStorage.removeItem(STORE_KEY); } catch(e){}
+    STORE = JSON.parse(JSON.stringify(DEFAULTS));
+    saveStore();
+
+    // Re-render everything fresh
+    fillVehicles();
+    renderRegionTabs(); renderCityChipsTop(); applyLocationFilter();
+    renderLocChips(); refreshAddonLabels(); updateTripBlocks(); updateSuggestions(); refreshEstimate();
+
+    // Refresh admin lists, too
+    renderRegions(); renderCities(); renderCityLocations();
+    fillAdminSelects();
+
+    showToast('All data reset to defaults');
+  });
+
+  /* ===========================
+     ADMIN UI open/close
+  ============================ */
+  function openAdminModal(){
+    // Always reload from localStorage when opening admin (ensures deletes/resets stick)
+    loadStore();
+    renderLocChips();
+    renderRegions(); renderCities(); renderCityLocations();
+    fillAdminSelects();
+    renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); updateTripBlocks(); updateSuggestions(); refreshEstimate();
+    if (adminOv) adminOv.classList.add('active');
+  }
+  function closeAdminModal(){ if (adminOv) adminOv.classList.remove('active'); }
+  if (openAdmin) openAdmin.addEventListener('click', openAdminModal);
+  if (adminOv){ adminOv.addEventListener('click', function(e){ if (e.target === adminOv) closeAdminModal(); }); }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-close]'), function(x){ x.addEventListener('click', closeAdminModal); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeAdminModal(); });
+</script>
+
+<!-- Admin auth (Google Firebase) — only when ?admin=1 -->
+<script type="module">
+const qp = new URLSearchParams(location.search);
+const wantAdmin  = qp.get('admin') === '1';
+const wantLogout = qp.get('logout') === '1';
+const debug      = qp.get('debug') === '1';
+
+const adminOv         = document.getElementById('admin-ov');
+const openAdmin       = document.getElementById('open-admin');
+const adminLogoutBtn  = document.getElementById('admin-logout');
+const guard           = document.getElementById('admin-guard');
+const guardBody       = document.getElementById('admin-guard-body');
+
+function log(...args){ if (debug) console.log('[ADMIN AUTH]', ...args); }
+function show(el, on){ if (el) el.style.display = on ? 'inline-flex' : 'none'; }
+function guardOn(msg){
+  if (!guard) return;
+  guard.classList.add('active');
+  if (guardBody) guardBody.innerHTML = msg || 'Checking admin access…';
+}
+function guardOff(){ if (guard) guard.classList.remove('active'); }
+function cleanParam(param){
+  const clean = new URL(location.href);
+  clean.searchParams.delete(param);
+  history.replaceState({}, document.title, clean.pathname + (clean.searchParams.toString() ? '?' + clean.searchParams.toString() : '') + clean.hash);
+}
+
+async function main(){
+  show(openAdmin, false);           // gear hidden by default
+  if (adminOv) adminOv.classList.remove('active');
+
+  if (!wantAdmin && !wantLogout){
+    log('Public mode (no ?admin=1)');
+    return;
+  }
+
+  guardOn('Checking admin access…');
+
+  const [
+    { initializeApp },
+    { getAuth, setPersistence, browserLocalPersistence, GoogleAuthProvider,
+      signInWithPopup, signInWithRedirect, getRedirectResult, signOut, onAuthStateChanged }
+  ] = await Promise.all([
+    import('https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js'),
+    import('https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js'),
+  ]);
+
+  // *** Firebase config (rotated) ***
+  const firebaseConfig = {
+    apiKey: "AIzaSyDaKEvqtnRRaj0kBZ-c4oPDhMxiwI3GQmE", // public client key
+    authDomain: "fodel-admin-transport.firebaseapp.com",
+    projectId: "fodel-admin-transport",
+    storageBucket: "fodel-admin-transport.firebasestorage.app",
+    messagingSenderId: "81364149405",
+    appId: "1:81364149405:web:a927a693f0402607966074",
+    measurementId: "G-DTLDMKYMZG"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  try { await setPersistence(auth, browserLocalPersistence); } catch {}
+  const provider = new GoogleAuthProvider();
+  auth.useDeviceLanguage && auth.useDeviceLanguage();
+
+  // Lowercase + trim helper
+  const lc = (s) => (s || '').toString().trim().toLowerCase();
+
+  // Allowed admin emails (lowercase exact matches)
+  const ADMIN_EMAILS = [
+    "munish2818@gmail.com"
+    // ,"another.allowed@example.com"
+  ];
+  const isAllowed = (u) => !!(u && u.email && ADMIN_EMAILS.includes(lc(u.email)));
+
+  async function doLogin(){
+    try {
+      const red = await getRedirectResult(auth);
+      if (red && red.user){
+        log('Redirect result user:', red.user.email);
+        return red.user;
+      }
+    } catch (e){ log('getRedirectResult error:', e?.code || e); }
+
+    try {
+      const res = await signInWithPopup(auth, provider);
+      log('Popup signed in as:', res.user?.email);
+      return res.user;
+    } catch (e){
+      log('Popup failed:', e?.code || e);
+      try {
+        log('Falling back to redirect flow…');
+        await signInWithRedirect(auth, provider);
+        return null; // flow resumes after redirect
+      } catch (e2){
+        log('Redirect failed:', e2?.code || e2);
+        throw e2;
+      }
+    }
+  }
+
+  async function doLogout(){
+    try { await signOut(auth); } catch {}
+  }
+
+  if (wantLogout){
+    await doLogout();
+    cleanParam('logout');
+    alert('Logged out.');
+    guardOff();
+    return;
+  }
+
+  onAuthStateChanged(auth, (u) => {
+    if (debug) log('onAuthStateChanged →', u ? `signed in: ${u.email}` : 'signed out');
+  });
+
+  const tryAuth = async () => {
+    const user = await doLogin().catch(err => { log('doLogin error:', err?.code || err); return null; });
+    const email = user?.email ? lc(user.email) : null;
+
+    if (!isAllowed(user)){
+      guardOn(`
+        <p style="margin-bottom:10px;"><strong>Access denied.</strong> This Google account is not authorized for Admin.</p>
+        ${email ? `<p style="margin-bottom:10px;">Signed in as: <code>${email}</code></p>` : ``}
+        <div class="actions">
+          <button class="btn" id="guard-try-again">Sign in with another account</button>
+          <button class="btn-ghost" id="guard-exit">Exit Admin</button>
+        </div>
+        <p class="note" style="margin-top:10px;">You can exit admin mode to view the public page. No admin data is visible here.</p>
+      `);
+      const again = document.getElementById('guard-try-again');
+      const exit  = document.getElementById('guard-exit');
+      if (again) again.onclick = async () => { await doLogout(); await doLogin(); };
+      if (exit)  exit.onclick  = () => { cleanParam('admin'); guardOff(); };
+      return;
+    }
+
+    // Authorized → open Admin overlay immediately (DO NOT show the gear)
+    if (adminOv) adminOv.classList.add('active');
+    guardOff();
+    cleanParam('admin');
+
+    // Keep gear hidden after closing; require ?admin=1 to re-enter
+    show(openAdmin, false);
+  };
+
+  await tryAuth();
+
+  if (adminLogoutBtn){
+    adminLogoutBtn.addEventListener('click', async () => {
+      await doLogout();
+      show(openAdmin, false);
+      if (adminOv) adminOv.classList.remove('active');
+      alert('Logged out.');
+    });
+  }
+}
+main();
+</script>
+
+</body>
 </html>
