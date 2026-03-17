@@ -2755,11 +2755,14 @@ Jammu Airport,Katra,49</pre>
 
       // TODO: Replace with your Firebase project's config
       const firebaseConfig = {
-        apiKey: "YOUR_API_KEY",
-        authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-        projectId: "YOUR_PROJECT_ID",
-        appId: "YOUR_APP_ID"
-      };
+  apiKey: "AIzaSyA_mcv2QJBUVj_qYZKEgdO9MiQf8F1HeII",
+  authDomain: "fodel-admin-transport.firebaseapp.com",
+  projectId: "fodel-admin-transport",
+  storageBucket: "fodel-admin-transport.firebasestorage.app",
+  messagingSenderId: "81364149405",
+  appId: "1:81364149405:web:a927a693f0402607966074",
+  measurementId: "G-DTLDMKYMZG"
+};
 
       const app = initializeApp(firebaseConfig);
       const auth = getAuth(app);
@@ -2767,7 +2770,7 @@ Jammu Airport,Katra,49</pre>
 
       // TODO: Allowed admin emails
       const ADMIN_EMAILS = [
-        "sales@fodeltravels.in"
+        "munish2818@gmail.com"
         // ,"your.email@domain.com"
       ];
       const isAllowed = (u) => !!(u && u.email && ADMIN_EMAILS.includes(u.email.toLowerCase()));
