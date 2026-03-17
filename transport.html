@@ -1949,15 +1949,17 @@ Jammu Airport,Katra,49</pre>
         ]);
 
       // IMPORTANT: put a RESTRICTED config here (rotate old key first)
-      const firebaseConfig = {
-        apiKey: "",                // 👉 Replace with NEW, RESTRICTED key
-        authDomain: "fodel-admin-transport.firebaseapp.com",
-        projectId: "fodel-admin-transport",
-        storageBucket: "fodel-admin-transport.firebasestorage.app",
-        messagingSenderId: "81364149405",
-        appId: "1:81364149405:web:a927a693f0402607966074",
-        measurementId: "G-DTLDMKYMZG"
-      };
+      
+const firebaseConfig = {
+  apiKey: "NEW_ROTATED_KEY", // keep private
+  authDomain: "fodel-admin-transport.firebaseapp.com",
+  projectId: "fodel-admin-transport",
+  storageBucket: "fodel-admin-transport.firebasestorage.app",
+  messagingSenderId: "81364149405",
+  appId: "1:81364149405:web:a927a693f0402607966074",
+  measurementId: "G-DTLDMKYMZG"
+};
+
 
       const app = initializeApp(firebaseConfig);
       const auth = getAuth(app);
