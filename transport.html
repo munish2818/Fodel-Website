@@ -277,7 +277,7 @@
     .btn-ghost{
       display:inline-flex; align-items:center; justify-content:center;
       gap:8px; padding:10px 14px; border-radius:10px;
-      border:1px solid var(--border); background:#fff; color:#0f172a; font-weight:700; cursor:pointer;
+      border:1px solid var(--border); background:#fff; color:var(--text); font-weight:700; cursor:pointer;
       transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease, opacity .15s ease;
     }
     .btn-ghost:hover{ transform:translateY(-1px); box-shadow:0 8px 16px rgba(0,0,0,.1); border-color: color-mix(in srgb, var(--accent) 35%, #cbd5e1); }
@@ -347,7 +347,6 @@
       <nav class="nav" aria-label="Primary">
         <a class="pill-btn reviews-btn" href="reviews-travels.html" aria-label="Read customer reviews">⭐ Reviews</a>
         <a class="pill-btn home-btn" href="index.html" aria-label="Back to Home">← Home</a>
-        <!-- No admin button here; admin opens only via ?admin=1 -->
       </nav>
     </div>
 
@@ -603,7 +602,7 @@
         <button class="modal-close" data-close aria-label="Close admin console">✕</button>
       </div>
       <div class="modal-body">
-        <!-- Regions & Cities -->
+        <!-- Regions & Cities (drives front-end filters) -->
         <div class="card" style="margin-bottom:12px;">
           <h3 style="margin-bottom:6px;">Regions & Cities (Front-end Filters)</h3>
 
@@ -640,7 +639,7 @@
           </div>
         </div>
 
-        <!-- Flat Locations -->
+        <!-- Flat Locations (legacy / for price & distance admin selects) -->
         <div class="card" style="margin-bottom:12px;">
           <h3 style="margin-bottom:6px;">Flat Locations (Legacy)</h3>
           <div class="inline">
@@ -808,7 +807,7 @@ Jammu Airport,Katra,49</pre>
       ],
       priceTable: { sedan:{}, suv:{}, innova:{}, tt:{} },
       distanceTable: {},
-      addons: { roofcarrier: 200, placard: 100 } /* per unit */
+      addons: { roofcarrier: 200, placard: 100 }
     };
 
     var STORE_KEY = "fodel_transport_v7";
@@ -856,9 +855,8 @@ Jammu Airport,Katra,49</pre>
       if (!STORE.addons) STORE.addons = { roofcarrier: 200, placard: 100 };
       if (!STORE.distanceTable) STORE.distanceTable = {};
       if (!STORE.priceTable) STORE.priceTable = { sedan:{}, suv:{}, innova:{}, tt:{} };
-      if (!STORE.regions || typeof STORE.regions!=='object') STORE.regions = {};
-      if (!Array.isArray(STORE.locations)) STORE.locations = [];
-      // De-duplicate vehicles by id
+      if (!STORE.regions || typeof STORE.regions!=='object' || !Object.keys(STORE.regions).length) STORE.regions = JSON.parse(JSON.stringify(DEFAULTS.regions));
+      if (!Array.isArray(STORE.locations)) STORE.locations = (DEFAULTS.locations || []).slice();
       if (STORE.vehicles && STORE.vehicles.length){
         STORE.vehicles = STORE.vehicles.filter(function (v, i, a) {
           return a.findIndex(function (x) { return x.id === v.id; }) === i;
@@ -999,7 +997,6 @@ Jammu Airport,Katra,49</pre>
         });
         return unique(acc);
       }
-      // Fallback to flat
       return (STORE.locations || []).slice();
     }
 
@@ -1007,7 +1004,7 @@ Jammu Airport,Katra,49</pre>
       if (!regionTabs) return;
       var regions = Object.keys(STORE.regions || {});
       regionTabs.innerHTML = '';
-      var card = regionTabs.parentElement.parentElement;
+      var card = regionTabs.closest('.card'); // robust
       if (!regions.length){
         if (card) card.style.display = 'none';
         return;
@@ -1066,7 +1063,6 @@ Jammu Airport,Katra,49</pre>
       if (keepPickup && list.indexOf(keepPickup)>-1) selPickup.value = keepPickup;
       if (keepDrop && list.indexOf(keepDrop)>-1) selDrop.value = keepDrop;
 
-      // Also refresh Admin selects to avoid dropdown stale states
       fillAdminSelects();
     }
 
@@ -1117,6 +1113,20 @@ Jammu Airport,Katra,49</pre>
 
     [selPickup, selDrop, pickupOther, dropOther, pickupOtherToggle, dropOtherToggle, selLocalCity]
       .forEach(function(el){ if(el){ el.addEventListener('input', function(){ updateFTVisibility(); refreshEstimate(); }); } });
+
+    // Robust qty (+/-) via event delegation
+    document.addEventListener('click', function(e){
+      var btn = e.target.closest('.btn-qty');
+      if (!btn) return;
+      var target = document.getElementById(btn.dataset.target);
+      var delta = parseInt(btn.dataset.delta,10) || 0;
+      if (!target) return;
+      var nCars = Math.max(1, parseInt(cars.value || "1", 10));
+      var val = parseInt(target.value || "0", 10) + delta;
+      val = Math.max(0, Math.min(nCars, val));
+      target.value = String(val);
+      refreshEstimate();
+    });
 
     // Legs
     function createLeg(fromVal, toVal){
@@ -1517,18 +1527,6 @@ Jammu Airport,Katra,49</pre>
       showToast('Location added');
     });
 
-    if (btnSyncFlat) btnSyncFlat.addEventListener('click', function(){
-      var set = new Set(STORE.locations || []);
-      Object.keys(STORE.regions||{}).forEach(function(r){
-        Object.keys(STORE.regions[r]||{}).forEach(function(c){
-          (STORE.regions[r][c]||[]).forEach(function(l){ set.add(l); });
-        });
-      });
-      STORE.locations = Array.from(set);
-      saveStore(); renderLocChips(); fillAdminSelects(); applyLocationFilter();
-      showToast('Synced to flat locations');
-    });
-
     /* ===========================
        ADMIN: Route Prices & Distances — selects
     ============================ */
@@ -1853,8 +1851,7 @@ Jammu Airport,Katra,49</pre>
       return true;
     }
 
-    var submitBtnEl = byId('submit-btn');
-    if (submitBtnEl) submitBtnEl.addEventListener('click', function(){
+    if (submitBtn) submitBtn.addEventListener('click', function(){
       if (!validateForm()) return;
       var msg = buildMessage();
       var pref = (byId('pref-contact') && byId('pref-contact').value || 'WhatsApp').toLowerCase();
@@ -1868,7 +1865,7 @@ Jammu Airport,Katra,49</pre>
 
       if (pref === 'email'){
         var subject = encodeURIComponent('Transport Request — Fodel Transport');
-        var body = encodeURIComponent(msg.replace(/\*\*/g,'').replace(/\*/g,''));
+        var body = encodeURIComponent(msg);
         window.location.href = "mailto:sales@fodeltravels.in?subject="+subject+"&body="+body;
       } else {
         var wa = "https://wa.me/919797459260?text="+encodeURIComponent(msg);
@@ -1902,7 +1899,7 @@ Jammu Airport,Katra,49</pre>
         renderCityChipsTop();
         applyLocationFilter();
 
-        updateTripBlocks(); // also calls estimate & FT visibility
+        updateTripBlocks();
         refreshEstimate();
       });
     }
@@ -1942,7 +1939,7 @@ Jammu Airport,Katra,49</pre>
 
       if (!wantAdmin && !wantLogout) return;
 
-      // Show guard immediately so no main data is visible while checking
+      // Show guard immediately
       guardOn('Checking admin access…');
 
       const [{ initializeApp }, { getAuth, GoogleAuthProvider, signInWithPopup, signOut }] =
@@ -1951,9 +1948,9 @@ Jammu Airport,Katra,49</pre>
           import("https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js")
         ]);
 
-      // TODO: Replace with your Firebase project's config
+      // IMPORTANT: put a RESTRICTED config here (rotate old key first)
       const firebaseConfig = {
-        apiKey: "AIzaSyA_mcv2QJBUVj_qYZKEgdO9MiQf8F1HeII",
+        apiKey: "",                // 👉 Replace with NEW, RESTRICTED key
         authDomain: "fodel-admin-transport.firebaseapp.com",
         projectId: "fodel-admin-transport",
         storageBucket: "fodel-admin-transport.firebasestorage.app",
@@ -2007,18 +2004,16 @@ Jammu Airport,Katra,49</pre>
           return;
         }
 
-        // Authorized — reveal admin affordance and open console once
+        // Authorized
         show(openAdmin, true);
         if (adminOv) adminOv.classList.add('active');
 
-        // Remove guard & clean URL param
         guardOff();
         cleanParam('admin');
       };
 
       await tryAuth();
 
-      // Modal logout
       if (adminLogoutBtn){
         adminLogoutBtn.addEventListener('click', async function(){
           await doLogout();
