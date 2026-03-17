@@ -1,33 +1,82 @@
 {
+  "regions": {
+    "Jammu & Kashmir": {
+      "Jammu": [
+        "Jammu Airport",
+        "Jammu City",
+        "Jammu Tawi Railway Station"
+      ],
+      "Katra": [
+        "Katra",
+        "Katra Helipad",
+        "Katra Bus Stand"
+      ],
+      "Srinagar": [
+        "Srinagar Airport",
+        "Srinagar City / Dal Gate",
+        "Gulmarg",
+        "Pahalgam",
+        "Sonmarg"
+      ],
+      "Udhampur/Patnitop": [
+        "Udhampur",
+        "Patnitop",
+        "Nathatop"
+      ]
+    },
+    "Goa": {
+      "Airports/Stations": [
+        "Goa International Airport (Dabolim)",
+        "Madgaon Railway Station",
+        "Thivim Railway Station"
+      ],
+      "Panaji": [
+        "Panaji (Panjim) City",
+        "Panjim Bus Stand"
+      ],
+      "North Goa": [
+        "Calangute",
+        "Candolim",
+        "Baga",
+        "Anjuna",
+        "Vagator"
+      ],
+      "South Goa": [
+        "Madgaon",
+        "Colva",
+        "Benaulim",
+        "Palolem"
+      ]
+    }
+  },
+
   "locations": [
-    "Jammu Airport",
-    "Jammu Tawi Railway Station",
-    "Jammu City",
-    "Katra",
-    "Katra Helipad",
-    "Katra Bus Stand",
-    "Udhampur",
-    "Patnitop",
-    "Nathatop",
-    "Srinagar Airport",
-    "Srinagar City / Dal Gate",
-    "Gulmarg",
-    "Pahalgam",
-    "Sonmarg"
+    "Jammu Airport", "Jammu Tawi Railway Station", "Jammu City",
+    "Katra", "Katra Helipad", "Katra Bus Stand",
+    "Udhampur", "Patnitop", "Nathatop",
+    "Srinagar Airport", "Srinagar City / Dal Gate", "Gulmarg", "Pahalgam", "Sonmarg",
+    "Goa International Airport (Dabolim)", "Panaji (Panjim) City", "Panjim Bus Stand",
+    "Calangute", "Candolim", "Baga", "Anjuna", "Vagator",
+    "Madgaon", "Colva", "Benaulim", "Palolem",
+    "Madgaon Railway Station", "Thivim Railway Station"
   ],
+
   "vehicles": [
-    { "id": "sedan", "label": "Sedan (Dzire/Amaze) — 4 pax" },
-    { "id": "suv", "label": "SUV (Ertiga) — 5/6 pax" },
+    { "id": "sedan",  "label": "Sedan (Dzire/Amaze) — 4 pax" },
+    { "id": "suv",    "label": "SUV (Ertiga) — 5/6 pax" },
     { "id": "innova", "label": "Innova / Crysta — 6/7 pax" },
-    { "id": "tt", "label": "Tempo Traveller 12 / 17" }
+    { "id": "tt",     "label": "Tempo Traveller 12 / 17" }
   ],
+
   "priceTable": {
     "sedan": {},
     "suv": {},
     "innova": {},
     "tt": {}
   },
+
   "distanceTable": {},
+
   "addons": {
     "roofcarrier": 200,
     "placard": 100
