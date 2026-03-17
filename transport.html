@@ -277,7 +277,7 @@
     .btn-ghost{
       display:inline-flex; align-items:center; justify-content:center;
       gap:8px; padding:10px 14px; border-radius:10px;
-      border:1px solid var(--border); background:#fff; color:var(--text); font-weight:700; cursor:pointer;
+      border:1px solid var(--border); background:#fff; color:#0f172a; font-weight:700; cursor:pointer;
       transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease, opacity .15s ease;
     }
     .btn-ghost:hover{ transform:translateY(-1px); box-shadow:0 8px 16px rgba(0,0,0,.1); border-color: color-mix(in srgb, var(--accent) 35%, #cbd5e1); }
@@ -377,7 +377,6 @@
       <small class="note">Choose a region (and optionally a city). Pickup/Drop lists update instantly.</small>
     </div>
   </section>
-
   <!-- ========== BOOKING FORM ========== -->
   <section class="section" aria-labelledby="transport-title">
     <div class="card">
@@ -604,7 +603,7 @@
         <button class="modal-close" data-close aria-label="Close admin console">✕</button>
       </div>
       <div class="modal-body">
-        <!-- Regions & Cities (drives front-end filters) -->
+        <!-- Regions & Cities -->
         <div class="card" style="margin-bottom:12px;">
           <h3 style="margin-bottom:6px;">Regions & Cities (Front-end Filters)</h3>
 
@@ -641,7 +640,7 @@
           </div>
         </div>
 
-        <!-- Flat Locations (legacy / for price & distance admin selects) -->
+        <!-- Flat Locations -->
         <div class="card" style="margin-bottom:12px;">
           <h3 style="margin-bottom:6px;">Flat Locations (Legacy)</h3>
           <div class="inline">
@@ -772,22 +771,13 @@ Jammu Airport,Katra,49</pre>
     var FORMSPREE_ENDPOINT = ""; // optional webhook
     var DATA_URL = "/data/transport-data.json"; // optional seed file
 
-    // Defaults include starter regions so "Reset" is meaningful.
     var DEFAULTS = {
       regions: {
         "Jammu & Kashmir": {
-          "Jammu": [
-            "Jammu Airport", "Jammu City", "Jammu Tawi Railway Station"
-          ],
-          "Katra": [
-            "Katra", "Katra Helipad", "Katra Bus Stand"
-          ],
-          "Srinagar": [
-            "Srinagar Airport", "Srinagar City / Dal Gate", "Gulmarg", "Pahalgam", "Sonmarg"
-          ],
-          "Udhampur/Patnitop": [
-            "Udhampur", "Patnitop", "Nathatop"
-          ]
+          "Jammu": ["Jammu Airport", "Jammu City", "Jammu Tawi Railway Station"],
+          "Katra": ["Katra", "Katra Helipad", "Katra Bus Stand"],
+          "Srinagar": ["Srinagar Airport", "Srinagar City / Dal Gate", "Gulmarg", "Pahalgam", "Sonmarg"],
+          "Udhampur/Patnitop": ["Udhampur", "Patnitop", "Nathatop"]
         },
         "Goa": {
           "Airports/Stations": [
@@ -795,19 +785,11 @@ Jammu Airport,Katra,49</pre>
             "Madgaon Railway Station",
             "Thivim Railway Station"
           ],
-          "Panaji": [
-            "Panaji (Panjim) City", "Panjim Bus Stand"
-          ],
-          "North Goa": [
-            "Calangute", "Candolim", "Baga", "Anjuna", "Vagator"
-          ],
-          "South Goa": [
-            "Madgaon", "Colva", "Benaulim", "Palolem"
-          ]
+          "Panaji": ["Panaji (Panjim) City", "Panjim Bus Stand"],
+          "North Goa": ["Calangute", "Candolim", "Baga", "Anjuna", "Vagator"],
+          "South Goa": ["Madgaon", "Colva", "Benaulim", "Palolem"]
         }
       },
-
-      // Flat list used by Admin price/distance selects; can be synced from regions.
       locations: [
         "Jammu Airport", "Jammu Tawi Railway Station", "Jammu City",
         "Katra", "Katra Helipad", "Katra Bus Stand",
@@ -818,7 +800,6 @@ Jammu Airport,Katra,49</pre>
         "Madgaon", "Colva", "Benaulim", "Palolem",
         "Madgaon Railway Station", "Thivim Railway Station"
       ],
-
       vehicles: [
         { id:"sedan",  label:"Sedan (Dzire/Amaze) — 4 pax" },
         { id:"suv",    label:"SUV (Ertiga) — 5/6 pax" },
@@ -884,7 +865,16 @@ Jammu Airport,Katra,49</pre>
         });
       }
     }
-    function saveStore(){ localStorage.setItem(STORE_KEY, JSON.stringify(STORE)); }
+    function saveStore(){
+      try {
+        localStorage.setItem(STORE_KEY, JSON.stringify(STORE));
+        return true;
+      } catch (e) {
+        console.error('Failed to save to localStorage', e);
+        showToast('Cannot save: browser storage blocked');
+        return false;
+      }
+    }
 
     // Helpers
     function byId(id){ return document.getElementById(id); }
@@ -953,7 +943,6 @@ Jammu Airport,Katra,49</pre>
     var ftInput = byId('ft-input');
     var ftHint  = byId('ft-hint');
 
-    // Region & City UI (below header)
     var regionTabs = byId('region-tabs');
     var cityChipsTop = byId('city-chips-top');
 
@@ -1018,12 +1007,12 @@ Jammu Airport,Katra,49</pre>
       if (!regionTabs) return;
       var regions = Object.keys(STORE.regions || {});
       regionTabs.innerHTML = '';
-      var strip = regionTabs.parentElement.parentElement; // card
+      var card = regionTabs.parentElement.parentElement;
       if (!regions.length){
-        if (strip) strip.style.display = 'none';
+        if (card) card.style.display = 'none';
         return;
       } else {
-        if (strip) strip.style.display = '';
+        if (card) card.style.display = '';
       }
       if (!CURRENT.region || !STORE.regions[CURRENT.region]) CURRENT.region = regions[0];
 
@@ -1077,7 +1066,7 @@ Jammu Airport,Katra,49</pre>
       if (keepPickup && list.indexOf(keepPickup)>-1) selPickup.value = keepPickup;
       if (keepDrop && list.indexOf(keepDrop)>-1) selDrop.value = keepDrop;
 
-      // Also refresh Admin selects to avoid “dropdown not working” issues
+      // Also refresh Admin selects to avoid dropdown stale states
       fillAdminSelects();
     }
 
@@ -1326,20 +1315,6 @@ Jammu Airport,Katra,49</pre>
     [selPickup, selDrop, vehicle, cars, date, time, rdate, rtime, pickupOther, dropOther, pickupOtherToggle, dropOtherToggle, selLocalCity, qtyRoof, qtyPlacard]
       .forEach(function(el){ if(el) el.addEventListener("input", refreshEstimate); });
 
-    // Qty buttons
-    Array.prototype.forEach.call(document.querySelectorAll('.btn-qty'), function(btn){
-      btn.addEventListener('click', function(){
-        var target = document.getElementById(btn.dataset.target);
-        var delta = parseInt(btn.dataset.delta,10) || 0;
-        if (!target) return;
-        var nCars = Math.max(1, parseInt(cars.value || "1", 10));
-        var val = parseInt(target.value || "0", 10) + delta;
-        val = Math.max(0, Math.min(nCars, val));
-        target.value = String(val);
-        refreshEstimate();
-      });
-    });
-
     // Trip switching
     function updateTripBlocks(){
       var type = "oneway";
@@ -1361,7 +1336,7 @@ Jammu Airport,Katra,49</pre>
     toggleOther(dropOtherToggle,   dropOther,   selDrop);
 
     /* ===========================
-       ADMIN UI open/close (auth gating in Part 5)
+       ADMIN UI open/close
     ============================ */
     function openAdminModal(){ if (adminOv) adminOv.classList.add('active'); }
     function closeAdminModal(){ if (adminOv) adminOv.classList.remove('active'); }
@@ -1529,781 +1504,7 @@ Jammu Airport,Katra,49</pre>
       showToast('City added');
     });
 
-    if (locAddCity) locAddCity.addEventListener('click', function(){
-      if (!RG.region || !RG.city){ showToast('Select region & city first'); return; }
-<script>
-    /* Force-hide Admin at boot for safety */
-    document.addEventListener('DOMContentLoaded', function(){
-      var ov = document.getElementById('admin-ov');
-      var btn = document.getElementById('open-admin');
-      if (ov) ov.classList.remove('active');
-      if (btn) btn.style.display = 'none';
-    });
-
-    /* ===========================
-       CONFIG / DEFAULTS / STORE
-    ============================ */
-    var FORMSPREE_ENDPOINT = ""; // optional webhook
-    var DATA_URL = "/data/transport-data.json"; // optional seed file
-
-    // Defaults include starter regions so "Reset" is meaningful.
-    var DEFAULTS = {
-      regions: {
-        "Jammu & Kashmir": {
-          "Jammu": [
-            "Jammu Airport", "Jammu City", "Jammu Tawi Railway Station"
-          ],
-          "Katra": [
-            "Katra", "Katra Helipad", "Katra Bus Stand"
-          ],
-          "Srinagar": [
-            "Srinagar Airport", "Srinagar City / Dal Gate", "Gulmarg", "Pahalgam", "Sonmarg"
-          ],
-          "Udhampur/Patnitop": [
-            "Udhampur", "Patnitop", "Nathatop"
-          ]
-        },
-        "Goa": {
-          "Airports/Stations": [
-            "Goa International Airport (Dabolim)",
-            "Madgaon Railway Station",
-            "Thivim Railway Station"
-          ],
-          "Panaji": [
-            "Panaji (Panjim) City", "Panjim Bus Stand"
-          ],
-          "North Goa": [
-            "Calangute", "Candolim", "Baga", "Anjuna", "Vagator"
-          ],
-          "South Goa": [
-            "Madgaon", "Colva", "Benaulim", "Palolem"
-          ]
-        }
-      },
-
-      // Flat list used by Admin price/distance selects; can be synced from regions.
-      locations: [
-        "Jammu Airport", "Jammu Tawi Railway Station", "Jammu City",
-        "Katra", "Katra Helipad", "Katra Bus Stand",
-        "Udhampur", "Patnitop", "Nathatop",
-        "Srinagar Airport", "Srinagar City / Dal Gate", "Gulmarg", "Pahalgam", "Sonmarg",
-        "Goa International Airport (Dabolim)", "Panaji (Panjim) City", "Panjim Bus Stand",
-        "Calangute", "Candolim", "Baga", "Anjuna", "Vagator",
-        "Madgaon", "Colva", "Benaulim", "Palolem",
-        "Madgaon Railway Station", "Thivim Railway Station"
-      ],
-
-      vehicles: [
-        { id:"sedan",  label:"Sedan (Dzire/Amaze) — 4 pax" },
-        { id:"suv",    label:"SUV (Ertiga) — 5/6 pax" },
-        { id:"innova", label:"Innova / Crysta — 6/7 pax" },
-        { id:"tt",     label:"Tempo Traveller 12 / 17" }
-      ],
-      priceTable: { sedan:{}, suv:{}, innova:{}, tt:{} },
-      distanceTable: {},
-      addons: { roofcarrier: 200, placard: 100 } /* per unit */
-    };
-
-    var STORE_KEY = "fodel_transport_v7";
-    var STORE = null;
-
-    function mergeDeep(target, source){
-      if (typeof target !== 'object' || target===null) return source;
-      if (typeof source !== 'object' || source===null) return target;
-      Object.keys(source).forEach(function(k){
-        if (Array.isArray(source[k])){
-          var a = Array.isArray(target[k]) ? target[k].slice() : [];
-          source[k].forEach(function(x){ if (a.indexOf(x)===-1) a.push(x); });
-          target[k] = a;
-        } else if (typeof source[k] === 'object'){
-          target[k] = mergeDeep(target[k] || {}, source[k]);
-        } else { target[k] = source[k]; }
-      });
-      return target;
-    }
-
-    function primeDefaultsFromData(){
-      return fetch(DATA_URL, {cache:'no-store'}).then(function(res){
-        if (!res || !res.ok) return;
-        return res.json().then(function(json){
-          var seed = {
-            regions: typeof json.regions==='object' ? json.regions : undefined,
-            locations: Array.isArray(json.locations) ? json.locations : undefined,
-            vehicles:  Array.isArray(json.vehicles)  ? json.vehicles  : undefined,
-            priceTable: typeof json.priceTable==='object' ? json.priceTable : undefined,
-            distanceTable: typeof json.distanceTable==='object' ? json.distanceTable : undefined,
-            addons: typeof json.addons==='object' ? json.addons : undefined
-          };
-          mergeDeep(DEFAULTS, seed);
-        }).catch(function(){});
-      }).catch(function(){});
-    }
-
-    function loadStore(){
-      try{
-        var s = localStorage.getItem(STORE_KEY);
-        STORE = s ? JSON.parse(s) : JSON.parse(JSON.stringify(DEFAULTS));
-      }catch(e){
-        STORE = JSON.parse(JSON.stringify(DEFAULTS));
-      }
-      if (!STORE.addons) STORE.addons = { roofcarrier: 200, placard: 100 };
-      if (!STORE.distanceTable) STORE.distanceTable = {};
-      if (!STORE.priceTable) STORE.priceTable = { sedan:{}, suv:{}, innova:{}, tt:{} };
-      if (!STORE.regions || typeof STORE.regions!=='object') STORE.regions = {};
-      if (!Array.isArray(STORE.locations)) STORE.locations = [];
-      // De-duplicate vehicles by id
-      if (STORE.vehicles && STORE.vehicles.length){
-        STORE.vehicles = STORE.vehicles.filter(function (v, i, a) {
-          return a.findIndex(function (x) { return x.id === v.id; }) === i;
-        });
-      }
-    }
-    function saveStore(){ localStorage.setItem(STORE_KEY, JSON.stringify(STORE)); }
-
-    // Helpers
-    function byId(id){ return document.getElementById(id); }
-    function todayISO(){ return new Date().toISOString().split('T')[0]; }
-    function showToast(msg){
-      var t = byId('toast'); if(!t) return;
-      t.textContent = msg || t.textContent; t.classList.add('show'); setTimeout(function(){ t.classList.remove('show'); }, 2200);
-    }
-    function priceKey(a,b){ return String((a||'').trim()) + '|' + String((b||'').trim()); }
-
-    function containsAirport(s){ if(!s) return false; var v=String(s).toLowerCase(); return v.indexOf('airport')>-1; }
-    function containsRailway(s){ if(!s) return false; var v=String(s).toLowerCase(); return v.indexOf('railway')>-1 || v.indexOf('station')>-1 || v.indexOf('tawi')>-1; }
-
-    /* ===========================
-       UI refs
-    ============================ */
-    var tripRadios = Array.prototype.slice.call(document.querySelectorAll('input[name="tripType"]'));
-    var blockStd = byId('block-std');
-    var blockReturn = byId('block-return');
-    var blockLocal = byId('block-local');
-    var blockMulti = byId('block-multi');
-
-    var selPickup = byId('pickup');
-    var selDrop = byId('drop');
-    var selLocalCity = byId('local-city');
-    var pickupOtherToggle = byId('pickup-other-toggle');
-    var pickupOther = byId('pickup-other');
-    var dropOtherToggle = byId('drop-other-toggle');
-    var dropOther = byId('drop-other');
-
-    var date = byId('date');
-    var time = byId('time');
-    var rdate = byId('ret-date');
-    var rtime = byId('ret-time');
-
-    var vehicle = byId('vehicle');
-    var cars = byId('cars');
-    var pax = byId('pax');
-
-    var legsBox = byId('legs');
-    var addLegBtn = byId('add-leg');
-    var clearLegsBtn = byId('clear-legs');
-
-    var estText = byId('est-text');
-    var kmText = byId('km-text');
-    var refreshBtn = byId('refresh-est');
-    var estBreak = byId('est-breakdown');
-    var lineBase = byId('line-base');
-    var lineGrand = byId('line-grand');
-
-    var roofAmt = byId('roof-amt');
-    var placardAmt = byId('placard-amt');
-    var qtyRoof = byId('qty-roof');
-    var qtyPlacard = byId('qty-placard');
-    var lineAddonRoof = byId('line-addon-roof');
-    var lineAddonPlacard = byId('line-addon-placard');
-    var lineAddonRoofVal = byId('line-addon-roof-val');
-    var lineAddonPlacardVal = byId('line-addon-placard-val');
-
-    var submitBtn = byId('submit-btn');
-    var openAdmin = byId('open-admin');
-    var adminOv = byId('admin-ov');
-
-    var ftWrap  = byId('ft-wrap');
-    var ftLabel = byId('ft-label');
-    var ftInput = byId('ft-input');
-    var ftHint  = byId('ft-hint');
-
-    // Region & City UI (below header)
-    var regionTabs = byId('region-tabs');
-    var cityChipsTop = byId('city-chips-top');
-
-    /* ===========================
-       Fillers
-    ============================ */
-    function fillSelectFromArray(sel, arr){
-      if(!sel) return;
-      var opts = '<option value="">Select</option>';
-      for (var i=0;i<arr.length;i++){ opts += '<option>'+arr[i]+'</option>'; }
-      sel.innerHTML = opts;
-    }
-    function fillVehicles(){
-      if(!vehicle) return;
-      var opts = '<option value="">Select</option>';
-      var arr = (STORE.vehicles||[]);
-      var seen = {};
-      for (var i=0;i<arr.length;i++){
-        var v = arr[i];
-        if (seen[v.id]) continue;
-        seen[v.id] = true;
-        opts += '<option value="'+v.id+'">'+v.label+'</option>';
-      }
-      vehicle.innerHTML = opts;
-    }
-    function refreshAddonLabels(){
-      roofAmt.textContent = (STORE.addons && STORE.addons.roofcarrier!=null ? STORE.addons.roofcarrier : 0).toLocaleString("en-IN");
-      placardAmt.textContent = (STORE.addons && STORE.addons.placard!=null ? STORE.addons.placard : 0).toLocaleString("en-IN");
-    }
-    function initDates(){
-      var ld = byId('local-date');
-      var t = todayISO();
-      if (date) date.min = t;
-      if (rdate) rdate.min = t;
-      if (ld) ld.min = t;
-    }
-
-    /* ===========================
-       Regions → Cities → Locations (Front-end)
-    ============================ */
-    var CURRENT = { region: '', city: '' };
-
-    function unique(arr){ return Array.from(new Set(arr)); }
-
-    function getFilteredLocations(){
-      var regions = STORE.regions || {};
-      if (CURRENT.city && CURRENT.region && regions[CURRENT.region] && regions[CURRENT.region][CURRENT.city]){
-        return regions[CURRENT.region][CURRENT.city].slice();
-      }
-      if (CURRENT.region && regions[CURRENT.region]){
-        var acc = [];
-        Object.keys(regions[CURRENT.region]).forEach(function(ct){
-          acc = acc.concat(regions[CURRENT.region][ct] || []);
-        });
-        return unique(acc);
-      }
-      // Fallback to flat
-      return (STORE.locations || []).slice();
-    }
-
-    function renderRegionTabs(){
-      if (!regionTabs) return;
-      var regions = Object.keys(STORE.regions || {});
-      regionTabs.innerHTML = '';
-      var strip = regionTabs.parentElement.parentElement; // card
-      if (!regions.length){
-        if (strip) strip.style.display = 'none';
-        return;
-      } else {
-        if (strip) strip.style.display = '';
-      }
-      if (!CURRENT.region || !STORE.regions[CURRENT.region]) CURRENT.region = regions[0];
-
-      regions.forEach(function(rg){
-        var btn = document.createElement('button');
-        btn.className = 'tab' + (rg===CURRENT.region ? ' active' : '');
-        btn.setAttribute('role','tab');
-        btn.textContent = rg;
-        btn.addEventListener('click', function(){
-          CURRENT.region = rg;
-          CURRENT.city = '';
-          renderRegionTabs();
-          renderCityChipsTop();
-          applyLocationFilter();
-          updateFTVisibility();
-          refreshEstimate();
-        });
-        regionTabs.appendChild(btn);
-      });
-    }
-
-    function renderCityChipsTop(){
-      if (!cityChipsTop) return;
-      cityChipsTop.innerHTML = '';
-      var regions = STORE.regions || {};
-      var cities = (CURRENT.region && regions[CURRENT.region]) ? Object.keys(regions[CURRENT.region]) : [];
-      cities.forEach(function(ct){
-        var label = document.createElement('label');
-        label.className = 'chip chip-filter' + (ct===CURRENT.city ? ' active' : '');
-        label.innerHTML = '<input type="radio" name="city"> <small>'+ct+'</small>';
-        label.addEventListener('click', function(){
-          CURRENT.city = ct;
-          renderCityChipsTop();
-          applyLocationFilter();
-          updateFTVisibility();
-          refreshEstimate();
-        });
-        cityChipsTop.appendChild(label);
-      });
-    }
-
-    function applyLocationFilter(){
-      var list = getFilteredLocations();
-      var keepPickup = selPickup && selPickup.value;
-      var keepDrop = selDrop && selDrop.value;
-
-      fillSelectFromArray(selPickup, list);
-      fillSelectFromArray(selDrop, list);
-      fillSelectFromArray(selLocalCity, list);
-
-      if (keepPickup && list.indexOf(keepPickup)>-1) selPickup.value = keepPickup;
-      if (keepDrop && list.indexOf(keepDrop)>-1) selDrop.value = keepDrop;
-
-      // Also refresh Admin selects to avoid “dropdown not working” issues
-      fillAdminSelects();
-    }
-
-    /* ===========================
-       Trip helpers
-    ============================ */
-    function toggleOther(tgl, input, select){
-      if(!tgl || !input || !select) return;
-      input.style.display = tgl.checked ? '' : 'none';
-      select.disabled = tgl.checked;
-      updateFTVisibility();
-      refreshEstimate();
-    }
-
-    function getPickupString(){
-      var type = 'oneway';
-      for (var i=0;i<tripRadios.length;i++){ if(tripRadios[i].checked){ type = tripRadios[i].value; break; } }
-      if (type === 'oneway' || type === 'round'){
-        return (pickupOtherToggle && pickupOtherToggle.checked ? (pickupOther && pickupOther.value || '') : (selPickup && selPickup.value || ''));
-      }
-      if (type === 'local'){ return selLocalCity && selLocalCity.value || ''; }
-      if (type === 'multi'){
-        var firstLeg = document.querySelector('#legs .leg .leg-from');
-        return firstLeg && firstLeg.value || '';
-      }
-      return '';
-    }
-
-    function updateFTVisibility(){
-      var pickup = getPickupString();
-      if (containsAirport(pickup)){
-        ftWrap.style.display = '';
-        ftLabel.textContent  = 'Flight no.';
-        ftInput.placeholder  = 'e.g., UK 123';
-        ftInput.setAttribute('data-ft-type', 'flight');
-        if (ftHint) ftHint.style.display = 'none';
-      } else if (containsRailway(pickup)){
-        ftWrap.style.display = '';
-        ftLabel.textContent  = 'Train no.';
-        ftInput.placeholder  = 'e.g., 12426 Jammu Rajdhani';
-        ftInput.setAttribute('data-ft-type', 'train');
-        if (ftHint) ftHint.style.display = 'none';
-      } else {
-        ftWrap.style.display = 'none';
-        ftInput.value = '';
-      }
-    }
-
-    [selPickup, selDrop, pickupOther, dropOther, pickupOtherToggle, dropOtherToggle, selLocalCity]
-      .forEach(function(el){ if(el){ el.addEventListener('input', function(){ updateFTVisibility(); refreshEstimate(); }); } });
-
-    // Legs
-    function createLeg(fromVal, toVal){
-      fromVal = fromVal || ""; toVal = toVal || "";
-      var div = document.createElement('div');
-      div.className = 'leg';
-      div.innerHTML =
-        '<div class="inline">'+
-          '<div><label>Pickup</label><select class="leg-from"></select></div>'+
-          '<div><label>Drop</label><select class="leg-to"></select></div>'+
-        '</div>'+
-        '<div class="inline" style="margin-top:8px;">'+
-          '<div><label>Date</label><input type="date" class="leg-date" min="'+todayISO()+'"></div>'+
-          '<div><label>Pickup time</label><input type="time" class="leg-time"></div>'+
-        '</div>'+
-        '<div class="leg-actions">'+
-          '<button type="button" class="btn-ghost btn-leg-del" aria-label="Delete leg">Delete</button>'+
-        '</div>';
-      legsBox.appendChild(div);
-
-      var lf = div.querySelector('.leg-from');
-      var lt = div.querySelector('.leg-to');
-      fillSelectFromArray(lf, getFilteredLocations());
-      fillSelectFromArray(lt, getFilteredLocations());
-      if (fromVal) lf.value = fromVal;
-      if (toVal) lt.value = toVal;
-
-      div.querySelector('.btn-leg-del').addEventListener('click', function(){
-        div.remove(); refreshEstimate(); updateFTVisibility();
-      });
-
-      var controls = [lf, lt];
-      Array.prototype.forEach.call(div.querySelectorAll('.leg-date, .leg-time'), function(el){ controls.push(el); });
-      controls.forEach(function(el){ if(el) el.addEventListener('input', function(){ refreshEstimate(); updateFTVisibility(); }); });
-
-      return div;
-    }
-
-    function ensureAtLeastOneLeg(){
-      if (legsBox.children.length === 0){
-        var fromPref = pickupOtherToggle && pickupOtherToggle.checked ? (pickupOther.value || "") : (selPickup.value || "");
-        var toPref   = dropOtherToggle && dropOtherToggle.checked ? (dropOther.value   || "") : (selDrop.value   || "");
-        createLeg(fromPref, toPref);
-      }
-    }
-
-    if (addLegBtn){
-      addLegBtn.addEventListener('click', function(){
-        var last = legsBox.lastElementChild;
-        var fromPref = "", toPref = "";
-        if (last) {
-          var lastTo = last.querySelector('.leg-to');
-          fromPref = lastTo ? (lastTo.value || "") : "";
-        } else {
-          fromPref = pickupOtherToggle && pickupOtherToggle.checked ? (pickupOther.value || "") : (selPickup.value || "");
-          toPref   = dropOtherToggle && dropOtherToggle.checked ? (dropOther.value   || "") : (selDrop.value   || "");
-        }
-        createLeg(fromPref, toPref);
-        refreshEstimate();
-        updateFTVisibility();
-      });
-    }
-    if (clearLegsBtn){
-      clearLegsBtn.addEventListener('click', function(){
-        legsBox.innerHTML = "";
-        refreshEstimate();
-        updateFTVisibility();
-      });
-    }
-
-    // Estimate
-    function getRoutePrice(vId, from, to) {
-      var table = (STORE.priceTable && STORE.priceTable[vId]) || {};
-      var p = table[priceKey(from, to)];
-      return (p && p > 0) ? p : null;
-    }
-    function getRouteDistance(from, to){
-      var km = STORE.distanceTable ? STORE.distanceTable[priceKey(from, to)] : null;
-      km = (km!=null) ? Number(km) : null;
-      return (km && km > 0) ? km : null;
-    }
-    function calcLegs(){
-      var type = "oneway";
-      for (var i=0;i<tripRadios.length;i++){ if(tripRadios[i].checked){ type = tripRadios[i].value; break; } }
-      var legs = [];
-      if (type === "oneway" || type === "round") {
-        var p = pickupOtherToggle && pickupOtherToggle.checked ? pickupOther.value : selPickup.value;
-        var d = dropOtherToggle && dropOtherToggle.checked ? dropOther.value : selDrop.value;
-        if (p && d){
-          legs.push([p, d]);
-          if (type === "round") legs.push([d, p]);
-        }
-        return legs;
-      }
-      if (type === "multi") {
-        var legEls = Array.prototype.slice.call(legsBox.querySelectorAll(".leg"));
-        legs = legEls.map(function(el){
-          return [ el.querySelector(".leg-from").value, el.querySelector(".leg-to").value ];
-        });
-        return legs;
-      }
-      return legs; // local
-    }
-
-    function clampAddonQty(){
-      var nCars = Math.max(1, parseInt(cars.value || "1", 10));
-      [qtyRoof, qtyPlacard].forEach(function(inp){
-        if (!inp) return;
-        var v = Math.max(0, Math.min(nCars, parseInt(inp.value || "0", 10)));
-        if (String(v) !== String(inp.value)) inp.value = v;
-      });
-    }
-
-    function refreshEstimate() {
-      clampAddonQty();
-
-      var vId = vehicle.value;
-      var nCars = Math.max(1, parseInt(cars.value || "1", 10));
-      var type = "oneway";
-      for (var i=0;i<tripRadios.length;i++){ if(tripRadios[i].checked){ type = tripRadios[i].value; break; } }
-
-      if (type === "local") {
-        estText.textContent = "Local (hours/km) — ask for quote";
-        kmText.textContent = "—";
-        estBreak.style.display = 'none';
-        return;
-      }
-
-      var legs = calcLegs();
-      if (!legs.length){
-        estText.textContent = (type === 'multi') ? "Add trip legs to see estimate" : "Add locations to see estimate";
-        kmText.textContent = "—";
-        estBreak.style.display = 'none';
-        return;
-      }
-
-      // Distances
-      var kmSum = 0;
-      var kmKnown = 0;
-      for (var j=0;j<legs.length;j++){
-        var a = legs[j][0], b = legs[j][1];
-        var km = getRouteDistance(a, b);
-        if (km != null) { kmSum += km; kmKnown++; }
-      }
-      kmText.textContent = (kmKnown > 0)
-        ? (kmSum.toLocaleString("en-IN") + " km" + (kmKnown < legs.length ? (" ("+kmKnown+"/"+legs.length+" legs)") : ""))
-        : "—";
-
-      if (!vId) {
-        estText.textContent = "Vehicle type — Select";
-        estBreak.style.display = 'none';
-        return;
-      }
-
-      // Prices
-      var base = 0, missing = 0;
-      for (var k=0;k<legs.length;k++){
-        var a2 = legs[k][0], b2 = legs[k][1];
-        var price = getRoutePrice(vId, a2, b2);
-        if (price) base += price;
-        else missing++;
-      }
-
-      // Add-ons
-      var priceRoof = (STORE.addons && STORE.addons.roofcarrier || 0);
-      var pricePlacard = (STORE.addons && STORE.addons.placard || 0);
-      var qRoof = Math.max(0, parseInt(qtyRoof.value || "0", 10));
-      var qPlacard = Math.max(0, parseInt(qtyPlacard.value || "0", 10));
-
-      var baseForCars = base * nCars;
-      var addonsRoofTotal = priceRoof * qRoof;
-      var addonsPlacardTotal = pricePlacard * qPlacard;
-      var grand = baseForCars + addonsRoofTotal + addonsPlacardTotal;
-
-      if (missing) {
-        estText.textContent = (legs.length - missing) + "/" + legs.length + " legs priced — remaining ask for quote";
-        estBreak.style.display = 'none';
-      } else {
-        estText.textContent = "₹ " + grand.toLocaleString("en-IN") + " estimate";
-
-        estBreak.style.display = '';
-        lineBase.textContent = "₹ " + baseForCars.toLocaleString("en-IN");
-        if (addonsRoofTotal > 0){
-          lineAddonRoof.style.display = '';
-          lineAddonRoofVal.textContent = "₹ " + addonsRoofTotal.toLocaleString("en-IN") + " (₹ " + priceRoof.toLocaleString("en-IN") + " × " + qRoof + " per car)";
-        } else { lineAddonRoof.style.display = 'none'; }
-        if (addonsPlacardTotal > 0){
-          lineAddonPlacard.style.display = '';
-          lineAddonPlacardVal.textContent = "₹ " + addonsPlacardTotal.toLocaleString("en-IN") + " (₹ " + pricePlacard.toLocaleString("en-IN") + " × " + qPlacard + " per card)";
-        } else { lineAddonPlacard.style.display = 'none'; }
-        lineGrand.textContent = "₹ " + grand.toLocaleString("en-IN");
-      }
-    }
-
-    if (refreshBtn){ refreshBtn.addEventListener("click", refreshEstimate); }
-    [selPickup, selDrop, vehicle, cars, date, time, rdate, rtime, pickupOther, dropOther, pickupOtherToggle, dropOtherToggle, selLocalCity, qtyRoof, qtyPlacard]
-      .forEach(function(el){ if(el) el.addEventListener("input", refreshEstimate); });
-
-    // Qty buttons
-    Array.prototype.forEach.call(document.querySelectorAll('.btn-qty'), function(btn){
-      btn.addEventListener('click', function(){
-        var target = document.getElementById(btn.dataset.target);
-        var delta = parseInt(btn.dataset.delta,10) || 0;
-        if (!target) return;
-        var nCars = Math.max(1, parseInt(cars.value || "1", 10));
-        var val = parseInt(target.value || "0", 10) + delta;
-        val = Math.max(0, Math.min(nCars, val));
-        target.value = String(val);
-        refreshEstimate();
-      });
-    });
-
-    // Trip switching
-    function updateTripBlocks(){
-      var type = "oneway";
-      for (var i=0;i<tripRadios.length;i++){ if(tripRadios[i].checked){ type = tripRadios[i].value; break; } }
-      blockStd.style.display   = (type === 'oneway' || type === 'round') ? '' : 'none';
-      blockReturn.style.display= (type === 'round') ? '' : 'none';
-      blockLocal.style.display = (type === 'local') ? '' : 'none';
-      blockMulti.style.display = (type === 'multi') ? '' : 'none';
-      if (type === 'multi') ensureAtLeastOneLeg();
-      updateFTVisibility();
-      refreshEstimate();
-    }
-    tripRadios.forEach(function(r){ r.addEventListener('change', updateTripBlocks); });
-
-    // Other toggles
-    if (pickupOtherToggle) pickupOtherToggle.addEventListener('change', function(){ toggleOther(pickupOtherToggle, pickupOther, selPickup); });
-    if (dropOtherToggle)   dropOtherToggle.addEventListener('change',   function(){ toggleOther(dropOtherToggle,   dropOther,   selDrop); });
-    toggleOther(pickupOtherToggle, pickupOther, selPickup);
-    toggleOther(dropOtherToggle,   dropOther,   selDrop);
-
-    /* ===========================
-       ADMIN UI open/close (auth gating in Part 5)
-    ============================ */
-    function openAdminModal(){ if (adminOv) adminOv.classList.add('active'); }
-    function closeAdminModal(){ if (adminOv) adminOv.classList.remove('active'); }
-    if (openAdmin) openAdmin.addEventListener('click', openAdminModal);
-    if (adminOv){ adminOv.addEventListener('click', function(e){ if (e.target === adminOv) closeAdminModal(); }); }
-    Array.prototype.forEach.call(document.querySelectorAll('[data-close]'), function(x){ x.addEventListener('click', closeAdminModal); });
-    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeAdminModal(); });
-
-    /* ===========================
-       ADMIN: Flat Locations (legacy)
-    ============================ */
-    function renderLocChips(){
-      var locList = byId('loc-list');
-      if (!locList) return;
-      locList.innerHTML = '';
-      (STORE.locations||[]).forEach(function(loc){
-        var chip = document.createElement('div');
-        chip.className = 'chip';
-        chip.innerHTML = '<small>'+loc+'</small> <button class="btn-ghost" aria-label="Remove">✕</button>';
-        chip.querySelector('button').addEventListener('click', function(){
-          STORE.locations = (STORE.locations||[]).filter(function(x){ return x!==loc; });
-          saveStore(); renderLocChips(); fillAdminSelects(); applyLocationFilter(); refreshEstimate(); showToast('Removed');
-        });
-        locList.appendChild(chip);
-      });
-    }
-
-    var locNew = byId('loc-new'), locAdd = byId('loc-add'), locReset = byId('loc-reset');
-    if (locAdd) locAdd.addEventListener('click', function(){
-      var v = (locNew.value || '').trim();
-      if (!v) return;
-      if ((STORE.locations||[]).indexOf(v) === -1) {
-        STORE.locations.push(v);
-        saveStore(); locNew.value = '';
-        renderLocChips(); fillAdminSelects(); applyLocationFilter(); refreshEstimate(); showToast('Location added');
-      } else { showToast('Already exists'); }
-    });
-    if (locReset) locReset.addEventListener('click', function(){
-      STORE.locations = (DEFAULTS.locations || []).slice();
-      saveStore(); renderLocChips(); fillAdminSelects(); applyLocationFilter(); refreshEstimate(); showToast('Flat locations reset');
-    });
-
-    /* ===========================
-       ADMIN: Regions & Cities manager
-    ============================ */
-    var RG = { region: '', city: '' };
-
-    var rgNew = byId('rg-new'), rgAdd = byId('rg-add'), rgList = byId('rg-list'), rgReset = byId('rg-reset');
-    var ctNew = byId('ct-new'), ctAdd = byId('ct-add'), ctList = byId('ct-list');
-    var locNewCity = byId('loc-new-city'), locAddCity = byId('loc-add-city'), locListCity = byId('loc-list-city');
-    var btnSyncFlat = byId('sync-flat');
-
-    function ensureRegionsObj(){
-      if (!STORE.regions || typeof STORE.regions !== 'object') STORE.regions = {};
-    }
-    function renderRegions(){
-      ensureRegionsObj();
-      rgList.innerHTML = '';
-      var regions = Object.keys(STORE.regions);
-      if (!RG.region || !STORE.regions[RG.region]) RG.region = regions[0] || '';
-      regions.forEach(function(r){
-        var chip = document.createElement('div');
-        chip.className = 'chip' + (RG.region===r ? ' active':'');
-        chip.innerHTML = '<small><strong>'+r+'</strong></small> <button class="btn-ghost" aria-label="Remove">✕</button>';
-        var btn = chip.querySelector('button');
-        btn.addEventListener('click', function(){
-          if (!confirm('Delete region "'+r+'"? This will remove all its cities and locations.')) return;
-          delete STORE.regions[r];
-          if (RG.region===r){ RG.region=''; RG.city=''; }
-          saveStore();
-          renderRegions(); renderCities(); renderCityLocations();
-          renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
-          showToast('Region removed');
-        });
-        chip.addEventListener('click', function(e){
-          if (e.target===btn) return;
-          RG.region = r; RG.city = '';
-          renderRegions(); renderCities(); renderCityLocations();
-          renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
-        });
-        rgList.appendChild(chip);
-      });
-    }
-
-    function renderCities(){
-      ctList.innerHTML = '';
-      if (!RG.region || !STORE.regions[RG.region]) return;
-      var cities = Object.keys(STORE.regions[RG.region] || {});
-      if (!RG.city || !(STORE.regions[RG.region]||{})[RG.city]) RG.city = cities[0] || '';
-      cities.forEach(function(c){
-        var chip = document.createElement('div');
-        chip.className = 'chip' + (RG.city===c ? ' active':'');
-        chip.innerHTML = '<small>'+c+'</small> <button class="btn-ghost" aria-label="Remove">✕</button>';
-        var btn = chip.querySelector('button');
-        btn.addEventListener('click', function(){
-          if (!confirm('Delete city "'+c+'"? This will remove all its locations.')) return;
-          delete STORE.regions[RG.region][c];
-          if (RG.city===c) RG.city='';
-          saveStore();
-          renderCities(); renderCityLocations();
-          renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
-          showToast('City removed');
-        });
-        chip.addEventListener('click', function(e){
-          if (e.target===btn) return;
-          RG.city = c;
-          renderCities(); renderCityLocations();
-          renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
-        });
-        ctList.appendChild(chip);
-      });
-    }
-
-    function renderCityLocations(){
-      locListCity.innerHTML = '';
-      if (!RG.region || !RG.city) return;
-      var arr = STORE.regions[RG.region][RG.city] || [];
-      arr.forEach(function(loc){
-        var chip = document.createElement('div');
-        chip.className = 'chip';
-        chip.innerHTML = '<small>'+loc+'</small> <button class="btn-ghost" aria-label="Remove">✕</button>';
-        chip.querySelector('button').addEventListener('click', function(){
-          STORE.regions[RG.region][RG.city] = arr.filter(function(x){ return x!==loc; });
-          saveStore();
-          renderCityLocations();
-          renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
-          showToast('Location removed');
-        });
-        locListCity.appendChild(chip);
-      });
-    }
-
-    if (rgAdd) rgAdd.addEventListener('click', function(){
-      var v = (rgNew.value||'').trim();
-      if (!v) return;
-      ensureRegionsObj();
-      if (!STORE.regions[v]) STORE.regions[v] = {};
-      RG.region = v; RG.city = '';
-      saveStore(); rgNew.value='';
-      renderRegions(); renderCities(); renderCityLocations();
-      renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
-      showToast('Region added');
-    });
-
-    if (rgReset) rgReset.addEventListener('click', function(){
-      if (!confirm('Reset Regions to defaults? This will overwrite current Regions & Cities.')) return;
-      STORE.regions = JSON.parse(JSON.stringify(DEFAULTS.regions || {}));
-      saveStore();
-      RG.region = ''; RG.city = '';
-      renderRegions(); renderCities(); renderCityLocations();
-      renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
-      showToast('Regions reset');
-    });
-
-    if (ctAdd) ctAdd.addEventListener('click', function(){
-      if (!RG.region){ showToast('Select a region first'); return; }
-      var v = (ctNew.value||'').trim();
-      if (!v) return;
-      if (!STORE.regions[RG.region]) STORE.regions[RG.region] = {};
-      if (!STORE.regions[RG.region][v]) STORE.regions[RG.region][v] = [];
-      RG.city = v;
-      saveStore(); ctNew.value='';
-      renderCities(); renderCityLocations();
-      renderRegionTabs(); renderCityChipsTop(); applyLocationFilter(); refreshEstimate();
-      showToast('City added');
-    });
-
-    if (locAddCity) locAddCity.addEventListener('click', function(){
+    if (byId('loc-add-city')) byId('loc-add-city').addEventListener('click', function(){
       if (!RG.region || !RG.city){ showToast('Select region & city first'); return; }
       var v = (locNewCity.value||'').trim();
       if (!v) return;
@@ -2333,11 +1534,9 @@ Jammu Airport,Katra,49</pre>
     ============================ */
     var priceFrom = byId('price-from'), priceTo = byId('price-to');
     var pSedan = byId('p-sedan'), pSuv = byId('p-suv'), pInnova = byId('p-innova'), pTT = byId('p-tt');
-
     var distFrom = byId('dist-from'), distTo = byId('dist-to'), distKm = byId('dist-km');
 
     function fillAdminSelects(){
-      // Always use FLAT locations here for consistency with CSV/import/export
       var flat = (STORE.locations || []).slice();
       fillSelectFromArray(priceFrom, flat);
       fillSelectFromArray(priceTo, flat);
@@ -2415,7 +1614,6 @@ Jammu Airport,Katra,49</pre>
     }
     function parseCSV(text){
       return text.split(/\r?\n/).map(function(r){ return r.trim(); }).filter(Boolean).map(function(r){
-        // Handle quoted CSV
         var out=[], cur='', inQ=false;
         for (var i=0;i<r.length;i++){
           var ch=r[i];
@@ -2465,7 +1663,6 @@ Jammu Airport,Katra,49</pre>
             if (colI>=0) { var v3=parseInt(c[colI],10); if(!isNaN(v3)&&v3>0){ if(!STORE.priceTable.innova) STORE.priceTable.innova={}; STORE.priceTable.innova[key]=v3; } }
             if (colT>=0) { var v4=parseInt(c[colT],10); if(!isNaN(v4)&&v4>0){ if(!STORE.priceTable.tt) STORE.priceTable.tt={}; STORE.priceTable.tt[key]=v4; } }
           });
-          // De-dupe vehicles
           if (STORE.vehicles && STORE.vehicles.length){
             STORE.vehicles = STORE.vehicles.filter(function (v, i, a) {
               return a.findIndex(function (x) { return x.id === v.id; }) === i;
@@ -2566,7 +1763,7 @@ Jammu Airport,Katra,49</pre>
       var pLoc = pickupOtherToggle && pickupOtherToggle.checked ? (pickupOther.value||'') : (selPickup.value||'');
       var dLoc = dropOtherToggle && dropOtherToggle.checked ? (dropOther.value||'') : (selDrop.value||'');
 
-      function toTitle(s){ return (s||'').replace(/\b\w/g,m=>m.toUpperCase()); }
+      function toTitle(s){ return (s||'').replace(/\b\w/g,function(m){return m.toUpperCase();}); }
 
       var route = '';
       if (trip==='multi'){
@@ -2656,7 +1853,8 @@ Jammu Airport,Katra,49</pre>
       return true;
     }
 
-    if (submitBtn) submitBtn.addEventListener('click', function(){
+    var submitBtnEl = byId('submit-btn');
+    if (submitBtnEl) submitBtnEl.addEventListener('click', function(){
       if (!validateForm()) return;
       var msg = buildMessage();
       var pref = (byId('pref-contact') && byId('pref-contact').value || 'WhatsApp').toLowerCase();
@@ -2755,20 +1953,20 @@ Jammu Airport,Katra,49</pre>
 
       // TODO: Replace with your Firebase project's config
       const firebaseConfig = {
-  apiKey: "AIzaSyA_mcv2QJBUVj_qYZKEgdO9MiQf8F1HeII",
-  authDomain: "fodel-admin-transport.firebaseapp.com",
-  projectId: "fodel-admin-transport",
-  storageBucket: "fodel-admin-transport.firebasestorage.app",
-  messagingSenderId: "81364149405",
-  appId: "1:81364149405:web:a927a693f0402607966074",
-  measurementId: "G-DTLDMKYMZG"
-};
+        apiKey: "AIzaSyA_mcv2QJBUVj_qYZKEgdO9MiQf8F1HeII",
+        authDomain: "fodel-admin-transport.firebaseapp.com",
+        projectId: "fodel-admin-transport",
+        storageBucket: "fodel-admin-transport.firebasestorage.app",
+        messagingSenderId: "81364149405",
+        appId: "1:81364149405:web:a927a693f0402607966074",
+        measurementId: "G-DTLDMKYMZG"
+      };
 
       const app = initializeApp(firebaseConfig);
       const auth = getAuth(app);
       const provider = new GoogleAuthProvider();
 
-      // TODO: Allowed admin emails
+      // Allowed admin emails
       const ADMIN_EMAILS = [
         "munish2818@gmail.com"
         // ,"your.email@domain.com"
@@ -2794,7 +1992,6 @@ Jammu Airport,Katra,49</pre>
       const tryAuth = async () => {
         const user = await doLogin().catch(() => null);
         if (!isAllowed(user)){
-          // Keep guard active; DO NOT reveal main UI
           guardOn(`
             <p style="margin-bottom:10px;"><strong>Access denied.</strong> This Google account is not authorized for Admin.</p>
             <div class="actions">
@@ -2803,7 +2000,6 @@ Jammu Airport,Katra,49</pre>
             </div>
             <p class="note" style="margin-top:10px;">You can exit admin mode to view the public page. No admin data is visible here.</p>
           `);
-          // Wire actions
           const again = document.getElementById('guard-try-again');
           const exit  = document.getElementById('guard-exit');
           if (again) again.onclick = async () => { await doLogout(); tryAuth(); };
