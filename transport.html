@@ -1907,125 +1907,163 @@ Jammu Airport,Katra,49</pre>
   </script>
   <!-- Admin auth (Google Firebase) — only when ?admin=1 -->
   <script type="module">
-    const qp = new URLSearchParams(location.search);
-    const wantAdmin = qp.get('admin') === '1';
-    const wantLogout = qp.get('logout') === '1';
+  const qp = new URLSearchParams(location.search);
+  const wantAdmin  = qp.get('admin') === '1';
+  const wantLogout = qp.get('logout') === '1';
+  const debug      = qp.get('debug') === '1';
 
-    const adminOv         = document.getElementById('admin-ov');
-    const openAdmin       = document.getElementById('open-admin');
-    const adminLogoutBtn  = document.getElementById('admin-logout');
-    const guard           = document.getElementById('admin-guard');
-    const guardBody       = document.getElementById('admin-guard-body');
+  const adminOv         = document.getElementById('admin-ov');
+  const openAdmin       = document.getElementById('open-admin');
+  const adminLogoutBtn  = document.getElementById('admin-logout');
+  const guard           = document.getElementById('admin-guard');
+  const guardBody       = document.getElementById('admin-guard-body');
 
-    function show(el, on){ if (el) el.style.display = on ? 'inline-flex' : 'none'; }
-    function guardOn(msg){
-      if (!guard) return;
-      guard.classList.add('active');
-      if (guardBody) guardBody.innerHTML = msg || 'Checking admin access…';
+  function log(...args){ if (debug) console.log('[ADMIN AUTH]', ...args); }
+  function show(el, on){ if (el) el.style.display = on ? 'inline-flex' : 'none'; }
+  function guardOn(msg){
+    if (!guard) return;
+    guard.classList.add('active');
+    if (guardBody) guardBody.innerHTML = msg || 'Checking admin access…';
+  }
+  function guardOff(){ if (guard) guard.classList.remove('active'); }
+  function cleanParam(param){
+    const clean = new URL(location.href);
+    clean.searchParams.delete(param);
+    history.replaceState({}, document.title, clean.pathname + (clean.searchParams.toString() ? '?' + clean.searchParams.toString() : '') + clean.hash);
+  }
+
+  async function main(){
+    show(openAdmin, false);
+    if (adminOv) adminOv.classList.remove('active');
+
+    if (!wantAdmin && !wantLogout){
+      log('Public mode (no ?admin=1)');
+      return;
     }
-    function guardOff(){
-      if (guard) guard.classList.remove('active');
-    }
-    function cleanParam(param){
-      const clean = new URL(location.href);
-      clean.searchParams.delete(param);
-      history.replaceState({}, document.title, clean.pathname + (clean.searchParams.toString() ? '?' + clean.searchParams.toString() : '') + clean.hash);
-    }
 
-    async function main(){
-      // Always hide admin affordance initially
-      show(openAdmin, false);
-      if (adminOv) adminOv.classList.remove('active');
+    guardOn('Checking admin access…');
 
-      if (!wantAdmin && !wantLogout) return;
+    const [
+      { initializeApp },
+      { getAuth, setPersistence, browserLocalPersistence, GoogleAuthProvider,
+        signInWithPopup, signInWithRedirect, getRedirectResult, signOut, onAuthStateChanged }
+    ] = await Promise.all([
+      import('https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js'),
+      import('https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js'),
+    ]);
 
-      // Show guard immediately
-      guardOn('Checking admin access…');
+    // *** Paste your NEW rotated key below (keep other fields) ***
+    const firebaseConfig = {
+      apiKey: "PASTE_NEW_ROTATED_KEY_HERE",
+      authDomain: "fodel-admin-transport.firebaseapp.com",
+      projectId: "fodel-admin-transport",
+      storageBucket: "fodel-admin-transport.firebasestorage.app",
+      messagingSenderId: "81364149405",
+      appId: "1:81364149405:web:a927a693f0402607966074",
+      measurementId: "G-DTLDMKYMZG"
+    };
 
-      const [{ initializeApp }, { getAuth, GoogleAuthProvider, signInWithPopup, signOut }] =
-        await Promise.all([
-          import("https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js"),
-          import("https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js")
-        ]);
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    try { await setPersistence(auth, browserLocalPersistence); } catch {}
+    const provider = new GoogleAuthProvider();
+    auth.useDeviceLanguage && auth.useDeviceLanguage();
 
-      // IMPORTANT: put a RESTRICTED config here (rotate old key first)
-      
-const firebaseConfig = {
-  apiKey: "NEW_ROTATED_KEY", // keep private
-  authDomain: "fodel-admin-transport.firebaseapp.com",
-  projectId: "fodel-admin-transport",
-  storageBucket: "fodel-admin-transport.firebasestorage.app",
-  messagingSenderId: "81364149405",
-  appId: "1:81364149405:web:a927a693f0402607966074",
-  measurementId: "G-DTLDMKYMZG"
-};
+    // Lowercase + trim helper
+    const lc = (s) => (s || '').toString().trim().toLowerCase();
 
+    // Allowed admin emails (lowercase exact matches)
+    const ADMIN_EMAILS = [
+      "munish2818@gmail.com"
+      // ,"another.allowed@example.com"
+    ];
+    const isAllowed = (u) => !!(u && u.email && ADMIN_EMAILS.includes(lc(u.email)));
 
-      const app = initializeApp(firebaseConfig);
-      const auth = getAuth(app);
-      const provider = new GoogleAuthProvider();
+    async function doLogin(){
+      // If we just returned from redirect, consume it
+      try {
+        const red = await getRedirectResult(auth);
+        if (red && red.user){
+          log('Redirect result user:', red.user.email);
+          return red.user;
+        }
+      } catch (e){ log('getRedirectResult error:', e?.code || e); }
 
-      // Allowed admin emails
-      const ADMIN_EMAILS = [
-        "munish2818@gmail.com"
-        // ,"your.email@domain.com"
-      ];
-      const isAllowed = (u) => !!(u && u.email && ADMIN_EMAILS.includes(u.email.toLowerCase()));
-
-      async function doLogin(){
-        if (auth.currentUser && isAllowed(auth.currentUser)) return auth.currentUser;
+      // Try popup first
+      try {
         const res = await signInWithPopup(auth, provider);
+        log('Popup signed in as:', res.user?.email);
         return res.user;
+      } catch (e){
+        log('Popup failed:', e?.code || e);
+        // Fallback: redirect (works in Safari/ITP/blocked popups)
+        try {
+          log('Falling back to redirect flow…');
+          await signInWithRedirect(auth, provider);
+          return null; // flow resumes after redirect
+        } catch (e2){
+          log('Redirect failed:', e2?.code || e2);
+          throw e2;
+        }
       }
-      async function doLogout(){ try{ await signOut(auth); }catch(e){} }
+    }
 
-      if (wantLogout){
-        await doLogout();
-        cleanParam('logout');
-        alert('Logged out.');
-        guardOff();
+    async function doLogout(){
+      try { await signOut(auth); } catch {}
+    }
+
+    if (wantLogout){
+      await doLogout();
+      cleanParam('logout');
+      alert('Logged out.');
+      guardOff();
+      return;
+    }
+
+    onAuthStateChanged(auth, (u) => {
+      if (debug) log('onAuthStateChanged →', u ? `signed in: ${u.email}` : 'signed out');
+    });
+
+    const tryAuth = async () => {
+      const user = await doLogin().catch(err => { log('doLogin error:', err?.code || err); return null; });
+      const email = user?.email ? lc(user.email) : null;
+
+      if (!isAllowed(user)){
+        guardOn(`
+          <p style="margin-bottom:10px;"><strong>Access denied.</strong> This Google account is not authorized for Admin.</p>
+          ${email ? `<p style="margin-bottom:10px;">Signed in as: <code>${email}</code></p>` : ``}
+          <div class="actions">
+            <button class="btn" id="guard-try-again">Sign in with another account</button>
+            <button class="btn-ghost" id="guard-exit">Exit Admin</button>
+          </div>
+          <p class="note" style="margin-top:10px;">You can exit admin mode to view the public page. No admin data is visible here.</p>
+        `);
+        const again = document.getElementById('guard-try-again');
+        const exit  = document.getElementById('guard-exit');
+        if (again) again.onclick = async () => { await doLogout(); await doLogin(); };
+        if (exit)  exit.onclick  = () => { cleanParam('admin'); guardOff(); };
         return;
       }
 
-      // Try login and gate the UI
-      const tryAuth = async () => {
-        const user = await doLogin().catch(() => null);
-        if (!isAllowed(user)){
-          guardOn(`
-            <p style="margin-bottom:10px;"><strong>Access denied.</strong> This Google account is not authorized for Admin.</p>
-            <div class="actions">
-              <button class="btn" id="guard-try-again">Sign in with another account</button>
-              <button class="btn-ghost" id="guard-exit">Exit Admin</button>
-            </div>
-            <p class="note" style="margin-top:10px;">You can exit admin mode to view the public page. No admin data is visible here.</p>
-          `);
-          const again = document.getElementById('guard-try-again');
-          const exit  = document.getElementById('guard-exit');
-          if (again) again.onclick = async () => { await doLogout(); tryAuth(); };
-          if (exit)  exit.onclick  = () => { cleanParam('admin'); guardOff(); };
-          return;
-        }
+      // Authorized → show Admin
+      show(openAdmin, true);
+      if (adminOv) adminOv.classList.add('active');
+      guardOff();
+      cleanParam('admin');
+    };
 
-        // Authorized
-        show(openAdmin, true);
-        if (adminOv) adminOv.classList.add('active');
+    await tryAuth();
 
-        guardOff();
-        cleanParam('admin');
-      };
-
-      await tryAuth();
-
-      if (adminLogoutBtn){
-        adminLogoutBtn.addEventListener('click', async function(){
-          await doLogout();
-          show(openAdmin, false);
-          if (adminOv) adminOv.classList.remove('active');
-          alert('Logged out.');
-        });
-      }
+    if (adminLogoutBtn){
+      adminLogoutBtn.addEventListener('click', async () => {
+        await doLogout();
+        show(openAdmin, false);
+        if (adminOv) adminOv.classList.remove('active');
+        alert('Logged out.');
+      });
     }
-    main();
-  </script>
+  }
+  main();
+</script>
   </body>
 </html>
