@@ -1007,41 +1007,57 @@ background:
 
     loadRegionsAndHotels();
   </script>
+<!-- Firebase bootstrap (robust) -->
+<script type="module">
+  // Expose a diagnostic state for the admin panel
+  window.__fbDiag = { ok:false, step:'start', error:null, tries:0 };
 
-  <!-- Firebase bootstrap (guarded) -->
-  <script type="module">
+  async function tryLoadFirebase(version, bust='') {
+    window.__fbDiag.step = `import v${version}${bust?` (${bust})`:''}`;
     try {
       const [
-        { initializeApp, getApps },
-        { getAuth, setPersistence, browserLocalPersistence, GoogleAuthProvider,
-          signInWithPopup, signInWithRedirect, getRedirectResult, signOut, onAuthStateChanged },
-        { getFirestore, collection, doc, getDocs, getDoc, addDoc, setDoc, updateDoc, deleteDoc,
-          query, where, orderBy, serverTimestamp },
-        { getStorage, ref, uploadBytes, getDownloadURL }
+        appMod,
+        authMod,
+        fsMod,
+        stMod
       ] = await Promise.all([
-        import('https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js'),
-        import('https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js'),
-        import('https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js'),
-        import('https://www.gstatic.com/firebasejs/10.13.0/firebase-storage.js')
+        import(`https://www.gstatic.com/firebasejs/${version}/firebase-app.js${bust}`),
+        import(`https://www.gstatic.com/firebasejs/${version}/firebase-auth.js${bust}`),
+        import(`https://www.gstatic.com/firebasejs/${version}/firebase-firestore.js${bust}`),
+        import(`https://www.gstatic.com/firebasejs/${version}/firebase-storage.js${bust}`)
       ]);
 
-     
-const firebaseConfig = window.FODEL_FIREBASE_CONFIG ?? {
-  apiKey: "AIzaSyDaKEvqtnRRaj0kBZ-c4oPDhMxiwI3GQmE",
-  authDomain: "fodel-admin-transport.firebaseapp.com",
-  projectId: "fodel-admin-transport",
-  storageBucket: "fodel-admin-transport.appspot.com",
-  messagingSenderId: "81364149405",
-  appId: "1:81364149405:web:a927a693f0402607966074",
-  measurementId: "G-DTLDMKYMZG"
-}
+      const { initializeApp, getApps } = appMod;
+      const {
+        getAuth, setPersistence, browserLocalPersistence,
+        GoogleAuthProvider, signInWithPopup, signInWithRedirect,
+        getRedirectResult, signOut, onAuthStateChanged
+      } = authMod;
+      const {
+        getFirestore, collection, doc, getDocs, getDoc, addDoc, setDoc, updateDoc, deleteDoc,
+        query, where, orderBy, serverTimestamp
+      } = fsMod;
+      const { getStorage, ref, uploadBytes, getDownloadURL } = stMod;
+
+      const firebaseConfig = window.FODEL_FIREBASE_CONFIG ?? {
+        apiKey: "AIzaSyDaKEvqtnRRaj0kBZ-c4oPDhMxiwI3GQmE",
+        authDomain: "fodel-admin-transport.firebaseapp.com",
+        projectId: "fodel-admin-transport",
+        // IMPORTANT: bucket NAME, not web host
+        storageBucket: "fodel-admin-transport.appspot.com",
+        messagingSenderId: "81364149405",
+        appId: "1:81364149405:web:a927a693f0402607966074",
+        measurementId: "G-DTLDMKYMZG"
+      };
 
       const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      try { await setPersistence(auth, browserLocalPersistence); } catch {}
+      const storage = getStorage(app);
+      const db = getFirestore(app);
+
       window._fodel = {
-        app,
-        auth: getAuth(app),
-        db: getFirestore(app),
-        storage: getStorage(app),
+        app, auth, db, storage,
         fbmods: {
           setPersistence, browserLocalPersistence, GoogleAuthProvider,
           signInWithPopup, signInWithRedirect, getRedirectResult, signOut, onAuthStateChanged,
@@ -1050,10 +1066,31 @@ const firebaseConfig = window.FODEL_FIREBASE_CONFIG ?? {
           ref, uploadBytes, getDownloadURL
         }
       };
+
+      window.__fbDiag.ok = true;
+      window.__fbDiag.step = 'ready';
+      window.dispatchEvent(new CustomEvent('fodel-firebase-ready'));
+      return true;
     } catch (e) {
-      console.warn('Firebase not available:', e);
+      window.__fbDiag.error = e;
+      console.warn('Firebase import failed:', e);
+      return false;
     }
-  </script>
+  }
+
+  // Try current version, then retry with cache-bust, then a fallback minor
+  (async () => {
+    const versions = ['10.13.0', '10.12.4'];
+    for (const v of versions) {
+      window.__fbDiag.tries++;
+      if (await tryLoadFirebase(v)) return;
+      // cache-bust once
+      window.__fbDiag.tries++;
+      if (await tryLoadFirebase(v, `?v=${Date.now()}`)) return;
+    }
+    // Leave window._fodel undefined; admin script will show a precise message + retry
+  })();
+</script>
 
   <!-- Widget (packages) — resilient to missing Firebase -->
   <script type="module">
