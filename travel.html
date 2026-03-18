@@ -68,11 +68,13 @@
     /* ==== Banner (more compact) ==== */
     .banner{
       position:relative; min-height:44vh; display:grid; place-items:center; text-align:center; color:#0b1220;
-      background:
-        radial-gradient(1000px 700px at 85% 15%, rgba(249,230,74,0.25), transparent 60%),
-        radial-gradient(900px 600px at 15% 85%, rgba(249,230,74,0.18), transparent 65%),
-        linear-gradient(160deg, #0f766e 0%, #0b5f58 55%, #0a4f4a 100%),
-        url('travel-banner.jpg') center/cover no-repeat;
+     
+background:
+  radial-gradient(1000px 700px at 85% 15%, rgba(249,230,74,0.25), transparent 60%),
+  radial-gradient(900px 600px at 15% 85%, rgba(249,230,74,0.18), transparent 65%),
+  linear-gradient(160deg, #0f766e 0%, #0b5f58 55%, #0a4f4a 100%),
+  url('/images/travel-banner-1200.jpg') center/cover no-repeat;
+
       background-blend-mode: overlay, overlay, normal, multiply;
     }
     @media (max-width:640px){ .banner{ min-height:38vh; } }
