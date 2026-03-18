@@ -65,9 +65,9 @@
     body.modal-open{ overflow:hidden; }
     :focus-visible{ outline:3px solid rgba(17,24,39,0.75); outline-offset:3px; border-radius:10px; }
 
-    /* ==== Banner ==== */
+    /* ==== Banner (reduced height) ==== */
     .banner{
-      position:relative; min-height:58vh; display:grid; place-items:center; text-align:center; color:#0b1220;
+      position:relative; min-height:48vh; display:grid; place-items:center; text-align:center; color:#0b1220;
       background:
         radial-gradient(1000px 700px at 85% 15%, rgba(249,230,74,0.25), transparent 60%),
         radial-gradient(900px 600px at 15% 85%, rgba(249,230,74,0.18), transparent 65%),
@@ -75,10 +75,11 @@
         url('travel-banner.jpg') center/cover no-repeat;
       background-blend-mode: overlay, overlay, normal, multiply;
     }
-    .banner-inner{ width:min(1100px,92%); margin:auto; padding:24px; }
+    @media (max-width:640px){ .banner{ min-height:42vh; } }
+    .banner-inner{ width:min(1100px,92%); margin:auto; padding:20px; }
 
     .topbar{
-      position:absolute; left:0; right:0; top:20px; padding:0 16px; width:100%;
+      position:absolute; left:0; right:0; top:16px; padding:0 16px; width:100%;
       display:flex; justify-content:space-between; align-items:center; gap:14px; color:#fff; box-sizing:border-box;
     }
     .brand{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:20px; white-space:nowrap; min-width:0; }
@@ -93,7 +94,7 @@
     .reviews-btn{ background:#0b1220; } .reviews-btn:hover{ background:#111827; }
     .home-btn{ background:#2d6a51; }
     @media (max-width:640px){
-      .topbar{ top:14px; padding:0 14px; display:grid; grid-template-columns:1fr auto; align-items:center; gap:10px; }
+      .topbar{ top:12px; padding:0 14px; display:grid; grid-template-columns:1fr auto; align-items:center; gap:10px; }
       .brand{ font-size:17px; gap:8px; }
       .brand-badge{ width:30px; height:30px; }
       .nav{ gap:6px; justify-self:end; }
@@ -101,31 +102,30 @@
     }
     @media (max-width:380px){ .topbar{ grid-template-columns:1fr; row-gap:6px; } .nav{ justify-self:start; } }
 
-    .hero{ display:grid; gap:14px; justify-items:center; padding:64px 0 44px; color:#f1faf8; }
-    .hero h1{ font-size:clamp(28px,5vw,46px); font-weight:700; }
-    .hero p{ font-size:16px; max-width:850px; color:#e6fffb; }
+    .hero{ display:grid; gap:10px; justify-items:center; padding:40px 0 26px; color:#f1faf8; }
+    .hero h1{ font-size:clamp(26px,4.5vw,40px); font-weight:700; }
+    .hero p{ font-size:15px; max-width:850px; color:#e6fffb; }
 
     /* ==== Section & Cards ==== */
-    .section{ width:min(1100px,92%); margin:32px auto 64px; text-align:center; }
-    .section h2{ font-size:26px; margin-bottom:8px; }
-    .separator{ width:90px; height:3px; margin:16px auto; background:linear-gradient(90deg,var(--brand-yellow),transparent); border-radius:6px; }
-    .cards{ display:grid; grid-template-columns:1fr; gap:26px; margin-top:28px; }
+    .section{ width:min(1100px,92%); margin:24px auto 48px; text-align:center; }
+    .section h2{ font-size:24px; margin-bottom:6px; }
+    .separator{ width:90px; height:3px; margin:12px auto; background:linear-gradient(90deg,var(--brand-yellow),transparent); border-radius:6px; }
+    .cards{ display:grid; grid-template-columns:1fr; gap:22px; margin-top:20px; }
     @media(min-width:760px){ .cards{ grid-template-columns:repeat(3,1fr) } }
     .card{
       text-align:left; background:var(--card); border:1px solid var(--border); border-radius:16px;
-      padding:22px; box-shadow:var(--shadow); transition:.25s;
+      padding:18px; box-shadow:var(--shadow); transition:.25s;
     }
     .card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-lg); background:#fff; }
-    .card h3{ display:flex; align-items:center; gap:10px; font-size:18px; margin-bottom:8px; }
+    .card h3{ display:flex; align-items:center; gap:10px; font-size:18px; margin-bottom:6px; }
     .icon{ width:38px; height:38px; border-radius:50%; display:grid; place-items:center; background:var(--accent); color:#fff; }
     .icon svg{ width:20px; height:20px; display:block; }
-    .card p{ color:var(--muted); font-size:14px; margin-bottom:14px; }
+    .card p{ color:var(--muted); font-size:14px; margin-bottom:12px; }
 
     .btn{
       display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:12px;
-      background:var(--btn); color:#fff; border:1px solid transparent; text-decoration:none; font-weight:600; font-size:18px; letter-spacing:0.2px;
-      box-shadow:0 8px 20px rgba(0,0,0,0.14); transition: transform .18s ease, box-shadow .18s ease;
-      cursor:pointer;
+      background:var(--btn); color:#fff; border:1px solid transparent; text-decoration:none; font-weight:600; font-size:16px; letter-spacing:0.2px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.14); transition: transform .18s ease, box-shadow .18s ease; cursor:pointer;
     }
     .btn:hover{ transform:translateY(-2px); box-shadow:0 12px 26px rgba(0,0,0,0.18); }
     .btn:active{ transform:translateY(0); box-shadow:0 8px 20px rgba(0,0,0,0.14); }
@@ -135,38 +135,38 @@
     .overlay{ position:fixed; inset:0; z-index:50; background:rgba(0,0,0,0.45); display:none; align-items:center; justify-content:center; padding:18px; }
     .overlay.active{ display:flex; }
     .modal{
-      width:min(680px,100%); max-height:90svh; border-radius:16px; background:#ffffff; color:#0f172a;
+      width:min(720px,100%); max-height:90svh; border-radius:16px; background:#ffffff; color:#0f172a;
       border:1px solid rgba(17,24,39,0.14); box-shadow:0 30px 80px rgba(0,0,0,0.35); overflow:hidden; display:flex; flex-direction:column; animation:pop .18s ease-out both;
     }
     .modal-header{
-      display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 16px; color:#fff;
+      display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 14px; color:#fff;
       background:linear-gradient(90deg, var(--accent), #3f8f5b); position:sticky; top:0; z-index:1;
     }
     .modal-title{ font-weight:600; }
     .modal-close{ background:transparent; border:none; color:#fff; cursor:pointer; font-size:20px; line-height:1; padding:6px 10px; border-radius:8px; }
     .modal-close:hover{ background:rgba(255,255,255,0.18); }
-    .modal-body{ padding:16px; overflow:auto; -webkit-overflow-scrolling:touch; }
+    .modal-body{ padding:14px; overflow:auto; -webkit-overflow-scrolling:touch; }
     @media (max-width:640px){ .overlay{ align-items:stretch; } .modal{ width:100%; height:100svh; max-height:none; border-radius:0; } }
 
     /* Form grids */
-    .grid-2{ display:grid; grid-template-columns:1fr; gap:14px; }
+    .grid-2{ display:grid; grid-template-columns:1fr; gap:12px; }
     /* New: show 2 columns on small phones too where needed */
     @media (min-width:360px){ .sm-2{ grid-template-columns:1fr 1fr; } }
     @media (min-width:640px){ .grid-2{ grid-template-columns:1fr 1fr; } }
     label{ display:block; font-weight:600; font-size:13px; margin-bottom:6px; color:#0f172a; }
     input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"], select, textarea{
-      width:100%; padding:12px 12px; border-radius:10px; border:1px solid rgba(15,23,42,0.18); background:#fff; font:inherit; font-size:14px; color:#0f172a; outline:none;
+      width:100%; padding:11px 11px; border-radius:10px; border:1px solid rgba(15,23,42,0.18); background:#fff; font:inherit; font-size:14px; color:#0f172a; outline:none;
       transition:border-color .15s, box-shadow .15s;
     }
     textarea{ min-height:90px; resize:vertical; }
     input:focus, select:focus, textarea:focus{ border-color:#2563eb; box-shadow:0 0 0 3px rgba(37,99,235,0.15); }
     .field-hint{ font-size:12px; color:#475569; margin-top:6px; }
-    .row{ margin-bottom:12px; }
+    .row{ margin-bottom:10px; }
     .readonly{ background:#f1f5f9; }
-    .actions{ display:flex; gap:10px; justify-content:flex-end; margin-top:14px; flex-wrap:wrap; }
+    .actions{ display:flex; gap:10px; justify-content:flex-end; margin-top:10px; flex-wrap:wrap; }
     .btn-ghost{ padding:10px 14px; border-radius:10px; font-weight:600; background:#f1f5f9; color:#0f172a; border:none; cursor:pointer; }
     .btn-primary{
-      padding:12px 16px; border-radius:10px; font-weight:700; letter-spacing:.2px; background:var(--btn); color:#fff; border:none; cursor:pointer;
+      padding:11px 14px; border-radius:10px; font-weight:700; letter-spacing:.2px; background:var(--btn); color:#fff; border:none; cursor:pointer;
       box-shadow:0 10px 24px rgba(0,0,0,0.22); transition: transform .15s ease;
     }
     .btn-primary:hover{ transform:translateY(-1px); }
@@ -175,7 +175,7 @@
     .toast.show{ display:block; animation:slideUp .25s ease-out both; }
 
     /* ==== Footer ==== */
-    .footer{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin:0 auto 26px; width:min(1100px,92%); }
+    .footer{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin:0 auto 22px; width:min(1100px,92%); }
     .chip{
       padding:8px 14px; border-radius:999px; background:#fff; border:1px solid var(--border); text-decoration:none; font-size:14px;
       color: var(--text); transition:.2s; box-shadow:0 6px 14px rgba(0,0,0,0.08);
@@ -195,25 +195,25 @@
     .fw-pulse{ position:absolute; inset:-8px; border-radius:999px; background:rgba(37,211,102,0.18); filter:blur(8px); opacity:.8; animation: fwPulse 2.2s ease-in-out infinite; z-index:-1; }
 
     /* ==== Packages & Admin ==== */
-    .packages{ width:min(1100px,92%); margin:12px auto 64px; }
-    .packages .head{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; }
-    .packages h2{ font-size:26px; }
+    .packages{ width:min(1100px,92%); margin:8px auto 48px; }
+    .packages .head{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:10px; }
+    .packages h2{ font-size:24px; }
     .tablist{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:8px; }
     .tab{ padding:8px 14px; border:1px solid var(--border); border-radius:999px; background:#fff; cursor:pointer; font-weight:600; }
     .tab[aria-selected="true"]{ background:var(--accent); color:#fff; border-color:transparent; }
-    .filters{ display:flex; gap:8px; flex-wrap:wrap; margin:10px 0 0; }
+    .filters{ display:flex; gap:8px; flex-wrap:wrap; margin:8px 0 0; }
     .filter-chip{ display:inline-flex; gap:6px; align-items:center; padding:6px 10px; border:1px solid var(--border); border-radius:999px; background:#fff; font-size:13px; }
     .filter-chip input{ accent-color: var(--accent); }
-    .pkg-grid{ display:grid; grid-template-columns:1fr; gap:22px; margin-top:18px; }
+    .pkg-grid{ display:grid; grid-template-columns:1fr; gap:20px; margin-top:16px; }
     @media (min-width:760px){ .pkg-grid{ grid-template-columns:1fr 1fr; } }
     .pkg-card{
       background:var(--card); border:1px solid var(--border); border-radius:16px; box-shadow:var(--shadow); overflow:hidden;
       display:grid; grid-template-columns:120px 1fr; gap:0;
     }
     @media (max-width:520px){ .pkg-card{ grid-template-columns:1fr; } }
-    .pkg-media{ position:relative; overflow:hidden; background:#f3f4f6; }
+    .pkg-media{ position:relative; overflow:hidden; background:#f3f4f6; min-height:100px; }
     .pkg-media img{ width:100%; height:100%; object-fit:cover; display:block; }
-    .pkg-body{ padding:14px 14px 12px; }
+    .pkg-body{ padding:12px 12px 10px; }
     .pkg-title{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:6px; }
     .pkg-title h3{ font-size:18px; line-height:1.2; }
     .badges{ display:flex; gap:6px; flex-wrap:wrap; margin:6px 0; }
@@ -227,7 +227,7 @@
     /* Admin Overlay */
     #travel-admin-root .admin-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.55); display: none; place-items: center; z-index: 100; }
     #travel-admin-root .admin-overlay.show { display: grid; }
-    #travel-admin-root .admin-panel { width: min(1100px, 96%); max-height: 92svh; overflow: auto; background: #fff; border-radius: 14px; border: 1px solid #e5e7eb; box-shadow:0 30px 100px rgba(0,0,0,0.35); padding: 12px; }
+    #travel-admin-root .admin-panel { width: min(1150px, 96%); max-height: 92svh; overflow: auto; background: #fff; border-radius: 14px; border: 1px solid #e5e7eb; box-shadow:0 30px 100px rgba(0,0,0,0.35); padding: 12px; }
     #travel-admin-root header.admin-top{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px; border-bottom: 3px solid var(--accent); padding-bottom: 8px; }
     #travel-admin-root header.admin-top h2{ margin:0; font-size:18px; color:var(--accent); }
     #travel-admin-root .row2{ display:grid; grid-template-columns: 1fr 1fr; gap:8px; }
@@ -355,7 +355,31 @@
     <!-- Removed phone chip as requested -->
     <div class="copy">© 2015–2026 Fodel India — Fodel Travels</div>
   </footer>
-  <!-- ===========================
+  <!-- FEATURED PACKAGES (dynamic) -->
+  <section class="packages" aria-labelledby="packages-title">
+    <div class="head">
+      <h2 id="packages-title">Featured Packages — Jammu & Kashmir & Goa</h2>
+    </div>
+    <div class="filters" id="pkg-filters" aria-label="Filters"></div>
+    <div class="tablist" role="tablist" aria-label="Destinations">
+      <button class="tab" role="tab" aria-selected="true" aria-controls="panel-jk" id="tab-jk" type="button">Jammu & Kashmir</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="panel-goa" id="tab-goa" type="button">Goa</button>
+    </div>
+    <div id="panel-jk" role="tabpanel" aria-labelledby="tab-jk">
+      <div id="pkg-grid-jk" class="pkg-grid"></div>
+    </div>
+    <div id="panel-goa" role="tabpanel" aria-labelledby="tab-goa" hidden>
+      <div id="pkg-grid-goa" class="pkg-grid"></div>
+    </div>
+  </section>
+
+  <!-- Footer (NO phone number here) -->
+  <footer class="footer" aria-label="Contact">
+    <a href="mailto:sales@fodeltravels.in" class="chip">📧 sales@fodeltravels.in</a>
+    <!-- Removed phone chip as requested -->
+    <div class="copy">© 2015–2026 Fodel India — Fodel Travels</div>
+  </footer>
+<!-- ===========================
        MODALS
   ============================ -->
 
@@ -367,12 +391,28 @@
         <button class="modal-close" data-close aria-label="Close" type="button">✕</button>
       </div>
       <form class="modal-body" id="form-hotel" autocomplete="on">
+        <!-- Region / Area -->
+        <div class="grid-2 sm-2">
+          <div class="row">
+            <label for="hotel-region-select">Region</label>
+            <select id="hotel-region-select" name="region" required>
+              <option value="">Loading regions…</option>
+            </select>
+          </div>
+          <div class="row">
+            <label for="hotel-area-select">Area</label>
+            <select id="hotel-area-select" name="area" required disabled>
+              <option value="">Select region first</option>
+            </select>
+          </div>
+        </div>
+
         <div class="row">
           <label for="hotel-name">Hotel name you’re planning to stay (or short name)</label>
           <input id="hotel-name" name="hotelName" type="text" placeholder="e.g., Marriott Katra or Near Shrine Board" required autocapitalize="words">
         </div>
 
-        <!-- Check-in / Check-out (2-col on phones) -->
+        <!-- Check-in / Check-out -->
         <div class="grid-2 sm-2">
           <div class="row">
             <label for="checkin">Check-in date</label>
@@ -384,7 +424,7 @@
           </div>
         </div>
 
-        <!-- Nights / Rooms (2-col on phones) -->
+        <!-- Nights / Rooms -->
         <div class="grid-2 sm-2">
           <div class="row">
             <label for="nights">No. of nights</label>
@@ -396,7 +436,7 @@
           </div>
         </div>
 
-        <!-- Adults / Extra bed (2-col on phones) -->
+        <!-- Adults / Extra bed -->
         <div class="grid-2 sm-2">
           <div class="row">
             <label for="adults">No. of adults</label>
@@ -408,7 +448,7 @@
           </div>
         </div>
 
-        <!-- Meal / Category (2-col on phones) -->
+        <!-- Meal / Category -->
         <div class="grid-2 sm-2">
           <div class="row">
             <label for="meal">Meal plan</label>
@@ -421,12 +461,12 @@
             </select>
           </div>
           <div class="row">
-            <label for="category">Room category</label>
+            <label for="category">Room category preference (optional)</label>
             <input id="category" name="category" type="text" placeholder="e.g., Deluxe, Suite, Mountain View" autocapitalize="words">
           </div>
         </div>
 
-        <!-- Contact (2-col on phones) -->
+        <!-- Contact -->
         <div class="grid-2 sm-2">
           <div class="row">
             <label for="mobile">Mobile</label>
@@ -460,6 +500,22 @@
         <button class="modal-close" data-close aria-label="Close" type="button">✕</button>
       </div>
       <form class="modal-body" id="form-banquet">
+        <!-- Region / Area -->
+        <div class="grid-2 sm-2">
+          <div class="row">
+            <label for="banquet-region-select">Region</label>
+            <select id="banquet-region-select" name="region" required>
+              <option value="">Loading regions…</option>
+            </select>
+          </div>
+          <div class="row">
+            <label for="banquet-area-select">Area</label>
+            <select id="banquet-area-select" name="area" required disabled>
+              <option value="">Select region first</option>
+            </select>
+          </div>
+        </div>
+
         <!-- Date / Min guarantee -->
         <div class="grid-2 sm-2">
           <div class="row">
@@ -467,7 +523,7 @@
             <input id="event-date" name="eventDate" type="date" required>
           </div>
           <div class="row">
-            <label for="min-guarantee">Minimum guarantee</label>
+            <label for="min-guarantee">Minimum guarantee (adults)</label>
             <input id="min-guarantee" name="minGuarantee" type="number" min="10" placeholder="e.g., 100" required inputmode="numeric">
           </div>
         </div>
@@ -475,7 +531,7 @@
         <!-- Venue / Session -->
         <div class="grid-2 sm-2">
           <div class="row">
-            <label for="venue">Preferred hotel </label>
+            <label for="venue">Preferred hotel / venue (optional)</label>
             <input id="venue" name="venue" type="text" placeholder="e.g., Banquet name / Hotel" autocapitalize="words">
           </div>
           <div class="row">
@@ -493,11 +549,11 @@
         <!-- Start / End time -->
         <div class="grid-2 sm-2">
           <div class="row">
-            <label for="event-start">Event start time</label>
+            <label for="event-start">Event start time (optional)</label>
             <input id="event-start" name="eventStart" type="text" placeholder="e.g., 11:00 AM" inputmode="text">
           </div>
           <div class="row">
-            <label for="event-end">Event end time</label>
+            <label for="event-end">Event end time (optional)</label>
             <input id="event-end" name="eventEnd" type="text" placeholder="e.g., 03:00 PM" inputmode="text">
           </div>
         </div>
@@ -535,6 +591,22 @@
         <button class="modal-close" data-close aria-label="Close" type="button">✕</button>
       </div>
       <form class="modal-body" id="form-group">
+        <!-- Region / Area -->
+        <div class="grid-2 sm-2">
+          <div class="row">
+            <label for="group-region-select">Region</label>
+            <select id="group-region-select" name="region" required>
+              <option value="">Loading regions…</option>
+            </select>
+          </div>
+          <div class="row">
+            <label for="group-area-select">Area</label>
+            <select id="group-area-select" name="area" required disabled>
+              <option value="">Select region first</option>
+            </select>
+          </div>
+        </div>
+
         <div class="row">
           <label for="group-name">Group / Company name</label>
           <input id="group-name" name="groupName" type="text" placeholder="e.g., ABC Pilgrims Group" required autocapitalize="words">
@@ -571,10 +643,9 @@
             <input id="group-mobile" name="mobile" type="tel" inputmode="tel"
                    pattern="^(\+91[\s-]?)?[6-9]\d{9}$" placeholder="+91 9XXXXXXXXX">
           </div>
-          <div class="row">
-            <!-- spacer: keep 2-col balance -->
-            <label>&nbsp;</label>
-            <input type="text" style="opacity:0;pointer-events:none" tabindex="-1" aria-hidden="true">
+          <div class="row" aria-hidden="true">
+            <label style="visibility:hidden">Spacer</label>
+            <input type="text" style="opacity:0;pointer-events:none" tabindex="-1">
           </div>
         </div>
 
@@ -602,7 +673,7 @@
       </svg>
     </a>
   </div>
-  <!-- Base JS: modals + forms + safe tabs -->
+  <!-- Base JS: modals + forms + safe tabs + regions wiring -->
   <script>
     const FORMSPREE_ENDPOINT = ""; // e.g., "https://formspree.io/f/abcdwxyz"
     const todayISO = () => new Date().toISOString().split('T')[0];
@@ -732,21 +803,100 @@
       if (window.__tabsWired) return;
       const tabs = document.querySelectorAll('.tab[role="tab"]');
       if (!tabs.length) return;
-      const panels = {
-        'tab-jk': document.getElementById('panel-jk'),
-        'tab-goa': document.getElementById('panel-goa')
-      };
+      const panels = { 'tab-jk': document.getElementById('panel-jk'), 'tab-goa': document.getElementById('panel-goa') };
       tabs.forEach(t => {
         t.addEventListener('click', () => {
           tabs.forEach(x => x.setAttribute('aria-selected', x===t ? 'true':'false'));
-          Object.values(panels).forEach(p => p && (p.hidden = true));
+          Object.values(panels).forEach(p => p.hidden = true);
           const target = panels[t.id]; if (target) target.hidden = false;
-        }, { once:false });
+        });
       });
-      // Deep link support
       if (location.hash.toLowerCase().includes('goa')) document.getElementById('tab-goa')?.click();
       window.__tabsWired = true;
     })();
+
+    // ---- Regions wiring (front-end selects) ----
+    const REGION_CACHE_KEY = 'fodel_regions_cache_v1';
+    const REGION_CACHE_TTL = 10 * 60 * 1000;
+
+    function buildRegionTree(rows){
+      const byParent = new Map();
+      rows.forEach(r => {
+        const pid = r.parentId || null;
+        if (!byParent.has(pid)) byParent.set(pid, []);
+        byParent.get(pid).push(r);
+      });
+      // sort by sort_order then name
+      byParent.forEach(list => list.sort((a,b)=> (a.sort_order||0)-(b.sort_order||0) || a.name.localeCompare(b.name)));
+      return byParent;
+    }
+
+    function populateRegionControls(rows){
+      const tree = buildRegionTree(rows.filter(r=>r.active!==false));
+      const top = tree.get(null) || [];
+
+      const sets = [
+        { region:'#hotel-region-select', area:'#hotel-area-select' },
+        { region:'#banquet-region-select', area:'#banquet-area-select' },
+        { region:'#group-region-select', area:'#group-area-select' }
+      ];
+
+      sets.forEach(({region,area})=>{
+        const rSel = document.querySelector(region);
+        const aSel = document.querySelector(area);
+        if (!rSel || !aSel) return;
+
+        // Regions
+        rSel.innerHTML = '<option value="">Select region</option>' +
+          top.map(r => `<option value="${r.id}">${r.name}</option>`).join('');
+        rSel.disabled = top.length === 0;
+
+        // Areas
+        aSel.innerHTML = '<option value="">Select region first</option>';
+        aSel.disabled = true;
+
+        rSel.addEventListener('change', ()=>{
+          const rid = rSel.value || null;
+          const children = rid ? (tree.get(rid) || []) : [];
+          // Always prepend "All" when a region is selected
+          if (rid){
+            aSel.innerHTML = `<option value="__all">All</option>` +
+              children.map(c=> `<option value="${c.id}">${c.name}</option>`).join('');
+            aSel.disabled = false;
+          } else {
+            aSel.innerHTML = '<option value="">Select region first</option>';
+            aSel.disabled = true;
+          }
+        });
+      });
+    }
+
+    async function fetchRegions(){
+      try{
+        const cached = JSON.parse(localStorage.getItem(REGION_CACHE_KEY) || 'null');
+        if (cached && (Date.now()-cached.ts) < REGION_CACHE_TTL){
+          populateRegionControls(cached.rows);
+          return;
+        }
+        if (!window._fodel){ // No Firebase — keep placeholders
+          document.querySelectorAll('#hotel-region-select,#banquet-region-select,#group-region-select')
+            .forEach(s => { s.innerHTML = '<option value="">Regions unavailable</option>'; s.disabled = true; });
+          document.querySelectorAll('#hotel-area-select,#banquet-area-select,#group-area-select')
+            .forEach(s => { s.innerHTML = '<option value="">Select region first</option>'; s.disabled = true; });
+          return;
+        }
+        const { db, fbmods: { collection, getDocs, orderBy, query } } = window._fodel;
+        const snap = await getDocs(query(collection(db,'regions'), orderBy('sort_order','asc')));
+        const rows = snap.docs.map(d => ({ id:d.id, ...d.data() }));
+        localStorage.setItem(REGION_CACHE_KEY, JSON.stringify({ ts:Date.now(), rows }));
+        populateRegionControls(rows);
+      }catch(e){
+        console.warn('Regions load failed', e);
+      }
+    }
+
+    // Load regions right away
+    fetchRegions();
   </script>
 
   <!-- Firebase bootstrap (guarded) -->
@@ -770,9 +920,7 @@
         apiKey: "AIzaSyDaKEvqtnRRaj0kBZ-c4oPDhMxiwI3GQmE",
         authDomain: "fodel-admin-transport.firebaseapp.com",
         projectId: "fodel-admin-transport",
-        /* NOTE: storageBucket in config expects the bucket name, typically PROJECT-ID.appspot.com.
-           If uploads fail with `.firebasestorage.app`, switch to:
-           storageBucket: "fodel-admin-transport.appspot.com" */
+        // Use the bucket name (not the web endpoint)
         storageBucket: "fodel-admin-transport.appspot.com",
         messagingSenderId: "81364149405",
         appId: "1:81364149405:web:a927a693f0402607966074",
@@ -795,13 +943,12 @@
       };
     } catch (e) {
       console.warn('Firebase not available:', e);
-      // Window._fodel will stay undefined; the widget/admin module will degrade gracefully.
+      // Degrade gracefully; admin/widget modules will show helpful messages.
     }
   </script>
 
   <!-- Widget (packages) — resilient to missing Firebase -->
   <script type="module">
-    // Always build filters and tabs; fetch packages only if Firebase is available
     function buildFilters(container){
       const chips = [
         { key:'duration-2-3', label:'2–3 Nights' },
@@ -839,7 +986,7 @@
       const waText = `Hi Fodel, interested in ${title} (${dest}) from travel.html`;
       return `
         <article class="pkg-card ${classFrom(pkg)}" data-destination="${dest}" data-package="${title}">
-          <div class="pkg-media">${cover ? `<img src="${cover}" loading="lazy" decoding="async" alt="${title} cover" />` : ''}</div>
+          <div class="pkg-media">${cover ? `<img src="${cover}" alt="${title} cover" loading="lazy" decoding="async" />` : ''}</div>
           <div class="pkg-body">
             <div class="pkg-title"><h3>${title}</h3><span class="badge">${dest}</span></div>
             <div class="badges">
@@ -879,7 +1026,6 @@
       });
     }
 
-    // If Firebase is available, pull dynamic packages; else, show placeholders.
     async function fetchAndRender(){
       buildFilters(document.getElementById('pkg-filters'));
       wireEnquiryPrefill();
@@ -888,7 +1034,6 @@
       const panelGoa = document.getElementById('pkg-grid-goa');
 
       if (!window._fodel){
-        // Fallback UI so tabs & page still feel alive
         panelJK.innerHTML = '<div class="muted">Packages will load shortly. Please check again.</div>';
         panelGoa.innerHTML = '<div class="muted">Packages will load shortly. Please check again.</div>';
         return;
@@ -925,7 +1070,6 @@
       const rows = await fetchPackages();
       renderLists(rows); applyFilters();
 
-      // hash-based deep link, just in case
       if (location.hash.toLowerCase().includes('goa')) document.getElementById('tab-goa')?.click();
     }
 
@@ -951,13 +1095,16 @@
             <h2>Fodel Travel Admin</h2>
             <div class="actions">
               <button id="btn-close" class="btn-outline" type="button">Close</button>
-              <button id="btn-logout" type="button">Logout</button>
+              <button id="btn-logout" type="button" style="display:none">Logout</button>
             </div>
           </header>
           <div id="admin-msg" class="muted" style="margin:6px 0 10px 0;">${message}</div>
+
+          <!-- MAIN ADMIN BODY (hidden until auth success) -->
           <div id="admin-body" style="display:none">
             <div class="grid2-1">
               <div>
+                <!-- Packages CRUD -->
                 <div class="card">
                   <h3 style="margin:0 0 8px 0;">Create / Edit Package</h3>
                   <form id="pkg-form">
@@ -1000,22 +1147,62 @@
                     <div class="msg" id="form-msg"></div>
                   </form>
                 </div>
+
                 <div class="card">
                   <h3 style="margin:0 0 8px 0;">Seasonal Pricing</h3>
                   <form id="season-form">
                     <input type="hidden" name="package_id"/>
                     <label>Season name</label><input name="season_name" required/>
-                    <div class="row2"><div><label>Start</label><input type="date" name="start_date" required/></div><div><label>End</label><input type="date" name="end_date" required/></div></div>
+                    <div class="row2">
+                      <div><label>Start</label><input type="date" name="start_date" required/></div>
+                      <div><label>End</label><input type="date" name="end_date" required/></div>
+                    </div>
                     <label>Price per person (₹)</label><input type="number" name="price_inr" required/>
                     <button type="submit">Add Season</button>
                     <div class="msg" id="season-msg"></div>
                   </form>
                   <ul id="season-list" style="margin-top:8px;"></ul>
                 </div>
+
+                <!-- Regions CRUD -->
+                <div class="card">
+                  <h3 style="margin:0 0 8px 0;">Regions</h3>
+                  <form id="region-form">
+                    <input type="hidden" name="r_id" />
+                    <label>Region name</label><input name="r_name" required />
+                    <label>Parent region</label>
+                    <select name="r_parent">
+                      <option value="">— None (top-level) —</option>
+                    </select>
+                    <div class="row2">
+                      <div>
+                        <label>Active</label>
+                        <select name="r_active">
+                          <option value="1" selected>Yes</option>
+                          <option value="0">No</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label>Sort order</label>
+                        <input type="number" name="r_sort" value="100"/>
+                      </div>
+                    </div>
+                    <div class="actions">
+                      <button type="button" id="region-new" class="btn-ghost">+ New</button>
+                      <button type="submit">Save Region</button>
+                    </div>
+                    <div class="msg" id="region-msg"></div>
+                  </form>
+                  <div id="regions-list" style="margin-top:8px;"></div>
+                </div>
               </div>
+
               <div>
                 <div class="card">
-                  <div style="display:flex;align-items:center;justify-content:space-between;"><h3 style="margin:0;">All Packages</h3><button id="btn-new" class="btn-outline" type="button">+ New</button></div>
+                  <div style="display:flex;align-items:center;justify-content:space-between;">
+                    <h3 style="margin:0;">All Packages</h3>
+                    <button id="btn-new" class="btn-outline" type="button">+ New</button>
+                  </div>
                   <div id="pkgs" class="list" style="margin-top:8px;"></div>
                 </div>
               </div>
@@ -1044,11 +1231,14 @@
       });
     }
 
+    // Helpers
     function toArrayFromComma(s){ return (s||'').split(',').map(x=>x.trim()).filter(Boolean); }
     function toLines(s){ return (s||'').split('\n').map(x=>x.trim()).filter(Boolean); }
     function parseJsonSafe(s, fallback){
       try{ const j = JSON.parse(s||'[]'); return Array.isArray(j) ? j : fallback; }catch{ return fallback; }
     }
+
+    // Packages helpers
     function fillForm(r){
       const f = document.querySelector('#pkg-form');
       f.reset();
@@ -1076,7 +1266,7 @@
       const { db, fbmods: { collection, getDocs, doc, deleteDoc } } = window._fodel;
       const snap = await getDocs(collection(db,'packages', pkgId, 'seasons'));
       const list = snap.docs.map(d => ({ id:d.id, ...d.data() }));
-      const ul = document.getElementById('#season-list') || document.querySelector('#season-list');
+      const ul = document.querySelector('#season-list');
       ul.innerHTML = list.map(s => `<li><strong>${s.season_name}</strong>: ${s.start_date} → ${s.end_date} — ₹${(s.price_per_person/100).toFixed(0)} <button class="red" data-del-season="${s.id}" data-pkg="${pkgId}" style="margin-left:6px;">Delete</button></li>`).join('') || '<li class="muted">No seasonal prices.</li>';
       ul.onclick = async (e) => {
         const sid = e.target.getAttribute('data-del-season'); const pid = e.target.getAttribute('data-pkg');
@@ -1122,11 +1312,67 @@
       };
     }
 
+    // Regions CRUD
+    function buildRegionTree(rows){
+      const byParent = new Map();
+      rows.forEach(r => {
+        const pid = r.parentId || null;
+        if (!byParent.has(pid)) byParent.set(pid, []);
+        byParent.get(pid).push(r);
+      });
+      byParent.forEach(list => list.sort((a,b)=> (a.sort_order||0)-(b.sort_order||0) || a.name.localeCompare(b.name)));
+      return byParent;
+    }
+    function renderRegionsList(rows){
+      const wrap = document.getElementById('regions-list');
+      if (!rows.length){ wrap.innerHTML = '<div class="muted">No regions yet.</div>'; return; }
+      const tree = buildRegionTree(rows);
+      const top = tree.get(null) || [];
+      function renderNodeList(list, level=0){
+        return `<ul style="list-style:none; padding-left:${level?12:0}px; margin:6px 0;">` + list.map(r=>{
+          const children = tree.get(r.id) || [];
+          return `<li style="margin:4px 0;">
+            <strong>${r.name}</strong> ${r.active===false?'<span class="muted">(inactive)</span>':''}
+            <small class="muted">• sort ${r.sort_order||0}</small>
+            <button data-r-edit="${r.id}" type="button" style="margin-left:8px;">Edit</button>
+            <button data-r-del="${r.id}" data-r-has-child="${children.length?1:0}" class="red" type="button" style="margin-left:6px;">Delete</button>
+            ${children.length ? renderNodeList(children, level+1) : ''}
+          </li>`;
+        }).join('') + `</ul>`;
+      }
+      wrap.innerHTML = renderNodeList(top);
+    }
+    function fillRegionsParentSelect(rows){
+      const sel = document.querySelector('select[name="r_parent"]');
+      const top = rows.filter(r => !r.parentId);
+      sel.innerHTML = `<option value="">— None (top-level) —</option>` +
+        top.map(r => `<option value="${r.id}">${r.name}</option>`).join('');
+    }
+    function resetRegionForm(){
+      const f = document.getElementById('region-form');
+      f.reset();
+      f.r_id.value = '';
+      f.r_active.value = '1';
+      f.r_sort.value = '100';
+      document.getElementById('region-msg').textContent = 'Ready.';
+    }
+
+    async function loadRegionsAdmin(){
+      const { db, fbmods: { collection, getDocs, orderBy, query } } = window._fodel;
+      const snap = await getDocs(query(collection(db,'regions'), orderBy('sort_order','asc')));
+      const rows = snap.docs.map(d => ({ id:d.id, ...d.data() }));
+      renderRegionsList(rows);
+      fillRegionsParentSelect(rows);
+      // Also update front-end dropdowns live
+      localStorage.setItem('fodel_regions_cache_v1', JSON.stringify({ ts:Date.now(), rows }));
+      if (typeof populateRegionControls === 'function') populateRegionControls(rows);
+    }
+
     function wireAdminUI(){
       const { auth, fbmods: {
         setPersistence, browserLocalPersistence, GoogleAuthProvider,
         signInWithPopup, signInWithRedirect, getRedirectResult, signOut,
-        collection, addDoc, updateDoc, serverTimestamp, ref, uploadBytes, getDownloadURL, doc
+        collection, addDoc, updateDoc, serverTimestamp, ref, uploadBytes, getDownloadURL, doc, getDocs, deleteDoc, orderBy, query
       } } = window._fodel;
 
       async function ensureLogin(){
@@ -1242,16 +1488,82 @@
         }
       });
 
+      // Regions: New
+      document.getElementById('region-new')?.addEventListener('click', resetRegionForm);
+
+      // Regions: Save
+      document.getElementById('region-form')?.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        const f = e.currentTarget;
+        const id = f.r_id.value.trim();
+        const payload = {
+          name: f.r_name.value.trim(),
+          parentId: f.r_parent.value.trim() || null,
+          active: f.r_active.value === '1',
+          sort_order: Number(f.r_sort.value||100),
+          updatedAt: serverTimestamp()
+        };
+        if (!payload.name){ f.r_name.focus(); return; }
+        try{
+          if (id){
+            await window._fodel.fbmods.updateDoc(window._fodel.fbmods.doc(window._fodel.db,'regions',id), payload);
+          } else {
+            payload.createdAt = serverTimestamp();
+            const refDoc = await window._fodel.fbmods.addDoc(window._fodel.fbmods.collection(window._fodel.db,'regions'), payload);
+            f.r_id.value = refDoc.id;
+          }
+          document.getElementById('region-msg').textContent = 'Region saved.';
+          await loadRegionsAdmin();
+        }catch(err){
+          console.error(err);
+          document.getElementById('region-msg').textContent = 'Save failed. See console.';
+        }
+      });
+
+      // Regions: list + edit/delete
+      document.getElementById('regions-list')?.addEventListener('click', async (e)=>{
+        const idEdit = e.target.getAttribute('data-r-edit');
+        const idDel = e.target.getAttribute('data-r-del');
+        if (idEdit){
+          const snap = await window._fodel.fbmods.getDoc(window._fodel.fbmods.doc(window._fodel.db,'regions',idEdit));
+          if (!snap.exists()){ alert('Region not found'); return; }
+          const r = { id: idEdit, ...snap.data() };
+          const f = document.getElementById('region-form');
+          f.r_id.value = r.id;
+          f.r_name.value = r.name||'';
+          f.r_parent.value = r.parentId||'';
+          f.r_active.value = r.active===false ? '0':'1';
+          f.r_sort.value = r.sort_order ?? 100;
+          document.getElementById('region-msg').textContent = 'Loaded region for editing.';
+        }
+        if (idDel){
+          const hasChild = e.target.getAttribute('data-r-has-child') === '1';
+          if (hasChild){ alert('This region has child areas. Delete or re-parent them first.'); return; }
+          if (!confirm('Delete this region?')) return;
+          await window._fodel.fbmods.deleteDoc(window._fodel.fbmods.doc(window._fodel.db,'regions',idDel));
+          await loadRegionsAdmin();
+          document.getElementById('region-msg').textContent = 'Region deleted.';
+        }
+      });
+
       // Auth flow
       (async function init(){
-        setAdminMsg('Connecting…');
+        setAdminMsg(window._fodel ? 'Connecting…' : 'Firebase not loaded. Please reload the page or check network / blockers.');
+        if (!window._fodel) return;
+
+        // Login
         const user = await ensureLogin();
         if (!user) { setAdminMsg('Continue sign-in…'); return; }
         if (!isAllowed(user)){ setAdminMsg('This Google account is not authorized for Travel Admin.'); return; }
-        // Show main body
+
+        // Show main body + Logout
         document.getElementById('admin-body').style.display = 'block';
+        document.getElementById('btn-logout').style.display = 'inline-block';
         setAdminMsg(`Signed in: ${user.email}`);
+
+        // Load data
         await listPackages();
+        await loadRegionsAdmin();
       })();
     }
 
