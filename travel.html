@@ -1025,15 +1025,16 @@ background:
         import('https://www.gstatic.com/firebasejs/10.13.0/firebase-storage.js')
       ]);
 
-      const firebaseConfig = window.FODEL_FIREBASE_CONFIG ?? {
-        apiKey: "AIzaSyDaKEvqtnRRaj0kBZ-c4oPDhMxiwI3GQmE",
-        authDomain: "fodel-admin-transport.firebaseapp.com",
-        projectId: "fodel-admin-transport",
-        storageBucket: "fodel-admin-transport.appspot.com",
-        messagingSenderId: "81364149405",
-        appId: "1:81364149405:web:a927a693f0402607966074",
-        measurementId: "G-DTLDMKYMZG"
-      };
+     
+const firebaseConfig = window.FODEL_FIREBASE_CONFIG ?? {
+  apiKey: "AIzaSyDaKEvqtnRRaj0kBZ-c4oPDhMxiwI3GQmE",
+  authDomain: "fodel-admin-transport.firebaseapp.com",
+  projectId: "fodel-admin-transport",
+  storageBucket: "fodel-admin-transport.appspot.com",
+  messagingSenderId: "81364149405",
+  appId: "1:81364149405:web:a927a693f0402607966074",
+  measurementId: "G-DTLDMKYMZG"
+}
 
       const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
       window._fodel = {
