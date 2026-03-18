@@ -125,6 +125,7 @@
       display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:12px;
       background:var(--btn); color:#fff; border:1px solid transparent; text-decoration:none; font-weight:600; font-size:18px; letter-spacing:0.2px;
       box-shadow:0 8px 20px rgba(0,0,0,0.14); transition: transform .18s ease, box-shadow .18s ease;
+      cursor:pointer;
     }
     .btn:hover{ transform:translateY(-2px); box-shadow:0 12px 26px rgba(0,0,0,0.18); }
     .btn:active{ transform:translateY(0); box-shadow:0 8px 20px rgba(0,0,0,0.14); }
@@ -147,7 +148,10 @@
     .modal-body{ padding:16px; overflow:auto; -webkit-overflow-scrolling:touch; }
     @media (max-width:640px){ .overlay{ align-items:stretch; } .modal{ width:100%; height:100svh; max-height:none; border-radius:0; } }
 
+    /* Form grids */
     .grid-2{ display:grid; grid-template-columns:1fr; gap:14px; }
+    /* New: show 2 columns on small phones too where needed */
+    @media (min-width:360px){ .sm-2{ grid-template-columns:1fr 1fr; } }
     @media (min-width:640px){ .grid-2{ grid-template-columns:1fr 1fr; } }
     label{ display:block; font-weight:600; font-size:13px; margin-bottom:6px; color:#0f172a; }
     input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"], select, textarea{
@@ -159,7 +163,7 @@
     .field-hint{ font-size:12px; color:#475569; margin-top:6px; }
     .row{ margin-bottom:12px; }
     .readonly{ background:#f1f5f9; }
-    .actions{ display:flex; gap:10px; justify-content:flex-end; margin-top:14px; }
+    .actions{ display:flex; gap:10px; justify-content:flex-end; margin-top:14px; flex-wrap:wrap; }
     .btn-ghost{ padding:10px 14px; border-radius:10px; font-weight:600; background:#f1f5f9; color:#0f172a; border:none; cursor:pointer; }
     .btn-primary{
       padding:12px 16px; border-radius:10px; font-weight:700; letter-spacing:.2px; background:var(--btn); color:#fff; border:none; cursor:pointer;
@@ -262,7 +266,7 @@
 
     <div class="banner-inner">
       <div class="hero">
-        <h1>Hotel Booking, Banquets &amp; Group Travel</h1>
+        <h1>Rooms, Events & Group Travel</h1>
         <p>Tell us your requirement and we’ll share curated hotel options
           across Katra Vaishno Devi, Jammu and Srinagar Kashmir.</p>
       </div>
@@ -283,11 +287,11 @@
               <path d="M4 7h12a4 4 0 0 1 4 4v5h-2v-3H4v3H2v-6a3 3 0 0 1 2-3zm2 2a2 2 0 1 0 0 4h6a2 2 0 1 0 0-4H6z"/>
             </svg>
           </span>
-          Hotel Booking
+          Rooms
         </h3>
-        <p>Hotels in Katra Vaishno Devi, Jammu city &amp; Srinagar Kashmir.</p>
-        <button class="btn" data-open="modal-hotel" aria-haspopup="dialog" aria-label="Open hotel room requirement form">
-          Room Requirement →
+        <p>Hotels in Katra Vaishno Devi, Jammu city & Srinagar Kashmir.</p>
+        <button class="btn" data-open="modal-hotel" aria-haspopup="dialog" aria-label="Open hotel room requirement form" type="button">
+          Room Enquiry →
         </button>
       </div>
 
@@ -300,11 +304,11 @@
               <path d="M3 9h18v2H3zM7 18h2v3H7zM15 18h2v3h-2z"/>
             </svg>
           </span>
-          Banquet &amp; Events
+          Events & Banquets
         </h3>
         <p>Destination weddings, banquets and corporate events.</p>
-        <button class="btn" data-open="modal-banquet" aria-haspopup="dialog" aria-label="Open banquet and event inquiry form">
-          Banquet Inquiry →
+        <button class="btn" data-open="modal-banquet" aria-haspopup="dialog" aria-label="Open banquet and event inquiry form" type="button">
+          Event Enquiry →
         </button>
       </div>
 
@@ -318,16 +322,15 @@
               <path d="M7 15c-2.21 0-5 1.11-5 3v2h6v-2c0-1.23.56-2.14 1.42-2.84A9.5 9.5 0 0 0 7 15Z"/>
             </svg>
           </span>
-          Group Booking
+          Groups (MICE)
         </h3>
         <p>Large hotel bookings for pilgrim groups and corporate travel.</p>
-        <button class="btn" data-open="modal-group" aria-haspopup="dialog" aria-label="Open group booking request form">
-          Group Booking →
+        <button class="btn" data-open="modal-group" aria-haspopup="dialog" aria-label="Open group booking request form" type="button">
+          Group Enquiry →
         </button>
       </div>
     </div>
   </section>
-
   <!-- FEATURED PACKAGES (dynamic) -->
   <section class="packages" aria-labelledby="packages-title">
     <div class="head">
@@ -335,8 +338,8 @@
     </div>
     <div class="filters" id="pkg-filters" aria-label="Filters"></div>
     <div class="tablist" role="tablist" aria-label="Destinations">
-      <button class="tab" role="tab" aria-selected="true" aria-controls="panel-jk" id="tab-jk">Jammu & Kashmir</button>
-      <button class="tab" role="tab" aria-selected="false" aria-controls="panel-goa" id="tab-goa">Goa</button>
+      <button class="tab" role="tab" aria-selected="true" aria-controls="panel-jk" id="tab-jk" type="button">Jammu & Kashmir</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="panel-goa" id="tab-goa" type="button">Goa</button>
     </div>
     <div id="panel-jk" role="tabpanel" aria-labelledby="tab-jk">
       <div id="pkg-grid-jk" class="pkg-grid"></div>
@@ -352,47 +355,61 @@
     <!-- Removed phone chip as requested -->
     <div class="copy">© 2015–2026 Fodel India — Fodel Travels</div>
   </footer>
-
   <!-- ===========================
        MODALS
   ============================ -->
+
   <!-- Hotel Booking Modal -->
   <div id="modal-hotel" class="overlay" role="dialog" aria-modal="true" aria-labelledby="hotel-title">
     <div class="modal" tabindex="-1">
       <div class="modal-header">
-        <div class="modal-title" id="hotel-title">Hotel Room Requirement</div>
-        <button class="modal-close" data-close aria-label="Close">✕</button>
+        <div class="modal-title" id="hotel-title">Room Enquiry</div>
+        <button class="modal-close" data-close aria-label="Close" type="button">✕</button>
       </div>
-      <form class="modal-body" id="form-hotel">
+      <form class="modal-body" id="form-hotel" autocomplete="on">
         <div class="row">
           <label for="hotel-name">Hotel name you’re planning to stay (or short name)</label>
-          <input id="hotel-name" name="hotelName" type="text" placeholder="e.g., Marriott Katra or Near Shrine Board" required>
+          <input id="hotel-name" name="hotelName" type="text" placeholder="e.g., Marriott Katra or Near Shrine Board" required autocapitalize="words">
         </div>
-        <div class="grid-2">
+
+        <!-- Check-in / Check-out (2-col on phones) -->
+        <div class="grid-2 sm-2">
           <div class="row">
-            <label for="checkin">Check in date</label>
+            <label for="checkin">Check-in date</label>
             <input id="checkin" name="checkin" type="date" required>
           </div>
           <div class="row">
-            <label for="checkout">Check out date</label>
+            <label for="checkout">Check-out date</label>
             <input id="checkout" name="checkout" type="date" required>
           </div>
         </div>
-        <div class="grid-2">
+
+        <!-- Nights / Rooms (2-col on phones) -->
+        <div class="grid-2 sm-2">
           <div class="row">
             <label for="nights">No. of nights</label>
             <input id="nights" name="nights" type="number" min="1" class="readonly" readonly>
           </div>
           <div class="row">
             <label for="rooms">No. of rooms</label>
-            <input id="rooms" name="rooms" type="number" min="1" placeholder="e.g., 2" required>
+            <input id="rooms" name="rooms" type="number" min="1" placeholder="e.g., 2" required inputmode="numeric">
           </div>
         </div>
-        <div class="row">
-          <label for="category">Room category preference (optional)</label>
-          <input id="category" name="category" type="text" placeholder="e.g., Deluxe, Suite, Mountain View">
+
+        <!-- Adults / Extra bed (2-col on phones) -->
+        <div class="grid-2 sm-2">
+          <div class="row">
+            <label for="adults">No. of adults</label>
+            <input id="adults" name="adults" type="number" min="1" placeholder="e.g., 2" required inputmode="numeric">
+          </div>
+          <div class="row">
+            <label for="extra-bed">Extra bed (optional)</label>
+            <input id="extra-bed" name="extraBed" type="number" min="0" placeholder="e.g., 1" inputmode="numeric">
+          </div>
         </div>
-        <div class="grid-2">
+
+        <!-- Meal / Category (2-col on phones) -->
+        <div class="grid-2 sm-2">
           <div class="row">
             <label for="meal">Meal plan</label>
             <select id="meal" name="meal" required>
@@ -404,18 +421,17 @@
             </select>
           </div>
           <div class="row">
-            <label for="adults">No. of adults</label>
-            <input id="adults" name="adults" type="number" min="1" placeholder="e.g., 2" required>
-          </div>
-          <div class="row">
-            <label for="extra-bed">Extra bed (optional)</label>
-            <input id="extra-bed" name="extraBed" type="number" min="0" placeholder="e.g., 1">
+            <label for="category">Room category preference (optional)</label>
+            <input id="category" name="category" type="text" placeholder="e.g., Deluxe, Suite, Mountain View" autocapitalize="words">
           </div>
         </div>
-        <div class="grid-2">
+
+        <!-- Contact (2-col on phones) -->
+        <div class="grid-2 sm-2">
           <div class="row">
             <label for="mobile">Mobile</label>
-            <input id="mobile" name="mobile" type="tel" inputmode="tel" pattern="^(\+91[\s-]?)?[6-9]\d{9}$" placeholder="+91 9XXXXXXXXX" required>
+            <input id="mobile" name="mobile" type="tel" inputmode="tel"
+                   pattern="^(\+91[\s-]?)?[6-9]\d{9}$" placeholder="+91 9XXXXXXXXX" required>
             <div class="field-hint">Indian numbers: 10 digits, starting 6–9 (include +91 if needed).</div>
           </div>
           <div class="row">
@@ -423,6 +439,7 @@
             <input id="email" name="email" type="email" placeholder="name@example.com" required>
           </div>
         </div>
+
         <div class="row">
           <label for="notes">Additional notes (optional)</label>
           <textarea id="notes" name="notes" placeholder="Any special requests, bed type, late arrival, etc."></textarea>
@@ -435,28 +452,31 @@
     </div>
   </div>
 
-  <!-- Banquet / Event Modal -->
+  <!-- Event / Banquet Modal -->
   <div id="modal-banquet" class="overlay" role="dialog" aria-modal="true" aria-labelledby="banquet-title">
     <div class="modal" tabindex="-1">
       <div class="modal-header">
-        <div class="modal-title" id="banquet-title">Banquet / Event Inquiry</div>
-        <button class="modal-close" data-close aria-label="Close">✕</button>
+        <div class="modal-title" id="banquet-title">Event / Banquet Enquiry</div>
+        <button class="modal-close" data-close aria-label="Close" type="button">✕</button>
       </div>
       <form class="modal-body" id="form-banquet">
-        <div class="grid-2">
+        <!-- Date / Min guarantee -->
+        <div class="grid-2 sm-2">
           <div class="row">
             <label for="event-date">Event date</label>
             <input id="event-date" name="eventDate" type="date" required>
           </div>
           <div class="row">
             <label for="min-guarantee">Minimum guarantee (adults)</label>
-            <input id="min-guarantee" name="minGuarantee" type="number" min="10" placeholder="e.g., 100" required>
+            <input id="min-guarantee" name="minGuarantee" type="number" min="10" placeholder="e.g., 100" required inputmode="numeric">
           </div>
         </div>
-        <div class="grid-2">
+
+        <!-- Venue / Session -->
+        <div class="grid-2 sm-2">
           <div class="row">
             <label for="venue">Preferred hotel / venue (optional)</label>
-            <input id="venue" name="venue" type="text" placeholder="e.g., Banquet name / Hotel">
+            <input id="venue" name="venue" type="text" placeholder="e.g., Banquet name / Hotel" autocapitalize="words">
           </div>
           <div class="row">
             <label for="banquet-session">Session</label>
@@ -469,26 +489,32 @@
             </select>
           </div>
         </div>
-        <div class="grid-2">
+
+        <!-- Start / End time -->
+        <div class="grid-2 sm-2">
           <div class="row">
             <label for="event-start">Event start time (optional)</label>
-            <input id="event-start" name="eventStart" type="text" placeholder="e.g., 11:00 AM">
+            <input id="event-start" name="eventStart" type="text" placeholder="e.g., 11:00 AM" inputmode="text">
           </div>
           <div class="row">
             <label for="event-end">Event end time (optional)</label>
-            <input id="event-end" name="eventEnd" type="text" placeholder="e.g., 03:00 PM">
+            <input id="event-end" name="eventEnd" type="text" placeholder="e.g., 03:00 PM" inputmode="text">
           </div>
         </div>
-        <div class="grid-2">
+
+        <!-- Contact -->
+        <div class="grid-2 sm-2">
           <div class="row">
             <label for="banquet-mobile">Mobile</label>
-            <input id="banquet-mobile" name="mobile" type="tel" inputmode="tel" pattern="^(\+91[\s-]?)?[6-9]\d{9}$" placeholder="+91 9XXXXXXXXX" required>
+            <input id="banquet-mobile" name="mobile" type="tel" inputmode="tel"
+                   pattern="^(\+91[\s-]?)?[6-9]\d{9}$" placeholder="+91 9XXXXXXXXX" required>
           </div>
           <div class="row">
             <label for="banquet-email">Email</label>
             <input id="banquet-email" name="email" type="email" placeholder="name@example.com" required>
           </div>
         </div>
+
         <div class="row">
           <label for="banquet-notes">Additional notes (optional)</label>
           <textarea id="banquet-notes" name="notes" placeholder="Decoration, stage, AV, seating style, etc."></textarea>
@@ -505,38 +531,53 @@
   <div id="modal-group" class="overlay" role="dialog" aria-modal="true" aria-labelledby="group-title">
     <div class="modal" tabindex="-1">
       <div class="modal-header">
-        <div class="modal-title" id="group-title">Group Booking Request</div>
-        <button class="modal-close" data-close aria-label="Close">✕</button>
+        <div class="modal-title" id="group-title">Group / MICE Enquiry</div>
+        <button class="modal-close" data-close aria-label="Close" type="button">✕</button>
       </div>
       <form class="modal-body" id="form-group">
         <div class="row">
           <label for="group-name">Group / Company name</label>
-          <input id="group-name" name="groupName" type="text" placeholder="e.g., ABC Pilgrims Group" required>
+          <input id="group-name" name="groupName" type="text" placeholder="e.g., ABC Pilgrims Group" required autocapitalize="words">
         </div>
-        <div class="grid-2">
+
+        <!-- Dates -->
+        <div class="grid-2 sm-2">
           <div class="row">
-            <label for="group-checkin">Check in date</label>
+            <label for="group-checkin">Check-in date</label>
             <input id="group-checkin" name="checkin" type="date" required>
           </div>
           <div class="row">
-            <label for="group-checkout">Check out date</label>
+            <label for="group-checkout">Check-out date</label>
             <input id="group-checkout" name="checkout" type="date" required>
           </div>
         </div>
-        <div class="grid-2">
+
+        <!-- Rooms / Email -->
+        <div class="grid-2 sm-2">
           <div class="row">
             <label for="group-rooms">No. of rooms</label>
-            <input id="group-rooms" name="rooms" type="number" min="1" placeholder="e.g., 15" required>
+            <input id="group-rooms" name="rooms" type="number" min="1" placeholder="e.g., 15" required inputmode="numeric">
           </div>
           <div class="row">
             <label for="group-email">Email</label>
             <input id="group-email" name="email" type="email" placeholder="name@example.com" required>
           </div>
         </div>
-        <div class="row">
-          <label for="group-mobile">Mobile (optional)</label>
-          <input id="group-mobile" name="mobile" type="tel" inputmode="tel" pattern="^(\+91[\s-]?)?[6-9]\d{9}$" placeholder="+91 9XXXXXXXXX">
+
+        <!-- Mobile -->
+        <div class="grid-2 sm-2">
+          <div class="row">
+            <label for="group-mobile">Mobile (optional)</label>
+            <input id="group-mobile" name="mobile" type="tel" inputmode="tel"
+                   pattern="^(\+91[\s-]?)?[6-9]\d{9}$" placeholder="+91 9XXXXXXXXX">
+          </div>
+          <div class="row">
+            <!-- spacer: keep 2-col balance -->
+            <label>&nbsp;</label>
+            <input type="text" style="opacity:0;pointer-events:none" tabindex="-1" aria-hidden="true">
+          </div>
         </div>
+
         <div class="row">
           <label for="group-notes">Additional notes (optional)</label>
           <textarea id="group-notes" name="notes" placeholder="Destinations, transport, meal plan, budget, etc."></textarea>
@@ -561,8 +602,7 @@
       </svg>
     </a>
   </div>
-
-  <!-- Base JS: modals + forms -->
+  <!-- Base JS: modals + forms + safe tabs -->
   <script>
     const FORMSPREE_ENDPOINT = ""; // e.g., "https://formspree.io/f/abcdwxyz"
     const todayISO = () => new Date().toISOString().split('T')[0];
@@ -686,55 +726,82 @@
     wireForm('form-hotel',  'Fodel Travels — Hotel Room Requirement');
     wireForm('form-banquet','Fodel Travels — Banquet/Event Inquiry');
     wireForm('form-group',  'Fodel Travels — Group Booking Request');
+
+    // ---- Safe Tabs: always wire, even if Firebase fails ----
+    (function wireTabsSafe(){
+      if (window.__tabsWired) return;
+      const tabs = document.querySelectorAll('.tab[role="tab"]');
+      if (!tabs.length) return;
+      const panels = {
+        'tab-jk': document.getElementById('panel-jk'),
+        'tab-goa': document.getElementById('panel-goa')
+      };
+      tabs.forEach(t => {
+        t.addEventListener('click', () => {
+          tabs.forEach(x => x.setAttribute('aria-selected', x===t ? 'true':'false'));
+          Object.values(panels).forEach(p => p && (p.hidden = true));
+          const target = panels[t.id]; if (target) target.hidden = false;
+        }, { once:false });
+      });
+      // Deep link support
+      if (location.hash.toLowerCase().includes('goa')) document.getElementById('tab-goa')?.click();
+      window.__tabsWired = true;
+    })();
   </script>
 
-  <!-- Firebase bootstrap -->
+  <!-- Firebase bootstrap (guarded) -->
   <script type="module">
-    const [
-      { initializeApp, getApps },
-      { getAuth, setPersistence, browserLocalPersistence, GoogleAuthProvider,
-        signInWithPopup, signInWithRedirect, getRedirectResult, signOut, onAuthStateChanged },
-      { getFirestore, collection, doc, getDocs, getDoc, addDoc, setDoc, updateDoc, deleteDoc,
-        query, where, orderBy, serverTimestamp },
-      { getStorage, ref, uploadBytes, getDownloadURL }
-    ] = await Promise.all([
-      import('https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js'),
-      import('https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js'),
-      import('https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js'),
-      import('https://www.gstatic.com/firebasejs/10.13.0/firebase-storage.js')
-    ]);
+    try {
+      const [
+        { initializeApp, getApps },
+        { getAuth, setPersistence, browserLocalPersistence, GoogleAuthProvider,
+          signInWithPopup, signInWithRedirect, getRedirectResult, signOut, onAuthStateChanged },
+        { getFirestore, collection, doc, getDocs, getDoc, addDoc, setDoc, updateDoc, deleteDoc,
+          query, where, orderBy, serverTimestamp },
+        { getStorage, ref, uploadBytes, getDownloadURL }
+      ] = await Promise.all([
+        import('https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js'),
+        import('https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js'),
+        import('https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js'),
+        import('https://www.gstatic.com/firebasejs/10.13.0/firebase-storage.js')
+      ]);
 
-    const firebaseConfig = window.FODEL_FIREBASE_CONFIG ?? {
-      apiKey: "AIzaSyDaKEvqtnRRaj0kBZ-c4oPDhMxiwI3GQmE",
-      authDomain: "fodel-admin-transport.firebaseapp.com",
-      projectId: "fodel-admin-transport",
-      storageBucket: "fodel-admin-transport.firebasestorage.app",
-      messagingSenderId: "81364149405",
-      appId: "1:81364149405:web:a927a693f0402607966074",
-      measurementId: "G-DTLDMKYMZG"
-    };
+      const firebaseConfig = window.FODEL_FIREBASE_CONFIG ?? {
+        apiKey: "AIzaSyDaKEvqtnRRaj0kBZ-c4oPDhMxiwI3GQmE",
+        authDomain: "fodel-admin-transport.firebaseapp.com",
+        projectId: "fodel-admin-transport",
+        /* NOTE: storageBucket in config expects the bucket name, typically PROJECT-ID.appspot.com.
+           If uploads fail with `.firebasestorage.app`, switch to:
+           storageBucket: "fodel-admin-transport.appspot.com" */
+        storageBucket: "fodel-admin-transport.appspot.com",
+        messagingSenderId: "81364149405",
+        appId: "1:81364149405:web:a927a693f0402607966074",
+        measurementId: "G-DTLDMKYMZG"
+      };
 
-    const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
-    window._fodel = {
-      app,
-      auth: getAuth(app),
-      db: getFirestore(app),
-      storage: getStorage(app),
-      fbmods: {
-        setPersistence, browserLocalPersistence, GoogleAuthProvider,
-        signInWithPopup, signInWithRedirect, getRedirectResult, signOut, onAuthStateChanged,
-        collection, doc, getDocs, getDoc, addDoc, setDoc, updateDoc, deleteDoc,
-        query, where, orderBy, serverTimestamp,
-        ref, uploadBytes, getDownloadURL
-      }
-    };
+      const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+      window._fodel = {
+        app,
+        auth: getAuth(app),
+        db: getFirestore(app),
+        storage: getStorage(app),
+        fbmods: {
+          setPersistence, browserLocalPersistence, GoogleAuthProvider,
+          signInWithPopup, signInWithRedirect, getRedirectResult, signOut, onAuthStateChanged,
+          collection, doc, getDocs, getDoc, addDoc, setDoc, updateDoc, deleteDoc,
+          query, where, orderBy, serverTimestamp,
+          ref, uploadBytes, getDownloadURL
+        }
+      };
+    } catch (e) {
+      console.warn('Firebase not available:', e);
+      // Window._fodel will stay undefined; the widget/admin module will degrade gracefully.
+    }
   </script>
 
-  <!-- Widget -->
+  <!-- Widget (packages) — resilient to missing Firebase -->
   <script type="module">
-    const { db, fbmods: { collection, getDocs, query, where, orderBy } } = window._fodel;
-    const cacheKey = 'fodel_pkgs_cache_v2'; const cacheTTL = 10 * 60 * 1000;
-
+    // Always build filters and tabs; fetch packages only if Firebase is available
     function buildFilters(container){
       const chips = [
         { key:'duration-2-3', label:'2–3 Nights' },
@@ -752,7 +819,7 @@
     function classFrom(pkg){
       const n = Number(pkg.duration_nights || 0);
       const base = n && n <= 3 ? ['duration-2-3'] : (n >=4 ? ['duration-4-6'] : []);
-      const themes = (pkg.themes || []).map(t => 'theme-' + String(t).toLowerCase());
+      const themes = (pkg.themes || []).map(t => 'theme-' + String(t).toLowerCase().replace(/\s+/g,'-'));
       return base.concat(themes).join(' ');
     }
     function priceBadge(paise, label='From'){
@@ -761,7 +828,7 @@
       return `<span class="badge">${label} ₹${ru}</span>`;
     }
     function pkgCard(pkg){
-      const title = pkg.title || 'Untitled Package';
+      const title = pkg.title || 'Travel Package';
       const dest = pkg.destination || '';
       const nights = pkg.duration_nights, days = pkg.duration_days;
       const themes = pkg.themes || [];
@@ -777,13 +844,13 @@
             <div class="pkg-title"><h3>${title}</h3><span class="badge">${dest}</span></div>
             <div class="badges">
               ${themes.map(t => `<span class="badge">${t}</span>`).join('')}
-              ${ (nights && days) ? `<span class="badge">${nights}N/${days}D</span>` : '' }
-              ${ priceBadge(price, priceLabel) }
+              ${(nights && days) ? `<span class="badge">${nights}N/${days}D</span>` : ''}
+              ${priceBadge(price, priceLabel)}
             </div>
             ${highlights.length ? `<div class="pkg-meta">${highlights.map(h => `<span>• ${h}</span>`).join('')}</div>` : ''}
             ${itinerary.length ? `<details class="itinerary"><summary>Day-wise itinerary</summary><ul>${itinerary.map(d => `<li><strong>Day ${d.day}:</strong> ${d.title} — ${d.details}</li>`).join('')}</ul></details>` : ''}
             <div class="pkg-cta">
-              <button class="btn enquire-btn" data-open="modal-group">Enquire →</button>
+              <button class="btn enquire-btn" data-open="modal-group" type="button">Enquire →</button>
               <a class="btn btn-outline" target="_blank" rel="noopener" href="https://wa.me/919797459260?text=${encodeURIComponent(waText)}">WhatsApp ↗</a>
             </div>
           </div>
@@ -799,16 +866,6 @@
         card.classList.toggle('pkg-hidden', !ok);
       });
     }
-    function wireTabs(){
-      const tabs = document.querySelectorAll('.tab[role="tab"]');
-      const panels = { 'tab-jk': document.getElementById('panel-jk'), 'tab-goa': document.getElementById('panel-goa') };
-      tabs.forEach(t => t.addEventListener('click', () => {
-        tabs.forEach(x => x.setAttribute('aria-selected', x===t ? 'true':'false'));
-        Object.values(panels).forEach(p => p.hidden = true);
-        const target = panels[t.id]; if (target) target.hidden = false;
-      }));
-      if (location.hash.toLowerCase().includes('goa')) document.getElementById('tab-goa')?.click();
-    }
     function wireEnquiryPrefill(){
       document.addEventListener('click', (e) => {
         const b = e.target.closest('.enquire-btn'); if (!b) return;
@@ -821,161 +878,179 @@
         const gname = form.querySelector('#group-name'); if (gname && !gname.value) gname.value = pkg;
       });
     }
-    async function fetchPackages(){
-      try{
-        const cached = JSON.parse(localStorage.getItem(cacheKey) || 'null');
-        if (cached && (Date.now() - cached.ts) < cacheTTL) return cached.rows;
-        const col = collection(db, 'packages');
-        const q = query(col, where('active','==', true), orderBy('sort_order'));
-        const snap = await getDocs(q);
-        const rows = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-        localStorage.setItem(cacheKey, JSON.stringify({ ts: Date.now(), rows }));
-        return rows;
-      }catch(e){
-        const cached = JSON.parse(localStorage.getItem(cacheKey) || 'null');
-        if (cached) return cached.rows;
-        console.warn('Fetch packages failed:', e);
-        return [];
-      }
-    }
-    function renderLists(rows){
-      const jk = rows.filter(r => (r.destination||'').toLowerCase().includes('jammu'));
-      const goa = rows.filter(r => (r.destination||'').toLowerCase().includes('goa'));
-      document.getElementById('pkg-grid-jk').innerHTML = jk.map(pkgCard).join('') || '<div class="muted">No packages for J&K yet.</div>';
-      document.getElementById('pkg-grid-goa').innerHTML = goa.map(pkgCard).join('') || '<div class="muted">No packages for Goa yet.</div>';
-    }
-    buildFilters(document.getElementById('pkg-filters'));
-    wireTabs(); wireEnquiryPrefill();
-    const rows = await fetchPackages(); renderLists(rows); applyFilters();
-  </script>
 
+    // If Firebase is available, pull dynamic packages; else, show placeholders.
+    async function fetchAndRender(){
+      buildFilters(document.getElementById('pkg-filters'));
+      wireEnquiryPrefill();
+
+      const panelJK = document.getElementById('pkg-grid-jk');
+      const panelGoa = document.getElementById('pkg-grid-goa');
+
+      if (!window._fodel){
+        // Fallback UI so tabs & page still feel alive
+        panelJK.innerHTML = '<div class="muted">Packages will load shortly. Please check again.</div>';
+        panelGoa.innerHTML = '<div class="muted">Packages will load shortly. Please check again.</div>';
+        return;
+      }
+
+      const { db, fbmods: { collection, getDocs, query, where, orderBy } } = window._fodel;
+      const cacheKey = 'fodel_pkgs_cache_v2'; const cacheTTL = 10 * 60 * 1000;
+
+      async function fetchPackages(){
+        try{
+          const cached = JSON.parse(localStorage.getItem(cacheKey) || 'null');
+          if (cached && (Date.now() - cached.ts) < cacheTTL) return cached.rows;
+          const col = collection(db, 'packages');
+          const q = query(col, where('active','==', true), orderBy('sort_order'));
+          const snap = await getDocs(q);
+          const rows = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+          localStorage.setItem(cacheKey, JSON.stringify({ ts: Date.now(), rows }));
+          return rows;
+        }catch(e){
+          const cached = JSON.parse(localStorage.getItem(cacheKey) || 'null');
+          if (cached) return cached.rows;
+          console.warn('Fetch packages failed:', e);
+          return [];
+        }
+      }
+
+      function renderLists(rows){
+        const jk = rows.filter(r => (r.destination||'').toLowerCase().includes('jammu'));
+        const goa = rows.filter(r => (r.destination||'').toLowerCase().includes('goa'));
+        panelJK.innerHTML = jk.map(pkgCard).join('') || '<div class="muted">No packages for J&K yet.</div>';
+        panelGoa.innerHTML = goa.map(pkgCard).join('') || '<div class="muted">No packages for Goa yet.</div>';
+      }
+
+      const rows = await fetchPackages();
+      renderLists(rows); applyFilters();
+
+      // hash-based deep link, just in case
+      if (location.hash.toLowerCase().includes('goa')) document.getElementById('tab-goa')?.click();
+    }
+
+    fetchAndRender();
+  </script>
   <!-- Admin Overlay -->
   <div id="travel-admin-root"></div>
   <script type="module">
-    const { auth, db, storage, fbmods: {
-      setPersistence, browserLocalPersistence, GoogleAuthProvider,
-      signInWithPopup, signInWithRedirect, getRedirectResult, signOut, onAuthStateChanged,
-      collection, doc, getDocs, getDoc, addDoc, setDoc, updateDoc, deleteDoc,
-      query, orderBy, serverTimestamp, ref, uploadBytes, getDownloadURL
-    }} = window._fodel;
-
+    const root = document.getElementById('travel-admin-root');
     const params = new URLSearchParams(location.search);
     const wantAdmin = params.get('admin') === '1';
     const wantLogout = params.get('logout') === '1';
     const ADMIN_EMAILS = ["munish2818@gmail.com"]; // add more if needed
     const lc = s => (s||'').toString().trim().toLowerCase();
     const isAllowed = (u) => !!(u && u.email && ADMIN_EMAILS.includes(lc(u.email)));
-    const root = document.getElementById('travel-admin-root');
+    const el = (s) => document.querySelector(s);
 
-    function renderAdminShell(){
+    function renderAdminShell(message = 'Connecting to Firebase…'){
       root.innerHTML = `
       <div class="admin-overlay" id="adminOverlay">
         <div class="admin-panel">
           <header class="admin-top">
             <h2>Fodel Travel Admin</h2>
             <div class="actions">
-              <button id="btn-close" class="btn-outline">Close</button>
-              <button id="btn-logout">Logout</button>
+              <button id="btn-close" class="btn-outline" type="button">Close</button>
+              <button id="btn-logout" type="button">Logout</button>
             </div>
           </header>
-          <div class="grid2-1">
-            <div>
-              <div class="card">
-                <h3 style="margin:0 0 8px 0;">Create / Edit Package</h3>
-                <form id="pkg-form">
-                  <input type="hidden" name="id" />
-                  <label>Title</label>
-                  <input name="title" required/>
-                  <label>Destination</label>
-                  <select name="destination" required>
-                    <option>Jammu & Kashmir</option>
-                    <option>Goa</option>
-                  </select>
-                  <div class="row2">
-                    <div><label>Nights</label><input type="number" name="duration_nights" min="1" value="3" required/></div>
-                    <div><label>Days</label><input type="number" name="duration_days" min="1" value="4" required/></div>
-                  </div>
-                  <label>Themes (comma)</label><input name="themes" placeholder="Family,Honeymoon,Pilgrimage,Corporate,Adventure"/>
-                  <label>Highlights (one per line)</label><textarea name="highlights" rows="3"></textarea>
-                  <label>Inclusions</label><textarea name="inclusions" rows="2"></textarea>
-                  <label>Exclusions</label><textarea name="exclusions" rows="2"></textarea>
-                  <label>Itinerary JSON</label><textarea name="itinerary" rows="5" placeholder='[{"day":1,"title":"Arrival","details":"Transfer & check-in"}]'></textarea>
-                  <div class="row2">
-                    <div><label>Base price (₹)</label><input type="number" name="base_price_inr" placeholder="e.g. 9999"/></div>
-                    <div><label>Price label</label><input name="price_label" placeholder="From / On Request" value="From"/></div>
-                  </div>
-                  <div class="row2">
-                    <div><label>Featured</label><select name="featured"><option value="0">No</option><option value="1">Yes</option></select></div>
-                    <div><label>Active</label><select name="active"><option value="1">Yes</option><option value="0">No</option></select></div>
-                  </div>
-                  <label>Sort order</label><input type="number" name="sort_order" value="100"/>
-                  <label>Cover image</label>
-                  <div class="row2">
-                    <input type="text" name="cover_image" placeholder="https://.../image.webp"/>
-                    <div>
-                      <input type="file" id="cover-input" accept="image/*"/>
-                      <button type="button" id="upload-cover">Upload</button>
+          <div id="admin-msg" class="muted" style="margin:6px 0 10px 0;">${message}</div>
+          <div id="admin-body" style="display:none">
+            <div class="grid2-1">
+              <div>
+                <div class="card">
+                  <h3 style="margin:0 0 8px 0;">Create / Edit Package</h3>
+                  <form id="pkg-form">
+                    <input type="hidden" name="id" />
+                    <label>Title</label>
+                    <input name="title" required/>
+                    <label>Destination</label>
+                    <select name="destination" required>
+                      <option>Jammu & Kashmir</option>
+                      <option>Goa</option>
+                    </select>
+                    <div class="row2">
+                      <div><label>Nights</label><input type="number" name="duration_nights" min="1" value="3" required/></div>
+                      <div><label>Days</label><input type="number" name="duration_days" min="1" value="4" required/></div>
                     </div>
-                  </div>
-                  <label>Gallery (comma URLs)</label><textarea name="gallery" rows="2"></textarea>
-                  <button type="submit" id="save">Save Package</button>
-                  <div class="msg" id="form-msg"></div>
-                </form>
+                    <label>Themes (comma)</label><input name="themes" placeholder="Family,Honeymoon,Pilgrimage,Corporate,Adventure"/>
+                    <label>Highlights (one per line)</label><textarea name="highlights" rows="3"></textarea>
+                    <label>Inclusions</label><textarea name="inclusions" rows="2"></textarea>
+                    <label>Exclusions</label><textarea name="exclusions" rows="2"></textarea>
+                    <label>Itinerary JSON</label><textarea name="itinerary" rows="5" placeholder='[{"day":1,"title":"Arrival","details":"Transfer & check-in"}]'></textarea>
+                    <div class="row2">
+                      <div><label>Base price (₹)</label><input type="number" name="base_price_inr" placeholder="e.g. 9999"/></div>
+                      <div><label>Price label</label><input name="price_label" placeholder="From / On Request" value="From"/></div>
+                    </div>
+                    <div class="row2">
+                      <div><label>Featured</label><select name="featured"><option value="0">No</option><option value="1">Yes</option></select></div>
+                      <div><label>Active</label><select name="active"><option value="1">Yes</option><option value="0">No</option></select></div>
+                    </div>
+                    <label>Sort order</label><input type="number" name="sort_order" value="100"/>
+                    <label>Cover image</label>
+                    <div class="row2">
+                      <input type="text" name="cover_image" placeholder="https://.../image.webp"/>
+                      <div>
+                        <input type="file" id="cover-input" accept="image/*"/>
+                        <button type="button" id="upload-cover">Upload</button>
+                      </div>
+                    </div>
+                    <label>Gallery (comma URLs)</label><textarea name="gallery" rows="2"></textarea>
+                    <button type="submit" id="save">Save Package</button>
+                    <div class="msg" id="form-msg"></div>
+                  </form>
+                </div>
+                <div class="card">
+                  <h3 style="margin:0 0 8px 0;">Seasonal Pricing</h3>
+                  <form id="season-form">
+                    <input type="hidden" name="package_id"/>
+                    <label>Season name</label><input name="season_name" required/>
+                    <div class="row2"><div><label>Start</label><input type="date" name="start_date" required/></div><div><label>End</label><input type="date" name="end_date" required/></div></div>
+                    <label>Price per person (₹)</label><input type="number" name="price_inr" required/>
+                    <button type="submit">Add Season</button>
+                    <div class="msg" id="season-msg"></div>
+                  </form>
+                  <ul id="season-list" style="margin-top:8px;"></ul>
+                </div>
               </div>
-              <div class="card">
-                <h3 style="margin:0 0 8px 0;">Seasonal Pricing</h3>
-                <form id="season-form">
-                  <input type="hidden" name="package_id"/>
-                  <label>Season name</label><input name="season_name" required/>
-                  <div class="row2"><div><label>Start</label><input type="date" name="start_date" required/></div><div><label>End</label><input type="date" name="end_date" required/></div></div>
-                  <label>Price per person (₹)</label><input type="number" name="price_inr" required/>
-                  <button type="submit">Add Season</button>
-                  <div class="msg" id="season-msg"></div>
-                </form>
-                <ul id="season-list" style="margin-top:8px;"></ul>
+              <div>
+                <div class="card">
+                  <div style="display:flex;align-items:center;justify-content:space-between;"><h3 style="margin:0;">All Packages</h3><button id="btn-new" class="btn-outline" type="button">+ New</button></div>
+                  <div id="pkgs" class="list" style="margin-top:8px;"></div>
+                </div>
               </div>
             </div>
-            <div>
-              <div class="card">
-                <div style="display:flex;align-items:center;justify-content:space-between;"><h3 style="margin:0;">All Packages</h3><button id="btn-new" class="btn-outline">+ New</button></div>
-                <div id="pkgs" class="list" style="margin-top:8px;"></div>
-              </div>
-            </div>
-          </div>
+          </div> <!-- /admin-body -->
         </div>
       </div>`;
+      showOverlay();
+      wireBasicAdminButtons();
     }
+
     function showOverlay(){ document.getElementById('adminOverlay')?.classList.add('show'); }
     function hideOverlay(){ document.getElementById('adminOverlay')?.classList.remove('show'); }
+    function setAdminMsg(t){ const m= document.getElementById('admin-msg'); if (m) m.textContent = t; }
 
-    async function ensureLogin(){
-      try{ await setPersistence(auth, browserLocalPersistence); }catch{}
-      const provider = new GoogleAuthProvider(); auth.useDeviceLanguage && auth.useDeviceLanguage();
-      if (wantLogout){
-        try{ await signOut(auth); }catch{}
-        params.delete('logout');
-        history.replaceState({},'',location.pathname+(params.toString() ? '?'+params.toString() : ''));
-      }
-      try{ const red = await getRedirectResult(auth); if (red?.user) return red.user; }catch(e){}
-      if (auth.currentUser) return auth.currentUser;
-      try{ const res = await signInWithPopup(auth, provider); return res.user; }
-      catch(e){ await signInWithRedirect(auth, provider); return null; }
+    function wireBasicAdminButtons(){
+      document.getElementById('btn-close')?.addEventListener('click', hideOverlay);
+      document.getElementById('btn-logout')?.addEventListener('click', async () => {
+        if (!window._fodel){ hideOverlay(); return; }
+        try { await window._fodel.fbmods.signOut(window._fodel.auth); } catch {}
+        alert('Logged out.');
+        hideOverlay();
+        // Clean URL
+        const p = new URLSearchParams(location.search); p.delete('admin'); p.delete('logout');
+        history.replaceState({},'',location.pathname+(p.toString() ? '?'+p.toString() : ''));
+      });
     }
 
-    const el = s => document.querySelector(s);
-
-    function toArrayFromComma(s){
-      return (s||'').split(',').map(x=>x.trim()).filter(Boolean);
-    }
-    function toLines(s){
-      return (s||'').split('\n').map(x=>x.trim()).filter(Boolean);
-    }
+    function toArrayFromComma(s){ return (s||'').split(',').map(x=>x.trim()).filter(Boolean); }
+    function toLines(s){ return (s||'').split('\n').map(x=>x.trim()).filter(Boolean); }
     function parseJsonSafe(s, fallback){
       try{ const j = JSON.parse(s||'[]'); return Array.isArray(j) ? j : fallback; }catch{ return fallback; }
     }
-
     function fillForm(r){
-      const f = el('#pkg-form');
+      const f = document.querySelector('#pkg-form');
       f.reset();
       f.querySelector('input[name="id"]').value = r.id||'';
       f.title.value = r.title||'';
@@ -994,34 +1069,37 @@
       f.sort_order.value = r.sort_order ?? 100;
       f.cover_image.value = r.cover_image||'';
       f.gallery.value = (r.gallery||[]).join(',');
-      el('input[name="package_id"]').value = r.id||'';
+      document.querySelector('input[name="package_id"]').value = r.id||'';
     }
 
     async function loadSeasons(pkgId){
+      const { db, fbmods: { collection, getDocs, doc, deleteDoc } } = window._fodel;
       const snap = await getDocs(collection(db,'packages', pkgId, 'seasons'));
       const list = snap.docs.map(d => ({ id:d.id, ...d.data() }));
-      const ul = el('#season-list');
+      const ul = document.getElementById('#season-list') || document.querySelector('#season-list');
       ul.innerHTML = list.map(s => `<li><strong>${s.season_name}</strong>: ${s.start_date} → ${s.end_date} — ₹${(s.price_per_person/100).toFixed(0)} <button class="red" data-del-season="${s.id}" data-pkg="${pkgId}" style="margin-left:6px;">Delete</button></li>`).join('') || '<li class="muted">No seasonal prices.</li>';
       ul.onclick = async (e) => {
         const sid = e.target.getAttribute('data-del-season'); const pid = e.target.getAttribute('data-pkg');
         if (!sid) return; if (!confirm('Remove this season?')) return;
-        await deleteDoc(doc(db, 'packages', pid, 'seasons', sid)); await loadSeasons(pid);
+        await deleteDoc(doc(window._fodel.db, 'packages', pid, 'seasons', sid)); await loadSeasons(pid);
       };
     }
 
     async function loadPackageIntoForm(id){
+      const { db, fbmods: { doc, getDoc } } = window._fodel;
       const snap = await getDoc(doc(db,'packages', id));
       if (!snap.exists()){ alert('Package not found'); return; }
       const r = { id, ...snap.data() };
       fillForm(r);
       await loadSeasons(id);
-      el('#form-msg').textContent = 'Loaded package for editing.';
+      document.getElementById('form-msg').textContent = 'Loaded package for editing.';
     }
 
     async function listPackages(){
+      const { db, fbmods: { collection, getDocs, query, orderBy, doc, deleteDoc } } = window._fodel;
       const snap = await getDocs(query(collection(db,'packages'), orderBy('updatedAt','desc')));
       const rows = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-      const pkgsEl = el('#pkgs');
+      const pkgsEl = document.getElementById('pkgs');
       pkgsEl.innerHTML = rows.map(r => `
         <div class="item">
           <img src="${r.cover_image||'https://via.placeholder.com/160x110?text=No+Image'}" alt="${(r.title||'Package')+' cover'}">
@@ -1030,7 +1108,7 @@
             <div class="muted">${r.duration_nights||'-'}N/${r.duration_days||'-'}D • ${(r.themes||[]).join(', ')}</div>
             <div class="muted">${r.active ? 'Active' : 'Inactive'} ${r.featured ? '• Featured' : ''}</div>
           </div>
-          <div><button data-edit="${r.id}">Edit</button><button data-del="${r.id}" class="red" style="margin-left:6px;">Delete</button></div>
+          <div><button data-edit="${r.id}" type="button">Edit</button><button data-del="${r.id}" class="red" type="button" style="margin-left:6px;">Delete</button></div>
         </div>`).join('') || '<div class="muted">No packages yet.</div>';
       pkgsEl.onclick = async (e) => {
         const idEdit = e.target.getAttribute('data-edit');
@@ -1038,50 +1116,65 @@
         if (idEdit){ await loadPackageIntoForm(idEdit); }
         if (idDel){
           if (!confirm('Delete this package?')) return;
-          await deleteDoc(doc(db,'packages', idDel));
-          await listPackages(); el('#season-list').innerHTML=''; el('#season-form').reset();
+          await deleteDoc(doc(window._fodel.db,'packages', idDel));
+          await listPackages(); document.getElementById('season-list').innerHTML=''; document.getElementById('season-form').reset();
         }
       };
     }
 
     function wireAdminUI(){
-      // Close & logout
-      el('#btn-close')?.addEventListener('click', hideOverlay);
-      el('#btn-logout')?.addEventListener('click', async () => {
-        try { await signOut(auth); } catch {}
-        alert('Logged out.');
-        hideOverlay();
-      });
-      // New package
-      el('#btn-new')?.addEventListener('click', () => {
-        fillForm({
-          destination:'Jammu & Kashmir',
-          duration_nights:3, duration_days:4,
-          active:1, featured:0, sort_order:100
-        });
-        el('#season-list').innerHTML='';
-        el('#season-form').reset();
-        el('#form-msg').textContent = 'Ready to create a new package.';
-      });
+      const { auth, fbmods: {
+        setPersistence, browserLocalPersistence, GoogleAuthProvider,
+        signInWithPopup, signInWithRedirect, getRedirectResult, signOut,
+        collection, addDoc, updateDoc, serverTimestamp, ref, uploadBytes, getDownloadURL, doc
+      } } = window._fodel;
+
+      async function ensureLogin(){
+        try{ await setPersistence(auth, browserLocalPersistence); }catch{}
+        const provider = new GoogleAuthProvider(); auth.useDeviceLanguage && auth.useDeviceLanguage();
+        if (wantLogout){
+          try{ await signOut(auth); }catch{}
+          params.delete('logout');
+          history.replaceState({},'',location.pathname+(params.toString() ? '?'+params.toString() : ''));
+        }
+        try{ const red = await getRedirectResult(auth); if (red?.user) return red.user; }catch(e){}
+        if (auth.currentUser) return auth.currentUser;
+        try{ const res = await signInWithPopup(auth, provider); return res.user; }
+        catch(e){ await signInWithRedirect(auth, provider); return null; }
+      }
+
       // Upload cover
-      el('#upload-cover')?.addEventListener('click', async () => {
-        const input = el('#cover-input');
+      document.getElementById('upload-cover')?.addEventListener('click', async () => {
+        const input = document.getElementById('cover-input');
         if (!input?.files?.length){ alert('Select an image first.'); return; }
         const file = input.files[0];
         const path = `covers/${Date.now()}-${file.name}`;
-        const rref = ref(storage, path);
+        const rref = ref(window._fodel.storage, path);
         try {
           await uploadBytes(rref, file);
           const url = await getDownloadURL(rref);
-          el('input[name="cover_image"]').value = url;
-          el('#form-msg').textContent = 'Cover uploaded.';
+          document.querySelector('input[name="cover_image"]').value = url;
+          document.getElementById('form-msg').textContent = 'Cover uploaded.';
         } catch(e){
           console.error(e);
           alert('Upload failed. Try again.');
         }
       });
+
+      // New package
+      document.getElementById('btn-new')?.addEventListener('click', () => {
+        fillForm({
+          destination:'Jammu & Kashmir',
+          duration_nights:3, duration_days:4,
+          active:1, featured:0, sort_order:100
+        });
+        document.getElementById('season-list').innerHTML='';
+        document.getElementById('season-form').reset();
+        document.getElementById('form-msg').textContent = 'Ready to create a new package.';
+      });
+
       // Save package
-      el('#pkg-form')?.addEventListener('submit', async (e) => {
+      document.getElementById('pkg-form')?.addEventListener('submit', async (e) => {
         e.preventDefault();
         const f = e.currentTarget;
         const id = f.querySelector('input[name="id"]').value.trim();
@@ -1108,22 +1201,23 @@
         };
         try{
           if (id){
-            await updateDoc(doc(db,'packages', id), payload);
+            await window._fodel.fbmods.updateDoc(doc(window._fodel.db,'packages', id), payload);
           } else {
             payload.createdAt = serverTimestamp();
-            const refDoc = await addDoc(collection(db,'packages'), payload);
+            const refDoc = await window._fodel.fbmods.addDoc(collection(window._fodel.db,'packages'), payload);
             f.querySelector('input[name="id"]').value = refDoc.id;
-            el('input[name="package_id"]').value = refDoc.id;
+            document.querySelector('input[name="package_id"]').value = refDoc.id;
           }
-          el('#form-msg').textContent = 'Saved successfully.';
+          document.getElementById('form-msg').textContent = 'Saved successfully.';
           await listPackages();
         }catch(err){
           console.error(err);
-          el('#form-msg').textContent = 'Save failed. See console.';
+          document.getElementById('form-msg').textContent = 'Save failed. See console.';
         }
       });
+
       // Add season
-      el('#season-form')?.addEventListener('submit', async (e) => {
+      document.getElementById('season-form')?.addEventListener('submit', async (e) => {
         e.preventDefault();
         const sf = e.currentTarget;
         const pkgId = sf.package_id.value.trim();
@@ -1134,29 +1228,41 @@
           start_date: sf.start_date.value,
           end_date: sf.end_date.value,
           price_per_person: pricePaise,
-          createdAt: serverTimestamp(), updatedAt: serverTimestamp()
+          createdAt: window._fodel.fbmods.serverTimestamp(),
+          updatedAt: window._fodel.fbmods.serverTimestamp()
         };
         try{
-          await addDoc(collection(db,'packages', pkgId, 'seasons'), row);
-          el('#season-msg').textContent = 'Season added.';
+          await window._fodel.fbmods.addDoc(window._fodel.fbmods.collection(window._fodel.db,'packages', pkgId, 'seasons'), row);
+          document.getElementById('season-msg').textContent = 'Season added.';
           sf.reset(); sf.package_id.value = pkgId;
           await loadSeasons(pkgId);
         }catch(e2){
           console.error(e2);
-          el('#season-msg').textContent = 'Failed to add season.';
+          document.getElementById('season-msg').textContent = 'Failed to add season.';
         }
       });
+
+      // Auth flow
+      (async function init(){
+        setAdminMsg('Connecting…');
+        const user = await ensureLogin();
+        if (!user) { setAdminMsg('Continue sign-in…'); return; }
+        if (!isAllowed(user)){ setAdminMsg('This Google account is not authorized for Travel Admin.'); return; }
+        // Show main body
+        document.getElementById('admin-body').style.display = 'block';
+        setAdminMsg(`Signed in: ${user.email}`);
+        await listPackages();
+      })();
     }
 
     async function initAdmin(){
       if (!wantAdmin) return;
-      const user = await ensureLogin();
-      if (!user) return; // redirect flow continues
-      if (!isAllowed(user)){ alert('This Google account is not authorized for Travel Admin.'); return; }
       renderAdminShell();
-      showOverlay();
+      if (!window._fodel){
+        setAdminMsg('Firebase not loaded. Please reload the page or check network / blockers.');
+        return;
+      }
       wireAdminUI();
-      await listPackages();
     }
 
     initAdmin();
