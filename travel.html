@@ -633,61 +633,69 @@
           </div>
 
           <!-- Dates, Nights, Day‑use label -->
-          <div class="grid-3">
-            <div class="row">
-              <label for="hotel-checkin">Check-in</label>
-              <input id="hotel-checkin" name="checkin" type="date" required>
-              <div class="day-use" id="hotel-day-use-label"></div>
-              <div class="error-text" id="hotel-date-error"></div>
-            </div>
-            <div class="row">
-              <label for="hotel-checkout">Check-out</label>
-              <input id="hotel-checkout" name="checkout" type="date" required>
-            </div>
-            <div class="row">
-              <label for="hotel-nights">Nights</label>
-              <input id="hotel-nights" name="nights" type="text"
-                     class="readonly" readonly>
-            </div>
-          </div>
+         <!-- Dates -->
+<div class="grid-2">
+  <div class="row">
+    abel for="hotel-checkin">Check-in</label>
+    <input id="hotel-checkin" name="checkin" type="date" required>
+    <div class="day-use" id="hotel-day-use-label"></div>
+    <div class="error-text" id="hotel-date-error"></div>
+  </div>
+  <div class="row">
+    abel for="hotel-checkout">Check-out</label>
+    <input id="hotel-checkout" name="checkout" type="date" required>
+  </div>
+</div>
 
-          <!-- Day‑use time inputs (hidden by default) -->
-          <div class="grid-2 dayuse-time-wrap" id="hotel-day-use-times" style="display:none;">
-            <div class="row">
-              <label for="hotel-day-from">From Time</label>
-              <input id="hotel-day-from" name="dayFrom" type="time">
-            </div>
-            <div class="row">
-              <label for="hotel-day-to">To Time</label>
-              <input id="hotel-day-to" name="dayTo" type="time">
-            </div>
-          </div>
+<!-- Nights - Rooms -->
+<div class="grid-2">
+  <div class="row">
+    abel for="hotel-nights">Nights</label>
+    <input id="hotel-nights" name="nights" type="text" class="readonly" readonly>
+  </div>
+  <div class="row">
+    abel for="hotel-rooms">Rooms</label>
+    <input id="hotel-rooms" name="rooms" type="number" min="1" placeholder="2" required>
+  </div>
+</div>
 
-          <!-- Rooms / Adults / Extra Beds -->
-          <div class="grid-3">
-            <div class="row">
-              <label for="hotel-rooms">Rooms</label>
-              <input id="hotel-rooms" name="rooms" type="number" min="1"
-                     placeholder="2" required>
-            </div>
-            <div class="row">
-              <label for="hotel-adults">Adults</label>
-              <input id="hotel-adults" name="adults" type="number" min="1"
-                     placeholder="2" required>
-            </div>
-            <div class="row">
-              <label for="hotel-extra-bed">Extra Beds</label>
-              <input id="hotel-extra-bed" name="extraBed" type="number" min="0"
-                     placeholder="0">
-            </div>
-          </div>
+<!-- Adults - Extra Adult (triple occupancy) -->
+<div class="grid-2">
+  <div class="row">
+    abel for="hotel-adults">Adults</label>
+    <input id="hotel-adults" name="adults" type="number" min="1" placeholder="2" required>
+  </div>
+  <div class="row">
+    abel for="hotel-extra-bed">Extra Adult (triple occupancy)</label>
+    <input id="hotel-extra-bed" name="extraBed" type="number" min="0" placeholder="0">
+  </div>
+</div>
 
-          <!-- Room Category (manual) -->
-          <div class="row">
-            <label for="hotel-room-category">Room Category</label>
-            <input id="hotel-room-category" name="roomCategory" type="text"
-                   placeholder="Deluxe, Super Deluxe, Suite, etc.">
-          </div>
+<!-- Any Kids (Age) - Room Category -->
+<div class="grid-2">
+  <div class="row">
+    abel for="hotel-kids-age">Any Kids (Age)</label>
+    <input id="hotel-kids-age" name="kidsAge" type="text"
+           placeholder="e.g. 5 yrs, 8 yrs">
+  </div>
+  <div class="row">
+    abel for="hotel-room-category">Room Category</label>
+    <input id="hotel-room-category" name="roomCategory" type="text"
+           placeholder="Deluxe, Super Deluxe, Suite, etc.">
+  </div>
+</div>
+
+<!-- Day‑use time inputs (hidden by default) -->
+<div class="grid-2 dayuse-time-wrap" id="hotel-day-use-times" style="display:none;">
+  <div class="row">
+    abel for="hotel-day-from">From Time</label>
+    <input id="hotel-day-from" name="dayFrom" type="time">
+  </div>
+  <div class="row">
+    abel for="hotel-day-to">To Time</label>
+    <input id="hotel-day-to" name="dayTo" type="time">
+  </div>
+</div>
 
           <!-- Meal Plan / Mobile -->
           <div class="grid-2">
@@ -977,55 +985,73 @@
           </div>
 
           <!-- Dates, Nights, Day‑use label -->
-          <div class="grid-3">
-            <div class="row">
-              <label for="group-checkin">Check-in</label>
-              <input id="group-checkin" name="checkin" type="date" required>
-              <div class="day-use" id="group-day-use-label"></div>
-              <div class="error-text" id="group-date-error"></div>
-            </div>
-            <div class="row">
-              <label for="group-checkout">Check-out</label>
-              <input id="group-checkout" name="checkout" type="date" required>
-            </div>
-            <div class="row">
-              <label for="group-nights">Nights</label>
-              <input id="group-nights" name="nights" type="text"
-                     class="readonly" readonly>
-            </div>
-          </div>
+          <!-- Dates -->
+<div class="grid-2">
+  <div class="row">
+    abel for="group-checkin">Check-in</label>
+    <input id="group-checkin" name="checkin" type="date" required>
+    <div class="day-use" id="group-day-use-label"></div>
+    <div class="error-text" id="group-date-error"></div>
+  </div>
+  <div class="row">
+    abel for="group-checkout">Check-out</label>
+    <input id="group-checkout" name="checkout" type="date" required>
+  </div>
+</div>
 
-          <!-- Day‑use time inputs (hidden by default) -->
-          <div class="grid-2 dayuse-time-wrap" id="group-day-use-times" style="display:none;">
-            <div class="row">
-              <label for="group-day-from">From Time</label>
-              <input id="group-day-from" name="dayFrom" type="time">
-            </div>
-            <div class="row">
-              <label for="group-day-to">To Time</label>
-              <input id="group-day-to" name="dayTo" type="time">
-            </div>
-          </div>
+<!-- Nights - Total Rooms -->
+<div class="grid-2">
+  <div class="row">
+    abel for="group-nights">Nights</label>
+    <input id="group-nights" name="nights" type="text"
+           class="readonly" readonly>
+  </div>
+  <div class="row">
+    abel for="group-rooms">Total Rooms</label>
+    <input id="group-rooms" name="rooms" type="number" min="1"
+           placeholder="15" required>
+  </div>
+</div>
 
-          <!-- Rooms / Adults / Extra Beds -->
-          <div class="grid-3">
-            <div class="row">
-              <label for="group-rooms">Total Rooms</label>
-              <input id="group-rooms" name="rooms" type="number" min="1"
-                     placeholder="15" required>
-            </div>
-            <div class="row">
-              <label for="group-adults">Adults</label>
-              <input id="group-adults" name="adults" type="number" min="1"
-                     placeholder="30" required>
-            </div>
-            <div class="row">
-              <label for="group-extra-bed">Extra Beds</label>
-              <input id="group-extra-bed" name="extraBed" type="number" min="0"
-                     placeholder="0">
-            </div>
-          </div>
+<!-- Adults - Extra Adult (triple occupancy) -->
+<div class="grid-2">
+  <div class="row">
+    abel for="group-adults">Adults</label>
+    <input id="group-adults" name="adults" type="number" min="1"
+           placeholder="30" required>
+  </div>
+  <div class="row">
+    abel for="group-extra-bed">Extra Adult (triple occupancy)</label>
+    <input id="group-extra-bed" name="extraBed" type="number" min="0"
+           placeholder="0">
+  </div>
+</div>
 
+<!-- Any Kids (Age) - Room Category -->
+<div class="grid-2">
+  <div class="row">
+    abel for="group-kids-age">Any Kids (Age)</label>
+    <input id="group-kids-age" name="kidsAge" type="text"
+           placeholder="e.g. 5 yrs, 8 yrs">
+  </div>
+  <div class="row">
+    abel for="group-room-category">Room Category</label>
+    <input id="group-room-category" name="roomCategory" type="text"
+           placeholder="Deluxe, Super Deluxe, Suite, etc.">
+  </div>
+</div>
+
+<!-- Day‑use time inputs (hidden by default) -->
+<div class="grid-2 dayuse-time-wrap" id="group-day-use-times" style="display:none;">
+  <div class="row">
+    abel for="group-day-from">From Time</label>
+    <input id="group-day-from" name="dayFrom" type="time">
+  </div>
+  <div class="row">
+    abel for="group-day-to">To Time</label>
+    <input id="group-day-to" name="dayTo" type="time">
+  </div>
+</div>
           <!-- Meal Plan / Mobile -->
           <div class="grid-2">
             <div class="row">
