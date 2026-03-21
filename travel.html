@@ -13,9 +13,11 @@
   <meta name="author" content="Fodel Travels" />
   <meta name="robots" content="index,follow" />
 
-  //fonts.googleapis.com" />
-  //fonts.gstatic.com" crossorigin />
-  //fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Google Fonts – fixed, will NOT show as text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
 
   <style>
     :root{
@@ -133,10 +135,7 @@
       max-width:850px;
       color:#e6fffb;
     }
-    /* Extra gap above the agent question row */
-.row-agent {
-  margin-top: 8px;
-}
+
     .section{
       width:min(1100px,92%);
       margin:24px auto 36px;
@@ -396,6 +395,8 @@
     .agent-checkbox:hover{background:#f3f4f6}
     .agent-checkbox input{width:auto;margin:0}
 
+    .row-agent{margin-top:8px;} /* extra spacing before agent row */
+
     .error-text{
       color:#dc2626;font-size:11px;margin-top:4px;
       display:none;
@@ -614,14 +615,14 @@
       <form class="modal-body" id="form-hotel" data-category="Room Request">
         <!-- Region / Area -->
         <div class="row">
-          <Label>Region</label>
+          <label>Region</label>
           <div class="btn-group" data-group="hotel-region">
             <div class="btn-tab active" data-value="Jammu & Kashmir">Jammu & Kashmir</div>
           </div>
         </div>
 
         <div class="row">
-          <Label>Area</label>
+          <label>Area</label>
           <div class="btn-group" data-group="hotel-area">
             <div class="btn-tab active" data-value="All">All</div>
             <div class="btn-tab" data-value="Jammu">Jammu</div>
@@ -751,7 +752,7 @@
               <option value="Yes">Yes</option>
             </select>
             <div class="info-text" id="hotel-transport-info" style="display:none;">
-              You can check our
+              We also have transport services. You can check our
               <a href="https://www.fodel.in/transport.html" target="_blank" style="color:#0f766e; text-decoration:underline;">transport services</a>.
             </div>
           </div>
@@ -766,13 +767,12 @@
         </div>
 
         <!-- Are you a travel agent? -->
-    <div class="row row-agent">
-  abel class="agent-checkbox" onclick="toggleAgent('hotel-agent-wrap')">
-    <input type="checkbox" id="hotel-agent" name="isAgent">
-    Are you a travel agent?
-  </label>
-</div>
-
+        <div class="row row-agent">
+          <label class="agent-checkbox" onclick="toggleAgent('hotel-agent-wrap')">
+            <input type="checkbox" id="hotel-agent" name="isAgent">
+            Are you a travel agent?
+          </label>
+        </div>
         <div class="row agent-wrap" id="hotel-agent-wrap">
           <label for="hotel-agent-name">Agent Company Name</label>
           <input id="hotel-agent-name" name="agentCompany" type="text"
@@ -805,14 +805,14 @@
       <form class="modal-body" id="form-banquet" data-category="Event Venue Request">
         <!-- Region / Area -->
         <div class="row">
-          <Label>Region</label>
+          <label>Region</label>
           <div class="btn-group" data-group="event-region">
             <div class="btn-tab active" data-value="Jammu & Kashmir">Jammu & Kashmir</div>
           </div>
         </div>
 
         <div class="row">
-          <Label>Area</label>
+          <label>Area</label>
           <div class="btn-group" data-group="event-area">
             <div class="btn-tab active" data-value="All">All</div>
             <div class="btn-tab" data-value="Jammu">Jammu</div>
@@ -822,7 +822,7 @@
           </div>
         </div>
 
-        <!-- Venue / Manual -->
+        <!-- Venue / Event type -->
         <div class="grid-2 full-on-mobile">
           <div class="row">
             <label for="event-venue">Venue / Hall</label>
@@ -936,7 +936,7 @@
         </div>
 
         <!-- Are you a travel agent? -->
-        <div class="row">
+        <div class="row row-agent">
           <label class="agent-checkbox" onclick="toggleAgent('event-agent-wrap')">
             <input type="checkbox" id="event-agent" name="isAgent">
             Are you a travel agent?
@@ -974,14 +974,14 @@
       <form class="modal-body" id="form-group" data-category="Group Stay Request">
         <!-- Region / Area -->
         <div class="row">
-         <label>Region</label>
+          <label>Region</label>
           <div class="btn-group" data-group="group-region">
             <div class="btn-tab active" data-value="Jammu & Kashmir">Jammu & Kashmir</div>
           </div>
         </div>
 
         <div class="row">
-         <label>Area</label>
+          <label>Area</label>
           <div class="btn-group" data-group="group-area">
             <div class="btn-tab active" data-value="All">All</div>
             <div class="btn-tab" data-value="Jammu">Jammu</div>
@@ -1122,18 +1122,17 @@
         </div>
 
         <!-- Agent checkbox -->
-       <div class="row row-agent">
-  <label class="agent-checkbox" onclick="toggleAgent('group-agent-wrap')">
-    <input type="checkbox" id="group-agent" name="isAgent">
-    Are you a travel agent?
-  </label>
-</div>
-<div class="row agent-wrap" id="group-agent-wrap">
-  <label for="group-agent-name">Agent Company Name</label>
-  <input id="group-agent-name" name="agentCompany" type="text"
-         placeholder="Your travel agency name" />
-</div>
-
+        <div class="row row-agent">
+          <label class="agent-checkbox" onclick="toggleAgent('group-agent-wrap')">
+            <input type="checkbox" id="group-agent" name="isAgent">
+            Are you a travel agent?
+          </label>
+        </div>
+        <div class="row agent-wrap" id="group-agent-wrap">
+          <label for="group-agent-name">Agent Company Name</label>
+          <input id="group-agent-name" name="agentCompany" type="text"
+                 placeholder="Your travel agency name" />
+        </div>
 
         <!-- Requirements / Notes -->
         <div class="row">
