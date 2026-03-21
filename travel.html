@@ -1,192 +1,514 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fodel Travels - LIVE TEST DEMO</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fodel Travels | Rooms, Events & Group Stays - Jammu & Kashmir</title>
+  <meta name="description" content="Book rooms, event venues, and group stays across Jammu & Kashmir, Katra, Patnitop. Packages coming soon.">
+  <meta name="robots" content="index,follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    /* [Complete CSS from previous response - abbreviated for space] */
-    :root{--page-bg:#f8fafc;--accent:#397e51;--brand-yellow:#f9e64a;--text:#111827;--muted:#374151;--card:#fff;--border:#e5e7eb;--btn:#0f766e;--radius:12px}
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:"Segoe UI",system-ui,sans-serif;background:#f8fafc;color:#111;padding:20px;max-width:800px;margin:auto}
-    .demo-header{background:linear-gradient(135deg,#0f766e,#2d6a51);color:white;padding:20px;border-radius:16px;text-align:center;margin-bottom:30px}
-    .demo-header h1{font-size:24px;margin:0}
-    .demo-header p{font-size:14px;opacity:0.9;margin:5px 0 0}
-    .test-section{background:white;border-radius:16px;padding:24px;margin-bottom:24px;box-shadow:0 10px 30px rgba(0,0,0,0.1);border:1px solid #e5e7eb}
-    .test-section h3{color:#0f766e;font-size:18px;margin-bottom:16px;border-bottom:2px solid #f0f9ff;padding-bottom:8px}
-    button{background:#0f766e;color:white;border:none;padding:12px 24px;border-radius:10px;cursor:pointer;font-weight:600;font-size:16px;transition:all 0.2s}
-    button:hover{background:#0b5f58;transform:translateY(-1px)}
-    .status{display:flex;align-items:center;gap:8px;font-weight:600;padding:12px;border-radius:8px;margin:12px 0}
-    .status.passed{background:#dcfce7;color:#166534;border:1px solid #bbf7d0}
-    .status.failed{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
-    .modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);display:none;align-items:center;justify-content:center;padding:20px;z-index:1000}
-    .modal-content{background:white;max-width:500px;width:90%;max-height:90vh;overflow-y:auto;border-radius:16px;padding:24px;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
-    .close{position:absolute;top:16px;right:20px;font-size:24px;cursor:pointer;color:#666}
-    input,select{width:100%;padding:12px;border:1px solid #d1d5db;border-radius:8px;font-size:14px;margin-bottom:12px;box-sizing:border-box}
-    input:focus,select:focus{outline:none;border-color:#0f766e;box-shadow:0 0 0 3px rgba(15,118,110,0.1)}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    @media(max-width:640px){.grid-3,.grid-2{grid-template-columns:1fr}}
-    .day-use,.manual-wrap{display:none;color:#059669;font-weight:600;font-size:12px}
-    .day-use.active,.manual-wrap.active{display:block}
-    .hotel-manual-link{color:#059669;text-decoration:underline;cursor:pointer;font-size:12px;display:block;margin-top:4px}
-    .error-msg{color:#dc2626;font-size:12px;display:none}
-    .error-msg.show{display:block}
+    :root{--page-bg:#f8fafc;--accent:#397e51;--brand-yellow:#f9e64a;--text:#111827;--muted:#374151;--card:rgba(255,255,255,0.98);--border:rgba(17,24,39,0.12);--btn:#0f766e;--radius:18px;--shadow:0 14px 30px rgba(17,24,39,0.18);--shadow-lg:0 24px 60px rgba(17,24,39,0.25)}
+    *, *::before, *::after{box-sizing:border-box}
+    html,body{overflow-x:hidden}
+    body{font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--text);background:var(--page-bg);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    a{color:inherit;text-decoration:none}
+    body.modal-open{overflow:hidden}
+    :focus-visible{outline:3px solid rgba(17,24,39,0.75);outline-offset:3px;border-radius:10px}
+    .banner{position:relative;min-height:42vh;display:grid;place-items:center;text-align:center;color:#0b1220;background:radial-gradient(1000px 700px at 85% 15%, rgba(249,230,74,0.25), transparent 60%),radial-gradient(900px 600px at 15% 85%, rgba(249,230,74,0.18), transparent 65%),linear-gradient(160deg, #0f766e 0%, #0b5f58 55%, #0a4f4a 100%);}
+    @media (max-width:640px){.banner{min-height:34vh}}
+    .banner-inner{width:min(1100px,92%);margin:auto;padding:24px}
+    .topbar{position:absolute;left:0;right:0;top:20px;padding:0 16px;width:100%;display:flex;justify-content:space-between;align-items:center;gap:14px;color:#fff;box-sizing:border-box}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;white-space:nowrap;min-width:0}
+    .brand-badge{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#ffffff1a;color:#fff;border:1px solid #ffffff40;flex-shrink:0}
+    .topbar a{text-decoration:none;color:inherit}
+    .nav{display:flex;align-items:center;gap:8px;flex-wrap:nowrap;max-width:100%}
+    .pill-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;font-size:14px;font-weight:600;border-radius:10px;white-space:nowrap;border:0;color:#fff;box-shadow:0 4px 12px rgba(0,0,0,0.18);transition:transform .2s, background .2s;cursor:pointer}
+    .pill-btn:hover{transform:translateY(-2px)}
+    .reviews-btn{background:#0b1220}.reviews-btn:hover{background:#111827}
+    .home-btn{background:#2d6a51}
+    @media (max-width:640px){.topbar{top:14px;padding:0 14px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px}.brand{font-size:17px;gap:8px}.brand-badge{width:30px;height:30px}.nav{gap:6px;justify-self:end}.pill-btn{padding:5px 9px;font-size:13px;border-radius:8px;box-shadow:0 3px 8px rgba(0,0,0,0.18)}}
+    @media (max-width:380px){.topbar{grid-template-columns:1fr;row-gap:6px}.nav{justify-self:start}}
+    .hero{display:grid;gap:14px;justify-items:center;padding:40px 0 30px;color:#f1faf8}
+    .hero h1{font-size:clamp(28px,5vw,44px);font-weight:700}.hero p{font-size:16px;max-width:850px;color:#e6fffb}
+    .section{width:min(1100px,92%);margin:24px auto 48px;text-align:center}.section h2{font-size:26px;margin-bottom:8px}.separator{width:90px;height:3px;margin:16px auto;background:linear-gradient(90deg,var(--brand-yellow),transparent);border-radius:6px}
+    .cards{display:grid;grid-template-columns:1fr;gap:26px;margin-top:28px}@media(min-width:760px){.cards{grid-template-columns:repeat(3,1fr)}}
+    .card{text-align:left;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;box-shadow:var(--shadow);transition:.25s}.card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);background:#fff}
+    .card h3{display:flex;align-items:center;gap:10px;font-size:18px;margin-bottom:8px}
+    .icon{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#fff}.icon svg{width:20px;height:20px;display:block}
+    .card p{color:var(--muted);font-size:14px;margin-bottom:14px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:12px;background:var(--btn);color:#fff;border:1px solid transparent;text-decoration:none;font-weight:600;font-size:16px;letter-spacing:0.2px;box-shadow:0 8px 20px rgba(0,0,0,0.14);transition:transform .18s ease, box-shadow .18s ease;cursor:pointer}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,0.18)}
+    .overlay{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,0.45);display:none;align-items:center;justify-content:center;padding:18px}
+    .overlay.active{display:flex}
+    .modal{width:min(760px,100%);max-height:90svh;border-radius:16px;background:#ffffff;color:#0f172a;border:1px solid rgba(17,24,39,0.14);box-shadow:0 30px 80px rgba(0,0,0,0.35);overflow:hidden;display:flex;flex-direction:column;animation:pop .18s ease-out both}
+    .modal-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;color:#fff;background:linear-gradient(90deg, var(--accent), #3f8f5b);position:sticky;top:0;z-index:1}
+    .modal-title{font-weight:600}
+    .modal-close{background:transparent;border:none;color:#fff;cursor:pointer;font-size:20px;line-height:1;padding:6px 10px;border-radius:8px;transition:background .2s}
+    .modal-close:hover{background:rgba(255,255,255,0.18)}
+    .modal-body{padding:16px;overflow:auto;-webkit-overflow-scrolling:touch}
+    @media (max-width:640px){.overlay{align-items:stretch}.modal{width:100%;height:100svh;max-height:none;border-radius:0}}
+    .grid-2,.grid-3{display:grid;grid-template-columns:1fr;gap:12px}
+    @media (min-width:640px){.grid-2{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:repeat(3,1fr)}}
+    .btn-group{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+    .btn-tab{display:inline-flex;align-items:center;gap:4px;padding:10px 14px;font-size:13px;font-weight:600;border-radius:12px;border:2px solid #e5e7eb;color:var(--text);background:#f9fafb;transition:all .2s;cursor:pointer;min-height:42px;box-sizing:border-box}
+    .btn-tab.active{border-color:var(--accent);background:var(--accent);color:#fff;box-shadow:0 4px 12px rgba(57,126,81,0.3)}
+    @media (max-width:480px){.btn-tab{padding:8px 12px;font-size:12px}}
+    label{display:block;font-weight:600;font-size:12.8px;margin-bottom:5px;color:#0f172a}
+    input[type="text"],input[type="email"],input[type="tel"],input[type="date"],input[type="time"],input[type="number"],select,textarea{
+      width:100%;padding:12px 12px;border-radius:10px;border:1px solid rgba(15,23,42,0.18);background:#fff;font:inherit;font-size:14px;color:#0f172a;outline:none;transition:border-color .15s, box-shadow .15s}
+    textarea{min-height:90px;resize:vertical}
+    input:focus,select:focus,textarea:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,0.15)}
+    .readonly{background:#f1f5f9}
+    .actions{display:flex;gap:10px;justify-content:flex-end;margin-top:14px}
+    .btn-ghost{padding:10px 14px;border-radius:10px;font-weight:600;background:#f1f5f9;color:#0f172a;border:none;cursor:pointer;transition:background .2s}
+    .btn-ghost:hover{background:#e5e7eb}
+    .btn-primary{padding:12px 16px;border-radius:10px;font-weight:700;letter-spacing:.2px;background:var(--btn);color:#fff;border:none;cursor:pointer;box-shadow:0 10px 24px rgba(0,0,0,0.22);transition:transform .15s ease}
+    .btn-primary:hover{transform:translateY(-1px)}
+    .toast{position:fixed;bottom:18px;right:18px;z-index:60;background:#0f766e;color:#fff;padding:12px 14px;border-radius:10px;box-shadow:0 12px 24px rgba(0,0,0,0.2);display:none}
+    .toast.show{display:block;animation:slideUp .25s ease-out both}
+    .footer{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin:0 auto 26px;width:min(1100px,92%)}
+    .chip{padding:8px 14px;border-radius:999px;background:#fff;border:1px solid var(--border);text-decoration:none;font-size:14px;color:var(--text);transition:.2s;box-shadow:0 6px 14px rgba(0,0,0,0.08)}
+    .chip:hover{transform:translateY(-2px)}
+    .copy{text-align:center;width:100%;margin-top:6px;font-size:12px;opacity:.78}
+    .fw-whatsapp{position:fixed;right:16px;bottom:16px;z-index:70}
+    .fw-btn{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;box-shadow:0 12px 24px rgba(0,0,0,0.22);border:1px solid rgba(255,255,255,0.35);text-decoration:none;transition:transform .18s, box-shadow .18s, background .18s}
+    .fw-btn:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(0,0,0,0.26);background:#20c65a}
+    .fw-btn svg{display:block}
+    .fw-pulse{position:absolute;inset:-8px;border-radius:999px;background:rgba(37,211,102,0.18);filter:blur(8px);opacity:.8;animation:fwPulse 2.2s ease-in-out infinite;z-index:-1}
+    .manual-wrap{display:none}
+    .manual-wrap.active{display:block}
+    .day-use{display:block;font-size:11px;color:#059669;font-weight:600;margin-top:4px}
+    .agent-wrap{display:none}
+    .agent-wrap.active{display:block}
+    .agent-checkbox{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;cursor:pointer;padding:12px;border:1px solid #e5e7eb;border-radius:10px;background:#f9fafb;transition:all .2s}
+    .agent-checkbox:hover{background:#f3f4f6}
+    .agent-checkbox input{width:auto;margin:0}
+    .error-text{color:#dc2626;font-size:11px;margin-top:4px;display:none}
+    .dayuse-time-wrap{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px;}
+    .link-btn{
+      margin-top:6px;padding:0;border:none;background:none;color:#2563eb;font-size:12px;cursor:pointer;text-decoration:underline;
+    }
+    .link-btn:hover{color:#1d4ed8}
+    @keyframes fwPulse{0%{transform:scale(.9);opacity:.55}50%{transform:scale(1.05);opacity:.85}100%{transform:scale(.9);opacity:.55}}
+    @keyframes pop{from{transform:scale(.98);opacity:.7}to{transform:scale(1);opacity:1}}
+    @keyframes slideUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
   </style>
 </head>
 <body>
-  <div class="demo-header">
-    <h1>🧪 Fodel Travels - LIVE TEST DEMO</h1>
-    <p>All 4 requirements working ✅ | Copy this file to test instantly</p>
-  </div>
+  <header class="banner">
+    <div class="topbar">
+      <a class="brand" href="index.html">
+        <div class="brand-badge">🏨</div><span>Fodel Travels</span>
+      </a>
+      <nav class="nav">
+        <a class="pill-btn reviews-btn" href="reviews-travels.html">⭐ Reviews</a>
+        <a class="pill-btn home-btn" href="index.html">← Home</a>
+      </nav>
+    </div>
+    <div class="banner-inner">
+      <div class="hero">
+        <h1>Rooms, event venues, and group stays across Jammu & Kashmir</h1>
+        <p>Quick booking requests for Katra, Patnitop, Jammu and Srinagar. Packages coming soon.</p>
+      </div>
+    </div>
+  </header>
 
-  <!-- TEST BUTTONS -->
-  <div class="test-section">
-    <h3>🎯 Test All Features</h3>
-    <button onclick="openHotelModal()">🛏️ Test Room Booking Modal</button>
-    <div id="test-status"></div>
-  </div>
+  <section class="section">
+    <h2>Travel Services</h2>
+    <div class="separator"></div>
+    <div class="cards">
+      <div class="card">
+        <h3><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M4 7h12a4 4 0 0 1 4 4v5h-2v-3H4v3H2v-6a3 3 0 0 1 2-3zm2 2a2 2 0 1 0 0 4h6a2 2 0 1 0 0-4H6z"/></svg></span>Rooms</h3>
+        <p>Hotel rooms across Jammu & Kashmir, Katra and Patnitop.</p>
+        <button class="btn" data-open="modal-hotel">Room Request →</button>
+      </div>
+      <div class="card">
+        <h3><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M3 6h18v12H3z"/><path d="M3 9h18v2H3zM7 18h2v3H7zM15 18h2v3h-2z"/></svg></span>Event Venues</h3>
+        <p>Banquets, weddings, corporate meetings and celebrations.</p>
+        <button class="btn" data-open="modal-banquet">Venue Request →</button>
+      </div>
+      <div class="card">
+        <h3><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M16 11a3 3 0 1 0-3-3 3 3 0 0 0 3 3ZM7 12a3 3 0 1 0-3-3 3 3 0 0 0 3 3Z"/><path d="M15 14c-2.7 0-8 1.35-8 4v2h12v-2c0-2.65-5.3-4-8-4Z"/></svg></span>Bulk Bookings</h3>
+        <p>Group stays for pilgrim groups, tours and corporate travel.</p>
+        <button class="btn" data-open="modal-group">Group Request →</button>
+      </div>
+    </div>
+  </section>
 
-  <!-- HOTEL MODAL - COMPLETE WORKING VERSION -->
-  <div id="test-modal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <h2>🛏️ Room Request - LIVE TEST</h2>
-      
-      <form id="test-form">
-        <label>Hotel / Property</label>
-        <select id="test-hotel" required>
-          <option value="">Select a property</option>
-          <option>Hotel Grand Kashmir</option>
-          <option>Katra View Resort</option>
-        </select>
-        <div class="hotel-manual-link" onclick="toggleManualEntry()">Can't find your hotel? Enter manually</div>
-        <div class="manual-wrap" id="test-manual-wrap">
-          <input id="test-manual" placeholder="Type exact hotel name">
+  <!-- ====================== ROOM MODAL ====================== -->
+  <div id="modal-hotel" class="overlay" role="dialog" aria-modal="true" aria-labelledby="hotel-title">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title" id="hotel-title">Room Request</div>
+        <button class="modal-close" data-close>✕</button>
+      </div>
+      <form class="modal-body" id="form-hotel">
+        <!-- Region / Area (unchanged) -->
+        <div class="row"><label>Region</label><div class="btn-group" data-group="hotel-region"><div class="btn-tab active" data-value="Jammu & Kashmir">Jammu & Kashmir</div></div></div>
+        <div class="row"><label>Area</label><div class="btn-group" data-group="hotel-area"><div class="btn-tab active" data-value="All">All</div><div class="btn-tab" data-value="Jammu">Jammu</div><div class="btn-tab" data-value="Kashmir">Kashmir</div><div class="btn-tab" data-value="Katra">Katra</div><div class="btn-tab" data-value="Patnitop">Patnitop</div></div></div>
+
+        <!-- Hotel / Property + Manual entry link -->
+        <div class="grid-2">
+          <div class="row">
+            <label for="hotel-name">Hotel / Property</label>
+            <select id="hotel-name" name="hotelName" required>
+              <option value="">Select a property</option>
+              <option>Hotel Grand Kashmir</option>
+              <option>Katra View Resort</option>
+              <option>Jammu City Inn</option>
+              <option>Patnitop Heights</option>
+            </select>
+            <button type="button" class="link-btn" id="hotel-manual-toggle">Can't find your hotel? Enter manually</button>
+          </div>
+          <div class="row manual-wrap" id="hotel-manual-wrap">
+            <label for="hotel-manual">Enter hotel name</label>
+            <input id="hotel-manual" name="hotelManual" type="text" placeholder="Type exact hotel name" />
+          </div>
         </div>
 
+        <!-- Dates, Nights, Day‑use label -->
         <div class="grid-3">
-          <div>
-            <label>Check-in</label>
-            <input id="test-checkin" type="date" required onchange="calcNights()">
+          <div class="row">
+            <label for="hotel-checkin">Check-in</label>
+            <input id="hotel-checkin" name="checkin" type="date" required>
+            <div class="day-use" id="hotel-day-use-label"></div>
+            <div class="error-text" id="hotel-date-error"></div>
           </div>
-          <div>
-            <label>Check-out</label>
-            <input id="test-checkout" type="date" required onchange="calcNights()">
-            <div class="error-msg" id="test-error">Cannot select past date!</div>
+          <div class="row">
+            <label for="hotel-checkout">Check-out</label>
+            <input id="hotel-checkout" name="checkout" type="date" required>
           </div>
-          <div>
-            <label>Nights</label>
-            <input id="test-nights" type="number" readonly class="readonly">
-          </div>
-        </div>
-
-        <div class="day-use" id="test-day-use">
-          📅 Day Use Room (5-6 Hours)
-          <div style="display:flex;gap:8px;margin-top:8px">
-            <input type="time" placeholder="From" style="width:48%">
-            <input type="time" placeholder="To" style="width:48%">
+          <div class="row">
+            <label for="hotel-nights">Nights</label>
+            <input id="hotel-nights" name="nights" type="text" class="readonly" readonly>
           </div>
         </div>
 
-        <button type="submit">✅ TEST SUBMIT (Works!)</button>
+        <!-- Day‑use time inputs (hidden by default) -->
+        <div class="grid-2 dayuse-time-wrap" id="hotel-day-use-times" style="display:none;">
+          <div class="row"><label for="hotel-day-from">From Time</label><input id="hotel-day-from" name="dayFrom" type="time"></div>
+          <div class="row"><label for="hotel-day-to">To Time</label><input id="hotel-day-to" name="dayTo" type="time"></div>
+        </div>
+
+        <!-- Rooms / Adults / Extra Beds -->
+        <div class="grid-3">
+          <div class="row"><label for="hotel-rooms">Rooms</label><input id="hotel-rooms" name="rooms" type="number" min="1" placeholder="2" required></div>
+          <div class="row"><label for="hotel-adults">Adults</label><input id="hotel-adults" name="adults" type="number" min="1" placeholder="2" required></div>
+          <div class="row"><label for="hotel-extra-bed">Extra Beds</label><input id="hotel-extra-bed" name="extraBed" type="number" min="0" placeholder="0"></div>
+        </div>
+
+        <!-- Meal Plan / Mobile -->
+        <div class="grid-2">
+          <div class="row"><label for="hotel-meal">Meal Plan</label><select id="hotel-meal" name="meal" required><option value="">Select</option><option>EP (Room Only)</option><option>CP (Breakfast)</option><option>MAP (2 Meals)</option><option>APAI (All Meals)</option></select></div>
+          <div class="row"><label for="hotel-mobile">Mobile</label><input id="hotel-mobile" name="mobile" type="tel" placeholder="+91 9XXXXXXXXX" required></div>
+        </div>
+
+        <!-- Agent checkbox -->
+        <div class="row"><label class="agent-checkbox" onclick="toggleAgent('hotel-agent-wrap')"><input type="checkbox" id="hotel-agent" name="isAgent"> Are you a travel agent?</label></div>
+        <div class="row agent-wrap" id="hotel-agent-wrap"><label for="hotel-agent-name">Agent Company Name</label><input id="hotel-agent-name" name="agentCompany" type="text" placeholder="Your travel agency name" /></div>
+
+        <!-- Email / Notes -->
+        <div class="grid-2">
+          <div class="row"><label for="hotel-email">Email</label><input id="hotel-email" name="email" type="email" placeholder="name@example.com" required></div>
+          <div class="row"><label for="hotel-notes">Notes</label><textarea id="hotel-notes" name="notes" placeholder="Special requests..."></textarea></div>
+        </div>
+
+        <div class="actions">
+          <button class="btn-ghost" type="button" data-close>Cancel</button>
+          <button class="btn-primary" type="submit">Submit Request</button>
+        </div>
       </form>
     </div>
   </div>
 
+  <!-- ====================== VENUE MODAL (unchanged aside from min date) ====================== -->
+  <div id="modal-banquet" class="overlay" role="dialog" aria-modal="true" aria-labelledby="banquet-title">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title" id="banquet-title">Venue Request</div>
+        <button class="modal-close" data-close>✕</button>
+      </div>
+      <form class="modal-body" id="form-banquet">
+        <div class="row"><label>Region</label><div class="btn-group" data-group="event-region"><div class="btn-tab active" data-value="Jammu & Kashmir">Jammu & Kashmir</div></div></div>
+        <div class="row"><label>Area</label><div class="btn-group" data-group="event-area"><div class="btn-tab active" data-value="All">All</div><div class="btn-tab" data-value="Jammu">Jammu</div><div class="btn-tab" data-value="Kashmir">Kashmir</div><div class="btn-tab" data-value="Katra">Katra</div><div class="btn-tab" data-value="Patnitop">Patnitop</div></div></div>
+        <div class="grid-2">
+          <div class="row"><label for="event-venue">Venue / Hall</label><select id="event-venue" name="venue" required onchange="toggleManualEntry(this, 'event-manual-wrap', 'event-manual')"><option value="">Select a venue</option><option>Grand Banquet Hall</option><option>Katra Celebration Hall</option><option>Srinagar Event Lawn</option><option data-manual="true">Not listed? Enter manually</option></select></div>
+          <div class="row manual-wrap" id="event-manual-wrap"><label for="event-manual">Enter venue name</label><input id="event-manual" name="venueManual" type="text" placeholder="Type venue name" /></div>
+        </div>
+        <div class="grid-2">
+          <div class="row"><label for="event-date">Event Date</label><input id="event-date" name="eventDate" type="date" required></div>
+          <div class="row"><label for="min-guarantee">Min. Guarantee</label><input id="min-guarantee" name="minGuarantee" type="number" min="10" placeholder="100" required></div>
+        </div>
+        <div class="grid-2">
+          <div class="row"><label for="banquet-session">Session</label><select id="banquet-session" name="session" required><option value="">Select</option><option>Breakfast</option><option>Lunch</option><option>Hi-Tea</option><option>Dinner</option></select></div>
+          <div class="row"><label for="event-type">Event Type</label><input id="event-type" name="eventType" type="text" placeholder="Wedding, Conference, etc." required /></div>
+        </div>
+        <div class="grid-2"><div class="row"><label for="event-start">Start Time</label><input id="event-start" name="eventStart" type="time"></div><div class="row"><label for="event-end">End Time</label><input id="event-end" name="eventEnd" type="time"></div></div>
+        <div class="grid-2"><div class="row"><label for="decoration">Decoration Needs</label><textarea id="decoration" name="decoration" placeholder="Floral, Stage, Theme color..."></textarea></div><div class="row"><label for="av-requirement">AV Requirements</label><textarea id="av-requirement" name="avRequirement" placeholder="Sound, Projector, LED screen..."></textarea></div>
+        <div class="row"><label class="agent-checkbox" onclick="toggleAgent('event-agent-wrap')"><input type="checkbox" id="event-agent" name="isAgent"> Are you a travel agent?</label></div>
+        <div class="row agent-wrap" id="event-agent-wrap"><label for="event-agent-name">Agent Company Name</label><input id="event-agent-name" name="agentCompany" type="text" placeholder="Your travel agency name" /></div>
+        <div class="grid-2"><div class="row"><label for="banquet-mobile">Mobile</label><input id="banquet-mobile" name="mobile" type="tel" placeholder="+91 9XXXXXXXXX" required></div><div class="row"><label for="banquet-email">Email</label><input id="banquet-email" name="email" type="email" placeholder="name@example.com" required></div></div>
+        <div class="row"><label for="banquet-notes">Event Details</label><textarea id="banquet-notes" name="notes" placeholder="Additional requirements..."></textarea></div>
+        <div class="actions"><button class="btn-ghost" type="button" data-close>Cancel</button><button class="btn-primary" type="submit">Submit Request</button></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ====================== GROUP MODAL ====================== -->
+  <div id="modal-group" class="overlay" role="dialog" aria-modal="true" aria-labelledby="group-title">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title" id="group-title">Group Stay Request</div>
+        <button class="modal-close" data-close>✕</button>
+      </div>
+      <form class="modal-body" id="form-group">
+        <div class="row"><label>Region</label><div class="btn-group" data-group="group-region"><div class="btn-tab active" data-value="Jammu & Kashmir">Jammu & Kashmir</div></div></div>
+        <div class="row"><label>Area</label><div class="btn-group" data-group="group-area"><div class="btn-tab active" data-value="All">All</div><div class="btn-tab" data-value="Jammu">Jammu</div><div class="btn-tab" data-value="Kashmir">Kashmir</div><div class="btn-tab" data-value="Katra">Katra</div><div class="btn-tab" data-value="Patnitop">Patnitop</div></div></div>
+        <div class="grid-2">
+          <div class="row"><label for="group-property">Property / Hotel</label><select id="group-property" name="property" required onchange="toggleManualEntry(this, 'group-manual-wrap', 'group-manual')"><option value="">Select a property</option><option>Hotel Grand Kashmir</option><option>Katra View Resort</option><option>Jammu City Inn</option><option data-manual="true">Not listed? Enter manually</option></select></div>
+          <div class="row manual-wrap" id="group-manual-wrap"><label for="group-manual">Enter property name</label><input id="group-manual" name="propertyManual" type="text" placeholder="Type property name" /></div>
+        </div>
+        <div class="row"><label for="group-name">Company / Group Name <span style="color:#6b7280;font-size:12px">(Required)</span></label><input id="group-name" name="groupName" type="text" placeholder="ABC Pilgrims Group / XYZ Corp" required /></div>
+        <div class="grid-3">
+          <div class="row"><label for="group-checkin">Check-in</label><input id="group-checkin" name="checkin" type="date" required><div class="day-use" id="group-day-use-label"></div><div class="error-text" id="group-date-error"></div></div>
+          <div class="row"><label for="group-checkout">Check-out</label><input id="group-checkout" name="checkout" type="date" required></div>
+          <div class="row"><label for="group-nights">Nights</label><input id="group-nights" name="nights" type="text" class="readonly" readonly></div>
+        </div>
+        <div class="grid-2 dayuse-time-wrap" id="group-day-use-times" style="display:none;">
+          <div class="row"><label for="group-day-from">From Time</label><input id="group-day-from" name="dayFrom" type="time"></div>
+          <div class="row"><label for="group-day-to">To Time</label><input id="group-day-to" name="dayTo" type="time"></div>
+        </div>
+        <div class="grid-3">
+          <div class="row"><label for="group-rooms">Total Rooms</label><input id="group-rooms" name="rooms" type="number" min="1" placeholder="15" required></div>
+          <div class="row"><label for="group-adults">Adults</label><input id="group-adults" name="adults" type="number" min="1" placeholder="30" required></div>
+          <div class="row"><label for="group-extra-bed">Extra Beds</label><input id="group-extra-bed" name="extraBed" type="number" min="0" placeholder="0"></div>
+        </div>
+        <div class="grid-2">
+          <div class="row"><label for="group-meal">Meal Plan</label><select id="group-meal" name="meal" required><option value="">Select</option><option>EP (Room Only)</option><option>CP (Breakfast)</option><option>MAP (2 Meals)</option><option>APAI (All Meals)</option></select></div>
+          <div class="row"><label for="group-mobile">Mobile</label><input id="group-mobile" name="mobile" type="tel" placeholder="+91 9XXXXXXXXX"></div>
+        </div>
+        <div class="row"><label class="agent-checkbox" onclick="toggleAgent('group-agent-wrap')"><input type="checkbox" id="group-agent" name="isAgent"> Are you a travel agent?</label></div>
+        <div class="row agent-wrap" id="group-agent-wrap"><label for="group-agent-name">Agent Company Name</label><input id="group-agent-name" name="agentCompany" type="text" placeholder="Your travel agency name" /></div>
+        <div class="grid-2"><div class="row"><label for="group-email">Email</label><input id="group-email" name="email" type="email" placeholder="name@example.com" required></div><div class="row"><label for="group-notes">Requirements</label><textarea id="group-notes" name="notes" placeholder="Transport, budget, room sharing..."></textarea></div>
+        <div class="actions"><button class="btn-ghost" type="button" data-close>Cancel</button><button class="btn-primary" type="submit">Submit Request</button></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <div class="fw-whatsapp">
+    <a class="fw-btn" href="https://wa.me/919797459260?text=Hi%20Fodel%20Travels%2C%20I%20need%20help%20with%20a%20booking." target="_blank" rel="noopener">
+      <span class="fw-pulse"></span>
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2a9.8 9.8 0 0 0-8.45 14.7L2 22l5.43-1.53A9.8 9.8 0 1 0 12.04 2zm5.74 14.18c-.24.67-1.4 1.29-1.94 1.33-.52.04-1.18.06-1.91-.12a8 8 0 0 1-4.57-2.61c-1.31-1.44-2.25-3.16-2.35-4.52-.04-.57.17-1.32.72-1.83.21-.2.46-.3.73-.3.12 0 .24 0 .35.02.26.02.41.03.6.47.23.55.79 1.89.86 2.03.07.14.12.3.02.48-.09.19-.14.31-.28.48-.14.17-.29.38-.41.51-.14.14-.29.3-.13.58.15.29.68 1.12 1.46 1.82 1 .88 1.84 1.16 2.16 1.29.33.12.52.11.71-.06.19-.17.82-.77 1.04-1.03.22-.25.44-.21.72-.12.29.1 1.83.86 2.15 1.01.32.14.53.22.61.35.08.13.08.76-.16 1.42z"/></svg>
+    </a>
+  </div>
+
   <script>
-    // LIVE TESTING FUNCTIONS
-    function openHotelModal() {
-      document.getElementById('test-modal').style.display = 'flex';
-      document.getElementById('test-checkin').value = '';
-      document.getElementById('test-checkout').value = '';
-      document.getElementById('test-nights').value = '';
-      document.getElementById('test-day-use').classList.remove('active');
-      setMinDates();
-      showStatus('🧪 Modal opened - Try all 4 tests!', 'passed');
+    // ---------- Helper utilities ----------
+    const todayISO = () => new Date().toISOString().split('T')[0];
+    const toast = document.getElementById('toast');
+
+    function showToast(msg) {
+      toast.textContent = msg || "✅ Request submitted. We'll contact you shortly.";
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
     }
 
-    function closeModal() {
-      document.getElementById('test-modal').style.display = 'none';
-    }
-
-    function showStatus(msg, type) {
-      const status = document.getElementById('test-status');
-      status.innerHTML = `<div class="status ${type}"><span>●</span> ${msg}</div>`;
-    }
-
-    function setMinDates() {
-      const today = new Date().toISOString().split('T')[0];
-      document.getElementById('test-checkin').min = today;
-      document.getElementById('test-checkout').min = today;
-    }
-
-    function toggleManualEntry() {
-      const wrap = document.getElementById('test-manual-wrap');
-      const select = document.getElementById('test-hotel');
-      select.value = '';
-      wrap.classList.toggle('active');
-      if (wrap.classList.contains('active')) {
-        document.getElementById('test-manual').focus();
-        showStatus('✅ #2 MANUAL ENTRY - Working!', 'passed');
+    // ---------- Modal + tab handling ----------
+    document.addEventListener('click', function (e) {
+      if (e.target.matches('[data-open]')) {
+        const modalId = e.target.dataset.open;
+        document.getElementById(modalId).classList.add('active');
+        document.body.classList.add('modal-open');
+        return;
       }
+
+      if (
+        e.target.matches('[data-close]') ||
+        e.target.closest('.modal-close') ||
+        e.target.classList.contains('overlay')
+      ) {
+        document.querySelectorAll('.overlay.active').forEach(m => m.classList.remove('active'));
+        document.body.classList.remove('modal-open');
+        return;
+      }
+
+      if (e.target.classList.contains('btn-tab')) {
+        const group = e.target.closest('.btn-group');
+        group.querySelectorAll('.btn-tab').forEach(btn => btn.classList.remove('active'));
+        e.target.classList.add('active');
+        return;
+      }
+    });
+
+    // ---------- Manual entry link (independent of dropdown) ----------
+    function wireManualToggle(selectId, wrapId, inputId, toggleId) {
+      const select = document.getElementById(selectId);
+      const wrap = document.getElementById(wrapId);
+      const input = document.getElementById(inputId);
+      const toggle = document.getElementById(toggleId);
+
+      toggle.addEventListener('click', () => {
+        wrap.classList.toggle('active');
+        const active = wrap.classList.contains('active');
+        input.required = active;
+        if (!active) input.value = '';
+        input.focus();
+      });
+
+      // keep manual independent – selecting something from dropdown does not hide manual
+      select.addEventListener('change', () => { /* no coupling */ });
     }
 
-    // MAIN FUNCTION - ALL 4 REQUIREMENTS
-    function calcNights() {
-      const checkin = document.getElementById('test-checkin');
-      const checkout = document.getElementById('test-checkout');
-      const nights = document.getElementById('test-nights');
-      const dayUse = document.getElementById('test-day-use');
-      const error = document.getElementById('test-error');
-      const today = new Date().toISOString().split('T')[0];
+    // ---------- Nights calculation + Day‑use handling ----------
+    function handleDates(prefix) {
+      const ci = document.getElementById(prefix + '-checkin');
+      const co = document.getElementById(prefix + '-checkout');
+      const nights = document.getElementById(prefix + '-nights');
+      const label = document.getElementById(prefix + '-day-use-label');
+      const timesWrap = document.getElementById(prefix + '-day-use-times');
+      const fromInput = document.getElementById(prefix + '-day-from');
+      const toInput = document.getElementById(prefix + '-day-to');
+      const errorEl = document.getElementById(prefix + '-date-error');
 
-      if (!checkin.value || !checkout.value) return;
+      errorEl.style.display = 'none';
+      errorEl.textContent = '';
 
-      const ci = new Date(checkin.value);
-      const co = new Date(checkout.value);
-
-      // #4 TODAY CHECKIN → NO PAST CHECKOUT
-      if (checkin.value === today && checkout.value < today) {
-        checkout.value = '';
-        error.classList.add('show');
+      if (!ci.value || !co.value) {
         nights.value = '';
-        showStatus('✅ #4 PAST DATE BLOCKED!', 'passed');
-        return;
-      } else {
-        error.classList.remove('show');
-      }
-
-      const diffDays = Math.ceil((co - ci) / (1000 * 60 * 60 * 24));
-
-      if (diffDays < 0) {
-        checkout.value = '';
+        label.textContent = '';
+        timesWrap.style.display = 'none';
+        if (fromInput) { fromInput.required = false; fromInput.value = ''; }
+        if (toInput)   { toInput.required   = false; toInput.value   = ''; }
         return;
       }
 
-      // #1 AUTO-CALC + #3 DAY USE
+      const ciDate = new Date(ci.value + 'T00:00:00');
+      const coDate = new Date(co.value + 'T00:00:00');
+
+      if (coDate < ciDate) {
+        errorEl.textContent = 'Please select a valid checkout date';
+        errorEl.style.display = 'block';
+        co.value = '';
+        nights.value = '';
+        label.textContent = '';
+        timesWrap.style.display = 'none';
+        if (fromInput) { fromInput.required = false; fromInput.value = ''; }
+        if (toInput)   { toInput.required   = false; toInput.value   = ''; }
+        return;
+      }
+
+      const diffDays = Math.round(
+        (coDate.getTime() - ciDate.getTime()) / (1000 * 60 * 60 * 24)
+      );
+
       if (diffDays === 0) {
-        nights.value = 0;
-        dayUse.classList.add('active');
-        showStatus('✅ #3 DAY USE + TIME INPUTS!', 'passed');
+        nights.value = 'Day Use Room (5-6 Hours)';
+        label.textContent = 'Day Use Room (5-6 Hours)';
+        timesWrap.style.display = 'grid';
+        if (fromInput) fromInput.required = true;
+        if (toInput)   toInput.required   = true;
       } else {
         nights.value = diffDays;
-        dayUse.classList.remove('active');
-        showStatus(`✅ #1 ${diffDays} Nights Auto-calculated!`, 'passed');
+        label.textContent = '';
+        timesWrap.style.display = 'none';
+        if (fromInput) { fromInput.required = false; fromInput.value = ''; }
+        if (toInput)   { toInput.required   = false; toInput.value   = ''; }
       }
     }
 
-    // Form test
-    document.getElementById('test-form').onsubmit = function(e) {
-      e.preventDefault();
-      showStatus('🎉 ALL TESTS PASSED! Form submits perfectly.', 'passed');
-      alert('✅ ALL 4 FEATURES WORKING PERFECTLY!\n\n1. Nights auto-calculate ✓\n2. Manual entry ✓\n3. Day use times ✓\n4. Past date blocked ✓');
-    };
-
-    // Close on outside click
-    window.onclick = function(e) {
-      if (e.target.classList.contains('modal')) closeModal();
+    // ---------- Agent toggle ----------
+    function toggleAgent(wrapId) {
+      const wrap = document.getElementById(wrapId);
+      const checkbox = wrap.previousElementSibling.querySelector('input[type="checkbox"]');
+      wrap.classList.toggle('active', checkbox.checked);
     }
+    window.toggleAgent = toggleAgent; // used from HTML
+
+    // ---------- Initialization ----------
+    document.addEventListener('DOMContentLoaded', function () {
+      // 1) Global min="today" for all date inputs
+      const today = todayISO();
+      document.querySelectorAll('input[type="date"]').forEach(inp => {
+        inp.min = today;
+      });
+
+      // 2) Wire date handlers for Hotel and Group (venue modal does not need nights calc)
+      const pairs = [
+        { prefix: 'hotel' },
+        { prefix: 'group' }
+      ];
+
+      pairs.forEach(({ prefix }) => {
+        const ci = document.getElementById(prefix + '-checkin');
+        const co = document.getElementById(prefix + '-checkout');
+        if (!ci || !co) return;
+
+        // enforce checkout min = checkin on check‑in change
+        ci.addEventListener('change', () => {
+          co.min = ci.value || today;
+          handleDates(prefix);
+        });
+
+        // recalc nights on checkout change
+        co.addEventListener('change', () => handleDates(prefix));
+      });
+
+      // 3) Manual entry toggles
+      wireManualToggle('hotel-name', 'hotel-manual-wrap', 'hotel-manual', 'hotel-manual-toggle');
+      // (venue & group manual toggles are already handled by the existing `toggleManualEntry` function in the HTML)
+
+      // 4) Form submit: show toast + reset UI states
+      document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          showToast();
+
+          // Reset form fields
+          this.reset();
+
+          // Reset date‑derived UI (nights label, day‑use times, errors) for hotel & group if present in this form
+          ['hotel', 'group'].forEach(prefix => {
+            const nightsEl = this.querySelector('#' + prefix + '-nights');
+            if (!nightsEl) return; // not in this form
+
+            const label = this.querySelector('#' + prefix + '-day-use-label');
+            const timesWrap = this.querySelector('#' + prefix + '-day-use-times');
+            const fromInput = this.querySelector('#' + prefix + '-day-from');
+            const toInput = this.querySelector('#' + prefix + '-day-to');
+            const errorEl = this.querySelector('#' + prefix + '-date-error');
+
+            if (label) label.textContent = '';
+            if (timesWrap) timesWrap.style.display = 'none';
+            if (fromInput) { fromInput.required = false; fromInput.value = ''; }
+            if (toInput)   { toInput.required   = false; toInput.value   = ''; }
+            if (errorEl)   { errorEl.style.display = 'none'; errorEl.textContent = ''; }
+          });
+
+          // Reset any manual entry blocks inside this form
+          this.querySelectorAll('.manual-wrap').forEach(w => {
+            w.classList.remove('active');
+            const inp = w.querySelector('input');
+            if (inp) { inp.required = false; inp.value = ''; }
+          });
+
+          // Hide modal
+          document.querySelectorAll('.overlay.active').forEach(m => m.classList.remove('active'));
+          document.body.classList.remove('modal-open');
+        });
+      });
+    });
+
+    // ---------- ESC key to close modal ----------
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.overlay.active').forEach(m => m.classList.remove('active'));
+        document.body.classList.remove('modal-open');
+      }
+    });
   </script>
 </body>
 </html>
