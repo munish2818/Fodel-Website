@@ -1278,34 +1278,35 @@
       return lines;
     }
 
-    function buildSummary(form) {
-      const fd = new FormData(form);
-      const name   = fd.get('yourName') || '';
-      const mobile = fd.get('mobile')   || '';
-      const email  = fd.get('email')    || '';
-      const notes  = fd.get('notes')    || '';
-      const category = form.dataset.category || 'Travel Enquiry';
+function buildSummary(form) {
+  const fd = new FormData(form);
+  const name   = fd.get('yourName') || '';
+  const mobile = fd.get('mobile')   || '';
+  const email  = fd.get('email')    || '';
+  const notes  = fd.get('notes')    || '';
+  const category = form.dataset.category || 'Travel Enquiry';
 
-      const contextLines = getFormContextLines(form);
+  const contextLines = getFormContextLines(form);
 
-      const lines = [
-        'Dear Fodel India Team,',
-        '',
-        'Category: ' + category,
-        ...contextLines,
-        '',
-        'Guest details:',
-        name   && 'Name: '   + name,
-        mobile && 'Mobile: ' + mobile,
-        email  && 'Email: '  + email,
-        '',
-        'Notes:',
-        notes || 'N/A'
-      ].filter(Boolean);
+  const lines = [];
 
-      return lines.join('\n');
-    }
+  lines.push('Dear Fodel India Team,');
+  lines.push('');
+  lines.push('You have received a new ' + category + '.');
+  lines.push('');
+  lines.push('── Booking summary ──');
+  contextLines.forEach(l => lines.push('• ' + l));
+  lines.push('');
+  lines.push('── Guest details ──');
+  name   && lines.push('• Name: '   + name);
+  mobile && lines.push('• Mobile: ' + mobile);
+  email  && lines.push('• Email: '  + email);
+  lines.push('');
+  lines.push('── Additional notes ──');
+  lines.push(notes ? notes : '• N/A');
 
+  return lines.join('\n');
+}
     function handlePreferredChannel(form, prefer) {
       const category = form.dataset.category || 'Travel Enquiry';
       const summary = buildSummary(form);
