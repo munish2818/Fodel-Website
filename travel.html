@@ -133,7 +133,10 @@
       max-width:850px;
       color:#e6fffb;
     }
-
+    /* Extra gap above the agent question row */
+.row-agent {
+  margin-top: 8px;
+}
     .section{
       width:min(1100px,92%);
       margin:24px auto 36px;
@@ -763,12 +766,13 @@
         </div>
 
         <!-- Are you a travel agent? -->
-        <div class="row">
-          <Label class="agent-checkbox" onclick="toggleAgent('hotel-agent-wrap')">
-            <input type="checkbox" id="hotel-agent" name="isAgent">
-            Are you a travel agent?
-          </label>
-        </div>
+    <div class="row row-agent">
+  abel class="agent-checkbox" onclick="toggleAgent('hotel-agent-wrap')">
+    <input type="checkbox" id="hotel-agent" name="isAgent">
+    Are you a travel agent?
+  </label>
+</div>
+
         <div class="row agent-wrap" id="hotel-agent-wrap">
           <label for="hotel-agent-name">Agent Company Name</label>
           <input id="hotel-agent-name" name="agentCompany" type="text"
@@ -1118,17 +1122,18 @@
         </div>
 
         <!-- Agent checkbox -->
-        <div class="row">
-          <Label class="agent-checkbox" onclick="toggleAgent('group-agent-wrap')">
-            <input type="checkbox" id="group-agent" name="isAgent">
-            Are you a travel agent?
-          </label>
-        </div>
-        <div class="row agent-wrap" id="group-agent-wrap">
-          <label for="group-agent-name">Agent Company Name</label>
-          <input id="group-agent-name" name="agentCompany" type="text"
-                 placeholder="Your travel agency name" />
-        </div>
+       <div class="row row-agent">
+  <label class="agent-checkbox" onclick="toggleAgent('group-agent-wrap')">
+    <input type="checkbox" id="group-agent" name="isAgent">
+    Are you a travel agent?
+  </label>
+</div>
+<div class="row agent-wrap" id="group-agent-wrap">
+  <label for="group-agent-name">Agent Company Name</label>
+  <input id="group-agent-name" name="agentCompany" type="text"
+         placeholder="Your travel agency name" />
+</div>
+
 
         <!-- Requirements / Notes -->
         <div class="row">
