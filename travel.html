@@ -229,7 +229,6 @@
       padding:16px;overflow:auto;-webkit-overflow-scrolling:touch;
     }
 
-    /* Grids: keep 2/3 columns even on mobile to reduce scrolling */
     .grid-2,
     .grid-3{
       display:grid;
@@ -246,7 +245,6 @@
         grid-template-columns:1fr 1fr;
       }
     }
-    /* For name/manual grids, force full width on mobile */
     @media (max-width:640px){
       .full-on-mobile{
         grid-template-columns:1fr !important;
@@ -414,7 +412,7 @@
 
     .packages-section{
       width:min(1100px,92%);
-      margin:24px auto 48px;
+      margin:24px auto 36px;
       text-align:center;
     }
     .packages-section h2{
@@ -476,346 +474,345 @@
   </style>
 </head>
 <body>
-  <!-- PUBLIC UI ROOT -->
-  <div id="public-root">
-    <header class="banner">
-      <div class="topbar">
-        <a class="brand" href="index.html">
-          <div class="brand-badge">🏨</div>
-          <span>Fodel Travels</span>
-        </a>
-        <nav class="nav">
-          <a class="pill-btn reviews-btn" href="reviews-travels.html">⭐ Reviews</a>
-          <a class="pill-btn home-btn" href="index.html">← Home</a>
-        </nav>
-      </div>
-
-      <div class="banner-inner">
-        <div class="hero">
-          <h1>Rooms, event venues, and group stays across Jammu & Kashmir</h1>
-          <p>Trusted travel agent in Jammu & Kashmir for hotel booking in Katra, Patnitop and Goa, group stays and local transport.</p>
-        </div>
-      </div>
-    </header>
-
-    <section class="section">
-      <h2>Travel Services</h2>
-      <div class="separator"></div>
-
-      <div class="cards">
-        <div class="card">
-          <h3>
-            <span class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-                <path d="M4 7h12a4 4 0 0 1 4 4v5h-2v-3H4v3H2v-6a3 3 0 0 1 2-3zm2 2a2 2 0 1 0 0 4h6a2 2 0 1 0 0-4H6z"/>
-              </svg>
-            </span>
-            Rooms
-          </h3>
-          <p>Hotel rooms across Jammu & Kashmir, Katra and Patnitop.</p>
-          <button class="btn" data-open="modal-hotel">Room Request →</button>
-        </div>
-
-        <div class="card">
-          <h3>
-            <span class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-                <path d="M3 6h18v12H3z"/>
-                <path d="M3 9h18v2H3zM7 18h2v3H7zM15 18h2v3h-2z"/>
-              </svg>
-            </span>
-            Event Venues
-          </h3>
-          <p>Banquets, weddings, corporate meetings and celebrations.</p>
-          <button class="btn" data-open="modal-banquet">Venue Request →</button>
-        </div>
-
-        <div class="card">
-          <h3>
-            <span class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-                <path d="M16 11a3 3 0 1 0-3-3 3 3 0 0 0 3 3ZM7 12a3 3 0 1 0 3 3 3 3 0 0 0 3 3Z"/>
-                <path d="M15 14c-2.7 0-8 1.35-8 4v2h12v-2c0-2.65-5.3-4-8-4Z"/>
-              </svg>
-            </span>
-            Bulk Bookings
-          </h3>
-          <p>Group stays for pilgrim groups, tours and corporate travel.</p>
-          <button class="btn" data-open="modal-group">Group Request →</button>
-        </div>
-      </div>
-
-      <!-- Transport CTA directly under the cards -->
-      <div style="margin-top:20px;">
-        <a class="btn" href="https://www.fodel.in/transport.html">
-          Also need transport services? We cover that →
-        </a>
-      </div>
-    </section>
-
-    <!-- Packages Section -->
-    <section class="packages-section">
-      <h2>Packages</h2>
-      <div class="separator"></div>
-
-      <div class="packages-cards">
-        <div class="package-card">
-          <h3>
-            <span class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25 5-4.87-5.92-1.42L2 9.27l6.91 3.95L12 2z"/>
-              </svg>
-            </span>
-            Jammu & Kashmir
-          </h3>
-          <p>Curated tours, stays & experiences – coming soon.</p>
-        </div>
-
-        <div class="package-card">
-          <h3>
-            <span class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2z"/>
-              </svg>
-            </span>
-            Other Regions
-          </h3>
-          <p>Goa, Himachal and other regions will be added by admin shortly.</p>
-        </div>
-
-        <div class="package-card">
-          <h3>
-            <span class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-              </svg>
-            </span>
-            Custom Packages
-          </h3>
-          <p>Tailor‑made itineraries on request.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ====================== ROOM MODAL ====================== -->
-    <div id="modal-hotel" class="overlay" role="dialog" aria-modal="true" aria-labelledby="hotel-title">
-      <div class="modal">
-        <div class="modal-header">
-          <div class="modal-title" id="hotel-title">Room Request</div>
-          <button class="modal-close" data-close>✕</button>
-        </div>
-
-        <form class="modal-body" id="form-hotel">
-          <!-- Region / Area -->
-          <div class="row">
-            <label>Region</label>
-            <div class="btn-group" data-group="hotel-region">
-              <div class="btn-tab active" data-value="Jammu & Kashmir">Jammu & Kashmir</div>
-            </div>
-          </div>
-
-          <div class="row">
-            <label>Area</label>
-            <div class="btn-group" data-group="hotel-area">
-              <div class="btn-tab active" data-value="All">All</div>
-              <div class="btn-tab" data-value="Jammu">Jammu</div>
-              <div class="btn-tab" data-value="Kashmir">Kashmir</div>
-              <div class="btn-tab" data-value="Katra">Katra</div>
-              <div class="btn-tab" data-value="Patnitop">Patnitop</div>
-            </div>
-          </div>
-
-          <!-- Hotel / Property + Manual entry link -->
-          <div class="grid-2 full-on-mobile">
-            <div class="row">
-              <label for="hotel-name">Hotel / Property</label>
-              <select id="hotel-name" name="hotelName" required>
-                <option value="">Select a property</option>
-              </select>
-              <button type="button" class="link-btn" id="hotel-manual-toggle">
-                Can't find your hotel? Enter manually
-              </button>
-            </div>
-            <div class="row manual-wrap" id="hotel-manual-wrap">
-              <label for="hotel-manual">Enter hotel name</label>
-              <input id="hotel-manual" name="hotelManual" type="text"
-                     placeholder="Type exact hotel name" />
-            </div>
-          </div>
-
-          <!-- Dates: Check-in / Check-out -->
-          <div class="grid-2">
-            <div class="row">
-              <label for="hotel-checkin">Check-in</label>
-              <input id="hotel-checkin" name="checkin" type="date" required>
-              <div class="day-use" id="hotel-day-use-label"></div>
-              <div class="error-text" id="hotel-date-error"></div>
-            </div>
-            <div class="row">
-              <label for="hotel-checkout">Check-out</label>
-              <input id="hotel-checkout" name="checkout" type="date" required>
-            </div>
-          </div>
-
-          <!-- Nights - Rooms -->
-          <div class="grid-2">
-            <div class="row">
-              <label for="hotel-nights">Nights</label>
-              <input id="hotel-nights" name="nights" type="text"
-                     class="readonly" readonly>
-            </div>
-            <div class="row">
-              <label for="hotel-rooms">Rooms</label>
-              <input id="hotel-rooms" name="rooms" type="number" min="1"
-                     placeholder="2" required>
-            </div>
-          </div>
-
-          <!-- Adults - Kids Age -->
-          <div class="grid-2">
-            <div class="row">
-              <label for="hotel-adults">Adults</label>
-              <input id="hotel-adults" name="adults" type="number" min="1"
-                     placeholder="2" required>
-            </div>
-            <div class="row">
-              <label for="hotel-kids-age">Any Kids (Age)</label>
-              <input id="hotel-kids-age" name="kidsAge" type="text"
-                     placeholder="e.g. 5 yrs, 8 yrs">
-            </div>
-          </div>
-
-          <!-- Day‑use time inputs (hidden by default) -->
-          <div class="grid-2 dayuse-time-wrap" id="hotel-day-use-times" style="display:none;">
-            <div class="row">
-              <label for="hotel-day-from">From Time</label>
-              <input id="hotel-day-from" name="dayFrom" type="time">
-            </div>
-            <div class="row">
-              <label for="hotel-day-to">To Time</label>
-              <input id="hotel-day-to" name="dayTo" type="time">
-            </div>
-          </div>
-
-          <!-- Meal Plan / Mobile -->
-          <div class="grid-2">
-            <div class="row">
-              <label for="hotel-meal">Meal Plan</label>
-              <select id="hotel-meal" name="meal" required>
-                <option value="">Select</option>
-                <option>EP (Room Only)</option>
-                <option>CP (Breakfast)</option>
-                <option>MAP (2 Meals)</option>
-                <option>APAI (All Meals)</option>
-              </select>
-            </div>
-            <div class="row">
-              <label for="hotel-mobile">Mobile</label>
-              <input id="hotel-mobile" name="mobile" type="tel"
-                     placeholder="+91 9XXXXXXXXX" required>
-            </div>
-          </div>
-
-          <!-- Room Category full row -->
-          <div class="row">
-            <label for="hotel-room-category">Room Category</label>
-            <input id="hotel-room-category" name="roomCategory" type="text"
-                   placeholder="Deluxe, Super Deluxe, Suite, etc.">
-          </div>
-
-          <!-- Your Name / Email / Preferred Contact -->
-          <div class="grid-3">
-            <div class="row">
-              <label for="hotel-name-field">Your Name</label>
-              <input id="hotel-name-field" name="yourName" type="text"
-                     placeholder="Enter your name" required>
-            </div>
-            <div class="row">
-              <label for="hotel-email">Email</label>
-              <input id="hotel-email" name="email" type="email"
-                     placeholder="name@example.com">
-            </div>
-            <div class="row">
-              <label for="hotel-prefer-contact">Prefer contact on</label>
-              <select id="hotel-prefer-contact" name="preferContact" required>
-                <option value="">Select</option>
-                <option>WhatsApp</option>
-                <option>Email</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- Agent checkbox -->
-          <div class="row">
-            <label class="agent-checkbox" onclick="toggleAgent('hotel-agent-wrap')">
-              <input type="checkbox" id="hotel-agent" name="isAgent">
-              Are you a travel agent?
-            </label>
-          </div>
-          <div class="row agent-wrap" id="hotel-agent-wrap">
-            <label for="hotel-agent-name">Agent Company Name</label>
-            <input id="hotel-agent-name" name="agentCompany" type="text"
-                   placeholder="Your travel agency name" />
-          </div>
-
-          <!-- Notes -->
-          <div class="row">
-            <label for="hotel-notes">Notes</label>
-            <textarea id="hotel-notes" name="notes"
-                      placeholder="Special requests..."></textarea>
-          </div>
-
-          <div class="actions">
-            <button class="btn-ghost" type="button" data-close>Cancel</button>
-            <button class="btn-primary" type="submit">Submit Request</button>
-          </div>
-        </form>
-      </div>
+  <header class="banner">
+    <div class="topbar">
+      <a class="brand" href="index.html">
+        <div class="brand-badge">🏨</div>
+        <span>Fodel Travels</span>
+      </a>
+      <nav class="nav">
+        <a class="pill-btn reviews-btn" href="reviews-travels.html">⭐ Reviews</a>
+        <a class="pill-btn home-btn" href="index.html">← Home</a>
+      </nav>
     </div>
 
-    <!-- ====================== VENUE MODAL ====================== -->
-    <!-- (same as your current file – omitted for brevity) -->
-    <!-- ====================== GROUP MODAL ====================== -->
-    <!-- (same as your current file – omitted for brevity) -->
+    <div class="banner-inner">
+      <div class="hero">
+        <h1>Rooms, event venues, and group stays across Jammu & Kashmir</h1>
+        <p>Trusted travel agent in Jammu & Kashmir for hotel booking in Katra, Patnitop and Goa, group stays and local transport.</p>
+      </div>
+    </div>
+  </header>
 
-    <!-- SEO text block -->
-    <section class="seo-keywords" aria-hidden="true">
-      <p>
-        Fodel Travels is a trustworthy travel agent in Jammu and Kashmir offering hotel booking in Katra, Patnitop and Goa,
-        reliable transport services from Jammu, group stay packages, event venues and custom tours across the region. From
-        pilgrim trips to Vaishno Devi to Goa family holidays, we help you find the best hotels, rooms and packages with
-        honest advice and local support.
-      </p>
-    </section>
+  <section class="section">
+    <h2>Travel Services</h2>
+    <div class="separator"></div>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-      <a class="chip" href="mailto:sales@fodeltravel.in">
-        ✉️ sales@fodeltravel.in
-      </a>
-      <div class="copy">Fodel Travels · Jammu & Kashmir</div>
-    </footer>
+    <div class="cards">
+      <div class="card">
+        <h3>
+          <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+              <path d="M4 7h12a4 4 0 0 1 4 4v5h-2v-3H4v3H2v-6a3 3 0 0 1 2-3zm2 2a2 2 0 1 0 0 4h6a2 2 0 1 0 0-4H6z"/>
+            </svg>
+          </span>
+          Rooms
+        </h3>
+        <p>Hotel rooms across Jammu & Kashmir, Katra and Patnitop.</p>
+        <button class="btn" data-open="modal-hotel">Room Request →</button>
+      </div>
 
-    <div class="toast" id="toast"></div>
+      <div class="card">
+        <h3>
+          <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+              <path d="M3 6h18v12H3z"/>
+              <path d="M3 9h18v2H3zM7 18h2v3H7zM15 18h2v3h-2z"/>
+            </svg>
+          </span>
+          Event Venues
+        </h3>
+        <p>Banquets, weddings, corporate meetings and celebrations.</p>
+        <button class="btn" data-open="modal-banquet">Venue Request →</button>
+      </div>
 
-    <div class="fw-whatsapp">
-      <a class="fw-btn"
-         href="https://wa.me/919797459260?text=Hi%20Fodel%20Travels%2C%20I%20need%20help%20with%20a%20booking."
-         target="_blank" rel="noopener">
-        <span class="fw-pulse"></span>
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12.04 2a9.8 9.8 0 0 0-8.45 14.7L2 22l5.43-1.53A9.8 9.8 0 1 0 12.04 2zm5.74 14.18c-.24.67-1.4 1.29-1.94 1.33-.52.04-1.18.06-1.91-.12a8 8 0 0 1-4.57-2.61c-1.31-1.44-2.25-3.16-2.35-4.52-.04-.57.17-1.32.72-1.83.21-.2.46-.3.73-.3.12 0 .24 0 .35.02.26.02.41.03.6.47.23.55.79 1.89.86 2.03.07.14.12.3.02.48-.09.19-.14.31-.28.48-.14.17-.29.38-.41.51-.14.14-.29.3-.13.58.15.29.68 1.12 1.46 1.82 1 .88 1.84 1.16 2.16 1.29.33.12.52.11.71-.06.19-.17.82-.77 1.04-1.03.22-.25.44-.21.72-.12.29.1 1.83.86 2.15 1.01.32.14.53.22.61.35.08.13.08.76-.16 1.42z"/>
-        </svg>
-      </a>
+      <div class="card">
+        <h3>
+          <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+              <path d="M16 11a3 3 0 1 0-3-3 3 3 0 0 0 3 3ZM7 12a3 3 0 1 0 3 3 3 3 0 0 0 3 3Z"/>
+              <path d="M15 14c-2.7 0-8 1.35-8 4v2h12v-2c0-2.65-5.3-4-8-4Z"/>
+            </svg>
+          </span>
+          Bulk Bookings
+        </h3>
+        <p>Group stays for pilgrim groups, tours and corporate travel.</p>
+        <button class="btn" data-open="modal-group">Group Request →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Packages Section -->
+  <section class="packages-section">
+    <h2>Packages</h2>
+    <div class="separator"></div>
+
+    <div class="packages-cards">
+      <div class="package-card">
+        <h3>
+          <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25 5-4.87-5.92-1.42L2 9.27l6.91 3.95L12 2z"/>
+            </svg>
+          </span>
+          Jammu & Kashmir
+        </h3>
+        <p>Curated tours, stays & experiences – coming soon.</p>
+      </div>
+
+      <div class="package-card">
+        <h3>
+          <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+              <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2z"/>
+            </svg>
+          </span>
+          Other Regions
+        </h3>
+        <p>Goa, Himachal and other regions will be added soon.</p>
+      </div>
+
+      <div class="package-card">
+        <h3>
+          <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+          </span>
+          Custom Packages
+        </h3>
+        <p>Tailor‑made itineraries on request.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Transport CTA AFTER packages, BEFORE footer -->
+  <section class="section" style="margin-top:0; margin-bottom:20px;">
+    <a class="btn" href="https://www.fodel.in/transport.html">
+      Also need transport services? We cover that →
+    </a>
+  </section>
+
+  <!-- ====================== ROOM MODAL ====================== -->
+  <div id="modal-hotel" class="overlay" role="dialog" aria-modal="true" aria-labelledby="hotel-title">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title" id="hotel-title">Room Request</div>
+        <button class="modal-close" data-close>✕</button>
+      </div>
+
+      <form class="modal-body" id="form-hotel">
+        <!-- Region / Area -->
+        <div class="row">
+          <label>Region</label>
+          <div class="btn-group" data-group="hotel-region">
+            <div class="btn-tab active" data-value="Jammu & Kashmir">Jammu & Kashmir</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <label>Area</label>
+          <div class="btn-group" data-group="hotel-area">
+            <div class="btn-tab active" data-value="All">All</div>
+            <div class="btn-tab" data-value="Jammu">Jammu</div>
+            <div class="btn-tab" data-value="Kashmir">Kashmir</div>
+            <div class="btn-tab" data-value="Katra">Katra</div>
+            <div class="btn-tab" data-value="Patnitop">Patnitop</div>
+          </div>
+        </div>
+
+        <!-- Hotel / Property + Manual entry link -->
+        <div class="grid-2 full-on-mobile">
+          <div class="row">
+            <label for="hotel-name">Hotel / Property</label>
+            <select id="hotel-name" name="hotelName" required>
+              <option value="">Select a property</option>
+            </select>
+            <button type="button" class="link-btn" id="hotel-manual-toggle">
+              Can't find your hotel? Enter manually
+            </button>
+          </div>
+          <div class="row manual-wrap" id="hotel-manual-wrap">
+            <label for="hotel-manual">Enter hotel name</label>
+            <input id="hotel-manual" name="hotelManual" type="text"
+                   placeholder="Type exact hotel name" />
+          </div>
+        </div>
+
+        <!-- Dates: Check-in / Check-out -->
+        <div class="grid-2">
+          <div class="row">
+            <label for="hotel-checkin">Check-in</label>
+            <input id="hotel-checkin" name="checkin" type="date" required>
+            <div class="day-use" id="hotel-day-use-label"></div>
+            <div class="error-text" id="hotel-date-error"></div>
+          </div>
+          <div class="row">
+            <label for="hotel-checkout">Check-out</label>
+            <input id="hotel-checkout" name="checkout" type="date" required>
+          </div>
+        </div>
+
+        <!-- Nights - Rooms - Adults -->
+        <div class="grid-3">
+          <div class="row">
+            <label for="hotel-nights">Nights</label>
+            <input id="hotel-nights" name="nights" type="text"
+                   class="readonly" readonly>
+          </div>
+          <div class="row">
+            <label for="hotel-rooms">Rooms</label>
+            <input id="hotel-rooms" name="rooms" type="number" min="1"
+                   placeholder="2" required>
+          </div>
+          <div class="row">
+            <label for="hotel-adults">Adults</label>
+            <input id="hotel-adults" name="adults" type="number" min="1"
+                   placeholder="2" required>
+          </div>
+        </div>
+
+        <!-- Any Kids (Age) - Meal Plan -->
+        <div class="grid-2">
+          <div class="row">
+            <label for="hotel-kids-age">Any Kids (Age)</label>
+            <input id="hotel-kids-age" name="kidsAge" type="text"
+                   placeholder="e.g. 5 yrs, 8 yrs">
+          </div>
+          <div class="row">
+            <label for="hotel-meal">Meal Plan</label>
+            <select id="hotel-meal" name="meal" required>
+              <option value="">Select</option>
+              <option>EP (Room Only)</option>
+              <option>CP (Breakfast)</option>
+              <option>MAP (2 Meals)</option>
+              <option>APAI (All Meals)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Day‑use time inputs (hidden by default) -->
+        <div class="grid-2 dayuse-time-wrap" id="hotel-day-use-times" style="display:none;">
+          <div class="row">
+            <label for="hotel-day-from">From Time</label>
+            <input id="hotel-day-from" name="dayFrom" type="time">
+          </div>
+          <div class="row">
+            <label for="hotel-day-to">To Time</label>
+            <input id="hotel-day-to" name="dayTo" type="time">
+          </div>
+        </div>
+
+        <!-- Mobile (full row) -->
+        <div class="row">
+          <label for="hotel-mobile">Mobile</label>
+          <input id="hotel-mobile" name="mobile" type="tel"
+                 placeholder="+91 9XXXXXXXXX" required>
+        </div>
+
+        <!-- Room Category (full row) -->
+        <div class="row">
+          <label for="hotel-room-category">Room Category</label>
+          <input id="hotel-room-category" name="roomCategory" type="text"
+                 placeholder="Deluxe, Super Deluxe, Suite, etc.">
+        </div>
+
+        <!-- Approx Budget (full row, optional) -->
+        <div class="row">
+          <label for="hotel-budget">Approx budget per night (optional)</label>
+          <input id="hotel-budget" name="budget" type="text"
+                 placeholder="e.g. ₹3000 - ₹5000 per room">
+        </div>
+
+        <!-- Your Name + Prefer contact -->
+        <div class="grid-2">
+          <div class="row">
+            <label for="hotel-name-field">Your Name</label>
+            <input id="hotel-name-field" name="yourName" type="text"
+                   placeholder="Enter your name" required>
+          </div>
+          <div class="row">
+            <label for="hotel-prefer-contact">Prefer contact on</label>
+            <select id="hotel-prefer-contact" name="preferContact" required>
+              <option value="">Select</option>
+              <option>WhatsApp</option>
+              <option>Email</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Email full row -->
+        <div class="row">
+          <label for="hotel-email">Email</label>
+          <input id="hotel-email" name="email" type="email"
+                 placeholder="name@example.com">
+        </div>
+
+        <!-- Agent checkbox -->
+        <div class="row">
+          <label class="agent-checkbox" onclick="toggleAgent('hotel-agent-wrap')">
+            <input type="checkbox" id="hotel-agent" name="isAgent">
+            Are you a travel agent?
+          </label>
+        </div>
+        <div class="row agent-wrap" id="hotel-agent-wrap">
+          <label for="hotel-agent-name">Agent Company Name</label>
+          <input id="hotel-agent-name" name="agentCompany" type="text"
+                 placeholder="Your travel agency name" />
+        </div>
+
+        <!-- Notes -->
+        <div class="row">
+          <label for="hotel-notes">Notes</label>
+          <textarea id="hotel-notes" name="notes"
+                    placeholder="Special requests..."></textarea>
+        </div>
+
+        <div class="actions">
+          <button class="btn-ghost" type="button" data-close>Cancel</button>
+          <button class="btn-primary" type="submit">Submit Request</button>
+        </div>
+      </form>
     </div>
   </div>
 
-  <!-- ADMIN ROOT (optional, for ?admin=1) -->
-  <div id="admin-root" style="display:none; padding:24px; max-width:1100px; margin:0 auto; font-family:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;">
-    <!-- Admin UI markup here (same as earlier admin version) -->
+  <!-- ====================== VENUE MODAL ====================== -->
+  <!-- (You can keep your existing venue form here unchanged, or we can refactor later) -->
+
+  <!-- ====================== GROUP MODAL ====================== -->
+  <!-- (You can keep your existing group form here unchanged, or we can refactor later) -->
+
+  <!-- SEO text block -->
+  <section class="seo-keywords" aria-hidden="true">
+    <p>
+      Fodel Travels is a trustworthy travel agent in Jammu and Kashmir offering hotel booking in Katra, Patnitop and Goa,
+      reliable transport services from Jammu, group stay packages, event venues and custom tours across the region. From
+      pilgrim trips to Vaishno Devi to Goa family holidays, we help you find the best hotels, rooms and packages with honest
+      advice and local support.
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <a class="chip" href="mailto:sales@fodeltravel.in">
+      ✉️ sales@fodeltravel.in
+    </a>
+    <div class="copy">Fodel Travels · Jammu & Kashmir</div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <div class="fw-whatsapp">
+    <a class="fw-btn"
+       href="https://wa.me/919797459260?text=Hi%20Fodel%20Travels%2C%20I%20need%20help%20with%20a%20booking."
+       target="_blank" rel="noopener">
+      <span class="fw-pulse"></span>
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12.04 2a9.8 9.8 0 0 0-8.45 14.7L2 22l5.43-1.53A9.8 9.8 0 1 0 12.04 2zm5.74 14.18c-.24.67-1.4 1.29-1.94 1.33-.52.04-1.18.06-1.91-.12a8 8 0 0 1-4.57-2.61c-1.31-1.44-2.25-3.16-2.35-4.52-.04-.57.17-1.32.72-1.83.21-.2.46-.3.73-.3.12 0 .24 0 .35.02.26.02.41.03.6.47.23.55.79 1.89.86 2.03.07.14.12.3.02.48-.09.19-.14.31-.28.48-.14.17-.29.38-.41.51-.14.14-.29.3-.13.58.15.29.68 1.12 1.46 1.82 1 .88 1.84 1.16 2.16 1.29.33.12.52.11.71-.06.19-.17.82-.77 1.04-1.03.22-.25.44-.21.72-.12.29.1 1.83.86 2.15 1.01.32.14.53.22.61.35.08.13.08.76-.16 1.42z"/>
+      </svg>
+    </a>
   </div>
 
-  <!-- PUBLIC SCRIPT -->
   <script>
     const todayISO = () => new Date().toISOString().split('T')[0];
     const toast = document.getElementById('toast');
@@ -956,8 +953,6 @@
         if (!active) input.value = '';
         if (active) input.focus();
       });
-
-      select.addEventListener('change', () => {});
     }
 
     function setupPreferContact(formId, preferId, emailId) {
@@ -1015,14 +1010,6 @@
           const area = e.target.dataset.value || 'All';
           filterOptionsByArea('hotel-name', area);
         }
-        if (group && group.dataset.group === 'group-area') {
-          const area = e.target.dataset.value || 'All';
-          filterOptionsByArea('group-property', area);
-        }
-        if (group && group.dataset.group === 'event-area') {
-          const area = e.target.dataset.value || 'All';
-          filterOptionsByArea('event-venue', area);
-        }
         return;
       }
     });
@@ -1041,7 +1028,7 @@
         inp.min = today;
       });
 
-      ['hotel', 'group'].forEach(prefix => {
+      ['hotel'].forEach(prefix => {
         const ci = document.getElementById(prefix + '-checkin');
         const co = document.getElementById(prefix + '-checkout');
         if (!ci || !co) return;
@@ -1053,15 +1040,9 @@
         co.addEventListener('change', () => handleDates(prefix));
       });
 
-      wireManualToggle('hotel-name',  'hotel-manual-wrap',  'hotel-manual',  'hotel-manual-toggle');
+      wireManualToggle('hotel-name', 'hotel-manual-wrap', 'hotel-manual', 'hotel-manual-toggle');
 
-      // TODO: wire venue/group manual toggles when you switch to data‑driven lists
-      // wireManualToggle('event-venue', 'event-manual-wrap', 'event-manual',  'event-manual-toggle');
-      // wireManualToggle('group-property','group-manual-wrap','group-manual', 'group-manual-toggle');
-
-      setupPreferContact('form-hotel',  'hotel-prefer-contact',  'hotel-email');
-      // setupPreferContact('form-banquet','event-prefer-contact',  'event-email');
-      // setupPreferContact('form-group',  'group-prefer-contact',  'group-email');
+      setupPreferContact('form-hotel', 'hotel-prefer-contact', 'hotel-email');
 
       document.querySelectorAll('form').forEach(function (form) {
         form.addEventListener('submit', function (e) {
@@ -1078,7 +1059,7 @@
 
           this.reset();
 
-          ['hotel', 'group'].forEach(prefix => {
+          ['hotel'].forEach(prefix => {
             const nightsEl = this.querySelector('#' + prefix + '-nights');
             if (!nightsEl) return;
 
@@ -1111,105 +1092,6 @@
         });
       });
     });
-  </script>
-
-  <!-- ADMIN SCRIPT (Firebase) – keep if you use ?admin=1 -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
-    import {
-      getAuth,
-      GoogleAuthProvider,
-      signInWithPopup,
-      signOut,
-      onAuthStateChanged,
-      setPersistence,
-      browserLocalPersistence
-    } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
-    import {
-      getFirestore,
-      collection,
-      addDoc,
-      getDocs,
-      onSnapshot,
-      deleteDoc,
-      doc,
-      query,
-      orderBy
-    } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
-
-    const params = new URLSearchParams(window.location.search);
-    const isAdminMode = params.get('admin') === '1';
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyDaKEvqtnRRaj0kBZ-c4oPDhMxiwI3GQmE",
-      authDomain: "fodel-admin-transport.firebaseapp.com",
-      projectId: "fodel-admin-transport",
-      storageBucket: "fodel-admin-transport.firebasestorage.app",
-      messagingSenderId: "81364149405",
-      appId: "1:81364149405:web:a927a693f0402607966074",
-      measurementId: "G-DTLDMKYMZG"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    try { await setPersistence(auth, browserLocalPersistence); } catch (e) { console.warn(e); }
-    const provider = new GoogleAuthProvider();
-    auth.useDeviceLanguage && auth.useDeviceLanguage();
-
-    const db = getFirestore(app);
-
-    const lc = (s) => (s || '').toString().trim().toLowerCase();
-    const ADMIN_EMAILS = [
-      "munish2818@gmail.com"
-    ];
-    const isAllowed = (u) => !!(u && u.email && ADMIN_EMAILS.includes(lc(u.email)));
-
-    const publicRoot = document.getElementById('public-root');
-    const adminRoot  = document.getElementById('admin-root');
-
-    const hotelsCol = collection(db, 'travel_hotels');
-    const venuesCol = collection(db, 'travel_venues');
-
-    let hotelsCache = [];
-    let venuesCache = [];
-
-    function populatePublicSelectsFromCache() {
-      const hotelSel = document.getElementById('hotel-name');
-      if (hotelSel) {
-        const first = hotelSel.options[0]?.cloneNode(true);
-        hotelSel.innerHTML = '';
-        if (first) hotelSel.appendChild(first);
-        hotelsCache.forEach(h => {
-          const opt = new Option(h.name, h.name);
-          opt.dataset.area = h.area || 'All';
-          hotelSel.add(opt);
-        });
-      }
-    }
-
-    async function loadPublicData() {
-      try {
-        const hotelsSnap = await getDocs(query(hotelsCol, orderBy('name')));
-        hotelsCache = hotelsSnap.docs.map(d => ({ id: d.id, ...d.data() }));
-        populatePublicSelectsFromCache();
-      } catch (e) {
-        console.error('Error loading travel data', e);
-      }
-    }
-
-    function setupAdminAuth() {
-      // (admin UI wiring same pattern as earlier; you can fill it when you need)
-    }
-
-    if (isAdminMode) {
-      if (publicRoot) publicRoot.style.display = 'none';
-      if (adminRoot)  adminRoot.style.display  = 'block';
-      setupAdminAuth();
-    } else {
-      if (adminRoot)  adminRoot.style.display  = 'none';
-      if (publicRoot) publicRoot.style.display = 'block';
-      loadPublicData();
-    }
   </script>
 </body>
 </html>
