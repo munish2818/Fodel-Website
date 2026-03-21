@@ -222,17 +222,28 @@
       padding:16px;overflow:auto;-webkit-overflow-scrolling:touch;
     }
 
+    /* Make grids multi-column even on mobile to reduce scrolling */
+    .grid-2,
+    .grid-3{
+      display:grid;
+      gap:12px;
+    }
+    .grid-2{
+      grid-template-columns:1fr 1fr;
+    }
+    .grid-3{
+      grid-template-columns:repeat(3,1fr);
+    }
+    /* On very narrow screens you can fallback to 2 columns for the 3-field rows */
+    @media (max-width:480px){
+      .grid-3{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
     @media (max-width:640px){
       .overlay{align-items:stretch}
       .modal{width:100%;height:100svh;max-height:none;border-radius:0}
-    }
-
-    .grid-2,.grid-3{
-      display:grid;grid-template-columns:1fr;gap:12px;
-    }
-    @media (min-width:640px){
-      .grid-2{grid-template-columns:1fr 1fr}
-      .grid-3{grid-template-columns:repeat(3,1fr)}
     }
 
     .btn-group{
@@ -678,26 +689,29 @@
           </div>
           <div class="row">
             <label for="hotel-mobile">Mobile</label>
-            <input id="hotel-mobile" name="mobile" type="tel" placeholder="+91 9XXXXXXXXX" required>
+            <input id="hotel-mobile" name="mobile" type="tel"
+                   placeholder="+91 9XXXXXXXXX" required>
           </div>
         </div>
 
-        <!-- Your Name / Email (optional) / Preferred Contact -->
+        <!-- Your Name / Email / Preferred Contact -->
         <div class="grid-3">
           <div class="row">
             <label for="hotel-name-field">Your Name</label>
-            <input id="hotel-name-field" name="yourName" type="text" placeholder="Enter your name" required>
+            <input id="hotel-name-field" name="yourName" type="text"
+                   placeholder="Enter your name" required>
           </div>
           <div class="row">
-            <label for="hotel-email">Email (optional)</label>
-            <input id="hotel-email" name="email" type="email" placeholder="name@example.com">
+            <label for="hotel-email">Email</label>
+            <input id="hotel-email" name="email" type="email"
+                   placeholder="name@example.com">
           </div>
           <div class="row">
             <label for="hotel-prefer-contact">Prefer contact on</label>
             <select id="hotel-prefer-contact" name="preferContact" required>
               <option value="">Select</option>
               <option>WhatsApp</option>
-              <option>Call</option>
+              <option>Email</option>
             </select>
           </div>
         </div>
@@ -711,14 +725,16 @@
         </div>
         <div class="row agent-wrap" id="hotel-agent-wrap">
           <label for="hotel-agent-name">Agent Company Name</label>
-          <input id="hotel-agent-name" name="agentCompany" type="text" placeholder="Your travel agency name" />
+          <input id="hotel-agent-name" name="agentCompany" type="text"
+                 placeholder="Your travel agency name" />
         </div>
 
         <!-- Notes -->
         <div class="grid-2">
           <div class="row">
             <label for="hotel-notes">Notes</label>
-            <textarea id="hotel-notes" name="notes" placeholder="Special requests..."></textarea>
+            <textarea id="hotel-notes" name="notes"
+                      placeholder="Special requests..."></textarea>
           </div>
         </div>
 
@@ -762,19 +778,21 @@
         <div class="grid-2">
           <div class="row">
             <label for="event-venue">Venue / Hall</label>
-            <select id="event-venue" name="venue" required
-                    onchange="toggleManualEntry(this, 'event-manual-wrap', 'event-manual')">
+            <select id="event-venue" name="venue" required>
               <option value="">Select a venue</option>
               <option>Grand Banquet Hall</option>
               <option>Katra Celebration Hall</option>
               <option>Srinagar Event Lawn</option>
-              <option data-manual="true">Not listed? Enter manually</option>
             </select>
+            <button type="button" class="link-btn" id="event-manual-toggle">
+              Can't find your hotel? Enter manually
+            </button>
           </div>
 
           <div class="row manual-wrap" id="event-manual-wrap">
             <label for="event-manual">Enter venue name</label>
-            <input id="event-manual" name="venueManual" type="text" placeholder="Type venue name" />
+            <input id="event-manual" name="venueManual" type="text"
+                   placeholder="Type venue name" />
           </div>
         </div>
 
@@ -786,7 +804,8 @@
           </div>
           <div class="row">
             <label for="min-guarantee">Min. Guarantee</label>
-            <input id="min-guarantee" name="minGuarantee" type="number" min="10" placeholder="100" required>
+            <input id="min-guarantee" name="minGuarantee" type="number" min="10"
+                   placeholder="100" required>
           </div>
         </div>
 
@@ -848,7 +867,7 @@
                  placeholder="Your travel agency name" />
         </div>
 
-        <!-- Your Name / Mobile / Email (optional) / Preferred Contact -->
+        <!-- Your Name / Mobile / Email / Preferred Contact -->
         <div class="grid-3">
           <div class="row">
             <label for="event-name-field">Your Name</label>
@@ -861,7 +880,7 @@
                    placeholder="+91 9XXXXXXXXX" required>
           </div>
           <div class="row">
-            <label for="event-email">Email (optional)</label>
+            <label for="event-email">Email</label>
             <input id="event-email" name="email" type="email"
                    placeholder="name@example.com">
           </div>
@@ -870,7 +889,7 @@
             <select id="event-prefer-contact" name="preferContact" required>
               <option value="">Select</option>
               <option>WhatsApp</option>
-              <option>Call</option>
+              <option>Email</option>
             </select>
           </div>
         </div>
@@ -922,14 +941,15 @@
         <div class="grid-2">
           <div class="row">
             <label for="group-property">Property / Hotel</label>
-            <select id="group-property" name="property" required
-                    onchange="toggleManualEntry(this, 'group-manual-wrap', 'group-manual')">
+            <select id="group-property" name="property" required>
               <option value="">Select a property</option>
               <option>Hotel Grand Kashmir</option>
               <option>Katra View Resort</option>
               <option>Jammu City Inn</option>
-              <option data-manual="true">Not listed? Enter manually</option>
             </select>
+            <button type="button" class="link-btn" id="group-manual-toggle">
+              Can't find your hotel? Enter manually
+            </button>
           </div>
           <div class="row manual-wrap" id="group-manual-wrap">
             <label for="group-manual">Enter property name</label>
@@ -1017,7 +1037,7 @@
           </div>
         </div>
 
-        <!-- Your Name / Email (optional) / Preferred Contact -->
+        <!-- Your Name / Email / Preferred Contact -->
         <div class="grid-3">
           <div class="row">
             <label for="group-name-field">Your Name</label>
@@ -1025,7 +1045,7 @@
                    placeholder="Enter your name" required>
           </div>
           <div class="row">
-            <label for="group-email">Email (optional)</label>
+            <label for="group-email">Email</label>
             <input id="group-email" name="email" type="email"
                    placeholder="name@example.com">
           </div>
@@ -1034,7 +1054,7 @@
             <select id="group-prefer-contact" name="preferContact" required>
               <option value="">Select</option>
               <option>WhatsApp</option>
-              <option>Call</option>
+              <option>Email</option>
             </select>
           </div>
         </div>
@@ -1069,6 +1089,14 @@
     </div>
   </div>
 
+  <!-- Footer with company contacts -->
+  <footer class="footer">
+    <a class="chip" href="tel:+919797459260">📞 +91 9797459260</a>
+    <!-- TODO: change to your real company email -->
+    <a class="chip" href="mailto:bookings@example.com">✉️ bookings@example.com</a>
+    <div class="copy">Fodel Travels · Jammu & Kashmir</div>
+  </footer>
+
   <div class="toast" id="toast"></div>
 
   <div class="fw-whatsapp">
@@ -1091,6 +1119,40 @@
       toast.textContent = msg || "✅ Request submitted. We'll contact you shortly.";
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    // Build a small summary to pass to WhatsApp / email
+    function buildSummary(form) {
+      const fd = new FormData(form);
+      const name = fd.get('yourName') || '';
+      const mobile = fd.get('mobile') || '';
+      const email = fd.get('email') || '';
+      const notes = fd.get('notes') || '';
+      return [
+        'New booking request',
+        name && 'Name: ' + name,
+        mobile && 'Mobile: ' + mobile,
+        email && 'Email: ' + email,
+        notes && 'Notes: ' + notes
+      ].filter(Boolean).join('\n');
+    }
+
+    // Handle preferred channel: WhatsApp / Email
+    function handlePreferredChannel(form, prefer) {
+      const summary = buildSummary(form);
+
+      if (prefer === 'WhatsApp') {
+        const url =
+          'https://wa.me/919797459260?text=' + encodeURIComponent(summary);
+        window.open(url, '_blank');
+      } else if (prefer === 'Email') {
+        // TODO: replace bookings@example.com with your real bookings email
+        const mailto =
+          'mailto:bookings@example.com' +
+          '?subject=' + encodeURIComponent('New Booking Request') +
+          '&body=' + encodeURIComponent(summary);
+        window.location.href = mailto;
+      }
     }
 
     // ---------- Modal + tab handling ----------
@@ -1146,21 +1208,6 @@
       // keep manual independent – selecting something from dropdown does not hide manual
       select.addEventListener('change', () => {/* no coupling */});
     }
-
-    // For Venue & Group dropdown manual option
-    function toggleManualEntry(selectEl, wrapId, inputId) {
-      const wrap = document.getElementById(wrapId);
-      const input = document.getElementById(inputId);
-      if (!wrap || !input || !selectEl) return;
-
-      const opt = selectEl.selectedOptions[0];
-      const isManual = opt && opt.dataset.manual === 'true';
-
-      wrap.classList.toggle('active', isManual);
-      input.required = isManual;
-      if (!isManual) input.value = '';
-    }
-    window.toggleManualEntry = toggleManualEntry;
 
     // ---------- Nights calculation + Day‑use handling ----------
     function handleDates(prefix) {
@@ -1244,7 +1291,7 @@
         inp.min = today;
       });
 
-      // 2) Wire date handlers for Hotel and Group (venue modal does not need nights calc)
+      // 2) Wire date handlers for Hotel and Group
       ['hotel', 'group'].forEach(prefix => {
         const ci = document.getElementById(prefix + '-checkin');
         const co = document.getElementById(prefix + '-checkout');
@@ -1257,13 +1304,41 @@
         co.addEventListener('change', () => handleDates(prefix));
       });
 
-      // 3) Manual entry toggle for Hotel dropdown (independent link)
+      // 3) Manual entry toggles (Rooms, Venue, Group)
       wireManualToggle('hotel-name', 'hotel-manual-wrap', 'hotel-manual', 'hotel-manual-toggle');
+      wireManualToggle('event-venue', 'event-manual-wrap', 'event-manual', 'event-manual-toggle');
+      wireManualToggle('group-property', 'group-manual-wrap', 'group-manual', 'group-manual-toggle');
 
-      // 4) Form submit: show toast, reset UI, and close modal
+      // 4) Prefer contact: make email required when "Email" selected
+      function setupPreferContact(formId, preferId, emailId) {
+        const form = document.getElementById(formId);
+        if (!form) return;
+        const select = form.querySelector('#' + preferId);
+        const email = form.querySelector('#' + emailId);
+        if (!select || !email) return;
+
+        function updateRequired() {
+          email.required = (select.value === 'Email');
+        }
+        select.addEventListener('change', updateRequired);
+      }
+      setupPreferContact('form-hotel', 'hotel-prefer-contact', 'hotel-email');
+      setupPreferContact('form-banquet', 'event-prefer-contact', 'event-email');
+      setupPreferContact('form-group', 'group-prefer-contact', 'group-email');
+
+      // 5) Form submit: route to channel, show toast, reset UI, and close modal
       document.querySelectorAll('form').forEach(function (form) {
         form.addEventListener('submit', function (e) {
           e.preventDefault();
+
+          const preferSelect = this.querySelector('select[name="preferContact"]');
+          const prefer = preferSelect ? preferSelect.value : '';
+
+          // Send via preferred channel
+          if (prefer) {
+            handlePreferredChannel(this, prefer);
+          }
+
           showToast();
 
           // Reset native fields
