@@ -4,16 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Fodel Travels | Best Travel Agent in Jammu & Kashmir for Rooms, Events & Group Stays</title>
+  <title>Fodel Travels | Rooms, Events & Group Stays - Jammu & Kashmir</title>
 
   <meta name="description"
         content="Fodel Travels is a trustworthy travel agent in Jammu & Kashmir for hotel booking in Katra, Patnitop and Goa, group stays, event venues and reliable transport services from Jammu." />
-  <meta name="keywords"
-        content="Jammu and Kashmir travel agent, best travel agent in Jammu and Kashmir, hotel booking Katra, hotel booking in Katra, transport services Jammu, Jammu taxi services, Patnitop hotels, Patnitop packages, Goa tour packages, Katra hotel deals, trustworthy travel agency, rooms in Jammu and Kashmir" />
-  <meta name="author" content="Fodel Travels" />
   <meta name="robots" content="index,follow" />
 
-  <!-- Google Fonts – fixed, will NOT show as text -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
@@ -395,7 +392,7 @@
     .agent-checkbox:hover{background:#f3f4f6}
     .agent-checkbox input{width:auto;margin:0}
 
-    .row-agent{margin-top:8px;} /* extra spacing before agent row */
+    .row-agent{margin-top:8px;}
 
     .error-text{
       color:#dc2626;font-size:11px;margin-top:4px;
@@ -469,6 +466,42 @@
       text-align:left;
     }
 
+    /* Admin styles */
+    #admin-root h1{
+      font-size:24px;
+      margin-bottom:8px;
+    }
+    #admin-root table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:16px;
+      font-size:13px;
+    }
+    #admin-root th,
+    #admin-root td{
+      border:1px solid #e5e7eb;
+      padding:8px 10px;
+      text-align:left;
+    }
+    #admin-root th{
+      background:#f9fafb;
+    }
+    #admin-root .pill{
+      display:inline-block;
+      padding:2px 8px;
+      border-radius:999px;
+      font-size:11px;
+      background:#ecfeff;
+      color:#0369a1;
+    }
+    #admin-root textarea{
+      width:100%;
+      min-height:120px;
+      font-family:monospace;
+      font-size:12px;
+      margin-top:8px;
+    }
+
     @keyframes fwPulse{
       0%{transform:scale(.9);opacity:.55}
       50%{transform:scale(1.05);opacity:.85}
@@ -485,706 +518,799 @@
   </style>
 </head>
 <body>
-  <header class="banner">
-    <div class="topbar">
-      <a class="brand" href="index.html">
-        <div class="brand-badge">🏨</div>
-        <span>Fodel Travels</span>
+  <!-- PUBLIC UI WRAPPER -->
+  <div id="public-root">
+    <header class="banner">
+      <div class="topbar">
+        <a class="brand" href="index.html">
+          <div class="brand-badge">🏨</div>
+          <span>Fodel Travels</span>
+        </a>
+        <nav class="nav">
+          <a class="pill-btn reviews-btn" href="reviews-travels.html">⭐ Reviews</a>
+          <a class="pill-btn home-btn" href="index.html">← Home</a>
+        </nav>
+      </div>
+
+      <div class="banner-inner">
+        <div class="hero">
+          <h1>Rooms, event venues, and group stays across Jammu & Kashmir</h1>
+          <p>Trusted travel agent in Jammu & Kashmir for hotel booking in Katra, Patnitop and Goa, group stays and local transport.</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="section">
+      <h2>Travel Services</h2>
+      <div class="separator"></div>
+
+      <div class="cards">
+        <div class="card">
+          <h3>
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                <path d="M4 7h12a4 4 0 0 1 4 4v5h-2v-3H4v3H2v-6a3 3 0 0 1 2-3zm2 2a2 2 0 1 0 0 4h6a2 2 0 1 0 0-4H6z"/>
+              </svg>
+            </span>
+            Rooms
+          </h3>
+          <p>Hotel rooms across Jammu & Kashmir, Katra and Patnitop.</p>
+          <button class="btn" data-open="modal-hotel">Room Request →</button>
+        </div>
+
+        <div class="card">
+          <h3>
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                <path d="M3 6h18v12H3z"/>
+                <path d="M3 9h18v2H3zM7 18h2v3H7zM15 18h2v3h-2z"/>
+              </svg>
+            </span>
+            Event Venues
+          </h3>
+          <p>Banquets, weddings, corporate meetings and celebrations.</p>
+          <button class="btn" data-open="modal-banquet">Venue Request →</button>
+        </div>
+
+        <div class="card">
+          <h3>
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                <path d="M16 11a3 3 0 1 0-3-3 3 3 0 0 0 3 3ZM7 12a3 3 0 1 0 3 3 3 3 0 0 0 3 3Z"/>
+                <path d="M15 14c-2.7 0-8 1.35-8 4v2h12v-2c0-2.65-5.3-4-8-4Z"/>
+              </svg>
+            </span>
+            Bulk Bookings
+          </h3>
+          <p>Group stays for pilgrim groups, tours and corporate travel.</p>
+          <button class="btn" data-open="modal-group">Group Request →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="packages-section">
+      <h2>Packages</h2>
+      <div class="separator"></div>
+
+      <div class="packages-cards">
+        <div class="package-card">
+          <h3>
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25 5-4.87-5.92-1.42L2 9.27l6.91 3.95L12 2z"/>
+              </svg>
+            </span>
+            Jammu & Kashmir
+          </h3>
+          <p>Curated tours, stays & experiences – coming soon.</p>
+        </div>
+
+        <div class="package-card">
+          <h3>
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2z"/>
+              </svg>
+            </span>
+            Other Regions
+          </h3>
+          <p>Goa, Himachal and other regions will be added soon.</p>
+        </div>
+
+        <div class="package-card">
+          <h3>
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+            </span>
+            Custom Packages
+          </h3>
+          <p>Tailor‑made itineraries on request.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Transport CTA AFTER packages, BEFORE footer -->
+    <section class="section" style="margin-top:0; margin-bottom:20px;">
+      <a class="btn" href="https://www.fodel.in/transport.html">
+        Also need transport services? We cover that →
       </a>
-      <nav class="nav">
-        <a class="pill-btn reviews-btn" href="reviews-travels.html">⭐ Reviews</a>
-        <a class="pill-btn home-btn" href="index.html">← Home</a>
-      </nav>
-    </div>
+    </section>
 
-    <div class="banner-inner">
-      <div class="hero">
-        <h1>Rooms, event venues, and group stays across Jammu & Kashmir</h1>
-        <p>Trusted travel agent in Jammu & Kashmir for hotel booking in Katra, Patnitop and Goa, group stays and local transport.</p>
-      </div>
-    </div>
-  </header>
-
-  <section class="section">
-    <h2>Travel Services</h2>
-    <div class="separator"></div>
-
-    <div class="cards">
-      <div class="card">
-        <h3>
-          <span class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-              <path d="M4 7h12a4 4 0 0 1 4 4v5h-2v-3H4v3H2v-6a3 3 0 0 1 2-3zm2 2a2 2 0 1 0 0 4h6a2 2 0 1 0 0-4H6z"/>
-            </svg>
-          </span>
-          Rooms
-        </h3>
-        <p>Hotel rooms across Jammu & Kashmir, Katra and Patnitop.</p>
-        <button class="btn" data-open="modal-hotel">Room Request →</button>
-      </div>
-
-      <div class="card">
-        <h3>
-          <span class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-              <path d="M3 6h18v12H3z"/>
-              <path d="M3 9h18v2H3zM7 18h2v3H7zM15 18h2v3h-2z"/>
-            </svg>
-          </span>
-          Event Venues
-        </h3>
-        <p>Banquets, weddings, corporate meetings and celebrations.</p>
-        <button class="btn" data-open="modal-banquet">Venue Request →</button>
-      </div>
-
-      <div class="card">
-        <h3>
-          <span class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-              <path d="M16 11a3 3 0 1 0-3-3 3 3 0 0 0 3 3ZM7 12a3 3 0 1 0 3 3 3 3 0 0 0 3 3Z"/>
-              <path d="M15 14c-2.7 0-8 1.35-8 4v2h12v-2c0-2.65-5.3-4-8-4Z"/>
-            </svg>
-          </span>
-          Bulk Bookings
-        </h3>
-        <p>Group stays for pilgrim groups, tours and corporate travel.</p>
-        <button class="btn" data-open="modal-group">Group Request →</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Packages Section -->
-  <section class="packages-section">
-    <h2>Packages</h2>
-    <div class="separator"></div>
-
-    <div class="packages-cards">
-      <div class="package-card">
-        <h3>
-          <span class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25 5-4.87-5.92-1.42L2 9.27l6.91 3.95L12 2z"/>
-            </svg>
-          </span>
-          Jammu & Kashmir
-        </h3>
-        <p>Curated tours, stays & experiences – coming soon.</p>
-      </div>
-
-      <div class="package-card">
-        <h3>
-          <span class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-              <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2z"/>
-            </svg>
-          </span>
-          Other Regions
-        </h3>
-        <p>Goa, Himachal and other regions will be added soon.</p>
-      </div>
-
-      <div class="package-card">
-        <h3>
-          <span class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-            </svg>
-          </span>
-          Custom Packages
-        </h3>
-        <p>Tailor‑made itineraries on request.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Transport CTA AFTER packages, BEFORE footer -->
-  <section class="section" style="margin-top:0; margin-bottom:20px;">
-    <a class="btn" href="https://www.fodel.in/transport.html">
-      Also need transport services? We cover that →
-    </a>
-  </section>
-
-  <!-- ====================== ROOM MODAL ====================== -->
-  <div id="modal-hotel" class="overlay" role="dialog" aria-modal="true" aria-labelledby="hotel-title">
-    <div class="modal">
-      <div class="modal-header">
-        <div class="modal-title" id="hotel-title">Room Request</div>
-        <button class="modal-close" data-close>✕</button>
-      </div>
-
-      <form class="modal-body" id="form-hotel" data-category="Room Request">
-        <!-- Region / Area -->
-        <div class="row">
-          <label>Region</label>
-          <div class="btn-group" data-group="hotel-region">
-            <div class="btn-tab active" data-value="Jammu & Kashmir">Jammu & Kashmir</div>
-          </div>
+    <!-- ====================== ROOM MODAL ====================== -->
+    <div id="modal-hotel" class="overlay" role="dialog" aria-modal="true" aria-labelledby="hotel-title">
+      <div class="modal">
+        <div class="modal-header">
+          <div class="modal-title" id="hotel-title">Room Request</div>
+          <button class="modal-close" data-close>✕</button>
         </div>
 
-        <div class="row">
-          <label>Area</label>
-          <div class="btn-group" data-group="hotel-area">
-            <div class="btn-tab active" data-value="All">All</div>
-            <div class="btn-tab" data-value="Jammu">Jammu</div>
-            <div class="btn-tab" data-value="Kashmir">Kashmir</div>
-            <div class="btn-tab" data-value="Katra">Katra</div>
-            <div class="btn-tab" data-value="Patnitop">Patnitop</div>
-          </div>
-        </div>
-
-        <!-- Hotel / Property + Manual entry link -->
-        <div class="grid-2 full-on-mobile">
+        <form class="modal-body" id="form-hotel" data-category="Room Request">
+          <!-- Region / Area -->
           <div class="row">
-            <label for="hotel-name">Hotel / Property</label>
-            <select id="hotel-name" name="hotelName" required>
-              <option value="">Select a property</option>
-              <option data-area="Katra">Sample Hotel Katra</option>
-              <option data-area="Patnitop">Sample Hotel Patnitop</option>
-            </select>
-            <button type="button" class="link-btn" id="hotel-manual-toggle">
-              Can't find your hotel? Enter manually
-            </button>
-          </div>
-          <div class="row manual-wrap" id="hotel-manual-wrap">
-            <label for="hotel-manual">Enter hotel name</label>
-            <input id="hotel-manual" name="hotelManual" type="text"
-                   placeholder="Type exact hotel name" />
-          </div>
-        </div>
-
-        <!-- Dates: Check-in / Check-out -->
-        <div class="grid-2">
-          <div class="row">
-            <label for="hotel-checkin">Check-in</label>
-            <input id="hotel-checkin" name="checkin" type="date" required>
-            <div class="day-use" id="hotel-day-use-label"></div>
-            <div class="error-text" id="hotel-date-error"></div>
-          </div>
-          <div class="row">
-            <label for="hotel-checkout">Check-out</label>
-            <input id="hotel-checkout" name="checkout" type="date" required>
-          </div>
-        </div>
-
-        <!-- Nights - Rooms - Total Adults -->
-        <div class="grid-3">
-          <div class="row">
-            <label for="hotel-nights">Nights</label>
-            <input id="hotel-nights" name="nights" type="text"
-                   class="readonly" readonly>
-          </div>
-          <div class="row">
-            <label for="hotel-rooms">Rooms</label>
-            <input id="hotel-rooms" name="rooms" type="number" min="1"
-                   placeholder="2" required>
-          </div>
-          <div class="row">
-            <label for="hotel-adults">Total Adults</label>
-            <input id="hotel-adults" name="adults" type="number" min="1"
-                   placeholder="2" required>
-          </div>
-        </div>
-
-        <!-- Any Kids (Age) - Approx budget Per night -->
-        <div class="grid-2">
-          <div class="row">
-            <label for="hotel-kids-age">Any Kids (Age)</label>
-            <input id="hotel-kids-age" name="kidsAge" type="text"
-                   placeholder="e.g. 5 yrs, 8 yrs">
-          </div>
-          <div class="row">
-            <label for="hotel-budget">Approx budget per night (optional)</label>
-            <input id="hotel-budget" name="budget" type="text"
-                   placeholder="e.g. ₹3000 - ₹5000 per room">
-          </div>
-        </div>
-
-        <!-- Room Category (optional) full row -->
-        <div class="row">
-          <label for="hotel-room-category">Room Category (optional)</label>
-          <input id="hotel-room-category" name="roomCategory" type="text"
-                 placeholder="Deluxe, Super Deluxe, Suite, etc.">
-        </div>
-
-        <!-- Day‑use time inputs (hidden by default) -->
-        <div class="grid-2 dayuse-time-wrap" id="hotel-day-use-times" style="display:none;">
-          <div class="row">
-            <label for="hotel-day-from">From Time</label>
-            <input id="hotel-day-from" name="dayFrom" type="time">
-          </div>
-          <div class="row">
-            <label for="hotel-day-to">To Time</label>
-            <input id="hotel-day-to" name="dayTo" type="time">
-          </div>
-        </div>
-
-        <!-- Personal Information heading -->
-        <h4 style="margin-top:10px; margin-bottom:4px; text-align:left; font-size:13px;">Personal Information</h4>
-
-        <!-- Your Name / Mobile -->
-        <div class="grid-2">
-          <div class="row">
-            <label for="hotel-name-field">Your Name</label>
-            <input id="hotel-name-field" name="yourName" type="text"
-                   placeholder="Enter your name" required>
-          </div>
-          <div class="row">
-            <label for="hotel-mobile">Mobile</label>
-            <input id="hotel-mobile" name="mobile" type="tel"
-                   placeholder="+91 9XXXXXXXXX" required>
-          </div>
-        </div>
-
-        <!-- Email full row -->
-        <div class="row">
-          <label for="hotel-email">Email</label>
-          <input id="hotel-email" name="email" type="email"
-                 placeholder="name@example.com">
-        </div>
-
-        <!-- Transport Require? / Prefer contact on -->
-        <div class="grid-2">
-          <div class="row">
-            <label for="hotel-transport">Transport require?</label>
-            <select id="hotel-transport" name="transport">
-              <option value="">Select</option>
-              <option value="No">No</option>
-              <option value="Yes">Yes</option>
-            </select>
-            <div class="info-text" id="hotel-transport-info" style="display:none;">
-              We also have transport services. You can check our
-              <a href="https://www.fodel.in/transport.html" target="_blank" style="color:#0f766e; text-decoration:underline;">transport services</a>.
+            <label>Region</label>
+            <div class="btn-group" data-group="hotel-region">
+              <div class="btn-tab active" data-value="Jammu & Kashmir">Jammu & Kashmir</div>
             </div>
           </div>
+
           <div class="row">
-            <label for="hotel-prefer-contact">Prefer contact on</label>
-            <select id="hotel-prefer-contact" name="preferContact" required>
-              <option value="">Select</option>
-              <option>WhatsApp</option>
-              <option>Email</option>
-            </select>
+            <label>Area</label>
+            <div class="btn-group" data-group="hotel-area">
+              <div class="btn-tab active" data-value="All">All</div>
+              <div class="btn-tab" data-value="Jammu">Jammu</div>
+              <div class="btn-tab" data-value="Kashmir">Kashmir</div>
+              <div class="btn-tab" data-value="Katra">Katra</div>
+              <div class="btn-tab" data-value="Patnitop">Patnitop</div>
+            </div>
           </div>
-        </div>
 
-        <!-- Are you a travel agent? -->
-        <div class="row row-agent">
-          <label class="agent-checkbox" onclick="toggleAgent('hotel-agent-wrap')">
-            <input type="checkbox" id="hotel-agent" name="isAgent">
-            Are you a travel agent?
-          </label>
-        </div>
-        <div class="row agent-wrap" id="hotel-agent-wrap">
-          <label for="hotel-agent-name">Agent Company Name</label>
-          <input id="hotel-agent-name" name="agentCompany" type="text"
-                 placeholder="Your travel agency name" />
-        </div>
+          <!-- Hotel / Property + Manual entry link -->
+          <div class="grid-2 full-on-mobile">
+            <div class="row">
+              <label for="hotel-name">Hotel / Property</label>
+              <select id="hotel-name" name="hotelName" required>
+                <option value="">Select a property</option>
+              </select>
+              <button type="button" class="link-btn" id="hotel-manual-toggle">
+                Can't find your hotel? Enter manually
+              </button>
+            </div>
+            <div class="row manual-wrap" id="hotel-manual-wrap">
+              <label for="hotel-manual">Enter hotel name</label>
+              <input id="hotel-manual" name="hotelManual" type="text"
+                     placeholder="Type exact hotel name" />
+            </div>
+          </div>
 
-        <!-- Notes -->
-        <div class="row">
-          <label for="hotel-notes">Notes</label>
-          <textarea id="hotel-notes" name="notes"
-                    placeholder="Special requests..."></textarea>
-        </div>
+          <!-- Dates -->
+          <div class="grid-2">
+            <div class="row">
+              <label for="hotel-checkin">Check-in</label>
+              <input id="hotel-checkin" name="checkin" type="date" required>
+              <div class="day-use" id="hotel-day-use-label"></div>
+              <div class="error-text" id="hotel-date-error"></div>
+            </div>
+            <div class="row">
+              <label for="hotel-checkout">Check-out</label>
+              <input id="hotel-checkout" name="checkout" type="date" required>
+            </div>
+          </div>
 
-        <div class="actions">
-          <button class="btn-ghost" type="button" data-close>Cancel</button>
-          <button class="btn-primary" type="submit">Submit Request</button>
-        </div>
-      </form>
-    </div>
-  </div>
+          <!-- Nights / Rooms / Total Adults -->
+          <div class="grid-3">
+            <div class="row">
+              <label for="hotel-nights">Nights</label>
+              <input id="hotel-nights" name="nights" type="text"
+                     class="readonly" readonly>
+            </div>
+            <div class="row">
+              <label for="hotel-rooms">Rooms</label>
+              <input id="hotel-rooms" name="rooms" type="number" min="1"
+                     placeholder="2" required>
+            </div>
+            <div class="row">
+              <label for="hotel-adults">Total Adults</label>
+              <input id="hotel-adults" name="adults" type="number" min="1"
+                     placeholder="2" required>
+            </div>
+          </div>
 
-  <!-- ====================== VENUE MODAL ====================== -->
-  <div id="modal-banquet" class="overlay" role="dialog" aria-modal="true" aria-labelledby="banquet-title">
-    <div class="modal">
-      <div class="modal-header">
-        <div class="modal-title" id="banquet-title">Venue Request</div>
-        <button class="modal-close" data-close>✕</button>
+          <!-- Any Kids / Meal Plan / Budget -->
+          <div class="grid-3">
+            <div class="row">
+              <label for="hotel-kids-age">Any Kids (Age)</label>
+              <input id="hotel-kids-age" name="kidsAge" type="text"
+                     placeholder="e.g. 5 yrs, 8 yrs">
+            </div>
+            <div class="row">
+              <label for="hotel-meal">Meal Plan</label>
+              <select id="hotel-meal" name="meal">
+                <option value="">Select</option>
+                <option>EP (Room Only)</option>
+                <option>CP (Breakfast)</option>
+                <option>MAP (2 Meals)</option>
+                <option>APAI (All Meals)</option>
+              </select>
+            </div>
+            <div class="row">
+              <label for="hotel-budget">Approx budget per night (optional)</label>
+              <input id="hotel-budget" name="budget" type="text"
+                     placeholder="e.g. ₹3000 - ₹5000 per room">
+            </div>
+          </div>
+
+          <!-- Room Category -->
+          <div class="row">
+            <label for="hotel-room-category">Room Category (optional)</label>
+            <input id="hotel-room-category" name="roomCategory" type="text"
+                   placeholder="Deluxe, Super Deluxe, Suite, etc.">
+          </div>
+
+          <!-- Day‑use time inputs (hidden by default) -->
+          <div class="grid-2 dayuse-time-wrap" id="hotel-day-use-times" style="display:none;">
+            <div class="row">
+              <label for="hotel-day-from">From Time</label>
+              <input id="hotel-day-from" name="dayFrom" type="time">
+            </div>
+            <div class="row">
+              <label for="hotel-day-to">To Time</label>
+              <input id="hotel-day-to" name="dayTo" type="time">
+            </div>
+          </div>
+
+          <!-- Personal Information -->
+          <h4 style="margin-top:10px; margin-bottom:4px; text-align:left; font-size:13px;">Personal Information</h4>
+
+          <div class="grid-2">
+            <div class="row">
+              <label for="hotel-name-field">Your Name</label>
+              <input id="hotel-name-field" name="yourName" type="text"
+                     placeholder="Enter your name" required>
+            </div>
+            <div class="row">
+              <label for="hotel-mobile">Mobile</label>
+              <input id="hotel-mobile" name="mobile" type="tel"
+                     placeholder="+91 9XXXXXXXXX" required>
+            </div>
+          </div>
+
+          <div class="row">
+            <label for="hotel-email">Email</label>
+            <input id="hotel-email" name="email" type="email"
+                   placeholder="name@example.com">
+          </div>
+
+          <div class="grid-2">
+            <div class="row">
+              <label for="hotel-transport">Transport require?</label>
+              <select id="hotel-transport" name="transport">
+                <option value="">Select</option>
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+              </select>
+              <div class="info-text" id="hotel-transport-info" style="display:none;">
+                We also have transport services. You can check our
+                <a href="https://www.fodel.in/transport.html" target="_blank" style="color:#0f766e; text-decoration:underline;">transport services</a>.
+              </div>
+            </div>
+            <div class="row">
+              <label for="hotel-prefer-contact">Prefer contact on</label>
+              <select id="hotel-prefer-contact" name="preferContact" required>
+                <option value="">Select</option>
+                <option>WhatsApp</option>
+                <option>Email</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row row-agent">
+            <label class="agent-checkbox" onclick="toggleAgent('hotel-agent-wrap')">
+              <input type="checkbox" id="hotel-agent" name="isAgent">
+              Are you a travel agent?
+            </label>
+          </div>
+          <div class="row agent-wrap" id="hotel-agent-wrap">
+            <label for="hotel-agent-name">Agent Company Name</label>
+            <input id="hotel-agent-name" name="agentCompany" type="text"
+                   placeholder="Your travel agency name" />
+          </div>
+
+          <div class="row">
+            <label for="hotel-notes">Notes</label>
+            <textarea id="hotel-notes" name="notes"
+                      placeholder="Special requests..."></textarea>
+          </div>
+
+          <div class="actions">
+            <button class="btn-ghost" type="button" data-close>Cancel</button>
+            <button class="btn-primary" type="submit">Submit Request</button>
+          </div>
+        </form>
       </div>
-
-      <form class="modal-body" id="form-banquet" data-category="Event Venue Request">
-        <!-- Region / Area -->
-        <div class="row">
-          <label>Region</label>
-          <div class="btn-group" data-group="event-region">
-            <div class="btn-tab active" data-value="Jammu & Kashmir">Jammu & Kashmir</div>
-          </div>
-        </div>
-
-        <div class="row">
-          <label>Area</label>
-          <div class="btn-group" data-group="event-area">
-            <div class="btn-tab active" data-value="All">All</div>
-            <div class="btn-tab" data-value="Jammu">Jammu</div>
-            <div class="btn-tab" data-value="Kashmir">Kashmir</div>
-            <div class="btn-tab" data-value="Katra">Katra</div>
-            <div class="btn-tab" data-value="Patnitop">Patnitop</div>
-          </div>
-        </div>
-
-        <!-- Venue / Event type -->
-        <div class="grid-2 full-on-mobile">
-          <div class="row">
-            <label for="event-venue">Venue / Hall</label>
-            <select id="event-venue" name="venue" required>
-              <option value="">Select a venue</option>
-              <option data-area="Jammu">Sample Banquet Jammu</option>
-              <option data-area="Katra">Sample Hall Katra</option>
-            </select>
-          </div>
-          <div class="row">
-            <label for="event-type">Event Type</label>
-            <input id="event-type" name="eventType" type="text"
-                   placeholder="Wedding, Conference, etc." required>
-          </div>
-        </div>
-
-        <!-- Event Date / Min Guarantee -->
-        <div class="grid-2">
-          <div class="row">
-            <label for="event-date">Event Date</label>
-            <input id="event-date" name="eventDate" type="date" required>
-          </div>
-          <div class="row">
-            <label for="min-guarantee">Min. Guarantee</label>
-            <input id="min-guarantee" name="minGuarantee" type="number"
-                   min="10" placeholder="100" required>
-          </div>
-        </div>
-
-        <!-- Session / Start-End time -->
-        <div class="grid-2">
-          <div class="row">
-            <label for="banquet-session">Session</label>
-            <select id="banquet-session" name="session" required>
-              <option value="">Select</option>
-              <option>Breakfast</option>
-              <option>Lunch</option>
-              <option>Hi-Tea</option>
-              <option>Dinner</option>
-            </select>
-          </div>
-          <div class="row">
-            <label for="event-start">Start / End time</label>
-            <div style="display:flex; gap:6px;">
-              <input id="event-start" name="eventStart" type="time" style="flex:1;">
-              <input id="event-end"   name="eventEnd"   type="time" style="flex:1;">
-            </div>
-          </div>
-        </div>
-
-        <!-- Decoration / AV -->
-        <div class="grid-2">
-          <div class="row">
-            <label for="decoration">Decoration Needs</label>
-            <textarea id="decoration" name="decoration"
-                      placeholder="Floral, stage, theme colour..."></textarea>
-          </div>
-          <div class="row">
-            <label for="av-requirement">AV Requirements</label>
-            <textarea id="av-requirement" name="avRequirement"
-                      placeholder="Sound, projector, LED screen..."></textarea>
-          </div>
-        </div>
-
-        <!-- Personal info heading -->
-        <h4 style="margin-top:10px; margin-bottom:4px; text-align:left; font-size:13px;">Personal Information</h4>
-
-        <!-- Name / Mobile -->
-        <div class="grid-2">
-          <div class="row">
-            <label for="event-name-field">Your Name</label>
-            <input id="event-name-field" name="yourName" type="text"
-                   placeholder="Enter your name" required>
-          </div>
-          <div class="row">
-            <label for="event-mobile">Mobile</label>
-            <input id="event-mobile" name="mobile" type="tel"
-                   placeholder="+91 9XXXXXXXXX" required>
-          </div>
-        </div>
-
-        <!-- Email full row -->
-        <div class="row">
-          <label for="event-email">Email</label>
-          <input id="event-email" name="email" type="email"
-                 placeholder="name@example.com">
-        </div>
-
-        <!-- Transport Require / Prefer contact -->
-        <div class="grid-2">
-          <div class="row">
-            <label for="event-transport">Transport require?</label>
-            <select id="event-transport" name="transport">
-              <option value="">Select</option>
-              <option value="No">No</option>
-              <option value="Yes">Yes</option>
-            </select>
-            <div class="info-text" id="event-transport-info" style="display:none;">
-              We also have transport services. You can check our
-              <a href="https://www.fodel.in/transport.html" target="_blank" style="color:#0f766e; text-decoration:underline;">transport services</a>.
-            </div>
-          </div>
-          <div class="row">
-            <label for="event-prefer-contact">Prefer contact on</label>
-            <select id="event-prefer-contact" name="preferContact" required>
-              <option value="">Select</option>
-              <option>WhatsApp</option>
-              <option>Email</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Are you a travel agent? -->
-        <div class="row row-agent">
-          <label class="agent-checkbox" onclick="toggleAgent('event-agent-wrap')">
-            <input type="checkbox" id="event-agent" name="isAgent">
-            Are you a travel agent?
-          </label>
-        </div>
-        <div class="row agent-wrap" id="event-agent-wrap">
-          <label for="event-agent-name">Agent Company Name</label>
-          <input id="event-agent-name" name="agentCompany" type="text"
-                 placeholder="Your travel agency name" />
-        </div>
-
-        <!-- Event details / Notes -->
-        <div class="row">
-          <label for="banquet-notes">Notes</label>
-          <textarea id="banquet-notes" name="notes"
-                    placeholder="Event details, special requirements..."></textarea>
-        </div>
-
-        <div class="actions">
-          <button class="btn-ghost" type="button" data-close>Cancel</button>
-          <button class="btn-primary" type="submit">Submit Request</button>
-        </div>
-      </form>
     </div>
-  </div>
 
-  <!-- ====================== GROUP MODAL ====================== -->
-  <div id="modal-group" class="overlay" role="dialog" aria-modal="true" aria-labelledby="group-title">
-    <div class="modal">
-      <div class="modal-header">
-        <div class="modal-title" id="group-title">Group Stay Request</div>
-        <button class="modal-close" data-close>✕</button>
+    <!-- ====================== VENUE MODAL ====================== -->
+    <div id="modal-banquet" class="overlay" role="dialog" aria-modal="true" aria-labelledby="banquet-title">
+      <div class="modal">
+        <div class="modal-header">
+          <div class="modal-title" id="banquet-title">Venue Request</div>
+          <button class="modal-close" data-close>✕</button>
+        </div>
+
+        <form class="modal-body" id="form-banquet" data-category="Event Venue Request">
+          <!-- Region / Area -->
+          <div class="row">
+            <label>Region</label>
+            <div class="btn-group" data-group="event-region">
+              <div class="btn-tab active" data-value="Jammu & Kashmir">Jammu & Kashmir</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <label>Area</label>
+            <div class="btn-group" data-group="event-area">
+              <div class="btn-tab active" data-value="All">All</div>
+              <div class="btn-tab" data-value="Jammu">Jammu</div>
+              <div class="btn-tab" data-value="Kashmir">Kashmir</div>
+              <div class="btn-tab" data-value="Katra">Katra</div>
+              <div class="btn-tab" data-value="Patnitop">Patnitop</div>
+            </div>
+          </div>
+
+          <!-- Venue / Event Type -->
+          <div class="grid-2 full-on-mobile">
+            <div class="row">
+              <label for="event-venue">Venue / Hall</label>
+              <select id="event-venue" name="venue" required>
+                <option value="">Select a venue</option>
+              </select>
+            </div>
+            <div class="row">
+              <label for="event-type">Event Type</label>
+              <input id="event-type" name="eventType" type="text"
+                     placeholder="Wedding, Conference, etc." required>
+            </div>
+          </div>
+
+          <!-- Event Date / Min Guarantee -->
+          <div class="grid-2">
+            <div class="row">
+              <label for="event-date">Event Date</label>
+              <input id="event-date" name="eventDate" type="date" required>
+            </div>
+            <div class="row">
+              <label for="min-guarantee">Min. Guarantee</label>
+              <input id="min-guarantee" name="minGuarantee" type="number"
+                     min="10" placeholder="100" required>
+            </div>
+          </div>
+
+          <!-- Session / Start-End time -->
+          <div class="grid-2">
+            <div class="row">
+              <label for="banquet-session">Session</label>
+              <select id="banquet-session" name="session" required>
+                <option value="">Select</option>
+                <option>Breakfast</option>
+                <option>Lunch</option>
+                <option>Hi-Tea</option>
+                <option>Dinner</option>
+              </select>
+            </div>
+            <div class="row">
+              <label for="event-start">Start / End time</label>
+              <div style="display:flex; gap:6px;">
+                <input id="event-start" name="eventStart" type="time" style="flex:1;">
+                <input id="event-end"   name="eventEnd"   type="time" style="flex:1;">
+              </div>
+            </div>
+          </div>
+
+          <!-- Decoration / AV -->
+          <div class="grid-2">
+            <div class="row">
+              <label for="decoration">Decoration Needs</label>
+              <textarea id="decoration" name="decoration"
+                        placeholder="Floral, stage, theme colour..."></textarea>
+            </div>
+            <div class="row">
+              <label for="av-requirement">AV Requirements</label>
+              <textarea id="av-requirement" name="avRequirement"
+                        placeholder="Sound, projector, LED screen..."></textarea>
+            </div>
+          </div>
+
+          <!-- Personal info heading -->
+          <h4 style="margin-top:10px; margin-bottom:4px; text-align:left; font-size:13px;">Personal Information</h4>
+
+          <div class="grid-2">
+            <div class="row">
+              <label for="event-name-field">Your Name</label>
+              <input id="event-name-field" name="yourName" type="text"
+                     placeholder="Enter your name" required>
+            </div>
+            <div class="row">
+              <label for="event-mobile">Mobile</label>
+              <input id="event-mobile" name="mobile" type="tel"
+                     placeholder="+91 9XXXXXXXXX" required>
+            </div>
+          </div>
+
+          <div class="row">
+            <label for="event-email">Email</label>
+            <input id="event-email" name="email" type="email"
+                   placeholder="name@example.com">
+          </div>
+
+          <div class="grid-2">
+            <div class="row">
+              <label for="event-transport">Transport require?</label>
+              <select id="event-transport" name="transport">
+                <option value="">Select</option>
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+              </select>
+              <div class="info-text" id="event-transport-info" style="display:none;">
+                We also have transport services. You can check our
+                <a href="https://www.fodel.in/transport.html" target="_blank" style="color:#0f766e; text-decoration:underline;">transport services</a>.
+              </div>
+            </div>
+            <div class="row">
+              <label for="event-prefer-contact">Prefer contact on</label>
+              <select id="event-prefer-contact" name="preferContact" required>
+                <option value="">Select</option>
+                <option>WhatsApp</option>
+                <option>Email</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row row-agent">
+            <label class="agent-checkbox" onclick="toggleAgent('event-agent-wrap')">
+              <input type="checkbox" id="event-agent" name="isAgent">
+              Are you a travel agent?
+            </label>
+          </div>
+          <div class="row agent-wrap" id="event-agent-wrap">
+            <label for="event-agent-name">Agent Company Name</label>
+            <input id="event-agent-name" name="agentCompany" type="text"
+                   placeholder="Your travel agency name" />
+          </div>
+
+          <div class="row">
+            <label for="banquet-notes">Notes</label>
+            <textarea id="banquet-notes" name="notes"
+                      placeholder="Event details, special requirements..."></textarea>
+          </div>
+
+          <div class="actions">
+            <button class="btn-ghost" type="button" data-close>Cancel</button>
+            <button class="btn-primary" type="submit">Submit Request</button>
+          </div>
+        </form>
       </div>
+    </div>
 
-      <form class="modal-body" id="form-group" data-category="Group Stay Request">
-        <!-- Region / Area -->
-        <div class="row">
-          <label>Region</label>
-          <div class="btn-group" data-group="group-region">
-            <div class="btn-tab active" data-value="Jammu & Kashmir">Jammu & Kashmir</div>
-          </div>
+    <!-- ====================== GROUP MODAL ====================== -->
+    <div id="modal-group" class="overlay" role="dialog" aria-modal="true" aria-labelledby="group-title">
+      <div class="modal">
+        <div class="modal-header">
+          <div class="modal-title" id="group-title">Group Stay Request</div>
+          <button class="modal-close" data-close>✕</button>
         </div>
 
-        <div class="row">
-          <label>Area</label>
-          <div class="btn-group" data-group="group-area">
-            <div class="btn-tab active" data-value="All">All</div>
-            <div class="btn-tab" data-value="Jammu">Jammu</div>
-            <div class="btn-tab" data-value="Kashmir">Kashmir</div>
-            <div class="btn-tab" data-value="Katra">Katra</div>
-            <div class="btn-tab" data-value="Patnitop">Patnitop</div>
-          </div>
-        </div>
-
-        <!-- Property / Company Group name -->
-        <div class="grid-2 full-on-mobile">
+        <form class="modal-body" id="form-group" data-category="Group Stay Request">
+          <!-- Region / Area -->
           <div class="row">
-            <label for="group-property">Property / Hotel</label>
-            <select id="group-property" name="property" required>
-              <option value="">Select a property</option>
-              <option data-area="Katra">Sample Group Hotel Katra</option>
-            </select>
-          </div>
-          <div class="row">
-            <label for="group-name">Company / Group Name</label>
-            <input id="group-name" name="groupName" type="text"
-                   placeholder="ABC Pilgrims Group / XYZ Corp" required>
-          </div>
-        </div>
-
-        <!-- Dates -->
-        <div class="grid-2">
-          <div class="row">
-            <label for="group-checkin">Check-in</label>
-            <input id="group-checkin" name="checkin" type="date" required>
-            <div class="day-use" id="group-day-use-label"></div>
-            <div class="error-text" id="group-date-error"></div>
-          </div>
-          <div class="row">
-            <label for="group-checkout">Check-out</label>
-            <input id="group-checkout" name="checkout" type="date" required>
-          </div>
-        </div>
-
-        <!-- Nights - Rooms - Total Adults -->
-        <div class="grid-3">
-          <div class="row">
-            <label for="group-nights">Nights</label>
-            <input id="group-nights" name="nights" type="text"
-                   class="readonly" readonly>
-          </div>
-          <div class="row">
-            <label for="group-rooms">Total Rooms</label>
-            <input id="group-rooms" name="rooms" type="number" min="1"
-                   placeholder="15" required>
-          </div>
-          <div class="row">
-            <label for="group-adults">Total Adults</label>
-            <input id="group-adults" name="adults" type="number" min="1"
-                   placeholder="30" required>
-          </div>
-        </div>
-
-        <!-- Any Kids / Budget -->
-        <div class="grid-2">
-          <div class="row">
-            <label for="group-kids-age">Any Kids (Age)</label>
-            <input id="group-kids-age" name="kidsAge" type="text"
-                   placeholder="e.g. 5 yrs, 8 yrs">
-          </div>
-          <div class="row">
-            <label for="group-budget">Approx budget per night (optional)</label>
-            <input id="group-budget" name="budget" type="text"
-                   placeholder="e.g. ₹2000 - ₹3500 per person">
-          </div>
-        </div>
-
-        <!-- Room Category (optional) -->
-        <div class="row">
-          <label for="group-room-category">Room Category (optional)</label>
-          <input id="group-room-category" name="roomCategory" type="text"
-                 placeholder="Double / Triple sharing, Suites, etc.">
-        </div>
-
-        <!-- Day‑use times (hidden by default) -->
-        <div class="grid-2 dayuse-time-wrap" id="group-day-use-times" style="display:none;">
-          <div class="row">
-            <label for="group-day-from">From Time</label>
-            <input id="group-day-from" name="dayFrom" type="time">
-          </div>
-          <div class="row">
-            <label for="group-day-to">To Time</label>
-            <input id="group-day-to" name="dayTo" type="time">
-          </div>
-        </div>
-
-        <!-- Personal Information heading -->
-        <h4 style="margin-top:10px; margin-bottom:4px; text-align:left; font-size:13px;">Personal Information</h4>
-
-        <!-- Name / Mobile -->
-        <div class="grid-2">
-          <div class="row">
-            <label for="group-name-field">Your Name</label>
-            <input id="group-name-field" name="yourName" type="text"
-                   placeholder="Enter your name" required>
-          </div>
-          <div class="row">
-            <label for="group-mobile">Mobile</label>
-            <input id="group-mobile" name="mobile" type="tel"
-                   placeholder="+91 9XXXXXXXXX" required>
-          </div>
-        </div>
-
-        <!-- Email full row -->
-        <div class="row">
-          <label for="group-email">Email</label>
-          <input id="group-email" name="email" type="email"
-                 placeholder="name@example.com">
-        </div>
-
-        <!-- Transport Require / Prefer contact -->
-        <div class="grid-2">
-          <div class="row">
-            <label for="group-transport">Transport require?</label>
-            <select id="group-transport" name="transport">
-              <option value="">Select</option>
-              <option value="No">No</option>
-              <option value="Yes">Yes</option>
-            </select>
-            <div class="info-text" id="group-transport-info" style="display:none;">
-              We also have transport services. You can check our
-              <a href="https://www.fodel.in/transport.html" target="_blank" style="color:#0f766e; text-decoration:underline;">transport services</a>.
+            <label>Region</label>
+            <div class="btn-group" data-group="group-region">
+              <div class="btn-tab active" data-value="Jammu & Kashmir">Jammu & Kashmir</div>
             </div>
           </div>
+
           <div class="row">
-            <label for="group-prefer-contact">Prefer contact on</label>
-            <select id="group-prefer-contact" name="preferContact" required>
-              <option value="">Select</option>
-              <option>WhatsApp</option>
-              <option>Email</option>
-            </select>
+            <label>Area</label>
+            <div class="btn-group" data-group="group-area">
+              <div class="btn-tab active" data-value="All">All</div>
+              <div class="btn-tab" data-value="Jammu">Jammu</div>
+              <div class="btn-tab" data-value="Kashmir">Kashmir</div>
+              <div class="btn-tab" data-value="Katra">Katra</div>
+              <div class="btn-tab" data-value="Patnitop">Patnitop</div>
+            </div>
           </div>
-        </div>
 
-        <!-- Agent checkbox -->
-        <div class="row row-agent">
-          <label class="agent-checkbox" onclick="toggleAgent('group-agent-wrap')">
-            <input type="checkbox" id="group-agent" name="isAgent">
-            Are you a travel agent?
-          </label>
-        </div>
-        <div class="row agent-wrap" id="group-agent-wrap">
-          <label for="group-agent-name">Agent Company Name</label>
-          <input id="group-agent-name" name="agentCompany" type="text"
-                 placeholder="Your travel agency name" />
-        </div>
+          <!-- Property / Company Group name -->
+          <div class="grid-2 full-on-mobile">
+            <div class="row">
+              <label for="group-property">Property / Hotel</label>
+              <select id="group-property" name="property" required>
+                <option value="">Select a property</option>
+              </select>
+            </div>
+            <div class="row">
+              <label for="group-name">Company / Group Name</label>
+              <input id="group-name" name="groupName" type="text"
+                     placeholder="ABC Pilgrims Group / XYZ Corp" required>
+            </div>
+          </div>
 
-        <!-- Requirements / Notes -->
-        <div class="row">
-          <label for="group-notes">Notes</label>
-          <textarea id="group-notes" name="notes"
-                    placeholder="Transport, budget, room sharing, itinerary..."></textarea>
-        </div>
+          <!-- Dates -->
+          <div class="grid-2">
+            <div class="row">
+              <label for="group-checkin">Check-in</label>
+              <input id="group-checkin" name="checkin" type="date" required>
+              <div class="day-use" id="group-day-use-label"></div>
+              <div class="error-text" id="group-date-error"></div>
+            </div>
+            <div class="row">
+              <label for="group-checkout">Check-out</label>
+              <input id="group-checkout" name="checkout" type="date" required>
+            </div>
+          </div>
 
-        <div class="actions">
-          <button class="btn-ghost" type="button" data-close>Cancel</button>
-          <button class="btn-primary" type="submit">Submit Request</button>
-        </div>
-      </form>
+          <!-- Nights - Rooms - Total Adults -->
+          <div class="grid-3">
+            <div class="row">
+              <label for="group-nights">Nights</label>
+              <input id="group-nights" name="nights" type="text"
+                     class="readonly" readonly>
+            </div>
+            <div class="row">
+              <label for="group-rooms">Total Rooms</label>
+              <input id="group-rooms" name="rooms" type="number" min="1"
+                     placeholder="15" required>
+            </div>
+            <div class="row">
+              <label for="group-adults">Total Adults</label>
+              <input id="group-adults" name="adults" type="number" min="1"
+                     placeholder="30" required>
+            </div>
+          </div>
+
+          <!-- Any Kids / Budget -->
+          <div class="grid-3">
+            <div class="row">
+              <label for="group-kids-age">Any Kids (Age)</label>
+              <input id="group-kids-age" name="kidsAge" type="text"
+                     placeholder="e.g. 5 yrs, 8 yrs">
+            </div>
+            <div class="row">
+              <label for="group-meal">Meal Plan (optional)</label>
+              <select id="group-meal" name="meal">
+                <option value="">Select</option>
+                <option>EP (Room Only)</option>
+                <option>CP (Breakfast)</option>
+                <option>MAP (2 Meals)</option>
+                <option>APAI (All Meals)</option>
+              </select>
+            </div>
+            <div class="row">
+              <label for="group-budget">Approx budget per night (optional)</label>
+              <input id="group-budget" name="budget" type="text"
+                     placeholder="e.g. ₹2000 - ₹3500 per person">
+            </div>
+          </div>
+
+          <!-- Room Category -->
+          <div class="row">
+            <label for="group-room-category">Room Category (optional)</label>
+            <input id="group-room-category" name="roomCategory" type="text"
+                   placeholder="Double / Triple sharing, Suites, etc.">
+          </div>
+
+          <!-- Day‑use times (hidden by default) -->
+          <div class="grid-2 dayuse-time-wrap" id="group-day-use-times" style="display:none;">
+            <div class="row">
+              <label for="group-day-from">From Time</label>
+              <input id="group-day-from" name="dayFrom" type="time">
+            </div>
+            <div class="row">
+              <label for="group-day-to">To Time</label>
+              <input id="group-day-to" name="dayTo" type="time">
+            </div>
+          </div>
+
+          <!-- Personal Information heading -->
+          <h4 style="margin-top:10px; margin-bottom:4px; text-align:left; font-size:13px;">Personal Information</h4>
+
+          <div class="grid-2">
+            <div class="row">
+              <label for="group-name-field">Your Name</label>
+              <input id="group-name-field" name="yourName" type="text"
+                     placeholder="Enter your name" required>
+            </div>
+            <div class="row">
+              <label for="group-mobile">Mobile</label>
+              <input id="group-mobile" name="mobile" type="tel"
+                     placeholder="+91 9XXXXXXXXX" required>
+            </div>
+          </div>
+
+          <div class="row">
+            <label for="group-email">Email</label>
+            <input id="group-email" name="email" type="email"
+                   placeholder="name@example.com">
+          </div>
+
+          <div class="grid-2">
+            <div class="row">
+              <label for="group-transport">Transport require?</label>
+              <select id="group-transport" name="transport">
+                <option value="">Select</option>
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+              </select>
+              <div class="info-text" id="group-transport-info" style="display:none;">
+                We also have transport services. You can check our
+                <a href="https://www.fodel.in/transport.html" target="_blank" style="color:#0f766e; text-decoration:underline;">transport services</a>.
+              </div>
+            </div>
+            <div class="row">
+              <label for="group-prefer-contact">Prefer contact on</label>
+              <select id="group-prefer-contact" name="preferContact" required>
+                <option value="">Select</option>
+                <option>WhatsApp</option>
+                <option>Email</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Agent checkbox -->
+          <div class="row row-agent">
+            <label class="agent-checkbox" onclick="toggleAgent('group-agent-wrap')">
+              <input type="checkbox" id="group-agent" name="isAgent">
+              Are you a travel agent?
+            </label>
+          </div>
+          <div class="row agent-wrap" id="group-agent-wrap">
+            <label for="group-agent-name">Agent Company Name</label>
+            <input id="group-agent-name" name="agentCompany" type="text"
+                   placeholder="Your travel agency name" />
+          </div>
+
+          <!-- Requirements / Notes -->
+          <div class="row">
+            <label for="group-notes">Notes</label>
+            <textarea id="group-notes" name="notes"
+                      placeholder="Transport, budget, room sharing, itinerary..."></textarea>
+          </div>
+
+          <div class="actions">
+            <button class="btn-ghost" type="button" data-close>Cancel</button>
+            <button class="btn-primary" type="submit">Submit Request</button>
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
 
-  <!-- SEO text block -->
-  <section class="seo-keywords" aria-hidden="true">
-    <p>
-      Fodel Travels is a trustworthy travel agent in Jammu and Kashmir offering hotel booking in Katra, Patnitop and Goa,
-      reliable transport services from Jammu, group stay packages, event venues and custom tours across the region. From
-      pilgrim trips to Vaishno Devi to Goa family holidays, we help you find the best hotels, rooms and packages with honest
-      advice and local support.
+    <!-- SEO text block -->
+    <section class="seo-keywords" aria-hidden="true">
+      <p>
+        Fodel Travels is a trustworthy travel agent in Jammu and Kashmir offering hotel booking in Katra, Patnitop and Goa,
+        reliable transport services from Jammu, group stay packages, event venues and custom tours across the region. From
+        pilgrim trips to Vaishno Devi to Goa family holidays, we help you find the best hotels, rooms and packages with honest
+        advice and local support.
+      </p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <a class="chip" href="mailto:sales@fodeltravel.in">
+        ✉️ sales@fodeltravel.in
+      </a>
+      <div class="copy">Fodel Travels · Jammu & Kashmir</div>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+
+    <div class="fw-whatsapp">
+      <a class="fw-btn"
+         href="https://wa.me/919797459260?text=Hi%20Fodel%20Travels%2C%20I%20need%20help%20with%20a%20booking."
+         target="_blank" rel="noopener">
+        <span class="fw-pulse"></span>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.04 2a9.8 9.8 0 0 0-8.45 14.7L2 22l5.43-1.53A9.8 9.8 0 1 0 12.04 2zm5.74 14.18c-.24.67-1.4 1.29-1.94 1.33-.52.04-1.18.06-1.91-.12a8 8 0 0 1-4.57-2.61c-1.31-1.44-2.25-3.16-2.35-4.52-.04-.57.17-1.32.72-1.83.21-.2.46-.3.73-.3.12 0 .24 0 .35.02.26.02.41.03.6.47.23.55.79 1.89.86 2.03.07.14.12.3.02.48-.09.19-.14.31-.28.48-.14.17-.29.38-.41.51-.14.14-.29.3-.13.58.15.29.68 1.12 1.46 1.82 1 .88 1.84 1.16 2.16 1.29.33.12.52.11.71-.06.19-.17.82-.77 1.04-1.03.22-.25.44-.21.72-.12.29.1 1.83.86 2.15 1.01.32.14.53.22.61.35.08.13.08.76-.16 1.42z"/>
+        </svg>
+      </a>
+    </div>
+  </div> <!-- /public-root -->
+
+  <!-- ====================== ADMIN VIEW ====================== -->
+  <div id="admin-root" style="display:none; padding:24px; max-width:1100px; margin:0 auto;">
+    <h1>Fodel Travel Admin</h1>
+    <p style="margin:0 0 10px; font-size:14px; color:#4b5563;">
+      Internal admin to manage properties for Rooms, Event Venues and Group Stays.
     </p>
-  </section>
+    <p style="margin:0 0 16px; font-size:12px; color:#6b7280;">
+      Data is stored in this browser using <strong>localStorage</strong>. When you are happy with the list,
+      copy the JSON below into your source code or keep this browser as your admin console.
+    </p>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <a class="chip" href="mailto:sales@fodeltravel.in">
-      ✉️ sales@fodeltravel.in
-    </a>
-    <div class="copy">Fodel Travels · Jammu & Kashmir</div>
-  </footer>
+    <form id="admin-form" style="display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:12px;">
+      <div>
+        <label for="admin-type">Category</label>
+        <select id="admin-type" required>
+          <option value="">Select</option>
+          <option value="hotel">Rooms (Hotel)</option>
+          <option value="venue">Event Venue</option>
+          <option value="group">Group Property</option>
+        </select>
+      </div>
+      <div>
+        <label for="admin-region">Region</label>
+        <input id="admin-region" type="text" placeholder="Jammu & Kashmir" value="Jammu & Kashmir" required />
+      </div>
+      <div>
+        <label for="admin-area">Area</label>
+        <input id="admin-area" type="text" placeholder="Katra / Jammu / Patnitop" required />
+      </div>
+      <div>
+        <label for="admin-name">Property / Hotel / Venue</label>
+        <input id="admin-name" type="text" placeholder="Hotel Grand Katra" required />
+      </div>
+      <div style="grid-column:1 / -1; display:flex; gap:10px; margin-top:4px;">
+        <button type="submit" class="btn-primary" style="padding:8px 14px; font-size:14px;">Add / Save</button>
+        <button type="button" id="admin-reset" class="btn-ghost" style="padding:8px 14px; font-size:14px;">Reset to defaults</button>
+      </div>
+    </form>
 
-  <div class="toast" id="toast"></div>
+    <h3 style="font-size:16px; margin:10px 0 6px;">Current properties</h3>
+    <table id="admin-table">
+      <thead>
+      <tr>
+        <th style="width:14%;">Category</th>
+        <th style="width:22%;">Region</th>
+        <th style="width:22%;">Area</th>
+        <th>Name</th>
+      </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
 
-  <div class="fw-whatsapp">
-    <a class="fw-btn"
-       href="https://wa.me/919797459260?text=Hi%20Fodel%20Travels%2C%20I%20need%20help%20with%20a%20booking."
-       target="_blank" rel="noopener">
-      <span class="fw-pulse"></span>
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12.04 2a9.8 9.8 0 0 0-8.45 14.7L2 22l5.43-1.53A9.8 9.8 0 1 0 12.04 2zm5.74 14.18c-.24.67-1.4 1.29-1.94 1.33-.52.04-1.18.06-1.91-.12a8 8 0 0 1-4.57-2.61c-1.31-1.44-2.25-3.16-2.35-4.52-.04-.57.17-1.32.72-1.83.21-.2.46-.3.73-.3.12 0 .24 0 .35.02.26.02.41.03.6.47.23.55.79 1.89.86 2.03.07.14.12.3.02.48-.09.19-.14.31-.28.48-.14.17-.29.38-.41.51-.14.14-.29.3-.13.58.15.29.68 1.12 1.46 1.82 1 .88 1.84 1.16 2.16 1.29.33.12.52.11.71-.06.19-.17.82-.77 1.04-1.03.22-.25.44-.21.72-.12.29.1 1.83.86 2.15 1.01.32.14.53.22.61.35.08.13.08.76-.16 1.42z"/>
-      </svg>
-    </a>
+    <h3 style="font-size:14px; margin:16px 0 4px;">JSON snapshot (for backup / code)</h3>
+    <textarea id="admin-json" readonly></textarea>
   </div>
 
   <script>
+    // --------- Shared data "backend" (localStorage) ---------
+    const STORAGE_KEY = 'fodel_travel_properties_v1';
+
+    const DEFAULT_PROPERTIES = [
+      { type:'hotel', region:'Jammu & Kashmir', area:'Katra',     name:'Sample Hotel Katra' },
+      { type:'hotel', region:'Jammu & Kashmir', area:'Patnitop',  name:'Sample Hotel Patnitop' },
+      { type:'hotel', region:'Jammu & Kashmir', area:'Jammu',     name:'Sample Hotel Jammu' },
+      { type:'venue', region:'Jammu & Kashmir', area:'Jammu',     name:'Sample Banquet Jammu' },
+      { type:'venue', region:'Jammu & Kashmir', area:'Katra',     name:'Sample Hall Katra' },
+      { type:'group', region:'Jammu & Kashmir', area:'Katra',     name:'Sample Group Hotel Katra' }
+    ];
+
+    function loadProperties() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return [...DEFAULT_PROPERTIES];
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) return parsed;
+      } catch (_) {}
+      return [...DEFAULT_PROPERTIES];
+    }
+
+    function saveProperties() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(PROPERTIES));
+    }
+
+    let PROPERTIES = loadProperties();
+
+    // --------- Helpers ---------
     const todayISO = () => new Date().toISOString().split('T')[0];
     const toast = document.getElementById('toast');
+    const params = new URLSearchParams(window.location.search);
+    const isAdminMode = params.get('admin') === '1';
 
     function showToast(msg) {
+      if (!toast) return;
       toast.textContent = msg || "✅ Request submitted. We'll contact you shortly.";
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 3000);
@@ -1209,6 +1335,7 @@
         const rooms  = form.rooms.value;
         const adults = form.adults.value;
         const kids   = form.kidsAge.value;
+        const meal   = form.meal.value;
         const budget = form.budget.value;
         const roomCat= form.roomCategory.value;
         const transport = form.transport.value;
@@ -1220,6 +1347,7 @@
         rooms  && lines.push('Rooms: ' + rooms);
         adults && lines.push('Total adults: ' + adults);
         kids   && lines.push('Kids (age): ' + kids);
+        meal   && lines.push('Meal plan: ' + meal);
         roomCat&& lines.push('Room category: ' + roomCat);
         budget && lines.push('Approx budget per night: ' + budget);
         transport && lines.push('Transport required: ' + transport);
@@ -1234,6 +1362,7 @@
         const rooms  = form.rooms.value;
         const adults = form.adults.value;
         const kids   = form.kidsAge.value;
+        const meal   = form.meal.value;
         const budget = form.budget.value;
         const roomCat= form.roomCategory.value;
         const transport = form.transport.value;
@@ -1246,6 +1375,7 @@
         rooms  && lines.push('Total rooms: ' + rooms);
         adults && lines.push('Total adults: ' + adults);
         kids   && lines.push('Kids (age): ' + kids);
+        meal   && lines.push('Meal plan: ' + meal);
         roomCat&& lines.push('Room category: ' + roomCat);
         budget && lines.push('Approx budget per night: ' + budget);
         transport && lines.push('Transport required: ' + transport);
@@ -1278,35 +1408,36 @@
       return lines;
     }
 
-function buildSummary(form) {
-  const fd = new FormData(form);
-  const name   = fd.get('yourName') || '';
-  const mobile = fd.get('mobile')   || '';
-  const email  = fd.get('email')    || '';
-  const notes  = fd.get('notes')    || '';
-  const category = form.dataset.category || 'Travel Enquiry';
+    function buildSummary(form) {
+      const fd = new FormData(form);
+      const name   = fd.get('yourName') || '';
+      const mobile = fd.get('mobile')   || '';
+      const email  = fd.get('email')    || '';
+      const notes  = fd.get('notes')    || '';
+      const category = form.dataset.category || 'Travel Enquiry';
 
-  const contextLines = getFormContextLines(form);
+      const contextLines = getFormContextLines(form);
 
-  const lines = [];
+      const lines = [];
 
-  lines.push('Dear Fodel India Team,');
-  lines.push('');
-  lines.push('You have received a new ' + category + '.');
-  lines.push('');
-  lines.push('── Booking summary ──');
-  contextLines.forEach(l => lines.push('• ' + l));
-  lines.push('');
-  lines.push('── Guest details ──');
-  name   && lines.push('• Name: '   + name);
-  mobile && lines.push('• Mobile: ' + mobile);
-  email  && lines.push('• Email: '  + email);
-  lines.push('');
-  lines.push('── Additional notes ──');
-  lines.push(notes ? notes : '• N/A');
+      lines.push('Dear Fodel India Team,');
+      lines.push('');
+      lines.push('You have received a new ' + category + '.');
+      lines.push('');
+      lines.push('── Booking summary ──');
+      contextLines.forEach(l => lines.push('• ' + l));
+      lines.push('');
+      lines.push('── Guest details ──');
+      name   && lines.push('• Name: '   + name);
+      mobile && lines.push('• Mobile: ' + mobile);
+      email  && lines.push('• Email: '  + email);
+      lines.push('');
+      lines.push('── Additional notes ──');
+      lines.push(notes ? notes : '• N/A');
 
-  return lines.join('\n');
-}
+      return lines.join('\n');
+    }
+
     function handlePreferredChannel(form, prefer) {
       const category = form.dataset.category || 'Travel Enquiry';
       const summary = buildSummary(form);
@@ -1451,14 +1582,68 @@ function buildSummary(form) {
       });
     }
 
+    // --------- Populate selects from PROPERTIES ---------
+    function populateSelect(selectId, type, placeholderText) {
+      const select = document.getElementById(selectId);
+      if (!select) return;
+      const current = select.value;
+      select.innerHTML = '';
+      const opt0 = document.createElement('option');
+      opt0.value = '';
+      opt0.textContent = placeholderText || 'Select';
+      select.appendChild(opt0);
+
+      PROPERTIES.filter(p => p.type === type).forEach(p => {
+        const opt = document.createElement('option');
+        opt.value = p.name;
+        opt.textContent = p.name;
+        opt.dataset.area = p.area || 'All';
+        select.appendChild(opt);
+      });
+
+      if (current) select.value = current;
+    }
+
+    function refreshAllSelects() {
+      populateSelect('hotel-name',   'hotel', 'Select a property');
+      populateSelect('event-venue',  'venue', 'Select a venue');
+      populateSelect('group-property','group','Select a property');
+    }
+
+    // --------- Admin rendering ---------
+    function renderAdmin() {
+      const tableBody = document.querySelector('#admin-table tbody');
+      const jsonArea  = document.getElementById('admin-json');
+      if (!tableBody || !jsonArea) return;
+
+      tableBody.innerHTML = '';
+      PROPERTIES.forEach(p => {
+        const tr = document.createElement('tr');
+        const prettyType =
+          p.type === 'hotel' ? 'Rooms' :
+          p.type === 'venue' ? 'Event' : 'Group';
+
+        tr.innerHTML = `
+          <td><span class="pill">${prettyType}</span></td>
+          <td>${p.region || ''}</td>
+          <td>${p.area || ''}</td>
+          <td>${p.name || ''}</td>
+        `;
+        tableBody.appendChild(tr);
+      });
+
+      jsonArea.value = JSON.stringify(PROPERTIES, null, 2);
+    }
+
+    // --------- Global click handlers (public) ---------
     document.addEventListener('click', function (e) {
       const pkg = e.target.closest && e.target.closest('.package-card');
-      if (pkg) {
+      if (pkg && !isAdminMode) {
         showToast('Packages coming soon.');
         return;
       }
 
-      if (e.target.matches('[data-open]')) {
+      if (e.target.matches('[data-open]') && !isAdminMode) {
         const modalId = e.target.dataset.open;
         const modal = document.getElementById(modalId);
         if (modal) {
@@ -1468,18 +1653,18 @@ function buildSummary(form) {
         return;
       }
 
-      if (
+      if (!isAdminMode && (
         e.target.matches('[data-close]') ||
         e.target.closest('.modal-close') ||
         e.target.classList.contains('overlay')
-      ) {
+      )) {
         document.querySelectorAll('.overlay.active')
           .forEach(m => m.classList.remove('active'));
         document.body.classList.remove('modal-open');
         return;
       }
 
-      if (e.target.classList.contains('btn-tab')) {
+      if (!isAdminMode && e.target.classList.contains('btn-tab')) {
         const group = e.target.closest('.btn-group');
         if (group) {
           group.querySelectorAll('.btn-tab')
@@ -1504,14 +1689,57 @@ function buildSummary(form) {
     });
 
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') {
+      if (e.key === 'Escape' && !isAdminMode) {
         document.querySelectorAll('.overlay.active')
           .forEach(m => m.classList.remove('active'));
         document.body.classList.remove('modal-open');
       }
     });
 
+    // --------- DOMContentLoaded: public + admin ---------
     document.addEventListener('DOMContentLoaded', function () {
+      const publicRoot = document.getElementById('public-root');
+      const adminRoot  = document.getElementById('admin-root');
+
+      if (isAdminMode) {
+        if (publicRoot) publicRoot.style.display = 'none';
+        if (adminRoot)  adminRoot.style.display  = 'block';
+
+        // ADMIN INIT
+        renderAdmin();
+
+        const adminForm = document.getElementById('admin-form');
+        adminForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          const type   = document.getElementById('admin-type').value;
+          const region = document.getElementById('admin-region').value.trim();
+          const area   = document.getElementById('admin-area').value.trim();
+          const name   = document.getElementById('admin-name').value.trim();
+          if (!type || !region || !area || !name) return;
+
+          PROPERTIES.push({ type, region, area, name });
+          saveProperties();
+          renderAdmin();
+          showToast('Saved in local admin list.');
+          adminForm.reset();
+          document.getElementById('admin-region').value = 'Jammu & Kashmir';
+        });
+
+        document.getElementById('admin-reset').addEventListener('click', function () {
+          if (!confirm('Reset to default sample properties?')) return;
+          PROPERTIES = [...DEFAULT_PROPERTIES];
+          saveProperties();
+          renderAdmin();
+          showToast('Reset to default properties.');
+        });
+
+        return;
+      }
+
+      // PUBLIC INIT
+      if (adminRoot)  adminRoot.style.display  = 'none';
+      if (publicRoot) publicRoot.style.display = 'block';
+
       const today = todayISO();
       document.querySelectorAll('input[type="date"]').forEach(inp => {
         inp.min = today;
@@ -1528,6 +1756,8 @@ function buildSummary(form) {
         });
         co.addEventListener('change', () => handleDates(prefix));
       });
+
+      refreshAllSelects();
 
       wireManualToggle('hotel-name', 'hotel-manual-wrap', 'hotel-manual', 'hotel-manual-toggle');
 
