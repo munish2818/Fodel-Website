@@ -631,7 +631,7 @@
         <!-- Hotel / Property + Manual entry link -->
         <div class="grid-2 full-on-mobile">
           <div class="row">
-            abel for="hotel-name">Hotel / Property</label>
+            <label for="hotel-name">Hotel / Property</label>
             <select id="hotel-name" name="hotelName" required>
               <option value="">Select a property</option>
               <option data-area="Katra">Sample Hotel Katra</option>
@@ -642,7 +642,7 @@
             </button>
           </div>
           <div class="row manual-wrap" id="hotel-manual-wrap">
-            abel for="hotel-manual">Enter hotel name</label>
+            <label for="hotel-manual">Enter hotel name</label>
             <input id="hotel-manual" name="hotelManual" type="text"
                    placeholder="Type exact hotel name" />
           </div>
@@ -651,13 +651,13 @@
         <!-- Dates: Check-in / Check-out -->
         <div class="grid-2">
           <div class="row">
-            abel for="hotel-checkin">Check-in</label>
+            <label for="hotel-checkin">Check-in</label>
             <input id="hotel-checkin" name="checkin" type="date" required>
             <div class="day-use" id="hotel-day-use-label"></div>
             <div class="error-text" id="hotel-date-error"></div>
           </div>
           <div class="row">
-            abel for="hotel-checkout">Check-out</label>
+            <label for="hotel-checkout">Check-out</label>
             <input id="hotel-checkout" name="checkout" type="date" required>
           </div>
         </div>
@@ -665,17 +665,17 @@
         <!-- Nights - Rooms - Total Adults -->
         <div class="grid-3">
           <div class="row">
-            abel for="hotel-nights">Nights</label>
+            <label for="hotel-nights">Nights</label>
             <input id="hotel-nights" name="nights" type="text"
                    class="readonly" readonly>
           </div>
           <div class="row">
-            abel for="hotel-rooms">Rooms</label>
+            <label for="hotel-rooms">Rooms</label>
             <input id="hotel-rooms" name="rooms" type="number" min="1"
                    placeholder="2" required>
           </div>
           <div class="row">
-            abel for="hotel-adults">Total Adults</label>
+            <label for="hotel-adults">Total Adults</label>
             <input id="hotel-adults" name="adults" type="number" min="1"
                    placeholder="2" required>
           </div>
@@ -684,12 +684,12 @@
         <!-- Any Kids (Age) - Approx budget Per night -->
         <div class="grid-2">
           <div class="row">
-            abel for="hotel-kids-age">Any Kids (Age)</label>
+            <label for="hotel-kids-age">Any Kids (Age)</label>
             <input id="hotel-kids-age" name="kidsAge" type="text"
                    placeholder="e.g. 5 yrs, 8 yrs">
           </div>
           <div class="row">
-            abel for="hotel-budget">Approx budget per night (optional)</label>
+            <label for="hotel-budget">Approx budget per night (optional)</label>
             <input id="hotel-budget" name="budget" type="text"
                    placeholder="e.g. ₹3000 - ₹5000 per room">
           </div>
@@ -697,7 +697,7 @@
 
         <!-- Room Category (optional) full row -->
         <div class="row">
-          abel for="hotel-room-category">Room Category (optional)</label>
+          <label for="hotel-room-category">Room Category (optional)</label>
           <input id="hotel-room-category" name="roomCategory" type="text"
                  placeholder="Deluxe, Super Deluxe, Suite, etc.">
         </div>
@@ -705,11 +705,11 @@
         <!-- Day‑use time inputs (hidden by default) -->
         <div class="grid-2 dayuse-time-wrap" id="hotel-day-use-times" style="display:none;">
           <div class="row">
-            abel for="hotel-day-from">From Time</label>
+            <label for="hotel-day-from">From Time</label>
             <input id="hotel-day-from" name="dayFrom" type="time">
           </div>
           <div class="row">
-            abel for="hotel-day-to">To Time</label>
+            <label for="hotel-day-to">To Time</label>
             <input id="hotel-day-to" name="dayTo" type="time">
           </div>
         </div>
@@ -720,12 +720,12 @@
         <!-- Your Name / Mobile -->
         <div class="grid-2">
           <div class="row">
-            abel for="hotel-name-field">Your Name</label>
+            <label for="hotel-name-field">Your Name</label>
             <input id="hotel-name-field" name="yourName" type="text"
                    placeholder="Enter your name" required>
           </div>
           <div class="row">
-            abel for="hotel-mobile">Mobile</label>
+            <label for="hotel-mobile">Mobile</label>
             <input id="hotel-mobile" name="mobile" type="tel"
                    placeholder="+91 9XXXXXXXXX" required>
           </div>
@@ -733,7 +733,7 @@
 
         <!-- Email full row -->
         <div class="row">
-          abel for="hotel-email">Email</label>
+          <label for="hotel-email">Email</label>
           <input id="hotel-email" name="email" type="email"
                  placeholder="name@example.com">
         </div>
@@ -741,19 +741,19 @@
         <!-- Transport Require? / Prefer contact on -->
         <div class="grid-2">
           <div class="row">
-            abel for="hotel-transport">Transport require?</label>
+            <label for="hotel-transport">Transport require?</label>
             <select id="hotel-transport" name="transport">
               <option value="">Select</option>
               <option value="No">No</option>
               <option value="Yes">Yes</option>
             </select>
             <div class="info-text" id="hotel-transport-info" style="display:none;">
-              We also have transport services. You can check our
+              You can check our
               <a href="https://www.fodel.in/transport.html" target="_blank" style="color:#0f766e; text-decoration:underline;">transport services</a>.
             </div>
           </div>
           <div class="row">
-            abel for="hotel-prefer-contact">Prefer contact on</label>
+            <label for="hotel-prefer-contact">Prefer contact on</label>
             <select id="hotel-prefer-contact" name="preferContact" required>
               <option value="">Select</option>
               <option>WhatsApp</option>
@@ -770,14 +770,14 @@
           </label>
         </div>
         <div class="row agent-wrap" id="hotel-agent-wrap">
-          abel for="hotel-agent-name">Agent Company Name</label>
+          <label for="hotel-agent-name">Agent Company Name</label>
           <input id="hotel-agent-name" name="agentCompany" type="text"
                  placeholder="Your travel agency name" />
         </div>
 
         <!-- Notes -->
         <div class="row">
-          abel for="hotel-notes">Notes</label>
+          <label for="hotel-notes">Notes</label>
           <textarea id="hotel-notes" name="notes"
                     placeholder="Special requests..."></textarea>
         </div>
@@ -821,7 +821,7 @@
         <!-- Venue / Manual -->
         <div class="grid-2 full-on-mobile">
           <div class="row">
-            abel for="event-venue">Venue / Hall</label>
+            <label for="event-venue">Venue / Hall</label>
             <select id="event-venue" name="venue" required>
               <option value="">Select a venue</option>
               <option data-area="Jammu">Sample Banquet Jammu</option>
@@ -829,7 +829,7 @@
             </select>
           </div>
           <div class="row">
-            abel for="event-type">Event Type</label>
+            <label for="event-type">Event Type</label>
             <input id="event-type" name="eventType" type="text"
                    placeholder="Wedding, Conference, etc." required>
           </div>
@@ -838,11 +838,11 @@
         <!-- Event Date / Min Guarantee -->
         <div class="grid-2">
           <div class="row">
-            abel for="event-date">Event Date</label>
+            <label for="event-date">Event Date</label>
             <input id="event-date" name="eventDate" type="date" required>
           </div>
           <div class="row">
-            abel for="min-guarantee">Min. Guarantee</label>
+            <label for="min-guarantee">Min. Guarantee</label>
             <input id="min-guarantee" name="minGuarantee" type="number"
                    min="10" placeholder="100" required>
           </div>
@@ -851,7 +851,7 @@
         <!-- Session / Start-End time -->
         <div class="grid-2">
           <div class="row">
-            abel for="banquet-session">Session</label>
+            <label for="banquet-session">Session</label>
             <select id="banquet-session" name="session" required>
               <option value="">Select</option>
               <option>Breakfast</option>
@@ -861,7 +861,7 @@
             </select>
           </div>
           <div class="row">
-            abel for="event-start">Start / End time</label>
+            <label for="event-start">Start / End time</label>
             <div style="display:flex; gap:6px;">
               <input id="event-start" name="eventStart" type="time" style="flex:1;">
               <input id="event-end"   name="eventEnd"   type="time" style="flex:1;">
@@ -872,12 +872,12 @@
         <!-- Decoration / AV -->
         <div class="grid-2">
           <div class="row">
-            abel for="decoration">Decoration Needs</label>
+            <label for="decoration">Decoration Needs</label>
             <textarea id="decoration" name="decoration"
                       placeholder="Floral, stage, theme colour..."></textarea>
           </div>
           <div class="row">
-            abel for="av-requirement">AV Requirements</label>
+            <label for="av-requirement">AV Requirements</label>
             <textarea id="av-requirement" name="avRequirement"
                       placeholder="Sound, projector, LED screen..."></textarea>
           </div>
@@ -889,12 +889,12 @@
         <!-- Name / Mobile -->
         <div class="grid-2">
           <div class="row">
-            abel for="event-name-field">Your Name</label>
+            <label for="event-name-field">Your Name</label>
             <input id="event-name-field" name="yourName" type="text"
                    placeholder="Enter your name" required>
           </div>
           <div class="row">
-            abel for="event-mobile">Mobile</label>
+            <label for="event-mobile">Mobile</label>
             <input id="event-mobile" name="mobile" type="tel"
                    placeholder="+91 9XXXXXXXXX" required>
           </div>
@@ -902,7 +902,7 @@
 
         <!-- Email full row -->
         <div class="row">
-          abel for="event-email">Email</label>
+          <label for="event-email">Email</label>
           <input id="event-email" name="email" type="email"
                  placeholder="name@example.com">
         </div>
@@ -910,7 +910,7 @@
         <!-- Transport Require / Prefer contact -->
         <div class="grid-2">
           <div class="row">
-            abel for="event-transport">Transport require?</label>
+            <label for="event-transport">Transport require?</label>
             <select id="event-transport" name="transport">
               <option value="">Select</option>
               <option value="No">No</option>
@@ -922,7 +922,7 @@
             </div>
           </div>
           <div class="row">
-            abel for="event-prefer-contact">Prefer contact on</label>
+            <label for="event-prefer-contact">Prefer contact on</label>
             <select id="event-prefer-contact" name="preferContact" required>
               <option value="">Select</option>
               <option>WhatsApp</option>
@@ -939,14 +939,14 @@
           </label>
         </div>
         <div class="row agent-wrap" id="event-agent-wrap">
-          abel for="event-agent-name">Agent Company Name</label>
+          <label for="event-agent-name">Agent Company Name</label>
           <input id="event-agent-name" name="agentCompany" type="text"
                  placeholder="Your travel agency name" />
         </div>
 
         <!-- Event details / Notes -->
         <div class="row">
-          abel for="banquet-notes">Notes</label>
+          <label for="banquet-notes">Notes</label>
           <textarea id="banquet-notes" name="notes"
                     placeholder="Event details, special requirements..."></textarea>
         </div>
@@ -990,14 +990,14 @@
         <!-- Property / Company Group name -->
         <div class="grid-2 full-on-mobile">
           <div class="row">
-            abel for="group-property">Property / Hotel</label>
+            <label for="group-property">Property / Hotel</label>
             <select id="group-property" name="property" required>
               <option value="">Select a property</option>
               <option data-area="Katra">Sample Group Hotel Katra</option>
             </select>
           </div>
           <div class="row">
-            abel for="group-name">Company / Group Name</label>
+            <label for="group-name">Company / Group Name</label>
             <input id="group-name" name="groupName" type="text"
                    placeholder="ABC Pilgrims Group / XYZ Corp" required>
           </div>
@@ -1006,13 +1006,13 @@
         <!-- Dates -->
         <div class="grid-2">
           <div class="row">
-            abel for="group-checkin">Check-in</label>
+            <label for="group-checkin">Check-in</label>
             <input id="group-checkin" name="checkin" type="date" required>
             <div class="day-use" id="group-day-use-label"></div>
             <div class="error-text" id="group-date-error"></div>
           </div>
           <div class="row">
-            abel for="group-checkout">Check-out</label>
+            <label for="group-checkout">Check-out</label>
             <input id="group-checkout" name="checkout" type="date" required>
           </div>
         </div>
@@ -1020,17 +1020,17 @@
         <!-- Nights - Rooms - Total Adults -->
         <div class="grid-3">
           <div class="row">
-            abel for="group-nights">Nights</label>
+            <label for="group-nights">Nights</label>
             <input id="group-nights" name="nights" type="text"
                    class="readonly" readonly>
           </div>
           <div class="row">
-            abel for="group-rooms">Total Rooms</label>
+            <label for="group-rooms">Total Rooms</label>
             <input id="group-rooms" name="rooms" type="number" min="1"
                    placeholder="15" required>
           </div>
           <div class="row">
-            abel for="group-adults">Total Adults</label>
+            <label for="group-adults">Total Adults</label>
             <input id="group-adults" name="adults" type="number" min="1"
                    placeholder="30" required>
           </div>
@@ -1039,12 +1039,12 @@
         <!-- Any Kids / Budget -->
         <div class="grid-2">
           <div class="row">
-            abel for="group-kids-age">Any Kids (Age)</label>
+            <label for="group-kids-age">Any Kids (Age)</label>
             <input id="group-kids-age" name="kidsAge" type="text"
                    placeholder="e.g. 5 yrs, 8 yrs">
           </div>
           <div class="row">
-            abel for="group-budget">Approx budget per night (optional)</label>
+            <label for="group-budget">Approx budget per night (optional)</label>
             <input id="group-budget" name="budget" type="text"
                    placeholder="e.g. ₹2000 - ₹3500 per person">
           </div>
@@ -1052,7 +1052,7 @@
 
         <!-- Room Category (optional) -->
         <div class="row">
-          abel for="group-room-category">Room Category (optional)</label>
+          <label for="group-room-category">Room Category (optional)</label>
           <input id="group-room-category" name="roomCategory" type="text"
                  placeholder="Double / Triple sharing, Suites, etc.">
         </div>
@@ -1060,11 +1060,11 @@
         <!-- Day‑use times (hidden by default) -->
         <div class="grid-2 dayuse-time-wrap" id="group-day-use-times" style="display:none;">
           <div class="row">
-            abel for="group-day-from">From Time</label>
+            <label for="group-day-from">From Time</label>
             <input id="group-day-from" name="dayFrom" type="time">
           </div>
           <div class="row">
-            abel for="group-day-to">To Time</label>
+            <label for="group-day-to">To Time</label>
             <input id="group-day-to" name="dayTo" type="time">
           </div>
         </div>
@@ -1075,12 +1075,12 @@
         <!-- Name / Mobile -->
         <div class="grid-2">
           <div class="row">
-            abel for="group-name-field">Your Name</label>
+            <label for="group-name-field">Your Name</label>
             <input id="group-name-field" name="yourName" type="text"
                    placeholder="Enter your name" required>
           </div>
           <div class="row">
-            abel for="group-mobile">Mobile</label>
+            <label for="group-mobile">Mobile</label>
             <input id="group-mobile" name="mobile" type="tel"
                    placeholder="+91 9XXXXXXXXX" required>
           </div>
@@ -1088,7 +1088,7 @@
 
         <!-- Email full row -->
         <div class="row">
-          abel for="group-email">Email</label>
+          <label for="group-email">Email</label>
           <input id="group-email" name="email" type="email"
                  placeholder="name@example.com">
         </div>
@@ -1096,7 +1096,7 @@
         <!-- Transport Require / Prefer contact -->
         <div class="grid-2">
           <div class="row">
-            abel for="group-transport">Transport require?</label>
+            <label for="group-transport">Transport require?</label>
             <select id="group-transport" name="transport">
               <option value="">Select</option>
               <option value="No">No</option>
@@ -1108,7 +1108,7 @@
             </div>
           </div>
           <div class="row">
-            abel for="group-prefer-contact">Prefer contact on</label>
+            <label for="group-prefer-contact">Prefer contact on</label>
             <select id="group-prefer-contact" name="preferContact" required>
               <option value="">Select</option>
               <option>WhatsApp</option>
@@ -1125,14 +1125,14 @@
           </label>
         </div>
         <div class="row agent-wrap" id="group-agent-wrap">
-          abel for="group-agent-name">Agent Company Name</label>
+          <label for="group-agent-name">Agent Company Name</label>
           <input id="group-agent-name" name="agentCompany" type="text"
                  placeholder="Your travel agency name" />
         </div>
 
         <!-- Requirements / Notes -->
         <div class="row">
-          abel for="group-notes">Notes</label>
+          <label for="group-notes">Notes</label>
           <textarea id="group-notes" name="notes"
                     placeholder="Transport, budget, room sharing, itinerary..."></textarea>
         </div>
